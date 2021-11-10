@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: millionui
+  name: consumerportal
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: millionui
+      app: consumerportal
   template:
     metadata:
       labels:
-        app: millionui
+        app: consumerportal
     spec:
       containers:
-        - name: millionui
-          image: microcert.azurecr.io/millionui:$tag
+        - name: consumerportal
+          image: microcert.azurecr.io/consumerportal:$tag
           imagePullPolicy: Always
           ports:
           - containerPort: 80
