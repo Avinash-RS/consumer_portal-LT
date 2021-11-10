@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: consumerportal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: consumerportal
+  template:
+    metadata:
+      labels:
+        app: consumerportal
+    spec:
+      containers:
+        - name: consumerportal
+          image: microcert.azurecr.io/consumerportaluat:$tag
+          resources:
+           limits:
+             cpu: "500m"
+             memory: "500Mi"
+           requests:
+             cpu: "200m"
+             memory: "250Mi"
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 80
+      imagePullSecrets:
+        - name: mysecret
+      nodeSelector:
+        agentpool: microcertuat
