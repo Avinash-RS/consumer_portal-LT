@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: consumerportal
-          image: microcert.azurecr.io/Consumerportalqa:$tag
+          image: microcert.azurecr.io/consumerportalqa:$tag
           imagePullPolicy: Always
           ports:
           - containerPort: 80
