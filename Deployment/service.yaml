@@ -1,12 +1,12 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: millionui
+  name: consumerportal
   #annotations:
   #  service.beta.kubernetes.io/azure-load-balancer-internal: "true"
 spec:
   selector:
-    app: millionui
+    app: consumerportal
   type: LoadBalancer
   ports:
   - name: http
