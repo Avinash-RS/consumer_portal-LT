@@ -1,0 +1,182 @@
+import { Component, OnInit } from "@angular/core";
+import { CommonService } from "src/app/services/common.service";
+import { ToastrService } from 'ngx-toastr';
+import { ActivatedRoute } from "@angular/router";
+import * as bcrypt from 'bcryptjs';
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { AppConfigService } from "src/app/utils/app-config.service";
+import { GlobalValidatorsService } from "src/app/validators/global-validators.service";
+import { APP_CONSTANTS } from "src/app/utils/app-constants.service";
+
+@Component({
+  selector: "app-forgotPassword",
+  templateUrl: "./forgotPassword.component.html",
+  styleUrls: ["./forgotPassword.component.scss"]
+})
+
+export class ForgotPasswordComponent implements OnInit {
+  hide = true;
+  forgetPwdForm: FormGroup;
+  resetPwdForm: FormGroup;
+  mailId: string
+  viewObj: any = {
+    landing: false,
+    mailSent: false,
+    setPassword: false,
+    pwdSetSuccess: false,
+    linkExp: false,
+    reset(){
+      this.landing = false;
+      this.mailSent = false;
+      this.setPassword = false;
+      this.pwdSetSuccess = false;
+      this.linkExp = false;
+    }
+  }
+  userEmail: string;
+  pwdSecretKey: void;
+  constructor(
+    public commonService: CommonService,
+    public toast: ToastrService,
+    private fb: FormBuilder,
+    private appconfig: AppConfigService,
+    public gv: GlobalValidatorsService,
+    public route: ActivatedRoute,
+    ) { 
+      this.route.queryParams.subscribe(params => {
+        if (params.setPwd && params.email) {
+          this.userEmail = params.email;
+          this.pwdSecretKey = params.setPwd;
+          this.displayController('setPassword');
+          this.resetPwdFormInitialize();
+        } else if(params.expired){
+          this.displayController('linkExp');
+        }else {
+          this.displayController("landing");
+        }
+      });
+
+  }
+
+  ngOnInit() {
+    this.forgetPwdFormInitialize();
+  }
+  nextclicker(){
+    this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.forgetpwd, {setPwd: 'kld12sdf4l12sdf23', email: this.forgetPwdForm.value.email});
+  }
+  displayController(input){
+    switch (input) {
+      case "landing":
+        this.viewObj.reset()
+        this.viewObj.landing = true;
+        break;
+      case "mailSent":
+        this.viewObj.reset()
+        this.viewObj.mailSent = true;
+        break;
+      case "setPassword":
+        this.viewObj.reset()
+        this.viewObj.setPassword = true;
+        break;
+      case "pwdSuccess":
+        this.viewObj.reset()
+        this.viewObj.pwdSuccess = true;
+        break;
+      case "linkExp":
+        this.viewObj.reset()
+        this.viewObj.linkExp = true;
+        break;
+      default:
+        break;
+    }
+  }
+
+  // this sends mail to user
+  sendLinkToMail(){
+    if (this.forgetPwdForm.valid){
+      let data = {
+        "email" : this.forgetPwdForm.value.email
+       }
+      this.commonService.fogetPasswordEmail(data).subscribe((resp: any) => {
+        if (resp.success){
+          this.toast.success(resp.message)
+          this.displayController("mailSent")
+        }else{
+          this.toast.error(resp.message)
+        }
+      })
+    }else{
+      this.gv.validateAllFields(this.forgetPwdForm);
+    }    
+  }
+
+  // set new password
+  setNewPassword(){    
+    this.gv.cleanForm(this.resetPwdForm);
+    if (this.resetPwdForm.valid){
+        const salt = bcrypt.genSaltSync(10);
+        const pass = bcrypt.hashSync(this.resetPwdForm.value.password, salt);
+        let data = {"email" : this.userEmail, "password" : pass, "userSecretkey":this.pwdSecretKey}
+        this.commonService.resetPassword(data).subscribe((resp: any) => {
+          if (resp.success){
+            this.toast.success(resp.message)
+            this.displayController("pwdSuccess");
+          }else{
+            this.toast.error(resp.message)
+          }
+        })  
+    }else{
+      this.gv.validateAllFields(this.resetPwdForm);
+    }
+  }
+
+  redirectLogin() {
+    this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, {fromPage: 0});
+  }
+
+  forgetPwdFormInitialize() {
+    this.forgetPwdForm = this.fb.group({
+      email: ['', [Validators.required, this.gv.email()]],
+      captcha: new FormControl()
+    });
+  }
+
+  resetPwdFormInitialize() {
+    this.resetPwdForm = this.fb.group({
+      email: [{value: this.userEmail, disabled: true}, [Validators.required, this.gv.email()]],
+      password: ['', [Validators.required, this.gv.passwordRegex(), Validators.minLength(8), Validators.maxLength(32)]],
+      password2: ['', [Validators.required]],
+      captcha: new FormControl(),
+    }, {validators: this.gv.passwordMatcher()});
+  }
+
+
+  // Form getters
+
+  // Forget password form getter
+  get email() {
+    return this.forgetPwdForm.get('email');
+  }
+  get captcha() {
+    return this.forgetPwdForm.get('captcha');
+  }
+
+  // Reset password form getter
+  get emailR() {
+    return this.resetPwdForm.get('email');
+  }
+
+  get password() {
+    return this.resetPwdForm.get('password');
+  }
+
+  get password2() {
+    return this.resetPwdForm.get('password2');
+  }
+
+  get captchaR() {
+    return this.resetPwdForm.get('captcha');
+  }
+
+
+}

@@ -1,0 +1,20 @@
+<section class="domainList">
+    <div class="container">
+        <owl-carousel-o [options]="owlCarouselOptions">
+            <ng-container *ngFor="let catalog of catalogList">
+                <ng-template carouselSlide>
+                    <div class="sliderBg" (click)="catalogHome(catalog.cid)">
+                        <div class="sliderContent">
+                            <div class="icons"><img [src] = "catalog.image.url" alt="" /></div>
+                            <div class="heading4">{{catalog.name}}</div>
+                            <p>
+                                {{ (catalog.shortDescription.length > 100)? (catalog.shortDescription | slice:0:100)+'...':(catalog.shortDescription) }}
+                            </p>
+                            <button class="learnMore">Learn More</button>
+                        </div>
+                    </div>
+                </ng-template>
+            </ng-container>
+        </owl-carousel-o>
+    </div>
+</section>

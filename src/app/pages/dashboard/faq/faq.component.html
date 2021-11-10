@@ -1,0 +1,26 @@
+<section class="faqPage">
+    <div class="container" *ngIf = "dynamicData">
+        <div class="heading2">Frequently Asked Questions</div>
+        <div *ngFor = "let faqData of dynamicData.faq">
+            <div class="faqAccordion">
+                <div class="heading5">{{ faqData.topic }}</div>
+                <mat-accordion>
+                    <div *ngIf = "faqData.sublist">
+                        <div *ngFor = "let subtopic of faqData.sublist">
+                            <mat-expansion-panel>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        <div class="heading6">{{ subtopic.title  }}</div>
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+                                <div class="faqContent">
+                                    <p>{{ subtopic.content }}</p>
+                                </div>
+                            </mat-expansion-panel>
+                        </div>
+                    </div>
+                </mat-accordion>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,40 @@
+<div class="checkoutBox">
+    <!-- <span class="heading6">Coupons</span>
+    <div class="tag">
+        <p><em class="icon-Tag"></em> Apply Coupons</p>
+        <button disabled class="apply">Apply</button>
+    </div> -->
+    <div class="priceDetails">
+        <span class="heading6">Price Details ({{cartList.length}} <span *ngIf="cartList.length <= 1">item</span><span
+                *ngIf="cartList.length > 1">items</span>)</span>
+        <div>
+            <span>Total MRP</span>
+            <span><em class="icon-Rupee"></em>{{totalPrice}}</span>
+        </div>
+        <!-- <div>
+            <span>Discount on MRP</span>
+            <span>-0</span>
+        </div>
+        <div class="couponDiscount">
+            <span>Coupon Discount</span>
+            <span>Apply Coupon</span>
+        </div> -->
+    </div>
+    <div class="totalAmount">
+        <div>
+            <span class="heading6">Total Amount</span>
+            <span><em class="icon-Rupee"></em>{{totalPrice}}</span>
+        </div>
+        <button (click)="currentTab.selectedIndex==0?continueClick():checkout()" class="checkout">{{currentTab.selectedIndex===0?'Continue':'Checkout'}}</button>
+    </div>
+
+    <!-- <h3>Click Here! to go CCAvenue</h3>
+    <button mat-button (click)="checkout()">Checkout Payment Gateway</button> -->
+
+    <form #form ngNoForm id="nonseamless" method="post" name="redirect"
+        action="https://test.ccavenue.com/transaction/transaction.do?command=initiateTransaction">
+        <input type="hidden" id="encRequest" name="encRequest" value="{{encRequestRes}}">
+        <input type="hidden" name="access_code" id="access_code" value="{{accessCode}}">
+    </form>
+
+</div>

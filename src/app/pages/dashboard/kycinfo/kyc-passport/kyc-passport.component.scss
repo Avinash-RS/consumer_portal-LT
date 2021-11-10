@@ -1,0 +1,440 @@
+@import "../../../../../assets/scss/variables.scss";
+
+
+.joining-personal-wrapper {
+    width: 100%;
+    .grids-wrapper {
+        display: flex;
+        width: 100%;
+        .personalForm {
+            width: 80%;
+            padding-right: 3em;
+            font-size: 14px;
+            .row-wrapper {
+                margin-top: .5em;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                .width-70 {
+                    width: 70%;
+                }
+                .width-45 {
+                    width: 45%;
+                }
+                .width-15 {
+                    width: 15%;
+                }
+                .width-30 {
+                    width: 30%;
+                }
+                .width-22 {
+                    width: 17.5%;
+                }
+
+                .width-32 {
+                    width: 32%;
+                }
+                .width-80 {
+                    width: 80%;
+                }
+                .width-100 {
+                    width: 100%;
+                }
+
+                .overall-input-wrapper {
+                    display: flex;
+                    flex-direction: column;
+                    position: relative;
+                    label {
+                        padding: 0 0 2px 0;
+                        margin: 0;
+                        font-size: 1.1em;
+                        font-weight: 400;
+                        color: #666666;
+                        line-height: 1.4;
+                    }
+                    // .input, mat-select {
+                    //     position: relative;
+                    //     border: solid .8px #BEBEBE;
+                    //     border-radius: 2px;
+                    //     color: #6B6B6B;
+                    //     outline: none;
+                    //     box-sizing: border-box;
+                    //     min-height: 35px !important;
+                    //     max-height: 35px !important;
+                    //     line-height: 35px;
+                    //     padding: 4px 8px;
+                    //     background-color: $whiteColor;
+                    //     width: 100%;
+                    // }
+                    // .select {
+                    //     display: flex;
+                    //     align-items: center;
+                    //     padding: 0px !important;
+                    //     border: none !important;
+                    // }
+                    // .input:focus,.input:hover,mat-select:focus,mat-select:hover {
+                    //     border: 1px solid $primaryColor;
+                    // }
+                    .form-error {
+                        color: $primaryColor;
+                        font-size: 12px;
+                    }
+                    ::placeholder {
+                        color: #A5A5A5 !important;
+                        opacity: 1;
+                        font-size: 13px;
+                      }              
+                }
+            }
+        }
+        .photo-wrapper {
+            width: 20%;
+            height: 100%;
+            position: relative;
+            .avatar {
+                position: absolute;
+                left: 50%;
+                width: 140px;
+                transform: translateX(-50%);
+                .photo {
+                    background-color: #F2F3F5;
+                    width: 140px;
+                    height: 155px;
+                    // border: 1px dashed #AAAAAA;
+                    position: relative;
+                    .remove {
+                        cursor: pointer;
+                        position: absolute;
+                        z-index: 10;
+                        border-radius: 50% !important;
+                        opacity: 0.85;
+                        top: -12px;
+                        padding: 0;
+                        margin: 0 !important;
+                        right: -12px;
+                        img {
+                            width: 24px;
+                            height: 24px;
+                        }
+                      }              
+                    label {
+                        display: block !important;
+                        margin: 0 !important;
+                    }
+                    .urlExist {
+                        position: absolute;
+                        width: 138px;
+                        height: 153px;
+                        img {
+                            width: 138px;
+                            height: 153px;
+                        }
+                    }
+                    .icon {
+                        position: absolute;
+                        left: 50%;
+                        top: 45%;
+                        width: 35px;
+                        transform: translate(-50%, -50%);
+                        height: 35px;
+                        img {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+                    .add-image {
+                        padding: 0 1em;
+                        position: absolute;
+                        bottom: 5px;
+                        font-size: 10px;
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+                        .mini-icon {
+                            img {
+                                width: 20px;
+                            }
+                        }
+                        span {
+                            margin-left: .5em;
+                        }
+                    }
+                    input[type="file"] {
+                        cursor: pointer;
+                        opacity: 0;
+              
+                        /* IE 8 */
+                        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+              
+                        /* IE 5-7 */
+                        filter: alpha(opacity=0);
+              
+                        /* Netscape or and older firefox browsers */
+                        -moz-opacity: 0;
+              
+                        /* older Safari browsers */
+                        -khtml-opacity: 0;
+              
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        bottom: 0;
+                        right: 0;
+                        width: 100%;
+                        height: 100%;
+                      }
+                      #file-upload-button {
+                          cursor: pointer !important;
+                      }              
+                }
+                .error-section {
+                    margin-top: .5em;    
+                    font-size: 11px;
+                    .notes {
+                        color: #717272;
+                    }
+                    .error {
+                        color: $primaryColor;
+                    }
+                }
+            }   
+        }
+    }
+    .footer {
+
+        .left-arrow {
+            border: solid #A5A5A5 !important;
+            border-width: 0 1px 1px 0 !important;
+            display: inline-block !important;
+            padding: 8px !important;
+            transform: rotate(135deg) !important;
+            -webkit-transform: rotate(135deg) !important;
+            margin-top: 1px !important;        
+            height: 7px !important;
+            left: 0;
+        }
+        .right-arrow {
+            border: solid #A5A5A5 !important;
+            border-width: 0 1px 1px 0 !important;
+            display: inline-block !important;
+            padding: 8px !important;
+            transform: rotate(-45deg) !important;
+            -webkit-transform: rotate(-45deg) !important;
+            margin-top: 1px !important;      
+            height: 7px !important;  
+            right: 0;
+        }
+        .sections {
+            .label {
+                color: #A5A5A5;
+                font-size: 12px;
+            }
+            .value {
+                font-size: 14px;
+                color: #000;
+                font-weight: 400;
+            }
+        }
+        .left-space {
+            margin-left: 16px;
+            text-align: left;
+        }
+        .right-space {
+            margin-right: 16px;
+        }
+
+    .joining-form-submit {
+        min-width: 150px !important;
+        border-radius: 18px !important;
+        min-height: 34px !important;
+        font-size: 14px !important;
+        align-items: center !important;
+        display: flex !important;   
+        background-color: $primaryColor;
+        color:$whiteColor;
+        justify-content: center;
+     }
+
+    }
+}
+.animation {
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+}
+.animation-zoom:hover {
+    transform: perspective(1px) scale(1.04);
+    // font-size: 15px;
+    transition: transform .5s ease;
+}
+
+// Common nz-select wrapper
+
+// :host ::ng-deep .mat-autocomplete-panel {
+//       border: 1px solid #BEBEBE !important;
+//   }
+  
+// :host ::ng-deep .mat-option {
+//     white-space: nowrap !important;
+//     overflow: hidden !important;
+//     text-overflow: ellipsis !important;
+//     display: block !important;
+//     font-size: 14px !important;
+//     line-height: 40px !important;
+//     height: 40px !important;
+//     padding: 0 16px !important;
+//     text-align: left !important;
+//     text-decoration: none !important;
+//     max-width: 100% !important;
+//     position: relative !important;
+//     cursor: pointer !important;
+//     outline: 0 !important;
+//     display: flex !important;
+//     flex-direction: row !important;
+//     max-width: 100% !important;
+//     box-sizing: border-box !important;
+//     align-items: center !important;
+//     -webkit-tap-highlight-color: transparent !important;
+// }
+
+// // Ant select drop down css
+// :host ::ng-deep .ant-select-selection {
+//     border: solid .8px #BEBEBE !important;
+//     height: 35px !important;
+//     padding: 4px 8px;
+//     border-radius: 0px !important;
+// }
+
+// :host ::ng-deep .ant-select-selection:hover,:host ::ng-deep .ant-select-selection:focus,:host ::ng-deep .ant-select-selection:active{
+//     border: solid $primaryColor 1px !important;
+//     border-radius: 0px !important;
+//     z-index: 0 !important;
+//     box-shadow: none !important;
+// }
+
+// :host ::ng-deep input.ng-invalid.ng-touched, :host ::ng-deep nz-select.ng-invalid.ng-touched {
+//     border: solid $primaryColor 1px !important;
+//     .ant-select-selection {
+//         border: solid $primaryColor 1px !important;
+//     }
+//   }
+
+// :host ::ng-deep .ant-select-selection__placeholder, :host ::ng-deep .ant-select-search__field__placeholder {
+//     color: #A5A5A5 !important;
+//     opacity: .6 !important;
+//     font-size: 13px !important;
+//     font-family: 'myFont', Arial, Helvetica, sans-serif !important;
+// }
+
+// :host ::ng-deep .ant-select-selection__rendered {
+//     position: relative;
+//     display: block;
+//     margin-right: 0 !important;
+//     margin-left: 0 !important;
+//     line-height: 35px !important;
+// }
+
+// :host ::ng-deep .ant-select-arrow {
+//     right: 0 !important;
+//     padding: 0 8px !important;
+// }
+
+// :host ::ng-deep .ant-select-selection__clear {
+//     right: 18px !important;
+//     margin-top: -7px !important;
+// }
+// :host ::ng-deep .anticon.ant-select-arrow-icon::after {
+//     display: inline-block;
+//     margin-left: 0.255em;
+//     vertical-align: 0.255em;
+//     content: "";
+//     margin-top: 0.25em;
+//     border-top: 0.5em solid;
+//     border-right: 0.4em solid transparent;
+//     border-bottom: 0;
+//     border-left: 0.4em solid transparent;
+//     color: #666666;
+//     opacity: 0.9;
+//     border: solid #A5A5A5 !important;
+//     border-width: 0 1px 1px 0 !important;
+//     display: inline-block !important;
+//     padding: 3px !important;
+//     transform: rotate(45deg) !important;
+//     -webkit-transform: rotate(45deg) !important;
+//     margin-top: 1px !important;
+// }
+
+// ::ng-deep .ant-select-dropdown-menu-item:first-child, ::ng-deep .ant-select-dropdown-menu-item:last-child {
+//     border: none !important;
+//     border-radius: 0px !important;
+// }
+
+// ::ng-deep .ant-select-dropdown-menu-item:hover:not(.ant-select-dropdown-menu-item-disabled) {
+//     background-color: #eaeaea !important;
+// }
+
+// ::ng-deep .ant-select-dropdown-menu-item-active:not(.ant-select-dropdown-menu-item-disabled) {
+//     background-color: rgb(211, 211, 211, .7) !important;
+// }
+
+// :host ::ng-deep .ant-select-dropdown {
+//     border: 1px solid #BEBEBE !important;
+// }
+
+// :host ::ng-deep .ant-select-selection-selected-value {
+//     padding-right: 16px !important;
+// }
+
+// Ant Select dropdown css close
+
+// Date picker start
+// :host ::ng-deep mat-datepicker-toggle {
+//     position: absolute !important;
+//     right: 0 !important;
+//     box-sizing: border-box !important;
+//     border-left: 1px solid #A5A5A5;
+//     min-height: 34px !important;
+//     max-height: 34px !important;
+// }
+
+// :host ::ng-deep .mat-datepicker-toggle-default-icon {
+//     color: #A5A5A5 !important;
+// }
+
+// :host ::ng-deep .mat-icon-button .mat-button-base {
+//     min-height: 35px !important;
+//     max-height: 35px !important;
+// }
+// // Date picker end
+
+// .date-relative {
+//     position: relative; margin: 0 !important; padding: 0 !important;
+// }
+
+// :host ::ng-deep .mat-input-element:disabled {
+//     background: #EEEEEE !important;
+//     cursor: not-allowed;
+// }
+
+.alert {
+    color:#848484;
+    font-size: 14px;
+    margin: 0;
+    padding: 0 0 4px 0;
+    margin-bottom:10px;
+  }
+  .footerArrow{
+    cursor: pointer;
+    display: flex;
+    position: relative;
+    align-content: center;
+    text-align: right;
+    align-items: center;
+    .footer-arrow {
+        position: absolute;
+    }
+  }

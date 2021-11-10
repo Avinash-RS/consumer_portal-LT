@@ -1,0 +1,45 @@
+<footer *ngIf="footerData">
+    <div class="container">
+        <!-- <div class="containerWrapper">
+            <section class="eduTech">
+                <div class="heading4">L&T EduTech</div>
+                <ul>
+                    <ng-container *ngFor="let first of footerData.EduTech">
+                        <li><a>{{first}}</a></li>
+                    </ng-container>
+                </ul>
+            </section>
+            <section class="offerings">
+                <div class="heading4">Offerings</div>
+                <ul>
+                    <ng-container *ngFor="let second of footerData.Offerings">
+                        <li><a>{{second}}</a></li>
+                    </ng-container>
+                </ul>
+            </section>
+            <section class="findUs">
+                <div class="heading4">Find Us</div>
+                <p>{{footerData.FindUs}}</p>
+                <p [innerHtml]="footerData.Address"></p>
+                <div class="socialIcons">
+                    <ng-container *ngFor="let social of footerData.socialMedia">
+                        <a><em class="{{social}}"></em></a>
+                    </ng-container>
+                </div>
+            </section>
+            <section class="store">
+                <ng-container *ngFor="let app of footerData.downloadList">
+                    <div><a class="{{app}}"></a></div>
+                </ng-container>
+            </section>
+        </div> -->
+        <div class="copyrightsTerms">
+            <p>&copy; {{footerData.copyRights}}</p>
+            <ul>
+                <ng-container *ngFor="let content of footerData.settings">
+                    <li><a>{{content}}</a></li>
+                </ng-container>
+            </ul>
+        </div>
+    </div>
+</footer>

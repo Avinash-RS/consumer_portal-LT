@@ -1,0 +1,128 @@
+<div class="slotContainer">
+    <div class="slotImage">
+        <div class="heading1">Book a Slot</div>
+        <figure>
+            <img src="/assets/images/Book-a-Slot.svg" alt="" />
+        </figure>
+    </div>
+    <div class="slotContent">
+        <div class="area">{{competencyName}}</div>
+        <div class="heading4">{{assesmentName}}<span class="level">{{levelName}}</span></div>
+        <span class="closeBtn" mat-dialog-close (click)="slotClose()"><em class="icon-Close"></em></span>
+        <div class="slotSlider">
+            <owl-carousel-o [options]="owlCarouselOptions">
+                <ng-template carouselSlide  *ngFor="let item of testData">
+                    <div class="wrapper">
+                        <div class="sliderBg">
+                            <div class="sliderContent">
+                                <div class="area">Test Name</div>
+                                <div class="heading4">{{item.testTypes.testName}}</div>
+                                <div class="area status">Status: <button [ngClass]="item.testTypes.scheculeStatus?'scheduled':'notScheduled'">{{item.testTypes.scheculeStatus?'Scheduled':'Not Scheduled'}}</button></div>
+                                <div class="bookSlotDate" *ngIf="!item.testTypes.scheculeViewStatus">
+                                    <div>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>DD/MM/YYYY</mat-label>
+                                            <input matInput readonly [matDatepicker]="picker" [min]="minDate" [(ngModel)]="item.testTypes.bookingData.selectedDate" (dateChange)="fetchSlotbyTask($event,item.testTypes)">
+                                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker ></mat-datepicker>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="info" *ngIf="!item.testTypes.bookingData.selectedDate">
+                                        <span><em class="icon-Info"></em></span>
+                                        <p>Please select the date to get test slot availability</p>
+                                    </div>
+                                    <div *ngIf="item.testTypes.bookingData.selectedDate" class="slotInfo">
+                                        <div class="slots">
+                                            <span class="heading">Select Slot:</span>
+                                            <div >
+                                                <a  *ngFor="let slotItem of item.testTypes.slot" [class]="slotItem.isSlotExpired?'notAvailable':slotItem.slotStatus?'booked':slotItem.isSelected?'selected':'available'" (click)="slotItem.slotStatus?'':slotItem.isSlotExpired?'':selectSlot(item.testTypes,slotItem)">
+                                                    {{slotItem.key}} </a>
+                                                <!-- <a class="available">11:00 AM</a>
+                                                <a class="available">01:00 PM</a>
+                                                <a class="notAvailable">04: 00 PM</a>
+                                                <a class="notAvailable">06: 00 PM</a> -->
+                                            </div>
+                                        </div>
+                                        <ul>
+                                            <li><span></span>Booked</li>
+                                            <li><span></span>Available</li>
+                                            <li><span></span>Not Available</li>
+                                        </ul>
+                                        <div class="book">
+                                            <button [ngClass]="item.testTypes?.bookingData?.selectedSlot?'':'disable'" (click)="item.testTypes?.bookingData?.selectedSlot?submitSelectedSlot(item):''">Book</button>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+
+                                <div *ngIf="item.testTypes.scheculeViewStatus" class="slotConfirmed">
+                                    <span class="confirmedStatus">Confirmed</span>
+                                    <div class="bookedSlotOn">{{item.testTypes.scheduleDate}}</div>
+                                    <div class="timeZone">
+                                        {{item.testTypes.scheduleTime}} / Duration: {{item.testTypes.sumtotalhour}}Hr(s)
+                                        <span>(Asia/Calcutta, UTC+05:30)</span>
+                                    </div>
+                                    <div class="reschedule">
+                                        <span class="pointerCur" (click)="item.testTypes.scheculeViewStatus=false">Reschedule</span>
+                                        <span><em class="icon-Booked"></em></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+                <!-- <ng-template carouselSlide>
+                    <div class="wrapper">
+                        <div class="sliderBg">
+                            <div class="sliderContent">
+                                <div class="area">quiver name</div>
+                                <div class="heading4">Quantitative Aptitude</div>
+                                <div class="area status">Status: <button class="scheduled">Scheduled</button></div>
+                                <div class="bookSlotDate">
+                                    <div>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>DD/MM/YYYY</mat-label>
+                                            <input matInput [matDatepicker]="picker">
+                                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker></mat-datepicker>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="info">
+                                        <span><em class="icon-Info"></em></span>
+                                        <p>Please select the date to get test slot availability</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>-->
+                <!-- <ng-template carouselSlide>
+                    <div class="wrapper">
+                        <div class="sliderBg">
+                            <div class="sliderContent">
+                                <div class="area">Test Name</div>
+                                <div class="heading4">Quantitative Aptitude</div>
+                                <div class="area status">Status: <button class="notScheduled">Not Scheduled</button></div>
+                                <div class="slotConfirmed">
+                                    <span class="confirmedStatus">Confirmed</span>
+                                    <div class="bookedSlotOn">26/05/2021</div>
+                                    <div class="timeZone">
+                                        11:00 AM - 12:00 PM 
+                                        <span>(Asia/Calcutta, UTC+05:30)</span>
+                                    </div>
+                                    <div class="reschedule">
+                                        <span>Reschedule</span>
+                                        <span><em class="icon-Booked"></em></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>  -->
+            </owl-carousel-o>
+        </div>
+        <div class="gotoAssessment">
+            <span> <a *ngIf="data.callingFrom==='SP'"  (click)="slotClose()"> I'm not sure yet</a>  <button (click)="data.callingFrom==='MAP'?slotClose():gotoMyAsseessment()">{{data.callingFrom==='MAP'?'Close':'Go to Assessment'}}</button></span>
+        </div>
+    </div>
+</div>

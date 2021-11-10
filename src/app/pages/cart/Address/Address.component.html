@@ -1,0 +1,138 @@
+<div class="billingAddress">
+    <div class="heading4">Billing Address</div>
+    <mat-radio-group aria-label="Select an option">
+        <div class="address" *ngFor="let addressItem of addressList">
+            <mat-radio-button [value]="addressItem" (click)="getCurrentAddress(addressItem)">
+                <span class="name">{{addressItem.name}}<span class="badge">{{addressItem.addressTag.addressTagName}}</span></span>
+                <p>{{addressItem.addressLine1}}{{addressItem.addressLine2}}<br />
+                {{addressItem.city.cityName}}, {{addressItem.state.stateName}}
+                </p>
+                <span class="mobile">Mobile: <strong>{{addressItem.mobile}}</strong></span>
+            </mat-radio-button>
+            <div>
+                <button class="remove" (click)="removeAddress(deleteAddress,addressItem)">Remove</button>
+                <button class="Edit" (click)="addAddress(addNewAddress,true,addressItem)">Edit</button>
+            </div>
+        </div>
+       
+    </mat-radio-group>
+    <div class="addAddress" (click)="addAddress(addNewAddress,false)">
+        <span>+ Add New Address</span>
+    </div>
+</div>
+
+<!-- Add New Address -->
+<ng-template #addNewAddress>
+    <div class="newAddress">
+        <!-- <form [formGroup]="registerForm" autocomplete="new-password" (submit)="submitRegister()">  -->
+        <div class="heading3" mat-dialog-title>{{isEdit?'Update Address':'Add New Address'}}</div>
+        <span class="closeBtn" mat-dialog-close><em class="icon-Close"></em></span>
+        <form [formGroup]="addressEntryForm" autocomplete="off" (submit)="addOrUpdateAddress(isEdit)">
+        <div class="addressContent">
+            <div>
+                <span class="addressTitle">Name</span>
+                <mat-form-field appearance="fill">
+                    <input matInput placeholder="Enter Name" formControlName="name">
+                </mat-form-field>
+                <ng-container *ngIf="name.invalid && name.touched">
+                    <mat-error *ngIf="name.errors?.required" class="error">{{'Name is required'}}</mat-error>
+                    <mat-error *ngIf="name.errors?.alphaNum30" class="error">{{'Alpha numeric with maximum of 30 characters only allowed'}}</mat-error>
+                </ng-container>
+            </div>
+            <div>
+                <span class="addressTitle">Mobile No</span>
+                <mat-form-field appearance="fill">
+                    <input type="number" matInput placeholder="Enter Mobile No" formControlName="mobile">
+                </mat-form-field>
+                <ng-container *ngIf="mobile.invalid && mobile.touched">
+                    <mat-error *ngIf="mobile.errors?.required" class="error">{{'mobile number is required'}}</mat-error>
+                    <mat-error *ngIf="mobile.errors?.alphaNum30" class="error">{{'Alpha numeric with maximum of 10 characters only allowed'}}</mat-error>
+                </ng-container>
+            </div>
+            <div class="addressSection">
+                <span class="addressTitle">Address</span>
+                <mat-form-field appearance="fill">
+                    <input matInput placeholder="Enter House No, Building, Street, Area" formControlName="addresslines">
+                </mat-form-field>
+                <ng-container *ngIf="addresslines.invalid && addresslines.touched">
+                    <mat-error *ngIf="addresslines.errors?.required" class="error">{{' Address is required'}}</mat-error>
+                    <mat-error *ngIf="addresslines.errors?.alphaNum30" class="error">{{'Alpha numeric with maximum of 10 characters only allowed'}}</mat-error>
+                </ng-container>
+            </div>
+            <div class="addressDropSection">
+                <span class="addressTitle">State</span>
+                <mat-form-field appearance="fill">
+                    <mat-select formControlName="state" [compareWith]="stateCompare">
+                      <mat-option *ngFor="let stateitem of stateList" [value]="stateitem" (click)="stateIdFetcher(stateitem)">
+                        {{stateitem.statename}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <ng-container *ngIf="state.invalid && state.touched">
+                    <mat-error *ngIf="state.errors?.required" class="error">{{' Address is required'}}</mat-error>
+                </ng-container>
+            </div>
+
+            <div class="addressDropSection">
+                <span class="addressTitle">District / City</span>
+            <mat-form-field appearance="fill">
+                <mat-select formControlName="city" [compareWith]="cityCompare">
+                  <mat-option *ngFor="let districtitem of districtList" [value]="districtitem">
+                    {{districtitem.districtname}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <ng-container *ngIf="city.touched && (state.untouched && state.invalid)">
+                <mat-error *ngIf="city.errors?.required" class="error">{{' select a state first'}}</mat-error>
+              </ng-container>
+              <ng-container *ngIf="city.invalid && city.touched">
+                <mat-error *ngIf="city.errors?.required" class="error">{{' city is required'}}</mat-error>
+            </ng-container>
+            </div>
+
+           
+            <div>
+                <span class="addressTitle">Pincode</span>
+                <mat-form-field appearance="fill">
+                    <input type="number" maxlength="6" matInput placeholder="Enter Pincode" formControlName="pincode">
+                </mat-form-field>
+                <ng-container *ngIf="pincode.invalid && pincode.touched">
+                    <mat-error *ngIf="pincode.errors?.required" class="error">{{' Pincode is required'}}</mat-error>
+                    <!-- <mat-error *ngIf="pincode.errors?.maxLength" class="error">{{' Pincode is required'}}</mat-error> -->
+                </ng-container>
+            </div>
+            <div class="addressDropSection">
+                <span class="addressTitle">Save Address as </span>
+                <mat-form-field appearance="fill">
+                    <mat-select formControlName="addressTag" [compareWith]="tagCompare">
+                      <mat-option *ngFor="let tagitem of tagList" [value]="tagitem">
+                        {{tagitem.name}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <ng-container *ngIf="addressTag.invalid && addressTag.touched">
+                    <mat-error *ngIf="addressTag.errors?.required" class="error">{{' Address tag is required'}}</mat-error>
+                </ng-container>
+            </div>
+            
+            <div class="addAddressBtn">
+                <button type="submit" ngClass="{{addressEntryForm.valid?'':'disable'}}" [disabled]="!addressEntryForm.valid">{{isEdit?'Update Address':'Add Address'}}</button>
+            </div>
+        </div>
+    </form>
+    </div>
+</ng-template>
+
+<!-- Remove Address -->
+<ng-template #deleteAddress>
+    <div class="removeAddress">
+        <div class="heading3" mat-dialog-title>Confirmation</div>
+        <span class="closeBtn" mat-dialog-close><em class="icon-Close"></em></span>
+        <div class="removeContent">
+            <div><em class="icon-Close"></em></div>
+            <div class="heading3">ARE YOU SURE?</div>
+            <p>Do you want to remove Address? This process cannot be undone.</p>
+            <button (click)="removeAddressAction()">Remove</button>
+        </div>
+    </div>
+</ng-template>

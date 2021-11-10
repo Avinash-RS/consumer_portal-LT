@@ -1,0 +1,1406 @@
+<div class="joining-personal-wrapper">
+    <div class="grids-wrapper">
+        <div class="dependentForm">
+
+            <div class="section">
+                <div class="header  mb-1 align-items-center">
+                    <h1>Primary Details</h1>
+                    <div *ngIf="!formSubmitted" class="icon"><span (click)="navigatePrevNext('Personal')"
+                            class="material-icons material-icons-outlined">
+                            mode_edit
+                    </span></div>
+                </div>
+                <ng-container *ngIf="personalDetailsMap else noPersonal">
+                    <div class="d-flex" style="display: flex;">
+                        <div style="width: 34%;" class="d-flex align-items-center"> <img height="117px" width="104px"
+                                [src]="url ? url : '../../../../assets/images/profile_camera.svg'" alt="" srcset=""> </div>
+                        <div style="width: 66%;" class="row-wrapper mt-0">
+                            <div class="overall-input-wrapper width-50">
+                                <label>Name <span></span></label>
+                                <div class="input size-16 bold-700 color-black">{{personalDetailsMap[form_name]}}</div>
+                            </div>
+                            <div class="overall-input-wrapper width-50">
+                                <label>Email Id<span></span></label>
+                                <div style="word-wrap: break-word;" class="input size-16 bold-700 color-black"
+                                    [ngClass]="personalDetailsMap[form_email].length > 23 ? 'f_size_16' : ''">
+                                    {{personalDetailsMap[form_email]}}</div>
+                            </div>
+                            <div class="overall-input-wrapper mt-2 width-50">
+                                <label>Date of Birth<span></span></label>
+                                <div class="input size-16 bold-700 color-black">{{personalDetailsMap[form_dob]}}</div>
+                            </div>
+                            <div class="overall-input-wrapper mt-2 width-50">
+                                <label>Gender<span></span></label>
+                                <div class="input size-16 bold-700 color-black">{{personalDetailsMap[form_gender]}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row-wrapper mt-0">
+                        <!-- <div class="overall-input-wrapper mt-2 width-32">
+                            <label>Marital Status<span></span></label>
+                            <div class="input size-16 bold-700 color-black">{{personalDetailsMap[form_marital_status]}}
+                            </div>
+                        </div> -->
+
+                        <!-- <div *ngIf="(personalDetailsMap[form_marital_status] == 'Married' || personalDetailsMap[form_marital_status] == 'Widow')" class="overall-input-wrapper mt-2 width-32">
+                            <label>No. of Children<span></span></label>
+                            <div class="input size-16 bold-700 color-black">{{personalDetailsMap[form_no_of_children]}}
+                            </div>
+                        </div> -->
+
+                        <!-- <div class="overall-input-wrapper mt-2 width-32">
+                            <label>Domicile State<span></span></label>
+                            <div class="input size-16 bold-700 color-black">{{personalDetailsMap[form_domicile_state]}}
+                            </div>
+                        </div>
+
+                        <div class="overall-input-wrapper mt-2 width-32">
+                            <label>Place of Birth<span></span></label>
+                            <div class="input size-16 bold-700 color-black">{{personalDetailsMap[form_place_of_birth]}}
+                            </div>
+                        </div>
+                        <div class="overall-input-wrapper mt-2 width-32">
+                            <label>State of Birth<span></span></label>
+                            <div class="input size-16 bold-700 color-black">{{personalDetailsMap[form_state_of_birth]}}
+                            </div>
+                        </div>
+                        <div class="overall-input-wrapper mt-2 width-32">
+                            <label>Nationality<span></span></label>
+                            <div class="input size-16 bold-700 color-black">{{personalDetailsMap[form_nationality]}}
+                            </div>
+                        </div> -->
+                        <!-- <div class="overall-input-wrapper mt-3 width-32">
+                            <label>Religion<span></span></label>
+                            <div class="input size-16 bold-700 color-black">{{personalDetailsMap[form_religion]}}</div>
+                        </div>
+
+                        <div class="overall-input-wrapper mt-3 width-32">
+                            <label>Caste<span></span></label>
+                            <div class="input size-16 bold-700 color-black">{{personalDetailsMap[form_caste]}}</div>
+                        </div>
+
+                        <div class="overall-input-wrapper mt-3 width-32">
+                            <label>Caste Category<span></span></label>
+                            <div class="input size-16 bold-700 color-black">{{personalDetailsMap[form_category]}}</div>
+                        </div>
+
+                        <div class="overall-input-wrapper mt-3 width-32">
+                            <label>Mother Tongue<span></span></label>
+                            <div class="input size-16 bold-700 color-black">{{personalDetailsMap[form_mother_tongue]}}
+                            </div>
+                        </div>
+
+                        <div class="overall-input-wrapper mt-3 width-32">
+                            <label>Father Name<span></span></label>
+                            <div class="input size-16 bold-700 color-black">{{personalDetailsMap[form_father_name]}}
+                            </div>
+                        </div>
+
+                        <div class="overall-input-wrapper mt-3 width-32">
+                            <label>Blood Group<span></span></label>
+                            <div class="input size-16 bold-700 color-black">{{personalDetailsMap[form_blood_group]}}
+                            </div>
+                        </div>
+
+                        <div class="overall-input-wrapper mt-3 width-32">
+                            <label>Emergency Contact No.<span></span></label>
+                            <div class="input size-16 bold-700 color-black">
+                                {{personalDetailsMap[form_emergency_contact]}}</div>
+                        </div>
+
+                        <div class="overall-input-wrapper mt-3 width-32">
+                            <label>Emergency Contact Person Name<span></span></label>
+                            <div class="input size-16 bold-700 color-black">
+                                {{personalDetailsMap[form_emergency_contact_name]}}</div>
+                        </div>
+
+                        <div class="overall-input-wrapper mt-3 width-32">
+                            <label>Relation with Emergency Contact<span></span></label>
+                            <div class="input size-16 bold-700 color-black">
+                                {{personalDetailsMap[form_emergency_contact_relation]}}</div>
+                        </div>
+
+                        <div class="overall-input-wrapper mt-3 width-32">
+                            <label>Mobile No.<span></span></label>
+                            <div class="input size-16 bold-700 color-black">{{personalDetailsMap[form_mobile]}}</div>
+                        </div>
+                        <div class="overall-input-wrapper mt-3 width-32">
+                            <label>Aadhar No.<span></span></label>
+                            <div class="input size-16 bold-700 color-black">{{personalDetailsMap[form_aadhar]}}</div>
+                        </div>
+                        <div class="overall-input-wrapper mt-3 width-32">
+                            <label>PAN No.<span></span></label>
+                            <div class="input size-16 bold-700 color-black">{{personalDetailsMap[form_pan]}}</div>
+                        </div>
+                        <div class="overall-input-wrapper mt-3 width-32">
+                            <label>Offer Reference<span></span></label>
+                            <div class="input size-16 bold-700 color-black">{{personalDetailsMap[form_offer_reference]}}
+                            </div>
+                        </div>
+                        <div class="overall-input-wrapper mt-3 width-32">
+                            <label>Offer Date<span></span></label>
+                            <div class="input size-16 bold-700 color-black">{{personalDetailsMap[form_offer_date]}}
+                            </div>
+                        </div> -->
+
+                        <!-- <div class="overall-input-wrapper mt-3 width-32">
+                            <label>Height/Weight<span></span></label>
+                            <div class="input size-16 bold-700 color-black">
+                                
+                                {{this.personalDetails.heightInCm ? this.personalDetails.heightInCm : 'NA'}}
+                                /
+                                
+                                {{this.personalDetails.weightInKgs ? this.personalDetails.weightInKgs : 'NA'}}
+                            </div>
+                        </div> -->
+
+                        <!-- <div class="overall-input-wrapper mt-3 width-32">
+                            <label>Alternate Email ID<span></span></label>
+                            <div class="input size-16 bold-700 color-black">{{personalDetailsMap[form_personal_email]}}
+                            </div>
+                        </div> -->
+
+                        <!-- <div class="overall-input-wrapper mt-3 width-66">
+                            <label>Identification Mark<span></span></label>
+                            <div class="d-flex align-content-center">
+
+                            <div
+                                class="input f_size_15 bold-700 color-black" style="width: auto !important;">&#8226;
+                                {{this.personalDetails.identificationMark[0] ? this.personalDetails.identificationMark[0] :'NA'}}
+                            </div>
+                            <div 
+                                class="input f_size_15 bold-700 color-black ml-3" style="width: auto !important;">&#8226;
+                                {{this.personalDetails.identificationMark[1] ? this.personalDetails.identificationMark[1] :'NA'}}
+                            </div>
+         
+                           </div>
+                        </div> -->
+
+
+                    </div>
+
+                    <!-- <div class="row-wrapper mt-0">
+                        <div class="overall-input-wrapper mt-3 width-100">
+                            <label>Identification Mark<span></span></label>
+                            <div *ngIf="personalDetails && personalDetails[form_identification_mark1]"
+                                class="input f_size_15 bold-700 color-black">-
+                                {{personalDetailsMap[form_identification_mark1]}}</div>
+                            <div *ngIf="personalDetails && personalDetails[form_identification_mark2]"
+                                class="input mt-2 f_size_15 bold-700 color-black">-
+                                {{personalDetailsMap[form_identification_mark2]}}</div>
+                        </div>
+
+                    </div> -->
+                </ng-container>
+            </div>
+            <div class="section">
+                <div class="header  mb-1 align-items-center">
+                    <h1>Personal Details</h1>
+                    <div *ngIf="!formSubmitted" class="icon"><span (click)="navigatePrevNext('Personal')"
+                            class="material-icons material-icons-outlined">
+                            mode_edit
+                    </span></div>
+                </div>
+                    <ng-container>
+                        <div class="row-wrapper mt-0">
+                            <div class="overall-input-wrapper mt-3 width-32">
+                                <label>Place of Birth<span></span></label>
+                                <div class="input size-16 bold-700 color-black">{{personalDetails?.placeOfBirth?  personalDetails.placeOfBirth :'NA'}}
+                                </div>
+                            </div>
+                            <div class="overall-input-wrapper mt-3 width-32">
+                                <label>State of Birth<span></span></label>
+                                <div class="input size-16 bold-700 color-black">{{personalDetails?.stateOfBirth ?  personalDetails?.stateOfBirth :'NA'}}
+                                </div>
+                            </div>
+                            <div class="overall-input-wrapper mt-3 width-32">
+                                <label>Nationality<span></span></label>
+                                <div class="input size-16 bold-700 color-black">{{personalDetails?.nationality ? personalDetails?.nationality :'NA'}}
+                                </div>
+                            </div>
+    
+                            <div class="overall-input-wrapper mt-3 width-32">
+                                <label>Domicile State<span></span></label>
+                                <div class="input size-16 bold-700 color-black">{{personalDetails?.domicileState ? personalDetails?.domicileState:'NA'}}
+                                </div>
+                            </div>
+                        </div>
+                     </ng-container>
+                
+            </div>
+            <div class="section">
+                <div class="header d-flex justify-content-between mb-1 align-items-center">
+                    <h1>Contact Details</h1>
+                    <div *ngIf="!formSubmitted" class="icon"><span (click)="navigatePrevNext('Contact')"
+                            class="material-icons material-icons-outlined">
+                            mode_edit
+                        </span></div>
+                </div>
+                <ng-container *ngIf="contactDetailsMap else noContact">
+
+                    <div class="row-wrapper mt-0">
+                        <div class="overall-input-wrapper mt-3 width-32">
+                            <label>Alternate Email ID<span></span></label>
+                            <div class="input size-16 bold-700 color-black">{{contactDetails?.alternateEmail ? contactDetails?.alternateEmail:'NA' }}
+                            </div>
+                        </div>
+                        <div class="overall-input-wrapper mt-3 width-32">
+                            <label>Mobile No<span></span></label>
+                            <div class="input size-16 bold-700 color-black">{{personalDetails?.phone ? personalDetails?.phone:'NA'}}
+                            </div>
+                        </div>
+                        <div class="overall-input-wrapper mt-3 width-32">
+                            <label>Alternate Mobile No<span></span></label>
+                            <div class="input size-16 bold-700 color-black">{{contactDetails?.alternatePhone ? contactDetails?.alternatePhone:'NA'}}
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="row-wrapper mt-0">
+                        <div class="overall-input-wrapper mt-0 width-100">
+                            <label>Present Address<span *ngIf="contactDetailsMap[form_same_as_checkbox]">/Permanent
+                                    Address</span></label>
+                            <div class="input size-16 bold-700 color-black">{{contactDetailsMap['presentAddress']}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row-wrapper mt-0">
+                        <div class="overall-input-wrapper mt-3 width-32">
+                            <label>City<span></span></label>
+                            <div class="input size-16 bold-700 color-black">{{contactDetailsMap[form_present_city]}}
+                            </div>
+                        </div>
+                        <div class="overall-input-wrapper mt-3 width-32">
+                            <label>State/Province<span></span></label>
+                            <div class="input size-16 bold-700 color-black">{{contactDetailsMap[form_present_state]}}
+                            </div>
+                        </div>
+                        <div class="overall-input-wrapper mt-3 width-32">
+                            <label>Postal/Zip code<span></span></label>
+                            <div class="input size-16 bold-700 color-black">{{contactDetailsMap[form_present_zip_code]}}
+                            </div>
+                        </div>
+                        <div class="overall-input-wrapper mt-3 width-32">
+                            <label>Country/Region<span></span></label>
+                            <div class="input size-16 bold-700 color-black">{{contactDetailsMap[form_present_region]}}
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <ng-container *ngIf="!contactDetailsMap[form_same_as_checkbox]">
+                        <div class="row-wrapper mt-4">
+                            <div class="overall-input-wrapper mt-0 width-100">
+                                <label>Permanent Address<span></span></label>
+                                <div class="input size-16 bold-700 color-black">
+                                    {{contactDetailsMap['permanentAddress']}}</div>
+                            </div>
+                        </div>
+
+                        <div class="row-wrapper mt-0">
+                            <div class="overall-input-wrapper mt-3 width-32">
+                                <label>City<span></span></label>
+                                <div class="input size-16 bold-700 color-black">
+                                    {{contactDetailsMap[form_permanent_city]}}</div>
+                            </div>
+                            <div class="overall-input-wrapper mt-3 width-32">
+                                <label>State/Province<span></span></label>
+                                <div class="input size-16 bold-700 color-black">
+                                    {{contactDetailsMap[form_permanent_state]}}</div>
+                            </div>
+                            <div class="overall-input-wrapper mt-3 width-32">
+                                <label>Postal/Zip code<span></span></label>
+                                <div class="input size-16 bold-700 color-black">
+                                    {{contactDetailsMap[form_permanent_zip_code]}}</div>
+                            </div>
+                            <div class="overall-input-wrapper mt-3 width-32">
+                                <label>Country/Region<span></span></label>
+                                <div class="input size-16 bold-700 color-black">
+                                    {{contactDetailsMap[form_permanent_region]}}</div>
+                            </div>
+
+                        </div>
+                    </ng-container>
+                </ng-container>
+
+            </div>
+
+            <!-- <div class="section pl-0 pt-0 pr-0 pb-0 custom-padding">
+                <div class="header d-flex justify-content-between mb-1 align-items-center custom-header-padding">
+                    <h1>Dependent Details</h1>
+                    <div *ngIf="!formSubmitted" class="icon"><span (click)="navigatePrevNext('Questionnaire')"
+                            class="material-icons material-icons-outlined">
+                            mode_edit
+                        </span></div>
+                </div>
+                <ng-container *ngIf="dependentDetailsMap && dependentDetailsMap.length > 0 else noDependent">
+                    <div class="row-wrapper mt-0" [ngClass]="i == 0 ? 'padding-1' : 'border-wrapper'"
+                        *ngFor="let dependent of dependentDetailsMap; let i = index">
+                        <div class="row-wrapper mt-0">
+                            <div class="overall-input-wrapper mt-0 width-32">
+                                <label>Name of the Dependent</label>
+                                <div class="input size-16 bold-700 color-black">{{dependent[form_dependent_name]}}</div>
+                            </div>
+
+                            <div class="overall-input-wrapper mt-0 width-32">
+                                <label>Relationship</label>
+                                <div class="input size-16 bold-700 color-black">
+                                    {{dependent[form_dependent_relationship]}}</div>
+                            </div>
+
+                            <div class="overall-input-wrapper mt-0 width-32">
+                                <label>Date of Birth</label>
+                                <div class="input size-16 bold-700 color-black">{{dependent[form_dependent_dob]}}</div>
+                            </div>
+
+                        </div>
+
+                        <div class="row-wrapper mt-0">
+
+                            <div class="overall-input-wrapper mt-3 width-32">
+                                <label>Occupation</label>
+                                <div class="input size-16 bold-700 color-black">{{dependent[form_dependent_occupation]}}
+                                </div>
+                            </div>
+
+                            <div class="overall-input-wrapper mt-3 width-32">
+                                <label>Is Dependent</label>
+                                <div class="input size-16 bold-700 color-black">{{dependent[form_isDependent]}}</div>
+                            </div>
+                            <div class="overall-input-wrapper mt-3 width-32">
+                                <label>Differently Abled</label>
+                                <div class="input size-16 bold-700 color-black">
+                                    {{dependent[form_dependent_differently_abled]}}</div>
+                            </div>
+                        </div>
+
+                        <div class="row-wrapper mt-0">
+                            <div class="overall-input-wrapper mt-3 width-66">
+                                <label>Status</label>
+                                <div class="input size-16 bold-700 color-black">{{dependent[form_dependent_status]}}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </ng-container>
+            </div> -->
+
+            <div class="section pl-0 pt-0 pr-0 pb-0 custom-padding">
+                <div class="header d-flex justify-content-between mb-1 align-items-center custom-header-padding">
+                    <h1>Education Details</h1>
+                    <div *ngIf="!formSubmitted" class="icon"><span (click)="navigatePrevNext('Education')"
+                            class="material-icons material-icons-outlined">
+                            mode_edit
+                        </span></div>
+                </div>
+                <ng-container *ngIf="educationDetailsMap && educationDetailsMap.length > 0 else noEducation">
+                    <div class="row-wrapper mt-0" [ngClass]="i == 0 ? 'padding-1' : 'border-wrapper'"
+                        *ngFor="let education of educationDetailsMap; let i = index">
+                        <div class="row-wrapper mt-0">
+                            <div class="overall-input-wrapper mt-0 width-32">
+                                <label>Qualification Type</label>
+                                <div class="input size-16 bold-700 color-black">{{education[form_qualification_type]}}
+                                </div>
+                            </div>
+
+                            <div class="overall-input-wrapper mt-0 width-66">
+                                <label>Board/University</label>
+                                <div class="input size-16 bold-700 color-black">{{education[form_boardUniversity]}}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div *ngIf="education[form_qualification_type] != 'SSLC/10th' && education[form_qualification_type] != 'HSC/12th'" class="row-wrapper mt-0">
+                            <div class="overall-input-wrapper mt-3 width-32">
+                                <label>Qualification</label>
+                                <div class="input size-16 bold-700 color-black">{{education[form_qualification]}}</div>
+                            </div>
+
+                            <div class="overall-input-wrapper mt-3 width-66">
+                                <label>Specialization</label>
+                                <div class="input size-16 bold-700 color-black">{{education[form_specialization]}}</div>
+                            </div>
+                        </div>
+
+                        <div class="row-wrapper mt-0">
+                            <div class="overall-input-wrapper mt-3 width-100">
+                                <label>School/College Name</label>
+                                <div class="input size-16 bold-700 color-black">{{education[form_collegeName]}}</div>
+                            </div>
+                        </div>
+
+                        <div class="row-wrapper mt-0">
+                            <div class="overall-input-wrapper mt-3 width-32">
+                                <label>Start Date</label>
+                                <div class="input size-16 bold-700 color-black">{{education[form_startDate]}}</div>
+                            </div>
+
+                            <div class="overall-input-wrapper mt-3 width-32">
+                                <label>End Date</label>
+                                <div class="input size-16 bold-700 color-black">{{education[form_endDate]}}</div>
+                            </div>
+                            <div class="overall-input-wrapper mt-3 width-32">
+                                <label>Year of Passing</label>
+                                <div class="input size-16 bold-700 color-black">{{education[form_yearpassing]}}</div>
+                            </div>
+                        </div>
+
+                        <div class="row-wrapper mt-0">
+                            <!-- <div class="overall-input-wrapper mt-3" [ngClass]="education[form_qualification_type] != 'SSLC/10th' && education[form_qualification_type] != 'HSC/12th' ? 'width-24' : 'width-32'">
+                                <label>Mode</label>
+                                <div class="input size-16 bold-700 color-black">{{education[form_mode]}}</div>
+                            </div>
+
+                            <div class="overall-input-wrapper mt-3" [ngClass]="education[form_qualification_type] != 'SSLC/10th' && education[form_qualification_type] != 'HSC/12th' ? 'width-24' : 'width-32'">
+                                <label>Backlogs</label>
+                                <div class="input size-16 bold-700 color-black">{{education[form_backlog]}}</div>
+                            </div> -->
+                            <div class="overall-input-wrapper mt-3" [ngClass]="education[form_qualification_type] != 'SSLC/10th' && education[form_qualification_type] != 'HSC/12th' ? 'width-24' : 'width-32'">
+                                <label>Percentage(%)</label>
+                                <div class="input size-16 bold-700 color-black">{{education[form_cgpa]}}</div>
+                            </div>
+                            <!-- <ng-container *ngIf="education[form_qualification_type] != 'SSLC/10th' && education[form_qualification_type] != 'HSC/12th'">
+                            <div class="overall-input-wrapper mt-3 width-24">
+                                <label>Final Percentage(%)</label>
+                                <div class="input size-16 bold-700 color-black">{{education[form_finalcgpa]}}</div>
+                            </div>
+                        </ng-container> -->
+                        </div>
+
+
+                    </div>
+                </ng-container>
+            </div>
+
+            <div class="section pl-0 pt-0 pr-0 pb-0 custom-padding custom-spacing-1">
+                <div class="header d-flex justify-content-between mb-1 align-items-center custom-header-padding">
+                    <h1>Passport Details</h1>
+                    <div *ngIf="!formSubmitted" class="icon"><span (click)="navigatePrevNext('Passport')"
+                            class="material-icons material-icons-outlined">
+                            mode_edit
+                        </span></div>
+                </div>
+                <ng-container *ngIf="passportdetails else noDocuments">
+
+    
+                        <div class="row-wrapper mt-0">
+                            <div class="overall-input-wrapper mt-3 width-32">
+                                <label>Passport Number<span></span></label>
+                                <div class="input size-16 bold-700 color-black">{{passportdetails.passportNo ? passportdetails.passportNo:'NA'}}
+                                </div>
+                            </div>
+                            <div class="overall-input-wrapper mt-3 width-32">
+                                <label>Issued Date<span></span></label>
+                                <div class="input size-16 bold-700 color-black">{{passportdetails.passportDateOfIssue ? dateConvertion(passportdetails.passportDateOfIssue):'NA'}}
+                                </div>
+                            </div>
+                            <div class="overall-input-wrapper mt-3 width-32">
+                                <label>Valid Upto<span></span></label>
+                                <div class="input size-16 bold-700 color-black">{{passportdetails.passportExpireDate ? dateConvertion(passportdetails.passportExpireDate):'NA'}}
+                                </div>
+                            </div>
+                            <div class="overall-input-wrapper mt-3 width-32">
+                                <label>Driving License Number<span></span></label>
+                                <div class="input size-16 bold-700 color-black">{{passportdetails.drLicenseNo ? passportdetails.drLicenseNo:'NA'}}
+                                </div>
+                            </div>
+                            <div class="overall-input-wrapper mt-3 width-32">
+                                <label>Driving License Valid upto<span></span></label>
+                                <div class="input size-16 bold-700 color-black">{{passportdetails.drLicenseValidUpto ? dateConvertion(passportdetails.drLicenseValidUpto):'NA'}}
+                                </div>
+                            </div>
+    
+                        </div>
+    
+
+                   
+
+
+                </ng-container>
+            </div>
+
+            <!-- Work Experience -->
+            <!-- <div class="section pl-0 pt-0 pr-0 pb-0 custom-padding">
+                <div class="header d-flex justify-content-between mb-1 align-items-center custom-header-padding">
+                    <h1>Work Experience Details</h1>
+                    <div *ngIf="!formSubmitted" class="icon"><span (click)="navigatePrevNext('Questionnaire')"
+                            class="material-icons material-icons-outlined">
+                            mode_edit
+                        </span></div>
+                </div>
+                <ng-container *ngIf="workDetails && !noShowWork else noWork">
+
+                    <ng-container *ngIf="workDetails.employeementDetails && workDetails.employeementDetails.length > 0">
+                        <div class="subDocumentTitle">Employment Details</div>
+
+                        <div class="row-wrapper mt-0" [ngClass]="i == 0 ? 'padding-1' : 'border-wrapper'"
+                            *ngFor="let work of workDetails.employeementDetails; let i = index">
+                            <div class="row-wrapper mt-0">
+                                <div class="overall-input-wrapper mt-0 width-56">
+                                    <label>Employer's Name & Address</label>
+                                    <div class="input f_size_16 bold-700 color-black">
+                                        {{work.employerName ? work.employerName : 'NA'}}</div>
+                                </div>
+
+                                <div class="overall-input-wrapper mt-0 width-20">
+                                    <label>Start Date</label>
+                                    <div class="input f_size_16 bold-700 color-black">
+                                        {{work.durationFrom ? dateConvertion(work.durationFrom) :'NA'}}</div>
+                                </div>
+
+                                <div class="overall-input-wrapper mt-0 width-20">
+                                    <label>End Date</label>
+                                    <div class="input f_size_16 bold-700 color-black">
+                                        {{work.durationTo ? dateConvertion(work.durationTo) :'NA'}}</div>
+                                </div>
+
+                            </div>
+
+                            <div class="row-wrapper mt-0">
+
+                                <div class="overall-input-wrapper mt-3 width-40">
+                                    <label>Position Held</label>
+                                    <div class="input f_size_16 bold-700 color-black">{{work.positionHeld ? work.positionHeld :'NA'}}
+                                    </div>
+                                </div>
+
+                                <div class="overall-input-wrapper mt-3 width-35">
+                                    <label>Name & Designation of Immediate Superior</label>
+                                    <div class="input f_size_16 bold-700 color-black">
+                                        {{work.superiorNameWdDesignation ? work.superiorNameWdDesignation:'NA'}}</div>
+                                </div>
+                                <div class="overall-input-wrapper mt-3 width-22">
+                                    <label>Gross Emoluments (Per Month)</label>
+                                    <div class="input f_size_16 bold-700 color-black">
+                                        {{work.grossEmoluments ? work.grossEmoluments: 'NA'}}</div>
+                                </div>
+                            </div>
+
+                            <div class="row-wrapper mt-0">
+                                <div class="overall-input-wrapper mt-3 width-40">
+                                    <label>HR Name</label>
+                                    <div class="input f_size_16 bold-700 color-black">{{work.hrName ? work.hrName : 'NA'}}
+                                    </div>
+                                </div>
+
+                                <div class="overall-input-wrapper mt-3 width-35">
+                                    <label>HR Contact Number</label>
+                                    <div class="input f_size_16 bold-700 color-black">
+                                        {{work.hrContactNumber ? work.hrContactNumber : 'NA'}}</div>
+                                </div>
+                                <div class="overall-input-wrapper mt-3 width-22">
+                                    <label>HR Email ID</label>
+                                    <div class="input f_size_16 bold-700 color-black">
+                                        {{work.hrEmailId ? work.hrEmailId : 'NA'}}</div>
+                                </div>
+                            </div>
+
+                            <div class="row-wrapper mt-0">
+                                <div class="overall-input-wrapper mt-3 width-40">
+                                    <label>Nature of Work Done</label>
+                                    <div class="input f_size_16 bold-700 color-black">{{work.hrName ? work.hrName : 'NA'}}
+                                    </div>
+                                </div>
+                                <div class="overall-input-wrapper mt-3 width-35">
+                                    <label>Reason for Leaving</label>
+                                    <div class="input f_size_16 bold-700 color-black">{{work.natureOfWorkDone ? work.natureOfWorkDone : 'NA'}}
+                                    </div>
+                                </div>
+                                <div class="overall-input-wrapper mt-3 width-22">
+                                    <label>Duration</label>
+                                    <div class="input f_size_16 bold-700 color-black">{{work.year ? work.year : 0 }} Years
+                                        {{work.month ? work.month : 0}} Months
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </ng-container>
+
+                   <ng-container *ngIf="workDetails.employeementDetails && workDetails.employeementDetails.length > 0">
+                        <div class="row-wrapper mt-0" class="border-wrapper">
+                            <span class="mr-3 custom-label">Total Experience:</span> <span class="input f_size_16 bold-700 color-black">{{workDetails.totalYear? workDetails.totalYear :0}} Years </span> <span class="ml-2 input f_size_16 bold-700 color-black">{{workDetails.totalMonth ? workDetails.totalMonth:0}} Months</span>
+                        </div>
+                    </ng-container>
+
+                    <ng-container *ngIf="workDetails">
+                        <div *ngIf="workDetails && workDetails.breakReason" class="row-wrapper mt-0" class="border-wrapper">
+                            <div class="overall-input-wrapper mt-0">
+                                <label class="custom-label">Break in Employment, If any, Should be indicated with reasons</label>
+                                <div class="input f_size_16 bold-700 color-black box-border">{{ workDetails.breakReason }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <ng-container *ngIf="workDetails && (workDetails.oc || workDetails.payslipNo) ">
+                            <div class="row-wrapper mt-0" class="border-wrapper">
+                                <div class="overall-input-wrapper mt-0">
+                                    <label class="custom-label">Have you ever been employed by us or by any of our subsidiary / associate companies? <span style="font-weight: 600;" class="ml-2 f_size_17  bold-700 color-black" style="color: #000 !important;">Yes</span></label>
+                                    <div class="input custom-flex">
+                                        <div><span class="custom-label mr-2">OC:</span>  <span class="input f_size_16 bold-700 color-black box-border">{{workDetails.oc}}</span></div>
+                                        <div class="ml-4"><span class="custom-label mr-2">Payslip Number:</span>  <span class="input f_size_16 bold-700 color-black box-border" style="color: #000 !important;">{{workDetails.payslipNo}}</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+
+                        <ng-container *ngIf="workDetails && (workDetails.postAppliedFor || workDetails.appliedDate) ">
+                            <div class="row-wrapper mt-0" class="border-wrapper">
+                                <div class="overall-input-wrapper mt-0">
+                                    <label class="custom-label">Have you ever been interviewed by us? <span style="font-weight: 600;" class="ml-2 f_size_17  bold-700 color-black" style="color: #000 !important;">Yes</span></label>
+                                    <div class="input custom-flex">
+                                        <div><span class="custom-label mr-2">Post Applied for:</span>  <span class="input f_size_16 bold-700 color-black box-border">{{workDetails.postAppliedFor}}</span></div>
+                                        <div class="ml-4"><span class="custom-label mr-2">When:</span>  <span class="input f_size_16 bold-700 color-black box-border" style="color: #000 !important;">{{workDetails.appliedDate ? dateConvertion(workDetails.appliedDate) : 'NA' }}</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+
+
+                    </ng-container>
+
+                    <ng-container *ngIf="workDetails.disciplinaryDetails">
+                        <div class="row-wrappper mt-0 border-wrapper">
+                            <div class="subDocumentTitle">Disciplinary Details</div>
+
+                            <div *ngIf="workDetails.disciplinaryDetails && workDetails.disciplinaryDetails.convicted_by_Law"
+                                class="row-wrappper f_size_16 mt-2">
+                                <div style="width: 95%;">Have you ever been convicted by a Court of Law? <span
+                                        style="font-weight: 600;"
+                                        class="ml-2 f_size_17  bold-700 color-black">Yes</span></div>
+                            </div>
+
+                            <div *ngIf="workDetails.disciplinaryDetails && workDetails.disciplinaryDetails.debarredUniversity"
+                                class="row-wrappper f_size_16 mt-2">
+                                <div style="width: 95%;">Have you
+                                    ever been debarred/disqualified from any examination or restricted by any University
+                                    or any other
+                                    educational institute? <span style="font-weight: 600;"
+                                        class="ml-2 f_size_17  bold-700 color-black">Yes</span></div>
+                            </div>
+
+                            <div *ngIf="workDetails.disciplinaryDetails && workDetails.disciplinaryDetails.arrested"
+                                class="row-wrappper f_size_16 mt-2">
+                                <div style="width: 95%;">Have you ever been
+                                    arrested? <span style="font-weight: 600;"
+                                        class="ml-2 f_size_17  bold-700 color-black">Yes</span></div>
+                            </div>
+
+                            <div *ngIf="workDetails.disciplinaryDetails && workDetails.disciplinaryDetails.debarredcompany"
+                                class="row-wrappper f_size_16 mt-2">
+                                <div style="width: 95%;">Have you ever
+                                    been debarred/disqualified from any Public Service Commission or any other
+                                    recruiting company for
+                                    appearing at its examination / selection? <span style="font-weight: 600;"
+                                        class="ml-2 f_size_17  bold-700 color-black">Yes</span></div>
+                            </div>
+
+                            <div *ngIf="workDetails.disciplinaryDetails && workDetails.disciplinaryDetails[this.form_prosecuted]"
+                                class="row-wrappper f_size_16 mt-2">
+                                <div style="width: 95%;">Have you ever been
+                                    prosecuted? <span style="font-weight: 600;"
+                                        class="ml-2 f_size_17  bold-700 color-black">Yes</span></div>
+                            </div>
+
+                            <div *ngIf="workDetails.disciplinaryDetails && workDetails.disciplinaryDetails.prosecuted"
+                                class="row-wrappper f_size_16 mt-2">
+                                <div style="width: 95%;">Is any case
+                                    pending against you in any Court of Law at the time of filling this form? <span
+                                        style="font-weight: 600;"
+                                        class="ml-2 f_size_17  bold-700 color-black">Yes</span></div>
+                            </div>
+
+                            <div *ngIf="workDetails.disciplinaryDetails && workDetails.disciplinaryDetails.kept_under_detention"
+                                class="row-wrappper f_size_16 mt-2">
+                                <div style="width: 95%;">Have you ever been kept
+                                    under detention? <span style="font-weight: 600;"
+                                        class="ml-2 f_size_17  bold-700 color-black">Yes</span></div>
+                            </div>
+
+                            <div *ngIf="workDetails.disciplinaryDetails && workDetails.disciplinaryDetails[this.form_university_case_pending]"
+                                class="row-wrappper f_size_16 mt-2">
+                                <div style="width: 95%;">Is any case
+                                    pending against you in any University or Educational Institute at the time of
+                                    filling this form? <span style="font-weight: 600;"
+                                        class="ml-2 f_size_17  bold-700 color-black">Yes</span></div>
+                            </div>
+
+                            <div *ngIf="workDetails.disciplinaryDetails && workDetails.disciplinaryDetails.pendingCase"
+                                class="row-wrappper f_size_16 mt-2">
+                                <div style="width: 95%;">Have you ever been
+                                    fined by a Court of Law? <span style="font-weight: 600;"
+                                        class="ml-2 f_size_17  bold-700 color-black">Yes</span></div>
+                            </div>
+
+                            <div *ngIf="workDetails.disciplinaryDetails && workDetails.disciplinaryDetails.disciplinaryProblem"
+                                class="row-wrappper f_size_16 mt-2">
+                                <div style="width: 95%;">In the
+                                    previous employment, were any disciplinary proceedings framed against you or had you
+                                    been called upon to
+                                    explain your conduct in any matter at the time you served notice for resignation?
+                                    <span style="font-weight: 600;"
+                                        class="ml-2 f_size_17  bold-700 color-black">Yes</span></div>
+                            </div>
+
+                            <div *ngIf="workDetails.disciplinaryDetails && workDetails.caseDescription"
+                                class="row-wrapper mt-2">
+                                <div class="overall-input-wrapper mt-0 width-100">
+                                    <label>Full particulars of the case/arrest/detention/conviction/punishment etc. and
+                                        / or nature of the case pending in the Court/University/Educational
+                                        Authority</label>
+                                    <div class="input f_size_16 bold-700 color-black box-border">
+                                        {{workDetails.caseDescription}}</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </ng-container> 
+
+                </ng-container>
+            </div> -->
+
+            <!-- Acknowledge -->
+            <ng-container *ngIf="!formSubmitted">
+                <form [formGroup]="acknowledgmentForm" class="section pl-0 pt-0 pr-0 pb-0 custom-padding">
+                    <div class="header d-flex justify-content-between mb-1 align-items-center custom-header-padding">
+                        <h1>Acknowledgements and Declarations</h1>
+                    </div>
+                    <ng-container>
+                        <div class="row-wrapper mt-0 w-100 checkbox-pad justify-content-start" style="line-height:20px;">
+
+                            <div class="row-wrapper">
+                                <div class="content-1">
+                                    I hereby declare that I am not connected with any director of the company as his
+                                    partner or his relative as detailed
+                                    as under section 6 of companies act 1956.
+                                </div>
+                                <div class="content-2 mt-2">
+                                    I understand that the information provided by me may be used by the organization or
+                                    an outside agency to verify and validate the information that I have provided.I
+                                    understand that the organization or an outside background verification agency may
+                                    obtain information it deems appropriate from various sources including but not
+                                    limited to the following: current and past employers, criminal conviction records,
+                                    school records, college records and personal & professional references.I authorize,
+                                    without reservations, any individual, corporation or other public or private entity
+                                    to furnish the organization or outside background verification agency all
+                                    information about me.I unconditionally release and hold harmless any individual,
+                                    corporation, or public or private entity from any and all causes of action that
+                                    might arise from furnishing to the organization or outside background verification
+                                    agency that they may request pursuant to this release. This authorization and
+                                    release, in original, faxed or photocopied form, shall be valid for this and any
+                                    further reports and updates that may be requested.
+                                </div>
+                            </div>
+                            <div class="row-wrapper mt-3">
+                                <!-- <div class="row-wrapper mt-0 w-100 justify-content-start hanging flex-column">
+                                    <p  style="font-weight:600;font-size:17px;">Background Verification Declaration</p>
+                                    <div>
+                                        <mat-checkbox [formControlName]="form_bgv" class="mr-2"></mat-checkbox> I agree
+                                        to have read and understood
+                                        the <span style="color: #007bff; cursor: pointer; text-decoration: underline;"
+                                            (click)="matDialogOpenTerms('bgv')">Terms and Conditions</span> of
+                                        Background Verfication and will abide by the same during the assessment and the
+                                        selection process.
+                                    </div>
+                                    <div class="form-error mt-1" *ngIf="bgv?.invalid && bgv?.touched">
+                                        Please click on the above checkbox to agree the Background Verification Declaration
+                                    </div>
+                                </div>
+                                <div class="row-wrapper mt-2 w-100 justify-content-start hanging flex-column">
+                                    <p style="font-weight:600;font-size:17px;">Code of Conduct Declaration</p>
+                                    <div>
+                                        <mat-checkbox [formControlName]="form_coc" class="mr-2"></mat-checkbox> I agree
+                                        to have read and understood
+                                        the <span style="color: #007bff; cursor: pointer; text-decoration: underline;"
+                                            (click)="matDialogOpenTerms('coc')">Terms and Conditions</span> of Code of
+                                        Conduct and will abide by the same during the assessment and the selection
+                                        process.
+                                    </div>
+                                    <div class="form-error mt-1" *ngIf="coc?.invalid && coc?.touched">
+                                        Please click on the above checkbox to agree the Code of Conduct Declaration
+                                    </div>
+
+                                </div>
+                                <div class="row-wrapper mt-2 w-100 justify-content-start hanging flex-column" style="display: block;">
+                                    <p class="d-head" style="font-weight:600;font-size:17px;">Caste Declaration</p>
+                                    <div>
+                                        <mat-checkbox [formControlName]="form_caste_preview" class="mr-2">
+                                        </mat-checkbox> I agree that the Caste Name provided in this form are true to the best of my knowledge and
+                                        belief.
+                                    </div>
+                                    <div class="form-error mt-1"
+                                        *ngIf="caste_preview?.invalid && caste_preview?.touched">
+                                        Please click on the above checkbox to agree the Caste Declaration
+                                    </div>
+
+                                </div>
+
+                                <div class="row-wrapper mt-2 w-100 justify-content-start hanging flex-column">
+                                    <p class="d-head" style="font-weight:600;font-size:17px;">Joining Declaration</p>
+                                    <div>
+                                        <mat-checkbox [formControlName]="form_joining" class="mr-2"></mat-checkbox> I am
+                                        accepting to the terms and
+                                        conditions mentioned therein and I am joining for my duties at the mentioned
+                                        date.
+                                    </div>
+                                    <div class="form-error mt-1" *ngIf="joining?.invalid && joining?.touched">
+                                        Please click on the above checkbox to agree the Joining Declaration
+                                    </div>
+                                </div> -->
+
+                                <div class="row-wrapper mt-2 w-100 justify-content-start hanging flex-column">
+                                    <p  style="font-weight:600;font-size:17px;">Terms and Conditions Declaration</p>
+                                    <div>
+                                        <mat-checkbox [formControlName]="form_terms_conditions" class="mr-2">
+                                        </mat-checkbox> I agree to have read and understood
+                                        the <span style="color: #007bff; cursor: pointer; text-decoration: underline;"
+                                            (click)="matDialogOpenTerms('terms')">Terms and Conditions</span> and will
+                                        abide by the same during the assessment and the selection process.
+                                    </div>
+                                    <div class="form-error mt-1"
+                                        *ngIf="terms_conditions?.invalid && terms_conditions?.touched">
+                                        Please click on the above checkbox to agree the Terms and Conditions Declaration.
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row-wrapper-preview checkbox-pad">
+                            <div class="overall-input-wrapper width-45">
+                                <label>Place<span>*</span></label>
+                                <mat-form-field appearance="fill">
+                                <input matInput [formControlName]="form_ack_place" placeholder="Enter here"
+                                    type="text">
+                                </mat-form-field>
+                                <div class="form-error" *ngIf="ack_place?.invalid && ack_place?.touched">
+                                    <div *ngIf="ack_place?.errors?.required">Place is Required</div>
+                                    <div *ngIf="ack_place?.errors?.alphaNum255">Alpha numeric with maximum of 255
+                                        characters
+                                        only allowed</div>
+                                </div>
+                            </div>
+                            <div class="overall-input-wrapper width-30">
+                                <label>Date<span>*</span></label>
+                                <div class="date-relative">
+                                    <mat-form-field appearance="fill">
+                                    <input matInput [formControlName]="form_ack_date"  [min]="minDate"
+                                        [max]="maxDate" [matDatepicker]="picker" placeholder="DD-MM-YYYY">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                                <div class="form-error" *ngIf="ack_date?.invalid && ack_date?.touched">
+                                    <div *ngIf="ack_date?.errors?.required">Date is Required</div>
+                                    <div *ngIf="ack_date?.errors?.matDatepickerMax">
+                                        {{ack_date?.errors?.matDatepickerMax?.max ? 'Maximum date should be ' + momentForm(ack_date?.errors?.matDatepickerMax.max) : ''}}
+                                    </div>
+                                    <div *ngIf="ack_date?.errors?.matDatepickerMin">
+                                        {{ack_date?.errors?.matDatepickerMin?.min ? 'Minimum date should be ' + momentForm(ack_date?.errors?.matDatepickerMin.min) : ''}}
+                                    </div>
+                                    <div *ngIf="ack_date?.errors?.matDatepickerParse">Invalid Date Format</div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- <div class="row-wrapper mt-4 mb-3 justify-content-center"  style="display: flex;justify-content:center;">
+                            <div class="signature-wrapper"
+                                [ngClass]="signature ? 'height-100' : ''">
+                                <div *ngIf="signature " matTooltip="Remove Signature"
+                                    matTooltipPostion="after" (click)="delete()" class="remove">
+
+                                    <mat-icon style="font-size: 25px;" class="remove" (click)="delete()">cancel</mat-icon>
+                                </div>
+                                <div class="label-input-holder">
+                                   <div> <label class="hoverable m-0" for="fileInput">
+                                        <img class="sign" *ngIf="signature"
+                                            [ngClass]="!signature.file_path ? 'default' : 'profile'"
+                                            [src]="signature ? signature : 'assets/images/paper-clip.svg'"
+                                            alt="" srcset="">
+
+                                        <div *ngIf="!signature" class="grid">
+                                            <div class="left">
+                                                <img class="default" src="assets/images/paper-clip.svg" alt=""
+                                                    srcset="">
+                                            </div>
+                                            <div class="right">
+                                                Upload Image of your Handwriting Signature
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                                    <input
+                                        [matTooltip]="signature && signature.file_path ? 'Click to Change Signature' : 'No File Chosen'"
+                                        matTooltipPostion="after" title="" (click)="files.value = null" id="fileInput"
+                                        #files type='file' name="profile" accept="image/*"
+                                        (change)="onSelectFile($event)">
+                                </div>
+                               
+
+                            </div>
+                        </div> -->
+                        <div class="row-wrapper mt-2 w-100 justify-content-start checkbox-pad" style="color: #C02222;">
+                            Note: Please make sure to complete the form and fill the information’s correctly. You will
+                            not be able to edit after the submission.
+                        </div>
+
+                    </ng-container>
+                </form>
+
+            </ng-container>
+
+            <!-- Signature -->
+            <!-- <div *ngIf="formSubmitted" class="section pl-0 pt-0 pr-0 pb-0 custom-padding">
+                <div class="header d-flex mb-1 custom-header-padding flex-column">
+                    <h3>Signature</h3>
+                </div>
+                <ng-container *ngIf="signature && signature.file_path else noSign">
+                    <div class="row-wrapper mt-0 mb-2" style="padding: 0 16px;">
+                        <div class="signatureShow">
+                            <img class="sign" *ngIf="signature && signature.file_path" [src]="signature && signature.file_path"
+                            alt="" srcset="">
+                        </div>
+                    </div>
+                </ng-container>
+
+            </div> -->
+
+            <div *ngIf="!formSubmitted" class="row-wrapper justify-content-between align-items-center mt-4 mb-3 footer">
+                <div (click)="navigatePrevNext('Education')"
+                    class="footerArrow d-flex align-content-center align-items-center position-relative" style="cursor: pointer;">
+                    <div class="left-arrow position-absolute footer-arrow"></div>
+                    <div class="sections left-space">
+                        <div class="label">Previous Section</div>
+                        <div class="value">Education Details</div>
+                    </div>
+                </div>
+                <button class="submit joining-form-submit mt-1 animation-zoom no-flickr" mat-raised-button
+                    (click)="formSubmitFinal()" type="button">Submit</button>
+                <div class="footerArrow d-flex align-content-center align-items-center text-right position-relative pointer"
+                    style="cursor: pointer; visibility: hidden;">
+                    <div class="right-arrow position-absolute footer-arrow"></div>
+                    <div class="sections right-space">
+                        <div class="label">Next Section</div>
+                        <div class="value">Education Details</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="photo-wrapper">
+        </div>
+
+    </div>
+
+</div>
+<ng-template #noDependent>
+    <div class="nodata"> No Dependent Details Available</div>
+</ng-template>
+<ng-template #noWork>
+    <div class="nodata"> No Work Experience Details Available</div>
+</ng-template>
+<ng-template #noContact>
+    <div class="nodata"> No Contact Details Available</div>
+</ng-template>
+<ng-template #noPersonal>
+    <div class="nodata"> No Personal Details Available</div>
+</ng-template>
+<ng-template #noEducation>
+    <div class="nodata"> No Education Details Available</div>
+</ng-template>
+<ng-template #noDocuments>
+    <div class="nodata"> No Passport Details Available</div>
+</ng-template>
+<ng-template #noScar>
+     NA
+</ng-template>
+<ng-template #noSign>
+    <div class="nodata"> No Signature Available</div>
+</ng-template>
+
+<ng-template #matDialog>
+    <div class="main-wrapper">
+        <div class="text">Please confirm the information. Once you have submitted the form, you cannot change it anymore.
+        </div>
+        <div class="button-wrapper-form-pop-up">
+            <button class="b1" (click)="closeDialog('save')" type="button" mat-raised-button>Confirm</button>
+            <button class="b3" (click)="closeDialog('cancel')" type="button" mat-raised-button>Cancel</button>
+        </div>
+    </div>
+
+</ng-template>
+
+<ng-template #matDialogDocViewer>
+    <div class="main-wrappers">
+        <div class="position-relative text-right">
+            <!-- <span style="cursor: pointer; padding: .25em; font-size: 22px; color: #C02222;" class="material-icons material-icons-outlined">
+                file_download
+                </span> -->
+            <i style="cursor: pointer; padding: .25em; color: #C02222;" (click)="closeBox()"
+                class="material-icons">cancel</i>
+        </div>
+
+        <pdf-viewer [src]="pdfsrc" [original-size]="true"></pdf-viewer>
+    </div>
+
+</ng-template>
+
+<ng-template #matDialogTerms>
+    <div class="wrapper-kyc-terms">
+        <div class="header">
+            <div class="text">
+                <span>
+                    &#160;
+                </span>
+                <span>
+                    Terms and Conditions
+                </span>
+                <span class="icons">
+                    <i style="cursor: pointer;" (click)="closeBox()" class="material-icons">cancel</i>
+                    <!-- <img src="assets/images/cancel-black-36dp.svg" alt="" srcset=""> -->
+                </span>
+            </div>
+        </div>
+        <div class="main-text">
+            <div class="text bold">
+                Exam Terms and Conditions
+            </div>
+            <div class="no-top">
+                THESE TERMS ARE SUBJECT TO CHANGE FROM TIME TO TIME IN LARSEN & TOUBRO’S SOLE DISCRETION. IT IS YOUR
+                RESPONSIBILITY TO REVIEW THESE TERMS CAREFULLY AS YOU MUST COMPLY WITH THE MOST CURRENT VERSION OF THE
+                AGREEMENT.
+            </div>
+
+            <div class="text bold">
+                Details
+            </div>
+            <div class="no-top">
+                Larsen & Toubro’s Exam Terms and Conditions (the "Terms") are entered into between the examinee ("You")
+                and Larsen & Toubro LLC. ("Larsen & Toubro") as of the date you click "I agree" below (the "Effective
+                Date").
+            </div>
+
+            <div class="text bold">
+                Eligibility
+            </div>
+            <div class="no-top">
+                Larsen & Toubro’s Exams: you must be at least 18 years of age to be eligible for any Larsen & Toubro
+                exam.
+            </div>
+
+            <div class="text bold">
+                Confidential Information
+            </div>
+            <div class="no-top">
+                The content of the Exam, including without limitation, questions, answers, or any communication,
+                including oral communication, regarding or related to the Exam is Larsen & Toubro’s confidential
+                information ("Confidential Information"). Any disclosure of Confidential Information is a violation of
+                these Terms and could compromise the integrity and security of this exam. Larsen & Toubro makes exams
+                available to you solely for the purpose of demonstrating competency in the content area assessed by the
+                Exam. You are expressly prohibited from disclosing, publishing, reproducing, copying, selling, posting,
+                downloading or transmitting any Confidential Information, in whole or in part, in any form or by any
+                means, oral or written, electronic or mechanical, for any purpose
+            </div>
+
+            <div class="text bold">
+                Certification/Revocation
+            </div>
+            <div class="no-top">
+                If you violate these Terms, you may be prohibited from taking the Exam and/or any other Larsen & Toubro
+                Exam; you may be decertified from any Larsen & Toubro Certification Program; and Larsen & Toubro, in its
+                sole discretion, may terminate any applicable business relationship with you and prohibit you from
+                accessing any of our exam services.
+            </div>
+
+            <div class="text bold">
+                Misconduct
+            </div>
+            <div class="no-top">
+                If Larsen & Toubro discovers that you have violated these Terms or assisted others in doing so:
+                <div class="ul">
+                    <ul>
+                        <li>you may lose all Larsen & Toubro certifications </li>
+                        <li>you may be barred from taking or retaking any exam, and </li>
+                        <li>Larsen & Toubro, at its sole discretion, may choose to terminate any applicable relationship
+                            with you, if one exists.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="text">
+                Examples of misconduct and/or misuse of the Exam include but are not limited to:
+                <div class="ul">
+                    <ul>
+                        <li>Providing false or fraudulent identification</li>
+                        <li>Providing or accepting improper assistance</li>
+                        <li>Disseminating actual Exam content by any means including, but not limited to, web postings,
+                            formal or informal test preparation or discussion groups, reconstruction through
+                            memorization or any other method</li>
+                        <li>Having non-authorized items in your possession during the Exam</li>
+                        <li>Using unauthorized materials (including brain-dump material and/or unauthorized publication
+                            of Exam questions with or without answers) to prepare for the Exam</li>
+                        <li>Making notes of any kind during the Exam</li>
+                        <li>Removing or attempting to remove Exam material (in any format)</li>
+                        <li>Intentionally causing a disturbance of any kind during the Exam</li>
+                        <li>Modifying and/or altering the results and/or score report for this Exam or any other Exam
+                            record</li>
+                        <li>Circumventing the Exam retake policy, if any</li>
+                        <li>Misrepresentation of certification status</li>
+                        <li>Misconduct as determined by statistical analysis</li>
+                        <li>Unauthorized accessing of Exam or Exam content (including access of materials in forums,
+                            chat rooms, discussion groups, blogs or other sharing sites with intent to circumvent Exam
+                            procedures)</li>
+                        <li>Failing and/or Retaking the Exam</li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="text bold">
+                Personal Information and Privacy
+            </div>
+            <div class="no-top">
+                When we collect and process your personal information during participation in the Exam, your personal
+                information is handled in accordance with Larsen & Toubro’s Privacy Policy, as well as the additional
+                Exam Privacy and Policies Terms below.
+            </div>
+
+            <div class="text">
+                In providing Exam services, we may collect personal information such as:
+                <div class="ul">
+                    <ul>
+                        <li>Your answers to exam questions and the results of the exam</li>
+                        <li>A record of your interactions with our performance-based exams</li>
+                        <li>Your certification status</li>
+                        <li>Photographic and/or video recordings taken to confirm your identity, prevent fraud, and to
+                            otherwise help administer and score the test</li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="text bold">
+                Larsen & Toubro Exam Privacy and Policies
+            </div>
+            <div class="no-top">
+                Below is the Exam Privacy and Policies agreement that is presented to the examinee during the
+                registration process.
+            </div>
+
+            <div class="text bold">
+                Instructions to examinee
+            </div>
+            <div class="no-top">
+                Read the following terms carefully. If you accept the terms, please click the checkbox next to the Start
+                button alongside. If you do not accept the terms of this agreement, you will not be permitted to take
+                the exam.
+            </div>
+
+            <div class="text bold">
+                Privacy
+            </div>
+            <div class="no-top">
+                As part of taking the Exam, Larsen & Toubro will capture your personal information which includes, but
+                is not limited to, your photograph, your digital keystroke patterns, and your personally identifying
+                information (including, but not limited to, name, address, company, title). In addition, as part of the
+                online proctoring of each Exam, if applicable, Larsen & Toubro or an agent of Larsen & Toubro may be
+                watching a live webcast of you at your session (and can communicate with you, tell you to stop taking
+                cell phone calls, etc.). All information collected in connection with the Exam shall collectively be
+                referred to as "Exam Information". The Larsen & Toubro Privacy Policy describes how we treat personal
+                information when you use Larsen & Toubro’s products and services, including the Exam Information. In
+                addition, the following describes our privacy practices that are specific to the Exam. All Exam
+                Information you submit to Larsen & Toubro is collected by Larsen & Toubro or its authorized agents in
+                India, as well as the jurisdiction where you take the Exam. Exam Information may be shared with our
+                affiliates, subsidiaries or joint ventures in other jurisdictions for Exam purposes. This Policy is
+                governed by the laws of India.
+            </div>
+
+            <div class="text bold">
+                How will Exam Information be used?
+            </div>
+            <div class="no-top">
+                The Exam Information you submit is used for the following purposes:
+                <div class="ul">
+                    <ul>
+                        <li>Registering test takers to take exams</li>
+                        <li>Ensuring the security of the Exam process</li>
+                        <li>Your Choices</li>
+                        <li>Submitting your Exam Information is voluntary. However, if you choose not to submit your
+                            Exam Information, you will not be permitted to take the Exam.</li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="text bold">
+                Who may access your data?
+            </div>
+            <div class="no-top">
+                Larsen & Toubro employees, affiliated companies or entities acting on behalf of Larsen & Toubro process
+                Exam Information for the purposes listed above. Larsen & Toubro takes appropriate technical,
+                organizational, and legal steps to protect Exam Information. Affiliate companies or entities acting on
+                behalf of Larsen & Toubro with whom we share your Exam Information will be bound by terms of
+                confidentiality.
+            </div>
+
+            <div class="text bold">
+                Does Larsen & Toubro keep your data?
+            </div>
+            <div class="no-top">
+                Exam Information is retained in accordance with local law. We may also retain Exam Information to:
+                <div class="ul">
+                    <ul>
+                        <li>Dispute resolutions around test taking and passing</li>
+                        <li>Do demographic and similar non-personally identifiable analyses regarding the test taker
+                            populations, pass rates, and other behaviours</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="text bold">
+                Contacting Us
+            </div>
+            <div class="no-top">
+                For more information about our privacy practices, please contact us through this website any time, or
+                write to us at:
+                <div class="text-half">
+                    Larsen & Toubro
+                </div>
+                <div class="text-half">HQ Chennai</div>
+                <div class="text-half">Manapakkam</div>
+            </div>
+
+
+            <div class="button-wrappers">
+                <button (click)="closeBox()" mat-raised-button class="submit" type="button">Done</button>
+            </div>
+        </div>
+
+    </div>
+</ng-template>
+
+
+<ng-template #matDialogBGV>
+    <div class="wrapper-kyc-terms">
+        <div class="header">
+            <div class="text">
+                <span>
+                    &#160;
+                </span>
+                <span>
+                    Terms and Conditions
+                </span>
+                <span class="icons">
+                    <i style="cursor: pointer;" (click)="closeBox()" class="material-icons">cancel</i>
+                    <!-- <img src="assets/images/cancel-black-36dp.svg" alt="" srcset=""> -->
+                </span>
+            </div>
+        </div>
+        <div class="main-text">
+            <div class="no-top mt-2">
+                THESE TERMS ARE SUBJECT TO CHANGE FROM TIME TO TIME IN LARSEN & TOUBRO’S SOLE DISCRETION. IT IS YOUR
+                RESPONSIBILITY TO REVIEW THESE TERMS CAREFULLY AS YOU MUST COMPLY WITH THE MOST CURRENT VERSION OF THE
+                AGREEMENT.
+            </div>
+
+            <div class="text bold">
+                Declaration and Authorization for Verification
+            </div>
+            <div class="no-top">
+                I hereby authorize Larsen & Toubro Limited (or a third party agent appointed by the Company) to contact
+                any former employers as declared in my L&T’s Employment Application Form and carry out all Background
+                Checks not restricted to education and past employment.
+            </div>
+            <div class="no-top mt-2">
+                I also authorize former employers, agencies, educational institutes, etc. to release any information
+                pertaining to my employment/education and I release them from any liability in doing so.
+            </div>
+            <div class="no-top mt-2">
+                I declare that the information given above is true to the best of my knowledge. Any false or incorrect
+                information furnished in Employment Application Form will result in disciplinary action being taken
+                against me including removal from service.
+            </div>
+
+            <div class="text bold">
+                Contacting Us
+            </div>
+            <div class="no-top">
+                For more information about our privacy practices, please contact us through this website any time, or
+                write to us at:
+                <div class="text-half">
+                    Larsen & Toubro
+                </div>
+                <div class="text-half">HQ Chennai</div>
+                <div class="text-half">Manapakkam</div>
+            </div>
+
+
+            <div class="button-wrappers">
+                <button (click)="closeBox()" mat-raised-button class="submit" type="button">Done</button>
+            </div>
+        </div>
+
+    </div>
+</ng-template>
+
+<ng-template #matDialogCoc>
+    <div class="wrapper-kyc-terms">
+        <div class="header">
+            <div class="text">
+                <span>
+                    &#160;
+                </span>
+                <span>
+                    Terms and Conditions
+                </span>
+                <span class="icons">
+                    <i style="cursor: pointer;" (click)="closeBox()" class="material-icons">cancel</i>
+                    <!-- <img src="assets/images/cancel-black-36dp.svg" alt="" srcset=""> -->
+                </span>
+            </div>
+        </div>
+        <div class="main-text">
+            <div class="no-top mt-2">
+                THESE TERMS ARE SUBJECT TO CHANGE FROM TIME TO TIME IN LARSEN & TOUBRO’S SOLE DISCRETION. IT IS YOUR
+                RESPONSIBILITY TO REVIEW THESE TERMS CAREFULLY AS YOU MUST COMPLY WITH THE MOST CURRENT VERSION OF THE
+                AGREEMENT.
+            </div>
+
+            <div class="text bold">
+                ACKNOWLEDGEMENT / DECLARATION
+            </div>
+            <div class="no-top">
+                I have received the communication “Larsen & Toubro Limited - Code of Conduct for S&E and Covenanted
+                officers 2014”. I have read and understood the above and will abide by the same.
+            </div>
+
+            <div class="text bold">
+                Contacting Us
+            </div>
+            <div class="no-top">
+                For more information about our privacy practices, please contact us through this website any time, or
+                write to us at:
+                <div class="text-half">
+                    Larsen & Toubro
+                </div>
+                <div class="text-half">HQ Chennai</div>
+                <div class="text-half">Manapakkam</div>
+            </div>
+
+
+            <div class="button-wrappers">
+                <button (click)="closeBox()" mat-raised-button class="submit" type="button">Done</button>
+            </div>
+        </div>
+
+    </div>
+</ng-template>

@@ -1,0 +1,146 @@
+<div id="top"></div>
+<div class="joining-personal-wrapper">
+    <h1>
+        Passport & Other Identity Proof
+    </h1>
+    <!-- <div class="alert">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam auctor malesuada nisi non mattis.
+      </div> -->
+    <div class="grids-wrapper">
+            <form class="personalForm" [formGroup]="personalForm">
+
+                <div class="row-wrapper">
+                    <div class="overall-input-wrapper width-70">
+                        <label>Have you ever held a passport?</label>
+                        <mat-form-field appearance="fill">
+                            <mat-select [formControlName]="form_heldPassport" (ngModelChange)="disablePassportFields()">
+                                <mat-option *ngFor="let list of held" [value]="list.value">{{list.label}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <div class="form-error" *ngIf="heldpass?.invalid && heldpass?.touched">
+                            <div *ngIf="heldpass?.errors?.required">Held Pass is Required</div>
+                        </div>
+                    </div>
+                    <div class="overall-input-wrapper width-70">
+                        <label>Passport Number</label>
+                        <mat-form-field appearance="fill">
+                        <input matInput placeholder="Enter here" type="text" 
+                        [formControlName]="form_passportNo">
+                    </mat-form-field>
+                        <div class="form-error" *ngIf="passportNo?.invalid && passportNo?.touched">
+                            <div *ngIf="passportNo?.errors?.required">passportNo is Required</div>
+                            <div *ngIf="passportNo?.errors?.passport">passportNo is Invalid</div>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="row-wrapper">
+                <div class="overall-input-wrapper width-70">
+                    <label>Date of Issue</label>
+                    <div class="date-relative">
+
+                            <mat-form-field appearance="fill">
+                                <input matInput [matDatepicker]="Issuepicker" [formControlName]="form_passportDateOfIssue" placeholder="DD-MM-YYYY">
+                                <mat-datepicker-toggle matSuffix [for]="Issuepicker" ></mat-datepicker-toggle>
+                                <mat-datepicker #Issuepicker></mat-datepicker>
+                              </mat-form-field>
+                    </div>
+                    <div class="form-error" *ngIf="doi?.invalid && doi?.touched">
+                        <div *ngIf="doi?.errors?.required">Date of Issue is Required</div>
+                    </div>
+                </div>
+                <div class="overall-input-wrapper width-70">
+                    <label>Date of Expiry</label>
+                    <div class="date-relative">
+                        <mat-form-field appearance="fill">
+                        <input matInput class="input"  [matDatepicker]="Expirypicker" 
+                            placeholder="DD-MM-YYYY" [formControlName]="form_passportExpireDate">
+                        <mat-datepicker-toggle matSuffix [for]="Expirypicker"></mat-datepicker-toggle>
+                        <mat-datepicker #Expirypicker></mat-datepicker>
+                    </mat-form-field>
+                    </div>
+                    <div class="form-error" *ngIf="doe?.invalid && doe?.touched">
+                        <div *ngIf="doe?.errors?.required">Date of Expiry is Required</div>
+                    </div>
+                </div>
+            </div>
+<!-- sf -->
+
+<!-- sd -->
+            <div class="row-wrapper">
+                <div class="overall-input-wrapper width-70">
+                    <label>Aadhar No.</label>
+                <mat-form-field appearance="fill">
+                    <input matInput placeholder="Enter here"  type="text" [formControlName]="form_aadhar">
+                </mat-form-field>
+                    <div class="form-error" *ngIf="aadhar?.invalid && aadhar?.touched">
+                        <div *ngIf="aadhar?.errors?.required">Aadhaar No. is Required</div>
+                        <div *ngIf="aadhar?.errors?.aadhaar">Aadhaar No. should be numberic only and should be exact 12
+                            digits</div>
+                    </div>
+                </div>
+                <div class="overall-input-wrapper width-70">
+                    <label>PAN No.</label>
+                    <mat-form-field appearance="fill">
+                        <input matInput placeholder="Enter here"  type="text" [formControlName]="form_pan">
+                    </mat-form-field>
+                    <div class="form-error" *ngIf="pan?.invalid && pan?.touched">
+                        <div *ngIf="pan?.errors?.required">PAN No. is Required</div>
+                        <div *ngIf="pan?.errors?.panNo">PAN No. should be alpha numberic and should be 10
+                            characters</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row-wrapper">
+                <div class="overall-input-wrapper width-70">
+                    <label>Driving License Number</label>
+                    <mat-form-field appearance="fill">
+                        <input matInput placeholder="Enter here"  type="text"
+                        [formControlName]="form_drLicenseNo">
+                        </mat-form-field>
+                    <div class="form-error" *ngIf="lno?.invalid && lno?.touched">
+                        <div *ngIf="lno?.errors?.required">Driving License Number is Required</div>
+                        <div *ngIf="lno?.errors?.licence">Driving License Number is Invalid</div>
+                    </div>
+                </div>
+                <div class="overall-input-wrapper width-70">
+                    <label>Driving License Valid upto</label>
+                    <div class="date-relative">
+                        <mat-form-field appearance="fill">
+                        <input matInput [matDatepicker]="validpicker"
+                            placeholder="DD-MM-YYYY" [formControlName]="form_drLicenseValidUpto">
+                        <mat-datepicker-toggle matSuffix [for]="validpicker"></mat-datepicker-toggle>
+                        <mat-datepicker #validpicker></mat-datepicker>
+                    </mat-form-field>
+                    </div>
+                    <div class="form-error" *ngIf="valupto?.invalid && valupto?.touched">
+                        <div *ngIf="valupto?.errors?.required">Driving License Valid upto is Required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row-wrapper justify-content-between  align-items-center mt-4 mb-3 footer" style="margin-top: 40px;">
+                <div (click)="navigatePrevNext('Contact')" class="footerArrow d-flex align-content-center align-items-center position-relative">
+                    <div class="footer-arrow left-arrow position-absolute"></div>
+                    <div class="sections left-space">
+                        <div class="label">Previous Section</div>
+                        <div class="value">Contact Details</div>
+                    </div>
+                </div>
+                <button class=" submit joining-form-submit mt-1 animation-zoom no-flickr" mat-raised-button (click)="formSubmit()">Save &
+                    Continue</button>
+                <div (click)="navigatePrevNext('Education')" class=" footerArrow d-flex align-content-center align-items-center text-right position-relative pointer" style="cursor: pointer;">
+                    <div class="right-arrow position-absolute footer-arrow"></div>
+                    <div class="sections right-space">
+                        <div class="label">Next Section</div>
+                        <div class="value">Education Details</div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+ 
+    </div>
+
+</div>

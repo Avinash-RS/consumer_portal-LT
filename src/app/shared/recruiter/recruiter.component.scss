@@ -1,0 +1,421 @@
+@import "variables";
+
+.userRecu {
+    background-color: #F9F9F9;
+    position: relative;
+    z-index: 1; 
+  .banner {
+    position: relative;
+    padding: 3em 0;
+    background-image: url('#{$imagePath}/Account_pattern.png');
+    &::before {
+        content: '';
+        position: absolute;
+        background-color: $secondaryColor;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        opacity: 0.7;
+    }
+    .heading3 {
+        font-weight: 700;
+        position: relative;
+    }
+    .listview {
+        position: absolute;
+        bottom: 0;
+        color: #666;
+        span {
+            padding: 0 5px;
+            padding-bottom: 4px;
+            display: inline-block;
+            margin: 0 10px;  
+            border-bottom:3px solid transparent;
+            cursor: pointer;
+            &:first-child {
+                margin-left: 0;
+            }
+            &.selected {
+                color: #000;
+                border-bottom-color:#c02222 ;
+                font-weight: 600;
+                -webkit-transition: all 1000ms ease-in-out; 
+                 transition: all 1000ms ease-in-out;
+            }
+        }
+    } 
+  } 
+  .list-section {
+    padding: 3em 0;
+  }
+    padding: 25px 0;
+    .search-filter {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1em 0;
+        .mat-form-field-infix { 
+            width: 200px;
+            height: 33px;
+            padding: 0 10px;
+            border-radius: 3px;
+            border: 1px solid #a7a7a7;
+            margin-right: 2em;
+        }
+        .fltrbtn {  
+                height: 37px;
+                background-color: #fff;
+                border: 1px solid #d4d4d4;
+                padding: 5px 12px;
+                border-radius: 3px;
+                box-shadow: 1px 0px 3px #c7c7c7;
+                padding-left: 3px;
+                margin-left: 2em;
+                em {
+                    margin: 0 10px;
+                }
+        }
+        .primarybtn { 
+            height: 37px;
+            background-color: #c02222;
+            color: $whiteColor;
+            border: 1px solid #d4d4d4;
+            padding: 5px 25px;
+            border-radius: 20px;
+            box-shadow: 1px 0px 3px #c7c7c7;
+            margin-left: 3em;
+            font-size: 16px; 
+    em {
+        margin: 0 0.6em;
+    font-size: 26px;
+    vertical-align: middle;
+    margin-left: 0; 
+        }
+    }
+}
+  .selected-filter { 
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0.5em 0;
+
+        .htxt {
+            font-size: 16px;
+            font-weight: 600;
+            margin-right: 10px;
+        } 
+        .mat-chip.mat-standard-chip {
+            background-color: #ffffff;
+            color: rgba(0,0,0,.87);
+            border: 1px solid #ececec;
+            margin: 0 6px !important;
+            padding: 0px 12px;
+            font-size: 12px;
+            min-height: 29px;
+            em {
+                font-size: 9px;
+                margin-left: 9px;
+            }
+        }
+        .clearfilter {
+            color: #c02222;
+            font-size: 12px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+  }
+    .list-table {  
+        margin: 10px 0;
+        th {
+            padding:15px 5px;
+            text-align: left;
+            width: 5%;
+
+            &:first-child {
+                text-align: center;
+                width: 3%;
+            }
+            &:last-child {
+                text-align: center;
+                width: 3%;
+            }
+
+            &:nth-child(3) {
+                width: 10%;
+            }
+            &:nth-child(4) {
+                width: 10%;
+            }
+            &:nth-child(5) {
+                width: 10%;
+            }
+            &:nth-child(6) {
+                width: 10%;
+            } 
+
+            &.eight {
+                width: 8%;
+            }
+        }
+
+        td {
+            background-color: $whiteColor;
+            border-top: 1px solid #e6e6e6;
+            border-bottom: 1px solid #e6e6e6;
+            padding: 10px 5px;
+            color: #797979;
+            font-weight: 600;
+            &:first-child {
+                border-left: 1px solid #e6e6e6;
+                text-align: center;
+            }
+            &:last-child {
+                border-right: 1px solid #e6e6e6;
+                text-align: center; 
+            }
+            a, a:hover {
+                color: #c02222;
+                cursor: pointer;
+                text-decoration: none;
+            }
+        } 
+        .box-tr {
+            box-shadow: 0 0 3px #00000040;
+        }
+        .spacer {
+            background-color: transparent;
+            border: none;
+            height: 4px;
+            padding: 0;
+            line-height: 1;
+            &:first-child {
+                border-left:none;
+            }
+            &:last-child {
+                border-right: none;
+            }
+        }
+        .icon-More {
+            transform: rotate(-90deg);
+            display: inline-block;
+            cursor: pointer;
+        }
+       
+  }
+  .imground {
+    width: 30px;
+    border-radius: 30px;
+    overflow: hidden;
+    height: 30px;
+    border: 1px solid #c7c7c7;
+  } 
+  .mat-icon-button {
+    width: 20px;
+    height: 20px;
+    line-height: 0;
+  }
+  .mat-button.mat-accent, .mat-icon-button.mat-accent, .mat-stroked-button.mat-accent {
+    color: #f2ce40;
+   }
+   .mat-icon {
+    height: 20px;
+    width: 20px;
+    line-height: 20px;
+  }
+  .statustxt {
+      color: #777777;
+      font-size: 10px;
+      line-height: 1;
+  }
+ .statusbar {
+    font-size: 12px;
+    color: #cacaca;
+    margin-top: 2px;
+    .active {
+        color: #40c173;
+    }
+ }
+  
+} 
+ 
+::ng-deep.mat-checkbox-ripple {
+    display: none;
+}
+::ng-deep.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+    background-color: #c02222 !important;
+}
+mat-drawer{
+    margin-top: 15%;
+   }
+   ::ng-deep.mat-drawer-container {
+       height: 100vh;
+   }
+   .filtersec {
+       color: #5f646b;
+      width: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+
+      button {
+        border: none;
+        background-color: transparent;
+      }
+ 
+      .filterbtn {
+        background-color: #e5e5e5;
+        padding: 1em;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;  
+
+        button {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            text-transform: uppercase;
+        }
+        em {    margin-right: 7px;}
+      }
+      .sidefilter {
+        display: flex;
+    flex-direction: row;
+    height: 100%;
+    justify-content: space-between; 
+    background-color: #fcfcfc;
+      }
+      .filterlist, .filtersublist {
+        display: flex;
+        flex-direction: column;
+      }
+      .filterlist {
+        background-color: #efefef;
+        height: 100%; 
+        color: #464545;
+        width: 10em;
+        > div {
+            padding:1em;
+            border-bottom: 1px solid #dcdcdc;
+            text-transform: capitalize; 
+            cursor: pointer;
+            &.active {
+                background-color: #fcfcfc;
+            }
+        }
+      }
+      .filtersublist {
+        width: 65%;
+        padding-left: 1.5em;
+        background-color: #fcfcfc;
+        height: 100%;
+        color: #666;
+        > div {
+            cursor: pointer;
+            padding: 1em;
+            border-bottom: 1px solid #dddddd;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            &.active {
+                color: #c02222;
+
+                em { 
+                    visibility: visible;
+                }
+            }
+            em {
+                margin-right: 10px;
+                visibility: hidden;
+            }
+        }
+       }
+      .filrtbotm {
+          background-color: #bfbfbf;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          > div {
+              text-align: center;
+              min-width: 10em;
+           button {
+               text-transform: uppercase;
+          }
+        }
+          
+          .right {
+            width: 65%;
+            background-color: #aaaaaa;
+            color: #fff;
+            padding: 0.8em 1em;
+            text-align: center;
+          }
+      }
+  } 
+
+  ::ng-deep.search-box {
+    display: flex;
+    align-items: center;
+    .mat-form-field {
+        border: 1px solid #dcdcdc;
+        background-color: #fff;
+        height: 37px;
+        box-shadow: 1px 0px 3px #c7c7c7;
+        width: 220px;
+    }
+    .mat-form-field-wrapper {
+        padding: 0;
+    }
+    .mat-form-field-appearance-legacy .mat-form-field-underline {
+        display: none;
+    }
+    .mat-form-field-label {
+        color: #666 !important; 
+        left: 10px;
+    }
+    .mat-form-field-appearance-legacy .mat-form-field-infix {
+        padding-bottom: 0; 
+        padding: .2375em 0.5em;
+    }
+    .mat-form-field-infix { 
+        input {
+            padding-right: 20px;
+        }
+        em {
+            position: absolute;
+    margin-left: -15px;
+    margin-top: -5px;
+    color: #666;
+        }
+    }
+    .mat-form-field-label-wrapper {
+        top: -1em;
+    }
+    .mat-form-field-label span {
+        background-color: $whiteColor;
+        display: inline-block;
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+    }
+  }
+  ::ng-deep.filter-box{
+      display: flex;
+      align-items: center;
+      .mat-form-field-appearance-legacy .mat-form-field-infix {
+        background-color: #fff;
+        border: 1px solid #dcdcdc;
+        height: 37px;
+        box-shadow: 1px 0px 3px #c7c7c7;
+      }
+      .mat-form-field-appearance-legacy .mat-form-field-wrapper {
+        padding-bottom: 0;
+        margin-left: 12px;
+    }
+    .mat-form-field-appearance-legacy .mat-form-field-underline {
+        display: none;
+    }
+    .mat-select-trigger {
+        margin-top: 4px;
+    }
+}

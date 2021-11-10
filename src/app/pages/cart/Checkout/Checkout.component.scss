@@ -1,0 +1,98 @@
+@import "variables";
+
+.checkoutBox {
+    width: 100%;
+    background-color: #f1f1f1;
+    padding: 1em;
+    box-sizing: border-box;
+    border-radius: 5px;
+    // margin-top: 1em;
+    // @include md {
+    //     width: 30%;
+    //     margin-top: 0;
+    // }
+    // @include lg {
+    //     width: 25%;
+    // }
+    .heading6 {
+        text-transform: uppercase;
+        display: block;
+    }
+    .tag, .priceDetails > div, .totalAmount > div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .tag {
+        border-bottom: 1px solid $lightGrey;
+        border-bottom-style: dashed;
+        margin-bottom: 1.5em;
+        padding-bottom: 1.5em;
+        p {
+            margin: 0;
+        }
+        button {
+            @include buttonOutlined;
+            background-color: $whiteColor;
+            color: $blackColor;
+            padding-right: 1.5em;
+            padding-left: 1.5em;
+            font-size: 0.9375em;
+        }
+    }
+    .priceDetails {
+        border-bottom: 1px solid $lightGrey;
+        border-bottom-style: dashed;
+        margin-bottom: 1.5em;
+        padding-bottom: 1.5em;
+        > div {
+            margin-top: 1em;
+            &.couponDiscount {
+                span {
+                    &:last-child {
+                        color: $primaryColor;
+                        font-weight: 400;
+                    }
+                }
+            }
+            span {
+                font-size: 0.9375em;
+                line-height: 1.3;
+                color: $mediumGrey;
+                em {
+                    font-weight: bold;
+                    font-size: 0.75em;
+                }
+                &:first-child {
+                    font-weight: 400;
+                }
+                &:last-child {
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+    .totalAmount {
+        span {
+            color: $blackColor;
+            font-weight: 700;
+            &:last-child {
+                font-size: 1.625em;
+                em {
+                    font-size: 0.75em;
+                    font-weight: 700;
+                    color: $mediumGrey;
+                }
+            }
+        }
+        .heading6 {
+            text-transform: capitalize;
+        }
+        .checkout {
+            @include buttonFilled;
+            width: 100%;
+            margin: 2em 0 1em 0;
+            font-size: 1.125em;
+        }
+    }
+}

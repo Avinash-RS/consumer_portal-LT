@@ -1,0 +1,72 @@
+<!-- <section class="bannerSection">
+    <div class="owlCarouselWrapper">
+        <owl-carousel-o [options]="owlCarouselOptions">
+            <ng-container *ngFor = "let bannerSection of HomeBannerImage;">
+                <ng-template class="imageWrapper" carouselSlide>
+                    <img [src] = "bannerSection.image  + blobToken" alt="" />
+                    <div class="bannerContent">
+                        <div class="heading">{{bannerSection.name}}</div>
+                        <p>{{bannerSection.longDescription}}</p>
+                        <button>Explore <em class="icon-RightArrow"></em></button>
+                    </div>
+                </ng-template> 
+            </ng-container>
+        </owl-carousel-o>
+    </div>
+</section> -->
+
+<section class="bannerSection">
+    <div class="progression" *ngIf="showProgress">
+        <span>{{profilePercentage}}% of your profile is complete</span>
+        <mat-progress-bar class="progressbar" mode="determinate" [value]="profilePercentage" bufferValue ="100"></mat-progress-bar>
+    </div>
+    <div class="container">
+        <div class="bannerWrapper">
+            <div class="bannerContent">
+                <div class="heading">
+                    Know your standing in skill area and <strong>Get Certified</strong>
+                    <p>{{ dynamicData?.sliderContent }}</p>
+                </div>
+            </div>
+            <!-- <div class="owlCarouselWrapper">
+                <owl-carousel-o [options]="owlCarouselOptions">
+                    <ng-container>
+                        <ng-template class="imageWrapper" carouselSlide>
+                            <figure>
+                                <img src="/assets/images/banner_hero1.png" alt="" />
+                            </figure>
+                        </ng-template>
+                        <ng-template class="imageWrapper" carouselSlide>
+                            <figure>
+                                <img src="/assets/images/banner_hero2.png" alt="" />
+                            </figure>
+                        </ng-template>
+                        <ng-template class="imageWrapper" carouselSlide>
+                            <figure>
+                                <img src="/assets/images/banner_hero3.png" alt="" />
+                            </figure>
+                        </ng-template>
+                    </ng-container>
+                </owl-carousel-o>
+                <div class="skillOmeter">
+                    <div class="acceleratePath">
+                        <div class="heading6">Review your Jobs-Skills</div>
+                        <button class="job" (click)="gotoSkillOmeter()">
+                            <em class="icon-Job"></em>
+                            <span>job</span>
+                        </button>
+                        <button class="role">
+                            <em class="icon-Role"></em>
+                            <span>role</span>
+                        </button>
+                        <button class="skills">
+                            <em class="icon-Benchmark"></em>
+                            <span>skills</span>
+                        </button>
+                    </div>
+                </div>
+            </div> -->
+            
+        </div>
+    </div>
+</section>

@@ -1,0 +1,142 @@
+
+<header #header_width>
+    <div [ngClass]="(header_width.offsetWidth !> '1025') ?  'hide_' : 'show_'" class="hambrg_">
+    <em class="icon-Hamburger" (click)="search_sec()"></em>
+    </div>
+    <figure (click)="homepage(); closeMegaMenu_()">
+        <img src="https://assets.lntedutech.com/edutech_logo.svg" alt="L&T Logo">
+    </figure>
+    <div class="megaMenu">
+        <button (click)="megaMenuClick()">Assessments<em [ngClass]="showMenu == 'out' ? 'icon-DownArrow' : 'icon-UpArrow'" ></em></button>
+    </div>
+    <nav [ngClass]="(header_width.offsetWidth > '1025') ?  'topMenu' : 'hide_'" [class.topMenu_lap]="menu_tab">
+        <ul>
+            <li><a [ngClass]="isCertified ? 'activeTab' : ''" (click)="getCertified()">Get Assessed</a></li>
+            <li><a [ngClass]="isAssement ? 'activeTab' : ''" (click)="onlineAssessment()">My Assessments</a></li>
+            <!-- <li><a [ngClass]="isCredentials ? 'activeTab' : ''" [matMenuTriggerFor]="menu" (click)="closeMegaMenu_();showCredenitals()">Credentials <em class="icon-DownArrow"></em></a></li> -->
+        </ul>
+    </nav>
+    <!-- <div [ngClass]="(header_width.offsetWidth > '1025') ?  'searchCertification' : 'hide_'" [class.searchCertification_lap]="menu_tab">
+        <span (click)="getSearch()">
+            <input type="text" class="search" placeholder="What Certification do you want to acquire?" />
+        </span>
+        <em [ngClass]="(header_width.offsetWidth > '1025') ?  'icon-Search' : 'icon-Close'" (click)="search_sec()" ></em>
+    </div> -->
+    <div class="signInRegister"> 
+        <span class="cart">
+            <a (click)="openCart(); closeMegaMenu_()">
+            <em *ngIf="cartCount == 0" class="icon-Cart"></em>
+            <em *ngIf="cartCount != 0" matBadge="{{cartCount}}" matBadgeColor="warn" class="icon-Cart"></em>
+        </a></span>
+        <ng-container *ngIf="showAvatar">
+            <span class="cart"><a><em class="icon-Bell"></em></a></span>
+            <div [matMenuTriggerFor]="menu" [matTooltipPosition]="'left'" [matTooltip]="userDetails?.firstname + ' ' + userDetails?.lastname" class="avatar">
+                <span *ngIf="!profImage"><em class="icon-User"></em></span>
+                <figure *ngIf="profImage" class="profImg">
+                    <img [src]="profImage + blobToken" alt="" />
+                </figure>
+                <mat-menu #menu="matMenu" class="profileMenu">
+                    <div class="profile">
+                        <div class="profIcon">
+                            <figure class="profImg">
+                                <span class="avatar" *ngIf="!profImage"><em class="icon-User"></em></span>
+                                <img *ngIf="profImage" [src]="profImage + blobToken" alt="" />
+                            </figure>
+                        </div>
+                        <div class="profDesc">
+                            <strong>{{userDetails?.firstname + ' ' + userDetails?.lastname}}</strong>
+                            <span>{{userDetails?.email}}</span>
+                            <button (click)="editProfile()">Edit Profile</button>
+                        </div>
+                    </div>
+                    <div class="settings">
+                        <!-- <span class="heading">Account</span> -->
+                        <div><a>Account settings</a></div>
+                        <div><a>Purchase history</a></div>
+                        <div><a>Payment methods</a></div>
+                    </div>
+                    <div class="signout">
+                        <a>Help</a>
+                        <a class="signOut" (click)="logout()">Sign out</a>
+                    </div>
+                </mat-menu>
+            </div>
+        </ng-container>
+    <ng-container *ngIf="!showAvatar">
+        <span class="signIn"><a  (click)="openOnBoard('0'); closeMegaMenu_()">Sign In</a></span>
+        <button class="register" (click)="openOnBoard('1'); closeMegaMenu_()">Register</button>
+    </ng-container>
+
+    </div>
+    <nav class="menuLevel1" [@slideInOut]="showMenu">
+        <ng-container *ngIf ="catalogMenu.length == 0">
+            <div class="SkeletonWrapper">
+                <div class="item1 itemSmall">
+                    <ngx-skeleton-loader count="7" [theme]="{ 'border-radius': '5px', height: '30px', 'background-color': '#eff1f6', border: '1px solid white' }"></ngx-skeleton-loader>
+                </div>
+                <div class="item2 itemSmall">
+                    <ngx-skeleton-loader count="7" [theme]="{ 'border-radius': '5px', height: '30px', 'background-color': '#eff1f6', border: '1px solid white' }"></ngx-skeleton-loader>
+                </div>
+                <div class="item3 itemBig">
+                    <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', width: '200px', height: '30px', 'background-color': '#eff1f6', border: '1px solid white' }"></ngx-skeleton-loader>
+                    <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '30px', 'background-color': '#eff1f6', border: '1px solid white' }"></ngx-skeleton-loader>
+                    <div>
+                        <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', width: '150px', height: '30px', 'background-color': '#eff1f6', border: '1px solid white' }"></ngx-skeleton-loader>
+                    </div>
+                    <div>
+                        <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', width: '150px', height: '30px', 'background-color': '#eff1f6', border: '1px solid white' }"></ngx-skeleton-loader>
+                    </div>
+                    <div>
+                        <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', width: '150px', height: '30px', 'background-color': '#eff1f6', border: '1px solid white' }"></ngx-skeleton-loader>
+                    </div>
+                    <div>
+                        <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', width: '150px', height: '30px', 'background-color': '#eff1f6', border: '1px solid white' }"></ngx-skeleton-loader>
+                    </div>
+                    <div>
+                        <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', width: '150px', height: '30px', 'background-color': '#eff1f6', border: '1px solid white' }"></ngx-skeleton-loader>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+        <ng-container *ngIf ="catalogMenu.length > 0">
+            <ul class="headtxt_"><li><a>DOMAIN</a><ul><li><a>STREAM</a></li></ul></li></ul>
+            <ul>
+                <ng-container *ngFor="let level1 of catalogMenu">
+                    <li><a (click)="catalogHome(level1.cid)">{{level1.name}}</a>
+                        <ul>
+                            <ng-container *ngFor="let level2 of level1.children">
+                                
+                                <li><a (click)="gotoArea(level2)">{{level2.name}}</a>
+                                    <ul class="thirdLevel">
+                                        <li>
+                                            <em class="icon-Close" (click)="closeMegaMenu()"></em>
+                                            <div class="heading4">{{level2.name}}</div>
+                                            <p>
+                                                {{ (level2.longDescription.length > 250)? (level2.longDescription | slice:0:250)+'...':(level2.longDescription) }}
+                                            </p>
+                                            <button (click)="gotoArea(level2)">Learn More</button>
+                                            <figure>
+                                                <img [src]="level1.menuImage.url" alt="" />
+                                            </figure>
+                                            <div class="heading6">Featured</div>
+                                            <nav>
+                                                <ng-container *ngFor="let level3 of level2.children">
+                                                    <a>{{level3.name}}</a>
+                                                </ng-container>
+                                            </nav>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ng-container>
+                        </ul>
+                    </li>
+                </ng-container>
+            </ul>
+        </ng-container>
+    </nav>
+</header>
+<mat-menu class="menuCustomClass" #menu="matMenu" >
+    <button mat-menu-item>Check My Score</button>
+    <button mat-menu-item>Download My Certificate</button>
+    <button mat-menu-item (click)="getFAQ()">FAQ</button>
+</mat-menu>

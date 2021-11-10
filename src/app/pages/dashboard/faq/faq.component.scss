@@ -1,0 +1,54 @@
+@import "variables";
+
+.faqPage {
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(233,233,233,1) 100%);
+    padding: 3.75em 0;
+    .heading3 {
+        font-weight: 700;
+        line-height: 1.5;
+        color: $blackColor;
+    }
+    p {
+        font-size: 1em;
+        font-weight: 400;
+        line-height: 1.4;
+        color: $lightGrey;
+    }
+    .heading5 {
+        color: $darkGrey;
+        line-height: 1.5;
+        font-weight: 700;
+        margin-bottom: 0.35em;
+    }
+    .heading6 {
+        color: $mediumGrey;
+        line-height: 1.5;
+    }
+}
+.faqAccordion {
+    margin-top: 2em;
+}
+
+::ng-deep.faqPage {
+    .mat-expansion-panel-spacing {
+        margin: 0;
+    }
+    .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:hover:not([aria-disabled=true]) {
+        background-color: transparent;
+    }
+    .mat-expansion-panel:not([class*=mat-elevation-z]) {
+        box-shadow: none;
+    }
+    .mat-expansion-panel-header {
+        padding: 0 1.5em;
+    }
+    .mat-accordion .mat-expansion-panel {
+        border-bottom: 1px solid $greyColor;
+        border-left: 1px solid $greyColor;
+        border-right: 1px solid $greyColor;
+        &:first-child {
+            border-top: 1px solid $greyColor;
+        }
+    }
+}

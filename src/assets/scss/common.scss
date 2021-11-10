@@ -1,0 +1,74 @@
+@import "variables";
+
+.container {
+    max-width: 1170px;
+    width: 94%;
+    margin: 0 auto;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.menuCustomClass {
+    .mat-menu-item {
+        font-family: 'RobotoCondensed';
+        font-size: 1em;
+        color: $mediumGrey;
+        height: auto;
+        line-height: 1.5;
+        padding: 0.5em 1em;
+        border-bottom: 1px solid $greyColor;
+        &:last-child {
+            border-bottom: none;
+        }
+        &:hover {
+            &:not([disabled]) {
+                color: $primaryColor;
+            }
+        }
+    }
+}
+.heading2 {
+    font-size: 2em;
+    font-weight: 700;
+    color: $darkGrey;
+    line-height: 1.2;
+    text-transform: uppercase;
+    position: relative;
+    text-align: center;
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -0.35em;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2em;
+        height: 3px;
+        background-color: $primaryColor;
+    }
+}
+.heading3 {
+    font-size: 1.75em;
+    line-height: 1.3;
+}
+.heading4 {
+    font-size: 1.5em;
+    font-weight: 400;
+    line-height: 1.3;
+}
+.heading5 {
+    font-size: 1.25em;
+    font-weight: 400;
+    color: $blackColor;
+    line-height: 1.2;
+}
+.heading6 {
+    font-size: 1.125em;
+    line-height: 1.3;
+}
+mat-error {
+    padding: 0 0 0em 0;
+    font-size: .95em;
+    color: $primaryColor !important;
+}

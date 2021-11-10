@@ -1,0 +1,12 @@
+<div *ngIf="loading" class="loading-container flex-content-center">
+  <!-- <mat-progress-spinner  
+      color="primary"
+      mode="indeterminate">
+    </mat-progress-spinner> -->
+  <img style="width:150px; " src="/assets/images/loader.gif" />
+</div>
+<div class="body_area">
+  <app-header></app-header>
+  <router-outlet></router-outlet>
+  <app-footer></app-footer>
+</div>

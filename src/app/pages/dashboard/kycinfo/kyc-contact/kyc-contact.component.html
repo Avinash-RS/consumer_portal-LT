@@ -1,0 +1,285 @@
+<div class="joining-personal-wrapper">
+    <h1>
+        Contact Details
+    </h1>
+
+    <div class="grids-wrapper">
+        <form class="contactForm" [formGroup]="contactForm" (ngSubmit)="formSubmit()">
+
+            <div class="row-wrapper">
+                <div class="overall-input-wrapper width-70">
+                    <label>Mobile No.<span>*</span></label>
+                    <mat-form-field appearance="fill">
+                    <input matInput placeholder="Enter here" class="input" type="text" [formControlName]="form_mobile">
+                </mat-form-field>
+                    <div class="form-error" *ngIf="mobile?.invalid && mobile?.touched">
+                        <div *ngIf="mobile?.errors?.required">Mobile No. is Required</div>
+                        <div *ngIf="mobile?.errors?.mobileRegex">Please enter a valid 10 digit mobile number</div>
+                    </div>
+                </div>
+
+                <div class="overall-input-wrapper width-70">
+                    <label>Alternate Mobile No.</label>
+                    <mat-form-field appearance="fill">
+                    <input matInput placeholder="Enter here" class="input" type="text" [formControlName]="form_alternate_mobile">
+                </mat-form-field>
+                    <div class="form-error" *ngIf="alternate_mobile?.invalid && alternate_mobile?.touched">
+                        <div *ngIf="alternate_mobile?.errors?.required">Mobile No. is Required</div>
+                        <div *ngIf="alternate_mobile?.errors?.mobileRegex">Please enter a valid 10 digit mobile number</div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row-wrapper">
+                <div class="overall-input-wrapper width-70">
+                    <label>Email ID<span>*</span></label>
+                    <mat-form-field appearance="fill">
+                    <input matInput placeholder="Enter here" class="input" type="text" [formControlName]="form_email">
+                </mat-form-field>
+                    <div class="form-error" *ngIf="email?.invalid && email?.touched">
+                        <div *ngIf="email?.errors?.required">Email ID is Required</div>
+                        <div *ngIf="email?.errors?.email">Not an Valid Email ID</div>
+                    </div>
+                </div>
+                <div class="overall-input-wrapper width-70">
+                    <label>Alternate Email ID</label>
+                    <mat-form-field appearance="fill">
+                    <input matInput placeholder="Enter here" class="input" type="text" [formControlName]="form_personal_email">
+                   </mat-form-field>
+                    <div class="form-error" *ngIf="personal_email?.invalid && personal_email?.touched">
+                        <div *ngIf="personal_email?.errors?.required">Alternate Email ID is Required</div>
+                        <div *ngIf="personal_email?.errors?.email">Not an Valid Email ID</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row-wrapper">
+                <div class="overall-input-wrapper width-100">
+                    <label>Present Address</label>
+                    <mat-form-field appearance="fill" style="width: 84%;margin-left: 0px;">
+                        <textarea matInput [formControlName]="form_present_address_1"></textarea>
+                    </mat-form-field>
+                    <div class="form-error" *ngIf="present_address_1.invalid && present_address_1.touched">
+                        <div *ngIf="present_address_1.errors?.required">Address is Required</div>
+                        <div *ngIf="present_address_1.errors?.address255">Maximum of 255 Characters only allowed.</div>
+                        <div *ngIf="present_address_1.errors?.address255">Allowed special characters <span style="font-size: 13px;"> - . , :  ;  / .</span></div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- <div class="row-wrapper">
+                <div class="overall-input-wrapper width-100">
+                    <label>Present Address 2</label>
+                    <mat-form-field appearance="fill">
+                    <input matInput placeholder="Enter here"  type="text"
+                        [formControlName]="form_present_address_2">
+                    </mat-form-field>
+                    <div class="form-error" *ngIf="present_address_2.invalid && present_address_2.touched">
+                        <div *ngIf="present_address_2.errors?.required">Address 2 is Required</div>
+                        <div *ngIf="present_address_2.errors?.address255">Maximum of 255 Characters only allowed.</div>
+                        <div *ngIf="present_address_2.errors?.address255">Allowed special characters <span style="font-size: 13px;"> - . , :  ;  / .</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row-wrapper">
+                <div class="overall-input-wrapper width-100">
+                    <label>Present Address 3</label>
+                    <mat-form-field appearance="fill">
+                    <input matInput placeholder="Enter here" type="text"
+                        [formControlName]="form_present_address_3">
+                    </mat-form-field>
+                    <div class="form-error" *ngIf="present_address_3.invalid && present_address_3.touched">
+                        <div *ngIf="present_address_3.errors?.required">Address 3 is Required</div>
+                        <div *ngIf="present_address_3.errors?.address255">Maximum of 255 Characters only allowed.</div>
+                        <div *ngIf="present_address_3.errors?.address255">Allowed special characters <span style="font-size: 13px;"> - . , :  ;  / .</span></div>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="row-wrapper">
+                <div class="overall-input-wrapper width-70">
+                    <label>Present Country/Region</label>
+                    <mat-form-field appearance="fill">
+                    <mat-select [formControlName]="form_present_region" (selectionChange)="changePresentRegion($event)">
+                        <mat-option *ngFor="let region of regionList" [value]="region.countryname">{{region.countryname}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                    <div class="form-error" *ngIf="present_region?.invalid && present_region?.touched">
+                        <div *ngIf="present_region?.errors?.required">Present country is Required</div>
+                    </div>
+                </div>
+
+                <div class="overall-input-wrapper width-70">
+                    <label>Present State/Province</label>
+                <mat-form-field appearance="fill">
+                    <mat-select  [formControlName]="form_present_state" (selectionChange)="chanegepresenetState($event)">
+                        <mat-option *ngFor="let state of presentState" [value]="state.statename">{{state.statename}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                    <div class="form-error" *ngIf="present_state?.invalid && present_state?.touched">
+                        <div *ngIf="present_state?.errors?.required">Present state is Required</div>
+                    </div>
+                </div>
+
+         
+            </div>
+
+            <div class="row-wrapper">
+                       <div class="overall-input-wrapper width-70">
+                    <label>Present City</label>
+                    <mat-form-field appearance="fill">
+                    <mat-select [formControlName]="form_present_city">
+                        <mat-option *ngFor="let city of presentCity" [value]="city.districtname">{{city.districtname}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                    <div class="form-error" *ngIf="present_city?.invalid && present_city?.touched">
+                        <div *ngIf="present_city?.errors?.required">Present city is Required</div>
+                    </div>
+                </div>
+
+                <div class="overall-input-wrapper width-70">
+                    <label>Present Postal/Zip code</label>
+                    <mat-form-field appearance="fill">
+                    <input matInput placeholder="Enter here"  type="text"
+                        [formControlName]="form_present_zip_code">
+                    </mat-form-field>
+                    <div class="form-error" *ngIf="present_zip_code?.invalid && present_zip_code?.touched">
+                        <div *ngIf="present_zip_code?.errors?.required">Present zip code is Required</div>
+                        <div *ngIf="present_zip_code?.errors?.zipOnly">Should be numberic only and should be exact 6 digits</div>
+                    </div>
+                </div>
+     
+            </div>
+
+            <div class="row-wrapper">
+                <div class="overall-input-wrapper width-100">
+                        <mat-checkbox (change)="matchangeYes($event)" [formControlName]="form_same_as_checkbox">Same as present address</mat-checkbox>
+                </div>
+             </div>
+
+<!-- Permanent -->
+<ng-container *ngIf="!contactForm['value'][form_same_as_checkbox]">
+<div class="row-wrapper">
+    <div class="overall-input-wrapper width-100">
+        <label>Permanent Address</label>
+            <mat-form-field appearance="fill" style="width: 84%;margin-left: 0px;">
+                <textarea matInput [formControlName]="form_permanent_address_1"></textarea>
+            </mat-form-field>
+        <div class="form-error" *ngIf="permanent_address_1.invalid && permanent_address_1.touched">
+            <div *ngIf="permanent_address_1.errors?.required">Address 1 is Required</div>
+            <div *ngIf="permanent_address_1.errors?.address255">Maximum of 255 Characters only allowed.</div>
+            <div *ngIf="permanent_address_1.errors?.address255">Allowed special characters <span style="font-size: 13px;"> - . , :  ;  / .</span></div>
+</div>
+    </div>
+</div>
+
+<!-- <div class="row-wrapper">
+    <div class="overall-input-wrapper width-100">
+        <label>Permanent Address 2</label>
+        <mat-form-field appearance="fill">
+        <input matInput placeholder="Enter here"  type="text"
+            [formControlName]="form_permanent_address_2">
+            </mat-form-field>
+        <div class="form-error" *ngIf="permanent_address_2.invalid && permanent_address_2.touched">
+            <div *ngIf="permanent_address_2.errors?.required">Address 2 is Required</div>
+            <div *ngIf="permanent_address_2.errors?.address255">Maximum of 255 Characters only allowed.</div>
+            <div *ngIf="permanent_address_2.errors?.address255">Allowed special characters <span style="font-size: 13px;"> - . , :  ;  / .</span></div>
+        </div>
+    </div>
+</div>
+
+<div class="row-wrapper">
+    <div class="overall-input-wrapper width-100">
+        <label>Permanent Address 3</label>
+        <mat-form-field appearance="fill">
+        <input matInput placeholder="Enter here"  type="text"
+            [formControlName]="form_permanent_address_3">
+            </mat-form-field>
+        <div class="form-error" *ngIf="permanent_address_3.invalid && permanent_address_3.touched">
+            <div *ngIf="permanent_address_3.errors?.required">Address 3 is Required</div>
+            <div *ngIf="permanent_address_3.errors?.address255">Maximum of 255 Characters only allowed.</div>
+            <div *ngIf="permanent_address_3.errors?.address255">Allowed special characters <span style="font-size: 13px;"> - . , :  ;  / .</span></div>
+        </div>
+    </div>
+</div> -->
+
+<div class="row-wrapper">
+    <div class="overall-input-wrapper width-70">
+        <label>Permanent Country/Region</label>
+        <mat-form-field appearance="fill">
+        <mat-select [formControlName]="form_permanent_region" (selectionChange)="changePermanentRegion($event)">
+            <mat-option *ngFor="let region of regionList"  [value]="region.countryname">{{region.countryname}}</mat-option>
+        </mat-select>
+        </mat-form-field>
+        <div class="form-error" *ngIf="permanent_region?.invalid && permanent_region?.touched">
+            <div *ngIf="permanent_region?.errors?.required">Permanent country is Required</div>
+        </div>
+    </div>
+    
+    <div class="overall-input-wrapper width-70">
+        <label>Permanent State/Province</label>
+        <mat-form-field appearance="fill">
+        <mat-select  [formControlName]="form_permanent_state" (selectionChange)="chanegePeramanentState($event)">
+            <mat-option *ngFor="let state of permanentState" [value]="state.statename">{{state.statename}}</mat-option>
+        </mat-select>
+        </mat-form-field>
+        <div class="form-error" *ngIf="permanent_state?.invalid && permanent_state?.touched">
+            <div *ngIf="permanent_state?.errors?.required">Permanent state is Required</div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row-wrapper">
+    <div  class="overall-input-wrapper width-70">
+        <label>Permanent City</label>
+        <mat-form-field appearance="fill">
+        <mat-select [formControlName]="form_permanent_city">
+            <mat-option *ngFor="let city of permanentCity" [value]="city.districtname">{{city.districtname}}</mat-option>
+        </mat-select>
+        </mat-form-field>
+        <div class="form-error" *ngIf="permanent_city?.invalid && permanent_city?.touched">
+            <div *ngIf="permanent_city?.errors?.required">Permanent city is Required</div>
+        </div>
+    </div>
+    <div class="overall-input-wrapper width-70">
+        <label>Permanent Postal/Zip code</label>
+        <mat-form-field appearance="fill">
+
+        <input matInput placeholder="Enter here"  type="text"
+            [formControlName]="form_permanent_zip_code">
+        </mat-form-field>
+        <div class="form-error" *ngIf="permanent_zip_code?.invalid && permanent_zip_code?.touched">
+            <div *ngIf="permanent_zip_code?.errors?.required">Permanent zip code is Required</div>
+            <div *ngIf="permanent_zip_code?.errors?.zipOnly">Should be numberic only and should be exact 6 digits</div>
+        </div>
+    </div>
+</div>
+</ng-container>
+            <div class="row-wrapper justify-content-between  align-items-center mt-4 mb-3 footer" style="margin-top: 40px;">
+                <div (click)="navigatePrevNext('Personal')" class="footerArrow d-flex align-content-center align-items-center position-relative" style="cursor: pointer;">
+                    <div class="footer-arrow left-arrow position-absolute"></div>
+                    <div class="sections left-space">
+                        <div class="label">Previous Section</div>
+                        <div class="value">Personal Details</div>
+                    </div>
+                </div>
+                <button class="submit joining-form-submit mt-1 animation-zoom no-flickr" mat-raised-button type="submit">Save &
+                    Continue</button>
+                <div footerArrow (click)="navigatePrevNext('Passport')" class="footerArrow d-flex align-content-center align-items-center text-right position-relative pointer" style="cursor: pointer;" >
+                    <div class="footer-arrow right-arrow position-absolute footer-arrow"></div>
+                    <div class="sections right-space">
+                        <div class="label">Next Section</div>
+                        <div class="value">Passport Details</div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+        <div class="photo-wrapper">
+        </div>
+    </div>
+
+</div>

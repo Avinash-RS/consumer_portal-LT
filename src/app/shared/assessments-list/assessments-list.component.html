@@ -1,0 +1,94 @@
+<section class="assessmentSection">
+    <div class="container">
+        <div class="heading2">Industry Leader in Engineering</div>
+        <div class="filterSection">
+            <nav>
+                <ng-container *ngFor="let tab of tabValues">
+                    <a [ngClass]="tab.isSelected ? 'active': '' " (click)="getArea(tab.cid)">{{tab.name}}</a>
+                </ng-container>
+            </nav>
+            <!-- <button class="filter"><em class="icon-Filter"></em><span>Filters</span></button> Dont Delete this line -->
+        </div>
+        <div class="assessmentList" [@listAnimation]="areaCards.length">
+            <ng-container *ngIf ="noDataSkeleton">
+                <div class="skeletonWrapper">
+                    <div class="items">
+                        <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '50px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
+                        <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', 'margin-top': '10px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
+                        <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
+                        <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
+                    </div>
+                    <div class="items">
+                        <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '50px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
+                        <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', 'margin-top': '10px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
+                        <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
+                        <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
+                    </div>
+                    <div class="items">
+                        <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '50px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
+                        <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', 'margin-top': '10px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
+                        <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
+                        <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
+                    </div>
+                    <div class="items">
+                        <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '50px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
+                        <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', 'margin-top': '10px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
+                        <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
+                        <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container *ngIf ="areaCards?.length > 0">
+                <ng-container *ngFor="let cards of areaCards">
+                    <div class="list" (click)="aboutAssessment(cards.cid)">
+                        <figure>
+                            <img [src] = "cards.image.url" alt="" />
+                            <!-- <button class="topRated">Top Rated</button> Dont Delete this line -->
+                        </figure>
+                        <div class="listDescription">
+                            <!-- <div class="heart"><em class="icon-Favorite"></em></div> Dont Delete this line-->
+                            <div class="headings">
+                                <span class="domainName">{{cards.domainName}}</span>
+                                <span class="heading6">{{cards.name}}</span>
+                            </div>
+                            <div class="ratingSkills">
+                                <!--  Dont Delete this div <div>
+                                    <span class="commonStyle">Rating</span>
+                                    <span class="ratingStar">
+                                        <em class="icon-Star"></em>
+                                        <em class="icon-Star"></em>
+                                        <em class="icon-Star"></em>
+                                    </span>
+                                </div> -->
+                                <div>
+                                    <span class="commonStyle">Skill Level</span>
+                                    <span class="iconwithText"><em class="icon-Level2"></em> Intermediate</span>
+                                </div>
+                            </div>
+                            <div class="assessmentDuration">
+                                <div>
+                                    <span class="commonStyle">No. of Assessments</span>
+                                    <span class="iconwithText"><em class="icon-Document"></em> {{cards.totalAssessment}}</span>
+                                </div>
+                                <div style="display: none;">
+                                    <span class="commonStyle">Duration</span>
+                                    <span class="iconwithText"><em class="icon-Time"></em> {{cards.totalDuration}}h</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </ng-container>
+            <div *ngIf="noDataFound" class="noDataFound">
+                <figure>
+                    <img src="/assets/images/no-categories.svg" alt="" />
+                </figure>
+                <div class="heading3">no categories found</div>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+        <div *ngIf="viewMore" class="viewMore">
+            <button (click)="catalogHome()">View More <em class="icon-RightArrow"></em></button>
+        </div>
+    </div>
+</section>

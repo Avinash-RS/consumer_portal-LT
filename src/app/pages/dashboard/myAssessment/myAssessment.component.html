@@ -1,0 +1,72 @@
+<section class="myAssesmentSection">
+    <div class="titleContainer">
+        <div class="container titelFlex">
+            <div class="txt-area"><h1>Dashboard</h1></div>
+            <!-- <button mat-flat-button><em class="icon-Favorite"></em> &nbsp; Wishlist </button> -->
+            <div class="progress-area">
+                <span>{{profilePercentage}}% of your profile is complete</span>
+                <mat-progress-bar class="progressbar" mode="determinate" bufferValue ="100" [value]="profilePercentage"></mat-progress-bar>
+            </div>
+        </div>
+    </div>
+    <div class="filterBg">
+        <div class="container filterSection">
+            <nav>
+                <ng-container *ngFor="let tab of tabList">
+                    <a [ngClass]="tab.isActive ? 'active': '' " (click)="getmyAssesments(tab)">{{tab.tabName}}</a>
+                </ng-container>
+            </nav>
+            <!-- <button class="filter"><em class="icon-Filter"></em><span>Filters</span></button> -->
+        </div>
+    </div>
+    <section *ngIf="assessmentList.length == 0" class="emptyCart">
+        <div class="imgContainer">
+            <figure>
+                <img src="/assets/images/empty-assessment.png" alt="" />
+                <div class="heading3">No assessments found</div>
+                <button (click)="toCatalogue()">Go to Catalogue</button>
+            </figure>
+        </div>
+    </section>
+    <div class="container" *ngIf="assessmentList.length > 0">
+        <div class="toolbar">
+            <span class="list"><em class="icon-List"></em></span>
+            <span class="grid"><em class="icon-Grid"></em></span>
+            <button mat-stroked-button><em class="icon-Filter"></em> &nbsp; Filters </button>
+        </div>
+        <!-- <div class="notifyInfo" *ngIf="showInfoPop">
+            <div>
+                <p><em class="icon-Info"></em> A "Go to Test" link will be enabled on 15 minutes before your exam schedule.</p>
+            </div>
+            <div (click)="showInfoPop=false"><em class="icon-Close"></em></div>
+        </div> -->
+        <div class="assesmentList">
+            <div class="assesmentItem" *ngFor="let item of assessmentList">
+                <figure>
+                    <img [src]="item.assessmentDetails?.image?.url" alt="" />
+                </figure>
+                <div class="itemNames">
+                    <span>{{item.cart.competencyName}}</span>
+                    <div class="heading4">{{item.cart.assessmentName}}</div>
+                    <label>{{item.cart.levelName}}</label>
+                </div>
+                <div class="itemTypes">
+                    <div *ngFor="let testType of item.assessmentDetails.testTypes index as i">
+                        <span class="ellipse" [ngClass]="testType.teststatus==='Completed'?'green':''"></span>
+                        <div class="heading">{{testType.testName}}</div>
+                        <span class="assessmentHour">{{testType.sumtotalhour}}Min(s)<span>|</span> {{testType.totalQuestion}} Questions</span>
+                        <div class="gotoExamBtnInnerDiv" *ngIf="!testType.bookaslotstatus"><button (click)="bookSlot(item,i)">Book a slot</button></div>
+                        <span *ngIf="testType.bookaslotstatus" class="reschedulespan" (click)="bookSlot(item,i,1)">Reschedule</span>
+                        <div class="assessmentHourbold" *ngIf="testType.bookaslotstatus&& testType.teststatus!=='Completed'">{{testType.bookeddate|date : 'M/d/y'}} {{testType.bookeddate|date : 'hh:mm a'}}</div>
+                        <div class="assessmentHourbold" style="color:green" *ngIf="testType.bookaslotstatus&& testType.teststatus==='Completed'">Completed</div>
+                    </div>
+                    <div>
+                        <div class="gotoExamBtn">
+                            <button [ngClass]="item.assessmentDetails.showExamBtn?item.assessmentDetails.assmentstatus==='Completed'?'disable':'':'disable'"  (click)="item.assessmentDetails.showExamBtn?item.assessmentDetails.assmentstatus==='Completed'?'':uapRedirect(item.assessmentDetails.assessmentId):''">Go to Test</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,212 @@
+@import "variables";
+// Thank you for Purchase Starts
+.thankyouMessage {
+    text-align: center;
+    .container {
+        margin-top: 1.5em;
+    }
+    figure {
+        img {
+            width: 50px;
+            height: 50px;
+        }
+    }
+    .heading3 {
+        text-transform: uppercase;
+        font-weight: 700;
+        margin: 0.25em 0;
+    }
+    .heading5 {
+        color: $darkGrey;
+        margin: 0.45em 0 0.65em 0;
+        span {
+            color: $primaryColor;
+        }
+    }
+    p {
+        color: $mediumGrey;
+        font-size: 0.93em;
+        line-height: 1.4;
+    }
+}
+
+.orderDetails {
+    border: 1px solid $lightGrey;
+    border-style: dashed;
+    padding: 1.5em 1.5em 1.5em 1.5em;
+    margin-top: 3em;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.positionChange {
+    position: absolute;
+    width: 100%;
+    left: 50%;
+    top: -0.85em;
+    transform: translateX(-50%);
+    span {
+        background-color: $whiteColor;
+        padding: 0.15em 0.5em;
+    }
+}
+.orders {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.orderHeading {
+    display: flex;
+    span {
+        color: $lightGrey;
+        font-size: 0.937em;
+        font-weight: 400;
+        line-height: normal;
+    }
+}
+.orderContent {
+    > div {
+        width: 100%;
+        display: flex;
+        span {
+            width: 100%;
+            &:first-child {
+                @include lg {
+                    width: 35%;
+                }
+            }
+            @include sm {
+                width: 48%;
+            }
+            @include md {
+                width: 31%;
+            }
+            @include lg {
+                width: 14.5%;
+            }
+        }
+    }
+    .heading5 {
+        margin: 0;
+        text-align: left;
+        color: $blackColor;
+        font-weight: 400;
+        line-height: 1.5;
+    }
+}
+.commonClass {
+    width: 100%;
+    margin-top: 1em;
+    &:first-child {
+        @include lg {
+            width: 35%;
+        }
+    }
+    @include sm {
+        width: 48%;
+    }
+    @include md {
+        width: 31%;
+    }
+    @include lg {
+        width: 14.5%;
+    }
+    span {
+        display: block;
+        text-align: left;
+    }
+    .heading5 {
+        margin: 0;
+    }
+}
+.bookASlot {
+    position: relative;
+    .closeBtn {
+        position: absolute;
+        right: 1.5em;
+        top: 1.5em;
+        cursor: pointer;
+    }
+    .heading3 {
+        border-bottom: 1px solid $greyColor;
+        margin: 0;
+        padding: 0.65em 1em;
+    }
+}
+.bookSlot {
+    margin-top: 5em;
+    background-color: #E1E1E1;
+    padding: 0.75em 1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: left;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.25);
+    overflow: hidden;
+    position: relative;
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 4px;
+        height: 100%;
+        background-color: $primaryColor;
+    }
+    > div {
+        &:first-child {
+            width: 100%;
+            @include sm {
+                width: 80%;
+            }
+            @include lg {
+                width: 85%;
+            }
+        }
+        &:last-child {
+            width: 100%;
+            margin-top: 0.5em;
+            text-align: center;
+            @include sm {
+                width: 18%;
+                margin-top: 0;
+                text-align: right;
+            }
+            @include lg {
+                width: 13%;
+            }
+        }
+    }
+    .heading6 {
+        font-weight: 700;
+        line-height: 1.4;
+    }
+    p {
+        color: $mediumGrey;
+        font-size: 1em;
+        font-weight: 400;
+        margin: 0;
+        line-height: 1.4;
+    }
+    .slotBooking {
+        @include buttonFilled;
+        width: auto;
+        padding-left: 1.25em;
+        padding-right: 1.25em;
+        line-height: 1.5;
+        @include sm {
+            width: 100%;
+        }
+    }
+}
+
+//
+
+
+// Thank you for Purchase Ends

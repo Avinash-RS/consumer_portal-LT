@@ -1,0 +1,456 @@
+<section class="userProfile">
+    <div class="banner">
+        <div class="container title-container">
+            <div class="heading3">User Profile</div>
+            <div class="progress-area">
+                <span>{{profilePercentage}}% of your profile is complete</span>
+                <mat-progress-bar class="progressbar" mode="determinate" [value]="profilePercentage" bufferValue ="100"></mat-progress-bar>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="userSection">
+            <div class="userHeading">
+                <ul class="user" *ngFor="let value of selectionTypes" [ngClass]="{'active': value.Active}"  (click)="selection = value.tabname; selectTypes(value);">
+                    <li *ngIf="value.tabname !='KYC'" (click)="openKYCPannel= false">{{value.title}}</li>
+
+<li *ngIf="value.tabname =='KYC'" (click)="selection = value.tabname">
+    <div class="KycHeader" (click)="openKYCPannel=!openKYCPannel">
+        <div>{{value.title}}</div>
+        <div>
+            <mat-icon *ngIf="!openKYCPannel">expand_more</mat-icon>
+            <mat-icon *ngIf="openKYCPannel">expand_less</mat-icon>
+        </div>
+    </div>
+    <div *ngIf="openKYCPannel" class="Kycdetail" [@enterAnimation]>
+           <li *ngFor="let KYCvalue of value.child" [ngClass]="{'Kycactive': KYCvalue.Active}" (click)="ChangeKycTabs(KYCvalue.tab)">
+              {{KYCvalue.title}}
+            </li> 
+    </div>
+</li>
+                </ul>
+            </div>
+            <div class="userDescription" [ngSwitch]="selection">
+                <div class="profile" *ngSwitchDefault>
+                    <div class="heading3">Profile</div>
+                    <p class="desc">Add information about yourself</p>
+                    <div class="imageupdate">
+                        <figure>
+                            <!-- <span *ngIf="!imageURL"><em class="icon-User"></em></span> -->
+                                <img *ngIf="!imageURL"  class="nonurlimg" src="../../../../assets/images/profile_camera.svg" alt="" />
+                                <!-- <div class="sub-img-area">
+                                    <img  class="nonurlSubimg" src="../../../../assets/images/profile_sub_img.svg" alt="" />
+                                    Click and Upload your photo here
+                                </div> -->
+                            <img *ngIf="imageURL" class="urlimg" [src]="imageURL + blobToken" alt="" />
+                            <div (click)="imageInput.click()"><em class="icon-Edit"></em></div>
+                        </figure>
+                        <input style="display: none;" [id]="'imageInput'" type="file" #imageInput (change)="getprofileImgUpdate($event)" />
+                        <span class="changePic" (click)="imageInput.click()">Change Photo</span>
+                    </div>
+                    <form [formGroup]="addressEntryForm" autocomplete="off" (submit)="profileSubmit()">
+                        <div class="formFields">
+                            <div>
+                                <label>First Name <span>*</span></label>
+                                <mat-form-field appearance="fill">
+                                    <input type="text" matInput placeholder="First Name" formControlName="firstname">
+                                </mat-form-field>
+                                <ng-container *ngIf="firstname.invalid && firstname.touched">
+                                    <mat-error *ngIf="firstname.errors?.required" class="error">{{'First name is required'}}</mat-error>
+                                    <mat-error *ngIf="firstname.errors?.alphaNum30" class="error">{{'Alpha numeric with maximum of 30 characters only allowed'}}</mat-error>
+                                </ng-container>
+                            </div>
+                            <div>
+                                <label>Last Name <span>*</span></label>
+                                <mat-form-field appearance="fill">
+                                    <input type="text" matInput placeholder="Last Name" formControlName="lastname">
+                                </mat-form-field>
+                                <ng-container *ngIf="lastname.invalid && lastname.touched">
+                                    <mat-error *ngIf="lastname.errors?.required" class="error">{{'Last name is required'}}</mat-error>
+                                    <mat-error *ngIf="lastname.errors?.alphaNum30" class="error">{{'Alpha numeric with maximum of 30 characters only allowed'}}</mat-error>
+                                </ng-container>
+                            </div>
+                            <div>
+                                <label>Email Address <span>*</span></label>
+                                <mat-form-field appearance="fill">
+                                    <input type="email" matInput placeholder="Email Address" formControlName="email" readonly>
+                                </mat-form-field>
+                                <ng-container *ngIf="email.invalid && email.touched">
+                                    <mat-error class="error" *ngIf="email.errors?.email">{{'Please enter a valid email address'}}</mat-error>
+                                    <mat-error *ngIf="email.errors?.required" class="error">{{'Email is required'}}</mat-error>
+                                </ng-container>
+                            </div>
+                            <div>
+                                <label>Mobile <span>*</span></label>
+                                <mat-form-field appearance="fill">
+                                    <input type="tel" maxlength="10" matInput placeholder="9876543210" formControlName="mobile">
+                                </mat-form-field>
+                                <ng-container *ngIf="mobile.invalid && mobile.touched">
+                                    <mat-error *ngIf="mobile.errors?.required" class="error">{{'Mobile number is required'}}</mat-error>
+                                    <mat-error *ngIf="mobile.errors?.alphaNum30" class="error">{{'Please enter valid mobile number'}}</mat-error>
+                                </ng-container>
+                            </div>
+                            <div>
+                                <label>DOB <span>*</span></label>
+                                <mat-form-field appearance="fill">
+                                    <input placeholder="DD/MM/YYYY" matInput [matDatepicker]="picker" formControlName="dob" readonly>
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                            <div>
+                                <label>Gender <span>*</span></label>
+                                <mat-radio-group required aria-label="Select an option" formControlName="gender">
+                                    <mat-radio-button value="1">Male</mat-radio-button>
+                                    <mat-radio-button value="2">Female</mat-radio-button>
+                                    <mat-radio-button value="3">Other</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                        </div>
+                        <div class="primaryAccount">
+                            <div class="heading">Primary Account Email</div>
+                            <p><span>{{userDetails.email}}</span> This is your primary Email Address for LNT iGGnite Account. <br />Primary account email can not be changed.</p>
+                        </div>
+                        <button type="submit" class="save">Save</button>
+                    </form>
+                </div>
+                <div *ngSwitchCase="'KYC'">
+                        <app-kycinfo [selectedmenu] = "selectedKycTab"></app-kycinfo>
+                </div>
+                <div *ngSwitchCase="'skill'">
+                    <div class="heading3">My Skill Zone</div>
+                    <!-- <p class="desc">Lorem Ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
+                    <div class="recommended">
+                        <div class="heading5">Top <span>03</span> Jobs recommended</div>
+                        <div class="progressBar">
+                            <div>
+                                <p><span>{{value}}%</span> for Structural Engineer</p>
+                                <mat-progress-bar mode="determinate" value="50"></mat-progress-bar>
+                            </div>
+                            <div>
+                                <p><span>{{value1}}%</span> for CADTechnician</p>
+                                <mat-progress-bar mode="determinate" value="64"></mat-progress-bar>
+                            </div>
+                            <div>
+                                <p><span>{{value2}}%</span> for Site Engineer</p>
+                                <mat-progress-bar mode="determinate" value="79"></mat-progress-bar>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="myProgression">
+                        <div class="progressionChart">
+                            <div class="heading5">My Progression</div>
+                            <div class="charTopSpace">
+                                <app-barChart [orientation]="'y'" [chartType]="'bar'" [values]="skillScores" [labels]="skillNames" ></app-barChart>
+                            </div>
+                        </div>
+                        <div class="badgesSection">
+                            <div>
+                                <p class="stars">05<span>Domain</span></p>
+                                <div>
+                                    <p>05 <span>Skills</span></p>
+                                    <p>05 <span>Badges</span></p>
+                                    <p>00 <span>Certifications</span></p>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="heading5">Earn Badges</div>
+                                <div class="badges">
+                                    <figure>
+                                        <img src="/assets/images/badges/cup2.png" alt="" />
+                                    </figure>
+                                    <figure>
+                                        <img src="/assets/images/badges/cup3.png" alt="" />
+                                    </figure>
+                                    <figure>
+                                        <img src="/assets/images/badges/badge1.png" alt="" />
+                                    </figure>
+                                    <figure>
+                                        <img src="/assets/images/badges/badge2.png" alt="" />
+                                    </figure>
+                                    <figure>
+                                        <img src="/assets/images/badges/badge3.png" alt="" />
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skills">
+                        <div class="skillBarChart">
+                            <div class="heading5">Skill Distribution</div>
+                            <div class="charTopSpace">
+                            <app-barChart [orientation]="'x'" [chartType]="'bar'" [values]="skillScores" [labels]="skillNames"></app-barChart>
+                            </div>
+                        </div>
+                        <div class="skillRadarChart">
+                            <div class="heading5">Skills Distribution</div>
+                            <div class="charTopSpace">
+                            <app-barChart [chartType]="'radar'" [values]="skillScores" [labels]="skillNames"></app-barChart>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="certificaitonBadges">
+                        <div class="heading3">My Certification / Badges<span class="addDialog" (click)="addBadge(addNewBadge)"> <em class="icon-Add"></em> Add</span></div>
+                        <div class="col" >
+                            <div *ngFor="let item of certificationList">
+                                <span class="label">{{item.domainname}}</span>
+                                <div class="heading5">{{item.name}}</div>
+                                <span class="level">{{item.levelname}}</span>
+                                <div class="completionExpired">
+                                    <div>
+                                        <div>
+                                            <span>Completion</span>
+                                            <span>{{item.completeddate|date : 'dd/MM/y'}}</span>
+                                        </div>
+                                        <div>
+                                            <span>Expired</span>
+                                            <span>{{item.expireddate|date : 'dd/MM/y'}}</span>
+                                        </div>
+                                    </div>
+                                    <figure>
+                                        <img src="/assets/images/badges/{{item.badgename}}" alt="" />
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngSwitchCase="'account'">
+                    <div class="heading3">Account Settings</div>
+                    <p class="desc">Edit your account settings and change your password here.</p>
+                    <form [formGroup]="accountSettingsForm" autocomplete="off" (submit)="changePassword()">
+                    <div class="formFields">
+                        <div>
+                            <label>Email Address</label>
+                            <mat-form-field appearance="fill">
+                                <input type="email" matInput placeholder="{{userDetails.email}}" readonly>
+                            </mat-form-field>
+                            <span class="security">For your security, if you change your email address your saved data information will be deleted.</span>
+                            
+                        </div>
+                        <div>
+                            <label>Current Password</label>
+                            <mat-form-field appearance="fill">
+                                <input type="password" matInput autocomplete="Off" placeholder="" formControlName="cp_currentPassword" >
+                            </mat-form-field>
+                            <ng-container *ngIf="cp_currentPassword.invalid && cp_currentPassword.touched">
+                                <mat-error *ngIf="cp_currentPassword.errors?.required" class="error">{{'Password is required'}}</mat-error>
+                                <mat-error *ngIf="cp_currentPassword.errors?.minlength" class="error">{{'Minimum 8 characters required'}}</mat-error>
+                                <mat-error *ngIf="cp_currentPassword.errors?.maxlength" class="error">{{'Maximum 32 characters only allowed'}}</mat-error>
+                                <mat-error style="max-width: 55%;" *ngIf="cp_currentPassword.errors?.password" class="error">{{'The password should consist of 1 uppercase, 1 lowercase,1 number and 1 special character [*.!@#$%^&(){}[]:;<>,.?/~_+-=|\].'}}</mat-error>
+                            </ng-container> 
+                        </div>
+                        <div>
+                            <label>New Password</label>
+                            <mat-form-field appearance="fill">
+                                <input type="password" matInput autocomplete="Off" placeholder="" formControlName="password">
+                            </mat-form-field>
+                            <ng-container *ngIf="password.invalid && password.touched">
+                                <mat-error *ngIf="password.errors?.required" class="error">{{'Password is required'}}</mat-error>
+                                <mat-error *ngIf="password.errors?.minlength" class="error">{{'Minimum 8 characters required'}}</mat-error>
+                                <mat-error *ngIf="password.errors?.maxlength" class="error">{{'Maximum 32 characters only allowed'}}</mat-error>
+                                <mat-error style="max-width: 55%;" *ngIf="password.errors?.password" class="error">{{'The password should consist of 1 uppercase, 1 lowercase,1 number and 1 special character [*.!@#$%^&(){}[]:;<>,.?/~_+-=|\].'}}</mat-error>
+                            </ng-container> 
+                        </div>
+                        <div>
+                            <label>Re-type New Password</label>
+                            <mat-form-field appearance="fill">
+                                <input type="password" matInput autocomplete="Off" placeholder="" formControlName="password2">
+                            </mat-form-field>
+                            <ng-container *ngIf="password2.invalid && password2.touched || (accountSettingsForm.errors?.notMatch && (accountSettingsForm.touched || accountSettingsForm.dirty))">
+                                <mat-error *ngIf="password2.invalid && password2.touched && password2.errors?.required" class="error">{{'Confirm Password is required'}}</mat-error>
+                                <mat-error *ngIf="!password2.errors?.required && accountSettingsForm.errors?.notMatch" class="error">{{'Confirm Password should match the Password'}}</mat-error>
+                            </ng-container>
+                        </div>
+                        <div style="text-align: center;">
+                            <button type="submit" [class]="accountSettingsForm.valid?'save':'disable'">Change Password</button>
+                        </div>
+                    </div>
+                </form>
+                </div>
+                <div *ngSwitchCase="'history'"  (click)="getpurchasehistory()">
+                    <div class="heading3">Purchase History</div>
+                    <p class="desc">Showing all your purchase history here.</p>
+                    <div class="purchasingHistory">
+                        <div  *ngFor="let item of purchaseList">
+                            <figure>
+                                <img [src]="item.assessmentDetails?.image?.url" alt="" />
+                            </figure>
+                            <div class="itemNames">
+                                <span class="title">{{item.cart.competencyName}}</span>
+                                <div class="heading4">{{item.cart.assessmentName}}</div>
+                                <span class="label">{{item.cart.levelName}}</span>
+                            </div>
+                            <div class="orderDetails">
+                                <div class="order">
+                                    <div>
+                                        <span class="orderHeading">Order Date</span>
+                                        <span class="orderDesc">{{item.createdOn|date : 'MMM d, y'}}</span>
+                                    </div>
+                                    <div>
+                                        <span class="orderHeading">Total price</span>
+                                        <span class="orderDesc">₹ {{item.cart.total_amount}}</span>
+                                    </div>
+                                </div>
+                                <div class="order">
+                                    <div>
+                                        <span class="orderHeading">Order #</span>
+                                        <span class="orderDesc">{{item.order_id}}</span>
+                                    </div>
+                                    <div>
+                                        <span class="orderHeading">Payment type</span>
+                                        <span class="orderDesc">Visa **********0000</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="reciept">
+                                <button>Receipt</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngSwitchCase="'payment'">
+                    <div class="heading3">Payment Method</div>
+                    <p class="desc">Your saved payment methods.</p>
+                </div>
+                <div *ngSwitchCase="'close'">
+                    <div class="heading3">Close Account</div>
+                    <p class="desc">Close your account permanently.</p>
+                    <div class="warning">
+                        <div class="warningIcon">
+                            <figure>
+                                <img src="/assets/images/warning.svg" alt="" />
+                            </figure>
+                        </div>
+                        <div class="desc">
+                            <div class="heading6">Warning</div>
+                            <p>If you close your account, you will be unsubscribed from all your all Assessments, and will lose access forever.</p>
+                        </div>
+                    </div>
+                    <form [formGroup]="closeAccount" (submit)="deactivateaccount()" autocomplete="off">
+                    <div class="closeAccount">
+                        
+                        <div>
+                            <label>Email Address</label>
+                            <mat-form-field appearance="fill">
+                                <input type="email" matInput placeholder="{{userDetails.email}}"  readonly>
+                            </mat-form-field>
+                           
+                        </div>
+                        <div    >
+                            <label>Password</label>
+                            <mat-form-field appearance="fill">
+                                <input type="password" matInput placeholder="" formControlName="endPassword">
+                            </mat-form-field>
+                            <ng-container *ngIf="endPassword.invalid && endPassword.touched">
+                                <mat-error *ngIf="endPassword.errors?.required" class="error">{{'Password is required'}}</mat-error>
+                                </ng-container>
+                        </div>
+                        <div style="text-align: center;">
+                            <button type="submit" [class]="closeAccount.valid?'save':'disable'" [disabled]="!closeAccount.valid">Close Account</button>
+                        </div>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<ng-template #addNewBadge>
+    <div class="addNewBadge">
+        <div class="heading3" mat-dialog-title>
+            Add {{'Certification'}}
+            <span class="closeBtn" mat-dialog-close><em class="icon-Close"></em></span>
+        </div>
+        <div class="toggleBtnfor">
+            <button mat-stroked-button class="active">Certification</button>
+            <button mat-stroked-button>Badge</button>
+        </div>
+        <div class="formGroup">
+            <form autocomplete="off">
+                <!--(submit)="BadgeSubmit()"  -->
+                <div class="formFields">
+                    <div class="formControlDiv">
+                        <label>Domain</label>
+                        <mat-select>
+                            <mat-option value="option1">Option 1</mat-option>
+                            <mat-option value="option2">Option 2</mat-option>
+                            <mat-option value="option3">Option 3</mat-option>
+                        </mat-select>
+                    </div>
+                    <div class="formControlDiv">
+                        <label>Certification Name</label>
+                        <mat-form-field appearance="fill">
+                            <input type="text" matInput placeholder="Certification Name"
+                                formControlName="CertificationName">
+                        </mat-form-field>
+                    </div>
+                    <div class="formControlDiv">
+                        <label>Certification Authority</label>
+                        <mat-form-field appearance="fill">
+                            <input type="email" matInput placeholder="Certification Authority"
+                                formControlName="CertificationAuthority">
+                        </mat-form-field>
+                    </div>
+                    <div class="formControlDiv">
+                        <label>Licence Number</label>
+                        <mat-form-field appearance="fill">
+                            <input type="tel" maxlength="10" matInput placeholder="021387455"
+                                formControlName="LicenceNumber">
+                        </mat-form-field>
+                    </div>
+                    <div class="formControlDiv full heading6">
+                        Time Period 
+                    </div>
+                    <div class="formControlDiv">
+                        <label>From</label>
+                        <mat-form-field appearance="fill">
+                            <input placeholder="DD/MM/YYYY" matInput [matDatepicker]="picker" formControlName="From" readonly>
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                    <div class="formControlDiv">
+                        <label>To</label>
+                        <mat-form-field appearance="fill">
+                            <input placeholder="DD/MM/YYYY" matInput [matDatepicker]="picker2" formControlName="From" readonly>
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker2></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                    <div class="slideToggleBtn">
+                        <mat-slide-toggle>This certification does not expire</mat-slide-toggle>
+                    </div>
+                    <div class="formControlDiv full">
+                        <label>Certification Url</label>
+                        <mat-form-field appearance="fill">
+                            <input type="text" matInput placeholder="Certification Url"
+                                formControlName="CertificationUrl">
+                        </mat-form-field>
+                    </div>
+                    <div class="formControlDiv full">
+                        <label>Upload Badge</label>
+                        <button mat-raised-button class="uploadBtn" (click)="onClick($event)">
+                            <em class="icon-Upload"></em> Drag and drop file to upload or <span>Browse file</span> {{chooseLabel}}
+                        </button>
+                        <input #fileUpload type="file" class="input_fileupload--hidden" (input)="onInput($event)"
+                            (change)="onFileSelected($event)" [(ngModel)]="inputFileName" [accept]="accept">
+                        
+                        <div *ngFor="let f of files">
+                            <span>{{f.name}}</span>
+                            <button mat-icon-button color="primary" [attr.title]="deleteButtonLabel?deleteButtonLabel:null"
+                                (click)="removeFile(event,f)">
+                                <mat-icon>{{deleteButtonIcon}} <em class="icon-Delete"></em></mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="AddBadgeBtn">
+                    <button mat-raised-button class="Cancel">Cancel</button>
+                    <button mat-raised-button class="AddBtn">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</ng-template>

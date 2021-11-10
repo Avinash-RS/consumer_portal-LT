@@ -1,0 +1,222 @@
+@import "variables";
+
+.searchContainer {
+    font-size: 10px;
+    @include md {
+        font-size: 12px;
+    }
+    @include lg {
+        font-size: 14px;
+    }
+    @include xl {
+        font-size: 16px;
+    }
+}
+.topSearch {
+    background-color: $whiteColor;
+    padding: 3em 0 2em 0;
+    position: relative;
+    figure {
+        width: 20%;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        &.leftImg {
+            left: 0;
+            text-align: left;
+        }
+        &.rightImg {
+            right: 0;
+            text-align: right;
+        }
+    }
+    .search {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        > div {
+            position: relative;
+            width: 65%;
+            em {
+                position: absolute;
+                right: 1.5em;
+                top: 50%;
+                transform: translateY(-50%);
+                color: $greyColor;
+                font-size: 0.85em;
+            }
+        }
+        input {
+            width: 100%;
+            padding: 0.5em 2em 0.5em 1em;
+            font-size: 1.25em;
+            font-weight: 300;
+            color: $mediumGrey;
+            border-radius: 1.5em;
+            border: 1px solid $greyColor;
+        }
+        p {
+            width: 65%;
+            font-size: 1em;
+            font-weight: 400;
+            color: $lightGrey;
+            margin: 0.75em 0 0 0;
+        }
+    }
+}
+.searchedContent {
+    background-color: $bgColor;
+    padding: 3em 0;
+    .search {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+    .searchFilter {
+        width: 22%;
+    }
+    .catalogSearchContent {
+        width: 75%;
+        > div {
+            width: 100%;
+            display: inline-flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            background-color: $whiteColor;
+            padding: 0.65em;
+            margin: 0.5em 0;
+            box-shadow: 0 0 4px rgba(0,0,0,0.25);
+            figure {
+                width: 25%;
+                height: 150px;
+                overflow: hidden;
+                img {
+                    height: 150px;
+                    object-fit: cover;
+                }
+            }
+            > div {
+                width: 73%;
+                .domainName {
+                    font-size: 1em;
+                    font-weight: 400;
+                    color: $lightGrey;
+                    line-height: 1.3;
+                }
+                .heading5 {
+                    color: $darkGrey;
+                    font-weight: 700;
+                    line-height: 1.2;
+                }
+                p {
+                    font-size: 0.75em;
+                    font-weight: 400;
+                    color: $lightGrey;
+                    line-height: 1.4;
+                    margin: 0.5em 0 0 0;
+                }
+            }
+            .assessmentArea {
+                margin-top: 1.5em;
+                width: 100%;
+                display: flex;
+                justify-content: flex-start;
+                > div {
+                    width: 24%;
+                    .ratingStar {
+                        .icon-Star, 
+                        .icon-Star {
+                            font-size: 0.5em;
+                            margin-right: 0.2em;
+                        }
+                        .icon-Star {
+                            color: $secondaryColor;
+                        }
+                    }
+                    p {
+                        font-size: 0.75em;
+                        font-weight: 400;
+                        color: $blackColor;
+                        line-height: 1;
+                        margin: 0;
+                    }
+                    span {
+                        color: $mediumGrey;
+                        font-size: 0.68em;
+                        font-weight: 400;
+                        line-height: 1;
+                        em {
+                            color: $secondaryColor;
+                            margin-right: 0.35em;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+::ng-deep.searchFilter {
+    .mat-expansion-panel {
+        background: $bgColor;
+        overflow: initial;
+    }
+    .mat-expansion-panel-header {
+        height: 38px;
+    }
+    .mat-expansion-panel-header.mat-expanded {
+        height: 38px;
+    }
+    .mat-expansion-panel-header-title {
+        font-weight: 700;
+    }
+    .mat-expansion-panel-body {
+        padding: 0 16px 5px 8px;
+    }
+    .mat-expansion-panel-spacing {
+        margin: 0;
+    }
+    .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:hover:not([aria-disabled=true]) {
+        background: rgba(0,0,0,0);
+    }
+    .mat-accordion .mat-expansion-panel:first-of-type {
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+    }
+    .mat-expansion-panel:not([class*=mat-elevation-z]) {
+        box-shadow: none;
+    }
+    .mat-expansion-panel-header {
+        padding: 0;
+    }
+
+    //CheckBox
+    .mat-checkbox .mat-checkbox-ripple {
+        width: 0;
+        height: 0;
+    }
+    .mat-checkbox-inner-container {
+        width: 14px;
+        height: 14px;
+    }
+    .mat-checkbox-frame {
+        border-width: 1px;
+        background-color: $whiteColor;
+    }
+    .mat-checkbox-frame {
+        border-color: $lightGrey;
+    }
+    .mat-checkbox-layout {
+        white-space: initial;
+    }
+    .mat-checkbox-layout .mat-checkbox-label {
+        font-size: 0.875em;
+        font-weight: 400;
+        color: $mediumGrey;
+        line-height: 1.3;
+    }
+    .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+        background-color: $primaryColor;
+    }
+}

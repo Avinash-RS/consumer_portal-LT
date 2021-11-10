@@ -1,0 +1,272 @@
+<section class="skilo">
+    <div class="banner">
+        <div class="container">
+            <div class="heading3">Review your Jobs-Skills <span class="resetbtn" (click)="reset()"><em class="icon-Refresh"></em> Reset</span></div>
+        </div>
+    </div>
+    <section *ngIf="!sklio" class="skilcontentarea">
+        <div class="container">
+            <div class="col-6 white">
+                <img src="/assets/images/path.svg" alt="Path Analyzer" width="100%" />
+                <p>Just few more steps to begin your path analyzer</p>
+            </div>
+            <div class="col-6">
+                <div class="radio_">
+                    <span class="radioTitle">Select By</span>
+                    <mat-radio-group aria-label="Select an option">
+                        <mat-radio-button *ngFor="let role of seletorBox" [value]="role" (change)="onItemChange($event.value)" [checked]="role.checked"><em [class]="role.class"></em>
+                            <span>{{role.name}}</span></mat-radio-button> 
+                    </mat-radio-group>
+                </div>
+                <div class="DDL_ " >
+                    <div class="flex_" *ngIf="jobddl">
+                        <span class="radioTitle">I Am currently</span>
+                        <mat-form-field appearance="fill">
+                            <mat-select [(ngModel)]="selectedValue" name="list">
+                                <mat-option *ngFor="let list of domainlist" [value]="list">
+                                    {{list.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div *ngIf="roleddl" class="flex_">
+                        <span class="radioTitle">i want to become a </span>
+                        <mat-form-field appearance="fill">
+                            <mat-select [(ngModel)]="selectedskills" name="list">
+                                <mat-option *ngFor="let list of skillsrole" [value]="list.value">
+                                    {{list.viewValue}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div> 
+                    <div *ngIf="skillsddl" class="flex_">
+                        <span class="radioTitle">Domain</span>
+                        <mat-form-field appearance="fill">
+                            <mat-select [(ngModel)]="selectedValue" name="list">
+                                <mat-option *ngFor="let list of domainlist" [value]="list.value">
+                                    {{list.viewValue}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div *ngIf="skillsddl" class="flex_">
+                        <span class="radioTitle">Skills</span>
+                        <mat-form-field appearance="fill">
+                            <mat-select [(ngModel)]="selectedskills" name="list">
+                                <mat-option *ngFor="let list of skillsrole" [value]="list.value">
+                                    {{list.viewValue}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" class="onEntry" (click)="modal_(skils_)" mat-stroked-button>Go <em
+                            class="icon-right-next"></em></button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section *ngIf="skliopath" class="skilo_path">
+        <div class="container">
+            <div>
+                <div class="heading4">Recommended {{htxtinfo}} Path </div>
+                <span class="infotxt">Tell us about yourself and your interests and we'll recommended some options to deepen your
+                    knowledge.
+                </span>
+            </div>
+            <div class="content_area_">
+                <div>plugins</div>
+                <div class="content_info_">
+                    <div class="content_txt_">
+                        <div class="heading4">Skills (Self Declaration) </div>
+                        <div class="selskil_check_">
+                            <mat-checkbox *ngFor="let section of skillset" [value]="section.value"
+                                [(ngModel)]="section.checked">
+                                {{section.viewValue}}</mat-checkbox>
+                        </div>
+                        <div class="grey-txt">You can get certifired for self declared skills</div>
+                        <div><a class="link"
+                                href="https://certifired.lntiggnite.com/">https://certifired.lntiggnite.com/</a></div>
+                    </div>
+                    <div class="content_txt_">
+                        <div class="heading4">Skills Verified <span class="badge small"><em class="icon-Portfolio"></em> View
+                            Profile</span></div>
+                        <div class="selskil_check_ veri_">
+                            <mat-checkbox *ngFor="let section of skillset" [value]="section.value"
+                                [(ngModel)]="section.checked">
+                                {{section.viewValue}}</mat-checkbox>
+                        </div>
+                    </div>
+                    <div class="content_txt_">
+                        <div class="heading4">Skills to Learn </div>
+                        <div class="selskil_check_">
+                            <button mat-stroked-button>Spring</button>
+                            <button mat-stroked-button>Colletion framework</button>
+                            <button mat-stroked-button>De-serialisation</button>
+                        </div>
+                        <div class="grey-txt">Visit to learn</div>
+                        <div><a class="link_" href="https://learn.lntiggnite.com/">https://learn.lntiggnite.com/</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section *ngIf="skliojob" class="skilo_path">
+        <div class="container">
+            <div>
+                <div class="heading4">Job Match for your Skills</div>
+                <span class="infotxt">Tell us about yourself and your interests and we'll recommended some options to deepen your
+                    knowledge.</span>
+                <div class="htxtinfoSec">
+                    <span>Experience:</span>
+                    1+ (years experience)
+                </div>
+                <div class="htxtinfoSec">
+                    <span>Skills:</span>
+                    <div class="btnview" *ngFor="let i of skills">{{i}}</div>
+                </div>
+            </div>
+            <div class="content_area_ bgWhite">
+                 <div class="infoareaTop">
+                    <div class="chartview">
+                        <div>placeholder
+                            <div style="width:100%;">
+                                <!-- <canvas id="myChart" width="350" height="250" #mychart></canvas> -->
+                            </div>
+                        </div>
+                        <div class="counthtxt">
+                            <span>62%</span>
+                            For Java Full Stack Engineer
+                        </div>
+                    </div>
+                    <div class="chartviewflat">
+                        <span>42%</span> 
+                        <!-- <ngx-charts-bar-horizontal
+                            [view]="view"
+                            [scheme]="colorScheme"
+                            [results]="single"
+                            [gradient]="gradient"
+                            [xAxis]="showXAxis"
+                            [yAxis]="showYAxis"
+                            [legend]="showLegend"
+                            [showXAxisLabel]="showXAxisLabel"
+                            [showYAxisLabel]="showYAxisLabel"
+                            [xAxisLabel]="xAxisLabel"
+                            [yAxisLabel]="yAxisLabel"
+                            (select)="onSelect($event)"
+                            (activate)="onActivate($event)"
+                            (deactivate)="onDeactivate($event)">
+                            </ngx-charts-bar-horizontal> -->
+                        For DevOps Engineer 
+                    </div>
+                    <div class="chartviewflat">
+                        <span>20%</span> 
+                        <!-- <ngx-charts-bar-horizontal
+                            [view]="view"
+                            [scheme]="colorScheme"
+                            [results]="single"
+                            [gradient]="gradient"
+                            [xAxis]="showXAxis"
+                            [yAxis]="showYAxis"
+                            [legend]="showLegend"
+                            [showXAxisLabel]="showXAxisLabel"
+                            [showYAxisLabel]="showYAxisLabel"
+                            [xAxisLabel]="xAxisLabel"
+                            [yAxisLabel]="yAxisLabel"
+                            (select)="onSelect($event)"
+                            (activate)="onActivate($event)"
+                            (deactivate)="onDeactivate($event)">
+                            </ngx-charts-bar-horizontal> -->
+                        For Security Engineer 
+                    </div>
+                 </div>
+            </div>
+            <div class="heading4 topSpace">OtherJob/ role recommended for you</div>
+            <div class="content_area_ bgWhite">
+                <div> pie-chart placeholder
+                    <!-- <ngx-charts-pie-chart
+                        [view]="[400, 300]"
+                        [scheme]="{domain: ['#5AA454', '#A10A28', '#C7B42C']}"
+                        [results]="series"
+                        [legend]="true"
+                        [labels]="true"
+                        [doughnut]="true"
+                        [legendPosition] = "'bottom'"
+                        [legendTitle]="''"
+                        [labelFormatting]="pieChartLabel.bind(this, series)">
+                  </ngx-charts-pie-chart> -->
+                </div>
+                <div class="summaryarea"> 
+                    <div class="contentsec">
+                        <div class="heading4 spaceTopBottom">Suggested Jobs</div>
+                        <div class="heading5">Software Tech Lead Manager</div>
+                        <span class="summarytxt">Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span>
+                    </div>
+                    <span class="btnPrimary">Explore</span>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+
+
+
+
+
+<!--template mat-dialog-->
+<ng-template #skils_>
+    <div class="container_">
+        <div class="img_pan">
+            <img alt="experience level" src="../../../../assets/images/find.svg" width="100%" />
+        </div>
+        <div class="content_pan">
+            <div class="header_txt">
+                <span class="badge">STEP {{stepCount + '/' + totalCount}}</span>
+                <span class="closeBtn" mat-dialog-close><em class="icon-Close"></em></span>
+            </div>
+            <div class="body_content">
+                <div>
+                    <div class="heading4"> 
+                        <span *ngIf="!levela" >Select your experience level </span> 
+                        <span *ngIf="levelview && totalCount == 2">Select the skills you know</span>
+                        <span  *ngIf="stepCount == 2 && totalCount == 3">Select what you know</span>
+                        <span *ngIf="stepCount == 3 && totalCount == 3">Here what you should know</span>
+                    </div>
+                    <span class="infotxt">Tell us about yourself and your interests and we'll recommended some options to deepen your
+                        knowledge.</span>
+                </div>
+
+                <div *ngIf="!levela">
+                    <div class="range_slide">
+                        <mat-slider thumbLabel [displayWith]="formatLabel" tickInterval="1" min="1" max="10">
+                        </mat-slider>
+                    </div>
+                    <div class="content_txt">
+                        <span class="htxt">Notes:</span>
+                        <span>0=Student</span>
+                        <span>1=Intern / Trainee</span>
+                        <span>2=Junior / Entry-level (0-2 years experince)</span>
+                        <span>3=Mid-level (3+ years experince)</span>
+                        <span>4=Lead / Tech-Lead (6+ years experince)</span>
+                        <span>5=Architect / Manager (9+ years experince)</span>
+                    </div>
+                </div>
+                <div *ngIf="levelview" class="selskil_check_">
+                    <mat-checkbox *ngFor="let section of skillset" [value]="section.value"
+                        [(ngModel)]="section.checked">
+                        {{section.viewValue}}</mat-checkbox>
+                </div>
+            </div>
+            <div class="btn_sec" [ngStyle]="!levelview && {'justify-content': 'flex-end'}">
+                <button *ngIf="levelview" (click)="selectback()" class="back_btn" mat-stroked-button><em class="icon-Back"></em> Back</button>
+                <div>
+                    <button class="optionbtn" mat-button>I'm not sure yet</button>
+                    <button (click)="selectnext()" class="onEntry" mat-stroked-button>{{btninfo}} <em
+                            class="icon-right-next"></em></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

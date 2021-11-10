@@ -1,0 +1,269 @@
+@import "variables";
+.billingAddress {
+    .heading4 {
+        font-weight: 700;
+    }
+    .address {
+        padding: 1em;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0,0,0,0.25);
+        margin-top: 1em;
+        .name {
+            font-size: 0.9375em;
+            font-weight: 400;
+            span {
+                margin-left: 0.5em;
+            }
+        }
+        .name span {
+            @include buttonOutlined;
+            font-size: 0.625em;
+            font-weight: 400;
+            color: $blackColor;
+            padding-left: 1.5em;
+            padding-right: 1.5em;
+            border-color: #FFCB00;
+        }
+        p, .mobile {
+            font-size: 0.875em;
+            font-weight: 400;
+        }
+        p {
+            margin: 0.5em 0;
+        }
+        .mobile {
+            color: $mediumGrey;
+            strong {
+                color: $darkGrey;
+                margin-left: 0.2em;
+                display: inline-block;
+            }
+        }
+        button {
+            margin: 0.65em 1em 0 0;
+            @include buttonOutlined;
+            font-size: 0.775em;
+            font-weight: 400;
+            color: $blackColor;
+            padding-left: 1.5em;
+            padding-right: 1.5em;
+        }
+    }
+    .addAddress {
+        border: 1px solid $lightGrey;
+        border-style: dashed;
+        padding: 1em;
+        margin-top: 1em;
+        cursor: pointer;
+        span {
+            font-size: 1.063em;
+            font-weight: 400;
+            color: $primaryColor;
+            text-transform: uppercase;
+        }
+    }
+}
+
+.newAddress, .removeAddress {
+    position: relative;
+    .closeBtn {
+        position: absolute;
+        right: 1.5em;
+        top: 1.5em;
+        cursor: pointer;
+    }
+    .heading3 {
+        border-bottom: 1px solid $greyColor;
+        margin: 0;
+        padding: 0.65em 1em;
+    }
+}
+.removeContent {
+    padding: 1.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    em {
+        color: $primaryColor;
+        font-size: 1.5em;
+        border: 2px solid #c02222;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 2em;
+        height: 2em;
+        margin-bottom: 0.5em;
+    }
+    .heading3 {
+        text-transform: uppercase;
+        border-bottom: 0;
+        padding: 0;
+        font-weight: 700;
+        margin-bottom: 0.35em;
+    }
+    p {
+        font-size: 1em;
+        font-weight: 400;
+        color: $lightGrey;
+        line-height: 1.3;
+    }
+    button {
+        @include buttonFilled;
+        padding-left: 2em;
+        padding-right: 2em;
+        margin-bottom: 1em;
+    }
+}
+.addressContent {
+    padding: 1.5em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: self-start;
+    > div {
+        width: 100%;
+        margin-bottom: 1em;
+        @include sm {
+            width: 48%;
+        }
+        &.addressDropSection {
+            width: 48%;
+        }
+        &.addressSection {
+            width: 100%;
+        }
+        
+        &.addAddressBtn {
+            width: 100%;
+            text-align: center;
+            button {
+                @include buttonFilled;
+                font-size: 1.25em;
+                font-weight: 300;
+                padding-left: 1.5em;
+                padding-right: 1.5em;
+            }
+        }
+    }
+    .saveAddress {
+        .heading6 {
+            text-transform: uppercase;
+            margin-bottom: 0.35em;
+        }
+        button {
+            &.inactive {
+                @include buttonOutlined;
+                border: 1px solid $greyColor;
+                color: $mediumGrey;
+            }
+            &.active {
+                @include buttonFilled;
+                color: $whiteColor;
+            }
+            font-size: 1em;
+            font-weight: 300;
+            padding-left: 1em;
+            padding-right: 1em;
+            margin-right: 1em;
+        }
+    }
+    span {
+        display: block;
+        &.addressTitle {
+            font-size: 1em;
+            font-weight: 400;
+            color: $mediumGrey;
+            line-height: 1.3;
+        }
+    }
+}
+::ng-deep.removeAddressContainer {
+    .mat-dialog-container {
+        padding: 0;
+    }
+    width: 85% !important;
+    cursor: default !important;
+    @include lg {
+        width: 35% !important;
+    }
+}
+::ng-deep.addNewAddressContainer {
+    width: 85% !important;
+    height: auto !important;
+    cursor: default !important;
+    @include sm {
+        height: 90% !important;
+    }
+    @include lg {
+        width: 65% !important;
+        height: auto !important;
+    }
+    .mat-dialog-container {
+        padding: 0;
+    }
+    .addAddressBtn .disable{
+    background: grey !important;
+    cursor: not-allowed;
+    opacity: .5;
+    }
+}
+::ng-deep.addressContent {
+    .mat-form-field {
+        width: 100%;
+    }
+    .mat-form-field-appearance-fill .mat-form-field-flex {
+        background-color: transparent;
+        padding: 0 .75em 0 0.75em;
+    }
+    .mat-form-field-wrapper {
+        padding-bottom: 0;
+        border: 1px solid $greyColor;
+    }
+    .mat-form-field-label-wrapper {
+        top: 0;
+        padding-top: 0;
+    }
+    .mat-form-field-underline {
+        bottom: 0;
+    }
+    .mat-form-field-appearance-fill .mat-form-field-label {
+        top: 0;
+        margin-top: 0;
+    }
+    .mat-form-field-appearance-fill .mat-form-field-ripple {
+        height: 0;
+    }
+    .mat-form-field-appearance-fill .mat-form-field-underline::before {
+        height: 0;
+    }
+    .mat-form-field-appearance-fill.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+        transform: translateY(-0.59375em) scale(0.5);
+    }
+    .mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-icon-button {
+        top: 0.25em;
+    }
+    .mat-form-field-appearance-fill .mat-select-arrow-wrapper {
+        transform: translateY(-10%);
+    }
+}
+::ng-deep.address {
+    .mat-radio-button {
+        width: 100%;
+    }
+    .mat-radio-label {
+        align-items: flex-start;
+    }
+    .mat-radio-container, .mat-radio-outer-circle, .mat-radio-inner-circle {
+        width: 15px;
+        height: 15px;
+    }
+    .mat-radio-outer-circle {
+        top: 2px;
+        border-width: 1px;
+    }
+    .mat-radio-inner-circle {
+        top: 2px;
+    }
+}

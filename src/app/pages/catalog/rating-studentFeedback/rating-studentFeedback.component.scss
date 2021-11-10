@@ -1,0 +1,163 @@
+@import "variables";
+
+.ratingSection {
+    background-color: $bgColor;
+    padding: 3.75em 0 3.75em 0;
+    font-size: 10px;
+    position: relative;
+    @include md {
+        font-size: 12px;
+    }
+    @include lg {
+        font-size: 14px;
+    }
+    @include xl {
+        font-size: 16px;
+    }
+}
+.ratingFeedback {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 2em;
+    @include sm {
+        flex-wrap: nowrap;
+    }
+}
+.rating {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: $whiteColor;
+    border-radius: 6px;
+    border: 0.625em solid $secondaryColor;
+    text-align: center;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    @include sm {
+        width: 35%;
+    }
+    @include md {
+        width: 32%;
+    }
+    @include lg {
+        width: 26%;
+    }
+    @include xl {
+        width: 23%;
+    }
+    .ratingNumber {
+        font-size: 5.625em;
+        font-weight: 300;
+        line-height: 0.9;
+        color: $blackColor;
+    }
+    p {
+        font-size: 1em;
+        font-weight: 400;
+        color: $mediumGrey;
+        margin-top: 0.5em;
+    }
+    .ratingStar {
+        display: inline-block;
+        width: 100%;
+        em {
+            &.icon-Star {
+                color: $secondaryColor;
+            }
+            margin-right: 0.2em;
+        }
+    }
+    .progressBar {
+        margin-top: 1.85em;
+        > div {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-top: 0.15em;
+        }
+        .progress {
+            width: 58%;
+        }
+        .ratingStar {
+            width: 30%;
+            margin-left: 3%;
+            em {
+                font-size: 0.7em;
+                &.icon-Star {
+                    color: $secondaryColor;
+                }
+                margin-right: 0.2em;
+            }
+        }
+        .percentage {
+            width: 10%;
+            font-size: 0.8em;
+            font-weight: 400;
+            color: $mediumGrey;
+            text-align: right;
+        }
+    }
+}
+.studentFeedback {
+    width: 100%;
+    margin-top: 2em;
+    @include sm {
+        margin-top: 0;
+        width: 62%;
+    }
+    @include md {
+        width: 65%;
+    }
+    @include lg {
+        width: 72%;
+    }
+    @include xl {
+        width: 75%;
+    }
+}
+
+
+//@include
+.sliderBg {
+    background-color: $whiteColor;
+    padding: 1.25em;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+    .heading4 {
+        margin: 0.6em 0 0.5em 0;
+        color: $primaryColor;
+    }
+    .sliderContent {
+        > div {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: nowrap;
+            align-items: center;
+            figure {
+                width: 20%;
+            }
+            > div {
+                width: 75%;
+            }
+        }
+    }
+    .heading6 {
+        color: $blackColor;
+        font-weight: 400;
+        line-height: 1.2;
+    }
+    .ratingStar {
+        .icon-Star {
+            font-size: 0.75em;
+            margin-right: 0.2em;
+        }
+        .icon-Star {
+            color: $secondaryColor;
+        }
+    }
+    p {
+        color: $mediumGrey;
+        font-size: 0.875em;
+        line-height: 1.5;
+        margin-top: 1.25em;
+    }
+}

@@ -1,0 +1,396 @@
+<div class="joining-personal-wrapper">
+    <h1>
+        Education Details
+    </h1>
+
+    <div class="grids-wrapper">
+        <!-- <div class="row-wrapper">
+
+    <div class="overall-input-wrapper w-75 d-flex align-items-center f_size_14 mt-2 mb-2" style="color: #565656;margin-bottom: 15px;">
+        <div style="width: 140px;">Profile Applied For : </div>
+            <input type="text" disabled class="input-1 ml-3" [value]="selectedPostLabel">
+        </div>
+    </div> -->
+
+        <form class="educatonForm" [formGroup]="educationForm" (ngSubmit)="formSubmit()">
+            <ng-container *ngIf="getEducationArr && getEducationArr.controls" [formArrayName]="form_educationArray">
+                <ng-container *ngFor="let item of getEducationArr.controls; let i = index;" [formGroupName]="i">
+                    <div class="container-wrapper flex-container d-flex justify-content-between align-items-center" style="display: flex;justify-content: space-between;align-items: center;">
+                    <div class="form-grouping">
+                        <div class="row-wrapper">
+                            <div class="overall-input-wrapper width-45">
+                                <label>Qualification Type<span>*</span></label>
+                                <mat-form-field appearance="fill">
+                                <mat-select (ngModelChange)="educationLevelChange(i)" [formControlName]="form_qualification_type">
+                                    <mat-option *ngFor="let level of educationLevels"  [value]="level.education">{{level.label}}</mat-option>
+                                </mat-select>
+                                </mat-form-field>
+                                <div class="form-error"
+                                    *ngIf="getEducationArr.controls[i].get(form_qualification_type).invalid && getEducationArr.controls[i].get(form_qualification_type).touched">
+                                    <div
+                                        *ngIf="getEducationArr.controls[i].get(form_qualification_type)?.errors?.required">
+                                        Qualification Type is Required</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <ng-container *ngIf="(getEducationArr.controls[i].get(form_qualification_type).value)">
+
+                        <div *ngIf="(getEducationArr.controls[i].get(form_qualification_type).value != 'SSLC') && (getEducationArr.controls[i].get(form_qualification_type).value != 'HSC')" class="row-wrapper">
+                            <div class="overall-input-wrapper width-70">
+                                <label>Qualification<!-- Asterick --><span *ngIf="(getEducationArr.controls[i].get(form_qualification_type).value != 'HSC' && getEducationArr.controls[i].get(form_qualification_type).value != 'Diploma')">*</span>
+                                </label>
+                            <ng-container *ngIf="(getEducationArr.controls[i].get(form_qualification_type).value == 'HSC')">
+                                <mat-form-field appearance="fill">
+                                <input matInput placeholder="Enter here" class="input" type="text"
+                                [formControlName]="form_qualification">
+                                </mat-form-field>
+                            </ng-container>
+                            <ng-container *ngIf="(getEducationArr.controls[i].get(form_qualification_type).value == 'Diploma')">
+                                <!-- <mat-select [formControlName]="form_qualification">
+                                    <mat-option *ngFor="let level of educationLevels"  [value]="level.education">{{level.label}}</mat-option>
+                                </mat-select> -->
+                                <mat-form-field appearance="fill">
+                                <input matInput placeholder="Enter here" class="input" type="text"
+                                [formControlName]="form_qualification">
+                                </mat-form-field>
+                            </ng-container>
+                            <ng-container *ngIf="(getEducationArr.controls[i].get(form_qualification_type).value == 'UG')">
+                                <!-- <mat-select [formControlName]="form_qualification">
+                                    <mat-option *ngFor="let level of educationLevels"  [value]="level.education">{{level.label}}</mat-option>
+                                </mat-select> -->
+                                <mat-form-field appearance="fill">
+                                <input matInput placeholder="Enter here" class="input" type="text"
+                                [formControlName]="form_qualification">
+                                </mat-form-field>
+                            </ng-container>
+                            <ng-container *ngIf="(getEducationArr.controls[i].get(form_qualification_type).value == 'PG')">
+                                <!-- <mat-select [formControlName]="form_qualification">
+                                    <mat-option *ngFor="let level of educationLevels"  [value]="level.education">{{level.label}}</mat-option>
+                                </mat-select> -->
+                                <mat-form-field appearance="fill">
+                                <input matInput placeholder="Enter here" class="input" type="text"
+                                [formControlName]="form_qualification">
+                                </mat-form-field>
+                            </ng-container>
+                                <div class="form-error"
+                                    *ngIf="getEducationArr.controls[i].get(form_qualification).invalid && getEducationArr.controls[i].get(form_qualification).touched">
+                                    <div
+                                        *ngIf="getEducationArr.controls[i].get(form_qualification)?.errors?.required">
+                                        Qualification is Required</div>
+                                </div>
+                            </div>
+
+                            <div class="overall-input-wrapper width-70">
+                                <label>Specialization<span>*</span></label>
+                                <mat-form-field appearance="fill">
+                                    <input matInput placeholder="Enter here" class="input" type="text"
+                                [formControlName]="form_specialization">
+                                <!-- <mat-select [formControlName]="form_specialization">
+                                    <mat-option *ngFor="let level of diplamoSpecialization"  [value]="level.value">{{level.label}}</mat-option>
+                                    <ng-container *ngIf="(getEducationArr.controls[i].get(form_qualification_type).value == 'HSC')">
+                                        <mat-option *ngFor="let level of HSCDiscipline"  [value]="level.value">{{level.name}}</mat-option>
+                                    </ng-container>
+                                    <ng-container *ngIf="(getEducationArr.controls[i].get(form_qualification_type).value == 'Diploma')">
+                                        <mat-option *ngFor="let level of diplomaDisciplineList"  [value]="level.diploma_discipline">{{level.diploma_discipline}}</mat-option>
+                                    </ng-container>
+                                    <ng-container *ngIf="(getEducationArr.controls[i].get(form_qualification_type).value == 'UG')">
+                                        <mat-option *ngFor="let level of ugDisciplineList"  [value]="level.ug_descipline">{{level.ug_descipline}}</mat-option>
+                                    </ng-container>
+                                    <ng-container *ngIf="(getEducationArr.controls[i].get(form_qualification_type).value == 'PG')">
+                                        <mat-option *ngFor="let level of pgDisciplineList"  [value]="level.pg_discipline">{{level.pg_discipline}}</mat-option>
+                                    </ng-container>
+                                </mat-select> -->
+                                </mat-form-field>
+                                <div class="form-error"
+                                    *ngIf="getEducationArr.controls[i].get(form_specialization).invalid && getEducationArr.controls[i].get(form_specialization).touched">
+                                    <div
+                                        *ngIf="getEducationArr.controls[i].get(form_specialization)?.errors?.required">
+                                        Specialization is Required</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row-wrapper">
+                            <div class="overall-input-wrapper width-70">
+                                <label>School/Collage Name<span>*</span></label>
+                                <ng-container *ngIf="(getEducationArr.controls[i].get(form_qualification_type).value == 'SSLC') || (getEducationArr.controls[i].get(form_qualification_type).value == 'HSC')">
+                                    <mat-form-field appearance="fill">
+                                <input matInput placeholder="Enter here" class="input" type="text"
+                                    [formControlName]="form_collegeName">
+                                    </mat-form-field>
+                                    </ng-container>
+                                    <ng-container *ngIf="(getEducationArr.controls[i].get(form_qualification_type).value != 'SSLC') && (getEducationArr.controls[i].get(form_qualification_type).value != 'HSC')">
+                                        <!-- <mat-select [formControlName]="form_collegeName">
+                                            <mat-option *ngFor="let level of educationLevels"  [value]="level.education">{{level.label}}</mat-option>
+                                        </mat-select> -->
+                                         <mat-form-field appearance="fill">
+                                        <input matInput placeholder="Enter here" class="input" type="text"
+                                    [formControlName]="form_collegeName">
+                                    </mat-form-field>
+                                </ng-container>
+                                    <div class="form-error"
+                                    *ngIf="getEducationArr.controls[i].get(form_collegeName).invalid && getEducationArr.controls[i].get(form_collegeName).touched">
+                                    <div *ngIf="getEducationArr.controls[i].get(form_collegeName).errors?.required">
+                                        School/Collage Name is Required</div>
+                                    <div
+                                        *ngIf="getEducationArr.controls[i].get(form_collegeName).errors?.alphaNum255">
+                                        Alpha numeric with maximum of 255 characters only
+                                        allowed</div>
+                                </div>
+                            </div>
+                            <div class="overall-input-wrapper width-70">
+                                <label>Board/university<span *ngIf="(getEducationArr.controls[i].get(form_qualification_type).value == 'SSLC' || getEducationArr.controls[i].get(form_qualification_type).value == 'HSC')">*</span>
+                                </label>
+                                <!-- For Non SSLC and HSC -->
+                                <!-- <ng-container *ngIf="(getEducationArr.controls[i].get(form_qualification_type).value == 'Diploma') || (getEducationArr.controls[i].get(form_qualification_type).value == 'UG') || (getEducationArr.controls[i].get(form_qualification_type).value == 'PG')">
+                                    <mat-form-field appearance="fill">
+                                <input matInput placeholder="Enter here" class="input" type="text"
+                                    [formControlName]="form_boardUniversity">
+                                    </mat-form-field>
+                                </ng-container> -->
+                                <!-- For SSLC and HSC -->
+                                <!-- <ng-container *ngIf="(getEducationArr.controls[i].get(form_qualification_type).value == 'SSLC') || (getEducationArr.controls[i].get(form_qualification_type).value == 'HSC')">
+                                    <mat-form-field appearance="fill">
+                                    <mat-select [formControlName]="form_boardUniversity">
+                                        <mat-option *ngFor="let list of boardsList"  [value]="list.value">{{list.label}}</mat-option>
+                                    </mat-select>
+                                    </mat-form-field>
+                                    </ng-container> -->
+                                    <mat-form-field appearance="fill">
+                                        <input matInput placeholder="Enter here" class="input" type="text"
+                                            [formControlName]="form_boardUniversity">
+                                    </mat-form-field>
+                                <div class="form-error"
+                                    *ngIf="getEducationArr.controls[i].get(form_boardUniversity).invalid && getEducationArr.controls[i].get(form_boardUniversity).touched">
+                                    <div *ngIf="getEducationArr.controls[i].get(form_boardUniversity).errors?.required">
+                                        Board/university is Required</div>
+                                    <div
+                                        *ngIf="getEducationArr.controls[i].get(form_boardUniversity).errors?.alphaNum255">
+                                        Alpha numeric with maximum of 255 characters only
+                                        allowed</div>
+                                </div>
+                            </div>
+                        </div>
+
+                         <div class="row-wrapper">
+                            <div class="overall-input-wrapper width-70">
+                                <label>Start Date<span>*</span></label>
+                                <div class="date-relative">
+                                    <mat-form-field appearance="fill">
+                                    <input matInput class="input" [min]="minDate" [max]="maxDate"
+                                        [matDatepicker]="picker" placeholder="DD-MM-YYYY"
+                                        [formControlName]="form_startDate">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                                <div class="form-error"
+                                    *ngIf="getEducationArr.controls[i].get(form_startDate).invalid && getEducationArr.controls[i].get(form_startDate).touched">
+                                    <div *ngIf="getEducationArr.controls[i].get(form_startDate)?.errors?.required">
+                                        Start Date is Required</div>
+                                    <div
+                                        *ngIf="getEducationArr.controls[i].get(form_startDate)?.errors?.matDatepickerMax">
+                                        {{getEducationArr.controls[i].get(form_startDate)?.errors?.matDatepickerMax?.max ? 'Maximum date should be ' + momentFormMonth(getEducationArr.controls[i].get(form_startDate)?.errors?.matDatepickerMax.max) : ''}}
+                                    </div>
+                                    <div
+                                        *ngIf="getEducationArr.controls[i].get(form_startDate)?.errors?.matDatepickerMin">
+                                        {{getEducationArr.controls[i].get(form_startDate)?.errors?.matDatepickerMin?.min ? 'Minimum date should be ' + momentForm(getEducationArr.controls[i].get(form_startDate)?.errors?.matDatepickerMin.min) : ''}}
+                                    </div>
+                                    <div
+                                        *ngIf="getEducationArr.controls[i].get(form_startDate)?.errors?.matDatepickerParse">
+                                        Invalid Date Format</div>
+                                    <div
+                                    *ngIf="getEducationArr.controls[i].get(form_startDate)?.errors?.notValid">
+                                    {{'Start Date should be less than or equal to the Year of Passing, (Year of Passing - ' + getEducationArr.controls[i].get(form_startDate)?.errors?.notValid + ').'}}</div>
+
+                                </div>
+                            </div>
+                            <div class="overall-input-wrapper width-70">
+                                <label>End Date<span>*</span></label>
+                                <div class="date-relative">
+                                    <mat-form-field appearance="fill">
+                                    <input matInput class="input" [min]="minDate" [max]="maxDate"
+                                        [matDatepicker]="picker1" placeholder="DD-MM-YYYY"
+                                        [formControlName]="form_endDate">
+                                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker1></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                                <div class="form-error"
+                                    *ngIf="getEducationArr.controls[i].get(form_endDate).invalid && getEducationArr.controls[i].get(form_endDate).touched">
+                                    <div *ngIf="getEducationArr.controls[i].get(form_endDate)?.errors?.required">
+                                        End Date is Required</div>
+                                    <div
+                                        *ngIf="getEducationArr.controls[i].get(form_endDate)?.errors?.matDatepickerMax">
+                                        {{getEducationArr.controls[i].get(form_endDate)?.errors?.matDatepickerMax?.max ? 'Maximum date should be ' + momentForm(getEducationArr.controls[i].get(form_endDate)?.errors?.matDatepickerMax.max) : ''}}
+                                    </div>
+                                    <div
+                                        *ngIf="getEducationArr.controls[i].get(form_endDate)?.errors?.matDatepickerMin">
+                                        {{getEducationArr.controls[i].get(form_endDate)?.errors?.matDatepickerMin?.min ? 'Minimum date should be ' + momentForm(getEducationArr.controls[i].get(form_endDate)?.errors?.matDatepickerMin.min) : ''}}
+                                    </div>
+                                    <div
+                                        *ngIf="getEducationArr.controls[i].get(form_endDate)?.errors?.matDatepickerParse">
+                                        Invalid Date Format</div>
+                                        <!-- <div
+                                        *ngIf="getEducationArr.controls[i].get(form_endDate)?.errors?.notValid">
+                                        {{'Year of Passing should be greater than or equal to the selected End date, (Year of Passing - ' + getEducationArr.controls[i].get(form_endDate)?.errors?.notValid + ').'}}</div> -->
+
+                                </div>
+                            </div>
+                            
+                    </div>
+
+                    <div class="row-wrapper">
+                        <!-- <div class="overall-input-wrapper width-24">
+                            <label>No. of Backlogs<span>*</span></label>
+                            <mat-form-field appearance="fill">
+                            <input matInput placeholder="Enter here" class="input" type="number"
+                                [formControlName]="form_backlog">
+                                </mat-form-field>
+                            <div class="form-error"
+                                *ngIf="getEducationArr.controls[i].get(form_backlog).invalid && getEducationArr.controls[i].get(form_backlog).touched">
+                                <div
+                                    *ngIf="getEducationArr.controls[i].get(form_backlog)?.errors?.required">
+                                    No. Backlogs is Required</div>
+                                    <div
+                                        *ngIf="getEducationArr.controls[i].get(form_backlog).errors?.backlog">
+                                        Accept Numbers only and Maximum of 2 digits only Allowed</div>
+                            </div>
+                        </div> -->
+                        <!-- <div class="overall-input-wrapper width-24">
+                            <label>Mode<span>*</span></label>
+                            <mat-form-field appearance="fill">
+                            <mat-select [formControlName]="form_mode">
+                                <mat-option *ngFor="let list of modesList"  [value]="list.value">{{list.label}}</mat-option>
+                            </mat-select>
+                            </mat-form-field>
+                            <div class="form-error"
+                                *ngIf="getEducationArr.controls[i].get(form_mode).invalid && getEducationArr.controls[i].get(form_mode).touched">
+                                <div
+                                    *ngIf="getEducationArr.controls[i].get(form_mode)?.errors?.required">
+                                    Mode is Required</div>
+                            </div>
+                        </div> -->
+                        <div class="overall-input-wrapper width-70">
+                            <label>Year of Passing<span>*</span></label>
+                            <div class="date-relative">
+                                 <mat-form-field appearance="fill">
+                                <input matInput class="input" [ngClass]="getEducationArr.controls[i].get(form_startDate)?.errors?.notValid || getEducationArr.controls[i].get(form_endDate)?.errors?.notValid ? 'custom-input-error-border' : ''" [min]="minDate" [max]="maxDate"
+                                    [matDatepicker]="pickerYearOfPassing" placeholder="DD-MM-YYYY"
+                                    [formControlName]="form_yearpassing" appYearMonth>
+                                <mat-datepicker-toggle matSuffix [for]="pickerYearOfPassing"></mat-datepicker-toggle>
+                                <!-- <mat-datepicker #pickerYearOfPassing></mat-datepicker> -->
+                                <mat-datepicker #pickerYearOfPassing
+              startView="multi-year"
+              (monthSelected)="chosenMonthHandler($event, pickerYearOfPassing, i)"
+              panelClass="example-month-picker">
+</mat-datepicker>
+</mat-form-field>
+<!--                   (yearSelected)="chosenYearHandler($event, i)"
+-->
+                            </div>
+                            <div class="form-error"
+                                *ngIf="getEducationArr.controls[i].get(form_yearpassing).invalid && getEducationArr.controls[i].get(form_yearpassing).touched">
+                                <div *ngIf="getEducationArr.controls[i].get(form_yearpassing)?.errors?.required">
+                                    Year of Passing is Required</div>
+                                <div
+                                    *ngIf="getEducationArr.controls[i].get(form_yearpassing)?.errors?.matDatepickerMax">
+                                    {{getEducationArr.controls[i].get(form_yearpassing)?.errors?.matDatepickerMax?.max ? 'Maximum date should be ' + momentForm(getEducationArr.controls[i].get(form_yearpassing)?.errors?.matDatepickerMax.max) : ''}}
+                                </div>
+                                <div
+                                    *ngIf="getEducationArr.controls[i].get(form_yearpassing)?.errors?.matDatepickerMin">
+                                    {{getEducationArr.controls[i].get(form_yearpassing)?.errors?.matDatepickerMin?.min ? 'Minimum date should be ' + momentForm(getEducationArr.controls[i].get(form_yearpassing)?.errors?.matDatepickerMin.min) : ''}}
+                                </div>
+                                <div
+                                    *ngIf="getEducationArr.controls[i].get(form_yearpassing)?.errors?.matDatepickerParse">
+                                    Format Should be MMM YYYY(Jan 2000)</div>
+                            </div>
+                            <div *ngIf="getEducationArr.controls[i].get(form_endDate)?.errors?.notValid" class="form-error">
+                              <div
+                              *ngIf="getEducationArr.controls[i].get(form_endDate)?.errors?.notValid">
+                              {{'Year of Passing should be greater than or equal to the selected End date.'}}</div>
+                            </div>
+                        </div>
+                        <div class="overall-input-wrapper width-70">
+                            <label>Percentage(%)<span>*</span></label>
+                            <mat-form-field appearance="fill">
+                            <input matInput placeholder="Enter here" class="input" type="text"
+                                [formControlName]="form_cgpa">
+                                </mat-form-field>
+                            <div class="form-error"
+                                *ngIf="getEducationArr.controls[i].get(form_cgpa).invalid && getEducationArr.controls[i].get(form_cgpa).touched">
+                                <div *ngIf="getEducationArr.controls[i].get(form_cgpa).errors?.required">
+                                    Percentage is Required</div>
+                                <div
+                                    *ngIf="getEducationArr.controls[i].get(form_cgpa).errors?.percentage">
+                                    Percentage should be in the range of 10 to 100</div>
+                            </div>
+                        </div>
+
+                        <!-- <ng-container *ngIf="((getEducationArr.controls[i].get(form_qualification_type).value == 'Diploma') || (getEducationArr.controls[i].get(form_qualification_type).value == 'UG') || (getEducationArr.controls[i].get(form_qualification_type).value == 'PG'))">
+                            <div class="overall-input-wrapper width-24">
+                            <label>Final Percentage(%)<span>*</span></label>
+                            <mat-form-field appearance="fill">
+                            <input matInput placeholder="Enter here" class="input" type="text"
+                                [formControlName]="form_Finalcgpa">
+                                </mat-form-field>
+                            <div class="form-error"
+                                *ngIf="getEducationArr.controls[i].get(form_Finalcgpa).invalid && getEducationArr.controls[i].get(form_Finalcgpa).touched">
+                                <div *ngIf="getEducationArr.controls[i].get(form_Finalcgpa).errors?.required">
+                                    Final Percentage is Required</div>
+                                <div
+                                    *ngIf="getEducationArr.controls[i].get(form_Finalcgpa).errors?.percentage">
+                                    Final Percentage should be in the range of 10 to 100</div>
+                            </div>
+                        </div>
+                        </ng-container> -->
+
+                    </div>
+                </ng-container>
+
+                    </div>
+                    <div class="remove-wrapper">
+                        <div (click)="removeEducationArray(i)" *ngIf="i !==0" matTooltip="Remove" class="remove">
+                            <i class="material-icons material-icons-outlined">
+                                remove_circle_outline
+                            </i>
+                        </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </ng-container>
+
+            <div *ngIf="getEducationArr && getEducationArr.controls && getEducationArr.controls.length < 7 " class="row-wrapper mt-3">
+                <div class="overall-input-wrapper">
+                    <button class="add-button" mat-raised-button type="button" (click)="addToEducationArray()">+ Add</button>
+                </div>
+            </div>
+
+            <div class="row-wrapper justify-content-between align-items-center mt-5 mb-3 footer" style="width: 80%;margin-top: 40px;">
+                <div  (click)="navigatePrevNext('Passport')"
+                    class="footerArrow d-flex align-content-center align-items-center position-relative" style="cursor: pointer;">
+                    <div class="footer-arrow left-arrow position-absolute"></div>
+                    <div class="sections left-space">
+                        <div class="label">Previous Section</div>
+                        <div class="value">Passport Details</div>
+                    </div>
+                </div>
+                <button class="submit joining-form-submit mt-1 animation-zoom no-flickr" mat-raised-button type="submit">Save &
+                    Continue</button>
+                <div  (click)="navigatePrevNext('Preview')"
+                    class="footerArrow d-flex align-content-center align-items-center text-right position-relative pointer"
+                    style="cursor: pointer;">
+                    <div class="footer-arrow right-arrow position-absolute"></div>
+                    <div class="sections right-space">
+                        <div class="label">Next Section</div>
+                        <div class="value">Preview</div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="photo-wrapper">
+        </div>
+    </div>
+
+</div>

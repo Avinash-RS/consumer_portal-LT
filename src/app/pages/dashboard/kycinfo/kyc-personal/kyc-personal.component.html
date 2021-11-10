@@ -1,0 +1,451 @@
+<div id="top"></div>
+<div class="joining-personal-wrapper">
+    <h1>
+        Personal Details
+    </h1>
+    <div class="alert">
+        Note: Information provided here will be used in our records and during the background verification. Please make sure to complete the form and fill the information’s correctly.
+      </div>
+    <div class="grids-wrapper">
+            <form class="personalForm" [formGroup]="personalForm">
+                <div class="row-wrapper">
+                    <div class="overall-input-wrapper width-70">
+                        <label>Place of Birth</label>
+                        <mat-form-field appearance="fill">
+                        <input matInput placeholder="Enter here" class="input" type="text"
+                            [formControlName]="form_place_of_birth">
+                        </mat-form-field>
+                        <div class="form-error" *ngIf="place_of_birth?.invalid && place_of_birth?.touched">
+                            <div *ngIf="place_of_birth?.errors?.required">Place of Birth is Required</div>
+                            <div *ngIf="place_of_birth?.errors?.alphaNum255">Alpha numeric with maximum of 255 characters
+                                only allowed</div>
+                        </div>
+                    </div>
+                    <div class="overall-input-wrapper width-70">
+                        <label>Country</label>
+                        <mat-form-field appearance="fill">
+                            <mat-select [formControlName]="form_nationality" required (selectionChange)="changeCountry($event)">
+                                <mat-option *ngFor="let list of country" [value]="list.countryname">{{list.countryname}}</mat-option>
+                            </mat-select>
+                            </mat-form-field>
+                        <div class="form-error" *ngIf="nationality?.invalid && nationality?.touched">
+                            <div *ngIf="nationality?.errors?.required">Nationality is Required</div>
+                            <div *ngIf="nationality?.errors?.alphaNum255">Alpha numeric with maximum of 255 characters only
+                                allowed</div>
+                        </div>
+    
+    
+                    </div>
+                </div>
+            <!-- <div class="row-wrapper">
+                <div class="overall-input-wrapper width-100">
+                    <label>Name (as per Aadhar)<span>*</span></label>
+                    <input matInput class="input" placeholder="Name (as per Aadhar)" type="text"
+                        [formControlName]="form_name">
+                    <div class="form-error" *ngIf="fname?.invalid && fname?.touched">
+                        <div *ngIf="fname?.errors?.required">Name (as per Aadhar) is Required</div>
+                        <div *ngIf="fname.errors?.alphaNum255">Alpha numeric with maximum of 255 characters only allowed
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- <div class="row-wrapper">
+                <div class="overall-input-wrapper width-70">
+                    <label>Date of Birth (as per Std X certificate)<span>*</span></label>
+                    <div class="date-relative">
+                        <input matInput class="input" [min]="minDateDOB" [max]="maxDate" [matDatepicker]="picker"
+                            placeholder="DD-MM-YYYY" [formControlName]="form_dob">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </div>
+                    <div class="form-error" *ngIf="dob?.invalid && dob?.touched">
+                        <div *ngIf="dob?.errors?.required">Date of Birth is Required</div>
+                        <div *ngIf="dob?.errors?.matDatepickerMax">
+                            {{dob?.errors?.matDatepickerMax?.max ? 'Maximum date should be ' + momentForm(dob?.errors?.matDatepickerMax.max) : ''}}
+                        </div>
+                        <div *ngIf="dob?.errors?.matDatepickerMin">
+                            {{dob?.errors?.matDatepickerMin?.min ? 'Minimum date should be ' + momentForm(dob?.errors?.matDatepickerMin.min) : ''}}
+                        </div>
+                        <div *ngIf="dob?.errors?.matDatepickerParse">Invalid Date Format</div>
+                    </div>
+                </div>
+                <div class="overall-input-wrapper width-70">
+                    <label>Gender<span>*</span></label>
+                        <mat-select [formControlName]="form_gender" required>
+                            <mat-option *ngFor="let gender of genderDropdownList" [value]="gender.value">{{gender.label}}</mat-option>
+                        </mat-select>
+
+                    <div class="form-error" *ngIf="gender?.invalid && gender?.touched">
+                        <div *ngIf="gender?.errors?.required">Gender is Required</div>
+                    </div>
+                </div>
+            </div> -->
+            
+            <div class="row-wrapper">
+
+
+                <div class="overall-input-wrapper width-70">
+                    <label>State of birth</label>
+                    <mat-form-field appearance="fill">
+                        <mat-select [formControlName]="form_state_of_birth">
+                            <mat-option *ngFor="let state of getAllStates" [value]="state.statename">{{state.statename}}</mat-option>
+                        </mat-select>
+                        </mat-form-field>
+                        <div class="form-error" *ngIf="state_of_birth?.invalid && state_of_birth?.touched">
+                            <div *ngIf="state_of_birth?.errors?.required">State of Birth is Required</div>
+                        </div>
+                </div>
+                <!-- <div class="overall-input-wrapper width-70">
+                    <label>Caste Category<span>*</span></label>
+                    <mat-form-field appearance="fill">
+                        <mat-select [formControlName]="form_category">
+                            <mat-option *ngFor="let list of category" [value]="list.caste">{{list.name}}</mat-option>
+                        </mat-select>
+</mat-form-field>
+                        <div class="form-error" *ngIf="category1?.invalid && category1?.touched">
+                            <div *ngIf="category1?.errors?.required">Caste Category is Required</div>
+                            <div *ngIf="category1?.errors?.alphaNum255">Alpha numeric with maximum of 255 characters only
+                                allowed</div>
+                        </div>
+                </div> -->
+                <!-- <div class="overall-input-wrapper width-70">
+                    <label>Mother Tongue<span>*</span></label>
+                    <input matInput placeholder="Enter here" class="input" type="text"
+                        [formControlName]="form_mother_tongue">
+                    <div class="form-error" *ngIf="mother_tongue?.invalid && mother_tongue?.touched">
+                        <div *ngIf="mother_tongue?.errors?.required">Mother Tongue is Required</div>
+                        <div *ngIf="mother_tongue?.errors?.alphaNum255">Alpha numeric with maximum of 255 characters
+                            only allowed</div>
+                    </div>
+                </div> -->
+                <div class="overall-input-wrapper width-70">
+                    <label>Domicile State</label>
+                <mat-form-field appearance="fill">
+                        <mat-select [formControlName]="form_domicile_state">
+                            <mat-option *ngFor="let state of getAllStates" [value]="state.statename">{{state.statename}}</mat-option>
+                        </mat-select>
+                 </mat-form-field>
+                        <div class="form-error" *ngIf="domicile_state?.invalid && domicile_state?.touched">
+                            <div *ngIf="domicile_state?.errors?.required">Domicile State is Required</div>
+                        </div>
+                </div>
+            </div>
+<!-- sf -->
+<div class="row-wrapper">
+        <!-- <div class="overall-input-wrapper width-70" >
+        <label>Any foreign passport other than Indian passport?</label>
+        <mat-form-field appearance="fill">
+            <mat-select [formControlName]="form_forigen_passport">
+                <mat-option *ngFor="let list of foriegn" [value]="list">{{list}}</mat-option>
+            </mat-select>
+            </mat-form-field>
+    </div>
+
+    <div class="overall-input-wrapper width-70" >
+        <label>Marital Status<span>*</span></label>
+        <mat-form-field appearance="fill">
+            <mat-select [formControlName]="form_marital_status" (ngModelChange)="maritalStatusChange()">
+                <mat-option *ngFor="let list of marital_list" [value]="list.value">{{list.name}}</mat-option>
+            </mat-select>
+            </mat-form-field>
+        <div class="form-error" *ngIf="marital_status?.invalid && marital_status?.touched">
+            <div *ngIf="marital_status?.errors?.required">marital status is Required</div>
+        </div>
+    </div> -->
+
+    <!-- <div  class="overall-input-wrapper width-22" *ngIf="(personalForm && personalForm.value && personalForm.value[form_marital_status] && personalForm.value[form_marital_status]=='Married' || personalForm && personalForm.value && personalForm.value[form_marital_status] && personalForm.value[form_marital_status]=='Widow')">
+        <label>No. of Children<span>*</span></label>
+        <mat-select [formControlName]="form_no_of_children">
+            <mat-option *ngFor="let list of no_children_list" [value]="list">{{list}}</mat-option>
+        </mat-select>
+
+             <div class="form-error" *ngIf="no_of_children?.invalid && no_of_children?.touched">
+            <div style="white-space: nowrap;" *ngIf="no_of_children?.errors?.required">No. of Children is Required</div>
+        </div>
+    </div> -->
+
+    <!-- <div class="overall-input-wrapper width-70">
+        <label>Domicile State<span>*</span></label>
+            <mat-select [formControlName]="form_domicile_state">
+                <mat-option *ngFor="let list of getAllStates" [value]="list">{{list}}</mat-option>
+            </mat-select>
+
+            <div class="form-error" *ngIf="domicile_state?.invalid && domicile_state?.touched">
+                <div *ngIf="domicile_state?.errors?.required">Domicile State is Required</div>
+            </div>
+    </div> -->
+</div>
+<!-- sd -->
+          
+
+
+            <!-- <div class="row-wrapper">
+                <div class="overall-input-wrapper width-70">
+                    <label>Religion<span>*</span></label>
+                    <input matInput placeholder="Enter here" class="input" type="text"
+                        [formControlName]="form_religion">
+                    <div class="form-error" *ngIf="religion?.invalid && religion?.touched">
+                        <div *ngIf="religion?.errors?.required">Religion is Required</div>
+                        <div *ngIf="religion?.errors?.alphaNum255">Alpha numeric with maximum of 255 characters only
+                            allowed</div>
+                    </div>
+                </div>
+                <div class="overall-input-wrapper width-70">
+                    <label>Blood Group<span>*</span></label>
+                        <mat-select [formControlName]="form_blood_group">
+                            <mat-option *ngFor="let group of bloodGroupDropdownList" [value]="group.value">{{group.label}}</mat-option>
+                        </mat-select>
+                        <div class="form-error" *ngIf="blood_group?.invalid && blood_group?.touched">
+                            <div *ngIf="blood_group?.errors?.required">Blood Group is Required</div>
+                        </div>
+                </div>
+            </div> -->
+
+            <div class="row-wrapper">
+
+                <!-- <div class="overall-input-wrapper width-70">
+                    <label>Caste Name<span></span></label>
+                    <input matInput placeholder="Enter here" class="input" type="text" [formControlName]="form_caste">
+                    <div class="form-error" *ngIf="caste?.invalid && caste?.touched">
+                        <div *ngIf="caste?.errors?.required">Caste is Required</div>
+                        <div *ngIf="caste?.errors?.alphaNum255">Alpha numeric with maximum of 255 characters only
+                            allowed</div>
+                    </div>
+                </div> -->
+                
+            </div>
+
+            <!-- <div class="row-wrapper">
+                <div class="overall-input-wrapper width-70">
+                    <label>Father Name<span>*</span></label>
+                    <mat-form-field appearance="fill">
+                    <input matInput placeholder="Enter here" class="input" type="text"
+                        [formControlName]="form_father_name">
+                        </mat-form-field>
+                    <div class="form-error" *ngIf="father_name?.invalid && father_name?.touched">
+                        <div *ngIf="father_name?.errors?.required">Father Name is Required</div>
+                        <div *ngIf="father_name?.errors?.alphaNum255">Alpha numeric with maximum of 255 characters only
+                            allowed</div>
+                    </div>
+                </div>
+                <div class="overall-input-wrapper width-70">
+                    <label>Mothers Name</label>
+                    <mat-form-field appearance="fill">
+                    <input matInput placeholder="Enter here" class="input" type="text"
+                        [formControlName]="form_mother_name">
+                    </mat-form-field>
+                </div>
+                <div class="overall-input-wrapper width-70">
+                    <label>Emergency Contact No.<span>*</span></label>
+                    <input matInput placeholder="Enter here" class="input" type="text"
+                        [formControlName]="form_emergency_contact">
+                    <div class="form-error" *ngIf="emergency_contact?.invalid && emergency_contact?.touched">
+                        <div *ngIf="emergency_contact?.errors?.required">Emergency Contact No. is Required</div>
+                        <div *ngIf="emergency_contact?.errors?.mobileRegex">Please enter a valid 10 digit mobile number
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- <div class="row-wrapper">
+                <div class="overall-input-wrapper width-70">
+                    <label>Emergency Contact Person Name<span>*</span></label>
+                    <input matInput placeholder="Enter here" class="input" type="text"
+                        [formControlName]="form_emergency_contact_name">
+                    <div class="form-error" *ngIf="emergency_contact_name?.invalid && emergency_contact_name?.touched">
+                        <div *ngIf="emergency_contact_name?.errors?.required">Contact Person Name is Required</div>
+                        <div *ngIf="emergency_contact_name?.errors?.alphaNum255">Alpha numeric with maximum of 255 characters only
+                            allowed</div>
+                    </div>
+                </div>
+                <div class="overall-input-wrapper width-70">
+                    <label>Relation with Emergency Contact<span>*</span></label>
+                    <input matInput placeholder="Enter here" class="input" type="text"
+                        [formControlName]="form_emergency_contact_relation">
+                    <div class="form-error" *ngIf="emergency_contact_relation?.invalid && emergency_contact_relation?.touched">
+                        <div *ngIf="emergency_contact_relation?.errors?.required">Relation is Required</div>
+                        <div *ngIf="emergency_contact_relation?.errors?.alphaNum255">Alpha numeric with maximum of 255 characters only
+                            allowed</div>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- <div class="row-wrapper">
+                <div class="overall-input-wrapper width-70">
+                    <label>Mobile No.<span>*</span></label>
+                    <input matInput placeholder="Enter here" class="input" type="text" [formControlName]="form_mobile">
+                    <div class="form-error" *ngIf="mobile?.invalid && mobile?.touched">
+                        <div *ngIf="mobile?.errors?.required">Mobile No. is Required</div>
+                        <div *ngIf="mobile?.errors?.mobileRegex">Please enter a valid 10 digit mobile number</div>
+                    </div>
+                </div>
+                <div class="overall-input-wrapper width-70">
+                    <label>Email ID<span>*</span></label>
+                    <input matInput placeholder="Enter here" class="input" type="text" [formControlName]="form_email">
+                    <div class="form-error" *ngIf="email?.invalid && email?.touched">
+                        <div *ngIf="email?.errors?.required">Email ID is Required</div>
+                        <div *ngIf="email?.errors?.email">Not an Valid Email ID</div>
+                    </div>
+                </div>
+            </div> -->
+<!-- 
+            <div class="row-wrapper">
+                <div class="overall-input-wrapper width-70">
+                    <label>Aadhar No.<span>*</span></label>
+                    <input matInput placeholder="Enter here" class="input" type="text" [formControlName]="form_aadhar">
+                    <div class="form-error" *ngIf="aadhar?.invalid && aadhar?.touched">
+                        <div *ngIf="aadhar?.errors?.required">Aadhaar No. is Required</div>
+                        <div *ngIf="aadhar?.errors?.aadhaar">Aadhaar No. should be numberic only and should be exact 12
+                            digits</div>
+                    </div>
+                </div>
+                <div class="overall-input-wrapper width-70">
+                    <label>PAN No.<span>*</span></label>
+                    <input matInput placeholder="Enter here" class="input" type="text" [formControlName]="form_pan">
+                    <div class="form-error" *ngIf="pan?.invalid && pan?.touched">
+                        <div *ngIf="pan?.errors?.required">PAN No. is Required</div>
+                        <div *ngIf="pan?.errors?.panNo">PAN No. should be alpha numberic and should be 10
+                            characters</div>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- <div class="row-wrapper">
+                <div class="overall-input-wrapper width-70">
+                    <label>Offer Reference<span>*</span></label>
+                    <input matInput placeholder="Enter here" class="input" type="text"
+                        [formControlName]="form_offer_reference">
+                    <div class="form-error" *ngIf="offer_reference?.invalid && offer_reference?.touched">
+                        <div *ngIf="offer_reference?.errors?.required">Offer Reference is Required</div>
+                        <div *ngIf="offer_reference?.errors?.offer">Alpha numeric and Special characters (- , . : ; & /) with maximum of 255 characters only allowed</div>
+                    </div>
+                </div>
+                <div class="overall-input-wrapper width-70">
+                    <label>Offer Date<span>*</span></label>
+                    <div class="date-relative">
+                        <input matInput class="input" [min]="minDate" [max]="maxDate" [matDatepicker]="picker_offer"
+                            placeholder="DD-MM-YYYY" [formControlName]="form_offer_date">
+                        <mat-datepicker-toggle matSuffix [for]="picker_offer"></mat-datepicker-toggle>
+                        <mat-datepicker #picker_offer></mat-datepicker>
+                    </div>
+                    <div class="form-error" *ngIf="offer_date?.invalid && offer_date?.touched">
+                        <div *ngIf="offer_date?.errors?.required">Offer Date is Required</div>
+                        <div *ngIf="offer_date?.errors?.matDatepickerMax">
+                            {{offer_date?.errors?.matDatepickerMax?.max ? 'Maximum date should be ' + momentForm(offer_date?.errors?.matDatepickerMax.max) : ''}}
+                        </div>
+                        <div *ngIf="offer_date?.errors?.matDatepickerMin">
+                            {{offer_date?.errors?.matDatepickerMin?.min ? 'Minimum date should be ' + momentForm(offer_date?.errors?.matDatepickerMin.min) : ''}}
+                        </div>
+                        <div *ngIf="offer_date?.errors?.matDatepickerParse">Invalid Date Format</div>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- <div class="row-wrapper">
+                <div class="overall-input-wrapper width-70">
+                    <label>Height (in Cms)<span>*</span></label>
+                    <input matInput placeholder="Enter here" class="input" type="number" [formControlName]="form_height">
+                    <div class="form-error" *ngIf="height?.invalid && height?.touched">
+                        <div *ngIf="height?.errors?.required">Height (in Cms) is Required</div>
+                        <div *ngIf="height?.errors?.numberDecimals">Numerics only allowed with 2 succeeding decimals
+                        </div>
+                    </div>
+                </div>
+                <div class="overall-input-wrapper width-70">
+                    <label>Weight (in Kgs)<span>*</span></label>
+                    <input matInput placeholder="Enter here" class="input" type="number" [formControlName]="form_weight">
+                    <div class="form-error" *ngIf="weight?.invalid && weight?.touched">
+                        <div *ngIf="weight?.errors?.required">Weight (in Kgs) is Required</div>
+                        <div *ngIf="weight?.errors?.numberDecimals">Numerics only allowed with 2 succeeding decimals
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- <div class="row-wrapper">
+                <div class="overall-input-wrapper width-45">
+                    <label>Alternate Email ID<span>*</span></label>
+                    <input matInput placeholder="Enter here" class="input" type="text" [formControlName]="form_personal_email">
+                    <div class="form-error" *ngIf="personal_email?.invalid && personal_email?.touched">
+                        <div *ngIf="personal_email?.errors?.required">Alternate Email ID is Required</div>
+                        <div *ngIf="personal_email?.errors?.email">Not an Valid Email ID</div>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- <div class="row-wrapper">
+                <div class="overall-input-wrapper width-100">
+                    <label>Identification Mark<span>*</span></label>
+                    <div class="d-flex align-content-start" style="display:flex;align-content: flex-start;justify-content: center;align-content: center;align-items: center;">
+                        <span class="mr-1 mt-2">1.</span> <input matInput placeholder="Enter here" class="input"
+                            type="text" [formControlName]="form_identification_mark1">
+                    </div>
+                    <div class="form-error" *ngIf="identification_mark1?.invalid && identification_mark1?.touched">
+                        <div *ngIf="identification_mark1?.errors?.required">Identification Mark is Required</div>
+                        <div *ngIf="identification_mark1?.errors?.alphaNum255">Alpha numeric with maximum of 255
+                            characters only allowed</div>
+                    </div>
+                    <div class="d-flex align-content-start" style="display:flex;justify-content: center;justify-content: center;align-content: center;align-items: center;">
+                        <span class="mr-1 mt-3">2.</span> <input style="margin-top: .4em;" matInput
+                            placeholder="Enter here" class="input" type="text"
+                            [formControlName]="form_identification_mark2">
+                    </div>
+                    <div class="form-error" *ngIf="identification_mark2?.invalid && identification_mark2?.touched">
+                        <div *ngIf="identification_mark2?.errors?.required">Identification Mark is Required</div>
+                        <div *ngIf="identification_mark2?.errors?.alphaNum255">Alpha numeric with maximum of 255
+                            characters only allowed</div>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="row-wrapper justify-content-between  align-items-center mt-4 mb-3 footer" style="margin-top: 40px;">
+                <div class="d-flex align-content-center align-items-center position-relative" style="visibility: hidden;">
+                    <div class="left-arrow position-absolute"></div>
+                    <div class="sections left-space">
+                        <div class="label">Previous Section</div>
+                        <div class="value">Personal Details</div>
+                    </div>
+                </div>
+                <button class=" submit joining-form-submit mt-1 animation-zoom no-flickr" mat-raised-button (click)="formSubmit()">Save &
+                    Continue</button>
+                <div class=" footerArrow d-flex align-content-center align-items-center text-right position-relative pointer" style="cursor: pointer;" (click)="navigatePrevNext('Contact')">
+                    <div class="right-arrow position-absolute footer-arrow"></div>
+                    <div class="sections right-space">
+                        <div class="label">Next Section</div>
+                        <div class="value">Contact Details</div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+        <!-- <div class="photo-wrapper">
+            <div class="avatar">
+                <div class="photo">
+                    <label [ngClass]="url ? 'hoverable' : 'hoverable1'" for="fileInput">
+                        <ng-container *ngIf="!url">
+                            <div class="icon">
+                                <img [src]="'assets/images/camera.svg'" alt="">
+                            </div>
+                            <div class="add-image">
+                                <div class="mini-icon">
+                                    <img [src]="'assets/images/MaskGroup1.png'" alt=""></div>
+                                    <span>Click and upload your photo here</span>
+                            </div>
+                        </ng-container>
+                        <ng-container *ngIf="url">
+                            <div class="urlExist">
+                                <img [src]="url" alt="">
+                            </div>
+                        </ng-container>
+                    </label>
+                    <input style="cursor: pointer !important;" matTooltipPostion="left"
+                        title="" (click)="files.value = null;" id="fileInput" #files type='file' name="profile" (change)="onSelectFile($event)"
+                        accept="image/*" >
+                </div>
+
+            </div>
+        </div> -->
+    </div>
+
+</div>

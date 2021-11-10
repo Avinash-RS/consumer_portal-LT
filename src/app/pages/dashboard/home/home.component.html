@@ -1,0 +1,8 @@
+<ng-container *ngIf="commonData">
+    <app-header-image class="app-Header" [HomeBannerImage]="commonData.ImageData"></app-header-image>
+    <!-- <app-domain-list class="app-Domain"></app-domain-list> -->
+    <app-assessments-list class="app-Assessment"></app-assessments-list>
+    <app-goals class="app-Goals" [AchieveGoal]="commonData.acheiveData"></app-goals>
+    <!-- <app-examination class="app-Examination" [Examination]="commonData.examinationData"></app-examination> -->
+    <app-partners-list class="app-Partners" [OurPartners]="commonData.ourPartnersData"></app-partners-list>
+</ng-container>

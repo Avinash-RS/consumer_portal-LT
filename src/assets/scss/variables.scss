@@ -1,0 +1,82 @@
+$imagePath : "/assets/images";
+$fontPath: "/assets/fonts";
+
+//Color Defining
+//$primaryColor: #C02222;
+$primaryColor: #2EA3F2;
+$secondaryColor: #08558C;
+$successColor: #0CD684;
+$blueColor: #004C86;
+$whiteColor: #ffffff;
+$blackColor: #000000;
+$darkGrey: #333333;
+$mediumGrey: #666666;
+$lightGrey: #999999;
+$greyColor: #cdcdcd;
+$bgColor: #E9E9E9;
+$lightColor: #fafafa;
+$thumbColor : #aaa;
+$thumbHoverColor : #999;
+$borderColor: #ececec;
+$light-blue:#333333;
+$primary:#666666;
+$primary-yellow: #FFCC00;
+//Screen Size definitions
+$screen-sm-min: 576px;
+$screen-md-min: 700px; // Small tablets (portrait view)
+$screen-lg-min: 992px; // Tablets and small desktops
+$screen-xl-min: 1200px; // Large tablets and desktops
+$table-border: rgba(112, 112, 112, 0.411);
+$black-1: #5E5E5E;
+$black-2: #4B4B4B;
+$black-3: #D6D6D6;
+$black-4: #5E5E5EBF;
+$white:#fff;
+$primary-red: #C02222;
+// Small devices
+@mixin sm {
+    @media (min-width: #{$screen-sm-min}) {
+        @content;
+    }
+}
+// Medium devices
+@mixin md {
+    @media (min-width: #{$screen-md-min}) {
+        @content;
+    }
+}
+// Large devices
+@mixin lg {
+    @media (min-width: #{$screen-lg-min}) {
+        @content;
+    }
+}
+// Extra large devices
+@mixin xl {
+    @media (min-width: #{$screen-xl-min}) {
+        @content;
+    }
+}
+
+@mixin buttonCommon {
+    border-radius: 1.56em;
+    padding-top: 0.375em;
+    padding-bottom: 0.375em;
+    line-height: 1.2;
+}
+@mixin buttonFilled {
+    background: $secondaryColor;
+    color: $whiteColor;
+    border: 0;
+    transition: background 0.3s ease-in-out;
+    &:hover {
+        background: $primaryColor;
+    }
+    @include buttonCommon;
+}
+@mixin buttonOutlined {
+    background-color: transparent;
+    color: $primaryColor;
+    border: 1px solid $primaryColor;
+    @include buttonCommon;
+}

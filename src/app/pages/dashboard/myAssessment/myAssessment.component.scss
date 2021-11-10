@@ -1,0 +1,364 @@
+@import "variables";
+
+.myAssesmentSection {
+    font-size: 10px;
+    @include md {
+        font-size: 12px;
+    }
+    @include lg {
+        font-size: 14px;
+    }
+    @include xl {
+        font-size: 16px;
+    }
+}
+
+.d-flex {
+    display: flex;
+}
+.titleContainer {
+    background-image: url('#{$imagePath}/Account_pattern.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 3em 0;
+    position: relative;
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.7;
+        background-image: linear-gradient(to right, #00b0ed, #00b5d9, #00b6af, #00b376, #53aa34);
+    }
+}
+.titelFlex {
+    display: flex;
+    color: #FFFFFF;
+    justify-content: space-between;
+    position: relative;
+    .txt-area{
+        width: 70%;
+        h1 {
+            font-weight: bolder !important;
+            font-size: 32px !important;
+            margin-bottom: 0px !important;
+        }
+    }
+    .progress-area{
+        width: 30%;
+        .progressbar{
+            margin-top: 10px;
+            height: 12px;
+            border-radius: 10px;
+        }
+    }
+
+}
+.filterBg {
+    margin-top: -26px;
+  .filterSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    nav {
+      width: 90%;
+      a {
+        position: relative;
+        display: inline-block;
+        padding-bottom: 5px;
+        margin-right: 1em;
+        color: #FFFFFF;
+        font-size: 1.125em;
+        font-weight: 400;
+        &.active {
+          color: $darkGrey;
+          &::before {
+            width: 100%;
+            visibility: visible;
+          }
+        }
+        &::before {
+          content: "";
+          position: absolute;
+          width: 0;
+          height: 2px;
+          bottom: -1px;
+          left: 0;
+          background-color: $primaryColor;
+          visibility: hidden;
+          transition: all 0.3s ease-in-out;
+        }
+        &:hover {
+          color: $darkGrey;
+          &::before {
+            visibility: visible;
+            width: 100%;
+          }
+        }
+      }
+    }
+    .filter {
+      margin-top: 0.65em;
+      width: 8%;
+      color: $darkGrey;
+      font-size: 1em;
+      font-weight: 400;
+      line-height: 1.4;
+      border: none;
+      background-color: $whiteColor;
+      padding: 4px 0.75em;
+      border-radius: 4px;
+      box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.15);
+      -webkit-box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.15);
+      -moz-box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.15);
+      transition: color 0.3s linear;
+      &:hover {
+        color: $primaryColor;
+      }
+      span,
+      em {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      span {
+        margin-left: 0.35em;
+      }
+      em {
+        font-size: 1.15em;
+      }
+    }
+  }
+}
+
+.toolbar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0.3em;
+    margin: 0.5em 0;
+    span {
+        display: inline-block;
+        em {
+            color: $lightGrey;
+            font-size: 1em;
+        }
+    }
+    .list {
+        margin-right: 1em;
+        font-size: 1.55em;
+    }
+    .grid {
+        margin-right: 2em;
+        font-size: 1.25em;
+    }
+}
+.notifyInfo {
+    display: flex;
+    justify-content: space-between;
+    background-color: #cce5ff;
+    border: solid 1px #9fc2e2;
+    border-radius: 3px;
+    padding: 0.8em 1.25em;
+    p {
+        color: #004085;
+        font-size: 0.875em;
+        font-weight: 400;
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0;
+        em {
+            margin: 0 0.5em 0 0;
+        }
+    }
+    .icon-Close {
+        display: inline-block;
+        vertical-align: middle;
+        color: $mediumGrey;
+        font-size: 0.65em;
+    }
+}
+.assesmentList {
+    margin: 0.7em 0;
+    .assesmentItem {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 0.75em;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+        border-radius: 4px;
+        margin: 0.9375em 0;
+        width: 100%;
+        box-sizing: border-box;
+        figure {
+            width: 38%;
+            display: flex;
+            // box-sizing: border-box;
+            @include md {
+                width: 15%;
+            }
+            img {
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+        .itemNames {
+            // box-sizing: border-box;
+            width: 60%;
+            padding: 0.5em 0.75em;
+            @include md {
+                width: 40%;
+                border-bottom: 0;
+                border-right: 1px solid rgba(0, 0, 0, 0.1);
+            }
+            span {
+                font-size: 0.875em;
+                font-weight: 400;
+                color: $lightGrey;
+            }
+            .heading4 {
+                color: $darkGrey;
+                font-weight: 700;
+                line-height: 1;
+                width: 99%;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+            label {
+                display: inline-block;
+                background-color: #DDDDDD;
+                font-size: 0.68em;
+                font-weight: 400;
+                color: $blackColor;
+                padding: 0.35em 0.65em;
+                border-radius: 4px;
+                margin-top: 0.35em;
+                line-height: normal;
+            }
+        }
+        .itemTypes {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.7em;
+            width: 100%;
+            @include md {
+                width: 45%;
+            }
+            > div {
+                text-align: center;
+                .ellipse {
+                    border-radius: 50%;
+                    background-color: $greyColor;
+                    display: inline-block;
+                    width: 1em;
+                    height: 1em;
+                }
+                .green{
+                    background-color: green;
+                }
+                .orange{
+                    background-color: orange;
+                }
+                .heading, .assessmentHour {
+                    font-size: 0.75em;
+                    display: block;
+                    line-height: normal;
+                }
+                .heading {
+                    text-align: center;
+                    font-weight: 700;
+                    color: $darkGrey;
+                    margin-bottom: 0.15em;
+                }
+                .assessmentHour {
+                    color: $lightGrey;
+                    span {
+                        color: $primaryColor;
+                        display: inline-block;
+                        margin: 0 0.15em;
+                    }
+                }
+            }
+        }
+    }
+}
+.assessmentHourbold{
+    color: $lightGrey;
+    font-weight: bold;
+    font-size: 0.75em;
+    display: block;
+}
+.gotoExamBtn {
+    width: 100%;
+    text-align: center;
+    button {
+        @include buttonFilled;
+        font-size: 1em;
+        font-weight: 400;
+        padding-left: 1.5em;
+        padding-right: 1.5em;
+    }
+    .disable{
+        background-color: grey !important;
+        cursor:default !important;
+    }
+}
+
+.gotoExamBtnInnerDiv {
+    width: 100%;
+    text-align: center;
+    button {
+        @include buttonFilled;
+        font-size: .7em;
+        font-weight: 400;
+        margin-top: .6em;
+        padding-left: 1.5em;
+        padding-right: 1.5em;
+    }    
+}
+.reschedulespan {
+    font-size: 1.1em;
+        color: #C02222;
+        font-weight: 400;
+        line-height: 1.4;
+}
+
+.emptyCart {
+    text-align: center;
+    .imgContainer {
+        margin-top: 1.5em;
+    }
+    figure {
+        img {
+            width: 20%;
+        }
+    }
+    .heading3 {
+        text-transform: uppercase;
+        font-weight: 700;
+        margin: 0.65em 0 0.25em 0;
+    }
+    p {
+        color: $mediumGrey;
+        font-size: 0.93em;
+        line-height: 1.4;
+    }
+    button {
+        @include buttonFilled;
+        font-size: 1.25em;
+        font-weight: 400;
+        padding-left: 3em;
+        padding-right: 3em;
+        line-height: 1.5;
+    }
+}
+::ng-deep .progress-area .mat-progress-bar-fill::after {
+    background-color: #2ED775;
+  }
+  
+  ::ng-deep .progress-area .mat-progress-bar-buffer {
+    background: #E4E8EB;
+  }

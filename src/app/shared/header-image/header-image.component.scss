@@ -1,0 +1,293 @@
+@import "variables";
+@import "keyframes";
+
+.container {
+    width: 100%;
+
+    @include lg {
+        width: 94%;
+    } 
+}
+
+.bannerSection {
+    position: relative;
+    background-image: url('#{$imagePath}/home_img.png');
+    background-repeat: repeat;
+    width: 100%; 
+    display: flex;
+    align-items: center;
+    padding: 1em 0.9em;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 520px;
+    background-position: 100% 40%;
+    // @media only screen and (min-width: 568px) {
+    //     height: 45em;
+    //     padding:0;
+    // }
+    // @include sm {
+    //     height: 20em;
+    // }
+    // @include md {
+    //     height: 21em;
+    // }
+    // @include xl {
+    //     height: 24em;
+    // }
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height :100%;
+        background-image: linear-gradient(to right top, #0d314e, #0d3757, #0c3e61, #0a446a, #074b74, #05527c, #035a84, #00618c, #026b93, #0a759a, #157fa1, #2089a7);
+        opacity: 0.5;
+    }
+    .progression {
+        position: absolute;
+        right: 0;
+        top: 0;
+        //height: 100px;
+        padding: 8px 15px 8px 15px;
+        background-color: #ffff;
+        .progressbar{
+            margin-top: 8px;
+            height: 12px;
+            border-radius: 10px;
+        }
+
+    }
+    .bannerWrapper {
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;  
+        flex-direction: column;
+        @include md {
+            flex-direction: row;
+        }
+        @include lg {
+            font-size: 14px;
+        }
+        @include xl {
+            font-size: 16px;
+        }
+        .imageWrapper {
+            position: relative;
+        }
+    }
+   
+    .bannerContent {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+       
+        @include md {
+            width: 30%;
+        }
+        @include lg {
+            width: 45%;
+        }
+        .heading, p {
+            font-weight: 300;
+            line-height: 1.2;
+        }
+        .heading {
+            color: #ffff;
+            font-size: 2.6em; 
+            line-height: 1.1;
+            strong {
+                font-weight: 700;
+                font-size: 1.2em;
+            }
+            p {
+                color: #ffff;
+                font-size: 0.38em;
+                margin: 0.75em 0;
+                display: inline-block;
+            }
+        } 
+    }
+    .acceleratePath { 
+        @include lg { 
+            margin-top: 2em;
+        }
+
+        .heading6 {
+            font-weight: 700;
+            color: $whiteColor;
+            margin-bottom: 0.8em;
+            text-align: left;
+            text-transform: uppercase;
+        }
+        button {
+            border-radius: 0.5em;
+            border: 1px solid #b3b3b3;
+            min-width: 45px;
+            width: 55px;
+            padding: 0.358em 0;
+            margin-right: 0.8em;
+            background: transparent;
+            transition: all 0.3s ease-in-out;
+            
+            em {
+                font-size: 1.65em;
+                color: $whiteColor;
+            }
+            span {
+                color: $whiteColor;
+                font-size: 0.90em;
+                font-weight: 300;
+                display: block;
+                text-transform: uppercase;
+                margin: 0;
+                transition: all 0.3s ease-in-out;
+            }
+            &:hover {
+
+                background-color: #6d1c1ca6; 
+                border: 1px solid #ebebeb; 
+            }
+        }
+    }
+    .owlCarouselWrapper {
+        position: relative;
+        z-index: 0;
+        left: 0;
+        text-align: center;
+        width: 100%; 
+ 
+        @include md {
+            width: 70%;
+            
+        }
+        @include lg {
+            width: 55%;
+            left: -4em;
+        }
+        
+        .skillOmeter {
+            position: relative;
+            background-color: #911a1c;
+            padding: 1em;
+            border-radius: 1em;
+            top: -1em;
+
+            @include sm {
+            background-color: transparent;
+            padding: 1em;
+            border-radius: none;
+            position: absolute;
+            right: 3em;
+            z-index: 1;
+            top: 5em; 
+            }
+            
+            @include md {
+                right: 2em; 
+                top: 5em; 
+            }
+            @include lg {
+                right: 1.8em;
+                top: 3em;
+            }
+            @include xl {
+                right: 3.3em;
+                top: 3em;
+            }
+            
+        }
+    }
+}
+
+// .owlCarouselWrapper {
+//     position: relative;
+//     font-size: 11px ;
+//     @include lg {
+//         font-size: 14px;
+//     }
+//     @include xl {
+//         font-size: 16px;
+//     }
+//     .imageWrapper {
+//         position: relative;
+//     }
+//     figure {
+//         background-repeat: no-repeat;
+//         background-size: cover;
+//         background-position: top center;
+//         width: 100%;
+//         &::before {
+//             content: '';
+//             display: block;
+//             padding-bottom: 80%;
+//             @include sm {
+//                 padding-bottom: 40%;
+//             }
+//             @include md {
+//                 padding-bottom: 30%;
+//             }
+//         }
+//     }
+//     .bannerContent {
+//         position: absolute;
+//         left: 5vw;
+//         top: 50%;
+//         width: 85%;
+//         transform: translateY(-50%);
+//         @include sm {
+//             width: 55%;
+//         }
+//         @include xl {
+//             width: 45%;
+//         }
+//         .heading, p {
+//             color: $whiteColor;
+//             font-weight: 300;
+//             line-height: 1.2;
+//         }
+//         .heading {
+//             font-size: 3em;
+//             strong {
+//                 font-weight: 700;
+//                 font-size: 1.05em;
+//             }
+//         }
+//         p {
+//             font-size: 1.25em;
+//             margin: 0.75em 0;
+//             display: inline-block;
+//         }
+//         button {
+//             position: relative;
+//             background-color: transparent;
+//             border-radius: 1.56em;
+//             padding: 0.5em 2em;
+//             line-height: 1.2;
+//             border: 1px solid $whiteColor;
+//             color: $whiteColor;
+//             font-weight: 300;
+//             text-transform: uppercase;
+//             display: flex;
+//             align-items: center;
+//             margin-top: 0.5em;
+//             &:hover {
+//                 em {
+//                     animation: moveRightLeft 1s infinite cubic-bezier(0.445, 0.05, 0.55, 0.95);
+//                 }
+//             }
+//             em {
+//                 display: inline-block;
+//                 margin-left: 0.5em;
+//                 transition: 0.3s ease-in-out;
+//             }
+//         }
+//     }
+// }
+::ng-deep .progression .mat-progress-bar-fill::after {
+    background-color: #2ED775;
+  }
+  
+  ::ng-deep .progression .mat-progress-bar-buffer {
+    background: #E4E8EB;
+  }

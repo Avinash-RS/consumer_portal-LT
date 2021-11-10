@@ -1,0 +1,105 @@
+<section class="skillLevelSection">
+    <div class="container">
+
+
+        <div class="levelsandSkills">
+            <!-- <span class="areaName">{{areaData.name}}</span> -->
+            <div class="heading1">{{competencyData.name}}</div>
+            <span class="totalAssessments"><em class="icon-Document"></em>{{competencyData.totalAssessment}} Assessments</span>
+            <!-- <div class="heading1 description">Description</div> -->
+            <P>{{competencyData.longDescription}}</P>
+            <!-- <ul>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+            </ul> -->
+            <div class="heading3">Accelerate your career path in this Assessment</div>
+
+            <!-- <p>Best for those who want a series of Assessment</p> -->
+            <div class="descriptionSection " *ngIf="areaData.cid==='A0004'">
+                <br>
+                <div class="achieve">
+                    <div class="heading4">What you will achieve</div>
+                    <!-- <ul>
+                        <li> -->
+                            <!-- <em class="icon-checked"></em> -->
+                            <p>Proficiency in Construction Engineering concepts and knowledge areas to help with employment in the area.</p>
+                        <!--</li>
+                     </ul> -->
+                </div>
+                <div class="requirements require">
+                    <div class="heading4">Requirements</div>
+                    <p>Completion of academic studies or a course in Construction Engineering and ability to apply learning effectively.</p>
+                </div>
+                <!-- <div class="description">
+                    <span class="heading4">Description</span>
+                    <div [ngClass]="{'limitTextHeight': isReadMore}">
+                        <p>{{aboutArea?.contentDescription}}</p>
+                    </div>
+                    <button *ngIf="aboutArea?.contentDescription.length > 370" type="button" (click)="showText()">
+                        {{ isReadMore ? 'Show More': 'Show Less' }} <em class="icon-DownArrow"></em>
+                    </button>
+                </div> -->
+                </div>
+            <div class="assessmentOverview">
+                <mat-accordion>
+                    <mat-expansion-panel [expanded]="panelOpenState" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                <div class="heading4">Assessment Overview</div>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div class="listItem" [innerHtml]="competencyData.assessmentOverview">   </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+            <div class="certifyAssessment">
+                <div class="heading3">Levels</div>
+                <mat-accordion class="example-headers-align">
+                    <ng-container *ngFor="let first of assessmentList;let i = index">
+                        <mat-expansion-panel [expanded]="certifyOpenState" *ngIf="first.assessmentData.length > 0">
+                            <mat-expansion-panel-header>
+                                <span class="line"></span>
+                                <mat-panel-title>
+                                    <span class="accoordIcon"><em class="icon-Clipboard"></em></span>
+                                    <span class="levels heading5">{{first.levelName}}</span>
+                                </mat-panel-title>
+                                <mat-panel-description>
+                                    <div class="buyNowCart">
+                                        <span class="purchaseRate"><em class="icon-Rupee"></em>{{first.levelPrice}}</span>
+                                        <button class="buyNow" (click)="addCart(true,first.levelId,'','buy')">Buy Now</button>
+                                        <button class="addCart" (click)="addCart(true,first.levelId,'','cart')">Add to Cart</button>
+                                        <!-- <button class="taketest" (click)="gotoTest(true,first.levelId,'','buy')">Take test</button> -->
+                                    </div>
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+                            <span class="line"></span>
+                            <div class="content" *ngFor="let second of first.assessmentData; let i = index">
+                                <span class="icons"><em class="icon-Play"></em></span>
+                                <div class="description">
+                                    <div class="heading5">{{second.name}}</div>
+                                    <p>{{second.shortDescription}}</p>
+                                    <div class="levelAssessment">
+                                        <div *ngFor="let third of second.testTypes">
+                                            <span class="heading">{{third.testName}}</span>
+                                            <span class="assessmentHour">{{third.sumtotalhour}} Min(s) <span>|</span> {{third.totalQuestion}} Questions</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="buyNowCart">
+                                    <span class="purchaseRate"><em class="icon-Rupee"></em>{{!second.is_free?second.sellingPrice:"Free"}}</span>
+                                    <button class="buyNow" *ngIf="!second.is_free" (click)="addCart(false,first.levelId,second.cid,'buy')">Buy Now</button>
+                                    <button class="addCart" *ngIf="!second.is_free" (click)="addCart(false,first.levelId,second.cid,'cart')">Add to Cart</button>
+                                    <button class="taketest" *ngIf="second.is_free" (click)="addCart(false,first.levelId,second.cid,'cart')">Take test</button>
+                                </div>
+                            </div>
+                        </mat-expansion-panel>
+                    </ng-container>
+
+                </mat-accordion>
+            </div>
+        </div>
+    </div>
+</section>

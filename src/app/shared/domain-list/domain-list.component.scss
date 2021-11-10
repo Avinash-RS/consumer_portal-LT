@@ -1,0 +1,99 @@
+@import "variables";
+
+.domainList {
+    margin: 3.75em 0 3.75em 0;
+    font-size: 10px;
+    @include md {
+        font-size: 12px;
+    }
+    @include lg {
+        font-size: 14px;
+    }
+    @include xl {
+        font-size: 16px;
+    }
+}
+.sliderBg {
+    background-color: $bgColor;
+    text-align: center;
+    padding: 1.5em 1em;
+    cursor: pointer;
+    @include lg {
+        height: 290px;
+    }
+    .icons {
+        background-color: $whiteColor;
+        width: 5em;
+        height: 5em;
+        border-radius: 50%;
+        border: 1px solid $whiteColor;
+        padding: 1.5em;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: none;
+        position: relative;
+        transition: 0.3s all ease-in-out;
+        img {
+            width: 2.75em;
+            height: 2.75em;
+            max-width: inherit;
+        }
+        em {
+            color: $darkGrey;
+            font-size: 3em;
+        }
+    }
+    .heading4 {
+        margin: 0.5em 0 0.5em 0;
+        color: $primaryColor;
+        transition: all .5s ease;
+        @include lg {
+            margin: 2.6em 0 0.5em 0;
+        }
+    }
+    p {
+        color: $darkGrey;
+        font-size: 1em;
+        line-height: 1.4;
+    }
+    @include lg {
+        .learnMore {
+            visibility: hidden;
+            opacity: 0;
+            margin-top: 0;
+            transition: all .2s ease, margin-top .5s ease;
+        }
+    }
+    button {
+        @include buttonOutlined;
+        background-color: $whiteColor;
+        padding-left: 2em;
+        padding-right: 2em;
+        color: $mediumGrey;
+        font-size: 1em;
+        transition: color, background-color 0.5s linear;
+        &:hover {
+            background-color: $primaryColor;
+            color: $whiteColor;
+        }
+    }
+    @include lg {
+        &:hover {
+            .icons {
+                border: 1px solid $primaryColor;
+            }
+        }
+        &:hover {
+            .heading4 {
+                margin: 0.6em 0 0.5em 0;
+            }
+            .learnMore {
+                visibility: visible;
+                opacity: 1;
+                margin-top: 1em;
+                transition: all .1s ease, margin-top .5s ease;
+            }
+        }
+    }
+}

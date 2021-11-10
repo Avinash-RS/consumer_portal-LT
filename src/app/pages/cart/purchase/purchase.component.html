@@ -1,0 +1,82 @@
+<section class="purchaseSection">
+    <mat-horizontal-stepper #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+            <ng-template matStepLabel>Cart</ng-template>
+            <div *ngIf="cartList.length > 0" class="cartSection">
+                <div class="leftContent">
+                    <!-- <div class="offer">
+                        <span class="availableOffers"><em class="icon-Offer"></em> Available Offers</span>
+                        <ul [ngClass]="{'limitTextHeight': isReadMore}">
+                            <li>10% Unlimited Cashback on Axis Bank Credit Card. TCA</li>
+                            <li>20% Unlimited Cashback on Axis Bank Credit Card. TCA</li>
+                            <li>30% Unlimited Cashback on Axis Bank Credit Card. TCA</li>
+                            <li>40% Unlimited Cashback on Axis Bank Credit Card. TCA</li>
+                        </ul>
+                        <span class="showText" (click)="showText()"> {{ isReadMore ? 'Show More': 'Show Less' }} </span>
+                    </div> -->
+                    <div class="itemsinCart">
+                        <span class="itemsHeading">{{cartList.length}} <span *ngIf="cartList.length <= 1">item</span><span *ngIf="cartList.length > 1">items</span> in cart</span>
+                        <ng-container *ngFor="let cart of cartList">
+                            <div>
+                                <figure>
+                                    <img [src]="cart?.assessmentDetails?.image?.url" alt="" />
+                                </figure>
+                                <div class="cartContent">
+                                    <div class="headingPrice">
+                                        <div class="heading3">{{cart.assessmentDetails.name}} <span>{{cart?.competencyDetails?.levelName}}</span></div>
+                                        <div class="value"><em class="icon-Rupee"></em>{{cart.assessmentDetails.sellingPrice}}</div>
+                                    </div>
+                                    <div class="soldby">
+                                        <p>Sold by : L & T</p>
+                                    </div>
+                                    <div class="levelAssessment">
+                                        <div class="test">
+                                            <ng-container *ngFor="let test of cart.assessmentDetails.testTypes">
+                                                <div>
+                                                    <span class="heading">{{test.testName}}</span>
+                                                    <span class="assessmentHour">{{test.sumtotalhour}} Hour <span>|</span> {{test.totalQuestion}} Questions</span>
+                                                </div>
+                                            </ng-container>
+                                        </div>
+                                        <div class="deleteWishList">
+                                            <button (click)="removeAssessment(cart.cartId)"><em class="icon-Delete"></em> Remove</button>
+                                            <!-- <button><em class="icon-Favorite"></em> Move to WishList</button> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="rightContent">
+                    <app-Checkout [tab]='stepper' [checkoutData]='cartList'></app-Checkout>
+                </div>
+            </div>
+  
+            <section *ngIf="cartList.length == 0" class="emptyCart">
+                <div class="container">
+                    <figure>
+                        <img src="/assets/images/empty-cart.svg" alt="" />
+                        <div class="heading3">HEY, IT FEELS EMPTY!</div>
+                        <p>There is nothing in your cart. Let's add some items.</p>
+                        <button (click)="toCatalogue()">Go to Catalogue</button>
+                    </figure>
+                </div>
+            </section>
+        </mat-step>
+        <!-- #docregion label -->
+        <mat-step [stepControl]="secondFormGroup">
+            <ng-template matStepLabel>Address</ng-template>
+            <!-- #enddocregion label -->
+            <div class="cartSection">
+                <div class="leftContent">
+                    <app-Address></app-Address>
+                </div>
+                <div class="rightContent">
+                    <app-Checkout [tab]='1' [checkoutData]='cartList'></app-Checkout>
+                </div>
+            </div>
+        </mat-step>
+        
+    </mat-horizontal-stepper>
+</section>

@@ -1,0 +1,342 @@
+@import "variables";
+
+.skillLevelSection {
+    // background: rgb(255,255,255);
+    // background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(233,233,233,1) 100%);
+    background-color: rgba(233,233,233,1);
+    padding: 3.75em 0 3.75em 0;
+    font-size: 10px;
+    position: relative;
+    @include md {
+        font-size: 12px;
+    }
+    @include lg {
+        font-size: 14px;
+    }
+    @include xl {
+        font-size: 16px;
+    }
+    p {
+        font-size: 0.875em;
+        font-weight: 400;
+        color: $mediumGrey;
+        line-height: 1.3;
+    }
+}
+
+.levelsandSkills {
+    // margin-top: 2em;
+    .areaName {
+        display: inline-block;
+        width: 100%;
+        color: $lightGrey;
+        font-size: 0.875em;
+        font-weight: 400;
+        line-height: normal;
+    }
+    .heading1, .totalAssessments {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .heading1 {
+        font-size: 2.125em;
+        font-weight: 700;
+        line-height: normal;
+        color: $blackColor;
+        @include md {
+            width: 75%;
+        }
+    }
+    .totalAssessments {
+        width: 100%;
+        text-align: left;
+        color: $lightGrey;
+        margin-top: 0.5em;
+        @include md {
+            width: 24%;
+            margin-left: 1%;
+            margin-top: 0;
+            text-align: right;
+        }
+        em {
+            display: inline-block;
+            margin-right: 0.5em;
+        }
+    }
+    p, ul {
+        font-size: 1.125em;
+        font-weight: 300;
+        color: $mediumGrey;
+        line-height: 1.5;
+    }
+    p {
+        margin-top: 0.75em;
+    }
+    ul {
+        list-style-type: disc;
+        padding-left: 1em;
+    }
+}
+.assessmentOverview {
+    margin-top: 1.5em;
+    max-width: 850px;
+    width: 100%;
+}
+
+.certifyAssessment {
+    margin-top: 1.5em;
+    max-width: 850px;
+    width: 100%;
+    .line {
+        position: absolute;
+        left: 39px;
+        top: 0;
+        width: 1px;
+        height: 100%;
+        background-color: $lightGrey;
+        z-index: 1;
+    }
+    .heading3 {
+        margin-bottom: 0.75em;
+    }
+    .accoordIcon, .levels {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .heading5 {
+        font-weight: 700;
+        margin-left: 1em;
+        font-size: 0.75em;
+        @include sm {
+            font-size: 1.25em;
+        }
+    }
+    .accoordIcon {
+        width: 2.75em;
+        height: 2.75em;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        border: 1px solid $lightGrey;
+        background-color: $whiteColor;
+        position: relative;
+        z-index: 2;
+        em {
+            font-size: 1.5em;
+            color: $lightGrey;
+        }
+    }
+    .content {
+        padding: 0 1em 0.75em 1em;
+        margin: 0 0 1em 2.8em;
+        border-bottom: 1px solid $greyColor;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        @include sm {
+            padding: 0 2em 0.75em 3em;
+        }
+        &:last-child {
+            border-bottom: 0;
+            margin-bottom: 0;
+        }
+        .icons {
+            width: 10%;
+            position: relative;
+            top: 3px;
+            @include sm {
+                width: 4%;
+            }
+            em {
+                font-size: 1.75em;
+                background-color: #e5e5e5;
+                border-radius: 100%;
+            }
+        }
+        .description {
+            width: 88%;
+            margin-top: 0;
+            @include sm {
+                width: 60%;
+            }
+            @include lg {
+                width: 52%;
+            }
+            .heading5 {
+                margin: 0;
+            }
+            p {
+                margin: 0;
+            }
+        }
+        .buyNowCart {
+            width: 100%;
+            @include sm {
+                width: 31%;
+            }
+            @include lg {
+                width: 39%;
+            }
+        }
+        .buyNowCart {
+            font-size: 17px;
+            justify-content: space-between;
+            flex-direction: row;
+            margin-top: 0.5em;
+
+            @include sm {
+                margin-top: 0;
+                justify-content: center;
+                flex-direction: column;
+            }
+            @include lg {
+                justify-content: space-between;
+                flex-direction: row;
+            }
+            @include xl {
+                justify-content: flex-end;
+            }
+            .buyNow {
+                margin: 0.5em 0;
+                @include lg {
+                    margin: 0;
+                }
+            }
+            button {
+                margin-left: 0;
+                @include lg {
+                    margin-left: 1em;
+                }
+            }
+        }
+    }
+    .levelAssessment {
+        margin-top: 0.75em;
+        display: flex;
+        width: 100%;
+        @include xl {
+            width: 70%;
+        }
+        > div {
+            width: 50%;
+            @include sm {
+                // width: 40%;
+            }
+        }
+        .heading, .assessmentHour {
+            font-size: 0.85em;
+            display: block;
+            line-height: normal;
+        }
+        .heading {
+            font-weight: 700;
+            color: $mediumGrey;
+            margin-bottom: 0.15em;
+        }
+        .assessmentHour {
+            color: $lightGrey;
+            span {
+                color: $primaryColor;
+                display: inline-block;
+                margin: 0 0.15em;
+            }
+        }
+    }
+}
+.buyNowCart {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    opacity: 1;
+    transition: 0.4s opacity ease-in-out;
+    font-size: 12px;
+    @include sm {
+        font-size: inherit;
+    }
+    .purchaseRate {
+        font-size: 1.125em;
+        font-weight: 700;
+        color: $darkGrey;
+        margin-right: 1em;
+        em {
+            font-size: 0.75em;
+            font-weight: bold;
+        }
+    }
+    button {
+        font-size: 0.75em;
+        font-weight: 700;
+        padding-left: 1em;
+        padding-right: 1em;
+        margin-left: 1em;
+        cursor: pointer;
+    }
+    .buyNow {
+        @include buttonOutlined;
+        color: $mediumGrey;
+    }
+    .addCart {
+        @include buttonFilled;
+    }
+    .taketest {
+      @include buttonFilled;
+      background-color: #2EA3F2;
+    }
+}
+
+::ng-deep.certifyAssessment {
+    .mat-expansion-panel-header {
+        padding: 0.75em 1.25em;
+        height: auto;
+    }
+    .mat-expansion-panel-header-title {
+        align-items: center;
+    }
+    .mat-expansion-panel-body {
+        padding: 0;
+    }
+    .mat-expansion-panel-spacing {
+        margin: 0;
+    }
+    .mat-accordion .mat-expansion-panel:first-of-type {
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+    }
+    .mat-accordion .mat-expansion-panel:last-of-type {
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+    .mat-accordion .mat-expansion-panel {
+        border-bottom: 1px solid $greyColor;
+        &:last-child {
+            border-bottom: 0;
+        }
+    }
+    .mat-expansion-panel-header-description {
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 0;
+        @include sm {
+            padding-right: 2em;
+        }
+    }
+    .mat-expanded {
+        .mat-expansion-panel-header-description {
+            .buyNowCart {
+                opacity: 0 !important;
+            }
+        }
+    }
+}
+.description {
+    font-size: 1em;
+    margin-top: 1em;
+}
+::ng-deep.listItem {
+    ul{
+        list-style-type:square !important;
+        margin-left: 2% !important;
+    }
+}

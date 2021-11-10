@@ -1,0 +1,199 @@
+<div class="signUpContainer">
+    <mat-tab-group mat-align-tabs="center" (selectedTabChange)="tabChange($event)"  [selectedIndex]="entryIndex">
+        <mat-tab label="SIGN IN">
+            <ng-container *ngIf="entryIndex == 0">
+            <form [formGroup]="loginForm" class="signInContent" (submit)="onSubmit()">
+                <div>
+                    <div class="heading4">Sign in to your account</div>
+                    <div class="layerContainer">
+                        <div class="firstLayer">
+                            <!-- <div class="inputContainer">
+                                <mat-radio-group aria-label="Select an option">
+                                    <mat-radio-button value="1" [checked]="'checked'">Learner</mat-radio-button>
+                                    <mat-radio-button value="2" >Recruiter</mat-radio-button>
+                                  </mat-radio-group>
+                            </div> -->
+                            <div class="inputContainer" style="display: none;">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Email Address</mat-label>
+                                    <input type="text" autocomplete="false" id="signIn_sample" autocomplete="off" name="email" formControlName="email" matInput placeholder="Email Address">
+                                </mat-form-field>
+                            </div>
+                            <div class="inputContainer">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Email Address</mat-label>
+                                    <input type="text" autocomplete="false" id="signIn_email" autocomplete="off" name="email" formControlName="email" matInput placeholder="Email Address">
+                                </mat-form-field>
+                                <ng-container *ngIf="email.invalid && email.touched">
+                                <mat-error class="error" *ngIf="email.errors?.email">{{'Please enter a valid email address'}}</mat-error>
+                                <mat-error *ngIf="email.errors?.required" class="error">{{'Email is required'}}</mat-error>
+                            </ng-container>
+                            </div>
+                            <div class="inputContainer" style="display: none;">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Password</mat-label>
+                                    <input type="password" autocomplete="new-password" id="signIn_password" name="password" formControlName="password" matInput [type]="hide ? 'password' : 'text'">
+                                </mat-form-field>
+                            </div>
+                            <div class="inputContainer">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Password</mat-label>
+                                    <input type="password" autocomplete="new-password" id="signIn_password" name="password" formControlName="password" matInput [type]="hide ? 'password' : 'text'">
+                                    <div mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                    <em class="{{hide ? 'icon-Hide' : 'icon-View'}}"></em>
+                                    </div>
+                                </mat-form-field>
+                                <ng-container *ngIf="password.invalid && password.touched">
+                                    <mat-error *ngIf="password.errors?.required" class="error">{{'Password is required'}}</mat-error>
+                                </ng-container>
+                            </div>
+                            <div class="forgotPassword"><span (click)="gotoForgetPwd()">Forgot Password?</span></div>
+                            <div nbRecaptcha formControlName="captcha"></div>
+                            <ng-container *ngIf="loginCaptcha.invalid && loginCaptcha.touched">
+                                <mat-error *ngIf="loginCaptcha.errors?.required" class="error">{{'Please fill in Captcha'}}</mat-error>
+                                <mat-error *ngIf="loginCaptcha.errors?.invalid" class="error">{{'Invalid Captcha'}}</mat-error>
+                            </ng-container>
+                            <button type="submit" id="signIn_btn" class="onEntry" mat-stroked-button>Sign In</button>
+                        </div>
+                        <!-- <div class="secondLayer">
+                            <em class="topLine"></em>
+                            <span>or</span>
+                            <em class="bottomLine"></em>
+                        </div>
+                        <div class="thirdLayer">
+                            <mat-card class="mediaContainer">
+                                <a class="googlePlus" href="#"></a>
+                                <span>Sign In With Google</span>
+                            </mat-card>
+                            <mat-card class="mediaContainer">
+                                <a class="facebook" href="#"></a>
+                                <span>Sign In With Facebook</span>
+                            </mat-card>
+                            <mat-card class="mediaContainer">
+                                <a class="linkedin" href="#"></a>
+                                <span>Sign In With Linkedin</span>
+                            </mat-card>
+                        </div> -->
+                    </div>
+                </div>
+            </form>
+        </ng-container>
+        </mat-tab>
+        <mat-tab label="REGISTER">
+            <ng-container *ngIf="entryIndex == 1&& showKyc==false">
+                <form [formGroup]="registerForm" autocomplete="new-password" (submit)="submitRegister()" class="signInContent registerContent">
+                <div class="heading4">Create Account</div>
+                <div class="layerContainer">
+                    <div class="firstLayer">
+                        <div class="inputContainer">
+                            <mat-form-field appearance="outline">
+                                <mat-label>First Name</mat-label>
+                                <input autocomplete="off" matInput id="signup_fName" name="firstName" formControlName="firstName" placeholder="First Name">
+                              </mat-form-field>
+                              <ng-container *ngIf="firstName.invalid && firstName.touched">
+                                <mat-error *ngIf="firstName.errors?.required" class="error">{{'First name is required'}}</mat-error>
+                                <mat-error *ngIf="firstName.errors?.alphaNum30" class="error">{{'Alpha numeric with maximum of 30 characters only allowed'}}</mat-error>
+                            </ng-container>
+                        </div>
+                        <div class="inputContainer">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Last Name</mat-label>
+                                <input autocomplete="off" matInput id="signup_lName" name="lastName" formControlName="lastName" placeholder="Last Name">
+                              </mat-form-field>
+                              <ng-container *ngIf="lastName.invalid && lastName.touched">
+                                <mat-error *ngIf="lastName.errors?.required" class="error">{{'Last name is required'}}</mat-error>
+                                <mat-error *ngIf="lastName.errors?.alphaNum30" class="error">{{'Alpha numeric with maximum of 30 characters only allowed'}}</mat-error>
+                            </ng-container>
+                        </div>
+                        <div class="inputContainer">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Email Address</mat-label>
+                                <input type="text" autocomplete="off" id="signup_email" name="email" formControlName="email" matInput placeholder="Email Address">
+                            </mat-form-field>
+                            <ng-container *ngIf="emailR.invalid && emailR.touched">
+                                    <mat-error class="error" *ngIf="emailR.errors?.email">{{'Please enter a valid email address'}}</mat-error>
+                                    <mat-error *ngIf="emailR.errors?.required" class="error">{{'Email is required'}}</mat-error>
+                                </ng-container>
+                        </div>
+                        <div class="inputContainer">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Password</mat-label>
+                                <input autocomplete="new-password" name="password" id="signup_pwd1" formControlName="password" matInput [type]="hide ? 'password' : 'text'">
+                                <div mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                <em class="{{hide ? 'icon-Hide' : 'icon-View'}}"></em>
+                                </div>
+                            </mat-form-field>
+                            <ng-container *ngIf="passwordR.invalid && passwordR.touched">
+                                <mat-error *ngIf="passwordR.errors?.required" class="error">{{'Password is required'}}</mat-error>
+                                <mat-error *ngIf="passwordR.errors?.minlength" class="error">{{'Minimum 8 characters required'}}</mat-error>
+                                <mat-error *ngIf="passwordR.errors?.maxlength" class="error">{{'Maximum 32 characters only allowed'}}</mat-error>
+                                <mat-error *ngIf="passwordR.errors?.password" class="error">{{'The password should consist of 1 uppercase, 1 lowercase,1 number and 1 special character [*.!@#$%^&(){}[]:;<>,.?/~_+-=|\].'}}</mat-error>
+                            </ng-container>
+                        </div>
+                        <div class="inputContainer">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Confirm Password</mat-label>
+                                <input autocomplete="off" name="password2" id="signup_pwd2" formControlName="password2" matInput [type]="hide1 ? 'password' : 'text'">
+                                <div mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1">
+                                <em class="{{hide ? 'icon-Hide' : 'icon-View'}}"></em>
+                                </div>
+                            </mat-form-field>
+                            <ng-container *ngIf="password2.invalid && password2.touched || (registerForm.errors?.notMatch && (registerForm.touched || registerForm.dirty))">
+                                <mat-error *ngIf="password2.invalid && password2.touched && password2.errors?.required" class="error">{{'Confirm Password is required'}}</mat-error>
+                                <mat-error *ngIf="!password2.errors?.required && registerForm.errors?.notMatch" class="error">{{'Confirm Password should match the Password'}}</mat-error>
+                            </ng-container>
+                        </div>
+                        <div class="termsContainer">
+                            <mat-checkbox formControlName="termsandConditions"></mat-checkbox>
+                            <div class="termsContent">I agree with the <a class="termsColor">Terms and Conditions</a> and <a class="termsColor">Privacy Policy</a></div>
+                        </div>
+                        <ng-container *ngIf="termsandConditions.invalid && termsandConditions.touched">
+                            <mat-error *ngIf="termsandConditions.errors?.required" class="error">{{'Check terms and conditions checkbox'}}</mat-error>
+                        </ng-container>
+                        <div nbRecaptcha formControlName="captcha"></div>
+                        <ng-container *ngIf="captcha.invalid && captcha.touched">
+                            <mat-error *ngIf="captcha.errors?.required" class="error">{{'Please fill in Captcha'}}</mat-error>
+                            <mat-error *ngIf="captcha.errors?.invalid" class="error">{{'Invalid Captcha'}}</mat-error>
+                        </ng-container>
+                        <button type="submit" class="onEntry" mat-stroked-button>Register</button>
+                     </div>
+                     <!-- <div class="secondLayer registerLine">
+                         <em class="topLine"></em>
+                         <span>or</span>
+                         <em class="bottomLine"></em>
+                    </div>
+                     <div class="thirdLayer alignMiddle">
+                        <mat-card class="mediaContainer">
+                            <a class="googlePlus" href="#"></a>
+                            <span>Sign In With Google</span>
+                        </mat-card>
+                        <mat-card class="mediaContainer">
+                            <a class="facebook" href="#"></a>
+                            <span>Sign In With Facebook</span>
+                        </mat-card>
+                        <mat-card class="mediaContainer">
+                            <a class="linkedin" href="#"></a>
+                            <span>Sign In With Linkedin</span>
+                        </mat-card>
+                     </div> -->
+                    </div>
+                </form>
+            </ng-container>
+            <ng-container *ngIf="showKyc">
+                <div class="sucess-kyc-container">
+                  <img src="assets/images/thankyou.svg" width="60px"/>
+                   <div class="kyc-txt">THANK YOU FOR REGISTERING!</div>
+                   <div class="kyc-sub-txt">Please complete your KYC.</div>
+                   <div class="kyc-redirect">
+                        <span class="kyc-redirect-txt">I'm not sure yet</span>
+                        <button class="kyc-btn" (click)="navigateProfile()">Edit Profile</button>
+                   </div>
+                </div>
+            </ng-container>
+        </mat-tab>
+    </mat-tab-group>
+    <div class="loginBG">
+        <figure></figure>
+    </div>
+</div>
+

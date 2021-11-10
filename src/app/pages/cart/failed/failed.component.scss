@@ -1,0 +1,49 @@
+@import "variables";
+
+.failedMessage {
+    text-align: center;
+    padding: 3.75em 0;
+    figure {
+        border-radius: 50%;
+        border: 2px solid $primaryColor;
+        height: 3em;
+        width: 3em;
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 3.5em;
+        em {
+            color: $primaryColor;
+            font-size: 1.5em;
+        }
+    }
+    .heading3 {
+        text-transform: uppercase;
+        font-weight: 700;
+        margin: 0.25em 0;
+    }
+    p {
+        color: $mediumGrey;
+        font-size: 1em;
+        line-height: 1.4;
+        span {
+            color: $blackColor;
+            font-weight: 700;
+        }
+    }
+    .buttons {
+        button {
+            padding-left: 2em;
+            padding-right: 2em;
+            line-height: 1.7;
+            margin-top: 1em;
+            margin: 1em 0.75em 0 0.75em;
+            &.tryAgain {
+                @include buttonFilled;
+            }
+            &.backtoHome {
+                @include buttonOutlined;
+                color: $mediumGrey;
+            }
+        }
+    }
+}

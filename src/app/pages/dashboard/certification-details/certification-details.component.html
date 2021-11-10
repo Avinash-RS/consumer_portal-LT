@@ -1,0 +1,53 @@
+<ng-container *ngIf="certificationdata">
+<section class="certificationDetails">
+    <div class="container">
+        <div class="heading2">{{certificationdata.howtocertifiedData.name}}</div>
+        <div class="getCertified">
+            <div class="certifiedDescription">
+                <span class="heading4">{{certificationdata.howtocertifiedData.shortDescription}}</span>
+                <p>{{certificationdata.howtocertifiedData.longDescription}}</p>
+            </div>
+            <div class="certifiedImage">
+                <figure>
+                    <img src="{{certificationdata.howtocertifiedData.image}}" alt="" />
+                </figure>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="assessmentSteps">
+    <div class="stepsPosition">
+        <div class="container">
+            <div class="heading2">Assessment Steps</div>
+            <div class="stepsSection">
+                <ng-container *ngFor="let steps of certificationdata.assessmentStepsData">
+                    <div class="steps">
+                        <a href="{{ getLink(steps.name) }}"><div class="icons"><em class="{{steps.icon}}"></em></div>
+                        <div class="heading4">{{steps.name}}</div>
+                        <p>{{steps.longDescription}}</p></a>
+                    </div>
+                </ng-container>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="assessmentDetails">
+    <div class="container">
+        <div class="heading2">Assessment Details</div>
+        <div class="assessmentCallouts">
+            <ng-container *ngFor="let assessment of certificationdata.assessmentDetailsData">
+                <div class="assessment1">
+                    <figure><em class="{{assessment.icon}}"></em></figure>
+                    <div class="heading4">{{assessment.name}}</div>
+                    <p>{{assessment.longDescription}}</p>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</section>
+
+
+</ng-container>

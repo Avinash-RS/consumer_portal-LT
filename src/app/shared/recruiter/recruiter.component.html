@@ -1,0 +1,189 @@
+
+
+<mat-drawer-container >
+    <mat-drawer #sideNav mode="side" [position]="'end'" [mode]="'over'">
+      <div class="filtersec">
+        <div class="filterbtn">
+            <button><em class="icon-Filter"></em>Filter</button> <button>Clear all</button>
+        </div>
+        <div class="sidefilter">
+        <div class="filterlist">
+            <div>Domain</div>
+            <div>Area</div>
+            <div class="active">Compentency</div>
+            <div>skills</div>
+            <div>by Job</div>
+        </div>
+        <div class="filtersublist">
+            <div ><em class="icon-Tick"></em> Construction Managemant </div>
+            <div><em class="icon-Tick"></em> Transportation</div>
+            <div class="active"><em class="icon-Tick"></em> Geo Technical</div>
+            <div><em class="icon-Tick"></em> Envirnmental</div>
+        </div>
+    </div>
+        <div class="filrtbotm">
+            <div>
+            <button (click)="sideNav.toggle()">Close</button> 
+        </div>
+            <div class="right">
+            <button>Apply</button>
+        </div>
+        </div> 
+    </div>
+    </mat-drawer>
+    <mat-drawer-content>
+      <!-- <button (click)="sideNav.toggle()" mat-button>Toggle SideNav</button>  -->
+<section class="userRecu">
+    <div class="banner">
+        <div class="container">
+            <div class="heading3">Candidates</div>
+            <div class="listview">
+                <span class="selected">All</span>
+                <span>Inprocess</span>
+                <span>Hired</span>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="list-section">
+            <div class="search-filter">
+                <div class="search-box">
+                        <mat-form-field > 
+                          <input type="text" matInput placeholder="Search Candidate...">
+                          <em class="icon-Search"></em>
+                        </mat-form-field>
+                    <button class="primarybtn"><em class="icon-MailSend"></em>Invite to apply for a Job</button>
+                </div>
+                <div class="filter-box">
+                    <span> Sort by: 
+                        <mat-form-field>
+                            <mat-select>
+                              <mat-option placeholder="All" >
+                                
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                    </span>
+                    <span><button class="fltrbtn" (click)="sideNav.toggle()" ><em class="icon-Filter"></em>Filter</button></span>
+                </div>
+            </div>
+            <div class="selected-filter">
+                <div class="htxt">05 Candidates</div>
+                <div>
+                    <mat-chip-list>
+                        <mat-chip>Civil <em class="icon-Close"></em></mat-chip>
+                        <mat-chip>Site Engineer <em class="icon-Close"></em></mat-chip>
+                        <mat-chip>Cad Technician <em class="icon-Close"></em></mat-chip>
+                    </mat-chip-list>
+                </div>
+                <span class="clearfilter">Clear all </span>
+            </div>
+            <div class="list-column">
+
+                <table cellpading="0" cellspacing="0" width="100%" class="list-table">
+                    <thead>
+                        <tr>
+                            <th>
+                                <mat-checkbox></mat-checkbox>
+                            </th>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Qualification</th>
+                            <th>Job Level</th>
+                            <th>Certification</th>
+                            <th>Badges</th>
+                            <th class="eight">Rating</th>
+                            <th class="eight">Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                   <!-- loop-->
+                    <tbody>
+                        <tr class="box-tr">
+                            <td>
+                                <mat-checkbox></mat-checkbox>
+                            </td>
+                            <td><div class="imground"><img src="../../../assets/images/pp.jpg" alt="name img" /> </div></td>
+                            <td>
+                                <span class="title"><a>Manju M</a></span>
+                            </td>
+                            <td> mmanju83@gmail.com</td>
+                            <td>BE,Civil Engineer</td>
+                            <td>Begineer</td>
+                            <td>05</td>
+                            <td>05</td>
+                            <td> <button mat-icon-button class="star" [color]="color" *ngFor="let ratingId of ratingArr;index as i" [id]="'star_'+i" (click)="onClick(i+1)">
+                                <mat-icon>
+                                  {{showIcon(i)}}
+                                </mat-icon>
+                              </button></td>
+                            <td>
+                                <div >
+                                    <div class="statustxt">Applied</div>
+                                   <div class="statusbar">
+                                       <em class="icon-p_left active"></em>
+                                        <em class="icon-p_mid"></em> 
+                                        <em class="icon-p_mid"></em> 
+                                        <em class="icon-p_mid"></em> 
+                                        <em class="icon-p_mid"></em> 
+                                        <em class="icon-p_right"></em>
+                                    </div>
+                                </div>
+                                 </td>
+                            <td><em class="icon-More"></em></td>
+                        </tr>
+                        <tr>
+                            <td class="spacer" colspan="11">&nbsp;</td>
+                        </tr>
+                    </tbody>
+                   <!-- loop-->
+
+
+                    <tbody>
+                        <tr class="box-tr">
+                            <td>
+                                <mat-checkbox></mat-checkbox>
+                            </td>
+                            <td><div class="imground"><img src="../../../assets/images/pp.jpg" alt="name img" /> </div></td>
+                            <td>
+                                <span class="title"><a>Manju M</a></span>
+                            </td>
+                            <td> mmanju83@gmail.com</td>
+                            <td>BE,Civil Engineer</td>
+                            <td>Begineer</td>
+                            <td>05</td>
+                            <td>05</td>
+                            <td> <button mat-icon-button class="star" [color]="color" *ngFor="let ratingId of ratingArr;index as i" [id]="'star_'+i" (click)="onClick(i+1)">
+                                <mat-icon>
+                                  {{showIcon(i)}}
+                                </mat-icon>
+                              </button></td>
+                            <td>
+                                <div >
+                                    <div class="statustxt">Applied</div>
+                                   <div class="statusbar">
+                                       <em class="icon-p_left active"></em>
+                                        <em class="icon-p_mid"></em> 
+                                        <em class="icon-p_mid"></em> 
+                                        <em class="icon-p_mid"></em> 
+                                        <em class="icon-p_mid"></em> 
+                                        <em class="icon-p_right"></em>
+                                    </div>
+                                </div>
+                                 </td>
+                            <td><em class="icon-More"></em></td>
+                        </tr>
+                        <tr>
+                            <td class="spacer" colspan="11">&nbsp;</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+    </div> 
+</section> 
+</mat-drawer-content>
+</mat-drawer-container>

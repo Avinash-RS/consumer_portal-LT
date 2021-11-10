@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: millionui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: millionui
+  template:
+    metadata:
+      labels:
+        app: millionui
+    spec:
+      containers:
+        - name: millionui
+          image: microcert.azurecr.io/millionui:$tag
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 80
+      imagePullSecrets:
+        - name: mysecret

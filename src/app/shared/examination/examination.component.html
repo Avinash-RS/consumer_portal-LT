@@ -1,0 +1,24 @@
+<section class="examinationSection hide-on-init" animateOnScroll animationName="animated fadeInLeft">
+    <div class="container">
+        <div class="heading2">Our New-Age Examination and proctoring solutions</div>
+        <div class="cardContainer">
+            <!-- <div class="cardHeading">
+                <div class="card" *ngFor="let value of Examination;" [ngClass]="{'active': value.Active}"  (click)="selection = value.name; selectTypes(value)" >
+                    <span><em class="{{value.icon}}"></em> {{value.name}}</span>
+                </div>
+            </div> -->
+            <div class="cardDescription" style="margin-left: 17%;text-align: center">
+                <div>
+                    <div class="heading4">
+                        {{rightContent.name}}
+                    </div>
+                    <!-- <figure>
+                        <img [src] = "rightContent.image  + blobToken" alt="" /> 
+                        <img src="/assets/images/ResponsiveWebDesign.png" alt="" />
+                    </figure> -->
+                    <p>{{rightContent.longDescription}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

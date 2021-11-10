@@ -1,0 +1,156 @@
+/* You can add global styles to this file, and also import other style files */
+@import "normalize";
+@import "variables";
+@import "fonts";
+@import "common";
+@import "animate";
+*{
+    box-sizing: border-box;
+}
+/*html, body { min-height: 100%; }*/
+@import '~@angular/material/theming';
+@import '~ngx-toastr/toastr';
+
+$custom-typography: mat-typography-config($font-family: '"RobotoCondensed", normal !important;');
+@include mat-core($custom-typography);
+// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+//Materials customization
+
+//Banner
+.owlCarouselWrapper {
+    .owl-theme {
+        .owl-nav {
+            display: none;
+        }
+        .owl-dots {
+            position: absolute;
+            bottom: 1em;
+            left: -1vw;
+            .owl-dot {
+                span {
+                    background-color: $lightGrey;
+                    border-radius: 0;
+                    width: 1em;
+                    height: 0.25em;
+                    border-radius: 0.25em;
+                    margin: 0 0.2em;
+                }
+                &:hover {
+                    span {
+                        background-color: $lightGrey;
+                    }
+                }
+                &.active {
+                    span {
+                        background-color: $primaryColor;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//Domain List
+.domainList, .partnersLogo, .studentFeedback, .slotSlider {
+    .owl-theme {
+        .owl-nav {
+            margin-top: 0;
+            & [class*=owl-] {
+                background: transparent;
+                margin: 0;
+                padding: 0 0 0 1em;
+                &:hover {
+                    background: transparent;
+                    i {
+                        color: $blackColor;
+                    }
+                }
+            }
+            i {
+                color: $mediumGrey;
+            }
+        }
+    }
+    .owl-nav {
+        position: absolute;
+        right: 0;
+        top: -2em;
+    }
+}
+.studentFeedback {
+    .owl-carousel {
+        .owl-stage {
+            padding-bottom: 1em;
+        }
+    }
+}
+
+// Animate
+.animated-delay-1 {
+    animation-delay: 1s;
+    -webkit-animation-delay: 1s;
+    -moz-animation-delay: 1s;
+    -o-animation-delay: 1s;
+}
+
+.animated-delay-2 {
+    animation-delay: 2s;
+    -webkit-animation-delay: 2s;
+    -moz-animation-delay: 2s;
+    -o-animation-delay: 2s;
+}
+
+.animated {
+    visibility: visible !important;
+}
+
+.hide-on-init {
+    visibility: hidden;
+}
+.body_area {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+app-zcontent-main-route,
+app-on-boarding-main-route,
+app-zcontent-cart-main-route,
+app-zcontent-catalog-main-route {
+    // display:block;
+    // min-height:85vh;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+/* width */
+::-webkit-scrollbar {
+    width: 6px;    
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track:hover {
+    background-color: #eee;
+    opacity: .9;    
+    width: 15px;
+  }
+
+
+  ::-webkit-scrollbar-track {
+    width: 10px;
+    background-color: $whiteColor;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background-color: $thumbColor;
+    border-radius: 6px;
+    transition: background-color .2s linear,width .2s ease-in-out;
+    -webkit-transition: background-color .2s linear,width .2s ease-in-out;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: $thumbHoverColor; 
+    width: 15px;
+  }  

@@ -1,0 +1,501 @@
+<div class="joining-personal-wrapper">
+    <h1>
+        Work Experience Details
+    </h1>
+
+    <div class="row-wrappper mt-3 hanging">
+        <mat-checkbox [formControl]="isWorkExp" (change)="changeWorkExp($event)" class="mr-2"></mat-checkbox> Do you have any Work Experience?</div>
+
+    <div class="grids-wrapper">
+        <form class="workDetailsForm" [formGroup]="workDetailsForm" (ngSubmit)="formSubmit()">
+            <ng-container *ngIf="showWorkExp == '1'">
+            <h3 class="mt-3" style="margin-top:10px;">Employment Details</h3>
+            <ng-container *ngIf="getEmploymentArr && getEmploymentArr.controls" [formArrayName]="form_Employment_Array">
+                <ng-container *ngFor="let item of getEmploymentArr.controls; let i = index;" [formGroupName]="i">
+                    <div class="container-wrapper flex-container d-flex justify-content-between align-items-center" style="display: flex;justify-content: space-between;">
+                        <div class="form-grouping">
+                            <div class="row-wrapper">
+                                <div class="overall-input-wrapper width-32">
+                                    <label>Employer's Name & Address<span></span></label>
+                                    <textarea matInput placeholder="Enter here" class="input text-area" type="text"
+                                        [formControlName]="form_employment_name_address"></textarea>
+                                    <div class="form-error"
+                                        *ngIf="getEmploymentArr.controls[i].get(form_employment_name_address).invalid && getEmploymentArr.controls[i].get(form_employment_name_address).touched">
+                                        <div
+                                            *ngIf="getEmploymentArr.controls[i].get(form_employment_name_address).errors?.required">
+                                            Employer's Name and Address is Required</div>
+                                        <div
+                                            *ngIf="getEmploymentArr.controls[i].get(form_employment_name_address).errors?.address255">
+                                            Alpha numeric with maximum of 255 characters only
+                                            allowed</div>
+                                    </div>
+                                </div>
+                                <div class="overall-input-wrapper width-32">
+                                    <label>Duration From<span></span></label>
+                                    <div class="date-relative">
+                                        <input matInput class="input" (dateChange)="detectDateCalc(getEmploymentArr.controls[i], i)" [min]="minDate" [max]="maxDate"
+                                            [matDatepicker]="picker" placeholder="DD-MM-YYYY"
+                                            [formControlName]="form_duration_from">
+                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+                                    </div>
+                                    <div class="form-error"
+                                        *ngIf="getEmploymentArr.controls[i].get(form_duration_from).invalid && getEmploymentArr.controls[i].get(form_duration_from).touched">
+                                        <div
+                                            *ngIf="getEmploymentArr.controls[i].get(form_duration_from)?.errors?.required">
+                                            Duration From is Required</div>
+                                        <div
+                                            *ngIf="getEmploymentArr.controls[i].get(form_duration_from)?.errors?.matDatepickerMax">
+                                            {{getEmploymentArr.controls[i].get(form_duration_from)?.errors?.matDatepickerMax?.max ? 'Maximum date should be ' + momentForm(getEmploymentArr.controls[i].get(form_duration_from)?.errors?.matDatepickerMax.max) : ''}}
+                                        </div>
+                                        <div
+                                            *ngIf="getEmploymentArr.controls[i].get(form_duration_from)?.errors?.matDatepickerMin">
+                                            {{getEmploymentArr.controls[i].get(form_duration_from)?.errors?.matDatepickerMin?.min ? 'Minimum date should be ' + momentForm(getEmploymentArr.controls[i].get(form_duration_from)?.errors?.matDatepickerMin.min) : ''}}
+                                        </div>
+                                        <div
+                                            *ngIf="getEmploymentArr.controls[i].get(form_duration_from)?.errors?.matDatepickerParse">
+                                            Invalid Date Format</div>
+                                    </div>
+                                    <div class="input sub-Box sub-0"><span class="mr-2">Years:</span>
+                                        <span>{{getEmploymentArr.controls[i].get(form_duration_year).value}}</span>
+                                    </div>
+
+                                </div>
+
+                                <div class="overall-input-wrapper width-32">
+                                    <label>Duration To<span></span></label>
+                                    <div class="date-relative">
+                                        <input matInput class="input" (dateChange)="detectDateCalc(getEmploymentArr.controls[i], i)" [min]="minDate" [max]="maxDate"
+                                            [matDatepicker]="picker1" placeholder="DD-MM-YYYY"
+                                            [formControlName]="form_duration_to">
+                                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker1></mat-datepicker>
+                                    </div>
+                                    <div class="form-error"
+                                        *ngIf="getEmploymentArr.controls[i].get(form_duration_to).invalid && getEmploymentArr.controls[i].get(form_duration_to).touched">
+                                        <div
+                                            *ngIf="getEmploymentArr.controls[i].get(form_duration_to)?.errors?.required">
+                                            Duration To is Required</div>
+                                        <div
+                                            *ngIf="getEmploymentArr.controls[i].get(form_duration_to)?.errors?.matDatepickerMax">
+                                            {{getEmploymentArr.controls[i].get(form_duration_to)?.errors?.matDatepickerMax?.max ? 'Maximum date should be ' + momentForm(getEmploymentArr.controls[i].get(form_duration_to)?.errors?.matDatepickerMax.max) : ''}}
+                                        </div>
+                                        <div
+                                            *ngIf="getEmploymentArr.controls[i].get(form_duration_to)?.errors?.matDatepickerMin">
+                                            {{getEmploymentArr.controls[i].get(form_duration_to)?.errors?.matDatepickerMin?.min ? 'Minimum date should be ' + momentForm(getEmploymentArr.controls[i].get(form_duration_to)?.errors?.matDatepickerMin.min) : ''}}
+                                        </div>
+                                        <div
+                                            *ngIf="getEmploymentArr.controls[i].get(form_duration_to)?.errors?.matDatepickerParse">
+                                            Invalid Date Format</div>
+                                    </div>
+                                    <div class="input sub-Box sub-1"><span class="mr-2">Months:</span>
+                                        <span>{{getEmploymentArr.controls[i].get(form_duration_month).value}}</span>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="row-wrapper">
+                                <div class="overall-input-wrapper width-30">
+                                    <label>Position Held<span></span></label>
+                                    <input matInput placeholder="Enter here" class="input" type="text"
+                                        [formControlName]="form_postion_field">
+                                    <div class="form-error"
+                                        *ngIf="getEmploymentArr.controls[i].get(form_postion_field).invalid && getEmploymentArr.controls[i].get(form_postion_field).touched">
+                                        <div
+                                            *ngIf="getEmploymentArr.controls[i].get(form_postion_field).errors?.required">
+                                            Position Held is Required</div>
+                                        <div
+                                            *ngIf="getEmploymentArr.controls[i].get(form_postion_field).errors?.address255">
+                                            Alpha numeric with maximum of 255 characters only
+                                            allowed</div>
+                                    </div>
+                                </div>
+
+                                <div class="overall-input-wrapper width-38">
+                                    <label>Name & Designation of Immediate Superior<span></span></label>
+                                    <input matInput placeholder="Enter here" class="input" type="text"
+                                        [formControlName]="form_name_designation_supervisor">
+                                    <div class="form-error"
+                                        *ngIf="getEmploymentArr.controls[i].get(form_name_designation_supervisor).invalid && getEmploymentArr.controls[i].get(form_name_designation_supervisor).touched">
+                                        <div
+                                            *ngIf="getEmploymentArr.controls[i].get(form_name_designation_supervisor)?.errors?.required">
+                                            Name & Designation of Immediate Superior is Required</div>
+                                        <div
+                                            *ngIf="getEmploymentArr.controls[i].get(form_name_designation_supervisor).errors?.address255">
+                                            Alpha numeric with maximum of 255 characters only
+                                            allowed</div>
+
+                                    </div>
+                                </div>
+                                <div class="overall-input-wrapper width-30">
+                                    <label>Gross Emoluments (Per Month)<span></span></label>
+                                    <input matInput placeholder="Enter here" class="input" type="text"
+                                        [formControlName]="form_gross_emploment">
+                                    <div class="form-error"
+                                        *ngIf="getEmploymentArr.controls[i].get(form_gross_emploment).invalid && getEmploymentArr.controls[i].get(form_gross_emploment).touched">
+                                        <div
+                                            *ngIf="getEmploymentArr.controls[i].get(form_gross_emploment)?.errors?.required">
+                                            Gross Emoluments is Required</div>
+                                        <div
+                                            *ngIf="getEmploymentArr.controls[i].get(form_gross_emploment).errors?.address50">
+                                            Alpha numeric with maximum of 50 characters only
+                                            allowed</div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row-wrapper">
+                                <div class="overall-input-wrapper width-30">
+                                    <label>HR Name<span></span></label>
+                                    <input matInput placeholder="Enter here" class="input" type="text"
+                                        [formControlName]="form_hr_name">
+                                    <div class="form-error"
+                                        *ngIf="getEmploymentArr.controls[i].get(form_hr_name).invalid && getEmploymentArr.controls[i].get(form_hr_name).touched">
+                                        <div
+                                            *ngIf="getEmploymentArr.controls[i].get(form_hr_name).errors?.required">
+                                            HR Name is Required</div>
+                                        <div
+                                            *ngIf="getEmploymentArr.controls[i].get(form_hr_name).errors?.alphaNum255">
+                                            Alpha numeric with maximum of 255 characters only
+                                            allowed</div>
+                                    </div>
+                                </div>
+
+                                <div class="overall-input-wrapper width-38">
+                                    <label>HR Contact Number<span></span></label>
+                                    <input matInput placeholder="Enter here" class="input" type="text"
+                                        [formControlName]="form_hr_contact_no">
+                                    <div class="form-error"
+                                        *ngIf="getEmploymentArr.controls[i].get(form_hr_contact_no).invalid && getEmploymentArr.controls[i].get(form_hr_contact_no).touched">
+                                        <div
+                                            *ngIf="getEmploymentArr.controls[i].get(form_hr_contact_no)?.errors?.required">
+                                            HR Contact Number is Required</div>
+                                        <div
+                                            *ngIf="getEmploymentArr.controls[i].get(form_hr_contact_no).errors?.mobileRegex">
+                                            Please enter a valid 10 digit mobile number</div>
+
+                                    </div>
+                                </div>
+                                <div class="overall-input-wrapper width-30">
+                                    <label>HR Email ID<span></span></label>
+                                    <input matInput placeholder="Enter here" class="input" type="text"
+                                        [formControlName]="form_hr_email">
+                                    <div class="form-error"
+                                        *ngIf="getEmploymentArr.controls[i].get(form_hr_email).invalid && getEmploymentArr.controls[i].get(form_hr_email).touched">
+                                        <div
+                                            *ngIf="getEmploymentArr.controls[i].get(form_hr_email)?.errors?.required">
+                                            HR Email ID is Required</div>
+                                        <div
+                                            *ngIf="getEmploymentArr.controls[i].get(form_hr_email).errors?.email">
+                                            Not an Valid Email ID</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row-wrapper">
+                                <div class="overall-input-wrapper width-45">
+                                    <label>Nature of Work Done<span></span></label>
+                                    <textarea matInput placeholder="Enter here" class="input text-area" type="text"
+                                        [formControlName]="form_nature_work"></textarea>
+                                    <div class="form-error"
+                                        *ngIf="getEmploymentArr.controls[i].get(form_nature_work).invalid && getEmploymentArr.controls[i].get(form_nature_work).touched">
+                                        <div
+                                            *ngIf="getEmploymentArr.controls[i].get(form_nature_work)?.errors?.required">
+                                            Nature of Work is Required</div>
+                                        <div
+                                            *ngIf="getEmploymentArr.controls[i].get(form_nature_work).errors?.address255">
+                                            Alpha numeric with maximum of 255 characters only
+                                            allowed</div>
+
+                                    </div>
+                                </div>
+                                <div class="overall-input-wrapper width-45">
+                                    <label>Reason for Leaving<span></span></label>
+                                    <textarea matInput placeholder="Enter here" class="input text-area" type="text"
+                                        [formControlName]="form_reason_leaving"></textarea>
+                                    <div class="form-error"
+                                        *ngIf="getEmploymentArr.controls[i].get(form_reason_leaving).invalid && getEmploymentArr.controls[i].get(form_reason_leaving).touched">
+                                        <div
+                                            *ngIf="getEmploymentArr.controls[i].get(form_reason_leaving)?.errors?.required">
+                                            Reason for Leaving is Required</div>
+                                        <div
+                                            *ngIf="getEmploymentArr.controls[i].get(form_reason_leaving).errors?.address255">
+                                            Alpha numeric with maximum of 255 characters only
+                                            allowed</div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-error mt-2"
+                                style="border-top: solid red 1px; color: #C02222; font-size: 13px;"
+                                *ngIf="getEmploymentArr.controls[i].invalid && getEmploymentArr.controls[i]?.errors && getEmploymentArr.controls[i]?.errors?.notSelected">
+                                *Make sure, you have entered all the fields value, If you enter any one of the value
+                            </div>
+                        </div>
+                        <div class="remove-wrapper">
+                            <div (click)="removeEmploymentArray(i)" *ngIf="i !==0" matTooltip="Remove" class="remove">
+                                <i class="material-icons material-icons-outlined">
+                                    remove_circle_outline
+                                </i>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </ng-container>
+
+            <div *ngIf="getEmploymentArr && getEmploymentArr.controls && getEmploymentArr.controls.length < 5 "
+                class="row-wrapper mt-3">
+                <div class="overall-input-wrapper">
+                    <button class="add-button" mat-raised-button type="button" (click)="addToEmploymentArray()">+
+                        Add</button>
+                </div>
+            </div>
+
+            <div class="row-wrapper mt-3">
+                <div class="overall-input-wrapper width-20">
+                    <label>Total Experience<span></span></label>
+                    <div class="input" style="line-height: 30px !important;">
+                        <span>Years: {{workDetailsForm.get(form_total_exp_years).value}}</span>
+                        <span class="ml-4">Months: {{workDetailsForm.get(form_total_exp_months).value}}</span>
+                    </div>
+                </div>
+                <div class="overall-input-wrapper width-75">
+                    <label>Break in Employment, If any, Should be indicated with reasons<span></span></label>
+                    <textarea matInput placeholder="Enter here" [formControlName]="form_break_in_emp"
+                        class="input text-area" type="text"></textarea>
+                    <div class="form-error" *ngIf="break_in_emp?.invalid && break_in_emp?.touched">
+                        <div *ngIf="break_in_emp?.errors?.required">
+                            Break in Employment is Required</div>
+                        <div *ngIf="break_in_emp?.errors?.address255">
+                            Alpha numeric with maximum of 255 characters only
+                            allowed</div>
+                    </div>
+                </div>
+
+            </div>
+        </ng-container>
+            <div class="row-wrapper mt-3">
+                <div class="overall-input-wrapper width-50">
+                    <!-- <label>Total Experience<span></span></label> -->
+                    <div class="input" style="line-height: 1.7em !important; border: none;">
+                        Have you ever been employed by us or by any of our subsidiary / associate companies before? (If so
+                        please mention the name of our company and / or any of our subsidiary / associate companies and
+                        your payslip number)
+                    </div>
+                </div>
+
+                <div class="overall-input-wrapper width-20">
+                    <mat-radio-group class="radio-grp" (change)="radioChange($event, 1)" [formControlName]="form_employed_us">
+                        <mat-radio-button value="1">Yes
+                        </mat-radio-button>
+                        <mat-radio-button value="0">No</mat-radio-button>
+                    </mat-radio-group>
+
+                </div>
+
+                <div [ngClass]="employed_us && employed_us.value == '1' ? '' : 'hide'" class="overall-input-wrapper width-30">
+                    <label>If, yes, Please give details<span></span></label>
+                    <div class="sub-grid">
+                        <label>OC:<span></span></label>
+                        <div class="overall-input-wrapper">
+                            <input matInput placeholder="Enter here" [formControlName]="form_oc"
+                                class="input sub-inputs" type="text">
+                            <div class="form-error" *ngIf="oc?.invalid && oc?.touched">
+                                <div *ngIf="oc?.errors?.required">
+                                    OC is Required</div>
+                                <div *ngIf="oc?.errors?.address255">
+                                    Alpha numeric with maximum of 255 characters only
+                                    allowed</div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="sub-grid">
+                        <label>Payslip number:<span></span></label>
+                        <div class="overall-input-wrapper">
+                            <input matInput placeholder="Enter here" [formControlName]="form_payslip"
+                                class="input sub-inputs" type="text">
+                            <div class="form-error" *ngIf="payslip?.invalid && payslip?.touched">
+                                <div *ngIf="payslip?.errors?.required">
+                                    Payslip is Required</div>
+                                <div *ngIf="payslip?.errors?.address255">
+                                    Alpha numeric with maximum of 255 characters only
+                                    allowed</div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="row-wrapper mt-3">
+                <div class="overall-input-wrapper width-50">
+                    <!-- <label>Total Experience<span></span></label> -->
+                    <div class="input" style="line-height: 1.7em !important; border: none;">
+                        Apart from current drive, have you ever interviewed by L&T?
+                    </div>
+                </div>
+
+                <div class="overall-input-wrapper width-20">
+                    <mat-radio-group class="radio-grp" (change)="radioChange($event, 2)" [formControlName]="form_interviewed_by_us">
+                        <mat-radio-button value="1">Yes
+                        </mat-radio-button>
+                        <mat-radio-button value="0">No</mat-radio-button>
+                    </mat-radio-group>
+
+                </div>
+
+                <div [ngClass]="interviewed_by_us && interviewed_by_us.value == '1' ? '' : 'hide'" class="overall-input-wrapper width-30">
+                    <label>If, yes, Please give details<span></span></label>
+                    <div class="sub-grid">
+                        <label>Post Applied for:<span></span></label>
+                        <div class="overall-input-wrapper">
+                            <input matInput placeholder="Enter here" [formControlName]="form_post"
+                                class="input sub-inputs" type="text">
+                            <div class="form-error" *ngIf="post?.invalid && post?.touched">
+                                <div *ngIf="post?.errors?.required">
+                                    Post is Required</div>
+                                <div *ngIf="post?.errors?.address255">
+                                    Alpha numeric with maximum of 255 characters only
+                                    allowed</div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="sub-grid">
+                        <label>When:<span></span></label>
+                        <div class="overall-input-wrapper">
+                            <div class="date-relative">
+                                <input matInput class="input sub-inputs" [formControlName]="form_when_interview"
+                                    [min]="minDate" [max]="maxDate" [matDatepicker]="pickerWhen"
+                                    placeholder="DD-MM-YYYY">
+                                <mat-datepicker-toggle matSuffix [for]="pickerWhen"></mat-datepicker-toggle>
+                                <mat-datepicker #pickerWhen></mat-datepicker>
+                            </div>
+                            <div class="form-error" *ngIf="when_interview?.invalid && when_interview?.touched">
+                                <div *ngIf="when_interview?.errors?.required">
+                                    Duration From is Required</div>
+                                <div *ngIf="when_interview?.errors?.matDatepickerMax">
+                                    {{when_interview?.errors?.matDatepickerMax?.max ? 'Maximum date should be ' + momentForm(when_interview?.errors?.matDatepickerMax.max) : ''}}
+                                </div>
+                                <div *ngIf="when_interview?.errors?.matDatepickerMin">
+                                    {{when_interview?.errors?.matDatepickerMin?.min ? 'Minimum date should be ' + momentForm(when_interview?.errors?.matDatepickerMin.min) : ''}}
+                                </div>
+                                <div *ngIf="when_interview?.errors?.matDatepickerParse">
+                                    Invalid Date Format</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <h2 >Disciplinary Details</h2>
+            <div class="row-wrappper mt-2 hanging">
+                <mat-checkbox class="mr-2" (change)="requiredDesc()" [formControlName]="form_convicted_by_Court"></mat-checkbox> Have you ever
+                been convicted by a Court of Law?
+            </div>
+
+            <div class="row-wrappper mt-2 hanging">
+                <mat-checkbox (change)="requiredDesc()" [formControlName]="form_debarred_exam_university" class="mr-2"></mat-checkbox> Have you
+                ever been debarred/disqualified from any examination or restricted by any University or any other
+                educational institute?
+            </div>
+
+            <div class="row-wrappper mt-2 hanging">
+                <mat-checkbox (change)="requiredDesc()" [formControlName]="form_arrested" class="mr-2"></mat-checkbox> Have you ever been
+                arrested?
+            </div>
+
+            <div class="row-wrappper mt-2 hanging">
+                <mat-checkbox (change)="requiredDesc()" [formControlName]="form_debarred_psc_company" class="mr-2"></mat-checkbox> Have you ever
+                been debarred/disqualified from any Public Service Commission or any other recruiting company for
+                appearing at its examination / selection?
+            </div>
+
+            <div class="row-wrappper mt-2 hanging">
+                <mat-checkbox (change)="requiredDesc()" [formControlName]="form_prosecuted" class="mr-2"></mat-checkbox> Have you ever been
+                prosecuted?
+            </div>
+
+            <div class="row-wrappper mt-2 hanging">
+                <mat-checkbox (change)="requiredDesc()" [formControlName]="form_court_case_pending" class="mr-2"></mat-checkbox> Is any case
+                pending against you in any Court of Law at the time of filling this form?
+            </div>
+
+            <div class="row-wrappper mt-2 hanging">
+                <mat-checkbox (change)="requiredDesc()" [formControlName]="form_detention" class="mr-2"></mat-checkbox> Have you ever been kept
+                under detention?
+            </div>
+
+            <div class="row-wrappper mt-2 hanging">
+                <mat-checkbox (change)="requiredDesc()" [formControlName]="form_university_case_pending" class="mr-2"></mat-checkbox> Is any case
+                pending against you in any University or Educational Institute at the time of filling this form?
+            </div>
+
+            <div class="row-wrappper mt-2 hanging">
+                <mat-checkbox (change)="requiredDesc()" [formControlName]="form_fined_by_court" class="mr-2"></mat-checkbox> Have you ever been
+                fined by a Court of Law?
+            </div>
+
+            <div class="row-wrappper mt-2 hanging">
+                <mat-checkbox (change)="requiredDesc()" [formControlName]="form_disciplinary_proceedings" class="mr-2"></mat-checkbox> In the
+                previous employment, were any disciplinary proceedings framed against you or had you been called upon to
+                explain your conduct in any matter at the time you served notice for resignation?
+            </div>
+
+            <div class="row-wrapper mt-2">
+                <div class="overall-input-wrapper">
+                    <label>Please give full particulars of the case/arrest/detention/conviction/punishment etc. and / or
+                        nature of the case pending in the Court/University/Educational Authority at the time of filling
+                        this form?<span></span></label>
+                    <textarea matInput placeholder="Enter here" [formControlName]="form_full_particulars"
+                        class="input text-area" style="width: 90% !important; height: 100px !important;"
+                        type="text"></textarea>
+                    <div class="form-error" *ngIf="full_particulars?.invalid && full_particulars?.touched">
+                        <div *ngIf="full_particulars?.errors?.required">
+                            Particulars is Required</div>
+                        <div *ngIf="full_particulars?.errors?.address255">
+                            Alpha numeric with maximum of 255 characters only
+                            allowed</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row-wrapper justify-content-between align-items-center mt-5 mb-3 footer" style="width: 100%;margin-top: 40px;">
+                <div (click)="navigatePrevNext('Education')"
+                    class="footerArrow d-flex align-content-center align-items-center position-relative" style="cursor: pointer;">
+                    <div class="footer-arrow left-arrow position-absolute"></div>
+                    <div class="sections left-space">
+                        <div class="label">Previous Section</div>
+                        <div class="value">Education Details</div>
+                    </div>
+                </div>
+                <button class="submit joining-form-submit mt-1 animation-zoom no-flickr" mat-raised-button
+                    type="submit">Save &
+                    Continue</button>
+                <div (click)="navigatePrevNext('Preview')"
+                    class="footerArrow d-flex align-content-center align-items-center text-right position-relative pointer"
+                    style="cursor: pointer;">
+                    <div class="footer-arrow right-arrow position-absolute"></div>
+                    <div class="sections right-space">
+                        <div class="label">Next Section</div>
+                        <div class="value">Preview</div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="photo-wrapper">
+        </div>
+    </div>
+
+</div>
