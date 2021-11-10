@@ -45,6 +45,7 @@ export class HeaderImageComponent implements OnInit {
     this.rxjsHeaderAvatarUpdate();
     this.getSliderContent()
     this.getProfilePercentage();
+    this.showKycProgress();
   }
 
 
@@ -75,6 +76,11 @@ export class HeaderImageComponent implements OnInit {
       this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: '0' });
     }
   }
+  showKycProgress(){
+    this.util.showkycProgress.subscribe((data:any)=>{
+      this.showProgress = data;
+    })
+  }
   getProfilePercentage(){
     if(this.appConfig.getSessionStorage('token')){
       this.showProgress = true;
@@ -94,6 +100,5 @@ export class HeaderImageComponent implements OnInit {
     else{
       this.showProgress = false;
     }
-
   }
 }

@@ -42,7 +42,9 @@ export class LoginComponent implements OnInit {
         this.entryIndex = 0;
         this.loginFormInitialize();
         if(params.activation == '1'){
+          this.entryIndex = 1;
           this.toast.success('Account activated successfully');
+          this.showKyc = true
         }
       } else {
         this.entryIndex = 1;
@@ -108,7 +110,6 @@ export class LoginComponent implements OnInit {
         if (data.success) {
           this.registerForm.reset();
           // this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: 0 });
-          this.showKyc = true
           this.toast.success(data.message);
         } else {
           this.toast.error(data.message);

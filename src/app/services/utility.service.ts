@@ -28,6 +28,9 @@ export class UtilityService {
   //For trigering profile percentage
   percentageSubject = new Subject();
   
+  //For hiding progessbar in dashboard
+  showkycProgress = new Subject();
+  
   // move to cart directly from login
   private cartValue: BehaviorSubject<any> = new BehaviorSubject<any>(null); 
   public setValue(value: any): void {
