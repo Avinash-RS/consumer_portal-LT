@@ -24,7 +24,7 @@
                                 <div class="cartContent">
                                     <div class="headingPrice">
                                         <div class="heading3">{{cart.assessmentDetails.name}} <span>{{cart?.competencyDetails?.levelName}}</span></div>
-                                        <div class="value"><em class="icon-Rupee"></em>{{cart.assessmentDetails.sellingPrice}}</div>
+                                        <div class="value"><em class="icon-Rupee"></em>{{cart.assessmentDetails.is_free?"Free":cart.assessmentDetails.sellingPrice}}</div>
                                     </div>
                                     <div class="soldby">
                                         <p>Sold by : L & T</p>
@@ -52,7 +52,7 @@
                     <app-Checkout [tab]='stepper' [checkoutData]='cartList'></app-Checkout>
                 </div>
             </div>
-  
+
             <section *ngIf="cartList.length == 0" class="emptyCart">
                 <div class="container">
                     <figure>
@@ -77,6 +77,6 @@
                 </div>
             </div>
         </mat-step>
-        
+
     </mat-horizontal-stepper>
 </section>

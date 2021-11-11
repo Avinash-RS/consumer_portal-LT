@@ -32,10 +32,7 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
     {name:'Coimbatore',id:'Coimbatore'}
   ];
   regionList = [
-    {
-      label: 'India',
-      value: '101'
-    }
+
   ];
   //form Variables
   form_present_address_1 = 'address1';
@@ -80,15 +77,13 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
 
   ngOnInit() {
     this.userDetails =  JSON.parse(sessionStorage.getItem('userDetails'));
+    this.getCountry();
     this.formInitialize();
-  
+
     this.getContactDetails();
     this.saveRequestRxJs();
-    this.getCountry();
-    this.getPresentStateAPI('5bd0597eb339b81c30d3e7f2');
-    this.getPermanentStateAPI('5bd0597eb339b81c30d3e7f2');
-    this.getPresenttCity('5bd0597eb339b81c30d3e7f2','5bd05f02acc8d91d8f841ada');
-    this.getPermanentCity('5bd0597eb339b81c30d3e7f2','5bd05f02acc8d91d8f841ada');
+
+
 
   }
 
@@ -131,7 +126,7 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
      if(result.success){
       this.permanentState = result.data;
      }
-    
+
   })
   }
   getPresentStateAPI(countryCode) {
@@ -142,7 +137,7 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
      if(result.success){
       this.presentState = result.data;
      }
-    
+
   })
   }
   getPermanentCity(countrycode,StateCode) {
@@ -154,7 +149,7 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
      if(result.success){
       this.permanentCity = result.data;
      }
-    
+
   })
   }
   getPresenttCity(countrycode,StateCode) {
@@ -166,7 +161,7 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
      if(result.success){
       this.presentCity = result.data;
      }
-    
+
   })
   }
   changePermanentRegion(value){
@@ -277,7 +272,7 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
     } else {
       this.toast.warning("Invalid User Details");
     }
-    
+
   }
   saveContactDetails(apiData){
     this.commonService.postKycUserDetails(apiData).subscribe((result:any)=>{
@@ -299,8 +294,13 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
 
 
   patchContactForm() {
+    this.changePermanentRegion({value:this.contactDetails.permanent.per_country});
+    this.changePresentRegion({value:this.contactDetails.present.country});
+    this.chanegepresenetState({value:this.contactDetails.present.state} );
+    this.chanegePeramanentState({value:this.contactDetails.permanent.per_state});
+
     this.contactForm.patchValue({
-      [this.form_alternate_mobile]:this.contactDetails.alternatePhone ? this.contactDetails.alternatePhone:null, 
+      [this.form_alternate_mobile]:this.contactDetails.alternatePhone ? this.contactDetails.alternatePhone:null,
       [this.form_personal_email]: this.contactDetails.alternateEmail ? this.contactDetails.alternateEmail:null,
       [this.form_present_address_1]: this.contactDetails.present.address1 ? this.contactDetails.present.address1:null,
       // [this.form_present_address_2]: this.contactDetails.present.address2 ? this.contactDetails.present.address2:null,
@@ -314,7 +314,7 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
       // [this.form_permanent_address_2]: this.contactDetails.permanent.per_address2 ?this.contactDetails.permanent.per_address2:null,
       // [this.form_permanent_address_3]: this.contactDetails.permanent.per_address3 ?this.contactDetails.permanent.per_address3:null,
       [this.form_permanent_city]: this.contactDetails.permanent.per_city ?this.contactDetails.permanent.per_city:null,
-      [this.form_permanent_state]: this.contactDetails.permanent.per_state ?this.contactDetails.permanent.per_state:null, 
+      [this.form_permanent_state]: this.contactDetails.permanent.per_state ?this.contactDetails.permanent.per_state:null,
       [this.form_permanent_region]:  this.contactDetails.permanent.per_country ?this.contactDetails.permanent.per_country :null,
       [this.form_permanent_zip_code]: this.contactDetails.permanent.per_zipCode ?this.contactDetails.permanent.per_zipCode:null,
     });

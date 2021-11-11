@@ -60,7 +60,9 @@ export class CheckoutComponent implements OnInit {
     console.log(this.cartList)
     this.cartList.forEach((list) => {
       list.assessmentDetails.sellingPrice = parseInt(list.assessmentDetails.sellingPrice)
+      if(!list.assessmentDetails.is_free){
       this.totalPrice += list.assessmentDetails.sellingPrice
+      }
     })
     console.log(this.totalPrice)
   }
@@ -89,6 +91,7 @@ export class CheckoutComponent implements OnInit {
     if (this.selectedAddress) {
       this.catalogService.createOrder(param).subscribe((data: any) => {
         this._loading.setLoading(true, environment.API_BASE_URL+"createorder");
+        if(this.totalPrice!==0){
         //let redirect_url = 'http%3A%2F%2Flocalhost%3A3008%2Fhandleresponse';
         let redirect_url = environment.PAYMENT+'/ccavResponseHandler'
         let useremail = this.userDetails.email;
@@ -108,6 +111,10 @@ export class CheckoutComponent implements OnInit {
             console.log(error);
           }
         );
+        }else{
+          // cart/success?orderId=6313-311893-1133
+          // navigate to this section
+        }
       })
     } else {
       this.toast.error('Select an address to continue')
