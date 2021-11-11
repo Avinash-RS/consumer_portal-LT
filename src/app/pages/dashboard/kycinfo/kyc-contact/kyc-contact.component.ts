@@ -18,26 +18,8 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
 
 
   contactForm: FormGroup;
-<<<<<<< HEAD
 
 
-=======
-  allStatesList: any = [
-    {name:'Tamilnadu',id:'Tamilnadu'},
-    {name:'Kerala',id:'Kerala'}
-  ];
-  allPresentCityList: any =[
-    {name:'Chennai',id:'Chennai'},
-    {name:'Coimbatore',id:'Coimbatore'}
-  ];
-  allPermanentCityList: any= [
-    {name:'Chennai',id:'Chennai'},
-    {name:'Coimbatore',id:'Coimbatore'}
-  ];
-  regionList = [
-
-  ];
->>>>>>> fb6860d7182810e3eedb5648224ec0bed7e0791e
   //form Variables
   form_present_address_1 = 'address1';
   form_present_address_2 = 'address2';
@@ -86,16 +68,7 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
     this.userDetails =  JSON.parse(sessionStorage.getItem('userDetails'));
     this.getCountry();
     this.formInitialize();
-<<<<<<< HEAD
     this.getContactDetails();
-=======
-
-    this.getContactDetails();
-    this.saveRequestRxJs();
-
-
-
->>>>>>> fb6860d7182810e3eedb5648224ec0bed7e0791e
   }
 
   ngAfterViewInit() {
