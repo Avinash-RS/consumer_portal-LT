@@ -26,6 +26,7 @@ import { AnimateOnScrollModule } from 'ng2-animate-on-scroll';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { BarChartComponent } from './barChart/barChart.component';
 import { RecruiterComponent } from './recruiter/recruiter.component';
+import { KycMandateComponent } from './kyc-mandate/kyc-mandate.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { RecruiterComponent } from './recruiter/recruiter.component';
     DomainCardsComponent,
     CaptchaDirective,
     BarChartComponent,
-    RecruiterComponent
+    RecruiterComponent,
+    KycMandateComponent
   ],
   imports: [
     CommonModule,
@@ -66,7 +68,8 @@ import { RecruiterComponent } from './recruiter/recruiter.component';
     ReactiveFormsModule,
     MaterialModule,
     BarChartComponent,
-    RecruiterComponent
+    RecruiterComponent,
+    KycMandateComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 
