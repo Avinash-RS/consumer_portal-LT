@@ -165,11 +165,14 @@ export class KycPersonalComponent implements OnInit,AfterViewInit, OnDestroy {
   form_no_of_children = 'noOfChildren';
   form_forigen_passport ='forigen_passport';
   form_mother_name ='form_mother_name';
+  nationality_name;
+  domicileState_name;
+  stateOfBirth_name;
   profilePictureFormControl = new FormControl(null, [Validators.required]);
 // Form control name declaration end
 
   personalDetails: any;
-  getAllStates: any;
+  getAllStates: any = [];
   nonMergedPersonalDetails: any;
   userDetails:any;
   country = [];
@@ -191,7 +194,7 @@ export class KycPersonalComponent implements OnInit,AfterViewInit, OnDestroy {
     this.userDetails =  JSON.parse(sessionStorage.getItem('userDetails'));
     this.formInitialize();
     this.getCountry();
-    this.getStateAPI('5bd0597eb339b81c30d3e7f2');
+    //this.getStateAPI('5bd0597eb339b81c30d3e7f2');
     this.getPersonalData();
   }
 
@@ -209,10 +212,10 @@ export class KycPersonalComponent implements OnInit,AfterViewInit, OnDestroy {
     this.personalDetails = null;
     this.commonService.getKycUserDetails(userID).subscribe((result:any)=>{
       if(result.success){
-        this.personalDetails = result.data.profile;
+        this.personalDetails = result.data.personalDetails;
         this.personalDetails.email = result.data.email;
-        this.personalDetails.firstname = result.data.firstname;
         if(this.personalDetails){
+          this.getStateAPI(this.personalDetails.nationality ? this.personalDetails.nationality : '5bd0597eb339b81c30d3e7f2');
           this.patchPersonalForm();
         }
         else{
@@ -224,14 +227,8 @@ export class KycPersonalComponent implements OnInit,AfterViewInit, OnDestroy {
       }
     });
   }
-  changeCountry(value){
-    if(this.country.length > 0){
-       this.country.forEach((element:any)=>{
-        if(element.countryname == value.value){
-          this.getStateAPI(element._id);
-        }
-      })
-    }
+  changeCountry(e){
+    this.getStateAPI(e.value);
   }
   getCountry(){
     this.cart.getCountryDetails().subscribe((result:any)=>{
@@ -284,10 +281,46 @@ export class KycPersonalComponent implements OnInit,AfterViewInit, OnDestroy {
      return split == 'Invalid date' ? null : split;
     }
   }
+getState_nationalName(){
+  let rawPersonalFormValue = this.personalForm.getRawValue();
 
-  formSubmit(routeValue?:any) {
+  //get national name
+  if(rawPersonalFormValue[this.form_nationality]){
+    if(this.country.length > 0){
+      this.country.forEach((element:any)=>{
+        if(element._id == rawPersonalFormValue[this.form_nationality]){
+          this.nationality_name  = element.countryname;
+        }
+      });
+    }
+  }
+    //get state of birth
+    if(rawPersonalFormValue[this.form_state_of_birth]){
+      if(this.getAllStates.length > 0){
+        this.getAllStates.forEach((element:any) => {
+          if(element._id == rawPersonalFormValue[this.form_state_of_birth]){
+            this.stateOfBirth_name = element.statename;
+          }
+        });
+      }
+    }
+  //get dom state name
+  if(rawPersonalFormValue[this.form_domicile_state]){
+    if(this.getAllStates.length > 0){
+      this.getAllStates.forEach((element:any) => {
+        if(element._id == rawPersonalFormValue[this.form_domicile_state]){
+          this.domicileState_name = element.statename;
+        }
+      });
+    }
+  }
+
+}
+  formSubmit() {
     if (this.personalForm.valid) {
       let rawPersonalFormValue = this.personalForm.getRawValue();
+      this.getState_nationalName();
+   
       const apiData = {
        type : "personalDetails",
        emailId: this.userDetails.email ? this.userDetails.email :null ,
@@ -295,6 +328,9 @@ export class KycPersonalComponent implements OnInit,AfterViewInit, OnDestroy {
        [this.form_state_of_birth]: rawPersonalFormValue[this.form_state_of_birth],
        [this.form_nationality]: rawPersonalFormValue[this.form_nationality],
        [this.form_domicile_state]: rawPersonalFormValue[this.form_domicile_state],
+       nationality_name : this.nationality_name ? this.nationality_name :null,
+       stateOfBirth_name : this.stateOfBirth_name ? this.stateOfBirth_name:null,
+       domicileState_name : this.domicileState_name ? this.domicileState_name:null,
       //  [this.form_name]: rawPersonalFormValue[this.form_name],
       //  lastName : "",
       //  [this.form_mobile]: rawPersonalFormValue[this.form_mobile],

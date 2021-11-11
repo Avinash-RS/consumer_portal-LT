@@ -103,7 +103,7 @@
                     <label>Present Country/Region</label>
                     <mat-form-field appearance="fill">
                     <mat-select [formControlName]="form_present_region" (selectionChange)="changePresentRegion($event)">
-                        <mat-option *ngFor="let region of regionList" [value]="region.countryname">{{region.countryname}}</mat-option>
+                        <mat-option *ngFor="let region of Countries" [value]="region._id">{{region.countryname}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                     <div class="form-error" *ngIf="present_region?.invalid && present_region?.touched">
@@ -115,7 +115,7 @@
                     <label>Present State/Province</label>
                 <mat-form-field appearance="fill">
                     <mat-select  [formControlName]="form_present_state" (selectionChange)="chanegepresenetState($event)">
-                        <mat-option *ngFor="let state of presentState" [value]="state.statename">{{state.statename}}</mat-option>
+                        <mat-option *ngFor="let state of presentState" [value]="state._id">{{state.statename}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                     <div class="form-error" *ngIf="present_state?.invalid && present_state?.touched">
@@ -131,7 +131,7 @@
                     <label>Present City</label>
                     <mat-form-field appearance="fill">
                     <mat-select [formControlName]="form_present_city">
-                        <mat-option *ngFor="let city of presentCity" [value]="city.districtname">{{city.districtname}}</mat-option>
+                        <mat-option *ngFor="let city of presentCity" [value]="city._id">{{city.districtname}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                     <div class="form-error" *ngIf="present_city?.invalid && present_city?.touched">
@@ -210,7 +210,7 @@
         <label>Permanent Country/Region</label>
         <mat-form-field appearance="fill">
         <mat-select [formControlName]="form_permanent_region" (selectionChange)="changePermanentRegion($event)">
-            <mat-option *ngFor="let region of regionList"  [value]="region.countryname">{{region.countryname}}</mat-option>
+            <mat-option *ngFor="let region of Countries"  [value]="region._id">{{region.countryname}}</mat-option>
         </mat-select>
         </mat-form-field>
         <div class="form-error" *ngIf="permanent_region?.invalid && permanent_region?.touched">
@@ -222,7 +222,7 @@
         <label>Permanent State/Province</label>
         <mat-form-field appearance="fill">
         <mat-select  [formControlName]="form_permanent_state" (selectionChange)="chanegePeramanentState($event)">
-            <mat-option *ngFor="let state of permanentState" [value]="state.statename">{{state.statename}}</mat-option>
+            <mat-option *ngFor="let state of permanentState" [value]="state._id">{{state.statename}}</mat-option>
         </mat-select>
         </mat-form-field>
         <div class="form-error" *ngIf="permanent_state?.invalid && permanent_state?.touched">
@@ -237,7 +237,7 @@
         <label>Permanent City</label>
         <mat-form-field appearance="fill">
         <mat-select [formControlName]="form_permanent_city">
-            <mat-option *ngFor="let city of permanentCity" [value]="city.districtname">{{city.districtname}}</mat-option>
+            <mat-option *ngFor="let city of permanentCity" [value]="city._id">{{city.districtname}}</mat-option>
         </mat-select>
         </mat-form-field>
         <div class="form-error" *ngIf="permanent_city?.invalid && permanent_city?.touched">
