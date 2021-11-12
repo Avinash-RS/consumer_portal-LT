@@ -26,9 +26,8 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.util.setValue(false);
+    // this.util.setValue(false);
     this.getStaticHomeData();
-
     /*const params = qs.parse(window.location.search.substring(1));
     const email = qs.parse(window.location.search.substring(2));
     const password = qs.parse(window.location.search.substring(3));

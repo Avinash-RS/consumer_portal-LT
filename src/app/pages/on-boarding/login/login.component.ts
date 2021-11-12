@@ -42,9 +42,8 @@ export class LoginComponent implements OnInit {
         this.entryIndex = 0;
         this.loginFormInitialize();
         if(params.activation == '1'){
-          this.entryIndex = 1;
           this.toast.success('Account activated successfully');
-          this.showKyc = true
+          // this.showKyc = true
         }
       } else {
         this.entryIndex = 1;
