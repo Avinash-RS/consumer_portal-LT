@@ -25,7 +25,7 @@
             <span class="heading6">Total Amount</span>
             <span><em class="icon-Rupee"></em>{{totalPrice}}</span>
         </div>
-        <button (click)="currentTab.selectedIndex==0?continueClick():checkout()" class="checkout">{{currentTab.selectedIndex===0?'Continue':'Checkout'}}</button>
+        <button (click)="currentTab.selectedIndex==0?totalPrice==0?checkout():continueClick():checkout()" class="checkout">{{currentTab.selectedIndex===0?'Continue':'Checkout'}}</button>
     </div>
 
     <!-- <h3>Click Here! to go CCAvenue</h3>
