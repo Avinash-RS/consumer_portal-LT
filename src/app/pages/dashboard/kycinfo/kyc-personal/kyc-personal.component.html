@@ -25,7 +25,7 @@
                         <label>Country</label>
                         <mat-form-field appearance="fill">
                             <mat-select [formControlName]="form_nationality" required (selectionChange)="changeCountry($event)">
-                                <mat-option *ngFor="let list of country" [value]="list.countryname">{{list.countryname}}</mat-option>
+                                <mat-option *ngFor="let list of country" [value]="list._id">{{list.countryname}}</mat-option>
                             </mat-select>
                             </mat-form-field>
                         <div class="form-error" *ngIf="nationality?.invalid && nationality?.touched">
@@ -89,7 +89,7 @@
                     <label>State of birth</label>
                     <mat-form-field appearance="fill">
                         <mat-select [formControlName]="form_state_of_birth">
-                            <mat-option *ngFor="let state of getAllStates" [value]="state.statename">{{state.statename}}</mat-option>
+                            <mat-option *ngFor="let state of getAllStates" [value]="state._id">{{state.statename}}</mat-option>
                         </mat-select>
                         </mat-form-field>
                         <div class="form-error" *ngIf="state_of_birth?.invalid && state_of_birth?.touched">
@@ -123,7 +123,7 @@
                     <label>Domicile State</label>
                 <mat-form-field appearance="fill">
                         <mat-select [formControlName]="form_domicile_state">
-                            <mat-option *ngFor="let state of getAllStates" [value]="state.statename">{{state.statename}}</mat-option>
+                            <mat-option *ngFor="let state of getAllStates" [value]="state._id">{{state.statename}}</mat-option>
                         </mat-select>
                  </mat-form-field>
                         <div class="form-error" *ngIf="domicile_state?.invalid && domicile_state?.touched">

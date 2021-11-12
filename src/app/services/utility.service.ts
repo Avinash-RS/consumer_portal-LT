@@ -22,6 +22,9 @@ export class UtilityService {
   //For address data to payment Communication
   addressSubject = new Subject();
 
+  //For navigating Parent KYC tabs
+  ParentkyctabSubject = new Subject();
+
   //For navigating KYC tabs
   kyctabSubject = new Subject();
   

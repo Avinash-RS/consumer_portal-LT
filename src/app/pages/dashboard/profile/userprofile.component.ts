@@ -140,9 +140,18 @@ export class UserprofileComponent implements OnInit {
     this.tabchanged();
     this.getProfilePercentage();
     this.triggerProfilepercentage();
-    
+    this.navigateParentTab();
   }
-
+  navigateParentTab(){
+    this.util.ParentkyctabSubject.subscribe((result:any)=>{
+      this.selection = "Profile";
+      var obj ={title:'Profile'};
+      this.openKYCPannel = false;
+      this.selectTypes(obj);
+      this.selectedKycTab = "Personal";
+      this.ChangeKycTabs("Personal");
+    })
+  }
   selectTypes(value) {
     this.selectionTypes.forEach((data) => {
       data.Active = false;
@@ -372,7 +381,6 @@ getProfilePercentage(){
   }
 
   addBadge(templateRef: TemplateRef<any>) {
-    console.log(templateRef);
     this.dialog.open(templateRef, {
       width: '70%',
       height: '90%',

@@ -5,12 +5,12 @@
             <div class="section">
                 <div class="header  mb-1 align-items-center">
                     <h1>Primary Details</h1>
-                    <div *ngIf="!formSubmitted" class="icon"><span (click)="navigatePrevNext('Personal')"
+                    <div *ngIf="!formSubmitted" class="icon"><span (click)="navigateParent()"
                             class="material-icons material-icons-outlined">
                             mode_edit
                     </span></div>
                 </div>
-                <ng-container *ngIf="personalDetailsMap else noPersonal">
+                <ng-container *ngIf="personalDetailsMap else noPrimary">
                     <div class="d-flex" style="display: flex;">
                         <div style="width: 34%;" class="d-flex align-items-center"> <img height="117px" width="104px"
                                 [src]="url ? url : '../../../../assets/images/profile_camera.svg'" alt="" srcset=""> </div>
@@ -195,7 +195,7 @@
                     </div> -->
                 </ng-container>
             </div>
-            <div class="section">
+            <div class="section" *ngIf="secondaryPersonalDetails else noPersonal">
                 <div class="header  mb-1 align-items-center">
                     <h1>Personal Details</h1>
                     <div *ngIf="!formSubmitted" class="icon"><span (click)="navigatePrevNext('Personal')"
@@ -207,23 +207,23 @@
                         <div class="row-wrapper mt-0">
                             <div class="overall-input-wrapper mt-3 width-32">
                                 <label>Place of Birth<span></span></label>
-                                <div class="input size-16 bold-700 color-black">{{personalDetails?.placeOfBirth?  personalDetails.placeOfBirth :'NA'}}
+                                <div class="input size-16 bold-700 color-black">{{secondaryPersonalDetails?.placeOfBirth?  secondaryPersonalDetails.placeOfBirth :'NA'}}
                                 </div>
                             </div>
                             <div class="overall-input-wrapper mt-3 width-32">
                                 <label>State of Birth<span></span></label>
-                                <div class="input size-16 bold-700 color-black">{{personalDetails?.stateOfBirth ?  personalDetails?.stateOfBirth :'NA'}}
+                                <div class="input size-16 bold-700 color-black">{{secondaryPersonalDetails?.stateOfBirth_name ?  secondaryPersonalDetails?.stateOfBirth_name :'NA'}}
                                 </div>
                             </div>
                             <div class="overall-input-wrapper mt-3 width-32">
                                 <label>Nationality<span></span></label>
-                                <div class="input size-16 bold-700 color-black">{{personalDetails?.nationality ? personalDetails?.nationality :'NA'}}
+                                <div class="input size-16 bold-700 color-black">{{secondaryPersonalDetails?.nationality_name ? secondaryPersonalDetails?.nationality_name :'NA'}}
                                 </div>
                             </div>
     
                             <div class="overall-input-wrapper mt-3 width-32">
                                 <label>Domicile State<span></span></label>
-                                <div class="input size-16 bold-700 color-black">{{personalDetails?.domicileState ? personalDetails?.domicileState:'NA'}}
+                                <div class="input size-16 bold-700 color-black">{{secondaryPersonalDetails?.domicileState_name ? secondaryPersonalDetails?.domicileState_name:'NA'}}
                                 </div>
                             </div>
                         </div>
@@ -271,25 +271,27 @@
 
                     <div class="row-wrapper mt-0">
                         <div class="overall-input-wrapper mt-3 width-32">
-                            <label>City<span></span></label>
-                            <div class="input size-16 bold-700 color-black">{{contactDetailsMap[form_present_city]}}
+                            <label>Country/Region<span></span></label>
+                            <div class="input size-16 bold-700 color-black">{{contactDetails.present.country_name ? contactDetails.present.country_name:'NA'}}
                             </div>
                         </div>
                         <div class="overall-input-wrapper mt-3 width-32">
                             <label>State/Province<span></span></label>
-                            <div class="input size-16 bold-700 color-black">{{contactDetailsMap[form_present_state]}}
+                            <div class="input size-16 bold-700 color-black">{{contactDetails.present.state_name ? contactDetails.present.state_name:'NA'}}
                             </div>
                         </div>
+                        <div class="overall-input-wrapper mt-3 width-32">
+                            <label>City<span></span></label>
+                            <div class="input size-16 bold-700 color-black">{{contactDetails.present.city_name ? contactDetails.present.city_name:'NA'}}
+                            </div>
+                        </div>
+  
                         <div class="overall-input-wrapper mt-3 width-32">
                             <label>Postal/Zip code<span></span></label>
                             <div class="input size-16 bold-700 color-black">{{contactDetailsMap[form_present_zip_code]}}
                             </div>
                         </div>
-                        <div class="overall-input-wrapper mt-3 width-32">
-                            <label>Country/Region<span></span></label>
-                            <div class="input size-16 bold-700 color-black">{{contactDetailsMap[form_present_region]}}
-                            </div>
-                        </div>
+
 
                     </div>
 
@@ -304,25 +306,26 @@
 
                         <div class="row-wrapper mt-0">
                             <div class="overall-input-wrapper mt-3 width-32">
-                                <label>City<span></span></label>
-                                <div class="input size-16 bold-700 color-black">
-                                    {{contactDetailsMap[form_permanent_city]}}</div>
+                                <label>Country/Region<span></span></label>
+                                <div class="input size-16 bold-700 color-black">{{contactDetails.permanent.per_country_name ? contactDetails.permanent.per_country_name:'NA'}}
+                                </div>
                             </div>
                             <div class="overall-input-wrapper mt-3 width-32">
                                 <label>State/Province<span></span></label>
-                                <div class="input size-16 bold-700 color-black">
-                                    {{contactDetailsMap[form_permanent_state]}}</div>
+                                <div class="input size-16 bold-700 color-black">{{contactDetails.permanent.per_state_name ? contactDetails.permanent.per_state_name:'NA'}}
+                                </div>
+                            </div>
+                            <div class="overall-input-wrapper mt-3 width-32">
+                                <label>City<span></span></label>
+                                <div class="input size-16 bold-700 color-black">{{contactDetails.permanent.per_city_name ? contactDetails.permanent.per_city_name:'NA'}}
+                                </div>
                             </div>
                             <div class="overall-input-wrapper mt-3 width-32">
                                 <label>Postal/Zip code<span></span></label>
                                 <div class="input size-16 bold-700 color-black">
                                     {{contactDetailsMap[form_permanent_zip_code]}}</div>
                             </div>
-                            <div class="overall-input-wrapper mt-3 width-32">
-                                <label>Country/Region<span></span></label>
-                                <div class="input size-16 bold-700 color-black">
-                                    {{contactDetailsMap[form_permanent_region]}}</div>
-                            </div>
+            
 
                         </div>
                     </ng-container>
@@ -1010,6 +1013,9 @@
 </ng-template>
 <ng-template #noContact>
     <div class="nodata"> No Contact Details Available</div>
+</ng-template>
+<ng-template #noPrimary>
+    <div class="nodata"> No Primary Details Available</div>
 </ng-template>
 <ng-template #noPersonal>
     <div class="nodata"> No Personal Details Available</div>

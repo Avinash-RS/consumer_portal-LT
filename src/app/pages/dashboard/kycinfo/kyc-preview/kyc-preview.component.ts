@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
+import { CartService } from 'src/app/services/cart.service';
 import { CommonService } from 'src/app/services/common.service';
 import { GlobalValidatorService } from 'src/app/services/global-validator.service';
 import { UtilityService } from 'src/app/services/utility.service';
@@ -269,6 +270,8 @@ export class KycPreviewComponent implements OnInit, AfterViewInit,OnDestroy {
   actualDate: any;
   noShowWork: boolean;
   userDetails:any;
+  Countries;
+  secondaryPersonalDetails;
 
   constructor(
     private utilService:UtilityService,
@@ -277,7 +280,8 @@ export class KycPreviewComponent implements OnInit, AfterViewInit,OnDestroy {
     public commonService: CommonService,
     public toast: ToastrService,
     private glovbal_validators: GlobalValidatorService,
-    private router: Router
+    private router: Router,
+    private cart :CartService
   ) {
     this.dateValidation();
   }
@@ -315,6 +319,7 @@ export class KycPreviewComponent implements OnInit, AfterViewInit,OnDestroy {
         this.passportdetails = result.data.IdentityDetails;
         this.workDetails = result.data.experienceDetails;
         this.ackdetails = result.data.ackDeclDetails;
+        this.secondaryPersonalDetails = result.data.personalDetails;
         if(this.personalDetails){
           this.patchPersonalForm();
         }
@@ -620,8 +625,8 @@ patchACkdetails(){
       // [this.form_permanent_address_3]: this.contactDetails.permanent.per_address3 ?this.contactDetails.permanent.per_address3:'NA',
       [this.form_permanent_city]: this.contactDetails.permanent.per_state ?this.contactDetails.permanent.per_city:'NA',
       [this.form_permanent_state]: this.contactDetails.permanent.per_city ?this.contactDetails.permanent.per_state:'NA',
-      [this.form_permanent_region]: this.contactDetails.permanent.per_zipCode ?this.contactDetails.permanent.per_zipCode:'NA',
-      [this.form_permanent_zip_code]: this.contactDetails.permanent.per_country ?this.contactDetails.permanent.per_country :'NA'
+      [this.form_permanent_region]: this.contactDetails.permanent.per_country ?this.contactDetails.permanent.per_country :'NA',
+      [this.form_permanent_zip_code]:  this.contactDetails.permanent.per_zipCode ?this.contactDetails.permanent.per_zipCode:'NA'
     };
     this.contactDetailsMap = data;
 
@@ -630,13 +635,34 @@ patchACkdetails(){
     this.contactDetailsMap.permanentAddress = this.contactDetails.permanent.per_address1 ?this.contactDetails.permanent.per_address1:'NA';
 
   }
+  getCountry(){
+    this.cart.getCountryDetails().subscribe((result:any)=>{
+      if(result.success){
+        this.Countries = result.data;
+      }
+     });
+  }
 
   patchPersonalForm() {
-  
+  var gender = 'NA';  
+  //Gender
+  if(this.personalDetails.gender){
+    if(this.personalDetails.gender == 1){
+      gender = 'Male'  
+    }
+   else if(this.personalDetails.gender == 2){
+      gender = 'Female'  
+    }
+    else if(this.personalDetails.gender == 3){
+      gender = 'Others'  
+    }
+  }
+
+
     const data = {
       [this.form_name]: this.personalDetails.firstname ? this.personalDetails.firstname : 'NA',
       [this.form_dob]: this.personalDetails.dateOfBirth ? this.dateConvertion(this.personalDetails.dateOfBirth) : 'NA',
-      [this.form_gender]: this.personalDetails.gender ? this.personalDetails.gender : 'NA' ,
+      [this.form_gender]: gender,
       [this.form_place_of_birth]: this.personalDetails?.placeOfBirth?  this.personalDetails?.placeOfBirth :'NA',
       [this.form_state_of_birth]: this.personalDetails.stateOfBirth ?  this.personalDetails.stateOfBirth :'NA',
       [this.form_nationality]: this.personalDetails.nationality ? this.personalDetails.nationality :'NA',
@@ -965,6 +991,9 @@ patchACkdetails(){
   }
   navigatePrevNext(type){
     this.utilService.kyctabSubject.next(type);
+  }
+  navigateParent(){
+    this.utilService.ParentkyctabSubject.next(true);
   }
 
   ngOnDestroy() {

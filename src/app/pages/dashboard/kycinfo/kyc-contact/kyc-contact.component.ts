@@ -16,27 +16,10 @@ import { CartService } from 'src/app/services/cart.service';
 
 export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
 
-  checkFormValidRequest: Subscription;
-  sendPopupResultSubscription: Subscription;
+
   contactForm: FormGroup;
-  allStatesList: any = [
-    {name:'Tamilnadu',id:'Tamilnadu'},
-    {name:'Kerala',id:'Kerala'}
-  ];
-  allPresentCityList: any =[
-    {name:'Chennai',id:'Chennai'},
-    {name:'Coimbatore',id:'Coimbatore'}
-  ];
-  allPermanentCityList: any= [
-    {name:'Chennai',id:'Chennai'},
-    {name:'Coimbatore',id:'Coimbatore'}
-  ];
-  regionList = [
-    {
-      label: 'India',
-      value: '101'
-    }
-  ];
+
+
   //form Variables
   form_present_address_1 = 'address1';
   form_present_address_2 = 'address2';
@@ -60,14 +43,17 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
   form_alternate_mobile = 'alternatePhone'
   contactDetails: any;
   userDetails:any;
-  presentCountry;
-  presentState;
-  presentCity;
-  permanentCountry;
-  permanentState;
-  permanentCity;
-  permanentRegionValue ='5bd0597eb339b81c30d3e7f2';
-  presentRegionValue ='5bd0597eb339b81c30d3e7f2';
+  Countries:any = [];
+  presentState = [];
+  presentCity = [];
+  permanentState = [];
+  permanentCity = [];
+  permanent_country_name;
+  present_country_name;
+  permanent_state_name;
+  present_state_name;
+  permanent_city_name;
+  present_city_name;
   constructor(
     private fb: FormBuilder,
     private utilService:UtilityService,
@@ -80,16 +66,9 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
 
   ngOnInit() {
     this.userDetails =  JSON.parse(sessionStorage.getItem('userDetails'));
-    this.formInitialize();
-  
-    this.getContactDetails();
-    this.saveRequestRxJs();
     this.getCountry();
-    this.getPresentStateAPI('5bd0597eb339b81c30d3e7f2');
-    this.getPermanentStateAPI('5bd0597eb339b81c30d3e7f2');
-    this.getPresenttCity('5bd0597eb339b81c30d3e7f2','5bd05f02acc8d91d8f841ada');
-    this.getPermanentCity('5bd0597eb339b81c30d3e7f2','5bd05f02acc8d91d8f841ada');
-
+    this.formInitialize();
+    this.getContactDetails();
   }
 
   ngAfterViewInit() {
@@ -101,24 +80,10 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
     }
   }
 
-
-
-  getAllPresentCities(id) {
-    const ApiData = {
-      state_id: id
-    };
-  }
-
-  getAllPermanentCities(id) {
-    const ApiData = {
-      state_id: id
-    };
-  }
-
   getCountry(){
     this.cart.getCountryDetails().subscribe((result:any)=>{
       if(result.success){
-        this.regionList = result.data;
+        this.Countries = result.data;
       }
      });
   }
@@ -131,7 +96,7 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
      if(result.success){
       this.permanentState = result.data;
      }
-    
+
   })
   }
   getPresentStateAPI(countryCode) {
@@ -142,7 +107,7 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
      if(result.success){
       this.presentState = result.data;
      }
-    
+
   })
   }
   getPermanentCity(countrycode,StateCode) {
@@ -154,7 +119,7 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
      if(result.success){
       this.permanentCity = result.data;
      }
-    
+
   })
   }
   getPresenttCity(countrycode,StateCode) {
@@ -166,52 +131,35 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
      if(result.success){
       this.presentCity = result.data;
      }
-    
+
   })
   }
-  changePermanentRegion(value){
-    if(this.regionList.length > 0){
-      this.regionList.forEach((element:any)=>{
-       if(element.countryname == value.value){
-         this.permanentRegionValue = element._id;
-         this.getPermanentStateAPI(element._id);
-       }
-     })
-   }
+  changePermanentRegion(e){
+    this.getPermanentStateAPI(e.value);
   }
-  changePresentRegion(value){
-    if(this.regionList.length > 0){
-      this.regionList.forEach((element:any)=>{
-       if(element.countryname == value.value){
-        this.presentRegionValue = element._id;
-         this.getPresentStateAPI(element._id);
-       }
-     })
-   }
+  changePresentRegion(e){
+    this.getPresentStateAPI(e.value);
   }
-  chanegePeramanentState(statevalue){
-    if(this.permanentState.length > 0){
-      this.permanentState.forEach(element => {
-        if(element.statename == statevalue.value){
-          this.getPermanentCity(this.permanentRegionValue,element._id)
-        }
-      });
-    }
+  chanegePeramanentState(e){
+    var regioncode = this.contactForm['value'][this.form_permanent_region];
+    this.getPermanentCity(regioncode,e.value)
   }
 
-  chanegepresenetState(statevalue){
-    if(this.presentState.length > 0){
-      this.presentState.forEach(element => {
-        if(element.statename == statevalue.value){
-          this.getPresenttCity(this.presentRegionValue,element._id)
-        }
-      });
-    }
+  chanegepresenetState(e){
+    var regioncode = this.contactForm['value'][this.form_present_region];
+    this.getPresenttCity(regioncode,e.value)
+    
   }
   matchangeYes(e) {
     if (e.checked) {
+      // this.getPermanentStateAPI(this.contactForm['value'][this.form_present_state] ? this.contactForm['value'][this.form_present_state] : '5bd05f02acc8d91d8f841ada');
+      // this.getPermanentCity(this.contactForm['value'][this.form_present_region] ? this.contactForm['value'][this.form_present_region]  :'5bd0597eb339b81c30d3e7f2',this.contactForm['value'][this.form_present_state] ? this.contactForm['value'][this.form_present_state] : '5bd05f02acc8d91d8f841ada');
+      this.permanentState = this.presentState;
+      this.permanentCity = this.presentCity;
       this.updatePermanentAsPerPresent();
     } else {
+      this.permanentState = this.presentState;
+      this.permanentCity = this.presentCity;
       this.updatePermanentAsPerPresent();
     }
   }
@@ -227,6 +175,10 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
           [this.form_mobile]: phone ? phone:null,
         });
         if(this.contactDetails){
+          this.getPermanentStateAPI(this.contactDetails.permanent.per_country ?this.contactDetails.permanent.per_country :'5bd0597eb339b81c30d3e7f2');
+          this.getPresentStateAPI(this.contactDetails.present.country ? this.contactDetails.present.country:'5bd0597eb339b81c30d3e7f2');
+          this.getPresenttCity(this.contactDetails.present.country ? this.contactDetails.present.country:'5bd0597eb339b81c30d3e7f2',this.contactDetails.present.state ?this.contactDetails.present.state:'5bd05f02acc8d91d8f841ada');
+          this.getPermanentCity(this.contactDetails.permanent.per_country ?this.contactDetails.permanent.per_country :'5bd0597eb339b81c30d3e7f2',this.contactDetails.permanent.per_state ? this.contactDetails.permanent.per_state : '5bd05f02acc8d91d8f841ada');
           this.patchContactForm();
         }
         else{
@@ -238,12 +190,82 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
       }
     });
   }
+  getState_city_CountryName(){
+    let rawContactFormValue = this.contactForm.getRawValue();
+      //get permanent country name
+  if(rawContactFormValue[this.form_present_region]){
+    if(this.Countries.length > 0){
+      this.Countries.forEach((element:any)=>{
+        if(element._id == rawContactFormValue[this.form_present_region]){
+          this.present_country_name  = element.countryname;
+          
+        }
+      });
+    }
+  }
+        //get preseent country name
+        if(rawContactFormValue[this.form_permanent_region]){
+          if(this.Countries.length > 0){
+            this.Countries.forEach((element:any)=>{
+              if(element._id == rawContactFormValue[this.form_permanent_region]){
+                this.permanent_country_name  = element.countryname;
+                
+              }
+            });
+          }
+        }
+         //get permanent state name
+         if(rawContactFormValue[this.form_permanent_state]){
+          if(this.permanentState.length > 0){
+            this.permanentState.forEach((element:any)=>{
+              if(element._id == rawContactFormValue[this.form_permanent_state]){
+                this.permanent_state_name  = element.statename;
+                
+              }
+            });
+          }
+        }
+                 //get presenet state name
+                 if(rawContactFormValue[this.form_present_state]){
+                  if(this.presentState.length > 0){
+                    this.presentState.forEach((element:any)=>{
+                      if(element._id == rawContactFormValue[this.form_present_state]){
+                        this.present_state_name  = element.statename;
+                        
+                      }
+                    });
+                  }
+                }
+                     //get presenet city name
+                     if(rawContactFormValue[this.form_present_city]){
+                      if(this.presentCity.length > 0){
+                        this.presentCity.forEach((element:any)=>{
+                          if(element._id == rawContactFormValue[this.form_present_city]){
+                            this.present_city_name  = element.districtname;
+                            
+                          }
+                        });
+                      }
+                    }
 
-  formSubmit(routeValue?: any) {
+                         //get presenet city name
+                 if(rawContactFormValue[this.form_permanent_city]){
+                  if(this.permanentCity.length > 0){
+                    this.permanentCity.forEach((element:any)=>{
+                      if(element._id == rawContactFormValue[this.form_permanent_city]){
+                        this.permanent_city_name  = element.districtname;
+                        
+                      }
+                    });
+                  }
+                }
+  }
+  formSubmit() {
     if (this.contactForm['value'][this.form_same_as_checkbox]) {
       this.updatePermanentAsPerPresent();
     }
     if (this.contactForm.valid) {
+      this.getState_city_CountryName();
       var email =this.userDetails.email ? this.userDetails.email :null
       let rawContactFormValue = this.contactForm.getRawValue();
         const apiData = {
@@ -261,6 +283,9 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
                 [this.form_present_city]: rawContactFormValue[this.form_present_city],
                 [this.form_present_zip_code]: rawContactFormValue[this.form_present_zip_code],
                 [this.form_present_region]: rawContactFormValue[this.form_present_region],
+                present_country_name: this.present_country_name ? this.present_country_name:null,
+                present_state_name : this.present_state_name ? this.present_state_name:null,
+                present_city_name : this.present_city_name ? this.present_city_name:null,
             },
             permanent :  {
                 [this.form_permanent_address_1]: rawContactFormValue[this.form_permanent_address_1],
@@ -270,6 +295,9 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
                 [this.form_permanent_city]: rawContactFormValue[this.form_permanent_city],
                 [this.form_permanent_zip_code]: rawContactFormValue[this.form_permanent_zip_code],
                 [this.form_permanent_region]: rawContactFormValue[this.form_permanent_region],
+                permanent_country_name : this.permanent_country_name ? this.permanent_country_name :null,
+                permanent_state_name :this.permanent_state_name ? this.permanent_state_name:null,
+                permanent_city_name : this.permanent_city_name ? this.permanent_city_name:null,
             }
          }
         }
@@ -277,7 +305,7 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
     } else {
       this.toast.warning("Invalid User Details");
     }
-    
+
   }
   saveContactDetails(apiData){
     this.commonService.postKycUserDetails(apiData).subscribe((result:any)=>{
@@ -290,17 +318,19 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
       }
     });
   }
-  saveRequestRxJs() {
-
-  }
 
 
 
 
 
   patchContactForm() {
+    this.changePermanentRegion({value:this.contactDetails.permanent.per_country});
+    this.changePresentRegion({value:this.contactDetails.present.country});
+    this.chanegepresenetState({value:this.contactDetails.present.state} );
+    this.chanegePeramanentState({value:this.contactDetails.permanent.per_state});
+
     this.contactForm.patchValue({
-      [this.form_alternate_mobile]:this.contactDetails.alternatePhone ? this.contactDetails.alternatePhone:null, 
+      [this.form_alternate_mobile]:this.contactDetails.alternatePhone ? this.contactDetails.alternatePhone:null,
       [this.form_personal_email]: this.contactDetails.alternateEmail ? this.contactDetails.alternateEmail:null,
       [this.form_present_address_1]: this.contactDetails.present.address1 ? this.contactDetails.present.address1:null,
       // [this.form_present_address_2]: this.contactDetails.present.address2 ? this.contactDetails.present.address2:null,
@@ -314,13 +344,13 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
       // [this.form_permanent_address_2]: this.contactDetails.permanent.per_address2 ?this.contactDetails.permanent.per_address2:null,
       // [this.form_permanent_address_3]: this.contactDetails.permanent.per_address3 ?this.contactDetails.permanent.per_address3:null,
       [this.form_permanent_city]: this.contactDetails.permanent.per_city ?this.contactDetails.permanent.per_city:null,
-      [this.form_permanent_state]: this.contactDetails.permanent.per_state ?this.contactDetails.permanent.per_state:null, 
+      [this.form_permanent_state]: this.contactDetails.permanent.per_state ?this.contactDetails.permanent.per_state:null,
       [this.form_permanent_region]:  this.contactDetails.permanent.per_country ?this.contactDetails.permanent.per_country :null,
       [this.form_permanent_zip_code]: this.contactDetails.permanent.per_zipCode ?this.contactDetails.permanent.per_zipCode:null,
     });
-    this.disableOrEnableState(this.form_present_state);
-    this.disableOrEnableState(this.form_permanent_state);
-    this.patchApiCityId();
+    // this.disableOrEnableState(this.form_present_state);
+    // this.disableOrEnableState(this.form_permanent_state);
+    // this.patchApiCityId();
   }
 
   patchApiCityId() {
@@ -417,8 +447,6 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
   updatePermanentAsPerPresent() {
     this.contactForm.patchValue({
       [this.form_permanent_address_1]: this.contactForm['value'][this.form_present_address_1] ? this.contactForm['value'][this.form_present_address_1] : null,
-      [this.form_permanent_address_2]: this.contactForm['value'][this.form_present_address_2] ? this.contactForm['value'][this.form_present_address_2] : null,
-      [this.form_permanent_address_3]: this.contactForm['value'][this.form_present_address_3] ? this.contactForm['value'][this.form_present_address_3] : null,
       [this.form_permanent_city]: this.contactForm['value'][this.form_present_city] ? this.contactForm['value'][this.form_present_city] : null,
       [this.form_permanent_state]: this.contactForm['value'][this.form_present_state] ? this.contactForm['value'][this.form_present_state] : null,
       [this.form_permanent_region]: this.contactForm['value'][this.form_present_region] ? this.contactForm['value'][this.form_present_region] : null,
@@ -435,76 +463,13 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
     this.contactForm.controls[this.form_permanent_region].enable({ emitEvent: false });
     this.contactForm.controls[this.form_permanent_zip_code].enable({ emitEvent: false });
   }
-  disablePresentCity() {
-    this.contactForm.patchValue({
-      [this.form_present_city]: null,
-    }), { emitEvent: false };
-    if (this.contactForm['value'][this.form_same_as_checkbox]) {
-      this.contactForm.patchValue({
-        [this.form_permanent_city]: null,
-      }), { emitEvent: false };
-      this.contactForm.controls[this.form_present_city].disable({ emitEvent: false });
-      return this.contactForm.controls[this.form_permanent_city].disable({ emitEvent: false });
-    }
-    return this.contactForm.controls[this.form_present_city].disable({ emitEvent: false });
-  }
-  enablePresentCity(id) {
-    this.contactForm.controls[this.form_present_city].enable({ emitEvent: false });
-    if (this.contactForm['value'][this.form_same_as_checkbox]) {
-      this.contactForm.controls[this.form_permanent_city].enable({ emitEvent: false });
-      this.getAllPresentCities(id);
-      return this.getAllPermanentCities(id);
-    }
-    return this.getAllPresentCities(id);
-  }
-  disablePermanentCity() {
-    this.contactForm.patchValue({
-      [this.form_permanent_city]: null,
-    }), { emitEvent: false };
-    return this.contactForm.controls[this.form_permanent_city].disable({ emitEvent: false });
-  }
-  enablePermanentCity(id) {
-    this.contactForm.controls[this.form_permanent_city].enable({ emitEvent: false });
-    return this.getAllPermanentCities(id);
-  }
 
-  disableOrEnableState(formField) {
-    if (this.form_present_state == formField) {
-      if (this.contactForm['value'][formField]) {
-        this.contactForm.patchValue({
-          [this.form_present_city]: null,
-        }), { emitEvent: false };
-            return this.enablePresentCity(this.contactForm['value'][formField]);
-      }
-      this.disablePresentCity();
-    } else {
-      if (this.contactForm['value'][formField]) {
-        this.contactForm.patchValue({
-          [this.form_permanent_city]: null,
-        }), { emitEvent: false };
-        return this.enablePermanentCity(this.contactForm['value'][formField]);
-      }
-      this.disablePermanentCity();
-    }
-  }
 
-  // Value changes to check present and permanent are same
-  valueChanges() {
-    this.contactForm.valueChanges.subscribe((data: any) => {
-      // Below is for automatic update of permanent address
-      // if (data[this.form_same_as_checkbox]) {
-      //   return this.updatePermanentAsPerPresent();
-      // } else {
-      //   return this.releaseDisabledValue();
-      // }
-    });
-  }
   navigatePrevNext(type){
     this.utilService.kyctabSubject.next(type);
   }
   ngOnDestroy() {
-    this.sendPopupResultSubscription ? this.sendPopupResultSubscription.unsubscribe() : '';
-    this.checkFormValidRequest ? this.checkFormValidRequest.unsubscribe() : '';
+    
   }
 }
 

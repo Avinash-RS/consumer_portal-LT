@@ -14,20 +14,20 @@
                 <ul class="user" *ngFor="let value of selectionTypes" [ngClass]="{'active': value.Active}"  (click)="selection = value.tabname; selectTypes(value);">
                     <li *ngIf="value.tabname !='KYC'" (click)="openKYCPannel= false">{{value.title}}</li>
 
-<li *ngIf="value.tabname =='KYC'" (click)="selection = value.tabname">
-    <div class="KycHeader" (click)="openKYCPannel=!openKYCPannel">
-        <div>{{value.title}}</div>
-        <div>
-            <mat-icon *ngIf="!openKYCPannel">expand_more</mat-icon>
-            <mat-icon *ngIf="openKYCPannel">expand_less</mat-icon>
-        </div>
-    </div>
-    <div *ngIf="openKYCPannel" class="Kycdetail" [@enterAnimation]>
-           <li *ngFor="let KYCvalue of value.child" [ngClass]="{'Kycactive': KYCvalue.Active}" (click)="ChangeKycTabs(KYCvalue.tab)">
-              {{KYCvalue.title}}
-            </li> 
-    </div>
-</li>
+                    <li *ngIf="value.tabname =='KYC'" (click)="selection = value.tabname">
+                        <div class="KycHeader" (click)="openKYCPannel=!openKYCPannel">
+                            <div>{{value.title}}</div>
+                            <div>
+                                <mat-icon *ngIf="!openKYCPannel">expand_more</mat-icon>
+                                <mat-icon *ngIf="openKYCPannel">expand_less</mat-icon>
+                            </div>
+                        </div>
+                        <div *ngIf="openKYCPannel" class="Kycdetail" [@enterAnimation]>
+                            <li *ngFor="let KYCvalue of value.child" [ngClass]="{'Kycactive': KYCvalue.Active}" (click)="ChangeKycTabs(KYCvalue.tab)">
+                                {{KYCvalue.title}}
+                                </li> 
+                        </div>
+                    </li>
                 </ul>
             </div>
             <div class="userDescription" [ngSwitch]="selection">
