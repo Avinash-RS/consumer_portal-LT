@@ -195,7 +195,7 @@
                     </div> -->
                 </ng-container>
             </div>
-            <div class="section" *ngIf="secondaryPersonalDetails else noPersonal">
+            <div class="section">
                 <div class="header  mb-1 align-items-center">
                     <h1>Personal Details</h1>
                     <div *ngIf="!formSubmitted" class="icon"><span (click)="navigatePrevNext('Personal')"
@@ -203,7 +203,7 @@
                             mode_edit
                     </span></div>
                 </div>
-                    <ng-container>
+                    <ng-container *ngIf="secondaryPersonalDetails else noPersonal">
                         <div class="row-wrapper mt-0">
                             <div class="overall-input-wrapper mt-3 width-32">
                                 <label>Place of Birth<span></span></label>
@@ -230,6 +230,7 @@
                      </ng-container>
                 
             </div>
+
             <div class="section">
                 <div class="header d-flex justify-content-between mb-1 align-items-center">
                     <h1>Contact Details</h1>
