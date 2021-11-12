@@ -385,17 +385,23 @@ validSelectedPost() {
     }
 
 }
-  formSubmit(routeValue?: any) {
+  formSubmit() {
     var email =this.userDetails.email ? this.userDetails.email :null
     if (this.educationForm.valid) {
-        var formArray = this.educationForm.getRawValue()[this.form_educationArray];
-        this.saveEducationDetails(formArray);
+      var formArray = [];
+      formArray=  this.educationForm.getRawValue()[this.form_educationArray];
+        if(formArray.length > 0){
+           this.saveEducationDetails(formArray);
+        }
+        else{
+          this.toast.warning("Please fill Education Details");
+        }
       } else {
         this.toast.warning("Invalid User details");
     }
   }
   saveEducationDetails(formArray){
-    var email = this.userDetails.email ? this.userDetails.email :null
+    var email = this.userDetails.email ? this.userDetails.email :null;
     const apiData = {
       type : "educationDetails",
       emailId : email,
