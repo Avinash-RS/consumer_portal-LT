@@ -75,12 +75,12 @@ export class CheckoutComponent implements OnInit {
     param.order_amount = this.totalPrice;
     param.cart = [];
     this.cartList.forEach(cartItem => {
-      let itemTotal_amount = cartItem.quantity * cartItem.assessmentDetails.sellingPrice;
+      let itemTotal_amount = cartItem.quantity * cartItem.assessmentDetails.is_free?0:cartItem.assessmentDetails.sellingPrice;
       param.cart.push(
         {
           assessmentId: cartItem.assessmentId,
           quantity: Number(cartItem.quantity),
-          amount_per_assessment: cartItem.assessmentDetails.sellingPrice,
+          amount_per_assessment: cartItem.assessmentDetails.is_free?0:cartItem.assessmentDetails.sellingPrice,
           total_amount: itemTotal_amount,
           competencyId: cartItem.competencyDetails.cid,
 	        levelId: cartItem.competencyDetails.levelId,
@@ -112,6 +112,8 @@ export class CheckoutComponent implements OnInit {
           }
         );
         }else{
+          this._loading.setLoading(false, environment.API_BASE_URL+"createorder");
+          this.appconfig.routeNavigationWithQueryParam("cart/success",{ orderId: data.order_id });
           // cart/success?orderId=6313-311893-1133
           // navigate to this section
         }
