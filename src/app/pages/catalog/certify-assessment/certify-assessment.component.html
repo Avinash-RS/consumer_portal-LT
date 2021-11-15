@@ -67,11 +67,11 @@
                                     <span class="levels heading5">{{first.levelName}}</span>
                                 </mat-panel-title>
                                 <mat-panel-description>
-                                    <div class="buyNowCart">
-                                        <span class="purchaseRate"><em class="icon-Rupee"></em>{{first.levelPrice}}</span>
-                                        <button class="buyNow" (click)="addCart(true,first.levelId,'','buy')">Buy Now</button>
-                                        <button class="addCart" (click)="addCart(true,first.levelId,'','cart')">Add to Cart</button>
-                                        <!-- <button class="taketest" (click)="gotoTest(true,first.levelId,'','buy')">Take test</button> -->
+                                    <div class="buyNowCart" style="z-index: 100;">
+                                        <span class="purchaseRate"><em class="icon-Rupee"></em>{{first.is_free?'Free':first.levelPrice}}</span>
+                                        <button class="buyNow" *ngIf="!first.is_free" (click)="addCart(true,first.levelId,'','buy')">Buy Now</button>
+                                        <button class="addCart" *ngIf="!first.is_free" (click)="addCart(true,first.levelId,'','cart')">Add to Cart</button>
+                                        <!-- <button class="taketest" *ngIf="first.is_free" (click)="gotoTest(true,first.levelId,'','buy',first)">Get all tests</button> -->
                                     </div>
                                 </mat-panel-description>
                             </mat-expansion-panel-header>
