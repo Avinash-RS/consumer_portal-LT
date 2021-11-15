@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { GlobalValidatorService } from 'src/app/services/global-validator.service';
 import { RemoveWhitespace } from 'src/app/services/removewhitespace';
 import { CartService } from 'src/app/services/cart.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-kyc-contact',
   templateUrl: './kyc-contact.component.html',
@@ -311,7 +312,7 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
     this.commonService.postKycUserDetails(apiData).subscribe((result:any)=>{
       if(result.success){
         this.toast.success(result.message);
-        this.navigatePrevNext('Passport')
+        this.utilService.kyctabSubject.next('Passport');
       }
       else{
         this.toast.warning(result.message);
@@ -466,7 +467,27 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
 
 
   navigatePrevNext(type){
-    this.utilService.kyctabSubject.next(type);
+    if(this.contactForm.dirty){
+      Swal.fire({
+        customClass: {
+          container: 'swalClass',
+        },
+        title: 'Are you sure you want to continue?',
+        text:'Changes you made will not be saved',
+        showCancelButton: true,
+        confirmButtonColor: '#ffffff',
+        cancelButtonColor: '#ffffff',
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
+      }).then((result) => {
+        if(result.isConfirmed){
+          this.utilService.kyctabSubject.next(type);
+        }
+      });
+    }
+    else{
+      this.utilService.kyctabSubject.next(type);
+    }
   }
   ngOnDestroy() {
     

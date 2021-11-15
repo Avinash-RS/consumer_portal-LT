@@ -92,7 +92,7 @@
                                     <span class="purchaseRate"><em class="icon-Rupee"></em>{{!second.is_free?second.sellingPrice:"Free"}}</span>
                                     <button class="buyNow" *ngIf="!second.is_free" (click)="addCart(false,first.levelId,second.cid,'buy')">Buy Now</button>
                                     <button class="addCart" *ngIf="!second.is_free" (click)="addCart(false,first.levelId,second.cid,'cart')">Add to Cart</button>
-                                    <button class="taketest" *ngIf="second.is_free" (click)="addCart(false,first.levelId,second.cid,'cart')">Take test</button>
+                                    <button class="taketest" *ngIf="second.is_free" (click)="addCart(false,first.levelId,second.cid,'cart',second)">Take test</button>
                                 </div>
                             </div>
                         </mat-expansion-panel>

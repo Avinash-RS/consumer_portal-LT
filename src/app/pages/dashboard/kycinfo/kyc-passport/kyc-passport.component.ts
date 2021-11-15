@@ -7,6 +7,7 @@ import { CommonService } from 'src/app/services/common.service';
 import { ToastrService } from 'ngx-toastr';
 import { GlobalValidatorService } from 'src/app/services/global-validator.service';
 import { RemoveWhitespace } from 'src/app/services/removewhitespace'; 
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-kyc-passport',
   templateUrl: './kyc-passport.component.html',
@@ -130,7 +131,7 @@ export class KycPassportComponent implements OnInit, AfterViewInit,OnDestroy {
     this.commonService.postKycUserDetails(apiData).subscribe((result:any)=>{
       if(result.success){
         this.toast.success(result.message);
-        this.navigatePrevNext('Education');
+        this.utilService.kyctabSubject.next('Education');
       }
       else{
         this.toast.warning(result.message);
@@ -193,7 +194,27 @@ export class KycPassportComponent implements OnInit, AfterViewInit,OnDestroy {
   }
 
   navigatePrevNext(type){
-    this.utilService.kyctabSubject.next(type);
+    if(this.personalForm.dirty){
+      Swal.fire({
+        customClass: {
+          container: 'swalClass',
+        },
+        title: 'Are you sure you want to continue?',
+        text:'Changes you made will not be saved',
+        showCancelButton: true,
+        confirmButtonColor: '#ffffff',
+        cancelButtonColor: '#ffffff',
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
+      }).then((result) => {
+        if(result.isConfirmed){
+          this.utilService.kyctabSubject.next(type);
+        }
+      });
+    }
+    else{
+      this.utilService.kyctabSubject.next(type);
+    }
   }
   disablePassportFields(){
     if(!this.personalForm.value[this.form_heldPassport]){

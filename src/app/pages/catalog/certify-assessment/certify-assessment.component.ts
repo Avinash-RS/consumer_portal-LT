@@ -48,7 +48,7 @@ export class CertifyAssessmentComponent implements OnInit {
     if (this.showdialog) {
       const valdat = this.dialog.open(this.matDialogRef, {
         width: '400px',
-        height: '400px',
+        height: '300px',
         autoFocus: true,
         closeOnNavigation: true,
         disableClose: true,
@@ -69,7 +69,8 @@ export class CertifyAssessmentComponent implements OnInit {
 
   }
 
-  addCart(isLevel,id1,id2,from) {
+  addCart(isLevel,id1,id2,from,freeData?) {
+    console.log(freeData)
     if (this.userDetails) {
       var params = {
           "isLevel":isLevel,
@@ -86,6 +87,23 @@ export class CertifyAssessmentComponent implements OnInit {
         "noofFields": "15",
         "email": this.userDetails.email ? this.userDetails.email : null
       }
+
+      let freeTest:any = {}
+      freeTest.user_id = this.userDetails.userId;
+      freeTest.order_amount = 0;
+      freeTest.cart = [];
+      // this.cartList.forEach(cartItem => {
+        freeTest.cart.push(
+          {
+             assessmentId: freeData.cid,
+            quantity: 1,
+            amount_per_assessment: 0,
+            total_amount: 0,
+            competencyId: this.competencyData.cid,
+            levelId: id1,
+          }
+        )
+
       this.commonService.getProfilePercentage(data).subscribe((result: any) => {
         if (result.success) {
           let profilePercentage = result.data[0].profilePercentage;
@@ -96,13 +114,24 @@ export class CertifyAssessmentComponent implements OnInit {
 
             // this.catalogService.checkassessment(checkParam).subscribe((checkData:any)=>{
       //   if(checkData.success){
+
           this.catalogService.addToCart(params).subscribe((response:any) =>{
             if(response.success) {
-              this.toast.success("Assessment added to cart");
+              if(freeData){
+                this.toast.success("Assessment order created");
+              }else
+              {this.toast.success("Assessment added to cart");}
               this.util.cartSubject.next(true);
+              if(freeData){
+                freeTest.cartId = response?.data[0].cartId;
+                this.catalogService.createOrder(freeTest).subscribe((data: any) => {
+                  this.appconfig.routeNavigationWithQueryParam("cart/success",{ orderId: data.order_id });
+                })
+              }else{
               if (from == 'buy') {
                 this.appConfig.routeNavigation('cart/purchase');
               }
+            }
             } else {
               this.toast.warning(response.message)
             }
