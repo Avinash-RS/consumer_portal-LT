@@ -649,7 +649,7 @@ savePersonalDetails(apiData){
           container: 'swalClass',
         },
         title: 'Are you sure you want to continue?',
-        //text:'Are you sure you want to continue?',
+        text:'Changes you made will not be saved',
         showCancelButton: true,
         confirmButtonColor: '#ffffff',
         cancelButtonColor: '#ffffff',
