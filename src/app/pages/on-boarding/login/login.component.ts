@@ -74,7 +74,7 @@ export class LoginComponent implements OnInit {
           // window.location.href = "http://52.172.236.38:3015/simplesso/login?serviceURL="+location.origin;
           // window.location.reload(false)
           // this.login(email.email,password.password)
-          //this.router.navigate(['/certificationHome'])
+          //this.router.navigate(['/assessmentHome'])
       }
     }*/
   }

@@ -820,7 +820,7 @@ patchACkdetails(){
       if(result.success){
         this.toast.success(result.message);
         this.utilService.percentageSubject.next(true);
-        this.router.navigate(['/certificationHome'])
+        this.router.navigate(['/assessmentHome'])
       }
       else{
         this.toast.warning(result.message);
