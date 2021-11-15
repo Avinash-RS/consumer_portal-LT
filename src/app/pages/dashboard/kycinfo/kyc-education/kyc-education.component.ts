@@ -9,6 +9,7 @@ import { CommonService } from 'src/app/services/common.service';
 import { ToastrService } from 'ngx-toastr';
 import { GlobalValidatorService } from 'src/app/services/global-validator.service';
 import { RemoveWhitespace } from 'src/app/services/removewhitespace'; 
+import Swal from 'sweetalert2';
 
 export const MY_FORMATS = {
   parse: {
@@ -675,7 +676,27 @@ validSelectedPost() {
 
   }
   navigatePrevNext(type){
-    this.utilService.kyctabSubject.next(type);
+    if(this.educationForm.dirty){
+      Swal.fire({
+        customClass: {
+          container: 'swalClass',
+        },
+        title: 'Are you sure you want to continue?',
+        //text:'Are you sure you want to continue?',
+        showCancelButton: true,
+        confirmButtonColor: '#ffffff',
+        cancelButtonColor: '#ffffff',
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
+      }).then((result) => {
+        if(result.isConfirmed){
+          this.utilService.kyctabSubject.next(type);
+        }
+      });
+    }
+    else{
+      this.utilService.kyctabSubject.next(type);
+    }
   }
 
   ngOnDestroy() {

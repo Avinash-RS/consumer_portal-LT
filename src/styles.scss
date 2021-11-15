@@ -154,3 +154,45 @@ app-zcontent-catalog-main-route {
     background: $thumbHoverColor; 
     width: 15px;
   }  
+.swalClass {
+  .swal2-header {
+      h2 {
+          margin: 0;
+          font-size: 22px;
+          font-weight: 400;
+          color: #333333;
+          line-height: normal;
+      }
+  }
+  .swal2-actions {
+      button {
+          border-radius: 3px !important;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: normal;
+          padding: 6px 20px;
+          margin-right: 15px;
+          height: auto !important;
+          &:first-child {
+              border: 1px solid #1B4E9B !important;
+              background-color: #1B4E9B !important;
+              color: #ffffff !important;
+          }
+          &:last-child {
+              border: 1px solid #1B4E9B;
+              background-color: transparent;
+              color: #000000;
+              &:hover {
+                  background-color: transparent !important;
+                  background-image: none;
+                  color: #000000 !important;
+              }
+          }
+      }
+  }
+  .swal2-styled.swal2-confirm {
+      border: 1px solid #1B4E9B !important;
+              background-color: #1B4E9B !important;
+              color: #ffffff !important;
+  }
+}

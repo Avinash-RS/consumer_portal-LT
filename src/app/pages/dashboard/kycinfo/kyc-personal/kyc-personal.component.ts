@@ -11,7 +11,7 @@ import { AppConfigService } from 'src/app/utils/app-config.service';
 import { GlobalValidatorService } from 'src/app/services/global-validator.service';
 import { RemoveWhitespace } from 'src/app/services/removewhitespace';
 import { CartService } from 'src/app/services/cart.service';
-
+import Swal from 'sweetalert2';
 
 export const MY_FORMATS = {
   parse: {
@@ -372,7 +372,7 @@ savePersonalDetails(apiData){
   this.commonService.postKycUserDetails(apiData).subscribe((result:any)=>{
     if(result.success){
       this.toast.success(result.message);
-      this.navigatePrevNext('Contact')
+      this.utilService.kyctabSubject.next('Contact');
     }
     else{
       this.toast.warning(result.message);
@@ -643,7 +643,28 @@ savePersonalDetails(apiData){
     return this.personalForm.get(this.form_no_of_children);
   }
   navigatePrevNext(type){
-    this.utilService.kyctabSubject.next(type);
+    if(this.personalForm.dirty){
+      Swal.fire({
+        customClass: {
+          container: 'swalClass',
+        },
+        title: 'Are you sure you want to continue?',
+        //text:'Are you sure you want to continue?',
+        showCancelButton: true,
+        confirmButtonColor: '#ffffff',
+        cancelButtonColor: '#ffffff',
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
+      }).then((result) => {
+        if(result.isConfirmed){
+          this.utilService.kyctabSubject.next(type);
+        }
+      });
+    }
+    else{
+      this.utilService.kyctabSubject.next(type);
+    }
+   
   }
 ngOnDestroy() {
   this.sendPopupResultSubscription ? this.sendPopupResultSubscription.unsubscribe() : '';

@@ -9,6 +9,7 @@ import { CartService } from 'src/app/services/cart.service';
 import { CommonService } from 'src/app/services/common.service';
 import { GlobalValidatorService } from 'src/app/services/global-validator.service';
 import { UtilityService } from 'src/app/services/utility.service';
+import Swal from 'sweetalert2';
 
 export const MY_FORMATS = {
   parse: {
@@ -990,7 +991,27 @@ patchACkdetails(){
   return data;
   }
   navigatePrevNext(type){
-    this.utilService.kyctabSubject.next(type);
+    if(this.acknowledgmentForm.dirty){
+      Swal.fire({
+        customClass: {
+          container: 'swalClass',
+        },
+        title: 'Are you sure you want to continue?',
+        //text:'Are you sure you want to continue?',
+        showCancelButton: true,
+        confirmButtonColor: '#ffffff',
+        cancelButtonColor: '#ffffff',
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
+      }).then((result) => {
+        if(result.isConfirmed){
+          this.utilService.kyctabSubject.next(type);
+        }
+      });
+    }
+    else{
+      this.utilService.kyctabSubject.next(type);
+    }
   }
   navigateParent(){
     this.utilService.ParentkyctabSubject.next(true);
