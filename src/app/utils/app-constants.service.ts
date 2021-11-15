@@ -18,7 +18,7 @@ export const APP_CONSTANTS = {
   
   // Route endpoints
   ENDPOINTS: {
-    home: '/certificationHome',
+    home: '/assessmentHome',
     certificationDetails: '/certificationDetails',
     faq: '/faq',
     userprofile: '/userProfile',
@@ -42,7 +42,7 @@ export const APP_CONSTANTS = {
 
   // Routes
   ROUTES: {
-    home: 'certificationHome',
+    home: 'assessmentHome',
     certificationDetails: 'certificationDetails',
     faq: 'faq',
     userprofile: 'userProfile',
