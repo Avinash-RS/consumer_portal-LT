@@ -123,6 +123,7 @@ export class CertifyAssessmentComponent implements OnInit {
               {this.toast.success("Assessment added to cart");}
               this.util.cartSubject.next(true);
               if(freeData){
+                freeTest.cartId = response?.data[0].cartId;
                 this.catalogService.createOrder(freeTest).subscribe((data: any) => {
                   this.appconfig.routeNavigationWithQueryParam("cart/success",{ orderId: data.order_id });
                 })
