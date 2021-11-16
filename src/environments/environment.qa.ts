@@ -11,8 +11,8 @@ export const environment = {
 
 
   // QA base url
-  API_BASE_URL: 'https://edgeservice.lntiggnite.com/', 
-  PAYMENT:'https://devpayment.lntiggnite.com'  
+  API_BASE_URL: 'https://edgeserviceqa.lntiggnite.com/', 
+  PAYMENT:'https://paymentservice.lntiggnite.com'  
 
 };
 
