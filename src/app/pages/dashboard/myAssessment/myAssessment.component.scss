@@ -241,9 +241,12 @@
         .itemTypes {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            //align-items: center;
             padding: 0.7em;
             width: 100%;
+            .gotobtn-area{
+                align-self: center;
+            }
             @include md {
                 width: 45%;
             }
@@ -272,6 +275,7 @@
                     font-weight: 700;
                     color: $darkGrey;
                     margin-bottom: 0.15em;
+                    min-height: 30px;
                 }
                 .assessmentHour {
                     color: $lightGrey;
@@ -293,13 +297,15 @@
 }
 .gotoExamBtn {
     width: 100%;
-    text-align: center;
+    //text-align: center;
+    align-self: center;
     button {
         @include buttonFilled;
         font-size: 1em;
         font-weight: 400;
         padding-left: 1.5em;
         padding-right: 1.5em;
+        min-width: 8em;
     }
     .disable{
         background-color: grey !important;

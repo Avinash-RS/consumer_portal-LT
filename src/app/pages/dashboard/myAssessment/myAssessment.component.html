@@ -60,7 +60,7 @@
                         <div class="assessmentHourbold" *ngIf="testType.bookaslotstatus&& testType.teststatus!=='Completed'">{{testType.bookeddate|date : 'M/d/y'}} {{testType.bookeddate|date : 'hh:mm a'}}</div>
                         <div class="assessmentHourbold" style="color:green" *ngIf="testType.bookaslotstatus&& testType.teststatus==='Completed'">Completed</div>
                     </div>
-                    <div>
+                    <div class="gotobtn-area">
                         <div class="gotoExamBtn">
                             <button [ngClass]="item.assessmentDetails.showExamBtn?item.assessmentDetails.assmentstatus==='Completed'?'disable':'':'disable'"  (click)="item.assessmentDetails.showExamBtn?item.assessmentDetails.assmentstatus==='Completed'?'':uapRedirect(item.assessmentDetails.assessmentId):''">Go to Test</button>
                         </div>

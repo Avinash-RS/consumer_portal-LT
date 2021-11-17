@@ -89,7 +89,8 @@ export class CertifyAssessmentComponent implements OnInit {
       }
 
       let freeTest:any = {}
-      freeTest.user_id = this.userDetails.userId;
+      if(freeData)
+      {freeTest.user_id = this.userDetails.userId;
       freeTest.order_amount = 0;
       freeTest.cart = [];
       // this.cartList.forEach(cartItem => {
@@ -102,7 +103,7 @@ export class CertifyAssessmentComponent implements OnInit {
             competencyId: this.competencyData.cid,
             levelId: id1,
           }
-        )
+        )}
 
       this.commonService.getProfilePercentage(data).subscribe((result: any) => {
         if (result.success) {
