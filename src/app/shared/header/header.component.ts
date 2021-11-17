@@ -8,6 +8,7 @@ import { CatalogService } from "../../services/catalog.service"
 import { environment } from '@env/environment';
 import { Location } from '@angular/common';
 import { SlideInOutAnimation } from '../../animations'
+import Swal from 'sweetalert2';
 @Component({
   selector: "app-header",
   templateUrl: "./header.component.html",
@@ -156,13 +157,27 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.commonservice.logout();
-    this.util.showkycProgress.next(false);
-    this.util.cartSubject.next(false);
-    this.cartCount = 0;
-    this.inActiveTabs();
-    // this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: '0' });
-    this.appConfig.routeNavigation(APP_CONSTANTS.ENDPOINTS.home);
+    Swal.fire({
+      customClass: {
+        container: 'swalClass',
+      },
+      title: 'Are you sure you want to logout?',
+      showCancelButton: true,
+      confirmButtonColor: '#ffffff',
+      cancelButtonColor: '#ffffff',
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No',
+    }).then((result) => {
+      if(result.isConfirmed){
+        this.commonservice.logout();
+        this.util.showkycProgress.next(false);
+        this.util.cartSubject.next(false);
+        this.cartCount = 0;
+        this.inActiveTabs();
+        // this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: '0' });
+        this.appConfig.routeNavigation(APP_CONSTANTS.ENDPOINTS.home);
+      }
+    });
   }
 
   catalogHome(value) {
