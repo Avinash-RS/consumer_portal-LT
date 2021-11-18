@@ -36,12 +36,15 @@ export class AboutAssessmentComponent implements OnInit {
   public destroyed = new Subject<any>();
   ngOnInit(): void {
     this.getDetails()
-    if (this.route.snapshot.queryParams.selectedTab) {
-      this.domainId = this.route.snapshot.queryParams.selectedTab;
-      this.areaId = this.route.snapshot.queryParams.id;
+    this.route.queryParams
+    .subscribe(params => {
+      console.log(params);
+      this.domainId = params.selectedTab;
+      this.areaId = params.id;
       this.getArea();
       this.checkScroll();
-    }
+    })
+
     //on reload or param change
     // this.router.events.pipe(
     //   filter((event: RouterEvent) => event instanceof NavigationEnd),
@@ -64,7 +67,7 @@ export class AboutAssessmentComponent implements OnInit {
     // });
   }
 
-  
+
 
   getDetails() {
     this.commonService.getCertificationDetails().subscribe((response :any)=>{
@@ -109,7 +112,7 @@ export class AboutAssessmentComponent implements OnInit {
           this.bannerImage = this.aboutArea.image.url;
         }
         this.getCompetency();
-      } 
+      }
     })
   }
 
