@@ -70,34 +70,6 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  openMandate() {
-    if (this.appconfig.getSessionStorage('token')) {
-      var opener = this.appconfig.getLocalStorage('openMandate')
-      if(!opener)
-      {this.userDetails = JSON.parse(this.appconfig.getSessionStorage('userDetails'));
-      const data = {
-        "noofFields": "15",
-        "email": this.userDetails.email ? this.userDetails.email : null
-      }
-      this.commonService.getProfilePercentage(data).subscribe((result: any) => {
-        if (result.success) {
-          let profilePercentage = result.data[0].profilePercentage;
-          if (profilePercentage <= 50) {
-            this.showdialog = true
-          }
-        }
-        else {
-          this.showdialog = false;
-        }
-
-        this.dialogSetup();
-      });}
-    }
-    else {
-      this.showdialog = false;
-    }
-
-  }
 
   getStaticHomeData() {
     this.commonService.getStaticDataHome().subscribe((response: any) => {
@@ -135,18 +107,33 @@ export class HomeComponent implements OnInit {
           this.util.cartSubject.next(true);
           this.util.getValue().subscribe((response) => {
             if (response) {
-              var userDetails = JSON.parse(this.appconfig.getSessionStorage('userDetails'));
-              if (userDetails) {
-                //   this.cookieService.set('isLoggedIn','true')
-                response.userId = userDetails.userId
-                this.catalogService.addToCart(response).subscribe((cart: any) => {
-                  if (cart.success) {
-                    this.util.cartSubject.next(true);
-                    this.appconfig.routeNavigation('cart/purchase');
-                  } else {
-                    this.toast.warning('Something went wrong')
+              this.userDetails = JSON.parse(this.appconfig.getSessionStorage('userDetails'));
+              if (this.userDetails) {
+
+              const data = {
+                "noofFields": "15",
+                "email": this.userDetails.email ? this.userDetails.email : null
+              }
+              this.commonService.getProfilePercentage(data).subscribe((result: any) => {
+                if (result.success) {
+                  let profilePercentage = result.data[0].profilePercentage;
+                  if (profilePercentage <= 50) {
+                    this.dialogSetup();
                   }
-                })
+                }
+                else {
+                  response.userId = this.userDetails.userId
+                  this.catalogService.addToCart(response).subscribe((cart: any) => {
+                    if (cart.success) {
+                      this.util.cartSubject.next(true);
+                      this.appconfig.routeNavigation('cart/purchase');
+                    } else {
+                      this.toast.warning('Something went wrong')
+                    }
+                  })
+                }
+              });
+                //   this.cookieService.set('isLoggedIn','true')
               }
             } else {
               this.appconfig.routeNavigation(APP_CONSTANTS.ENDPOINTS.home);

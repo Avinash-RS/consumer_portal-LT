@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonService } from 'src/app/services/common.service';
 import * as bcrypt from 'bcryptjs';
@@ -11,6 +11,7 @@ import { GlobalValidatorsService } from 'src/app/validators/global-validators.se
 import { UtilityService } from 'src/app/services/utility.service';
 import { CookieService } from 'ngx-cookie-service';
 import * as qs from 'querystring';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -24,11 +25,13 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   registerForm: FormGroup;
   showKyc: boolean = false;
-
+  userDetails: any;
+  @ViewChild('kycmandate', { static: false }) matDialogRef: TemplateRef<any>;
   constructor(public route: ActivatedRoute,
     public commonService: CommonService,
     public toast: ToastrService,
     private fb: FormBuilder,
+    private dialog: MatDialog,
     private appconfig: AppConfigService,
     // private recaptchaV3Service: ReCaptchaV3Service,
     private gv: GlobalValidatorsService,
@@ -77,6 +80,17 @@ export class LoginComponent implements OnInit {
           //this.router.navigate(['/assessmentHome'])
       }
     }*/
+  }
+  dialogSetup(){
+      const valdat = this.dialog.open(this.matDialogRef, {
+        width: '400px',
+        height: '400px',
+        autoFocus: true,
+        closeOnNavigation: true,
+        disableClose: true,
+        panelClass: 'popupModalContainerForForms'
+      });
+
   }
 
   tabChange(e) {
@@ -140,19 +154,37 @@ export class LoginComponent implements OnInit {
           this.util.cartSubject.next(true);
           this.util.getValue().subscribe((response) => {
             if (response) {
-              var userDetails = JSON.parse(this.appconfig.getSessionStorage('userDetails'));
-              if(userDetails) {
-             //   this.cookieService.set('isLoggedIn','true')
-              response.userId = userDetails.userId
-              this.catalogService.addToCart(response).subscribe((cart:any) =>{
-                if(cart.success) {
-                  this.util.cartSubject.next(true);
-                  this.appconfig.routeNavigation('cart/purchase');
-                } else {
-                  this.toast.warning('Something went wrong')
+              this.userDetails = JSON.parse(this.appconfig.getSessionStorage('userDetails'));
+              if (this.userDetails) {
+
+              const data = {
+                "noofFields": "15",
+                "email": this.userDetails.email ? this.userDetails.email : null
+              }
+              this.commonService.getProfilePercentage(data).subscribe((result: any) => {
+                if (result.success) {
+                  let profilePercentage = result.data[0].profilePercentage;
+                  if (profilePercentage <= 50) {
+                    this.dialogSetup();
+                    this.appconfig.routeNavigation(APP_CONSTANTS.ENDPOINTS.home);
+                  }else{
+                    response.userId = this.userDetails.userId
+                  this.catalogService.addToCart(response).subscribe((cart: any) => {
+                    if (cart.success) {
+                      this.util.cartSubject.next(true);
+                      this.appconfig.routeNavigation('cart/purchase');
+                    } else {
+                      this.toast.warning('Something went wrong')
+                    }
+                  })
+                  }
                 }
-              })
-            }
+                else {
+                  return false
+                }
+              });
+                //   this.cookieService.set('isLoggedIn','true')
+              }
             } else {
               this.appconfig.routeNavigation(APP_CONSTANTS.ENDPOINTS.home);
             }

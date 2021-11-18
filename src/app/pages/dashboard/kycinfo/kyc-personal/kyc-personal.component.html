@@ -24,7 +24,7 @@
                     <div class="overall-input-wrapper width-70">
                         <label>Country</label>
                         <mat-form-field appearance="fill">
-                            <mat-select [formControlName]="form_nationality" required (selectionChange)="changeCountry($event)">
+                            <mat-select [formControlName]="form_nationality"  (selectionChange)="changeCountry($event)">
                                 <mat-option *ngFor="let list of country" [value]="list._id">{{list.countryname}}</mat-option>
                             </mat-select>
                             </mat-form-field>
@@ -33,8 +33,8 @@
                             <div *ngIf="nationality?.errors?.alphaNum255">Alpha numeric with maximum of 255 characters only
                                 allowed</div>
                         </div>
-    
-    
+
+
                     </div>
                 </div>
             <!-- <div class="row-wrapper">
@@ -81,7 +81,7 @@
                     </div>
                 </div>
             </div> -->
-            
+
             <div class="row-wrapper">
 
 
@@ -177,7 +177,7 @@
     </div> -->
 </div>
 <!-- sd -->
-          
+
 
 
             <!-- <div class="row-wrapper">
@@ -213,7 +213,7 @@
                             allowed</div>
                     </div>
                 </div> -->
-                
+
             </div>
 
             <!-- <div class="row-wrapper">
@@ -289,7 +289,7 @@
                     </div>
                 </div>
             </div> -->
-<!-- 
+<!--
             <div class="row-wrapper">
                 <div class="overall-input-wrapper width-70">
                     <label>Aadhar No.<span>*</span></label>
