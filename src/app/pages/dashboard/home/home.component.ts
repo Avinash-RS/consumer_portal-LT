@@ -119,10 +119,9 @@ export class HomeComponent implements OnInit {
                   let profilePercentage = result.data[0].profilePercentage;
                   if (profilePercentage <= 50) {
                     this.dialogSetup();
-                  }
-                }
-                else {
-                  response.userId = this.userDetails.userId
+                    this.appconfig.routeNavigation(APP_CONSTANTS.ENDPOINTS.home);
+                  }else{
+                    response.userId = this.userDetails.userId
                   this.catalogService.addToCart(response).subscribe((cart: any) => {
                     if (cart.success) {
                       this.util.cartSubject.next(true);
@@ -131,6 +130,10 @@ export class HomeComponent implements OnInit {
                       this.toast.warning('Something went wrong')
                     }
                   })
+                  }
+                }
+                else {
+
                 }
               });
                 //   this.cookieService.set('isLoggedIn','true')
