@@ -174,7 +174,8 @@ export class LoginComponent implements OnInit {
                       this.util.cartSubject.next(true);
                       this.appconfig.routeNavigation('cart/purchase');
                     } else {
-                      this.toast.warning('Something went wrong')
+                      this.appconfig.routeNavigation(APP_CONSTANTS.ENDPOINTS.home)
+                      this.toast.warning(cart.message)
                     }
                   })
                   }
