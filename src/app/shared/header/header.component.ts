@@ -227,4 +227,7 @@ export class HeaderComponent implements OnInit {
     this.isCertified = false;
     this.isCredentials = false;
   }
+  navigateProfile(type){
+    this.router.navigate(['/userProfile'],{queryParams:{tabtype:type}})
+  }
 }

@@ -125,6 +125,19 @@ export class UserprofileComponent implements OnInit {
           this.selection = 'skill'
           this.selectTypes(this.paramvalue)
         }
+        if(params.tabtype){
+          this.selection = params.tabtype;
+          if(this.selection == 'account'){
+            this.selectTypes({title:'Account Settings'});
+          }
+          else if(this.selection == 'history'){
+            this.selectTypes({title:'Purchase History'});
+          }
+          else if(this.selection == 'payment'){
+            this.selectTypes({title:'Payment Methods'});
+          }
+          
+        }
       })
   }
 

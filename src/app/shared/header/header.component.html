@@ -29,7 +29,7 @@
             <em *ngIf="cartCount != 0" matBadge="{{cartCount}}" matBadgeColor="warn" class="icon-Cart"></em>
         </a></span>
         <ng-container *ngIf="showAvatar">
-            <span class="cart"><a><em class="icon-Bell"></em></a></span>
+            <!-- <span class="cart"><a><em class="icon-Bell"></em></a></span> -->
             <div [matMenuTriggerFor]="menu" [matTooltipPosition]="'left'" [matTooltip]="userDetails?.firstname + ' ' + userDetails?.lastname" class="avatar">
                 <span *ngIf="!profImage"><em class="icon-User"></em></span>
                 <figure *ngIf="profImage" class="profImg">
@@ -51,9 +51,9 @@
                     </div>
                     <div class="settings">
                         <!-- <span class="heading">Account</span> -->
-                        <div><a>Account settings</a></div>
-                        <div><a>Purchase history</a></div>
-                        <div><a>Payment methods</a></div>
+                        <div><a   (click)="navigateProfile('account')">Account settings</a></div>
+                        <div><a (click)="navigateProfile('history')">Purchase history</a></div>
+                        <div><a  (click)="navigateProfile('payment')">Payment methods</a></div>
                     </div>
                     <div class="signout">
                         <a>Help</a>
