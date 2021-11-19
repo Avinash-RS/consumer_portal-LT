@@ -10,7 +10,7 @@
         <div class="bookSlot">
             <div>
                 <div class="heading6">Your assessment has been Purchased, to proceed book an exam slot.</div>
-                <p>You can select a date and time of the day convenient for you.</p> 
+                <p>You can select a date and time of the day convenient for you.</p>
                 <p>Upon booking your time slot, you'll receive an email confirming the exam appointment that includes further instructions to take the exam.</p>
             </div>
             <div>
@@ -45,7 +45,7 @@
                         <span class="heading5">{{item.assessmentName}}<br></span>
                         <span class="heading5">{{item.orderDate}}<br></span>
                         <span class="heading5">{{item.orderNo}}</span>
-                        <span class="heading5">{{item.payment}}</span>
+                        <span class="heading5">{{item.payment?item.payment:"N/A"}}</span>
                         <span class="heading5">Online</span>
                     </div>
                 </div>
@@ -112,7 +112,7 @@
                                                 <button [ngClass]="item.testTypes?.bookingData?.selectedSlot?'':'disable'" (click)="item.testTypes?.bookingData?.selectedSlot?submitSelectedSlot(item):''">Book</button>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
 
                                     <div *ngIf="item.testTypes.scheculeStatus" class="slotConfirmed">
@@ -167,7 +167,7 @@
                                         <span class="confirmedStatus">Confirmed</span>
                                         <div class="bookedSlotOn">26/05/2021</div>
                                         <div class="timeZone">
-                                            11:00 AM - 12:00 PM 
+                                            11:00 AM - 12:00 PM
                                             <span>(Asia/Calcutta, UTC+05:30)</span>
                                         </div>
                                         <div class="reschedule">
