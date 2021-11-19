@@ -1,7 +1,7 @@
 <section class="myAssesmentSection">
     <div class="titleContainer">
         <div class="container titelFlex">
-            <div class="txt-area"><h1>Dashboard</h1></div>
+            <div class="txt-area"><h1>My Assessment</h1></div>
             <!-- <button mat-flat-button><em class="icon-Favorite"></em> &nbsp; Wishlist </button> -->
             <div class="progress-area">
                 <span>{{profilePercentage}}% of your profile is complete</span>
@@ -56,7 +56,7 @@
                         <div class="heading">{{testType.testName}}</div>
                         <span class="assessmentHour">{{testType.sumtotalhour}}Min(s)<span>|</span> {{testType.totalQuestion}} Questions</span>
                         <div class="gotoExamBtnInnerDiv" *ngIf="!testType.bookaslotstatus"><button (click)="bookSlot(item,i)">Book a slot</button></div>
-                        <span *ngIf="testType.bookaslotstatus" class="reschedulespan" (click)="bookSlot(item,i,1)">Reschedule</span>
+                        <span *ngIf="testType.bookaslotstatus&&testType.teststatus!=='Completed'" class="reschedulespan" (click)="bookSlot(item,i,1)">Reschedule</span>
                         <div class="assessmentHourbold" *ngIf="testType.bookaslotstatus&& testType.teststatus!=='Completed'">{{testType.bookeddate|date : 'M/d/y'}} {{testType.bookeddate|date : 'hh:mm a'}}</div>
                         <div class="assessmentHourbold" style="color:green" *ngIf="testType.bookaslotstatus&& testType.teststatus==='Completed'">Completed</div>
                     </div>
