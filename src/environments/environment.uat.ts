@@ -7,7 +7,7 @@ export const environment = {
   dev: false,
   qa: false,
   uat: true,
-  blobKey : "?sv=2018-03-28&ss=b&srt=sco&sp=racwdl&st=2021-04-20T06%3A59%3A57Z&se=2171-04-20T07%3A04%3A58Z&spr=https%2Chttp&sig=3TBFQu369yom4bQ8%2FqEjxIqGiqjGwAO%2Bb2V5hfAevt8%3D",
+  blobKey : "?sv=2020-08-04&ss=bfqt&srt=sco&sp=rwdlacupitfx&se=2221-11-23T19:12:41Z&st=2021-11-23T11:12:41Z&spr=https,http&sig=R6%2BlZGrzjuFs1aAy2uUG%2BNkjVig5%2F8disv01i86VK8M%3D",
 
 
   // UAT base url
