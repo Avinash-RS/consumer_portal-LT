@@ -108,6 +108,7 @@ export class UserprofileComponent implements OnInit {
   openKYCPannel = false;
   selectedKycTab:string ="Personal";
   profilePercentage:any = 0;
+  maxDOBDate:Date = new Date();
 
   constructor(public commonService: CommonService,
     public route: ActivatedRoute,

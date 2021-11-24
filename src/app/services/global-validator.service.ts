@@ -166,5 +166,25 @@ export class GlobalValidatorService {
       const percentage = /(^100(\.0{1,2})?$)|(^(?:[2-9]\d|\d{2}?)(\.[0-9]{1,2})?$)/;
       return this.regexValidator(percentage, {percentage: true});
     }
-
+    percentageNew() : ValidatorFn {
+      return (control: AbstractControl): {[key: string]: any} => {
+        if (!control.value) {
+          return null;
+        }
+        const isWhitespace = (control.value.toString() || '').trim().length === 0;
+        // Whitespace detect
+        if(isWhitespace) {
+          control.setValue(null);
+          return {percentage: true};
+        } else {
+          var x = parseFloat(control.value);
+          if (isNaN(x) || x < 10 || x > 100) {
+          // value is out of range
+            return {percentage: true};
+          } else {
+            return null;
+          }
+        }
+      };
+    }
 }

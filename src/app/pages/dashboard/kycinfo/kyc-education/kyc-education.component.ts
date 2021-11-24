@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { MatDatepicker } from '@angular/material/datepicker';
 import * as moment from 'moment';
 import { Moment } from 'moment';
@@ -286,7 +286,7 @@ userDetails:any;
     // Set the minimum to January 1st 20 years in the past and December 31st a year in the future.
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear - 50, 0, 1);
-    this.maxDate = new Date(currentYear + 20, 11, 31);
+    this.maxDate = new Date();
 }
 
 momentForm(date) {
@@ -436,12 +436,12 @@ validSelectedPost() {
       [this.form_specialization]: [{ value: data.specialization, disabled: false }, [Validators.required]],
       [this.form_collegeName]: [{ value: data.instituteName, disabled: false }, [Validators.required]],
       [this.form_boardUniversity]: [{ value: data.university, disabled: false }, [Validators.required]],
-      [this.form_startDate]: [this.dateConvertion(data.startDate), [Validators.required]],
-      [this.form_endDate]: [this.dateConvertion(data.endDate), [Validators.required]],
-      [this.form_yearpassing]: [{ value: this.dateConvertionMonth(data.yearOfPassing), disabled: false }, [Validators.required]],
+      [this.form_startDate]: [this.dateConvertion(data.startDate), [Validators.required,this.startTrue(false)]],
+      [this.form_endDate]: [this.dateConvertion(data.endDate), [Validators.required ,this.startTrue(false)]],
+      [this.form_yearpassing]: [{ value: this.dateConvertionMonth(data.yearOfPassing), disabled: false }, [Validators.required , this.startTrue(true)]],
       //[this.form_backlog]: [{ value: data.noOfBackLogs, disabled: data[this.form_qualification_type] == 'SSLC' || data[this.form_qualification_type] == 'HSC' ? true : false }, [Validators.required,]],
       //[this.form_mode]: [{ value: data.mode, disabled: false }, [Validators.required]],
-      [this.form_cgpa]: [{ value: data.percentage, disabled: false }, [Validators.required]],
+      [this.form_cgpa]: [{ value: data.percentage, disabled: false }, [Validators.required , this.glovbal_validators.percentageNew(), Validators.maxLength(5)]],
       //[this.form_Finalcgpa]: [(data[this.form_qualification_type] == 'SSLC' || data[this.form_qualification_type] == 'HSC' ? data.percentage : data.finalPercentage)],
     })
   }
@@ -453,18 +453,42 @@ validSelectedPost() {
       [this.form_specialization]: [null,[Validators.required]],
       [this.form_collegeName]: [null,[Validators.required]],
       [this.form_boardUniversity]: [null,[Validators.required]],
-      [this.form_startDate]: [null,[Validators.required]],
-      [this.form_endDate]: [null,[Validators.required]],
-      [this.form_yearpassing]: [null,[Validators.required]],
+      [this.form_startDate]: [null,[Validators.required , this.startTrue(false)]],
+      [this.form_endDate]: [null,[Validators.required , this.startTrue(false)]],
+      [this.form_yearpassing]: [null,[Validators.required , this.startTrue(true)]],
       //[this.form_backlog]: [null,[Validators.required]],
       // [this.form_mode]: [null,[Validators.required]],
-      [this.form_cgpa]: [null,[RemoveWhitespace.whitespace(),Validators.required]],
+      [this.form_cgpa]: [null,[RemoveWhitespace.whitespace(),Validators.required,this.glovbal_validators.percentageNew(), Validators.maxLength(5)]],
       // [this.form_Finalcgpa]: [null,[RemoveWhitespace.whitespace()]],
     })
   }
 
     // Custom regex validator
- 
+     // Custom regex validator
+     regexValidator(error: ValidationErrors, param): ValidatorFn {
+      return (control: AbstractControl): {[key: string]: any} => {
+        if (!control.value) {
+          return null;
+        }
+        let check;
+        let yearofPassing = control && control['_parent'] && control['_parent']['controls'] && control['_parent']['controls'][this.form_yearpassing]['value'] ? control['_parent']['controls'][this.form_yearpassing]['value'] : null;
+        let startDate = control && control['_parent'] && control['_parent']['controls'] && control['_parent']['controls'][this.form_yearpassing]['value'] ? control['_parent']['controls'][this.form_startDate]['value'] : null;
+        let endDate = control && control['_parent'] && control['_parent']['controls'] && control['_parent']['controls'][this.form_yearpassing]['value'] ? control['_parent']['controls'][this.form_endDate]['value'] : null;
+        if (yearofPassing) {
+          let start = moment(control.value).format('YYYY-MM-DD');
+          let yearofPassing1 = moment(yearofPassing).format('YYYY-MM-DD');
+          error.notValid = this.momentFormMonth(yearofPassing);
+          check = moment(start).isSameOrBefore(yearofPassing1, 'month');
+          check = !check;
+        }
+        if (!param) {
+          return check ? error : null;
+        } else {
+          this.detectStartDateCalc(yearofPassing, startDate, endDate, control);
+          return null;
+        }
+      };
+    }
 
     detectStartDateCalc(yearofPassing, startDate, endDate, control) {
       let startCheck;
@@ -489,7 +513,7 @@ validSelectedPost() {
     }
 
     startTrue(param) {
-      
+      return this.regexValidator({notValid: true}, param);
     }
 
   formInitialize() {
@@ -698,6 +722,7 @@ validSelectedPost() {
       this.utilService.kyctabSubject.next(type);
     }
   }
+  
 
   ngOnDestroy() {
     this.sendPopupResultSubscription ? this.sendPopupResultSubscription.unsubscribe() : '';
