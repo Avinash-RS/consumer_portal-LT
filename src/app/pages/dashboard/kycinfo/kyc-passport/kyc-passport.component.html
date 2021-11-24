@@ -10,7 +10,7 @@
             <form class="personalForm" [formGroup]="personalForm">
 
                 <div class="row-wrapper">
-                    <div class="overall-input-wrapper width-70">
+                    <div class="overall-input-wrapper">
                         <label>Have you ever held a passport?</label>
                         <mat-form-field appearance="fill">
                             <mat-select [formControlName]="form_heldPassport" (ngModelChange)="disablePassportFields()">
@@ -21,7 +21,7 @@
                             <div *ngIf="heldpass?.errors?.required">Held Pass is Required</div>
                         </div>
                     </div>
-                    <div class="overall-input-wrapper width-70">
+                    <div class="overall-input-wrapper">
                         <label>Passport Number</label>
                         <mat-form-field appearance="fill">
                         <input matInput placeholder="Enter here" type="text" 
@@ -35,7 +35,7 @@
                 </div>
 
             <div class="row-wrapper">
-                <div class="overall-input-wrapper width-70">
+                <div class="overall-input-wrapper">
                     <label>Date of Issue</label>
                     <div class="date-relative">
 
@@ -49,7 +49,7 @@
                         <div *ngIf="doi?.errors?.required">Date of Issue is Required</div>
                     </div>
                 </div>
-                <div class="overall-input-wrapper width-70">
+                <div class="overall-input-wrapper">
                     <label>Date of Expiry</label>
                     <div class="date-relative">
                         <mat-form-field appearance="fill">
@@ -68,7 +68,7 @@
 
 <!-- sd -->
             <div class="row-wrapper">
-                <div class="overall-input-wrapper width-70">
+                <div class="overall-input-wrapper">
                     <label>Aadhar No.</label>
                 <mat-form-field appearance="fill">
                     <input matInput placeholder="Enter here"  type="text" [formControlName]="form_aadhar">
@@ -79,7 +79,7 @@
                             digits</div>
                     </div>
                 </div>
-                <div class="overall-input-wrapper width-70">
+                <div class="overall-input-wrapper">
                     <label>PAN No.</label>
                     <mat-form-field appearance="fill">
                         <input matInput placeholder="Enter here"  type="text" [formControlName]="form_pan">
@@ -93,7 +93,7 @@
             </div>
 
             <div class="row-wrapper">
-                <div class="overall-input-wrapper width-70">
+                <div class="overall-input-wrapper">
                     <label>Driving License Number</label>
                     <mat-form-field appearance="fill">
                         <input matInput placeholder="Enter here"  type="text"
@@ -104,7 +104,7 @@
                         <div *ngIf="lno?.errors?.licence">Driving License Number is Invalid</div>
                     </div>
                 </div>
-                <div class="overall-input-wrapper width-70">
+                <div class="overall-input-wrapper">
                     <label>Driving License Valid upto</label>
                     <div class="date-relative">
                         <mat-form-field appearance="fill">
@@ -120,7 +120,7 @@
                 </div>
             </div>
 
-            <div class="row-wrapper justify-content-between  align-items-center mt-4 mb-3 footer" style="margin-top: 40px;">
+            <div class="row-wrapper justify-content-between  align-items-center mt-4 mb-3 footer">
                 <div (click)="navigatePrevNext('Contact')" class="footerArrow d-flex align-content-center align-items-center position-relative">
                     <div class="footer-arrow left-arrow position-absolute"></div>
                     <div class="sections left-space">

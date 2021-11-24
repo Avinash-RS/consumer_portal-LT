@@ -6,11 +6,14 @@
         display: flex;
         width: 100%;
         .dependentForm {
-            width: 98%;
-            padding-right: 1em;
+            width: 100%;
+            padding-right: 0;
             font-size: 14px;
             position: relative;
-
+            @include md {
+                width: 98%;
+                padding-right: 1em;
+            }
             .section {
                 background: #FFFFFF 0% 0% no-repeat padding-box;
                 box-shadow: 2px 2px 5px #0000001A;
@@ -43,19 +46,20 @@
                 width: 100%;
                 display: flex;
                 justify-content: space-between;
-                align-items: flex-start;
+                align-items: center;
                 flex-wrap: wrap;
                 .overall-input-wrapper {
                     display: flex;
                     flex-direction: column;
                     position: relative;
                     flex-wrap: wrap;
+                    margin-bottom: 10px;
                     label {
                         padding: 0 0 2px 0;
                         margin: 0;
                         font-size: 1.1em;
-                        font-weight: 400;
-                        color: #666666;
+                        font-weight: 500;
+                        color: #999999;
                         line-height: 1.4;
                     }
                     .input {
@@ -133,6 +137,8 @@
         }
     }
     .footer {
+        flex-wrap: nowrap !important;
+        margin-top: 40px !important;
         .left-arrow {
             border: solid #a5a5a5 !important;
             border-width: 0 1px 1px 0 !important;
@@ -196,14 +202,14 @@
     padding-top: 0em !important;
 }
 .custom-header-padding {
-    padding: 1em 1em 0 1em;
+    padding: 1em 0em 0 0em;
 }
 .custom-padding {
     .border-wrapper {
-        padding: 1em;
+        padding: 1em 0em 0 0em;
     }
     .padding-1 {
-        padding: 0 1em 1em 1em;
+        padding: 0 0em 1em 0em;
     }
 }
 
@@ -599,7 +605,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     .overall-input-wrapper {
         display: flex;
         flex-direction: column;
@@ -854,3 +860,6 @@ h6 {
   .mt-2{
     margin-top: 2px;
   }
+  .mandatory{
+    color: #c02222;
+}

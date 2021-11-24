@@ -60,11 +60,11 @@ export class UserprofileComponent implements OnInit {
         {'title':'Preview','tab':'Preview','Active':false},
       ]
     },
-    {
-      'title': 'My Skill Zone',
-      "tabname": 'skill',
-      'Active': false
-    },
+    // {
+    //   'title': 'My Skill Zone',
+    //   "tabname": 'skill',
+    //   'Active': false
+    // },
     {
       'title': 'Account Settings',
       "tabname": 'account',

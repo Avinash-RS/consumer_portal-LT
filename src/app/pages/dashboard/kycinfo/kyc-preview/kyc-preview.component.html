@@ -879,7 +879,7 @@
 
                         <div class="row-wrapper-preview checkbox-pad">
                             <div class="overall-input-wrapper width-45">
-                                <label>Place<span>*</span></label>
+                                <label>Place<span  class="mandatory">*</span></label>
                                 <mat-form-field appearance="fill">
                                 <input matInput [formControlName]="form_ack_place" placeholder="Enter here"
                                     type="text">
@@ -892,7 +892,7 @@
                                 </div>
                             </div>
                             <div class="overall-input-wrapper width-30">
-                                <label>Date<span>*</span></label>
+                                <label>Date<span class="mandatory">*</span></label>
                                 <div class="date-relative">
                                     <mat-form-field appearance="fill">
                                     <input matInput [formControlName]="form_ack_date"  [min]="minDate"

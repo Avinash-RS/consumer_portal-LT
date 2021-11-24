@@ -24,48 +24,63 @@
         //     border: 1px solid $primaryColor;
         // }
         .educatonForm {
-            width: 99%;
-            padding-right: 1em;
+            width: 100%;
+            padding-right: 0;
             font-size: 14px;
             position: relative;
+            @include md {
+            }
+            @include xl {
+                padding-right: 3em;
+                width: 80%;
+            }
             .row-wrapper {
                 margin-top: 0.5em;
                 width: 100%;
                 display: flex;
                 justify-content: space-between;
-                align-items: flex-start;
-                .width-70 {
-                    width: 70%;
+                align-items: center;
+                flex-wrap: wrap;
+                @include md {
+                    flex-wrap: nowrap;
                 }
-                .width-85 {
-                    width: 85%;
-                }
-                .width-45 {
-                    width: 45%;
-                }
-                .width-15 {
-                    width: 15%;
-                }
-                .width-30 {
-                    width: 30%;
-                }
-                .width-32 {
-                    width: 32%;
-                }
-                .width-24 {
-                    width:24%;
-                }
-                .width-80 {
-                    width: 80%;
-                }
-                .width-100 {
-                    width: 100%;
-                }
+                // .width-70 {
+                //     width: 70%;
+                // }
+                // .width-85 {
+                //     width: 85%;
+                // }
+                // .width-45 {
+                //     width: 45%;
+                // }
+                // .width-15 {
+                //     width: 15%;
+                // }
+                // .width-30 {
+                //     width: 30%;
+                // }
+                // .width-32 {
+                //     width: 32%;
+                // }
+                // .width-24 {
+                //     width:24%;
+                // }
+                // .width-80 {
+                //     width: 80%;
+                // }
+                // .width-100 {
+                //     width: 100%;
+                // }
 
                 .overall-input-wrapper {
                     display: flex;
                     flex-direction: column;
                     position: relative;
+                    width:100%;
+                    margin-bottom: 10px;
+                    @include md {
+                        width: 48%;
+                    }
                     label {
                         padding: 0 0 2px 0;
                         margin: 0;
@@ -148,7 +163,7 @@
             }
 
             .form-grouping {
-                width: 80%;
+                width: 100%;
             }
             .remove-wrapper {
                 width: 10%;
@@ -178,6 +193,8 @@
         }
     }
     .footer {
+        flex-wrap: nowrap !important;
+        margin-top: 40px !important;
         .left-arrow {
             border: solid #a5a5a5 !important;
             border-width: 0 1px 1px 0 !important;
@@ -407,3 +424,6 @@
         position: absolute;
     }
   }
+  .mandatory{
+    color: #c02222;
+}

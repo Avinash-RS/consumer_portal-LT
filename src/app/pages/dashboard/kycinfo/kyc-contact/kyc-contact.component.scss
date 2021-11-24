@@ -2,41 +2,56 @@
 .joining-personal-wrapper {
     width: 100%;
     .grids-wrapper {
-        display: flex;
+        // display: flex;
         width: 100%;
         .contactForm {
-            width: 80%;
-            padding-right: 3em;
+            width: 100%;
             font-size: 14px;
+            @include md {
+                padding-right: 3em;
+                width: 80%;
+            }
             .row-wrapper {
                 margin-top: .5em;
                 width: 100%;
                 display: flex;
                 justify-content: space-between;
-                align-items: flex-start;
-                .width-70 {
-                    width: 70%;
+                align-items: center;
+                flex-wrap: wrap;
+                @include md {
+                    flex-wrap: nowrap;
                 }
-                .width-45 {
-                    width: 45%;
-                }
-                .width-15 {
-                    width: 15%;
-                }
-                .width-30 {
-                    width: 30%;
-                }
-                .width-80 {
-                    width: 80%;
-                }
-                .width-100 {
-                    width: 100%;
-                }
+                // .width-70 {
+                //     width: 70%;
+                // }
+                // .width-45 {
+                //     width: 45%;
+                // }
+                // .width-15 {
+                //     width: 15%;
+                // }
+                // .width-30 {
+                //     width: 30%;
+                // }
+                // .width-80 {
+                //     width: 80%;
+                // }
+                // .width-100 {
+                //     width: 100%;
+                // }
 
                 .overall-input-wrapper {
                     display: flex;
                     flex-direction: column;
                     position: relative;
+                    width: 100%;
+                    margin-bottom: 10px;
+                    @include md {
+                        width: 48%;
+                    }
+                    &.textArea {
+                        width: 100%;
+                    }
                     label {
                         padding: 0 0 2px 0;
                         margin: 0;
@@ -87,6 +102,8 @@
         }
     }
     .footer {
+        flex-wrap: nowrap !important;
+        margin-top: 40px !important;
         .left-arrow {
             border: solid #A5A5A5 !important;
             border-width: 0 1px 1px 0 !important;

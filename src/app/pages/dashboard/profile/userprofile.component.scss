@@ -105,9 +105,8 @@
         }
         .KycHeader{
             display: flex;
-            mat-icon{
-                margin-left: 70px;
-            }
+            align-items: center;
+            justify-content: space-between;
         }
         .Kycdetail{
             padding-left: 10px;
@@ -144,8 +143,8 @@
         width: 70%;
     }
     @include lg {
-        font-size: 14px;
         width: 75%;
+        font-size: 14px;
     }
     @include xl {
         font-size: 16px;
@@ -795,8 +794,7 @@
         margin-left: 32%;
     }
     .mat-form-field {
-        width: 68%;
-        // margin-left: 2%;
+        width: 100%;
         margin-left: 0;
     }
     .mat-form-field-appearance-fill .mat-select-arrow-wrapper {
@@ -1040,4 +1038,7 @@
   
   ::ng-deep .progress-area .mat-progress-bar-buffer {
     background: #E4E8EB;
+  }
+  .mandatory{
+      color: #c02222;
   }

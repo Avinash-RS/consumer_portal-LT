@@ -54,9 +54,9 @@
             </div>
 
             <div class="row-wrapper">
-                <div class="overall-input-wrapper width-100">
+                <div class="overall-input-wrapper textArea">
                     <label>Present Address</label>
-                    <mat-form-field appearance="fill" style="width: 84%;margin-left: 0px;">
+                    <mat-form-field appearance="fill" style="">
                         <textarea matInput [formControlName]="form_present_address_1"></textarea>
                     </mat-form-field>
                     <div class="form-error" *ngIf="present_address_1.invalid && present_address_1.touched">
@@ -162,9 +162,9 @@
 <!-- Permanent -->
 <ng-container *ngIf="!contactForm['value'][form_same_as_checkbox]">
 <div class="row-wrapper">
-    <div class="overall-input-wrapper width-100">
+    <div class="overall-input-wrapper textArea">
         <label>Permanent Address</label>
-            <mat-form-field appearance="fill" style="width: 84%;margin-left: 0px;">
+            <mat-form-field appearance="fill">
                 <textarea matInput [formControlName]="form_permanent_address_1"></textarea>
             </mat-form-field>
         <div class="form-error" *ngIf="permanent_address_1.invalid && permanent_address_1.touched">
@@ -258,7 +258,7 @@
     </div>
 </div>
 </ng-container>
-            <div class="row-wrapper justify-content-between  align-items-center mt-4 mb-3 footer" style="margin-top: 40px;">
+            <div class="row-wrapper justify-content-between  align-items-center mt-4 mb-3 footer">
                 <div (click)="navigatePrevNext('Personal')" class="footerArrow d-flex align-content-center align-items-center position-relative" style="cursor: pointer;">
                     <div class="footer-arrow left-arrow position-absolute"></div>
                     <div class="sections left-space">

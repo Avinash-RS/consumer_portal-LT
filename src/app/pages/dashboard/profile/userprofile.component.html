@@ -18,8 +18,8 @@
                         <div class="KycHeader" (click)="openKYCPannel=!openKYCPannel">
                             <div>{{value.title}}</div>
                             <div>
-                                <mat-icon *ngIf="!openKYCPannel">expand_more</mat-icon>
-                                <mat-icon *ngIf="openKYCPannel">expand_less</mat-icon>
+                                <em *ngIf="!openKYCPannel" class="icon-DownArrow"></em>
+                                <em *ngIf="openKYCPannel" class="icon-UpArrow"></em>
                             </div>
                         </div>
                         <div *ngIf="openKYCPannel" class="Kycdetail" [@enterAnimation]>
@@ -51,7 +51,7 @@
                     <form [formGroup]="addressEntryForm" autocomplete="off" (submit)="profileSubmit()">
                         <div class="formFields">
                             <div>
-                                <label>First Name <span>*</span></label>
+                                <label>First Name <span class="mandatory">*</span></label>
                                 <mat-form-field appearance="fill">
                                     <input type="text" matInput placeholder="First Name" formControlName="firstname">
                                 </mat-form-field>
@@ -61,7 +61,7 @@
                                 </ng-container>
                             </div>
                             <div>
-                                <label>Last Name <span>*</span></label>
+                                <label>Last Name <span class="mandatory">*</span></label>
                                 <mat-form-field appearance="fill">
                                     <input type="text" matInput placeholder="Last Name" formControlName="lastname">
                                 </mat-form-field>
@@ -71,7 +71,7 @@
                                 </ng-container>
                             </div>
                             <div>
-                                <label>Email Address <span>*</span></label>
+                                <label>Email Address <span class="mandatory">*</span></label>
                                 <mat-form-field appearance="fill">
                                     <input type="email" matInput placeholder="Email Address" formControlName="email" readonly>
                                 </mat-form-field>
@@ -81,7 +81,7 @@
                                 </ng-container>
                             </div>
                             <div>
-                                <label>Mobile <span>*</span></label>
+                                <label>Mobile <span class="mandatory">*</span></label>
                                 <mat-form-field appearance="fill">
                                     <input type="tel" maxlength="10" matInput placeholder="9876543210" formControlName="mobile">
                                 </mat-form-field>
@@ -91,7 +91,7 @@
                                 </ng-container>
                             </div>
                             <div>
-                                <label>DOB <span>*</span></label>
+                                <label>DOB <span class="mandatory">*</span></label>
                                 <mat-form-field appearance="fill">
                                     <input placeholder="DD/MM/YYYY" matInput [matDatepicker]="picker" formControlName="dob" readonly>
                                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -99,7 +99,7 @@
                                 </mat-form-field>
                             </div>
                             <div>
-                                <label>Gender <span>*</span></label>
+                                <label>Gender <span class="mandatory">*</span></label>
                                 <mat-radio-group required aria-label="Select an option" formControlName="gender">
                                     <mat-radio-button value="1">Male</mat-radio-button>
                                     <mat-radio-button value="2">Female</mat-radio-button>

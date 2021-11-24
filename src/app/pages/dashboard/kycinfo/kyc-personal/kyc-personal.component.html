@@ -9,7 +9,7 @@
     <div class="grids-wrapper">
             <form class="personalForm" [formGroup]="personalForm">
                 <div class="row-wrapper">
-                    <div class="overall-input-wrapper width-70">
+                    <div class="overall-input-wrapper">
                         <label>Place of Birth</label>
                         <mat-form-field appearance="fill">
                         <input matInput placeholder="Enter here" class="input" type="text"
@@ -21,7 +21,7 @@
                                 only allowed</div>
                         </div>
                     </div>
-                    <div class="overall-input-wrapper width-70">
+                    <div class="overall-input-wrapper">
                         <label>Country</label>
                         <mat-form-field appearance="fill">
                             <mat-select [formControlName]="form_nationality"  (selectionChange)="changeCountry($event)">
@@ -85,7 +85,7 @@
             <div class="row-wrapper">
 
 
-                <div class="overall-input-wrapper width-70">
+                <div class="overall-input-wrapper">
                     <label>State of birth</label>
                     <mat-form-field appearance="fill">
                         <mat-select [formControlName]="form_state_of_birth">
@@ -119,7 +119,7 @@
                             only allowed</div>
                     </div>
                 </div> -->
-                <div class="overall-input-wrapper width-70">
+                <div class="overall-input-wrapper">
                     <label>Domicile State</label>
                 <mat-form-field appearance="fill">
                         <mat-select [formControlName]="form_domicile_state">
@@ -399,7 +399,7 @@
                 </div>
             </div> -->
 
-            <div class="row-wrapper justify-content-between  align-items-center mt-4 mb-3 footer" style="margin-top: 40px;">
+            <div class="row-wrapper justify-content-between  align-items-center mt-4 mb-3 footer">
                 <div class="d-flex align-content-center align-items-center position-relative" style="visibility: hidden;">
                     <div class="left-arrow position-absolute"></div>
                     <div class="sections left-space">
