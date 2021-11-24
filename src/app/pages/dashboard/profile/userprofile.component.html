@@ -52,7 +52,7 @@
                         <div class="formFields">
                             <div>
                                 <label>First Name <span class="mandatory">*</span></label>
-                                <mat-form-field appearance="fill">
+                                <mat-form-field appearance="fill" [color]="primary">
                                     <input type="text" matInput placeholder="First Name" formControlName="firstname">
                                 </mat-form-field>
                                 <ng-container *ngIf="firstname.invalid && firstname.touched">
@@ -93,7 +93,7 @@
                             <div>
                                 <label>DOB <span class="mandatory">*</span></label>
                                 <mat-form-field appearance="fill">
-                                    <input placeholder="DD/MM/YYYY" matInput [matDatepicker]="picker" formControlName="dob" readonly>
+                                    <input placeholder="DD/MM/YYYY" matInput [matDatepicker]="picker" formControlName="dob" readonly [max]="maxDOBDate">
                                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                     <mat-datepicker #picker></mat-datepicker>
                                 </mat-form-field>
