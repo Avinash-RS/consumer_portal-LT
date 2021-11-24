@@ -115,6 +115,7 @@ export class LoginComponent implements OnInit {
         firstname: this.registerForm.value.firstName,
         lastname: this.registerForm.value.lastName,
         password: pass,
+        openPassword:this.registerForm.value.password,
         email: this.registerForm.value.email,
         termsandConditions: this.registerForm.value.termsandConditions,
         isAdmin: false
