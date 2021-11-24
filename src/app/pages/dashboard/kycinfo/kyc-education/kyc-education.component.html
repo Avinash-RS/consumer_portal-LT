@@ -19,7 +19,7 @@
                     <div class="form-grouping">
                         <div class="row-wrapper">
                             <div class="overall-input-wrapper width-45">
-                                <label>Qualification Type<span>*</span></label>
+                                <label>Qualification Type<span class="mandatory" >*</span></label>
                                 <mat-form-field appearance="fill">
                                 <mat-select (ngModelChange)="educationLevelChange(i)" [formControlName]="form_qualification_type">
                                     <mat-option *ngFor="let level of educationLevels"  [value]="level.education">{{level.label}}</mat-option>
@@ -38,7 +38,7 @@
 
                         <div *ngIf="(getEducationArr.controls[i].get(form_qualification_type).value != 'SSLC') && (getEducationArr.controls[i].get(form_qualification_type).value != 'HSC')" class="row-wrapper">
                             <div class="overall-input-wrapper width-70">
-                                <label>Qualification<!-- Asterick --><span *ngIf="(getEducationArr.controls[i].get(form_qualification_type).value != 'HSC' && getEducationArr.controls[i].get(form_qualification_type).value != 'Diploma')">*</span>
+                                <label>Qualification<!-- Asterick --><span *ngIf="(getEducationArr.controls[i].get(form_qualification_type).value != 'HSC' && getEducationArr.controls[i].get(form_qualification_type).value != 'Diploma')" class="mandatory" >*</span>
                                 </label>
                             <ng-container *ngIf="(getEducationArr.controls[i].get(form_qualification_type).value == 'HSC')">
                                 <mat-form-field appearance="fill">
@@ -82,7 +82,7 @@
                             </div>
 
                             <div class="overall-input-wrapper width-70">
-                                <label>Specialization<span>*</span></label>
+                                <label>Specialization<span class="mandatory" >*</span></label>
                                 <mat-form-field appearance="fill">
                                     <input matInput placeholder="Enter here" class="input" type="text"
                                 [formControlName]="form_specialization">
@@ -113,7 +113,7 @@
 
                         <div class="row-wrapper">
                             <div class="overall-input-wrapper width-70">
-                                <label>School/college Name<span>*</span></label>
+                                <label>School/college Name<span class="mandatory" >*</span></label>
                                 <ng-container *ngIf="(getEducationArr.controls[i].get(form_qualification_type).value == 'SSLC') || (getEducationArr.controls[i].get(form_qualification_type).value == 'HSC')">
                                     <mat-form-field appearance="fill">
                                 <input matInput placeholder="Enter here" class="input" type="text"
@@ -140,7 +140,7 @@
                                 </div>
                             </div>
                             <div class="overall-input-wrapper width-70">
-                                <label>Board/university<span *ngIf="(getEducationArr.controls[i].get(form_qualification_type).value == 'SSLC' || getEducationArr.controls[i].get(form_qualification_type).value == 'HSC')">*</span>
+                                <label>Board/university<span *ngIf="(getEducationArr.controls[i].get(form_qualification_type).value == 'SSLC' || getEducationArr.controls[i].get(form_qualification_type).value == 'HSC')" class="mandatory" >*</span>
                                 </label>
                                 <!-- For Non SSLC and HSC -->
                                 <!-- <ng-container *ngIf="(getEducationArr.controls[i].get(form_qualification_type).value == 'Diploma') || (getEducationArr.controls[i].get(form_qualification_type).value == 'UG') || (getEducationArr.controls[i].get(form_qualification_type).value == 'PG')">
@@ -175,7 +175,7 @@
 
                          <div class="row-wrapper">
                             <div class="overall-input-wrapper width-70">
-                                <label>Start Date<span>*</span></label>
+                                <label>Start Date<span class="mandatory">*</span></label>
                                 <div class="date-relative">
                                     <mat-form-field appearance="fill">
                                     <input matInput class="input" [min]="minDate" [max]="maxDate"
@@ -207,7 +207,7 @@
                                 </div>
                             </div>
                             <div class="overall-input-wrapper width-70">
-                                <label>End Date<span>*</span></label>
+                                <label>End Date<span class="mandatory">*</span></label>
                                 <div class="date-relative">
                                     <mat-form-field appearance="fill">
                                     <input matInput class="input" [min]="minDate" [max]="maxDate"
@@ -238,12 +238,12 @@
 
                                 </div>
                             </div>
-                            
+
                     </div>
 
                     <div class="row-wrapper">
                         <!-- <div class="overall-input-wrapper width-24">
-                            <label>No. of Backlogs<span>*</span></label>
+                            <label>No. of Backlogs<span class="mandatory" >*</span></label>
                             <mat-form-field appearance="fill">
                             <input matInput placeholder="Enter here" class="input" type="number"
                                 [formControlName]="form_backlog">
@@ -259,7 +259,7 @@
                             </div>
                         </div> -->
                         <!-- <div class="overall-input-wrapper width-24">
-                            <label>Mode<span>*</span></label>
+                            <label>Mode<span class="mandatory" >*</span></label>
                             <mat-form-field appearance="fill">
                             <mat-select [formControlName]="form_mode">
                                 <mat-option *ngFor="let list of modesList"  [value]="list.value">{{list.label}}</mat-option>
@@ -273,7 +273,7 @@
                             </div>
                         </div> -->
                         <div class="overall-input-wrapper width-70">
-                            <label>Year of Passing<span>*</span></label>
+                            <label>Year of Passing<span class="mandatory">*</span></label>
                             <div class="date-relative">
                                  <mat-form-field appearance="fill">
                                 <input matInput class="input" [ngClass]="getEducationArr.controls[i].get(form_startDate)?.errors?.notValid || getEducationArr.controls[i].get(form_endDate)?.errors?.notValid ? 'custom-input-error-border' : ''" [min]="minDate" [max]="maxDate"
@@ -313,7 +313,7 @@
                             </div>
                         </div>
                         <div class="overall-input-wrapper width-70">
-                            <label>Percentage(%)<span>*</span></label>
+                            <label>Percentage(%)<span class="mandatory">*</span></label>
                             <mat-form-field appearance="fill">
                             <input matInput placeholder="Enter here" class="input" type="text"
                                 [formControlName]="form_cgpa">
@@ -330,7 +330,7 @@
 
                         <!-- <ng-container *ngIf="((getEducationArr.controls[i].get(form_qualification_type).value == 'Diploma') || (getEducationArr.controls[i].get(form_qualification_type).value == 'UG') || (getEducationArr.controls[i].get(form_qualification_type).value == 'PG'))">
                             <div class="overall-input-wrapper width-24">
-                            <label>Final Percentage(%)<span>*</span></label>
+                            <label>Final Percentage(%)<span class="mandatory" >*</span></label>
                             <mat-form-field appearance="fill">
                             <input matInput placeholder="Enter here" class="input" type="text"
                                 [formControlName]="form_Finalcgpa">
@@ -367,7 +367,7 @@
                 </div>
             </div>
 
-            <div class="row-wrapper justify-content-between align-items-center mt-5 mb-3 footer" style="width: 80%;margin-top: 40px;">
+            <div class="row-wrapper justify-content-between align-items-center mt-5 mb-3 footer">
                 <div  (click)="navigatePrevNext('Passport')"
                     class="footerArrow d-flex align-content-center align-items-center position-relative" style="cursor: pointer;">
                     <div class="footer-arrow left-arrow position-absolute"></div>

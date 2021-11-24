@@ -105,9 +105,8 @@
         }
         .KycHeader{
             display: flex;
-            mat-icon{
-                margin-left: 70px;
-            }
+            align-items: center;
+            justify-content: space-between;
         }
         .Kycdetail{
             padding-left: 10px;
@@ -144,8 +143,8 @@
         width: 70%;
     }
     @include lg {
-        font-size: 14px;
         width: 75%;
+        font-size: 14px;
     }
     @include xl {
         font-size: 16px;
@@ -469,7 +468,7 @@
                     }
                     span {
                         display: block;
-                        &:first-child, 
+                        &:first-child,
                         &:last-child {
                             font-weight: 400;
                             line-height: normal;
@@ -528,7 +527,7 @@
         //     }
         // }
         .sub-img-area{
-       
+
         }
         .urlimg, span {
             background-color: $whiteColor;
@@ -795,8 +794,7 @@
         margin-left: 32%;
     }
     .mat-form-field {
-        width: 68%;
-        // margin-left: 2%;
+        width: 100%;
         margin-left: 0;
     }
     .mat-form-field-appearance-fill .mat-select-arrow-wrapper {
@@ -876,7 +874,7 @@
         button {
             padding: 0 0.7em;
             border-radius: 0.2em;
-            min-width: 95px; 
+            min-width: 95px;
 
             &:hover, &:focus, &.active {
                background-color: #DCE4FF;
@@ -897,7 +895,7 @@
         padding: 0 0.6em;
         border: 1px solid $greyColor;
         border-radius: 4px;
-    } 
+    }
     .mat-select-trigger {
         padding: 0.18em 0 0.75em 0;
         border-top: 0.58em solid transparent;
@@ -942,7 +940,7 @@
     .formControlDiv {
         width: 49%;
         padding-right: 1em;
-        margin-bottom: 0.2em; 
+        margin-bottom: 0.2em;
         display: flex;
         flex-direction: column;
         min-height: 85px;
@@ -950,7 +948,7 @@
         &.full {
             width: 99%;
             padding-right: 0.3em;
-            position: relative; 
+            position: relative;
         }
 
         label {
@@ -963,13 +961,13 @@
         }
     }
     .input_fileupload--hidden{
-        display: none; 
+        display: none;
       }
 
       .AddBadgeBtn {
         display: flex;
         justify-content: center;
-        
+
         button {
             min-width: 100px;
             border-radius: 20em;
@@ -990,7 +988,7 @@
         color: #282828;
         border: 1px dashed $greyColor;
         width: 100%;
-        padding: 1.4em 1em; 
+        padding: 1.4em 1em;
 
         em {
             font-size: 28px;
@@ -1000,9 +998,9 @@
         .mat-button-wrapper span {
             color: $primaryColor;
         }
-      }      
+      }
 
-      .mat-slide-toggle-bar { 
+      .mat-slide-toggle-bar {
         width: 50px;
         height: 23px;
         border-radius: 17px;
@@ -1030,14 +1028,17 @@
 
 @media screen and (max-width: 992px) {
     ::ng-deep.cdk-overlay-pane {
-        max-width: 100vw !important; 
+        max-width: 100vw !important;
         width: 90% !important;
-    }  
- } 
+    }
+ }
  ::ng-deep .progress-area .mat-progress-bar-fill::after {
     background-color: #2ED775;
   }
-  
+
   ::ng-deep .progress-area .mat-progress-bar-buffer {
     background: #E4E8EB;
+  }
+  .mandatory{
+      color: #c02222;
   }

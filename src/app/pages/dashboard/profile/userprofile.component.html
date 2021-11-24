@@ -18,14 +18,14 @@
                         <div class="KycHeader" (click)="openKYCPannel=!openKYCPannel">
                             <div>{{value.title}}</div>
                             <div>
-                                <mat-icon *ngIf="!openKYCPannel">expand_more</mat-icon>
-                                <mat-icon *ngIf="openKYCPannel">expand_less</mat-icon>
+                                <em *ngIf="!openKYCPannel" class="icon-DownArrow"></em>
+                                <em *ngIf="openKYCPannel" class="icon-UpArrow"></em>
                             </div>
                         </div>
                         <div *ngIf="openKYCPannel" class="Kycdetail" [@enterAnimation]>
-                            <li *ngFor="let KYCvalue of value.child" [ngClass]="{'Kycactive': KYCvalue.Active}" (click)="ChangeKycTabs(KYCvalue.tab)">
-                                {{KYCvalue.title}}
-                                </li> 
+                            <li *ngFor="let KYCvalue of value.child;let i = index" [ngClass]="{'Kycactive': KYCvalue.Active}" (click)="ChangeKycTabs(KYCvalue.tab)">
+                                <span [ngClass]="i==3?'mandatory':''">{{KYCvalue.title}}</span>
+                                </li>
                         </div>
                     </li>
                 </ul>
@@ -51,7 +51,7 @@
                     <form [formGroup]="addressEntryForm" autocomplete="off" (submit)="profileSubmit()">
                         <div class="formFields">
                             <div>
-                                <label>First Name <span>*</span></label>
+                                <label>First Name <span class="mandatory">*</span></label>
                                 <mat-form-field appearance="fill">
                                     <input type="text" matInput placeholder="First Name" formControlName="firstname">
                                 </mat-form-field>
@@ -61,7 +61,7 @@
                                 </ng-container>
                             </div>
                             <div>
-                                <label>Last Name <span>*</span></label>
+                                <label>Last Name <span class="mandatory">*</span></label>
                                 <mat-form-field appearance="fill">
                                     <input type="text" matInput placeholder="Last Name" formControlName="lastname">
                                 </mat-form-field>
@@ -71,7 +71,7 @@
                                 </ng-container>
                             </div>
                             <div>
-                                <label>Email Address <span>*</span></label>
+                                <label>Email Address <span class="mandatory">*</span></label>
                                 <mat-form-field appearance="fill">
                                     <input type="email" matInput placeholder="Email Address" formControlName="email" readonly>
                                 </mat-form-field>
@@ -81,7 +81,7 @@
                                 </ng-container>
                             </div>
                             <div>
-                                <label>Mobile <span>*</span></label>
+                                <label>Mobile <span class="mandatory">*</span></label>
                                 <mat-form-field appearance="fill">
                                     <input type="tel" maxlength="10" matInput placeholder="9876543210" formControlName="mobile">
                                 </mat-form-field>
@@ -91,7 +91,7 @@
                                 </ng-container>
                             </div>
                             <div>
-                                <label>DOB <span>*</span></label>
+                                <label>DOB <span class="mandatory">*</span></label>
                                 <mat-form-field appearance="fill">
                                     <input placeholder="DD/MM/YYYY" matInput [matDatepicker]="picker" formControlName="dob" readonly>
                                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -99,7 +99,7 @@
                                 </mat-form-field>
                             </div>
                             <div>
-                                <label>Gender <span>*</span></label>
+                                <label>Gender <span class="mandatory">*</span></label>
                                 <mat-radio-group required aria-label="Select an option" formControlName="gender">
                                     <mat-radio-button value="1">Male</mat-radio-button>
                                     <mat-radio-button value="2">Female</mat-radio-button>
@@ -226,7 +226,7 @@
                                 <input type="email" matInput placeholder="{{userDetails.email}}" readonly>
                             </mat-form-field>
                             <span class="security">For your security, if you change your email address your saved data information will be deleted.</span>
-                            
+
                         </div>
                         <div>
                             <label>Current Password</label>
@@ -238,7 +238,7 @@
                                 <mat-error *ngIf="cp_currentPassword.errors?.minlength" class="error">{{'Minimum 8 characters required'}}</mat-error>
                                 <mat-error *ngIf="cp_currentPassword.errors?.maxlength" class="error">{{'Maximum 32 characters only allowed'}}</mat-error>
                                 <mat-error style="max-width: 55%;" *ngIf="cp_currentPassword.errors?.password" class="error">{{'The password should consist of 1 uppercase, 1 lowercase,1 number and 1 special character [*.!@#$%^&(){}[]:;<>,.?/~_+-=|\].'}}</mat-error>
-                            </ng-container> 
+                            </ng-container>
                         </div>
                         <div>
                             <label>New Password</label>
@@ -250,7 +250,7 @@
                                 <mat-error *ngIf="password.errors?.minlength" class="error">{{'Minimum 8 characters required'}}</mat-error>
                                 <mat-error *ngIf="password.errors?.maxlength" class="error">{{'Maximum 32 characters only allowed'}}</mat-error>
                                 <mat-error style="max-width: 55%;" *ngIf="password.errors?.password" class="error">{{'The password should consist of 1 uppercase, 1 lowercase,1 number and 1 special character [*.!@#$%^&(){}[]:;<>,.?/~_+-=|\].'}}</mat-error>
-                            </ng-container> 
+                            </ng-container>
                         </div>
                         <div>
                             <label>Re-type New Password</label>
@@ -329,13 +329,13 @@
                     </div>
                     <form [formGroup]="closeAccount" (submit)="deactivateaccount()" autocomplete="off">
                     <div class="closeAccount">
-                        
+
                         <div>
                             <label>Email Address</label>
                             <mat-form-field appearance="fill">
                                 <input type="email" matInput placeholder="{{userDetails.email}}"  readonly>
                             </mat-form-field>
-                           
+
                         </div>
                         <div    >
                             <label>Password</label>
@@ -400,7 +400,7 @@
                         </mat-form-field>
                     </div>
                     <div class="formControlDiv full heading6">
-                        Time Period 
+                        Time Period
                     </div>
                     <div class="formControlDiv">
                         <label>From</label>
@@ -435,7 +435,7 @@
                         </button>
                         <input #fileUpload type="file" class="input_fileupload--hidden" (input)="onInput($event)"
                             (change)="onFileSelected($event)" [(ngModel)]="inputFileName" [accept]="accept">
-                        
+
                         <div *ngFor="let f of files">
                             <span>{{f.name}}</span>
                             <button mat-icon-button color="primary" [attr.title]="deleteButtonLabel?deleteButtonLabel:null"

@@ -21,11 +21,6 @@ $borderColor: #ececec;
 $light-blue:#333333;
 $primary:#666666;
 $primary-yellow: #FFCC00;
-//Screen Size definitions
-$screen-sm-min: 576px;
-$screen-md-min: 700px; // Small tablets (portrait view)
-$screen-lg-min: 992px; // Tablets and small desktops
-$screen-xl-min: 1200px; // Large tablets and desktops
 $table-border: rgba(112, 112, 112, 0.411);
 $black-1: #5E5E5E;
 $black-2: #4B4B4B;
@@ -33,6 +28,13 @@ $black-3: #D6D6D6;
 $black-4: #5E5E5EBF;
 $white:#fff;
 $primary-red: #C02222;
+
+//Screen Size definitions
+$screen-sm-min: 576px;
+$screen-md-min: 700px; // Small tablets (portrait view)
+$screen-lg-min: 992px; // Tablets and small desktops
+$screen-xl-min: 1200px; // Large tablets and desktops
+
 // Small devices
 @mixin sm {
     @media (min-width: #{$screen-sm-min}) {
