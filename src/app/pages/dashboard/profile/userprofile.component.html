@@ -23,9 +23,9 @@
                             </div>
                         </div>
                         <div *ngIf="openKYCPannel" class="Kycdetail" [@enterAnimation]>
-                            <li *ngFor="let KYCvalue of value.child" [ngClass]="{'Kycactive': KYCvalue.Active}" (click)="ChangeKycTabs(KYCvalue.tab)">
-                                {{KYCvalue.title}}
-                                </li> 
+                            <li *ngFor="let KYCvalue of value.child;let i = index" [ngClass]="{'Kycactive': KYCvalue.Active}" (click)="ChangeKycTabs(KYCvalue.tab)">
+                                <span [ngClass]="i==3?'mandatory':''">{{KYCvalue.title}}</span>
+                                </li>
                         </div>
                     </li>
                 </ul>
@@ -226,7 +226,7 @@
                                 <input type="email" matInput placeholder="{{userDetails.email}}" readonly>
                             </mat-form-field>
                             <span class="security">For your security, if you change your email address your saved data information will be deleted.</span>
-                            
+
                         </div>
                         <div>
                             <label>Current Password</label>
@@ -238,7 +238,7 @@
                                 <mat-error *ngIf="cp_currentPassword.errors?.minlength" class="error">{{'Minimum 8 characters required'}}</mat-error>
                                 <mat-error *ngIf="cp_currentPassword.errors?.maxlength" class="error">{{'Maximum 32 characters only allowed'}}</mat-error>
                                 <mat-error style="max-width: 55%;" *ngIf="cp_currentPassword.errors?.password" class="error">{{'The password should consist of 1 uppercase, 1 lowercase,1 number and 1 special character [*.!@#$%^&(){}[]:;<>,.?/~_+-=|\].'}}</mat-error>
-                            </ng-container> 
+                            </ng-container>
                         </div>
                         <div>
                             <label>New Password</label>
@@ -250,7 +250,7 @@
                                 <mat-error *ngIf="password.errors?.minlength" class="error">{{'Minimum 8 characters required'}}</mat-error>
                                 <mat-error *ngIf="password.errors?.maxlength" class="error">{{'Maximum 32 characters only allowed'}}</mat-error>
                                 <mat-error style="max-width: 55%;" *ngIf="password.errors?.password" class="error">{{'The password should consist of 1 uppercase, 1 lowercase,1 number and 1 special character [*.!@#$%^&(){}[]:;<>,.?/~_+-=|\].'}}</mat-error>
-                            </ng-container> 
+                            </ng-container>
                         </div>
                         <div>
                             <label>Re-type New Password</label>
@@ -329,13 +329,13 @@
                     </div>
                     <form [formGroup]="closeAccount" (submit)="deactivateaccount()" autocomplete="off">
                     <div class="closeAccount">
-                        
+
                         <div>
                             <label>Email Address</label>
                             <mat-form-field appearance="fill">
                                 <input type="email" matInput placeholder="{{userDetails.email}}"  readonly>
                             </mat-form-field>
-                           
+
                         </div>
                         <div    >
                             <label>Password</label>
@@ -400,7 +400,7 @@
                         </mat-form-field>
                     </div>
                     <div class="formControlDiv full heading6">
-                        Time Period 
+                        Time Period
                     </div>
                     <div class="formControlDiv">
                         <label>From</label>
@@ -435,7 +435,7 @@
                         </button>
                         <input #fileUpload type="file" class="input_fileupload--hidden" (input)="onInput($event)"
                             (change)="onFileSelected($event)" [(ngModel)]="inputFileName" [accept]="accept">
-                        
+
                         <div *ngFor="let f of files">
                             <span>{{f.name}}</span>
                             <button mat-icon-button color="primary" [attr.title]="deleteButtonLabel?deleteButtonLabel:null"
