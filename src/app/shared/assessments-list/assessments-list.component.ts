@@ -17,6 +17,7 @@ import { SlideIn } from '../../animations'
 })
 export class AssessmentsListComponent implements OnInit {
   isActiveAll = true;
+  mainTabSelected = 0;
   tabValues;
   pageNumber = 0;
   selectedTab;

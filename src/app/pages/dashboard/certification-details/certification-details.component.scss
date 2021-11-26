@@ -225,6 +225,9 @@
     @include md {
         width: 30%;
     }
+    a{
+        cursor: default !important;
+    }
     .icons {
         background-color: $whiteColor;
         width: 5em;

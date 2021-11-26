@@ -23,7 +23,8 @@
             <div class="stepsSection">
                 <ng-container *ngFor="let steps of certificationdata.assessmentStepsData">
                     <div class="steps">
-                        <a href="{{ getLink(steps.name) }}"><div class="icons"><em class="{{steps.icon}}"></em></div>
+                        <!-- <a href="{{ getLink(steps.name) }}"><div class="icons"><em class="{{steps.icon}}"></em></div> -->
+                            <a><div class="icons"><em class="{{steps.icon}}"></em></div>
                         <div class="heading4">{{steps.name}}</div>
                         <p>{{steps.longDescription}}</p></a>
                     </div>
