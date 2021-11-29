@@ -5,8 +5,6 @@ import { AppConfigService } from "src/app/utils/app-config.service";
 import { APP_CONSTANTS } from "src/app/utils/app-constants.service";
 import { BookSlotComponent } from '../../bookSlot/bookSlot.component';
 import { environment } from '@env/environment';
-import * as CryptoJS from 'crypto-js';
-
 @Component({
   selector: "app-myAssessment",
   templateUrl: "./myAssessment.component.html",
@@ -32,7 +30,6 @@ export class MyAssessmentComponent implements OnInit {
   assessmentList = [];
   userDetails: any;
   profilePercentage:any = 0;
-  encryptionKey = 'unifiedReports';
   
   
   constructor(
