@@ -1,10 +1,10 @@
 <section class="assessmentSection">
     <div class="container">
         <div class="heading2">Industry Leader in Engineering</div>
-        <!-- <nav class="mainTab">
-            <a class="active">Assessments</a>
-            <a class="">Courses</a>
-        </nav> -->
+        <nav class="mainTab">
+            <a (click)="getDomain('assessment')" [ngClass]="tabType == 'assessment' ? 'active' :''">Assessments</a>
+            <a (click)="getDomain('course')" [ngClass]="tabType == 'course' ? 'active' :''">Courses</a>
+        </nav>
         <div class="assessmentArea">
             <div class="filterSection">
                 <nav>

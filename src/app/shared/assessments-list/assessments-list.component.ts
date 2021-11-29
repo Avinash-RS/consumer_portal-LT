@@ -31,7 +31,7 @@ export class AssessmentsListComponent implements OnInit {
   blobToken: string = environment.blobKey;
   public destroyed = new Subject<any>();
   subscriberdata: any;
-
+  tabType:string = 'assessment';
   constructor(private _loading: LoadingService,
               private router: Router,
               private catalogService: CatalogService,
@@ -44,14 +44,14 @@ export class AssessmentsListComponent implements OnInit {
       this.fromTab = this.route.snapshot.queryParams.selectedTab;
       this.viewMore = false
     }
-    this.getDomain();
+    this.getDomain('assessment');
     this.subscriberdata = this.router.events.pipe(
       filter((event: RouterEvent) => event instanceof NavigationEnd),
       takeUntil(this.destroyed)
     ).subscribe(() => {
       this.fromTab = this.route.snapshot.queryParams.selectedTab;
       this.viewMore = false
-      this.getDomain();
+      this.getDomain('assessment');
     })
 
   }
@@ -59,8 +59,9 @@ export class AssessmentsListComponent implements OnInit {
     this.subscriberdata.unsubscribe();
   }
 
-  getDomain() {
-    this.catalogService.getCatalog().subscribe((response: any) => {
+  getDomain(type) {
+    this.tabType = type;
+    this.catalogService.getCatalog(type).subscribe((response: any) => {
       if (response.data.length > 0) {
         this.tabValues = response.data;
         this.tabValues.splice(0, 0, this.firstTabValue)
