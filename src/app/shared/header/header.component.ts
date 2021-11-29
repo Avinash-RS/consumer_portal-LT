@@ -21,6 +21,9 @@ export class HeaderComponent implements OnInit {
   hoveron: boolean;
   // showMenu: boolean;
   showMenu = 'out';
+  showCourseMenu = 'out';
+  assessmentsList:boolean = false;
+  coursesList:boolean = false;
   menu_tab: boolean = false;
   catalogMenu = [];
   showAvatar: boolean;
@@ -48,6 +51,9 @@ export class HeaderComponent implements OnInit {
   checkScroll() {
     if(window.pageYOffset >= 10) {
       this.showMenu = 'out';
+      this.showCourseMenu = 'out';
+      this.assessmentsList= false;
+      this.coursesList = false;
     }
   }
 
@@ -77,15 +83,34 @@ export class HeaderComponent implements OnInit {
   }
   megaMenuClick() {
     this.showMenu = this.showMenu === 'out' ? 'in' : 'out';
-    this.catalogService.getCatalog().subscribe((response: any) => {
-      if (response.data.length > 0) {
+    this.showCourseMenu = 'out';
+    this.assessmentsList = this.showMenu === 'in' ? true : false;
+    this.coursesList = false;
+    this.isCertified = false;
+    this.isAssement = false;
+    this.catalogService.getCatalog('assessment').subscribe((response: any) => {
+      if (response.success && response.data.length > 0) {
         this.catalogMenu = response.data;
       } else {
         this.catalogMenu = []
       }
     })
   }
-
+  courseMenuClick(){
+    this.showCourseMenu = this.showCourseMenu === 'out' ? 'in' : 'out';
+    this.showMenu = 'out';
+    this.coursesList = this.showCourseMenu === 'in' ? true : false;
+    this.assessmentsList = false;
+    this.isCertified = false;
+    this.isAssement = false;
+    this.catalogService.getCatalog('course').subscribe((response: any) => {
+      if (response.success && response.data.length > 0) {
+        this.catalogMenu = response.data;
+      } else {
+        this.catalogMenu = []
+      }
+    })
+  }
   rxjsHeaderAvatarUpdate() {
     if (this.appConfig.getSessionStorage('token')) {
       this.showAvatar = true;
@@ -114,6 +139,9 @@ export class HeaderComponent implements OnInit {
     this.isCredentials = false;
     this.appConfig.routeNavigation(APP_CONSTANTS.ENDPOINTS.certificationDetails);
     this.showMenu = 'out';
+    this.showCourseMenu = 'out';
+    this.assessmentsList= false;
+    this.coursesList = false;
   }
   
   editProfile(){
@@ -132,6 +160,10 @@ export class HeaderComponent implements OnInit {
     this.isCertified = false;
     this.isAssement = true;
     this.isCredentials = false;
+    this.showMenu = 'out';
+    this.showCourseMenu = 'out';
+    this.assessmentsList= false;
+    this.coursesList = false;
     if(this.userDetails) {
       this.appConfig.routeNavigation('/myAssessment');
     } else {
@@ -182,27 +214,42 @@ export class HeaderComponent implements OnInit {
 
   catalogHome(value) {
     this.showMenu = 'out';
+    this.showCourseMenu = 'out';
+    this.assessmentsList= false;
+    this.coursesList = false;
     this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.home, { fromPage: "viewAll", selectedTab: value });
     this.inActiveTabs();
   }
   gotoArea(data) {
     this.showMenu = 'out';
+    this.showCourseMenu = 'out';
+    this.assessmentsList= false;
+    this.coursesList = false;
     this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutAssessment,{id : data.cid, selectedTab : data.parentId});
     this.inActiveTabs();
   }
 
   aboutAssessment(cid) {
     this.showMenu = 'out';
+    this.showCourseMenu = 'out';
+    this.assessmentsList= false;
+    this.coursesList = false;
     this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutAssessment, { id: cid, selectedTab: 'All' });
     this.inActiveTabs();
   }
 
   closeMegaMenu() {
     // this.showMenu = false;
-    this.showMenu = this.showMenu === 'out' ? 'in' : 'out';
+    this.showMenu = 'out';
+    this.showCourseMenu = 'out';
+    this.assessmentsList= false;
+    this.coursesList = false;
   }
   closeMegaMenu_() { 
     this.showMenu = 'out';
+    this.showCourseMenu ='out';
+    this.assessmentsList= false;
+    this.coursesList = false;
   }
 
   search_sec() {
