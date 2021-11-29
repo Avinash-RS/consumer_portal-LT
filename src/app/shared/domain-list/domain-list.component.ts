@@ -49,7 +49,7 @@ export class DomainListComponent implements OnInit {
   }
 
   getCatalogList() {
-    this.catalogService.getCatalog().subscribe((response : any)=>{
+    this.catalogService.getCatalog('assessment').subscribe((response : any)=>{
       if (response.data.length > 0) {
         this.catalogList = response.data;
         this.longContent = response.data.longDescription;
