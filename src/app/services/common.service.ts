@@ -10,12 +10,14 @@ import { UtilityService } from './utility.service';
 import { APP_CONSTANTS } from '../utils/app-constants.service';
 import { ToastrService } from 'ngx-toastr';
 import { CookieService } from 'ngx-cookie-service';
+import * as CryptoJS from 'crypto-js';
 @Injectable({
   providedIn: 'root'
 })
 export class CommonService {
   baseurl = environment.API_BASE_URL;
   httpOptionsWithToken;
+  encryptionKey = 'unifiedReports';
   constructor(    private cookieService: CookieService ,private http: HttpClient, private appconfig: AppConfigService,
     public toast: ToastrService, private util: UtilityService) {this.getToken()}
   httpOptions = {
@@ -160,6 +162,14 @@ export class CommonService {
   }
   submitUserProfile(data){
     return this.http.post(this.baseurl + 'submitUserProfile',data,this.httpOptions);
+  }
+  encrypt(data) {
+    try {
+      return CryptoJS.AES.encrypt(JSON.stringify(data), this.encryptionKey).toString();
+    } catch (e) {
+      console.log(e);
+      return data;
+    }
   }
 }
 

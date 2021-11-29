@@ -5,6 +5,7 @@ import { AppConfigService } from "src/app/utils/app-config.service";
 import { APP_CONSTANTS } from "src/app/utils/app-constants.service";
 import { BookSlotComponent } from '../../bookSlot/bookSlot.component';
 import { environment } from '@env/environment';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: "app-myAssessment",
@@ -31,6 +32,8 @@ export class MyAssessmentComponent implements OnInit {
   assessmentList = [];
   userDetails: any;
   profilePercentage:any = 0;
+  encryptionKey = 'unifiedReports';
+  
   
   constructor(
     private commonServ: CommonService,
@@ -80,6 +83,16 @@ export class MyAssessmentComponent implements OnInit {
     //   }
     // });
   }
+  viewReportRedirect(){
+    let details = {
+      type: 'microcert',
+      email: this.userDetails.email
+    };
+    var emailEncrypt = this.commonServ.encrypt(details.email);
+    var encryptDetail = this.commonServ.encrypt(details);
+    window.location.href = environment.uap+"/auth/reports/viewreport/"+  encodeURIComponent(emailEncrypt) + "?details="+ encodeURIComponent(encryptDetail);
+  }
+  
   bookSlot(itemdata, index, reSchedule){
     let dialogData = {
       cid: itemdata.assessmentDetails.cid,
