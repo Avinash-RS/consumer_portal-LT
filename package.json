@@ -30,6 +30,7 @@
     "bcryptjs": "^2.4.3",
     "bn-ng-idle": "^1.0.1",
     "chart.js": "^3.3.2",
+    "crypto-js": "^4.0.0",
     "jwt-decode": "^3.1.2",
     "moment": "^2.29.1",
     "ng-recaptcha": "^7.0.1",
@@ -41,7 +42,7 @@
     "postcss": "^8.1.0",
     "rxjs": "~6.6.0",
     "save-dev": "0.0.1-security",
-    "sweetalert2": "^11.1.10",
+    "sweetalert2": "^11.2.1",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },
