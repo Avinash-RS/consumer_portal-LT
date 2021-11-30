@@ -30,7 +30,7 @@ export class CatalogService {
 
   // tslint:disable-next-line: typedef
   getCatalog(type){
-    return this.http.get(this.baseurl + 'getcatalogue?productType='+ type, this.httpOptions);
+    return this.http.get(this.baseurl + 'getcatalogue?productType='+ type ? type:'assessment', this.httpOptions);
   }
 
   getAreaByDomain(params) {
