@@ -17,7 +17,7 @@ import * as CryptoJS from 'crypto-js';
 export class CommonService {
   baseurl = environment.API_BASE_URL;
   httpOptionsWithToken;
-  encryptionKey = 'unifiedReports';
+
   constructor(    private cookieService: CookieService ,private http: HttpClient, private appconfig: AppConfigService,
     public toast: ToastrService, private util: UtilityService) {this.getToken()}
   httpOptions = {
@@ -163,9 +163,9 @@ export class CommonService {
   submitUserProfile(data){
     return this.http.post(this.baseurl + 'submitUserProfile',data,this.httpOptions);
   }
-  encrypt(data) {
+  encrypt(data,encryptionKey) {
     try {
-      return CryptoJS.AES.encrypt(JSON.stringify(data), this.encryptionKey).toString();
+      return CryptoJS.AES.encrypt(JSON.stringify(data), encryptionKey).toString();
     } catch (e) {
       console.log(e);
       return data;

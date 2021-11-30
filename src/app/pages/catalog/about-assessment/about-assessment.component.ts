@@ -28,6 +28,7 @@ export class AboutAssessmentComponent implements OnInit {
   competencyList;
   competencyData;
   totalAssessmentCount: any;
+  productType:string =  "assessment"
   constructor(private router: Router, private catalogService : CatalogService,private route:ActivatedRoute,private appconfig: AppConfigService,private commonService : CommonService) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => {
       return false;
@@ -41,6 +42,7 @@ export class AboutAssessmentComponent implements OnInit {
       console.log(params);
       this.domainId = params.selectedTab;
       this.areaId = params.id;
+      this.productType = params.productType
       this.getArea();
       this.checkScroll();
     })
@@ -93,7 +95,8 @@ export class AboutAssessmentComponent implements OnInit {
   getArea(){
     var params = {
       "domainId" : this.domainId,
-      "pagenumber" : this.pageNumber
+      "pagenumber" : this.pageNumber,
+      "productType" : this.productType
   }
     this.catalogService.getAreaByDomain(params).subscribe((response : any)=>{
       if (response.data?.length > 0) {

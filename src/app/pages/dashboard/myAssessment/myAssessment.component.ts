@@ -30,7 +30,7 @@ export class MyAssessmentComponent implements OnInit {
   assessmentList = [];
   userDetails: any;
   profilePercentage:any = 0;
-  
+  encryptionKey = 'unifiedReports';
   
   constructor(
     private commonServ: CommonService,
@@ -85,9 +85,9 @@ export class MyAssessmentComponent implements OnInit {
       type: 'microcert',
       email: this.userDetails.email
     };
-    var emailEncrypt = this.commonServ.encrypt(details.email);
-    var encryptDetail = this.commonServ.encrypt(details);
-    window.location.href = environment.uap+"/auth/reports/viewreport/"+  encodeURIComponent(emailEncrypt) + "?details="+ encodeURIComponent(encryptDetail);
+    var emailEncrypt = this.commonServ.encrypt(details.email,this.encryptionKey);
+    var encryptDetail = this.commonServ.encrypt(details,this.encryptionKey);
+    window.location.href = environment.unifiedReport_URL+"/auth/reports/viewreport/"+  encodeURIComponent(emailEncrypt) + "?details="+ encodeURIComponent(encryptDetail);
   }
   
   bookSlot(itemdata, index, reSchedule){
