@@ -98,7 +98,8 @@ export class HeaderComponent implements OnInit {
         if (response.success && response.data.length > 0) {
           //this.catalogMenu = response.data;
           var assobj = {
-            "type":'Assessment',
+            "label":'Assessment',
+            "type":'assessment',
             "data" : response.data
           }
           this.catalogMenu.push(assobj)
@@ -111,7 +112,8 @@ export class HeaderComponent implements OnInit {
         if (response.success && response.data.length > 0) {
           //this.catalogMenu = response.data;
           var courseobj = {
-            "type":'Course',
+            "label":'Course',
+            "type":'course',
             "data" : response.data
           }
           this.catalogMenu.push(courseobj)
@@ -246,7 +248,8 @@ export class HeaderComponent implements OnInit {
     this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.home, { fromPage: "viewAll", selectedTab: value });
     this.inActiveTabs();
   }
-  gotoArea(data) {
+  gotoArea(data,type) {
+    this.productType = type;
     this.showMenu = 'out';
     this.showCourseMenu = 'out';
     this.assessmentsList= false;
