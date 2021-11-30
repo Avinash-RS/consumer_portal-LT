@@ -12,7 +12,8 @@ export const environment = {
   // Dev base url
   API_BASE_URL: 'https://edgeservice.lntiggnite.com/', 
   PAYMENT:'https://devpayment.lntiggnite.com' ,
-  uap:'https://uap-dev.lntiggnite.com'
+  uap:'https://uap-dev.lntiggnite.com',
+  unifiedReport_URL :'https://unifiedreport-dev.lntedutech.com/'
 };
 
 /*

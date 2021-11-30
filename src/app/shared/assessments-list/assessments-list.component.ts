@@ -31,7 +31,7 @@ export class AssessmentsListComponent implements OnInit {
   blobToken: string = environment.blobKey;
   public destroyed = new Subject<any>();
   subscriberdata: any;
-  tabType:string = 'assessment';
+  productType:string = 'assessment';
   constructor(private _loading: LoadingService,
               private router: Router,
               private catalogService: CatalogService,
@@ -44,14 +44,14 @@ export class AssessmentsListComponent implements OnInit {
       this.fromTab = this.route.snapshot.queryParams.selectedTab;
       this.viewMore = false
     }
-    this.getDomain('assessment');
+    this.getDomain(this.productType);
     this.subscriberdata = this.router.events.pipe(
       filter((event: RouterEvent) => event instanceof NavigationEnd),
       takeUntil(this.destroyed)
     ).subscribe(() => {
       this.fromTab = this.route.snapshot.queryParams.selectedTab;
       this.viewMore = false
-      this.getDomain('assessment');
+      this.getDomain(this.productType);
     })
 
   }
@@ -60,7 +60,7 @@ export class AssessmentsListComponent implements OnInit {
   }
 
   getDomain(type) {
-    this.tabType = type;
+    this.productType = type;
     this.catalogService.getCatalog(type).subscribe((response: any) => {
       if (response.data.length > 0) {
         this.tabValues = response.data;
@@ -85,7 +85,8 @@ export class AssessmentsListComponent implements OnInit {
 
     var params = {
       "domainId": id,
-      "pagenumber": this.pageNumber
+      "pagenumber": this.pageNumber,
+      "productType" :this.productType
     }
     this.catalogService.getAreaByDomain(params).subscribe((response: any) => {
       this.noDataSkeleton = false;
@@ -111,6 +112,6 @@ export class AssessmentsListComponent implements OnInit {
   }
 
   aboutAssessment(cid) {
-    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutAssessment, { id: cid, selectedTab: this.selectedTab });
+    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutAssessment, { id: cid, selectedTab: this.selectedTab ,productType : this.productType});
   }
 }

@@ -36,6 +36,7 @@ export class HeaderComponent implements OnInit {
   isAssement = false;
   isCredentials = false;
   offsetFlag = true;
+  productType:string = 'assessment';
   constructor(
     private appConfig: AppConfigService,
     private catalogService: CatalogService,
@@ -82,13 +83,14 @@ export class HeaderComponent implements OnInit {
     
   }
   megaMenuClick() {
+    this.productType = 'assessment';
     this.showMenu = this.showMenu === 'out' ? 'in' : 'out';
     this.showCourseMenu = 'out';
     this.assessmentsList = this.showMenu === 'in' ? true : false;
     this.coursesList = false;
     this.isCertified = false;
     this.isAssement = false;
-    this.catalogService.getCatalog('assessment').subscribe((response: any) => {
+    this.catalogService.getCatalog(this.productType).subscribe((response: any) => {
       if (response.success && response.data.length > 0) {
         this.catalogMenu = response.data;
       } else {
@@ -97,13 +99,14 @@ export class HeaderComponent implements OnInit {
     })
   }
   courseMenuClick(){
+    this.productType = 'course';
     this.showCourseMenu = this.showCourseMenu === 'out' ? 'in' : 'out';
     this.showMenu = 'out';
     this.coursesList = this.showCourseMenu === 'in' ? true : false;
     this.assessmentsList = false;
     this.isCertified = false;
     this.isAssement = false;
-    this.catalogService.getCatalog('course').subscribe((response: any) => {
+    this.catalogService.getCatalog(this.productType).subscribe((response: any) => {
       if (response.success && response.data.length > 0) {
         this.catalogMenu = response.data;
       } else {
@@ -225,7 +228,7 @@ export class HeaderComponent implements OnInit {
     this.showCourseMenu = 'out';
     this.assessmentsList= false;
     this.coursesList = false;
-    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutAssessment,{id : data.cid, selectedTab : data.parentId});
+    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutAssessment,{id : data.cid, selectedTab : data.parentId ,productType : this.productType});
     this.inActiveTabs();
   }
 
@@ -234,7 +237,7 @@ export class HeaderComponent implements OnInit {
     this.showCourseMenu = 'out';
     this.assessmentsList= false;
     this.coursesList = false;
-    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutAssessment, { id: cid, selectedTab: 'All' });
+    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutAssessment, { id: cid, selectedTab: 'All', productType : this.productType});
     this.inActiveTabs();
   }
 
