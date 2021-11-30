@@ -83,37 +83,60 @@ export class HeaderComponent implements OnInit {
     
   }
   megaMenuClick() {
-    this.productType = 'assessment';
+    //this.productType = 'assessment';
     this.showMenu = this.showMenu === 'out' ? 'in' : 'out';
     this.showCourseMenu = 'out';
     this.assessmentsList = this.showMenu === 'in' ? true : false;
     this.coursesList = false;
     this.isCertified = false;
     this.isAssement = false;
-    this.catalogService.getCatalog(this.productType).subscribe((response: any) => {
-      if (response.success && response.data.length > 0) {
-        this.catalogMenu = response.data;
-      } else {
-        this.catalogMenu = []
-      }
-    })
+    
+    if(this.showMenu == 'in'){
+      this.catalogMenu=[];
+      this.catalogService.getCatalog('assessment').subscribe((response: any) => {
+        // debugger;
+        if (response.success && response.data.length > 0) {
+          //this.catalogMenu = response.data;
+          var assobj = {
+            "type":'Assessment',
+            "data" : response.data
+          }
+          this.catalogMenu.push(assobj)
+        } else {
+          this.catalogMenu = []
+        }
+      });
+      this.catalogService.getCatalog('course').subscribe((response: any) => {
+        // debugger;
+        if (response.success && response.data.length > 0) {
+          //this.catalogMenu = response.data;
+          var courseobj = {
+            "type":'Course',
+            "data" : response.data
+          }
+          this.catalogMenu.push(courseobj)
+        } else {
+          this.catalogMenu = []
+        }
+      });
+    }
   }
-  courseMenuClick(){
-    this.productType = 'course';
-    this.showCourseMenu = this.showCourseMenu === 'out' ? 'in' : 'out';
-    this.showMenu = 'out';
-    this.coursesList = this.showCourseMenu === 'in' ? true : false;
-    this.assessmentsList = false;
-    this.isCertified = false;
-    this.isAssement = false;
-    this.catalogService.getCatalog(this.productType).subscribe((response: any) => {
-      if (response.success && response.data.length > 0) {
-        this.catalogMenu = response.data;
-      } else {
-        this.catalogMenu = []
-      }
-    })
-  }
+  // courseMenuClick(){
+  //   this.productType = 'course';
+  //   this.showCourseMenu = this.showCourseMenu === 'out' ? 'in' : 'out';
+  //   this.showMenu = 'out';
+  //   this.coursesList = this.showCourseMenu === 'in' ? true : false;
+  //   this.assessmentsList = false;
+  //   this.isCertified = false;
+  //   this.isAssement = false;
+  //   this.catalogService.getCatalog(this.productType).subscribe((response: any) => {
+  //     if (response.success && response.data.length > 0) {
+  //       this.catalogMenu = response.data;
+  //     } else {
+  //       this.catalogMenu = []
+  //     }
+  //   })
+  // }
   rxjsHeaderAvatarUpdate() {
     if (this.appConfig.getSessionStorage('token')) {
       this.showAvatar = true;
