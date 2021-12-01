@@ -98,7 +98,7 @@ export class HeaderComponent implements OnInit {
         if (response.success && response.data.length > 0) {
           //this.catalogMenu = response.data;
           var assobj = {
-            "label":'Assessment',
+            "label":'Assessments',
             "type":'assessment',
             "data" : response.data
           }
@@ -112,7 +112,7 @@ export class HeaderComponent implements OnInit {
         if (response.success && response.data.length > 0) {
           //this.catalogMenu = response.data;
           var courseobj = {
-            "label":'Course',
+            "label":'Courses',
             "type":'course',
             "data" : response.data
           }
