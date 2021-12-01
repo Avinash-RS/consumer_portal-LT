@@ -35,12 +35,12 @@
                                 <span><em class="icon-Time"></em>{{aboutArea?.totalDuration}}h</span>
                             </div> -->
                             <div>
-                                <p>No. of Assessments</p>
+                                <p>{{aboutArea?.productType == 'course' ? 'No. of Modules' :'No. of Assessments '}}</p>
                                 <span><em class="icon-Document"></em> {{totalAssessmentCount}}</span>
                             </div>
                         </div>
                     </div>
-                    <div class="assessmentHighlights">
+                    <div class="assessmentHighlights" *ngIf="aboutArea?.productType != 'course' ">
                         <div class="heading6">Assessments Highlights</div>
                         <ul>
                             <li><em class="icon-Globe"></em> 100% online Assessments</li>
@@ -328,7 +328,7 @@
 
 <section *ngIf="!showAssesment" class="assessmentSection">
     <div class="container">
-        <div class="heading3 ">Enhance employability using these Assessments</div>
+        <div class="heading3 ">Enhance employability using these {{aboutArea?.productType == 'course' ? 'Modules' :'Assessments'}}</div>
         <!-- <p>Best for those who want a series of Assessment</p> -->
         <div class="descriptionSection " style="display: none;">
             <div class="achieve">
@@ -356,7 +356,7 @@
             </div>
         <div class="assessmentsArea">
             <div class="heading3">{{aboutArea?.name}}</div>
-            <span class="totalAssessments"><em class="icon-Assessment"></em>{{totalAssessmentCount}} Assessments</span>
+            <span class="totalAssessments"><em class="icon-Assessment"></em>{{totalAssessmentCount}} {{aboutArea?.productType == 'course' ? 'Modules' :'Assessments'}}</span>
             <div class="assessments">
                 <div *ngFor="let competency of competencyList" (click)="openAssessments(competency)">
                     <div>

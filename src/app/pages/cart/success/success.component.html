@@ -39,6 +39,12 @@
                     <div class="DeliveryOptions commonClass">
                         <span>Delivery Options</span>
                     </div>
+                    <div class="DeliveryOptions commonClass">
+                        <span>Product Type</span>
+                    </div>
+                    <div class="DeliveryOptions commonClass">
+                        <span>Action</span>
+                    </div>
                 </div>
                 <div class="orderContent">
                     <div class="" *ngFor="let item of orderlist">
@@ -47,6 +53,15 @@
                         <span class="heading5">{{item.orderNo}}</span>
                         <span class="heading5">{{item.payment?item.payment:"N/A"}}</span>
                         <span class="heading5">Online</span>
+                        <span class="heading5">{{item?.productType ? item?.productType : 'assessment'}}</span>
+                        <span class="heading5">
+                            <div *ngIf="item?.productType == 'course'">
+                                go to course
+                            </div>
+                            <div *ngIf="item?.productType != 'course'">
+                                book a slot
+                            </div>
+                        </span>
                     </div>
                 </div>
             </div>
