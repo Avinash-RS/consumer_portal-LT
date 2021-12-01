@@ -15,6 +15,11 @@
         opacity: 1;
     }
     .mat-form-field-appearance-outline {
+        &.mat-form-field-invalid {
+            .mat-form-field-outline-thick {
+                color: $primary-red !important;
+            }   
+        }
         .mat-form-field-outline-thick {
             color: $primaryColor !important;
         }
@@ -184,7 +189,7 @@
             display: flex;
             margin-bottom: 0.65em;
             .termsColor{
-                color: $primaryColor;
+                color: $primary-red;
                 &:hover {
                     text-decoration: underline;
                 }
@@ -292,4 +297,7 @@
     }
    }
 
+}
+mat-error{
+    color: $primary-red;
 }

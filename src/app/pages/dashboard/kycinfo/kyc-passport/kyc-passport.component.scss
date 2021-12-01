@@ -90,7 +90,7 @@
                     //     border: 1px solid $primaryColor;
                     // }
                     .form-error {
-                        color: $primaryColor;
+                        color: $primary-red;
                         font-size: 12px;
                     }
                     ::placeholder {
@@ -208,7 +208,7 @@
                         color: #717272;
                     }
                     .error {
-                        color: $primaryColor;
+                        color: $primary-red;
                     }
                 }
             }   

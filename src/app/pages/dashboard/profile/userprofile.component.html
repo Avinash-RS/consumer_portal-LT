@@ -253,7 +253,7 @@
                             </ng-container>
                         </div>
                         <div>
-                            <label>Re-type New Password</label>
+                            <label>Confirm password</label>
                             <mat-form-field appearance="fill">
                                 <input type="password" matInput autocomplete="Off" placeholder="" formControlName="password2">
                             </mat-form-field>
@@ -324,7 +324,7 @@
                         </div>
                         <div class="desc">
                             <div class="heading6">Warning</div>
-                            <p>If you close your account, you will be unsubscribed from all your all Assessments, and will lose access forever.</p>
+                            <p>If you close your account, you will be unsubscribed from all your Assessments and will lose access forever.</p>
                         </div>
                     </div>
                     <form [formGroup]="closeAccount" (submit)="deactivateaccount()" autocomplete="off">

@@ -7,7 +7,7 @@
         <img src="https://assets.lntedutech.com/edutech_logo.svg" alt="L&T Logo">
     </figure>
     <div class="megaMenu">
-        <button (click)="megaMenuClick()">Catalouge<em [ngClass]="showMenu == 'out' ? 'icon-DownArrow' : 'icon-UpArrow'" ></em></button>
+        <button (click)="megaMenuClick()">Catalogue<em [ngClass]="showMenu == 'out' ? 'icon-DownArrow' : 'icon-UpArrow'" ></em></button>
         <!-- <button (click)="courseMenuClick()">Courses<em [ngClass]="showCourseMenu == 'out' ? 'icon-DownArrow' : 'icon-UpArrow'" ></em></button> -->
     </div>
     <!-- <div class="megaMenu">
@@ -120,7 +120,7 @@
     <ng-container *ngIf ="catalogMenu.length > 0">
         <ul class="headtxt_">
             <li>
-                <a>Catalouge</a>
+                <a>Catalogue</a>
                 <ul>
                     <li><a>DOMAIN</a>
                         <ul>
@@ -134,7 +134,7 @@
             <li *ngFor="let level0 of catalogMenu"><a>{{level0.label}}</a>
                 <ul>
                     <ng-container *ngFor="let level1 of level0.data">
-                        <li><a (click)="catalogHome(level1.cid)">{{level1.name}}</a>
+                        <li><a (click)="catalogHome(level1.cid ,level0.type)">{{level1.name}}</a>
                             <ul>
                                 <ng-container *ngFor="let level2 of level1.children">
                                     

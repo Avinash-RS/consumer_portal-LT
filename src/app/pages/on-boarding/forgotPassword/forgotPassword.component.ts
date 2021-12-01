@@ -35,6 +35,7 @@ export class ForgotPasswordComponent implements OnInit {
   }
   userEmail: string;
   pwdSecretKey: void;
+  secretKey = "(!@#Passcode!@#)";
   constructor(
     public commonService: CommonService,
     public toast: ToastrService,
@@ -114,9 +115,10 @@ export class ForgotPasswordComponent implements OnInit {
   setNewPassword(){    
     this.gv.cleanForm(this.resetPwdForm);
     if (this.resetPwdForm.valid){
-        const salt = bcrypt.genSaltSync(10);
-        const pass = bcrypt.hashSync(this.resetPwdForm.value.password, salt);
-        let data = {"email" : this.userEmail, "password" : pass, "userSecretkey":this.pwdSecretKey}
+        // const salt = bcrypt.genSaltSync(10);
+        // const pass = bcrypt.hashSync(this.resetPwdForm.value.password, salt);
+        const encryptPass = this.commonService.encrypt(this.resetPwdForm.value.password,this.secretKey)
+        let data = {"email" : this.userEmail, "password" : encryptPass, "userSecretkey":this.pwdSecretKey}
         this.commonService.resetPassword(data).subscribe((resp: any) => {
           if (resp.success){
             this.toast.success(resp.message)
