@@ -15,7 +15,7 @@
                 <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
                 <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
             </ul> -->
-            <div class="heading3">Accelerate your career path in this Assessment</div>
+            <div class="heading3">Accelerate your career path in this {{competencyData?.productType == 'course' ? 'Course': 'Assessment'}}</div>
 
             <!-- <p>Best for those who want a series of Assessment</p> -->
             <div class="descriptionSection " *ngIf="areaData.cid==='A0004'">
@@ -48,7 +48,7 @@
                     <mat-expansion-panel [expanded]="panelOpenState" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                         <mat-expansion-panel-header>
                             <mat-panel-title>
-                                <div class="heading4">Assessment Overview</div>
+                                <div class="heading4"> {{competencyData?.productType == 'course' ? 'Course Overview': 'Assessment Overview'}}</div>
                             </mat-panel-title>
                         </mat-expansion-panel-header>
                         <div class="listItem" [innerHtml]="competencyData.assessmentOverview">   </div>
@@ -64,7 +64,8 @@
                                 <span class="line"></span>
                                 <mat-panel-title>
                                     <span class="accoordIcon"><em class="icon-Clipboard"></em></span>
-                                    <span class="levels heading5">{{first.levelName}}</span>
+                                    <span class="levels heading5" *ngIf="competencyData?.productType == 'course'">{{'Course'}}</span>
+                                    <span class="levels heading5" *ngIf="competencyData?.productType != 'course'">{{first.levelName}}</span>
                                 </mat-panel-title>
                                 <mat-panel-description>
                                     <div class="buyNowCart" style="z-index: 100;">

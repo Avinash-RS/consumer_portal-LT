@@ -72,12 +72,14 @@ export class CertifyAssessmentComponent implements OnInit {
   addCart(isLevel,id1,id2,from,freeData?) {
     console.log(freeData)
     if (this.userDetails) {
+      var productType = this.competencyData.productType ? this.competencyData?.productType :'assessment';
       var params = {
           "isLevel":isLevel,
           "levelId":id1,
           "userId":this.userDetails.userId,
           "assessmentId":id2,
-          "competencyId":this.competencyData.cid
+          "competencyId":this.competencyData.cid,
+          "productType" : productType,
       }
       var checkParam = {
         "userId":this.userDetails.userId,
@@ -155,12 +157,14 @@ export class CertifyAssessmentComponent implements OnInit {
 
 
     } else {
+      var productType = this.competencyData.productType ? this.competencyData?.productType :'assessment';
       params = {
           "isLevel":isLevel,
           "levelId":id1,
           "userId":'',
           "assessmentId":id2,
-          "competencyId":this.competencyData.cid
+          "competencyId":this.competencyData.cid,
+          "productType" :productType
       }
       this.util.setValue(params);
       this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, {fromPage: '0'});

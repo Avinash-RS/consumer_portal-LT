@@ -32,7 +32,7 @@
                                     <div class="levelAssessment">
                                         <div class="test">
                                             <ng-container *ngFor="let test of cart.assessmentDetails.testTypes">
-                                                <div>
+                                                <div *ngIf="cart.productType !='course'">
                                                     <span class="heading">{{test.testName}}</span>
                                                     <span class="assessmentHour">{{test.sumtotalhour}} Hour <span>|</span> {{test.totalQuestion}} Questions</span>
                                                 </div>

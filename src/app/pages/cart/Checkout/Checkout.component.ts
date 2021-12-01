@@ -76,6 +76,7 @@ export class CheckoutComponent implements OnInit {
     param.cart = [];
     this.cartList.forEach(cartItem => {
       let itemTotal_amount = cartItem.quantity * cartItem.assessmentDetails.is_free?0:cartItem.assessmentDetails.sellingPrice;
+      var producttype = cartItem?.productType == 'course' ? 'course' : 'assessment';
       param.cart.push(
         {
           assessmentId: cartItem.assessmentId,
@@ -84,6 +85,7 @@ export class CheckoutComponent implements OnInit {
           total_amount: itemTotal_amount,
           competencyId: cartItem.competencyDetails.cid,
 	        levelId: cartItem.competencyDetails.levelId,
+          productType : producttype
         }
       )
     });
