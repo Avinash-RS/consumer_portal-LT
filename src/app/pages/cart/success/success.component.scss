@@ -194,18 +194,31 @@
         margin: 0;
         line-height: 1.4;
     }
-    .slotBooking {
-        @include buttonFilled;
-        width: auto;
-        padding-left: 1.25em;
-        padding-right: 1.25em;
-        line-height: 1.5;
-        @include sm {
-            width: 100%;
-        }
-    }
+    // .slotBooking {
+    //     @include buttonFilled;
+    //     width: auto;
+    //     padding-left: 1.25em;
+    //     padding-right: 1.25em;
+    //     line-height: 1.5;
+    //     @include sm {
+    //         width: 100%;
+    //     }
+    // }
 }
 
+.slotBooking {
+    margin-top: 6px;
+    font-size: 13px;
+    background: #08558C;
+    color: #ffffff;
+    border: 0;
+    transition: background 0.3s ease-in-out;
+    border-radius: 1.56em;
+    line-height: 1.2;
+    width: auto;
+    padding: 0.375em 1.2em;
+    line-height: 1;
+}
 //
 
 

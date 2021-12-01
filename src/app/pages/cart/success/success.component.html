@@ -14,7 +14,7 @@
                 <p>Upon booking your time slot, you'll receive an email confirming the exam appointment that includes further instructions to take the exam.</p>
             </div>
             <div>
-                <button (click)="openDialog(bookSlot,orderlist[0])" class="slotBooking">Book a Slot</button>
+                <!-- <button (click)="openDialog(bookSlot,orderlist[0])" class="slotBooking">Book a Slot</button> -->
             </div>
         </div>
 
@@ -25,7 +25,7 @@
             <div class="orders">
                 <div class="orderHeading">
                     <div class="assessmentDate commonClass">
-                        <span>Assessment Name:</span>
+                        <span>Name:</span>
                     </div>
                     <div class="orderDate commonClass">
                         <span>Order Date:</span>
@@ -53,13 +53,12 @@
                         <span class="heading5">{{item.orderNo}}</span>
                         <span class="heading5">{{item.payment?item.payment:"N/A"}}</span>
                         <span class="heading5">Online</span>
-                        <span class="heading5">{{item?.productType ? item?.productType : 'assessment'}}</span>
+                        <span class="heading5">{{item?.productType == 'course' ? 'Course' : 'Assessment'}}</span>
                         <span class="heading5">
-                            <div *ngIf="item?.productType == 'course'">
-                                go to course
+                            <div *ngIf="item?.productType == 'course';else gocourse">
                             </div>
-                            <div *ngIf="item?.productType != 'course'">
-                                book a slot
+                            <div #gocourse>
+                                <button (click)="openDialog(bookSlot,orderlist[0])" class="slotBooking">Book a Slot</button>
                             </div>
                         </span>
                     </div>
