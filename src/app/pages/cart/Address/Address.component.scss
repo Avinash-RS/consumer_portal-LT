@@ -30,6 +30,8 @@
         }
         p {
             margin: 0.5em 0;
+            word-break: break-all;
+            white-space: break-spaces;
         }
         .mobile {
             color: $mediumGrey;

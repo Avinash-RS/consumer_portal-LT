@@ -368,7 +368,7 @@ getProfilePercentage(){
       "email": this.userDetails.email,
       "password": this.closeAccount.get('endPassword').value,
     }
-    if (confirm("You are about close this account!!!  Are you sure?")) {
+    if (confirm("You are about to close this account!!!  Are you sure?")) {
       this.commonService.deactivateAccount(param).subscribe((data: any) => {
         if (data.success) {
           this.toast.success(data.message);

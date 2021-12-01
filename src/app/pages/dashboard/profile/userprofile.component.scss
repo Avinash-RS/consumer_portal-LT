@@ -599,6 +599,7 @@
         margin: 0;
         span {
             display: block;
+            color: $primaryColor;
         }
     }
 }
@@ -794,7 +795,8 @@
         background-color: $primaryColor;
     }
     .mat-error {
-        margin-left: 32%;
+        // margin-left: 32%;
+        margin-left: 0;
     }
     .mat-form-field {
         width: 100%;

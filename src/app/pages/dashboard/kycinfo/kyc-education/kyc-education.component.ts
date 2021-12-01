@@ -398,7 +398,7 @@ validSelectedPost() {
           this.toast.warning("Please fill Education Details");
         }
       } else {
-        this.toast.warning("Invalid User details");
+        this.toast.warning("Please fill all mandatory fields");
     }
   }
   saveEducationDetails(formArray){
