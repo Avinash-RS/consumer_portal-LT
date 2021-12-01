@@ -184,7 +184,7 @@
             display: flex;
             margin-bottom: 0.65em;
             .termsColor{
-                color: $primaryColor;
+                color: $primary-red;
                 &:hover {
                     text-decoration: underline;
                 }
@@ -292,4 +292,7 @@
     }
    }
 
+}
+mat-error{
+    color: $primary-red;
 }
