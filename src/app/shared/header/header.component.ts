@@ -21,7 +21,6 @@ export class HeaderComponent implements OnInit {
   hoveron: boolean;
   // showMenu: boolean;
   showMenu = 'out';
-  showCourseMenu = 'out';
   assessmentsList:boolean = false;
   coursesList:boolean = false;
   menu_tab: boolean = false;
@@ -52,7 +51,6 @@ export class HeaderComponent implements OnInit {
   checkScroll() {
     if(window.pageYOffset >= 10) {
       this.showMenu = 'out';
-      this.showCourseMenu = 'out';
       this.assessmentsList= false;
       this.coursesList = false;
     }
@@ -85,7 +83,6 @@ export class HeaderComponent implements OnInit {
   megaMenuClick() {
     //this.productType = 'assessment';
     this.showMenu = this.showMenu === 'out' ? 'in' : 'out';
-    this.showCourseMenu = 'out';
     this.assessmentsList = this.showMenu === 'in' ? true : false;
     this.coursesList = false;
     this.isCertified = false;
@@ -94,7 +91,6 @@ export class HeaderComponent implements OnInit {
     if(this.showMenu == 'in'){
       this.catalogMenu=[];
       this.catalogService.getCatalog('assessment').subscribe((response: any) => {
-        // debugger;
         if (response.success && response.data.length > 0) {
           //this.catalogMenu = response.data;
           var assobj = {
@@ -103,25 +99,27 @@ export class HeaderComponent implements OnInit {
             "data" : response.data
           }
           this.catalogMenu.push(assobj)
+          this.getCourse();
         } else {
           this.catalogMenu = []
         }
       });
-      this.catalogService.getCatalog('course').subscribe((response: any) => {
-        // debugger;
-        if (response.success && response.data.length > 0) {
-          //this.catalogMenu = response.data;
-          var courseobj = {
-            "label":'Course',
-            "type":'course',
-            "data" : response.data
-          }
-          this.catalogMenu.push(courseobj)
-        } else {
-          this.catalogMenu = []
-        }
-      });
+
     }
+  }
+  getCourse(){
+    this.catalogService.getCatalog('course').subscribe((response: any) => {
+      if (response.success && response.data.length > 0) {
+        var courseobj = {
+          "label":'Course',
+          "type":'course',
+          "data" : response.data
+        }
+        this.catalogMenu.push(courseobj)
+      } else {
+        this.catalogMenu = []
+      }
+    });
   }
   // courseMenuClick(){
   //   this.productType = 'course';
@@ -167,7 +165,6 @@ export class HeaderComponent implements OnInit {
     this.isCredentials = false;
     this.appConfig.routeNavigation(APP_CONSTANTS.ENDPOINTS.certificationDetails);
     this.showMenu = 'out';
-    this.showCourseMenu = 'out';
     this.assessmentsList= false;
     this.coursesList = false;
   }
@@ -189,7 +186,6 @@ export class HeaderComponent implements OnInit {
     this.isAssement = true;
     this.isCredentials = false;
     this.showMenu = 'out';
-    this.showCourseMenu = 'out';
     this.assessmentsList= false;
     this.coursesList = false;
     if(this.userDetails) {
@@ -240,18 +236,17 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  catalogHome(value) {
+  catalogHome(value,type) {
+    this.productType = type;
     this.showMenu = 'out';
-    this.showCourseMenu = 'out';
     this.assessmentsList= false;
     this.coursesList = false;
-    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.home, { fromPage: "viewAll", selectedTab: value });
+    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.home, { fromPage: "viewAll", selectedTab: value ,productType : this.productType});
     this.inActiveTabs();
   }
   gotoArea(data,type) {
     this.productType = type;
     this.showMenu = 'out';
-    this.showCourseMenu = 'out';
     this.assessmentsList= false;
     this.coursesList = false;
     this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutAssessment,{id : data.cid, selectedTab : data.parentId ,productType : this.productType});
@@ -260,7 +255,6 @@ export class HeaderComponent implements OnInit {
 
   aboutAssessment(cid) {
     this.showMenu = 'out';
-    this.showCourseMenu = 'out';
     this.assessmentsList= false;
     this.coursesList = false;
     this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutAssessment, { id: cid, selectedTab: 'All', productType : this.productType});
@@ -270,13 +264,11 @@ export class HeaderComponent implements OnInit {
   closeMegaMenu() {
     // this.showMenu = false;
     this.showMenu = 'out';
-    this.showCourseMenu = 'out';
     this.assessmentsList= false;
     this.coursesList = false;
   }
   closeMegaMenu_() { 
     this.showMenu = 'out';
-    this.showCourseMenu ='out';
     this.assessmentsList= false;
     this.coursesList = false;
   }
