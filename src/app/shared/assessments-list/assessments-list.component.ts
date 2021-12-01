@@ -42,6 +42,7 @@ export class AssessmentsListComponent implements OnInit {
   ngOnInit() {
     if (this.route.snapshot.queryParams.selectedTab) {
       this.fromTab = this.route.snapshot.queryParams.selectedTab;
+      this.productType = this.route.snapshot.queryParams.productType ? this.route.snapshot.queryParams.productType : 'assessment';
       this.viewMore = false
     }
     this.getDomain(this.productType);

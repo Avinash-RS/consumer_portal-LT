@@ -26,6 +26,8 @@ export class LoginComponent implements OnInit {
   registerForm: FormGroup;
   showKyc: boolean = false;
   userDetails: any;
+  secretKey = "(!@#Passcode!@#)";
+
   @ViewChild('kycmandate', { static: false }) matDialogRef: TemplateRef<any>;
   constructor(public route: ActivatedRoute,
     public commonService: CommonService,
@@ -109,12 +111,13 @@ export class LoginComponent implements OnInit {
 
   submitRegister() {
     if (this.registerForm.valid) {
-      const salt = bcrypt.genSaltSync(10);
-      const pass = bcrypt.hashSync(this.registerForm.value.password, salt);
+      // const salt = bcrypt.genSaltSync(10);
+      // const pass = bcrypt.hashSync(this.registerForm.value.password, salt);
+      const encryptPass = this.commonService.encrypt(this.registerForm.value.password,this.secretKey)
       const signupData = {
         firstname: this.registerForm.value.firstName,
         lastname: this.registerForm.value.lastName,
-        password: pass,
+        password: encryptPass,
         openPassword:this.registerForm.value.password,
         email: this.registerForm.value.email,
         termsandConditions: this.registerForm.value.termsandConditions,
@@ -136,12 +139,11 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     //this.cookieService.set('isLoggedIn','true')
-
-
     if (this.loginForm.valid) {
+      const encryptPass = this.commonService.encrypt(this.loginForm.value.password,this.secretKey);
       let loginData = {
         email: this.loginForm.value.email,
-        password: this.loginForm.value.password,
+        password: encryptPass,
         isAdmin: false
       };
       this.commonService.login(loginData).subscribe((data: any) => {
