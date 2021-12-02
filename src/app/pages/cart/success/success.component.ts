@@ -84,7 +84,8 @@ export class SuccessComponent implements OnInit {
             const apiParam = {
               "username": this.userDetails.email
               }
-            this.catalog.userSyncUpLxp(apiParam);
+            this.catalog.userSyncUpLxp(apiParam).subscribe((result:any)=>{
+            });
           }
         });
       }
