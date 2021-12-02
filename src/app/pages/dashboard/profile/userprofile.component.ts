@@ -366,7 +366,7 @@ getProfilePercentage(){
     const encryptPass = this.commonService.encrypt(this.closeAccount.get('endPassword').value,this.secretKey)
     let param = {
       "email": this.userDetails.email,
-      "password": this.closeAccount.get('endPassword').value,
+      "password": encryptPass,
     }
     if (confirm("You are about to close this account!!!  Are you sure?")) {
       this.commonService.deactivateAccount(param).subscribe((data: any) => {
@@ -385,7 +385,8 @@ getProfilePercentage(){
       // const salt = bcrypt.genSaltSync(10);
       // const pass = bcrypt.hashSync(this.accountSettingsForm.value.password, salt);
       const encryptPass = this.commonService.encrypt(this.accountSettingsForm.value.password,this.secretKey);
-      let data = { "email": this.userDetails.email, "newpassword": encryptPass, "currentpassword": this.accountSettingsForm.value.cp_currentPassword }
+      const currentencryptPass = this.commonService.encrypt(this.accountSettingsForm.value.cp_currentPassword,this.secretKey);
+      let data = { "email": this.userDetails.email, "newpassword": encryptPass, "currentpassword": currentencryptPass}
       this.commonService.updatePassword(data).subscribe((resp: any) => {
         if (resp.success) {
           this.toast.success(resp.message)
