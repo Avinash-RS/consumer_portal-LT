@@ -67,7 +67,7 @@
                         <div class="gotoExamBtn">
                             <button [ngClass]="item.assessmentDetails.showExamBtn?item.assessmentDetails.assmentstatus==='Completed'?'disable':'':'disable'"  (click)="item.assessmentDetails.showExamBtn?item.assessmentDetails.assmentstatus==='Completed'?'':uapRedirect(item.assessmentDetails.assessmentId):''">Go to Test</button>
                         </div>
-                        <div class="gotoExamBtnInnerDiv">
+                        <div  class="gotoExamBtnInnerDiv">
                            <button (click)="goToCourse()">Go to Course</button> 
                         </div>
                         <div class="gotoExamBtn view-btn" *ngIf="item.assessmentDetails.assmentstatus == 'Completed'">
@@ -76,7 +76,7 @@
                     </div>
                     <div class="gotobtn-area" *ngIf="item.assessmentDetails.productType =='course'">
                         <div class="gotoExamBtn">
-                            <button>Go to Course</button>
+                            <button  (click)="goToCourse()">Go to Course</button>
                         </div>
                     </div>
                 </div>
