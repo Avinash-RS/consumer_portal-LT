@@ -232,6 +232,13 @@ export class LoginComponent implements OnInit {
     }, {validators: this.gv.passwordMatcher()});
   }
 
+  privacy() {
+    window.open("https://lntedutech.com/privacy-policy-2/", "privacyPolicy")
+  }
+  terms() {
+    window.open("https://info.lntedutech.com/", "terms")
+  }
+
 
   // Login form getter
   get email() {
