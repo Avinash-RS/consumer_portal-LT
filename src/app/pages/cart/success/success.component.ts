@@ -9,7 +9,7 @@ import { APP_CONSTANTS } from 'src/app/utils/app-constants.service';
 import * as moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
 import { BookSlotComponent } from '../../bookSlot/bookSlot.component';
-
+import { environment } from '@env/environment';
 
 @Component({
   selector: 'app-success',
@@ -63,6 +63,7 @@ export class SuccessComponent implements OnInit {
     private util: UtilityService,
     private catalog: CatalogService,
     public toast: ToastrService,
+    private appconfig: AppConfigService,
 
   ) {
     this.userDetails = JSON.parse(this.appConfig.getSessionStorage('userDetails'));
@@ -84,7 +85,8 @@ export class SuccessComponent implements OnInit {
             const apiParam = {
               "username": this.userDetails.email
               }
-            this.catalog.userSyncUpLxp(apiParam);
+            this.catalog.userSyncUpLxp(apiParam).subscribe((result:any)=>{
+            });
           }
         });
       }
@@ -114,7 +116,10 @@ export class SuccessComponent implements OnInit {
     this.levelName = orderItem.levelName;
     this.orderId = orderItem.orderNo;
   }
- 
+  goToCourse(){
+    var ValueData = JSON.parse(this.appconfig.getLocalStorage('valueData'));
+    window.open(environment.lxp_url+"?queValue="+encodeURIComponent(ValueData.queValue)+'&rpValue='+encodeURIComponent(ValueData.rpValue)+'&dpValue=microsetportal', 'redirection');
+  }
 
   // reschedule(item){
 
