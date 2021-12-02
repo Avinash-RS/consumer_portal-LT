@@ -398,6 +398,7 @@ validSelectedPost() {
           this.toast.warning("Please fill Education Details");
         }
       } else {
+        this.glovbal_validators.validateAllFormArrays(this.educationForm.get([this.form_educationArray]) as FormArray);
         this.toast.warning("Please fill all mandatory fields");
     }
   }
@@ -527,7 +528,7 @@ validSelectedPost() {
      return this.getEducationArr.push(this.initEducationArray());
     }
     else{
-      this.toast.warning("Please fill all the red highlighted fields to proceed further");
+      this.toast.warning("Please fill all mandatory fields");
       this.glovbal_validators.validateAllFormArrays(this.educationForm.get([this.form_educationArray]) as FormArray);
     }
 
