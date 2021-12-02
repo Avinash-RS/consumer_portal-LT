@@ -88,8 +88,8 @@ export class MyAssessmentComponent implements OnInit {
     var emailEncrypt = this.commonServ.encrypt(details.email,this.encryptionKey);
     var encryptDetail = this.commonServ.encrypt(details,this.encryptionKey);
     let redirectionLink = environment.unifiedReport_URL+"/auth/reports/viewreport/"+  encodeURIComponent(emailEncrypt) + "?details="+ encodeURIComponent(encryptDetail);
-    window.open('_blank', redirectionLink);
-    window.location.href = redirectionLink;
+    window.open(redirectionLink, '_blank');
+    // window.location.href = redirectionLink;
   }
   
   bookSlot(itemdata, index, reSchedule){
