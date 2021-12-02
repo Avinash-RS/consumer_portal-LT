@@ -55,9 +55,10 @@
                         <span class="heading5">Online</span>
                         <span class="heading5">{{item?.productType == 'course' ? 'Course' : 'Assessment'}}</span>
                         <span class="heading5">
-                            <div *ngIf="item?.productType == 'course';else gocourse">
+                            <div *ngIf="item?.productType == 'course'">
+                                <button  class="slotBooking">Go to Course</button>
                             </div>
-                            <div #gocourse>
+                            <div *ngIf="item?.productType !== 'course'">
                                 <button (click)="openDialog(bookSlot,orderlist[0])" class="slotBooking">Book a Slot</button>
                             </div>
                         </span>
