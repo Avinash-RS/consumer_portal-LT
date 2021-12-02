@@ -109,7 +109,10 @@ export class UserprofileComponent implements OnInit {
   selectedKycTab:string ="Personal";
   profilePercentage:any = 0;
   maxDOBDate:Date = new Date();
+  minDateValue = new Date(1900, 1, 1);
   secretKey = "(!@#Passcode!@#)";
+  minDate: Date;
+  maxDate: number;
 
   constructor(public commonService: CommonService,
     public route: ActivatedRoute,
@@ -157,6 +160,7 @@ export class UserprofileComponent implements OnInit {
     this.triggerProfilepercentage();
     this.navigateParentTab();
   }
+
   navigateParentTab(){
     this.util.ParentkyctabSubject.subscribe((result:any)=>{
       this.selection = "Profile";
