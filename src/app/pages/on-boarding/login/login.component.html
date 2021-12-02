@@ -145,7 +145,7 @@
                         </div>
                         <div class="termsContainer">
                             <mat-checkbox formControlName="termsandConditions"></mat-checkbox>
-                            <div class="termsContent">I agree with the <a class="termsColor">Terms and Conditions</a> and <a class="termsColor">Privacy Policy</a></div>
+                            <div class="termsContent">I agree with the <a (click)="terms()" class="termsColor">Terms and Conditions</a> and <a (click)="privacy()" class="termsColor">Privacy Policy</a></div>
                         </div>
                         <ng-container *ngIf="termsandConditions.invalid && termsandConditions.touched">
                             <mat-error *ngIf="termsandConditions.errors?.required" class="error">{{'Check terms and conditions checkbox'}}</mat-error>
