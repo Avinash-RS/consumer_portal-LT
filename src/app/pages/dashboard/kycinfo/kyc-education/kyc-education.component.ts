@@ -182,6 +182,11 @@ userDetails:any;
     // End of Getting required datas for dropdowns
 
   }
+  adddays(startdate){
+    var result = new Date(startdate);
+    result.setDate(result.getDate() + 1);
+    return result;
+  }
   getEducationDetails(){
     var userID = this.userDetails.userId ? this.userDetails.userId : "";
     this.educationDetails = null;

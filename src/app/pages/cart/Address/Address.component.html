@@ -30,7 +30,7 @@
         <form [formGroup]="addressEntryForm" autocomplete="off" (submit)="addOrUpdateAddress(isEdit)">
         <div class="addressContent">
             <div>
-                <span class="addressTitle">Name</span>
+                <span class="addressTitle">Name <span class="mandatory">*</span></span>
                 <mat-form-field appearance="fill">
                     <input matInput placeholder="Enter Name" formControlName="name">
                 </mat-form-field>
@@ -40,7 +40,7 @@
                 </ng-container>
             </div>
             <div>
-                <span class="addressTitle">Mobile No</span>
+                <span class="addressTitle">Mobile No <span class="mandatory">*</span></span>
                 <mat-form-field appearance="fill">
                     <input type="number" matInput placeholder="Enter Mobile No" formControlName="mobile">
                 </mat-form-field>
@@ -50,7 +50,7 @@
                 </ng-container>
             </div>
             <div class="addressSection">
-                <span class="addressTitle">Address</span>
+                <span class="addressTitle">Address <span class="mandatory">*</span></span>
                 <mat-form-field appearance="fill">
                     <input matInput placeholder="Enter House No, Building, Street, Area" formControlName="addresslines">
                 </mat-form-field>
@@ -60,7 +60,7 @@
                 </ng-container>
             </div>
             <div class="addressDropSection">
-                <span class="addressTitle">State</span>
+                <span class="addressTitle">State <span class="mandatory">*</span></span>
                 <mat-form-field appearance="fill">
                     <mat-select formControlName="state" [compareWith]="stateCompare">
                       <mat-option *ngFor="let stateitem of stateList" [value]="stateitem" (click)="stateIdFetcher(stateitem)">
@@ -74,7 +74,7 @@
             </div>
 
             <div class="addressDropSection">
-                <span class="addressTitle">District / City</span>
+                <span class="addressTitle">District / City <span class="mandatory">*</span></span>
             <mat-form-field appearance="fill">
                 <mat-select formControlName="city" [compareWith]="cityCompare">
                   <mat-option *ngFor="let districtitem of districtList" [value]="districtitem">
@@ -92,7 +92,7 @@
 
            
             <div>
-                <span class="addressTitle">Pincode</span>
+                <span class="addressTitle">Pincode <span class="mandatory">*</span></span>
                 <mat-form-field appearance="fill">
                     <input type="number" maxlength="6" matInput placeholder="Enter Pincode" formControlName="pincode">
                 </mat-form-field>
@@ -102,7 +102,7 @@
                 </ng-container>
             </div>
             <div class="addressDropSection">
-                <span class="addressTitle">Save Address as </span>
+                <span class="addressTitle">Save Address as <span class="mandatory">*</span></span>
                 <mat-form-field appearance="fill">
                     <mat-select formControlName="addressTag" [compareWith]="tagCompare">
                       <mat-option *ngFor="let tagitem of tagList" [value]="tagitem">

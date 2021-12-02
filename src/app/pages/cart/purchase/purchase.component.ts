@@ -7,7 +7,7 @@ import { AppConfigService } from 'src/app/utils/app-config.service';
 import { APP_CONSTANTS } from "src/app/utils/app-constants.service";
 import { UtilityService } from 'src/app/services/utility.service';
 import { MatStepper } from '@angular/material/stepper';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-purchase',
   templateUrl: './purchase.component.html',
@@ -84,19 +84,34 @@ export class PurchaseComponent implements OnInit {
   }
 
   removeAssessment(id) {
-    var params = {
-      "userId": this.userDetails.userId,
-      "cartId": id
-    }
-    this.catalogService.removeFromCart(params).subscribe((response: any) => {
-      if (response.success) {
-        this.toast.success(response.message);
-        this.util.cartSubject.next(true);
-        this.getCart();
-      } else {
-        this.toast.warning('Something went wrong')
+
+    Swal.fire({
+      customClass: {
+        container: 'swalClass',
+      },
+      title: 'Are you sure you want to Remove?',
+      showCancelButton: true,
+      confirmButtonColor: '#ffffff',
+      cancelButtonColor: '#ffffff',
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No',
+    }).then((result) => {
+      if(result.isConfirmed){
+        var params = {
+          "userId": this.userDetails.userId,
+          "cartId": id
+        }
+        this.catalogService.removeFromCart(params).subscribe((response: any) => {
+          if (response.success) {
+            this.toast.success(response.message);
+            this.util.cartSubject.next(true);
+            this.getCart();
+          } else {
+            this.toast.warning('Something went wrong')
+          }
+        })
       }
-    })
+    });
   }
 
 }

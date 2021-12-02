@@ -11,6 +11,7 @@ import { UtilityService } from 'src/app/services/utility.service';
 import * as bcrypt from 'bcryptjs';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { trigger, style, animate, transition } from '@angular/animations';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: "app-userprofile",
@@ -367,21 +368,33 @@ getProfilePercentage(){
     });
   }
   deactivateaccount() {
-    const encryptPass = this.commonService.encrypt(this.closeAccount.get('endPassword').value,this.secretKey)
-    let param = {
-      "email": this.userDetails.email,
-      "password": encryptPass,
-    }
-    if (confirm("You are about to close this account!!!  Are you sure?")) {
-      this.commonService.deactivateAccount(param).subscribe((data: any) => {
-        if (data.success) {
-          this.toast.success(data.message);
-          this.commonService.logout();
-        } else {
-          this.toast.error(data.message);
+    Swal.fire({
+      customClass: {
+        container: 'swalClass',
+      },
+      title: 'You are about to close this account!!!  Are you sure?',
+      showCancelButton: true,
+      confirmButtonColor: '#ffffff',
+      cancelButtonColor: '#ffffff',
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No',
+    }).then((result) => {
+      if(result.isConfirmed) {
+        const encryptPass = this.commonService.encrypt(this.closeAccount.get('endPassword').value,this.secretKey)
+        let param = {
+          "email": this.userDetails.email,
+          "password": encryptPass,
         }
-      })
-    }
+        this.commonService.deactivateAccount(param).subscribe((data: any) => {
+          if (data.success) {
+            this.toast.success(data.message);
+            this.commonService.logout();
+          } else {
+            this.toast.error(data.message);
+          }
+        })
+      }
+    });
   }
 
   changePassword() {
@@ -451,7 +464,7 @@ getProfilePercentage(){
         return false
       }
     }
-    return true
+    return true;
   }
 
   clearInputElement() {
