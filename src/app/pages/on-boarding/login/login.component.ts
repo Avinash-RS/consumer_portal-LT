@@ -12,6 +12,7 @@ import { UtilityService } from 'src/app/services/utility.service';
 import { CookieService } from 'ngx-cookie-service';
 import * as qs from 'querystring';
 import { MatDialog } from '@angular/material/dialog';
+import * as CryptoJS from 'crypto-js';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -141,6 +142,7 @@ export class LoginComponent implements OnInit {
     //this.cookieService.set('isLoggedIn','true')
     if (this.loginForm.valid) {
       const encryptPass = this.commonService.encrypt(this.loginForm.value.password,this.secretKey);
+      const encryptemail = this.commonService.encrypt(this.loginForm.value.email,this.secretKey);
       let loginData = {
         email: this.loginForm.value.email,
         password: encryptPass,
@@ -149,10 +151,17 @@ export class LoginComponent implements OnInit {
       this.commonService.login(loginData).subscribe((data: any) => {
         // console.log(data, 'karthik Data')
         if (data.success) {
-          this.loginForm.reset();
           this.appconfig.setSessionStorage('userDetails', JSON.stringify(data.data));
           this.appconfig.setSessionStorage('token', data.token);
           this.appconfig.setSessionStorage('profileImage', data.data.profileImage);
+          var encryptemail = CryptoJS.AES.encrypt(this.loginForm.value.email.toLowerCase(), this.secretKey.trim()).toString();
+          var encryptPass = CryptoJS.AES.encrypt(this.loginForm.value.password, this.secretKey.trim()).toString();
+          this.loginForm.reset();
+          var portalData = {
+            'queValue':encryptemail,
+            'rpValue':encryptPass
+          }
+          this.appconfig.setLocalStorage('valueData', JSON.stringify(portalData));
           this.util.headerSubject.next(true);
           this.util.cartSubject.next(true);
           this.util.getValue().subscribe((response) => {
