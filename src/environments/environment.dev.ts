@@ -12,8 +12,8 @@ export const environment = {
 
   // Dev base url
   API_BASE_URL: 'https://edgeservice.lntiggnite.com/',  
-  PAYMENT:'https://devpayment.lntiggnite.com' 
-
+  PAYMENT:'https://devpayment.lntiggnite.com',
+  lxp_url:'https://lmsdev.lntiggnite.com/redirection'
 };
 
 /*

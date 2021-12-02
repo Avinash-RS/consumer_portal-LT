@@ -45,6 +45,10 @@ export class MyAssessmentComponent implements OnInit {
     this.getProfilePercentage();
   }
 
+  goToCourse(){
+    var ValueData = JSON.parse(this.appconfig.getLocalStorage('valueData'));
+    window.open(environment.lxp_url+"?queValue="+encodeURIComponent(ValueData.queValue)+'&rpValue='+encodeURIComponent(ValueData.rpValue)+'&dpValue=microsetportal')
+  }
   getmyAssesments(typeData){
     let param = {"userId": this.userDetails.userId, "email": this.userDetails.email, 'type':typeData.tabName}
     this.commonServ.getmyAssesments(param).subscribe((rdata:any)=>{
@@ -85,8 +89,8 @@ export class MyAssessmentComponent implements OnInit {
       type: 'microcert',
       email: this.userDetails.email
     };
-    var emailEncrypt = this.commonServ.encrypt(details.email,this.encryptionKey);
-    var encryptDetail = this.commonServ.encrypt(details,this.encryptionKey);
+    var emailEncrypt = this.commonServ.encrypt(JSON.stringify(details.email),this.encryptionKey);
+    var encryptDetail = this.commonServ.encrypt(JSON.stringify(details),this.encryptionKey);
     let redirectionLink = environment.unifiedReport_URL+"/auth/reports/viewreport/"+  encodeURIComponent(emailEncrypt) + "?details="+ encodeURIComponent(encryptDetail);
     window.open(redirectionLink, '_blank');
     // window.location.href = redirectionLink;
