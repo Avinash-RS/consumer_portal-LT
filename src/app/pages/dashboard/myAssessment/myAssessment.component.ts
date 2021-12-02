@@ -47,7 +47,7 @@ export class MyAssessmentComponent implements OnInit {
 
   goToCourse(){
     var ValueData = JSON.parse(this.appconfig.getLocalStorage('valueData'));
-    window.open("http://localhost:4100/redirection?queValue='"+encodeURIComponent(ValueData.queValue)+'&rpValue='+encodeURIComponent(ValueData.rpValue)+'&dpValue=microsetportal')
+    window.open("http://localhost:4100/redirection?queValue="+encodeURIComponent(ValueData.queValue)+'&rpValue='+encodeURIComponent(ValueData.rpValue)+'&dpValue=microsetportal')
   }
   getmyAssesments(typeData){
     let param = {"userId": this.userDetails.userId, "email": this.userDetails.email, 'type':typeData.tabName}
@@ -89,8 +89,8 @@ export class MyAssessmentComponent implements OnInit {
       type: 'microcert',
       email: this.userDetails.email
     };
-    var emailEncrypt = this.commonServ.encrypt(details.email,this.encryptionKey);
-    var encryptDetail = this.commonServ.encrypt(details,this.encryptionKey);
+    var emailEncrypt = this.commonServ.encrypt(JSON.stringify(details.email),this.encryptionKey);
+    var encryptDetail = this.commonServ.encrypt(JSON.stringify(details),this.encryptionKey);
     window.location.href = environment.unifiedReport_URL+"/auth/reports/viewreport/"+  encodeURIComponent(emailEncrypt) + "?details="+ encodeURIComponent(encryptDetail);
   }
   
