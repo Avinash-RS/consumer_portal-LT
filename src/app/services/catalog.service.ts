@@ -92,4 +92,7 @@ addToCart(params) {
   rescheduleAssessment(param){
     return this.http.post(this.baseurl +'rescheduleAssessment' , param, this.httpOptionsWithToken);
   }
+  userSyncUpLxp(param){
+    return this.http.post(this.baseurl +'userSyncUpLxp' , param, this.httpOptions);
+  }
 }

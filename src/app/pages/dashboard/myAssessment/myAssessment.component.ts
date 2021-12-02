@@ -91,7 +91,9 @@ export class MyAssessmentComponent implements OnInit {
     };
     var emailEncrypt = this.commonServ.encrypt(JSON.stringify(details.email),this.encryptionKey);
     var encryptDetail = this.commonServ.encrypt(JSON.stringify(details),this.encryptionKey);
-    window.location.href = environment.unifiedReport_URL+"/auth/reports/viewreport/"+  encodeURIComponent(emailEncrypt) + "?details="+ encodeURIComponent(encryptDetail);
+    let redirectionLink = environment.unifiedReport_URL+"/auth/reports/viewreport/"+  encodeURIComponent(emailEncrypt) + "?details="+ encodeURIComponent(encryptDetail);
+    window.open(redirectionLink, '_blank');
+    // window.location.href = redirectionLink;
   }
   
   bookSlot(itemdata, index, reSchedule){
