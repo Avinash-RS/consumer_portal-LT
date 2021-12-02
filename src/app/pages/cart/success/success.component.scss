@@ -71,6 +71,15 @@
     > div {
         width: 100%;
         display: flex;
+        align-items: center;
+        padding-bottom: 10px;
+        margin-bottom: 5px;
+        border-bottom: 1px solid #cdcdcd;
+        &:last-child {
+            margin-bottom: 0;
+            border-bottom: 0;
+            padding-bottom: 0;
+        }
         span {
             width: 100%;
             &:first-child {
