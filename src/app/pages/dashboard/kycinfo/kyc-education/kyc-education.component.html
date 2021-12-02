@@ -210,7 +210,7 @@
                                 <label>End Date<span class="mandatory">*</span></label>
                                 <div class="date-relative">
                                     <mat-form-field appearance="fill">
-                                    <input matInput class="input" [min]="getEducationArr.controls[i].get(form_startDate).value ? getEducationArr.controls[i].get(form_startDate).value :minDate" [max]="maxDate"
+                                    <input matInput class="input" [min]="getEducationArr.controls[i].get(form_startDate).value ? getEducationArr.controls[i].get(form_startDate).value:minDate" [max]="maxDate"
                                         [matDatepicker]="picker1" placeholder="DD-MM-YYYY"
                                         [formControlName]="form_endDate">
                                     <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>

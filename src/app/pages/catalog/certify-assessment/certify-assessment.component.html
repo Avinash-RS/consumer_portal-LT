@@ -5,7 +5,7 @@
         <div class="levelsandSkills">
             <!-- <span class="areaName">{{areaData.name}}</span> -->
             <div class="heading1">{{competencyData.name}}</div>
-            <span class="totalAssessments"><em class="icon-Document"></em>{{competencyData.totalAssessment}} Assessments</span>
+            <span class="totalAssessments"><em class="icon-Document"></em>{{competencyData.totalAssessment}} {{competencyData.totalAssessment > 1 ? 'Assessments':'Assessment'}}</span>
             <!-- <div class="heading1 description">Description</div> -->
             <P>{{competencyData.longDescription}}</P>
             <!-- <ul>

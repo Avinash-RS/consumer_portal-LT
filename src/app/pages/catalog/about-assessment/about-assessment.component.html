@@ -356,12 +356,13 @@
             </div>
         <div class="assessmentsArea">
             <div class="heading3">{{aboutArea?.name}}</div>
-            <span class="totalAssessments"><em class="icon-Assessment"></em>{{totalAssessmentCount}} {{aboutArea?.productType == 'course' ? 'Modules' :'Assessments'}}</span>
+            <span class="totalAssessments" *ngIf="aboutArea?.productType == 'course'"><em class="icon-Assessment"></em>{{totalAssessmentCount}} {{totalAssessmentCount > 1 ? 'Modules':'Module'}}</span>
+            <span class="totalAssessments" *ngIf="aboutArea?.productType != 'course'"><em class="icon-Assessment"></em>{{totalAssessmentCount}} {{totalAssessmentCount > 1 ? 'Assessments':'Assessment'}}</span>
             <div class="assessments">
                 <div *ngFor="let competency of competencyList" (click)="openAssessments(competency)">
                     <div>
                         <div class="heading5">{{competency.name}}</div>
-                        <span class="assessmentCount"><em class="icon-Assessment"></em>{{competency?.totalAssessment}} Assessments</span>
+                        <span class="assessmentCount"><em class="icon-Assessment"></em>{{competency?.totalAssessment}} {{competency?.totalAssessment > 1 ? 'Assessments': 'Assessment'}}</span>
                     </div>
                     <p>{{competency?.shortDescription}}</p>
                     <span class="viewDetails">View Details <em class="icon-DownArrow"></em></span>
