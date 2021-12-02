@@ -141,6 +141,7 @@ export class LoginComponent implements OnInit {
     //this.cookieService.set('isLoggedIn','true')
     if (this.loginForm.valid) {
       const encryptPass = this.commonService.encrypt(this.loginForm.value.password,this.secretKey);
+      const encryptemail = this.commonService.encrypt(this.loginForm.value.email,this.secretKey);
       let loginData = {
         email: this.loginForm.value.email,
         password: encryptPass,
@@ -153,6 +154,11 @@ export class LoginComponent implements OnInit {
           this.appconfig.setSessionStorage('userDetails', JSON.stringify(data.data));
           this.appconfig.setSessionStorage('token', data.token);
           this.appconfig.setSessionStorage('profileImage', data.data.profileImage);
+          var portalData = {
+            'queValue':encryptemail,
+            'rpValue':encryptPass
+          }
+          this.appconfig.setLocalStorage('valueData', JSON.stringify(portalData));
           this.util.headerSubject.next(true);
           this.util.cartSubject.next(true);
           this.util.getValue().subscribe((response) => {

@@ -45,6 +45,10 @@ export class MyAssessmentComponent implements OnInit {
     this.getProfilePercentage();
   }
 
+  goToCourse(){
+    var ValueData = JSON.parse(this.appconfig.getLocalStorage('valueData'));
+    window.open("http://localhost:4100/redirection?queValue='"+encodeURIComponent(ValueData.queValue)+'&rpValue='+encodeURIComponent(ValueData.rpValue)+'&dpValue=microsetportal')
+  }
   getmyAssesments(typeData){
     let param = {"userId": this.userDetails.userId, "email": this.userDetails.email, 'type':typeData.tabName}
     this.commonServ.getmyAssesments(param).subscribe((rdata:any)=>{
