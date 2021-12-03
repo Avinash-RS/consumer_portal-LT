@@ -371,7 +371,8 @@ getState_nationalName(){
 savePersonalDetails(apiData){
   this.commonService.postKycUserDetails(apiData).subscribe((result:any)=>{
     if(result.success){
-      this.toast.success(result.message);
+      //this.toast.success(result.message);
+      this.toast.success("Personal details saved successfully");
       this.utilService.kyctabSubject.next('Contact');
     }
     else{
@@ -648,8 +649,8 @@ savePersonalDetails(apiData){
         customClass: {
           container: 'swalClass',
         },
-        title: 'Are you sure you want to continue?',
-        text:'Changes you made will not be saved',
+        title: 'Are you sure you want to exit without saving?',
+        text:' Changes you made may not be saved',
         showCancelButton: true,
         confirmButtonColor: '#ffffff',
         cancelButtonColor: '#ffffff',

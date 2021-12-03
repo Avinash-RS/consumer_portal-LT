@@ -269,7 +269,8 @@ export class UserprofileComponent implements OnInit {
           this.userDetails.firstname = this.addressEntryForm.value.firstname;
           this.userDetails.lastname = this.addressEntryForm.value.lastname;
           this.appconfig.setSessionStorage('userDetails', JSON.stringify(this.userDetails));
-          this.toast.success(data.message);
+          //this.toast.success(data.message);
+          this.toast.success("Profile saved successfully");
           this.getProfilePercentage();
           this.selection = 'KYC';
           if (this.imageURL) {

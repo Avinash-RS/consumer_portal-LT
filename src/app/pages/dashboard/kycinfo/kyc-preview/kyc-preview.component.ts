@@ -707,7 +707,8 @@ patchACkdetails(){
           return this.matDialogOpen();
         }
         else{
-          this.toast.warning(result.message);
+          //this.toast.warning(result.message);
+          this.toast.warning("Please fill all mandatory fields");
         }
       })
       
@@ -818,7 +819,8 @@ patchACkdetails(){
     }
     this.commonService.postKycUserDetails(apidata).subscribe((result:any)=>{
       if(result.success){
-        this.toast.success(result.message);
+        //this.toast.success(result.message);
+        this.toast.success("User details saved successfully");
         this.utilService.percentageSubject.next(true);
         this.router.navigate(['/assessmentHome'])
       }
