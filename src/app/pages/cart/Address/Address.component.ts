@@ -7,7 +7,7 @@ import { CatalogService } from "src/app/services/catalog.service";
 import { UtilityService } from "src/app/services/utility.service";
 import { AppConfigService } from "src/app/utils/app-config.service";
 import { GlobalValidatorsService } from "src/app/validators/global-validators.service";
-
+import { GlobalValidatorService } from 'src/app/services/global-validator.service';
 @Component({
   selector: "app-Address",
   templateUrl: "./Address.component.html",
@@ -33,7 +33,8 @@ export class AddressComponent implements OnInit {
     private gv: GlobalValidatorsService,
     private cartService: CartService,
      private util: UtilityService,public toast: ToastrService,
-    private appconfig: AppConfigService, private appConfig: AppConfigService
+    private appconfig: AppConfigService, private appConfig: AppConfigService,
+    private glovbal_validators: GlobalValidatorService,
   ) {
 
   }
@@ -50,9 +51,9 @@ export class AddressComponent implements OnInit {
   addressFormInitialize() {
     if (this.isEdit) {
       this.addressEntryForm = this.fb.group({
-        name: [this.addressItemData?.name, [Validators.required]],
+        name: [this.addressItemData?.name, [Validators.required , this.glovbal_validators.noWhitespaceValidator]],
         mobile: [this.addressItemData?.mobile, [Validators.required, ]],
-        addresslines: [this.addressItemData?.addressLine1, [Validators.required]],
+        addresslines: [this.addressItemData?.addressLine1, [Validators.required ,this.glovbal_validators.address255(),Validators.min(10)]],
         city: [this.addressItemData?.city, [Validators.required]],
         state: [this.addressItemData?.state, [Validators.required]],
         pincode: [this.addressItemData?.pincode, [Validators.required]],
@@ -61,9 +62,9 @@ export class AddressComponent implements OnInit {
       console.log(this.addressEntryForm)
     } else {
       this.addressEntryForm = this.fb.group({
-        name: ['', [Validators.required]],
+        name: ['', [Validators.required , this.glovbal_validators.noWhitespaceValidator]],
         mobile: ['', [Validators.required]],
-        addresslines: ['', [Validators.required]],
+        addresslines: ['', [Validators.required ,this.glovbal_validators.address255(),Validators.min(10)]],
         city: ['', [Validators.required]],
         state: ['', [Validators.required]],
         pincode: ['', [Validators.required]],

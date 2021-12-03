@@ -130,7 +130,8 @@ export class KycPassportComponent implements OnInit, AfterViewInit,OnDestroy {
   savePassportDetails(apiData){
     this.commonService.postKycUserDetails(apiData).subscribe((result:any)=>{
       if(result.success){
-        this.toast.success(result.message);
+        //this.toast.success(result.message);
+        this.toast.success("Identity details saved successfully");
         this.utilService.kyctabSubject.next('Education');
       }
       else{
@@ -199,8 +200,8 @@ export class KycPassportComponent implements OnInit, AfterViewInit,OnDestroy {
         customClass: {
           container: 'swalClass',
         },
-        title: 'Are you sure you want to continue?',
-        text:'Changes you made will not be saved',
+        title: 'Are you sure you want to exit without saving?',
+        text:' Changes you made may not be saved',
         showCancelButton: true,
         confirmButtonColor: '#ffffff',
         cancelButtonColor: '#ffffff',

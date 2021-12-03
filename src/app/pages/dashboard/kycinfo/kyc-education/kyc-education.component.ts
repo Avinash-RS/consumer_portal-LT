@@ -416,7 +416,8 @@ validSelectedPost() {
     }
     this.commonService.postKycUserDetails(apiData).subscribe((result:any)=>{
       if(result.success){
-        this.toast.success(result.message);
+        //this.toast.success(result.message);
+        this.toast.success("Education details saved successfully");
         this.utilService.percentageSubject.next(true);
         this.utilService.kyctabSubject.next('Preview');
       }
@@ -711,8 +712,8 @@ validSelectedPost() {
         customClass: {
           container: 'swalClass',
         },
-        title: 'Are you sure you want to continue?',
-        text:'Changes you made will not be saved',
+        title: 'Are you sure you want to exit without saving?',
+        text:' Changes you made may not be saved',
         showCancelButton: true,
         confirmButtonColor: '#ffffff',
         cancelButtonColor: '#ffffff',

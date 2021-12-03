@@ -311,7 +311,8 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
   saveContactDetails(apiData){
     this.commonService.postKycUserDetails(apiData).subscribe((result:any)=>{
       if(result.success){
-        this.toast.success(result.message);
+        //this.toast.success(result.message);
+        this.toast.success("Contact details saved successfully");
         this.utilService.kyctabSubject.next('Passport');
       }
       else{
@@ -368,7 +369,7 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
       [this.form_alternate_mobile]: [{value: null, disabled: false}, [RemoveWhitespace.whitespace(), this.glovbal_validators.mobileRegex()]],
       [this.form_email]: [{value: email, disabled: true}, [RemoveWhitespace.whitespace(), this.glovbal_validators.email()]],
       [this.form_personal_email]: [null, [RemoveWhitespace.whitespace(), this.glovbal_validators.email()]],
-      [this.form_present_address_1]: [null, [RemoveWhitespace.whitespace(), this.glovbal_validators.address255()]],
+      [this.form_present_address_1]: [null, [RemoveWhitespace.whitespace(), this.glovbal_validators.address255(),Validators.min(10)]],
       [this.form_personal_email]: [null, [RemoveWhitespace.whitespace(), this.glovbal_validators.email()]],
       // [this.form_present_address_2]: [null, [RemoveWhitespace.whitespace(), this.glovbal_validators.address255()]],
       // [this.form_present_address_3]: [null, [RemoveWhitespace.whitespace(), this.glovbal_validators.address255()]],
@@ -377,7 +378,7 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
       [this.form_present_region]: [null,],
       [this.form_present_zip_code]: [null, [RemoveWhitespace.whitespace(), this.glovbal_validators.zipOnly()]],
       [this.form_same_as_checkbox]: [null],
-      [this.form_permanent_address_1]: [null, [RemoveWhitespace.whitespace(), this.glovbal_validators.address255()]],
+      [this.form_permanent_address_1]: [null, [RemoveWhitespace.whitespace(), this.glovbal_validators.address255(),Validators.min(10)]],
       // [this.form_permanent_address_2]: [null, [RemoveWhitespace.whitespace(), this.glovbal_validators.address255()]],
       // [this.form_permanent_address_3]: [null, [RemoveWhitespace.whitespace(), this.glovbal_validators.address255()]],
       [this.form_permanent_city]: [null,],
@@ -472,8 +473,8 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
         customClass: {
           container: 'swalClass',
         },
-        title: 'Are you sure you want to continue?',
-        text:'Changes you made will not be saved',
+        title: 'Are you sure you want to exit without saving?',
+        text:' Changes you made may not be saved',
         showCancelButton: true,
         confirmButtonColor: '#ffffff',
         cancelButtonColor: '#ffffff',

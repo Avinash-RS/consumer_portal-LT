@@ -62,6 +62,7 @@
                     <div class="form-error" *ngIf="present_address_1.invalid && present_address_1.touched">
                         <div *ngIf="present_address_1.errors?.required">Address is Required</div>
                         <div *ngIf="present_address_1.errors?.address255">Maximum of 255 Characters only allowed.</div>
+                        <div *ngIf="present_address_1.errors?.min">Minimum of 10 Characters required.</div>
                         <div *ngIf="present_address_1.errors?.address255">Allowed special characters <span style="font-size: 13px;"> - . , :  ;  / .</span></div>
                     </div>
                 </div>
@@ -170,6 +171,7 @@
         <div class="form-error" *ngIf="permanent_address_1.invalid && permanent_address_1.touched">
             <div *ngIf="permanent_address_1.errors?.required">Address 1 is Required</div>
             <div *ngIf="permanent_address_1.errors?.address255">Maximum of 255 Characters only allowed.</div>
+            <div *ngIf="permanent_address_1.errors?.min">Minimum of 10 Characters required.</div>
             <div *ngIf="permanent_address_1.errors?.address255">Allowed special characters <span style="font-size: 13px;"> - . , :  ;  / .</span></div>
 </div>
     </div>
