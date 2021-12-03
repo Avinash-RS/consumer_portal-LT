@@ -103,7 +103,8 @@ export class ForgotPasswordComponent implements OnInit {
           this.toast.success(resp.message)
           this.displayController("mailSent")
         }else{
-          this.toast.error(resp.message)
+          //this.toast.error(resp.message);
+          this.toast.error("Email id does not exist");
         }
       })
     }else{
@@ -124,7 +125,7 @@ export class ForgotPasswordComponent implements OnInit {
             this.toast.success(resp.message)
             this.displayController("pwdSuccess");
           }else{
-            this.toast.error(resp.message)
+            this.toast.error(resp.message);
           }
         })  
     }else{

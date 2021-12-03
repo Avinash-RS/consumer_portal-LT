@@ -53,10 +53,10 @@ export class AddressComponent implements OnInit {
       this.addressEntryForm = this.fb.group({
         name: [this.addressItemData?.name, [Validators.required , this.glovbal_validators.noWhitespaceValidator]],
         mobile: [this.addressItemData?.mobile, [Validators.required, ]],
-        addresslines: [this.addressItemData?.addressLine1, [Validators.required ,this.glovbal_validators.address255(),Validators.min(10)]],
+        addresslines: [this.addressItemData?.addressLine1, [Validators.required  ,this.glovbal_validators.address255()]],
         city: [this.addressItemData?.city, [Validators.required]],
         state: [this.addressItemData?.state, [Validators.required]],
-        pincode: [this.addressItemData?.pincode, [Validators.required]],
+        pincode: [this.addressItemData?.pincode, [Validators.required,this.glovbal_validators.zipOnly()]],
         addressTag: [this.addressItemData?.addressTag, [Validators.required]],
       });
       console.log(this.addressEntryForm)
@@ -64,10 +64,10 @@ export class AddressComponent implements OnInit {
       this.addressEntryForm = this.fb.group({
         name: ['', [Validators.required , this.glovbal_validators.noWhitespaceValidator]],
         mobile: ['', [Validators.required]],
-        addresslines: ['', [Validators.required ,this.glovbal_validators.address255(),Validators.min(10)]],
+        addresslines: ['', [Validators.required, this.glovbal_validators.address255()]],
         city: ['', [Validators.required]],
         state: ['', [Validators.required]],
-        pincode: ['', [Validators.required]],
+        pincode: ['', [Validators.required,this.glovbal_validators.zipOnly()]],
         addressTag: ['', [Validators.required]],
       });
     }

@@ -392,8 +392,9 @@ getProfilePercentage(){
             this.commonService.logout();
           } else {
             this.toast.error(data.message);
+            this.closeAccountFormInitialize();
           }
-        })
+        });
       }
     });
   }
