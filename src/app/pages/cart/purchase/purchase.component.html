@@ -23,7 +23,7 @@
                                 </figure>
                                 <div class="cartContent">
                                     <div class="headingPrice">
-                                        <div class="heading3">{{cart.assessmentDetails.name}} <span>{{cart?.competencyDetails?.levelName}}</span></div>
+                                        <div class="heading3">{{cart.assessmentDetails.name}} <span *ngIf="cart.productType !='course'">{{cart?.competencyDetails?.levelName}}</span></div>
                                         <div class="value"><em class="icon-Rupee"></em>{{cart.assessmentDetails.is_free?"Free":cart.assessmentDetails.sellingPrice}}</div>
                                     </div>
                                     <div class="soldby">
