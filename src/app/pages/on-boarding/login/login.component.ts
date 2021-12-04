@@ -144,7 +144,6 @@ export class LoginComponent implements OnInit {
     //this.cookieService.set('isLoggedIn','true')
     if (this.loginForm.valid) {
       const encryptPass = this.commonService.encrypt(this.loginForm.value.password,this.secretKey);
-      const encryptemail = this.commonService.encrypt(this.loginForm.value.email,this.secretKey);
       let loginData = {
         email: this.loginForm.value.email,
         password: encryptPass,
@@ -157,7 +156,6 @@ export class LoginComponent implements OnInit {
           this.appconfig.setSessionStorage('token', data.token);
           this.appconfig.setSessionStorage('profileImage', data.data.profileImage);
           var encryptemail = CryptoJS.AES.encrypt(this.loginForm.value.email.toLowerCase(), this.secretKey.trim()).toString();
-          var encryptPass = CryptoJS.AES.encrypt(this.loginForm.value.password, this.secretKey.trim()).toString();
           this.loginForm.reset();
           var portalData = {
             'queValue':encryptemail,
