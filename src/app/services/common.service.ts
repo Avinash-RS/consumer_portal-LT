@@ -165,7 +165,7 @@ export class CommonService {
   }
   encrypt(data,encryptionKey) {
     try {
-      return CryptoJS.AES.encrypt(data, encryptionKey).toString();
+      return CryptoJS.AES.encrypt(data, encryptionKey.trim()).toString();
     } catch (e) {
       console.log(e);
       return data;
