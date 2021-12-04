@@ -15,7 +15,7 @@
         opacity: 1;
     }
     .mat-form-field-appearance-outline {
-        &.mat-form-field-invalid {
+        &.mat-form-field-invalid.ng-touched {
             .mat-form-field-outline-thick {
                 color: $primary-red !important;
             }   

@@ -61,9 +61,8 @@
                     </mat-form-field>
                     <div class="form-error" *ngIf="present_address_1.invalid && present_address_1.touched">
                         <div *ngIf="present_address_1.errors?.required">Address is Required</div>
-                        <div *ngIf="present_address_1.errors?.address255">Maximum of 255 Characters only allowed.</div>
-                        <div *ngIf="present_address_1.errors?.min">Minimum of 10 Characters required.</div>
-                        <div *ngIf="present_address_1.errors?.address255">Allowed special characters <span style="font-size: 13px;"> - . , :  ;  / .</span></div>
+                        <div *ngIf="present_address_1.errors?.address255">Minimum of 10 and Maximum of 255 Characters only allowed.</div>
+                        <!-- <div *ngIf="present_address_1.errors?.address255">Allowed special characters <span style="font-size: 13px;"> - . , :  ;  / .</span></div> -->
                     </div>
                 </div>
             </div>
@@ -148,7 +147,7 @@
                     </mat-form-field>
                     <div class="form-error" *ngIf="present_zip_code?.invalid && present_zip_code?.touched">
                         <div *ngIf="present_zip_code?.errors?.required">Present zip code is Required</div>
-                        <div *ngIf="present_zip_code?.errors?.zipOnly">Should be numberic only and should be exact 6 digits</div>
+                        <div *ngIf="present_zip_code?.errors?.zipOnly">Should be numeric only and should be exact 6 digits</div>
                     </div>
                 </div>
      
@@ -170,9 +169,8 @@
             </mat-form-field>
         <div class="form-error" *ngIf="permanent_address_1.invalid && permanent_address_1.touched">
             <div *ngIf="permanent_address_1.errors?.required">Address 1 is Required</div>
-            <div *ngIf="permanent_address_1.errors?.address255">Maximum of 255 Characters only allowed.</div>
-            <div *ngIf="permanent_address_1.errors?.min">Minimum of 10 Characters required.</div>
-            <div *ngIf="permanent_address_1.errors?.address255">Allowed special characters <span style="font-size: 13px;"> - . , :  ;  / .</span></div>
+            <div *ngIf="permanent_address_1.errors?.address255">Minimum of 10 and Maximum of 255 Characters only allowed.</div>
+            <!-- <div *ngIf="permanent_address_1.errors?.address255">Allowed special characters <span style="font-size: 13px;"> - . , :  ;  / .</span></div> -->
 </div>
     </div>
 </div>
@@ -255,7 +253,7 @@
         </mat-form-field>
         <div class="form-error" *ngIf="permanent_zip_code?.invalid && permanent_zip_code?.touched">
             <div *ngIf="permanent_zip_code?.errors?.required">Permanent zip code is Required</div>
-            <div *ngIf="permanent_zip_code?.errors?.zipOnly">Should be numberic only and should be exact 6 digits</div>
+            <div *ngIf="permanent_zip_code?.errors?.zipOnly">Should be numeric only and should be exact 6 digits</div>
         </div>
     </div>
 </div>

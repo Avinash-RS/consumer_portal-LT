@@ -53,6 +53,7 @@ export class SuccessComponent implements OnInit {
   competencyName: any;
   orderId: any;
   lxpCheck:boolean = false;
+  courseId = [];
   // activate: boolean = false;
   // activeDate: string;
   // activeTime: any;
@@ -75,15 +76,18 @@ export class SuccessComponent implements OnInit {
       if (params.orderId) {
         postData.order_id = params.orderId;
         this.catalog.getOrder(postData).subscribe((data: any) => {
+          this.courseId = [];
           this.orderlist = data.data;
           this.orderlist.forEach(element => {
             if(element?.productType == 'course'){
               this.lxpCheck = true;
+              this.courseId.push(element.cid);
             }
           });
           if(this.lxpCheck){
             const apiParam = {
-              "username": this.userDetails.email
+              "username": this.userDetails.email,
+              "courseId" :this.courseId
               }
             this.catalog.userSyncUpLxp(apiParam).subscribe((result:any)=>{
             });

@@ -127,7 +127,8 @@ export class LoginComponent implements OnInit {
       };
       this.commonService.signup(signupData).subscribe((data: any) => {
         if (data.success) {
-          this.registerForm.reset();
+          this.registerForm.reset()
+          this.registerForm.markAsUntouched();
           // this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: 0 });
           this.toast.success(data.message);
         } else {

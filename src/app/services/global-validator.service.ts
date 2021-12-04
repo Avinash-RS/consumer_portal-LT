@@ -81,7 +81,7 @@ export class GlobalValidatorService {
     }
 
     address255() {
-      const address255: RegExp = /^([a-zA-Z0-9_ \-,.:;/\r\n|\r|\n/]){0,255}$/;
+      const address255: RegExp = /^([a-zA-Z0-9_ \-,.:;/\r\n|\r|\n/]){10,255}$/;
       return this.regexValidator(address255, {address255: true});
     }
 

@@ -57,8 +57,7 @@
                 </mat-form-field>
                 <ng-container *ngIf="addresslines.invalid && addresslines.touched">
                     <mat-error *ngIf="addresslines.errors?.required" class="error">{{' Address is required'}}</mat-error>
-                    <mat-error *ngIf="addresslines.errors?.address255" class="error">{{'Maximum of 255 Characters only allowed.'}}</mat-error>
-                    <mat-error *ngIf="addresslines.errors?.min" class="error">{{'Minimum of 10 Characters required.'}}</mat-error>
+                    <mat-error *ngIf="addresslines.errors?.address255" class="error">{{'Minimum of 10 and Maximum of 255 Characters only allowed.'}}</mat-error>
                 </ng-container>
             </div>
             <div class="addressDropSection">
@@ -100,7 +99,7 @@
                 </mat-form-field>
                 <ng-container *ngIf="pincode.invalid && pincode.touched">
                     <mat-error *ngIf="pincode.errors?.required" class="error">{{' Pincode is required'}}</mat-error>
-                    <!-- <mat-error *ngIf="pincode.errors?.maxLength" class="error">{{' Pincode is required'}}</mat-error> -->
+                    <mat-error *ngIf="pincode.errors?.zipOnly" class="error">{{'Should be numeric only and should be exact 6 digits'}}</mat-error>
                 </ng-container>
             </div>
             <div class="addressDropSection">
