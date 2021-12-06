@@ -1,10 +1,10 @@
 <section class="assessmentSection">
     <div class="container">
         <div class="heading2">Industry Leader in Engineering</div>
-        <nav class="mainTab">
+        <!-- <nav class="mainTab">
             <a (click)="getDomain('assessment')" [ngClass]="productType == 'assessment' ? 'active' :''">Assessments</a>
             <a (click)="getDomain('course')" [ngClass]="productType == 'course' ? 'active' :''">Courses</a>
-        </nav>
+        </nav> -->
         <div class="assessmentArea">
             <div class="filterSection">
                 <nav>
@@ -12,6 +12,11 @@
                         <a [ngClass]="tab.isSelected ? 'active': '' " (click)="getArea(tab.cid)">{{tab.name}}</a>
                     </ng-container>
                 </nav>
+                <div class="btn-group">
+                    <button class="product-btn" (click)="getDomain('all')" [ngClass]="productType == 'all' ? 'active' :''">All</button>
+                    <button class="product-btn" (click)="getDomain('course')" [ngClass]="productType == 'course' ? 'active' :''">Courses</button>
+                    <button class="product-btn" (click)="getDomain('assessment')" [ngClass]="productType == 'assessment' ? 'active' :''">Assessments</button>
+                </div>
                 <!-- <button class="filter"><em class="icon-Filter"></em><span>Filters</span></button> Dont Delete this line -->
             </div>
             <div class="assessmentList" [@listAnimation]="areaCards.length">
@@ -45,11 +50,16 @@
                 </ng-container>
                 <ng-container *ngIf ="areaCards?.length > 0">
                     <ng-container *ngFor="let cards of areaCards">
-                        <div class="list" (click)="aboutAssessment(cards.cid)">
-                            <figure>
-                                <img [src] = "cards.image.url" alt="" />
-                                <!-- <button class="topRated">Top Rated</button> Dont Delete this line -->
-                            </figure>
+                        <div class="list" (click)="aboutAssessment(cards.cid ,cards.productType)">
+                            <div class="figWrapper">
+                                <figure>
+                                    <img [src] = "cards.image.url" alt="" />
+                                    <!-- <button class="topRated">Top Rated</button> Dont Delete this line -->
+                                </figure>
+                                <div class="previewRibbon">
+                                    <span [ngClass]="cards.productType == 'course' ? 'coursetag':''">{{cards.productType | uppercase}}</span>
+                                </div>
+                            </div>
                             <div class="listDescription">
                                 <!-- <div class="heart"><em class="icon-Favorite"></em></div> Dont Delete this line-->
                                 <div class="headings">
