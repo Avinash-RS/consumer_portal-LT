@@ -112,7 +112,7 @@ export class AssessmentsListComponent implements OnInit {
     this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.home, { fromPage: "viewAll", selectedTab: this.selectedTab });
   }
 
-  aboutAssessment(cid) {
-    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutAssessment, { id: cid, selectedTab: this.selectedTab ,productType : this.productType});
+  aboutAssessment(cid,productType) {
+    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutAssessment, { id: cid, selectedTab: this.selectedTab ,productType : productType});
   }
 }
