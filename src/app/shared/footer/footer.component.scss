@@ -135,8 +135,20 @@ footer {
         li {
             display: inline-block;
             border-right: 1px solid $greyColor;
-            padding-right: 0.312em;
-            margin-right: 0.312em;
+            padding-right: 0.313em;
+            margin-right: 0.313em;
+            a{
+                display: flex;
+                align-items: center ;
+                &:hover {
+                    em {
+                        color: $primaryColor;
+                    }
+                }
+                em{
+                    margin-right: 5px;
+                }
+            }
             &:last-child {
                 border-right: none;
                 padding-right: 0;
@@ -152,6 +164,9 @@ footer {
         color: $lightGrey;
         a {
             &:hover {
+                em {
+                    color: $primaryColor;
+                }
                 color: $primaryColor;
             }
         }
