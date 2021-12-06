@@ -31,7 +31,7 @@ export class AssessmentsListComponent implements OnInit {
   blobToken: string = environment.blobKey;
   public destroyed = new Subject<any>();
   subscriberdata: any;
-  productType:string = 'assessment';
+  productType:string = 'all';
   constructor(private _loading: LoadingService,
               private router: Router,
               private catalogService: CatalogService,
@@ -42,7 +42,7 @@ export class AssessmentsListComponent implements OnInit {
   ngOnInit() {
     if (this.route.snapshot.queryParams.selectedTab) {
       this.fromTab = this.route.snapshot.queryParams.selectedTab;
-      this.productType = this.route.snapshot.queryParams.productType ? this.route.snapshot.queryParams.productType : 'assessment';
+      this.productType = this.route.snapshot.queryParams.productType ? this.route.snapshot.queryParams.productType : 'all';
       this.viewMore = false
     }
     this.getDomain(this.productType);
