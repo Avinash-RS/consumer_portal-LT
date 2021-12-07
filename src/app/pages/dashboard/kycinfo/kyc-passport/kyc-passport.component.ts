@@ -40,6 +40,9 @@ export class KycPassportComponent implements OnInit, AfterViewInit,OnDestroy {
   getAllStates: any;
   nonMergedPersonalDetails: any;
   userDetails:any;
+  inputvalue;
+  passportvalue;
+  maxDate;
 
   constructor(
     private fb: FormBuilder,
@@ -53,6 +56,7 @@ export class KycPassportComponent implements OnInit, AfterViewInit,OnDestroy {
 
   ngOnInit() {
     this.userDetails =  JSON.parse(sessionStorage.getItem('userDetails'));
+    this.maxDate = new Date();
     this.formInitialize();
     this.getPassportData();
   }

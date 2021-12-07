@@ -89,7 +89,7 @@ export class PurchaseComponent implements OnInit {
       customClass: {
         container: 'swalClass',
       },
-      title: 'Are you sure you want to Remove?',
+      title: 'Are you sure you want to remove the item from cart?',
       showCancelButton: true,
       confirmButtonColor: '#ffffff',
       cancelButtonColor: '#ffffff',

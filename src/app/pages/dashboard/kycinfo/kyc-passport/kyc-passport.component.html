@@ -25,7 +25,7 @@
                         <label>Passport Number</label>
                         <mat-form-field appearance="fill">
                         <input matInput placeholder="Enter here" type="text" 
-                        [formControlName]="form_passportNo">
+                        [formControlName]="form_passportNo" [ngModel]="passportvalue" (ngModelChange)="passportvalue = $event.toUpperCase()">
                     </mat-form-field>
                         <div class="form-error" *ngIf="passportNo?.invalid && passportNo?.touched">
                             <div *ngIf="passportNo?.errors?.required">Passport no is Required</div>
@@ -40,7 +40,7 @@
                     <div class="date-relative">
 
                             <mat-form-field appearance="fill">
-                                <input matInput [matDatepicker]="Issuepicker" [formControlName]="form_passportDateOfIssue" placeholder="DD-MM-YYYY">
+                                <input matInput [matDatepicker]="Issuepicker" [formControlName]="form_passportDateOfIssue" placeholder="DD-MM-YYYY" [max]="maxDate">
                                 <mat-datepicker-toggle matSuffix [for]="Issuepicker" ></mat-datepicker-toggle>
                                 <mat-datepicker #Issuepicker></mat-datepicker>
                               </mat-form-field>
@@ -54,7 +54,7 @@
                     <div class="date-relative">
                         <mat-form-field appearance="fill">
                         <input matInput class="input"  [matDatepicker]="Expirypicker" 
-                            placeholder="DD-MM-YYYY" [formControlName]="form_passportExpireDate">
+                            placeholder="DD-MM-YYYY" [formControlName]="form_passportExpireDate" [min]="doi.value">
                         <mat-datepicker-toggle matSuffix [for]="Expirypicker"></mat-datepicker-toggle>
                         <mat-datepicker #Expirypicker></mat-datepicker>
                     </mat-form-field>
@@ -75,18 +75,18 @@
                 </mat-form-field>
                     <div class="form-error" *ngIf="aadhar?.invalid && aadhar?.touched">
                         <div *ngIf="aadhar?.errors?.required">Aadhaar No. is Required</div>
-                        <div *ngIf="aadhar?.errors?.aadhaar">Aadhaar No. should be numberic only and should be exact 12
+                        <div *ngIf="aadhar?.errors?.aadhaar">Aadhaar No. should be numeric only and should be exact 12
                             digits</div>
                     </div>
                 </div>
                 <div class="overall-input-wrapper">
                     <label>PAN No.</label>
                     <mat-form-field appearance="fill">
-                        <input matInput placeholder="Enter here"  type="text" [formControlName]="form_pan">
+                        <input matInput placeholder="Enter here"  type="text" [formControlName]="form_pan" [ngModel]="inputvalue" (ngModelChange)="inputvalue = $event.toUpperCase()">
                     </mat-form-field>
                     <div class="form-error" *ngIf="pan?.invalid && pan?.touched">
                         <div *ngIf="pan?.errors?.required">PAN No. is Required</div>
-                        <div *ngIf="pan?.errors?.panNo">PAN No. should be alpha numberic and should be 10
+                        <div *ngIf="pan?.errors?.panNo">PAN No. should be alpha numeric and should be 10
                             characters</div>
                     </div>
                 </div>

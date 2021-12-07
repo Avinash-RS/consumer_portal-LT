@@ -1,67 +1,22 @@
-<ng-container *ngIf="aboutArea?.productType != 'course'">
-    <section class="areaDetail">
-        <div class="detailBanner">
-            <figure>
-                <img [src] = "bannerImage" alt="" />
-            </figure>
-            <div class="detailBannerPosition">
-                <div class="container">
-                    <ul>
-                        <a href="/catalog/catalogHome?fromPage=viewAll&selectedTab={{aboutArea?.parentId}}"><li>{{aboutArea?.domainName}}<em class="icon-RightArrow"></em></li></a>
-                        <li *ngIf = '!showAssesment'>{{aboutArea?.name}}</li>
-                        <li *ngIf = 'showAssesment'><a href = "/catalog/aboutAssessment?id={{competencyData?.parentId}}&selectedTab=All">{{aboutArea?.name}}</a><em class="icon-RightArrow"></em></li>
-                        <li *ngIf = "showAssesment">{{competencyData?.name}}</li>
-                    </ul>
-                    <div class="bannerDescription">
-                        <div class="assessmentArea">
-                            <span class="heading1">{{aboutArea?.name}}</span>
-                            <p>{{ (aboutArea?.shortDescription.length > 250)? (aboutArea?.shortDescription | slice:0:250)+'...':(aboutArea?.shortDescription) }}</p>
-                            <div>
-                                <!-- <div>
-                                    <p>Rating</p>
-                                    <div class="ratingStar">
-                                        <em class="icon-Star"></em>
-                                        <em class="icon-Star"></em>
-                                        <em class="icon-Star"></em>
-                                        <em class="icon-Star"></em>
-                                        <em class="icon-Star"></em>
-                                    </div>
-                                </div> -->
-                                <div>
-                                    <p>Skill Level</p>
-                                    <span><em class="icon-Level2"></em> Intermediate</span>
-                                </div>
-                                <!-- <div>
-                                    <p>Duration</p>
-                                    <span><em class="icon-Time"></em>{{aboutArea?.totalDuration}}h</span>
-                                </div> -->
-                                <div>
-                                    <p>{{'No. of Assessments '}}</p>
-                                    <span><em class="icon-Document"></em> {{totalAssessmentCount}}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="assessmentHighlights">
-                            <div class="heading6">Assessments Highlights</div>
-                            <ul>
-                                <li><em class="icon-Globe"></em> 100% online Assessments</li>
-                                <li><em class="icon-Badge"></em> Certificate of completion</li>
-                                <li><em class="icon-Portfolio"></em>Job ready portfolio</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-        <!-- Sticky Content -->
-        <!-- <div class="stickyBar" [ngClass]="{'sticky' : isSticky}">
+<section class="areaDetail">
+    <div class="detailBanner">
+        <figure>
+            <img [src] = "bannerImage" alt="" />
+        </figure>
+        <div class="detailBannerPosition">
             <div class="container">
-                <div class="heading3" matTooltipClass="tooltipClass" matTooltip="{{aboutArea?.name}}">{{aboutArea?.name}}</div>
-                <div class="detailBannerPosition bannerDescription">
+                <ul>
+                    <a href="/catalog/catalogHome?fromPage=viewAll&selectedTab={{aboutArea?.parentId}}"><li>{{aboutArea?.domainName}}<em class="icon-RightArrow"></em></li></a>
+                    <li *ngIf = '!showAssesment'>{{aboutArea?.name}}</li>
+                    <li *ngIf = 'showAssesment'><a href = "/catalog/aboutAssessment?id={{competencyData?.parentId}}&selectedTab=All">{{aboutArea?.name}}</a><em class="icon-RightArrow"></em></li>
+                    <li *ngIf = "showAssesment">{{competencyData?.name}}</li>
+                </ul>
+                <div class="bannerDescription">
                     <div class="assessmentArea">
+                        <span class="heading1">{{aboutArea?.name}}</span>
+                        <p>{{ (aboutArea?.shortDescription.length > 250)? (aboutArea?.shortDescription | slice:0:250)+'...':(aboutArea?.shortDescription) }}</p>
                         <div>
-                            <div>
+                            <!-- <div>
                                 <p>Rating</p>
                                 <div class="ratingStar">
                                     <em class="icon-Star"></em>
@@ -70,281 +25,86 @@
                                     <em class="icon-Star"></em>
                                     <em class="icon-Star"></em>
                                 </div>
-                            </div>
+                            </div> -->
                             <div>
                                 <p>Skill Level</p>
                                 <span><em class="icon-Level2"></em> Intermediate</span>
                             </div>
-                            <div>
+                            <!-- <div>
                                 <p>Duration</p>
                                 <span><em class="icon-Time"></em>{{aboutArea?.totalDuration}}h</span>
-                            </div>
+                            </div> -->
                             <div>
-                                <p>No. of Assessments</p>
+                                <p>{{aboutArea?.productType == 'course' ? 'No. of Modules' :'No. of Assessments '}}</p>
                                 <span><em class="icon-Document"></em> {{totalAssessmentCount}}</span>
                             </div>
                         </div>
                     </div>
+                    <div class="assessmentHighlights" *ngIf="aboutArea?.productType != 'course' ">
+                        <div class="heading6">Assessments Highlights</div>
+                        <ul>
+                            <li><em class="icon-Globe"></em> 100% online Assessments</li>
+                            <li><em class="icon-Badge"></em> Certificate of completion</li>
+                            <li><em class="icon-Portfolio"></em>Job ready portfolio</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div> -->
-        <!-- Sticky Content Ends -->
-    
-        <div class="areaDetailDescription">
-            <div class="container d-flex">
-                <div class="descriptionSection">
-                    <!--<div class="achieve">
-                        <div class="heading4">What you will achieve</div>
-                         <ul>
-                            <li> -->
-                                <!-- <em class="icon-checked"></em> 
-                                <p>{{aboutArea?.contentAchieve}}</p>-->
-                            <!--</li>
-                         </ul> -->
-                    <!-- </div>
-                    <div class="requirements require">
-                        <div class="heading4">Requirements</div>
-                        <p>{{aboutArea?.contentRequirement}}</p>
-                    </div> -->
-                    <!-- <div class="description">
-                        <span class="heading4">Description</span>
-                        <div [ngClass]="{'limitTextHeight': isReadMore}">
-                            <p>{{aboutArea?.contentDescription}}</p>
-                        </div>
-                        <button *ngIf="aboutArea?.contentDescription.length > 370" type="button" (click)="showText()">
-                            {{ isReadMore ? 'Show More': 'Show Less' }} <em class="icon-DownArrow"></em>
-                        </button>
-                    </div> -->
-                    
-        <div *ngIf="aboutArea?.cid==='A0004'">
-            <div class="requirements pecialization">
-                <div class="heading4">Specialization Areas</div>
-                <br>
-                <div class="heading5">Construction Engineering</div>
-                <p>Construction engineering is a professional discipline that deals with the designing, planning, construction and management of infrastructures such as roads, tunnels, bridges, airports, railroads, facilities, buildings, dams, utilities and other projects</p>
-            </div>
-            <div class="requirements">
-                <div class="heading5">Geotechnical Engineering</div>
-                <p>Geotechnical engineering, also known as geotechnics, is the branch of civil engineering concerned with the engineering behavior of earth materials. It uses the principles of soil mechanics and rock mechanics for the solution of its respective engineering problems. It also relies on knowledge of geology, hydrology, geophysics, and other related sciences.</p>
-            </div>
-            
-            <div class="requirements">
-                <div class="heading5">Hydraulics & Water Resources</div>
-                <p>Hydraulic engineering as a sub-discipline of civil engineering is concerned with the flow and conveyance of fluids, principally water and sewage. One feature of these systems is the extensive use of gravity as the motive force to cause the movement of the fluids. This area of civil engineering is intimately related to the design of bridges, dams, channels, canals, and levees, and to both sanitary and environmental engineering.</p>
-    <br>
-                <p>Water Resource Engineering is a specific kind of civil engineering that involves the design of new systems and equipment that help manage human water resources. Some of the areas Water Resource Engineers touch on are water treatment facilities, underground wells, and natural springs.</p>
-            </div>
-            <div class="requirements">
-                <div class="heading5">Transportation Engineering</div>
-                <p>Transportation engineering or transport engineering is the application of technology and scientific principles to the planning, functional design, operation and management of facilities for any mode of transportation in order to provide for the safe, efficient, rapid, comfortable, convenient, economical, and environmentally compatible movement of people and goods transport.</p>
-            </div>
-            <div class="requirements">
-                <div class="heading5">Environmental Engineering</div>
-                <p>Environmental engineering is a job type that is a professional engineering discipline and takes from broad scientific topics like chemistry, biology, ecology, geology, hydraulics, hydrology, microbiology, and mathematics to create solutions that will protect and also improve the health of living organisms and improve the quality of the environment. Environmental engineering is a sub-discipline of civil engineering and chemical engineering.</p>
-            </div>
-            <div class="requirements">
-                <div class="heading5">Structural Engineering</div>
-                <p>Structural engineering is a sub-discipline of civil engineering in which structural engineers are trained to design the 'bones and muscles' that create the form and shape of man-made structures. Structural engineers also must understand and calculate the stability, strength, rigidity and earthquake-susceptibility of built structures for buildings and nonbuilding structures. The structural designs are integrated with those of other designers such as architects and building services engineer and often supervise the construction of projects by contractors on site. They can also be involved in the design of machinery, medical equipment, and vehicles where structural integrity affects functioning and safety.</p>
-            </div>
-    
-            <p ><b><span class="heading4" style="display: inline-block; margin-bottom: 15px;">Job
-                Sectors/Projects</span></b></p>
-                
-                <table class="sectorProject" border="1" cellspacing="0" cellpadding="0">
-                 <tbody><tr >
-                  <td width="119" valign="top" >
-                  <p ><b>Role</b></p>
-                  </td>
-                  <td >
-                  <p ><b>Site Engineer</b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p><b>Design Engineer</b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p ><b>Planning Engineer</b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                      <p ><b>Materials Engineer</b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p ><b>Quality Engineer</b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p ><b>Supply Chain</b></p>
-                  </td>
-                 </tr>
-                 <tr >
-                  <td width="119" valign="top" >
-                  <p ><b>Construction<br>
-                  ( Buildings, Factories etc)</b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p ><!--[if !supportLists]--><span ><span class="icon-checked"></span></span><!--[endif]--><b></b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p ><b></b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p ><span class="icon-checked"></span><!--[endif]--><b></b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p ><b></b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p ><b></b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p ><b></b></p>
-                  </td>
-                 </tr>
-                 <tr style="mso-yfti-irow:2">
-                  <td width="119" valign="top" >
-                  <p ><b>Environmental<br>
-                  Engineering</b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p ><!--[if !supportLists]--><span ><span class="icon-checked"></span></span><!--[endif]--><b></b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p><span class="icon-checked"></span><!--[endif]--><b></b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p ><!--[if !supportLists]--><span ><span class="icon-checked"></span></span><!--[endif]--><b></b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p ><b></b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p><b></b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p><b></b></p>
-                  </td>
-                 </tr>
-                 <tr>
-                  <td width="119" valign="top" >
-                  <p ><b>Water (Dams, Canals, Irrigation)</b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p ><!--[if !supportLists]--><span ><span class="icon-checked"></span></span><!--[endif]--><b></b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p ><!--[if !supportLists]--><span ><span class="icon-checked"></span></span><!--[endif]--><b></b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p ><b></b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p ><b></b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p ><b></b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p ><b></b></p>
-                  </td>
-                 </tr>
-                 <tr style="mso-yfti-irow:4">
-                  <td width="119" valign="top" >
-                  <p ><b>Structural</b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p ><b></b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p ><!--[if !supportLists]--><span ><span class="icon-checked"></span></span><!--[endif]--><b></b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p ><b></b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p ><b></b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p ><b></b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p ><b></b></p>
-                  </td>
-                 </tr>
-                 <tr style="mso-yfti-irow:5">
-                  <td width="119" valign="top" >
-                  <p ><b>Transportation<br>
-                  (Roads, Railway, Airports, Harbours, Tunnels, Docks)</b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p ><b></b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p ><!--[if !supportLists]--><span ><span class="icon-checked"></span></span><!--[endif]--><b></b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p ><b></b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p ><b></b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p ><b></b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p ><!--[if !supportLists]--><span ><span class="icon-checked"></span></span><!--[endif]--><b></b></p>
-                  </td>
-                 </tr>
-                 <tr style="mso-yfti-irow:6;mso-yfti-lastrow:yes">
-                  <td width="119" valign="top" >
-                  <p ><b>Geo-Technical<br>
-                  (Highways, Flyovers)</b></p>
-                  </td>
-                  <td width="86" valign="top"  >
-                  <p ><!--[if !supportLists]--><span ><span class="icon-checked"></span></span><!--[endif]--><b></b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p ><!--[if !supportLists]--><span ><span class="icon-checked"></span></span><!--[endif]--><b></b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p ><!--[if !supportLists]--><span ><span class="icon-checked"></span></span><!--[endif]--><b></b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p ><b></b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p ><b></b></p>
-                  </td>
-                  <td width="86" valign="top" >
-                  <p ><b></b></p>
-                  </td>
-                 </tr>
-                </tbody></table>
-            </div>
-                </div>
-                <!-- <div *ngIf="aboutArea" class="imageSection">
-                    <img [src] = "aboutArea.knowYourPath" alt="" />
-                </div> -->
-            </div>
-        
         </div>
-    </section>
-    
-    <section *ngIf="!showAssesment" class="assessmentSection">
+    </div>
+
+    <!-- Sticky Content -->
+    <!-- <div class="stickyBar" [ngClass]="{'sticky' : isSticky}">
         <div class="container">
-            <div class="heading3 ">Enhance employability using these {{'Assessments'}}</div>
-            <!-- <p>Best for those who want a series of Assessment</p> -->
-            <div class="descriptionSection " style="display: none;">
-                <div class="achieve">
+            <div class="heading3" matTooltipClass="tooltipClass" matTooltip="{{aboutArea?.name}}">{{aboutArea?.name}}</div>
+            <div class="detailBannerPosition bannerDescription">
+                <div class="assessmentArea">
+                    <div>
+                        <div>
+                            <p>Rating</p>
+                            <div class="ratingStar">
+                                <em class="icon-Star"></em>
+                                <em class="icon-Star"></em>
+                                <em class="icon-Star"></em>
+                                <em class="icon-Star"></em>
+                                <em class="icon-Star"></em>
+                            </div>
+                        </div>
+                        <div>
+                            <p>Skill Level</p>
+                            <span><em class="icon-Level2"></em> Intermediate</span>
+                        </div>
+                        <div>
+                            <p>Duration</p>
+                            <span><em class="icon-Time"></em>{{aboutArea?.totalDuration}}h</span>
+                        </div>
+                        <div>
+                            <p>No. of Assessments</p>
+                            <span><em class="icon-Document"></em> {{totalAssessmentCount}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- Sticky Content Ends -->
+
+    <div class="areaDetailDescription">
+        <div class="container d-flex">
+            <div class="descriptionSection">
+                <!--<div class="achieve">
                     <div class="heading4">What you will achieve</div>
-                    <!-- <ul>
+                     <ul>
                         <li> -->
-                            <!-- <em class="icon-checked"></em> -->
-                            <p>{{aboutArea?.contentAchieve}}</p>
+                            <!-- <em class="icon-checked"></em> 
+                            <p>{{aboutArea?.contentAchieve}}</p>-->
                         <!--</li>
                      </ul> -->
-                </div>
+                <!-- </div>
                 <div class="requirements require">
                     <div class="heading4">Requirements</div>
                     <p>{{aboutArea?.contentRequirement}}</p>
-                </div>
+                </div> -->
                 <!-- <div class="description">
                     <span class="heading4">Description</span>
                     <div [ngClass]="{'limitTextHeight': isReadMore}">
@@ -354,39 +114,278 @@
                         {{ isReadMore ? 'Show More': 'Show Less' }} <em class="icon-DownArrow"></em>
                     </button>
                 </div> -->
+                
+    <div *ngIf="aboutArea?.cid==='A0004'">
+        <div class="requirements pecialization">
+            <div class="heading4">Specialization Areas</div>
+            <br>
+            <div class="heading5">Construction Engineering</div>
+            <p>Construction engineering is a professional discipline that deals with the designing, planning, construction and management of infrastructures such as roads, tunnels, bridges, airports, railroads, facilities, buildings, dams, utilities and other projects</p>
+        </div>
+        <div class="requirements">
+            <div class="heading5">Geotechnical Engineering</div>
+            <p>Geotechnical engineering, also known as geotechnics, is the branch of civil engineering concerned with the engineering behavior of earth materials. It uses the principles of soil mechanics and rock mechanics for the solution of its respective engineering problems. It also relies on knowledge of geology, hydrology, geophysics, and other related sciences.</p>
+        </div>
+        
+        <div class="requirements">
+            <div class="heading5">Hydraulics & Water Resources</div>
+            <p>Hydraulic engineering as a sub-discipline of civil engineering is concerned with the flow and conveyance of fluids, principally water and sewage. One feature of these systems is the extensive use of gravity as the motive force to cause the movement of the fluids. This area of civil engineering is intimately related to the design of bridges, dams, channels, canals, and levees, and to both sanitary and environmental engineering.</p>
+<br>
+            <p>Water Resource Engineering is a specific kind of civil engineering that involves the design of new systems and equipment that help manage human water resources. Some of the areas Water Resource Engineers touch on are water treatment facilities, underground wells, and natural springs.</p>
+        </div>
+        <div class="requirements">
+            <div class="heading5">Transportation Engineering</div>
+            <p>Transportation engineering or transport engineering is the application of technology and scientific principles to the planning, functional design, operation and management of facilities for any mode of transportation in order to provide for the safe, efficient, rapid, comfortable, convenient, economical, and environmentally compatible movement of people and goods transport.</p>
+        </div>
+        <div class="requirements">
+            <div class="heading5">Environmental Engineering</div>
+            <p>Environmental engineering is a job type that is a professional engineering discipline and takes from broad scientific topics like chemistry, biology, ecology, geology, hydraulics, hydrology, microbiology, and mathematics to create solutions that will protect and also improve the health of living organisms and improve the quality of the environment. Environmental engineering is a sub-discipline of civil engineering and chemical engineering.</p>
+        </div>
+        <div class="requirements">
+            <div class="heading5">Structural Engineering</div>
+            <p>Structural engineering is a sub-discipline of civil engineering in which structural engineers are trained to design the 'bones and muscles' that create the form and shape of man-made structures. Structural engineers also must understand and calculate the stability, strength, rigidity and earthquake-susceptibility of built structures for buildings and nonbuilding structures. The structural designs are integrated with those of other designers such as architects and building services engineer and often supervise the construction of projects by contractors on site. They can also be involved in the design of machinery, medical equipment, and vehicles where structural integrity affects functioning and safety.</p>
+        </div>
+
+        <p ><b><span class="heading4" style="display: inline-block; margin-bottom: 15px;">Job
+            Sectors/Projects</span></b></p>
+            
+            <table class="sectorProject" border="1" cellspacing="0" cellpadding="0">
+             <tbody><tr >
+              <td width="119" valign="top" >
+              <p ><b>Role</b></p>
+              </td>
+              <td >
+              <p ><b>Site Engineer</b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p><b>Design Engineer</b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p ><b>Planning Engineer</b></p>
+              </td>
+              <td width="86" valign="top" >
+                  <p ><b>Materials Engineer</b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p ><b>Quality Engineer</b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p ><b>Supply Chain</b></p>
+              </td>
+             </tr>
+             <tr >
+              <td width="119" valign="top" >
+              <p ><b>Construction<br>
+              ( Buildings, Factories etc)</b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p ><!--[if !supportLists]--><span ><span class="icon-checked"></span></span><!--[endif]--><b></b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p ><b></b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p ><span class="icon-checked"></span><!--[endif]--><b></b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p ><b></b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p ><b></b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p ><b></b></p>
+              </td>
+             </tr>
+             <tr style="mso-yfti-irow:2">
+              <td width="119" valign="top" >
+              <p ><b>Environmental<br>
+              Engineering</b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p ><!--[if !supportLists]--><span ><span class="icon-checked"></span></span><!--[endif]--><b></b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p><span class="icon-checked"></span><!--[endif]--><b></b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p ><!--[if !supportLists]--><span ><span class="icon-checked"></span></span><!--[endif]--><b></b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p ><b></b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p><b></b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p><b></b></p>
+              </td>
+             </tr>
+             <tr>
+              <td width="119" valign="top" >
+              <p ><b>Water (Dams, Canals, Irrigation)</b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p ><!--[if !supportLists]--><span ><span class="icon-checked"></span></span><!--[endif]--><b></b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p ><!--[if !supportLists]--><span ><span class="icon-checked"></span></span><!--[endif]--><b></b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p ><b></b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p ><b></b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p ><b></b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p ><b></b></p>
+              </td>
+             </tr>
+             <tr style="mso-yfti-irow:4">
+              <td width="119" valign="top" >
+              <p ><b>Structural</b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p ><b></b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p ><!--[if !supportLists]--><span ><span class="icon-checked"></span></span><!--[endif]--><b></b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p ><b></b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p ><b></b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p ><b></b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p ><b></b></p>
+              </td>
+             </tr>
+             <tr style="mso-yfti-irow:5">
+              <td width="119" valign="top" >
+              <p ><b>Transportation<br>
+              (Roads, Railway, Airports, Harbours, Tunnels, Docks)</b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p ><b></b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p ><!--[if !supportLists]--><span ><span class="icon-checked"></span></span><!--[endif]--><b></b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p ><b></b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p ><b></b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p ><b></b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p ><!--[if !supportLists]--><span ><span class="icon-checked"></span></span><!--[endif]--><b></b></p>
+              </td>
+             </tr>
+             <tr style="mso-yfti-irow:6;mso-yfti-lastrow:yes">
+              <td width="119" valign="top" >
+              <p ><b>Geo-Technical<br>
+              (Highways, Flyovers)</b></p>
+              </td>
+              <td width="86" valign="top"  >
+              <p ><!--[if !supportLists]--><span ><span class="icon-checked"></span></span><!--[endif]--><b></b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p ><!--[if !supportLists]--><span ><span class="icon-checked"></span></span><!--[endif]--><b></b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p ><!--[if !supportLists]--><span ><span class="icon-checked"></span></span><!--[endif]--><b></b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p ><b></b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p ><b></b></p>
+              </td>
+              <td width="86" valign="top" >
+              <p ><b></b></p>
+              </td>
+             </tr>
+            </tbody></table>
+        </div>
+            </div>
+            <!-- <div *ngIf="aboutArea" class="imageSection">
+                <img [src] = "aboutArea.knowYourPath" alt="" />
+            </div> -->
+        </div>
+    
+    </div>
+</section>
+
+<section *ngIf="!showAssesment" class="assessmentSection">
+    <div class="container">
+        <div class="heading3 ">Enhance employability using these {{aboutArea?.productType == 'course' ? 'Modules' :'Assessments'}}</div>
+        <!-- <p>Best for those who want a series of Assessment</p> -->
+        <div class="descriptionSection " style="display: none;">
+            <div class="achieve">
+                <div class="heading4">What you will achieve</div>
+                <!-- <ul>
+                    <li> -->
+                        <!-- <em class="icon-checked"></em> -->
+                        <p>{{aboutArea?.contentAchieve}}</p>
+                    <!--</li>
+                 </ul> -->
+            </div>
+            <div class="requirements require">
+                <div class="heading4">Requirements</div>
+                <p>{{aboutArea?.contentRequirement}}</p>
+            </div>
+            <!-- <div class="description">
+                <span class="heading4">Description</span>
+                <div [ngClass]="{'limitTextHeight': isReadMore}">
+                    <p>{{aboutArea?.contentDescription}}</p>
                 </div>
-            <div class="assessmentsArea">
-                <div class="heading3">{{aboutArea?.name}}</div>
-                <span class="totalAssessments"><em class="icon-Assessment"></em>{{totalAssessmentCount}} {{totalAssessmentCount > 1 ? 'Assessments':'Assessment'}}</span>
-                <div class="assessments">
-                    <div *ngFor="let competency of competencyList" (click)="openAssessments(competency)">
-                        <div>
-                            <div class="heading5">{{competency.name}}</div>
-                            <span class="assessmentCount"><em class="icon-Assessment"></em>{{competency?.totalAssessment}} {{competency?.totalAssessment > 1 ? 'Assessments': 'Assessment'}}</span>
-                        </div>
-                        <p>{{competency?.shortDescription}}</p>
-                        <span class="viewDetails">View Details <em class="icon-DownArrow"></em></span>
+                <button *ngIf="aboutArea?.contentDescription.length > 370" type="button" (click)="showText()">
+                    {{ isReadMore ? 'Show More': 'Show Less' }} <em class="icon-DownArrow"></em>
+                </button>
+            </div> -->
+            </div>
+        <div class="assessmentsArea">
+            <div class="heading3">{{aboutArea?.name}}</div>
+            <span class="totalAssessments" *ngIf="aboutArea?.productType == 'course'"><em class="icon-Assessment"></em>{{totalAssessmentCount}} {{totalAssessmentCount > 1 ? 'Modules':'Module'}}</span>
+            <span class="totalAssessments" *ngIf="aboutArea?.productType != 'course'"><em class="icon-Assessment"></em>{{totalAssessmentCount}} {{totalAssessmentCount > 1 ? 'Assessments':'Assessment'}}</span>
+            <div class="assessments">
+                <div *ngFor="let competency of competencyList" (click)="openAssessments(competency)">
+                    <div>
+                        <div class="heading5">{{competency.name}}</div>
+                        <span class="assessmentCount"><em class="icon-Assessment"></em>{{competency?.totalAssessment}} {{competency?.totalAssessment > 1 ? 'Assessments': 'Assessment'}}</span>
                     </div>
+                    <p>{{competency?.shortDescription}}</p>
+                    <span class="viewDetails">View Details <em class="icon-DownArrow"></em></span>
                 </div>
             </div>
         </div>
-    </section>
-    <app-certify-assessment *ngIf="showAssesment" [competencyData]="competencyData" [areaData]= "aboutArea"></app-certify-assessment>
-    <section class="howitWorksSection">
-        <div class="container">
-            <div class="heading3">How It Works</div>
-            <ul *ngIf = "howItWorks">
-                <li *ngFor = "let contents of howItWorks.howItWorksContents">
-                    <div class="icons">
-                        <em class="icon-AssessmentView"></em>
-                    </div>
-                    <div class="heading5">{{contents.title}}</div>
-                    <p>{{contents.content}}</p>
-                </li>
-            </ul>
-        </div>
-    </section>
-</ng-container>
+    </div>
+</section>
+<app-certify-assessment *ngIf="showAssesment" [competencyData]="competencyData" [areaData]= "aboutArea"></app-certify-assessment>
+<section class="howitWorksSection">
+    <div class="container">
+        <div class="heading3">How It Works</div>
+        <ul *ngIf = "howItWorks">
+            <li *ngFor = "let contents of howItWorks.howItWorksContents">
+                <div class="icons">
+                    <em class="icon-AssessmentView"></em>
+                </div>
+                <div class="heading5">{{contents.title}}</div>
+                <p>{{contents.content}}</p>
+            </li>
+        </ul>
+    </div>
+</section>
 
 <ng-container *ngIf="aboutArea?.productType == 'course'">
     <div class="courseContainer">
