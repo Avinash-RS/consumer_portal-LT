@@ -33,6 +33,7 @@ export class HeaderComponent implements OnInit {
   profImage: any;
   isCertified = false;
   isAssement = false;
+  isCourse = false;
   isCredentials = false;
   offsetFlag = true;
   productType:string = 'assessment';
@@ -87,6 +88,7 @@ export class HeaderComponent implements OnInit {
     this.coursesList = false;
     this.isCertified = false;
     this.isAssement = false;
+    this.isCourse = false;
     
     if(this.showMenu == 'in'){
       this.catalogMenu=[];
@@ -161,6 +163,7 @@ export class HeaderComponent implements OnInit {
   getCertified() {
     this.isCertified = true;
     this.isAssement = false;
+    this.isCourse = false;
     this.isCredentials = false;
     this.appConfig.routeNavigation(APP_CONSTANTS.ENDPOINTS.certificationDetails);
     this.showMenu = 'out';
@@ -180,17 +183,20 @@ export class HeaderComponent implements OnInit {
   getSearch() {
     this.appConfig.routeNavigation(APP_CONSTANTS.ENDPOINTS.catalog.search);
   }
-  onlineAssessment() {
+  onlineAssessment(productType) {
     this.isCertified = false;
-    this.isAssement = true;
+    this.isAssement = productType == 'assessment' ? true:false;
+    this.isCourse = productType == 'course' ? true:false;
     this.isCredentials = false;
     this.showMenu = 'out';
     this.assessmentsList= false;
     this.coursesList = false;
     if(this.userDetails) {
       this.appConfig.routeNavigation('/myAssessment');
+      this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ROUTES.myAssessment,{ "productType" : productType});
     } else {
       this.isAssement = false;
+      this.isCourse = false;
       this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: '0' });
     }
     
@@ -199,6 +205,7 @@ export class HeaderComponent implements OnInit {
   showCredenitals() {
     this.isCertified = false;
     this.isAssement = false;
+    this.isCourse = false;
     this.isCredentials = true;
   }
   openCart() {
@@ -291,6 +298,7 @@ export class HeaderComponent implements OnInit {
   }
   inActiveTabs() {
     this.isAssement = false;
+    this.isCourse = false;
     this.isCertified = false;
     this.isCredentials = false;
   }
