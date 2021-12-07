@@ -151,7 +151,6 @@ export class BookSlotComponent implements OnInit {
     let dateVal = moment(bookedDate).format('YYYY-MM-DD');
     let currentEpoc = + this.minDate;
     let slotDateEpoc = + new Date(dateVal + ' ' + element.key);
-    console.log(slotDateEpoc, currentEpoc);
     if (slotDateEpoc > currentEpoc) {
       element.isSlotExpired = false;
     } else {
@@ -160,11 +159,15 @@ export class BookSlotComponent implements OnInit {
   }
   submitSelectedSlot(testItem) {
     let userDetails: any = JSON.parse(this.appConfig.getSessionStorage('userDetails'));
-    console.log(userDetails);
     let dateVal = moment(testItem.testTypes.bookingData.selectedDate).format('YYYY-MM-DD');
     let slotDateTime = new Date(dateVal + ' ' + testItem.testTypes.bookingData.selectedSlot.key);
     let utcformatted = moment(slotDateTime).utc(true).format('YYYY-MM-DDTHH:mm:ss.SSS[Z]');
-
+    let testdetails = [];
+    const testobj = {
+      name:testItem.testTypes.testName,
+      duration:Number(testItem.testTypes.totalDuration),
+    };
+    testdetails.push(testobj);
     const param = {
     startTime: moment(utcformatted).subtract(5, 'hours').subtract(30, 'minutes').toISOString(),
     // endTime: "2021-06-06T13:00:00Z",
@@ -178,7 +181,9 @@ export class BookSlotComponent implements OnInit {
     firstName: userDetails.firstname,
     lastName: userDetails.lastname,
     userId: userDetails.userId,
-    status: testItem.testTypes.scheculeStatus ? 'reschedule' : 'schedule'
+    status: testItem.testTypes.scheculeStatus ? 'reschedule' : 'schedule',
+    assessmentname :testItem?.name,
+    testDetails : testdetails
   };
     if (testItem.testTypes?.bookingData?.selectedSlot) {
       this.checkSlotExpired(testItem.testTypes.bookingData.selectedSlot, testItem.testTypes.bookingData.selectedDate);
@@ -204,7 +209,6 @@ export class BookSlotComponent implements OnInit {
           });
         } else {
           this.catalog.scheduleAssessment(param).subscribe((rdata: any) => {
-            console.log(rdata);
             if (rdata.success) {
               this.getSlotDetails(this.currentCid);
               this.toast.success(rdata.message);
