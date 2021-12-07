@@ -94,7 +94,7 @@ export class MyAssessmentComponent implements OnInit {
     let details = {
       type: 'microcert',
       email: this.userDetails.email,
-      assessmentId:data?.assessmentId ? data?.assessmentId :null
+      assessmentId:data?.assessmentDetails?.assessmentId ? data?.assessmentDetails?.assessmentId :null
     };
     var emailEncrypt = this.commonServ.encrypt(JSON.stringify(details.email),this.encryptionKey);
     var encryptDetail = this.commonServ.encrypt(JSON.stringify(details),this.encryptionKey);
