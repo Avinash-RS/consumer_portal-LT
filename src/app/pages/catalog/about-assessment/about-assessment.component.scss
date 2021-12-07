@@ -699,3 +699,99 @@
 .imageSection {
     width: auto !important;
 }
+
+//Course Product
+.courseProduct {
+    background-image: url(../../../../assets/images/software-testing-trends.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    width: 100%;
+    height: 400px;
+    position: relative;
+    .bannerContent {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        width: 100%;
+        .heading1, p, .courseRate {
+            color: $whiteColor;
+            line-height: normal;
+            font-weight: 400;
+        }
+        .heading1 {
+            font-size: 3.25em;
+            margin: 0 0 0.35em 0;
+        }
+        p {
+            font-size: 1.125em;
+            font-weight: 300;
+            margin: 0 0 1em 0;
+            max-width: 400px;
+        }
+        .courseRate {
+            font-size: 1.5em;
+            display: block;
+            em {
+                font-size: 0.75em;
+            }
+        }
+        .buttons {
+            margin-top: 1.5em;
+            .buyNow {
+                @include buttonFilled;
+                font-size: 1.062em;
+                font-weight: 700;
+                line-height: normal;
+                padding-left: 1.5em;
+                padding-right: 1.5em;
+            }
+        }
+    }
+}
+.bannerFooter {
+    width: 100%;
+    background-color: $blackColor;
+    padding: 1.5em 0;
+    .footerWrapper, .commonStyle {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+    .commonStyle {
+        figure {
+            width: 15%;
+        }
+        > div {
+            width: 80%;
+            margin-left: 5%;
+        }
+        p {
+            font-size: 0.875em;
+            font-weight: 400;
+            color: #F2F2F2;
+            line-height: normal;
+            margin: 0 0 0.35em 0;
+            text-transform: uppercase;
+        }
+        .heading5 {
+            color: $whiteColor;
+        }
+    }
+}
+.programHighlights {
+    background-color: $whiteColor;
+    padding: 3.75em 0;
+    font-size: 10px;
+    @include md {
+        font-size: 12px;
+    }
+    @include lg {
+        font-size: 14px;
+    }
+    @include xl {
+        font-size: 16px;
+    }
+}
