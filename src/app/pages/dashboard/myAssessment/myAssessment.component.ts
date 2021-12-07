@@ -5,6 +5,7 @@ import { AppConfigService } from "src/app/utils/app-config.service";
 import { APP_CONSTANTS } from "src/app/utils/app-constants.service";
 import { BookSlotComponent } from '../../bookSlot/bookSlot.component';
 import { environment } from '@env/environment';
+import { ActivatedRoute } from "@angular/router";
 @Component({
   selector: "app-myAssessment",
   templateUrl: "./myAssessment.component.html",
@@ -31,17 +32,22 @@ export class MyAssessmentComponent implements OnInit {
   userDetails: any;
   profilePercentage:any = 0;
   encryptionKey = 'unifiedReports';
-  
+  productType:string = 'assessment';
+
   constructor(
     private commonServ: CommonService,
     private appconfig: AppConfigService,
     private dialog: MatDialog,
+    private route:ActivatedRoute
   ) { 
     this.userDetails = JSON.parse(this.appconfig.getSessionStorage('userDetails'));
   }
 
   ngOnInit() {
-    this.getmyAssesments(this.tabList[0]);
+    this.route.queryParams.subscribe((data:any)=>{
+      this.productType = data?.productType ? data?.productType :'assessment';
+      this.getmyAssesments(this.tabList[0]);
+    });
     this.getProfilePercentage();
   }
 
@@ -50,7 +56,7 @@ export class MyAssessmentComponent implements OnInit {
     window.open(environment.lxp_url+"?queValue="+encodeURIComponent(ValueData.queValue)+'&rpValue='+encodeURIComponent(ValueData.rpValue)+'&dpValue=microsetportal', 'redirection');
   }
   getmyAssesments(typeData){
-    let param = {"userId": this.userDetails.userId, "email": this.userDetails.email, 'type':typeData.tabName}
+    let param = {"userId": this.userDetails.userId, "email": this.userDetails.email, 'type':typeData.tabName,'productType':this.productType}
     this.commonServ.getmyAssesments(param).subscribe((rdata:any)=>{
         rdata.data.forEach(element => {
           element.assessmentDetails.testTypes.forEach(exams => {
