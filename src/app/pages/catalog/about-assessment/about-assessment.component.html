@@ -389,7 +389,7 @@
 </ng-container>
 
 <ng-container *ngIf="productType == 'course'">
-    <div class="courseContainer">
+    <div class="courseContainer" *ngIf="!nocard">
         <div class="courseProduct">
             <div class="bannerContent">
                 <div class="container"> 
@@ -450,7 +450,7 @@
             <div class="container">
                 <div class="heading2">Programme Highlights</div>
                 <ul>
-                    <li><span class="icon" *ngFor="let highlight of courseData?.courseContents?.programmeHighlights"><em class="icon-AddTask"></em></span> <span class="text">Pre-Employment programme for Fresh Graduates</span></li>
+                    <li><span class="icon"><em class="icon-AddTask"></em></span> <span class="text">Pre-Employment programme for Fresh Graduates</span></li>
                     <li><span class="icon"><em class="icon-AddTask"></em></span> <span class="text">Project Based Curriculum</span></li>
                     <li><span class="icon"><em class="icon-AddTask"></em></span> <span class="text">Performance Coaching and Assessment</span></li>
                     <li><span class="icon"><em class="icon-AddTask"></em></span> <span class="text">Blended Learning powered by Digital Technology</span></li>
@@ -724,7 +724,11 @@
             </div>
         </section>
     </div>
+    <div *ngIf="nocard">
+        <p>No data Available</p>
+    </div>
 </ng-container>
+
 <ng-template #kycmandate >
     <app-kyc-mandate></app-kyc-mandate>
   </ng-template>

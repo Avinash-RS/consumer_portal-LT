@@ -35,6 +35,7 @@ export class AboutAssessmentComponent implements OnInit {
   abouCourseData:any;
   courseData:any;
   userDetails;
+  nocard:boolean = false;
   @ViewChild('kycmandate', { static: false }) matDialogRef: TemplateRef<any>;
   constructor(private router: Router, private catalogService : CatalogService,private route:ActivatedRoute,private appconfig: AppConfigService,private commonService : CommonService,public toast: ToastrService ,private util: UtilityService,private dialog: MatDialog) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => {
@@ -90,15 +91,16 @@ getAbouCourse(){
       if(response.data && response.data.length > 0 && response.data[0].assessmentData && response.data[0].assessmentData.length){
         this.abouCourseData = response.data[0];
         this.courseData = this.abouCourseData.assessmentData[0];
-        console.log(this.abouCourseData);
-        
+        this.nocard = false;
       }
       else{
         this.abouCourseData = [];
+        this.nocard = true;
       }
     }
     else{
       this.abouCourseData = [];
+      this.nocard = true;
     }
 
   })
