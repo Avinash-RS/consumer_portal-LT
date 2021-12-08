@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild, TemplateRef } from '@angular/core';
 import { NavigationEnd, Router, RouterEvent } from "@angular/router"
 import {ActivatedRoute} from '@angular/router';
 import { AppConfigService } from 'src/app/utils/app-config.service';
@@ -10,6 +10,7 @@ import { Subject } from 'rxjs';
 import { CommonService } from 'src/app/services/common.service';
 import { ToastrService } from 'ngx-toastr';
 import { UtilityService } from 'src/app/services/utility.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-about-assessment',
@@ -34,7 +35,8 @@ export class AboutAssessmentComponent implements OnInit {
   abouCourseData:any;
   courseData:any;
   userDetails;
-  constructor(private router: Router, private catalogService : CatalogService,private route:ActivatedRoute,private appconfig: AppConfigService,private commonService : CommonService,public toast: ToastrService ,private util: UtilityService) {
+  @ViewChild('kycmandate', { static: false }) matDialogRef: TemplateRef<any>;
+  constructor(private router: Router, private catalogService : CatalogService,private route:ActivatedRoute,private appconfig: AppConfigService,private commonService : CommonService,public toast: ToastrService ,private util: UtilityService,private dialog: MatDialog) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => {
       return false;
     };
@@ -101,9 +103,25 @@ getAbouCourse(){
 
   })
 }
-
+dialogSetup(){
+  const valdat = this.dialog.open(this.matDialogRef, {
+    width: '400px',
+    height: '300px',
+    autoFocus: true,
+    closeOnNavigation: true,
+    disableClose: true,
+    panelClass: 'popupModalContainerForForms'
+  });
+  return false;
+}
 courseBuy(){
-var params = {
+//signin check 
+if (this.userDetails) {
+  const data = {
+    "noofFields": "15",
+    "email": this.userDetails.email ? this.userDetails.email : null
+  }
+  var cartParams = {
       "isLevel":false,
       "levelId":this.abouCourseData?.levelId,
       "userId":this.userDetails.userId,
@@ -111,17 +129,73 @@ var params = {
       "competencyId":this.areaId,
       "productType" :this.productType
   }
-  this.catalogService.addToCart(params).subscribe((response:any) =>{
-    if(response.success) {
-      this.toast.success("Course added to cart");
-      this.util.cartSubject.next(true);
+   //profile percentage check 
+  this.commonService.getProfilePercentage(data).subscribe((result: any) => {
+    if (result.success) {
+      let profilePercentage = result.data[0].profilePercentage;
+          if (profilePercentage <= 50) {
+            this.dialogSetup();
+          }
+          else{
+            //Add to Cart
+            this.catalogService.addToCart(cartParams).subscribe((response:any) =>{
+              if(response.success) {
+                //is Free check
+                if(this.abouCourseData?.is_free){
+                  this.freeOrderPlace(response?.data[0].cartId);
+                }
+                else{
+                  this.toast.success("Course added to cart");
+                  this.util.cartSubject.next(true);
+                }
+              }
+              else {
+                this.toast.warning(response.message);
+              }
+            });
+          }
     }
-    else {
-      this.toast.warning(response.message)
+    else{
+      this.toast.warning(result.message);
+      return false;
     }
   });
 }
-
+else{
+  cartParams = {
+      "isLevel":false,
+      "levelId":this.abouCourseData?.levelId,
+      "userId":'',
+      "assessmentId":this.areaId,
+      "competencyId":this.areaId,
+      "productType" :this.productType
+  }
+  this.util.setValue(cartParams);
+  this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, {fromPage: '0'});
+}
+  }
+freeOrderPlace(cartid){
+  let freeCart = [];
+  freeCart.push({
+    assessmentId: this.areaId,
+    quantity: 1,
+    amount_per_assessment: 0,
+    total_amount: 0,
+    competencyId: this.areaId,
+    levelId: this.abouCourseData?.levelId,
+    productType : this.productType
+  });
+  var orderParms ={
+    user_id:this.userDetails.userId,
+    order_amount:0,
+    cart :freeCart,
+    cartId:cartid,
+  }
+  this.catalogService.createOrder(orderParms).subscribe((data: any) => {
+    // this.toast.success("Course order created");
+    this.appconfig.routeNavigationWithQueryParam("cart/success",{ orderId: data.order_id });
+  });
+}
   getDetails() {
     this.commonService.getCertificationDetails().subscribe((response :any)=>{
       if(response.success) {
