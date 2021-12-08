@@ -1,4 +1,4 @@
-<ng-container *ngIf="aboutArea?.productType != 'course'">
+<ng-container *ngIf="productType != 'course'">
 <section class="areaDetail">
     <div class="detailBanner">
         <figure>
@@ -36,12 +36,12 @@
                                 <span><em class="icon-Time"></em>{{aboutArea?.totalDuration}}h</span>
                             </div> -->
                             <div>
-                                <p>{{aboutArea?.productType == 'course' ? 'No. of Modules' :'No. of Assessments '}}</p>
+                                <p>{{'No. of Assessments '}}</p>
                                 <span><em class="icon-Document"></em> {{totalAssessmentCount}}</span>
                             </div>
                         </div>
                     </div>
-                    <div class="assessmentHighlights" *ngIf="aboutArea?.productType != 'course' ">
+                    <div class="assessmentHighlights">
                         <div class="heading6">Assessments Highlights</div>
                         <ul>
                             <li><em class="icon-Globe"></em> 100% online Assessments</li>
@@ -329,7 +329,7 @@
 
 <section *ngIf="!showAssesment" class="assessmentSection">
     <div class="container">
-        <div class="heading3 ">Enhance employability using these {{aboutArea?.productType == 'course' ? 'Modules' :'Assessments'}}</div>
+        <div class="heading3 ">Enhance employability using these {{'Assessments'}}</div>
         <!-- <p>Best for those who want a series of Assessment</p> -->
         <div class="descriptionSection " style="display: none;">
             <div class="achieve">
@@ -357,8 +357,7 @@
             </div>
         <div class="assessmentsArea">
             <div class="heading3">{{aboutArea?.name}}</div>
-            <span class="totalAssessments" *ngIf="aboutArea?.productType == 'course'"><em class="icon-Assessment"></em>{{totalAssessmentCount}} {{totalAssessmentCount > 1 ? 'Modules':'Module'}}</span>
-            <span class="totalAssessments" *ngIf="aboutArea?.productType != 'course'"><em class="icon-Assessment"></em>{{totalAssessmentCount}} {{totalAssessmentCount > 1 ? 'Assessments':'Assessment'}}</span>
+            <span class="totalAssessments"><em class="icon-Assessment"></em>{{totalAssessmentCount}} {{totalAssessmentCount > 1 ? 'Assessments':'Assessment'}}</span>
             <div class="assessments">
                 <div *ngFor="let competency of competencyList" (click)="openAssessments(competency)">
                     <div>
@@ -389,16 +388,16 @@
 </section>
 </ng-container>
 
-<ng-container *ngIf="aboutArea?.productType == 'course'">
+<ng-container *ngIf="productType == 'course'">
     <div class="courseContainer">
         <div class="courseProduct">
             <div class="bannerContent">
-                <div class="container">
-                    <div class="heading1">Full Stack Development</div>
-                    <p>Learn and master Full Stack application development with Java and MEAN Stack</p>
-                    <span class="courseRate"><em class="icon-Rupee"></em> 1100</span>
+                <div class="container"> 
+                    <div class="heading1">{{courseData?.name}}</div>
+                    <p>{{courseData?.shortDescription}}</p>
+                    <span class="courseRate"><em class="icon-Rupee"></em> {{courseData?.sellingPrice}}</span>
                     <div class="buttons">
-                        <button class="buyNow">Buy Now</button>
+                        <button class="buyNow" (click)="courseBuy()">Buy Now</button>
                     </div>
                 </div>
             </div>
@@ -406,16 +405,16 @@
         <div class="bannerFooter">
             <div class="container">
                 <div class="footerWrapper">
-                    <div class="studentsEnrolled commonStyle">
+                    <div class="studentsEnrolled commonStyle" *ngFor="let item of courseData?.courseContents?.bannerFooter">
                         <figure>
-                            <img src="/assets/images/icon.png" alt="" />
+                            <img [src]="item.image" alt="" />
                         </figure>
                         <div>
-                            <p>Students Enrolled</p>
-                            <span class="heading5">1m</span>
+                            <p>{{item.title}}</p>
+                            <span class="heading5">{{item.content}}</span>
                         </div>
                     </div>
-                    <div class="hoursLearning commonStyle">
+                    <!-- <div class="hoursLearning commonStyle">
                         <figure>
                             <img src="/assets/images/icon.png" alt="" />
                         </figure>
@@ -423,8 +422,8 @@
                             <p>Hours of Learning</p>
                             <span class="heading5">200+</span>
                         </div>
-                    </div>
-                    <div class="mode commonStyle">
+                    </div> -->
+                    <!-- <div class="mode commonStyle">
                         <figure>
                             <img src="/assets/images/icon.png" alt="" />
                         </figure>
@@ -441,7 +440,7 @@
                             <p>PRACTICE</p>
                             <span class="heading5">Cloud Based Digital Lab</span>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -451,7 +450,7 @@
             <div class="container">
                 <div class="heading2">Programme Highlights</div>
                 <ul>
-                    <li><span class="icon"><em class="icon-AddTask"></em></span> <span class="text">Pre-Employment programme for Fresh Graduates</span></li>
+                    <li><span class="icon" *ngFor="let highlight of courseData?.courseContents?.programmeHighlights"><em class="icon-AddTask"></em></span> <span class="text">Pre-Employment programme for Fresh Graduates</span></li>
                     <li><span class="icon"><em class="icon-AddTask"></em></span> <span class="text">Project Based Curriculum</span></li>
                     <li><span class="icon"><em class="icon-AddTask"></em></span> <span class="text">Performance Coaching and Assessment</span></li>
                     <li><span class="icon"><em class="icon-AddTask"></em></span> <span class="text">Blended Learning powered by Digital Technology</span></li>
