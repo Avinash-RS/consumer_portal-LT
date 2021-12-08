@@ -8,7 +8,6 @@ import { environment } from '@env/environment';
 import { filter, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { CommonService } from 'src/app/services/common.service';
-import { Console } from 'console';
 import { ToastrService } from 'ngx-toastr';
 import { UtilityService } from 'src/app/services/utility.service';
 
