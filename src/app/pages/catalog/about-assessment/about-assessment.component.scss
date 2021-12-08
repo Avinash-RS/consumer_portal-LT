@@ -1009,6 +1009,78 @@
             width: 47%;
         }
     }
+    .accordionPanel {
+        margin-bottom: 1.5em;
+        &:last-child {
+            margin-bottom: 0;
+        }
+        .heading5 {
+            position: relative;
+            margin-left: 1.25em;
+            font-weight: 700;
+            color: $blackColor;
+            &::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: -1.25em;
+                transform: translateY(-50%);
+                width: 14px;
+                height: 14px;
+                background-color: #29ABE2;
+                border-radius: 50%;
+            }
+        }
+        .hours {
+            display: flex;
+            align-items: center;
+            em {
+                color: $lightGrey;
+                font-size: 1em;
+            }
+            span {
+                font-size: 0.95em;
+                font-weight: 400;
+                color: $lightGrey;
+                line-height: normal;
+                margin-left: 5px;
+            }
+        }
+        .expansionContent {
+            ul {
+                li {
+                    font-size: 1.25em;
+                    font-weight: 400;
+                    color: $blackColor;
+                    padding-bottom: 0.5em;
+                    margin-bottom: 0.5em;
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+                }
+            }
+        }
+    }
+}
+::ng-deep.accordionPanel {
+    .mat-expansion-panel {
+        border-radius: 0 !important;
+        background: rgba(255,255,255,0.3);
+    }
+    .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:hover:not([aria-disabled=true]), 
+    .mat-expansion-panel-header.mat-expanded:hover {
+        background: rgba(255,255,255,1);
+    }
+    .mat-expanded {
+        .mat-expansion-panel-header {
+            background: $whiteColor;
+        }   
+    }
+    .mat-expansion-panel-header {
+        height: 64px;
+        background: $whiteColor;
+    }
+    .mat-expansion-panel-body {
+        padding: 24px;
+    }
 }
 
 // Real Time Projects

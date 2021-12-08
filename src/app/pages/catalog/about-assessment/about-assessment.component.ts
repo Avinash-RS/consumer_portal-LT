@@ -8,6 +8,9 @@ import { environment } from '@env/environment';
 import { filter, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { CommonService } from 'src/app/services/common.service';
+import { Console } from 'console';
+import { ToastrService } from 'ngx-toastr';
+import { UtilityService } from 'src/app/services/utility.service';
 
 @Component({
   selector: 'app-about-assessment',
@@ -28,14 +31,18 @@ export class AboutAssessmentComponent implements OnInit {
   competencyList;
   competencyData;
   totalAssessmentCount: any;
-  productType:string =  "assessment"
-  constructor(private router: Router, private catalogService : CatalogService,private route:ActivatedRoute,private appconfig: AppConfigService,private commonService : CommonService) {
+  productType:string =  "assessment";
+  abouCourseData:any;
+  courseData:any;
+  userDetails;
+  constructor(private router: Router, private catalogService : CatalogService,private route:ActivatedRoute,private appconfig: AppConfigService,private commonService : CommonService,public toast: ToastrService ,private util: UtilityService) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => {
       return false;
     };
    }
   public destroyed = new Subject<any>();
   ngOnInit(): void {
+    this.userDetails = JSON.parse(this.appconfig.getSessionStorage('userDetails'));
     this.getDetails()
     this.route.queryParams
     .subscribe(params => {
@@ -43,8 +50,13 @@ export class AboutAssessmentComponent implements OnInit {
       this.domainId = params.selectedTab;
       this.areaId = params.id;
       this.productType = params.productType
-      this.getArea();
-      this.checkScroll();
+      if(this.productType  == 'course'){
+        this.getAbouCourse();
+      }
+      else{
+        this.getArea();
+        this.checkScroll();
+      }
     })
 
     //on reload or param change
@@ -68,8 +80,48 @@ export class AboutAssessmentComponent implements OnInit {
     //   this.showAssesment = false;
     // });
   }
+getAbouCourse(){
+  var params = {
+    "competencyId":this.areaId
+}
+  this.catalogService.getAssesments(params).subscribe((response:any)=>{
+    if (response.success) { 
+      if(response.data && response.data.length > 0 && response.data[0].assessmentData && response.data[0].assessmentData.length){
+        this.abouCourseData = response.data[0];
+        this.courseData = this.abouCourseData.assessmentData[0];
+        console.log(this.abouCourseData);
+        
+      }
+      else{
+        this.abouCourseData = [];
+      }
+    }
+    else{
+      this.abouCourseData = [];
+    }
 
+  })
+}
 
+courseBuy(){
+var params = {
+      "isLevel":false,
+      "levelId":this.abouCourseData?.levelId,
+      "userId":this.userDetails.userId,
+      "assessmentId":this.areaId,
+      "competencyId":this.areaId,
+      "productType" :this.productType
+  }
+  this.catalogService.addToCart(params).subscribe((response:any) =>{
+    if(response.success) {
+      this.toast.success("Course added to cart");
+      this.util.cartSubject.next(true);
+    }
+    else {
+      this.toast.warning(response.message)
+    }
+  });
+}
 
   getDetails() {
     this.commonService.getCertificationDetails().subscribe((response :any)=>{
