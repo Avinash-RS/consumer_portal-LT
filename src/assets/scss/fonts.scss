@@ -59,6 +59,9 @@
     -moz-osx-font-smoothing: grayscale;
   }
   
+  .icon-AddTask:before {
+    content: "\e978";
+  }
   .icon-feedback:before {
     content: "\e976";
   }
@@ -428,4 +431,3 @@
   .icon-Youtube:before {
     content: "\e96b";
   }
-  

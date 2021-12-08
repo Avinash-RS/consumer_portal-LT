@@ -1,3 +1,4 @@
+<ng-container *ngIf="aboutArea?.productType != 'course'">
 <section class="areaDetail">
     <div class="detailBanner">
         <figure>
@@ -386,6 +387,7 @@
         </ul>
     </div>
 </section>
+</ng-container>
 
 <ng-container *ngIf="aboutArea?.productType == 'course'">
     <div class="courseContainer">
@@ -443,12 +445,218 @@
                 </div>
             </div>
         </div>
+
+        <!-- Programming Highlights -->
         <section class="programHighlights">
             <div class="container">
                 <div class="heading2">Programme Highlights</div>
                 <ul>
-                    <li></li>
+                    <li><span class="icon"><em class="icon-AddTask"></em></span> <span class="text">Pre-Employment programme for Fresh Graduates</span></li>
+                    <li><span class="icon"><em class="icon-AddTask"></em></span> <span class="text">Project Based Curriculum</span></li>
+                    <li><span class="icon"><em class="icon-AddTask"></em></span> <span class="text">Performance Coaching and Assessment</span></li>
+                    <li><span class="icon"><em class="icon-AddTask"></em></span> <span class="text">Blended Learning powered by Digital Technology</span></li>
+                    <li><span class="icon"><em class="icon-AddTask"></em></span> <span class="text">Continuous Faculty support throughout the programme</span></li>
+                    <li><span class="icon"><em class="icon-AddTask"></em></span> <span class="text">Practice oriented Learning solution</span></li>
+                    <li><span class="icon"><em class="icon-AddTask"></em></span> <span class="text">Job opportunities and Placement Support</span></li>
+                    <li><span class="icon"><em class="icon-AddTask"></em></span> <span class="text">Production ready Talent Development</span></li>
+                    <li><span class="icon"><em class="icon-AddTask"></em></span> <span class="text">Mentorship and Career guidance programme</span></li>
+                    <li><span class="icon"><em class="icon-AddTask"></em></span> <span class="text">Intelligent Progress Monitoring</span></li>
+                    <li><span class="icon"><em class="icon-AddTask"></em></span> <span class="text">Certification from L&T Edutech</span></li>
+                    <li><span class="icon"><em class="icon-AddTask"></em></span> <span class="text">Hands on Digital Practice Labs</span></li>
+                    <li><span class="icon"><em class="icon-AddTask"></em></span> <span class="text">200+ hours of learning</span></li>
+                    <li><span class="icon"><em class="icon-AddTask"></em></span> <span class="text">Live Training Sessions</span></li>
                 </ul>
+            </div>
+        </section>
+
+        <!-- Programming Language -->
+        <section class="programmingLanguages">
+            <div class="container">
+                <div class="subjectsOpportunities">
+                    <div class="topSubjects commonStyle">
+                        <figure>
+                            <img src="/assets/images/icon.png" alt="" />
+                        </figure>
+                        <div class="headding">Top Subjects you Learn</div>
+                        <ul>
+                            <li><em class="icon-Tick"></em>Software Development</li>
+                            <li><em class="icon-Tick"></em>Web UI Development</li>
+                            <li><em class="icon-Tick"></em>Database Management</li>
+                            <li><em class="icon-Tick"></em>Backend Development</li>
+                            <li><em class="icon-Tick"></em>Scalable Application Development.</li>
+                        </ul>
+                    </div>
+                    <div class="opportunities commonStyle">
+                        <figure>
+                            <img src="/assets/images/icon.png" alt="" />
+                        </figure>
+                        <div class="headding">Job Opportunities</div>
+                        <ul>
+                            <li><em class="icon-Tick"></em>Full Stack Web Application Developer</li>
+                            <li><em class="icon-Tick"></em>Node JS Developer</li>
+                            <li><em class="icon-Tick"></em>Mean Stack Developer</li>
+                            <li><em class="icon-Tick"></em>Java Backend Developer</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="toolsCovered">
+                    <div class="headding">Programming Languages & Tools covered</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Instructors -->
+        <section class="instructors">
+            <div class="container">
+                <div class="heading2">Instructors</div>
+                <div class="heading6">Get Mentored by the L&T Edutech's Faculty Expertise.</div>
+                <div class="instructorProfile">
+                    <div class="profile">
+                        <figure>
+                            <img src="/assets/images/male_icon.png" alt="" />
+                        </figure>
+                        <div>
+                            <span class="heading5">Mr. CANDES JUDELINEPERREIRA</span>
+                            <span class="desc">Vice President – IT Transformation</span>
+                            <div class="heading6">New Way of Working Group (NWOW), LTI, 3+ decades of experience in the IT Industry</div>
+                        </div>
+                    </div>
+                    <div class="profile">
+                        <figure>
+                            <img src="/assets/images/female_icon.png" alt="" />
+                        </figure>
+                        <div>
+                            <span class="heading5">Mr. VARSHA NAMBIAR</span>
+                            <span class="desc">Sr. Technical Architect</span>
+                            <div class="heading6">LTI, Certified professional in AWS, Azure, GCP, Vmware, 10 years of IT experience</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Concepts -->
+        <!-- <section class="keyConcepts">
+            <div class="container">
+                <div class="heading2">Key Concepts</div>
+                <div class="heading6">Curated by Industry Experts and leading Academicians, the syllabus comprises of Videos, Practice Labs, Projects, Assignments and 1:1 Training Sessions.</div>
+                <div class="expansionPanel">
+                    <div class="left">
+                        <div class="accordionPanel">
+                            <mat-accordion>
+                                <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            <div class="heading5">Core Java</div>
+                                        </mat-panel-title>
+                                        <mat-panel-description>
+                                            Currently I am
+                                        </mat-panel-description>
+                                    </mat-expansion-panel-header>
+                                    <div class="expansionContent">
+                                        <ul>
+                                            <li>Basic Concepts</li>
+                                            <li>OOPS with Java</li>
+                                            <li>Inheritance & Abstraction</li>
+                                            <li>Arrays, List</li>
+                                            <li>Regex</li>
+                                            <li>Exception Handling</li>
+                                            <li>File Handing</li>
+                                        </ul>
+                                    </div>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </div>
+                        <div class="accordionPanel">
+                            <mat-accordion>
+                                <mat-expansion-panel>
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            <div class="heading5">Core Java</div>
+                                        </mat-panel-title>
+                                        <mat-panel-description>
+                                            Currently I am
+                                        </mat-panel-description>
+                                    </mat-expansion-panel-header>
+                                    <p>I'm visible because I am open</p>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </div>
+                    </div>
+                    <div class="right">
+                        asfdsasd
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+        <!-- Real Time Projects -->
+        <section class="realTimeProjects">
+            <div class="container">
+                <div class="heading2">Real Time Projects</div>
+                <div class="heading6">The best way to learn a technology is to apply the technology to solve real-world problems.</div>
+                <div class="realTimeWrapper">
+                    <div class="commonStyle">
+                        <figure>
+                            <img src="/assets/images/icon.png" alt="" />
+                        </figure>
+                        <div class="heading5">Real World Challenges</div>
+                        <p>Learn and Challenged - Way to Mastery - Practice building solutions for real world problems.</p>
+                    </div>
+                    <div class="commonStyle">
+                        <figure>
+                            <img src="/assets/images/icon.png" alt="" />
+                        </figure>
+                        <div class="heading5">Continuous Mentor Support</div>
+                        <p>Learn and Challenged - Way to Mastery - Practice building solutions for real world problems.</p>
+                    </div>
+                    <div class="commonStyle">
+                        <figure>
+                            <img src="/assets/images/icon.png" alt="" />
+                        </figure>
+                        <div class="heading5">Reflective Learning</div>
+                        <p>Learn and Challenged - Way to Mastery - Practice building solutions for real world problems.</p>
+                    </div>
+                    <div class="commonStyle">
+                        <figure>
+                            <img src="/assets/images/icon.png" alt="" />
+                        </figure>
+                        <div class="heading5">Full Stack Technologies</div>
+                        <p>Learn and Challenged - Way to Mastery - Practice building solutions for real world problems.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Career Impact -->
+        <section class="careerImpact">
+            <div class="left">
+                <div class="heading2">Career Impact</div>
+                <ul>
+                    <li><em class="icon-Tick"></em> Extensive Mentor support to leverage the candidate potential</li>
+                    <li><em class="icon-Tick"></em> Intense Training with Hands on Practice Labs</li>
+                    <li><em class="icon-Tick"></em> Building Production ready skillset</li>
+                    <li><em class="icon-Tick"></em> Enhancing problem-solving capability</li>
+                    <li><em class="icon-Tick"></em> Training to enhance Technical and Interpersonal skills</li>
+                    <li><em class="icon-Tick"></em> Intelligent Monitoring and Assessment Solution</li>
+                    <li><em class="icon-Tick"></em> 24/7 Query Clarification support</li>
+                    <li><em class="icon-Tick"></em> Personalized Learning Solution and Tracking</li>
+                </ul>
+            </div>
+            <div class="right">
+                <figure>
+                    <img src="/assets/images/carreer.png" alt="" />
+                </figure>
+            </div>
+        </section>
+
+        <!-- Benefits -->
+        <section class="benefits">
+            <div class="container">
+                <div class="heading2">Benefits of L&T Edutech</div>
+                <figure>
+                    <img src="/assets/images/benefits.jpg" alt="" />
+                </figure>
             </div>
         </section>
     </div>
