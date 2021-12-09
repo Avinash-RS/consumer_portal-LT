@@ -389,7 +389,7 @@
 </ng-container>
 
 <ng-container *ngIf="productType == 'course'">
-    <div class="courseContainer">
+    <div class="courseContainer" *ngIf="!nocard">
         <div class="courseProduct">
             <div class="bannerContent">
                 <div class="container"> 
@@ -727,6 +727,12 @@
             </div>
         </section>
     </div>
+    <div *ngIf="nocard">
+        <p>No data Available</p>
+    </div>
 </ng-container>
 
+<ng-template #kycmandate >
+    <app-kyc-mandate></app-kyc-mandate>
+  </ng-template>
 <!-- <app-rating-studentFeedback></app-rating-studentFeedback> -->

@@ -104,6 +104,7 @@ export class CertifyAssessmentComponent implements OnInit {
             total_amount: 0,
             competencyId: this.competencyData.cid,
             levelId: id1,
+            productType:productType
           }
         )}
 
