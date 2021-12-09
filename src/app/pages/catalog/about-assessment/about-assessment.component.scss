@@ -702,14 +702,22 @@
 
 //Course Product
 .courseProduct {
-    background-image: url(../../../../assets/images/software-testing-trends.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    width: 100%;
-    height: 400px;
+    // background-repeat: no-repeat;
+    // background-size: cover;
+    // background-position: center;
+    // display: flex;
+    // width: 100%;
+    // height: 400px;
     position: relative;
+    figure {
+        width: 100%;
+        display: flex;
+        img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+    }
     .bannerContent {
         position: absolute;
         top: 50%;
@@ -899,6 +907,19 @@
             margin: 0 0 1em 0;
             text-align: center;
         }
+        .tools {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-wrap: wrap;
+            figure {
+                width: 15%;
+                margin: 15px 1em 0 0;
+                img {
+                    width: 100%;
+                }
+            }
+        }
     }
 }
 
@@ -926,13 +947,15 @@
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
-        margin-top: 3em;
+        flex-wrap: wrap;
+        margin-top: 2em;
         .profile {
             display: flex;
             align-items: flex-start;
             width: 48%;
             background-color: $whiteColor;
             padding: 1.5em 1em;
+            margin-top: 1em;
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
             figure {
                 display: flex;
@@ -1004,12 +1027,11 @@
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
+        flex-wrap: wrap;
         margin-top: 2em;
-        .left, .right {
-            width: 47%;
-        }
     }
     .accordionPanel {
+        width: 47%;
         margin-bottom: 1.5em;
         &:last-child {
             margin-bottom: 0;

@@ -391,6 +391,11 @@
 <ng-container *ngIf="productType == 'course'">
     <div class="courseContainer" *ngIf="!nocard">
         <div class="courseProduct">
+            <figure>
+                <img [src]="courseData?.image?.url" alt="" />
+            </figure>
+            <!-- {{courseData?.image?.url}} -->
+        <!-- <div class="courseProduct" [ngStyle]="{backgroundImage:'url(../../../../assets/images/software-testing-trends.jpg)'}"> -->
             <div class="bannerContent">
                 <div class="container"> 
                     <div class="heading1">{{courseData?.name}}</div>
@@ -414,33 +419,6 @@
                             <span class="heading5">{{item.content}}</span>
                         </div>
                     </div>
-                    <!-- <div class="hoursLearning commonStyle">
-                        <figure>
-                            <img src="/assets/images/icon.png" alt="" />
-                        </figure>
-                        <div>
-                            <p>Hours of Learning</p>
-                            <span class="heading5">200+</span>
-                        </div>
-                    </div> -->
-                    <!-- <div class="mode commonStyle">
-                        <figure>
-                            <img src="/assets/images/icon.png" alt="" />
-                        </figure>
-                        <div>
-                            <p>Mode</p>
-                            <span class="heading5">Blended Learning</span>
-                        </div>
-                    </div>
-                    <div class="practice commonStyle">
-                        <figure>
-                            <img src="/assets/images/icon.png" alt="" />
-                        </figure>
-                        <div>
-                            <p>PRACTICE</p>
-                            <span class="heading5">Cloud Based Digital Lab</span>
-                        </div>
-                    </div> -->
                 </div>
             </div>
         </div>
@@ -452,21 +430,8 @@
                 <ul>
                     <li *ngFor="let highlight of courseData?.courseContents?.programmeHighlights">
                         <span class="icon"><em class="icon-AddTask"></em></span> 
-                        <span class="text">Pre-Employment programme for Fresh Graduates</span>
+                        <span class="text">{{highlight.title}}</span>
                     </li>
-                    <li><span class="icon"><em class="icon-AddTask"></em></span> <span class="text">Project Based Curriculum</span></li>
-                    <li><span class="icon"><em class="icon-AddTask"></em></span> <span class="text">Performance Coaching and Assessment</span></li>
-                    <li><span class="icon"><em class="icon-AddTask"></em></span> <span class="text">Blended Learning powered by Digital Technology</span></li>
-                    <li><span class="icon"><em class="icon-AddTask"></em></span> <span class="text">Continuous Faculty support throughout the programme</span></li>
-                    <li><span class="icon"><em class="icon-AddTask"></em></span> <span class="text">Practice oriented Learning solution</span></li>
-                    <li><span class="icon"><em class="icon-AddTask"></em></span> <span class="text">Job opportunities and Placement Support</span></li>
-                    <li><span class="icon"><em class="icon-AddTask"></em></span> <span class="text">Production ready Talent Development</span></li>
-                    <li><span class="icon"><em class="icon-AddTask"></em></span> <span class="text">Mentorship and Career guidance programme</span></li>
-                    <li><span class="icon"><em class="icon-AddTask"></em></span> <span class="text">Intelligent Progress Monitoring</span></li>
-                    <li><span class="icon"><em class="icon-AddTask"></em></span> <span class="text">Certification from L&T Edutech</span></li>
-                    <li><span class="icon"><em class="icon-AddTask"></em></span> <span class="text">Hands on Digital Practice Labs</span></li>
-                    <li><span class="icon"><em class="icon-AddTask"></em></span> <span class="text">200+ hours of learning</span></li>
-                    <li><span class="icon"><em class="icon-AddTask"></em></span> <span class="text">Live Training Sessions</span></li>
                 </ul>
             </div>
         </section>
@@ -475,34 +440,23 @@
         <section class="programmingLanguages">
             <div class="container">
                 <div class="subjectsOpportunities">
-                    <div class="topSubjects commonStyle">
+                    <div class="topSubjects commonStyle" *ngFor="let opportunitiesDetails of courseData?.courseContents?.topsubjects_opportunities">
                         <figure>
-                            <img src="/assets/images/icon.png" alt="" />
+                            <img [src]="opportunitiesDetails.image" alt="" />
                         </figure>
-                        <div class="headding">Top Subjects you Learn</div>
+                        <div class="headding">{{opportunitiesDetails?.title}}</div>
                         <ul>
-                            <li><em class="icon-Tick"></em>Software Development</li>
-                            <li><em class="icon-Tick"></em>Web UI Development</li>
-                            <li><em class="icon-Tick"></em>Database Management</li>
-                            <li><em class="icon-Tick"></em>Backend Development</li>
-                            <li><em class="icon-Tick"></em>Scalable Application Development.</li>
-                        </ul>
-                    </div>
-                    <div class="opportunities commonStyle">
-                        <figure>
-                            <img src="/assets/images/icon.png" alt="" />
-                        </figure>
-                        <div class="headding">Job Opportunities</div>
-                        <ul>
-                            <li><em class="icon-Tick"></em>Full Stack Web Application Developer</li>
-                            <li><em class="icon-Tick"></em>Node JS Developer</li>
-                            <li><em class="icon-Tick"></em>Mean Stack Developer</li>
-                            <li><em class="icon-Tick"></em>Java Backend Developer</li>
+                            <li *ngFor="let opportunitiesBenefits of opportunitiesDetails.benefits"><em class="icon-Tick"></em> {{opportunitiesBenefits?.content}}</li>
                         </ul>
                     </div>
                 </div>
                 <div class="toolsCovered">
                     <div class="headding">Programming Languages & Tools covered</div>
+                    <div class="tools">
+                        <figure *ngFor="let prgmLangNdToolsCoveredDetails of courseData?.courseContents?.prgmLangNdToolsCovered">
+                            <img [src]="prgmLangNdToolsCoveredDetails.image" alt="" />
+                        </figure>
+                    </div>
                 </div>
             </div>
         </section>
@@ -511,28 +465,32 @@
         <section class="instructors">
             <div class="container">
                 <div class="heading2">Instructors</div>
-                <div class="heading6">Get Mentored by the L&T Edutech's Faculty Expertise.</div>
+                <div class="heading6">{{courseData?.courseContents?.instructors?.label}}</div>
                 <div class="instructorProfile">
-                    <div class="profile">
+                    <div class="profile" *ngFor="let instructorDetails of courseData?.courseContents?.instructors?.details">
                         <figure>
-                            <img src="/assets/images/male_icon.png" alt="" />
+                            <img [src]="instructorDetails.image" alt="" />
                         </figure>
                         <div>
-                            <span class="heading5">Mr. CANDES JUDELINEPERREIRA</span>
-                            <span class="desc">Vice President – IT Transformation</span>
-                            <div class="heading6">New Way of Working Group (NWOW), LTI, 3+ decades of experience in the IT Industry</div>
+                            <span class="heading5">{{instructorDetails?.name}}</span>
+                            <span class="desc">{{instructorDetails?.title}}</span>
+                            <div class="heading6">{{instructorDetails?.desc}}</div>
                         </div>
                     </div>
-                    <div class="profile">
-                        <figure>
-                            <img src="/assets/images/female_icon.png" alt="" />
-                        </figure>
-                        <div>
-                            <span class="heading5">Mr. VARSHA NAMBIAR</span>
-                            <span class="desc">Sr. Technical Architect</span>
-                            <div class="heading6">LTI, Certified professional in AWS, Azure, GCP, Vmware, 10 years of IT experience</div>
-                        </div>
-                    </div>
+                    <!-- <owl-carousel-o [options]="TopicsOptions">
+                        <ng-template *ngFor="let instructorDetails of courseData?.courseContents?.instructors?.details">
+                            <div class="profile">
+                                <figure>
+                                    <img [src]="instructorDetails.image" alt="" />
+                                </figure>
+                                <div>
+                                    <span class="heading5">{{instructorDetails?.name}}</span>
+                                    <span class="desc">{{instructorDetails?.title}}</span>
+                                    <div class="heading6">{{instructorDetails?.desc}}</div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </owl-carousel-o> -->
                 </div>
             </div>
         </section>
@@ -541,117 +499,26 @@
         <section class="keyConcepts">
             <div class="container">
                 <div class="heading2">Key Concepts</div>
-                <div class="heading6">Curated by Industry Experts and leading Academicians, the syllabus comprises of Videos, Practice Labs, Projects, Assignments and 1:1 Training Sessions.</div>
+                <div class="heading6">{{courseData?.courseContents?.keyConcepts?.label}}</div>
                 <div class="expansionPanel">
-                    <div class="left">
-                        <div class="accordionPanel">
-                            <mat-accordion>
-                                <mat-expansion-panel [expanded]="true">
-                                    <mat-expansion-panel-header>
-                                        <mat-panel-title>
-                                            <div class="heading5">Core Java</div>
-                                        </mat-panel-title>
-                                        <mat-panel-description>
-                                            <div class="hours"><em class="icon-Time"></em> <span>18 hrs</span></div>
-                                        </mat-panel-description>
-                                    </mat-expansion-panel-header>
-                                    <div class="expansionContent">
-                                        <ul>
-                                            <li>Basic Concepts</li>
-                                            <li>OOPS with Java</li>
-                                            <li>Inheritance & Abstraction</li>
-                                            <li>Arrays, List</li>
-                                            <li>Regex</li>
-                                            <li>Exception Handling</li>
-                                            <li>File Handing</li>
-                                        </ul>
-                                    </div>
-                                </mat-expansion-panel>
-                            </mat-accordion>
-                        </div>
-                        <div class="accordionPanel">
-                            <mat-accordion>
-                                <mat-expansion-panel [expanded]="true">
-                                    <mat-expansion-panel-header>
-                                        <mat-panel-title>
-                                            <div class="heading5">HTML5, CSS3 and JS</div>
-                                        </mat-panel-title>
-                                        <mat-panel-description>
-                                            <div class="hours"><em class="icon-Time"></em> <span>18 hrs</span></div>
-                                        </mat-panel-description>
-                                    </mat-expansion-panel-header>
-                                    <div class="expansionContent">
-                                        <ul>
-                                            <li>HTML5 Tags</li>
-                                            <li>List, Forms</li>
-                                            <li>CSS3 – Styles</li>
-                                            <li>Flexbox & Grid</li>
-                                            <li>Mobile First Design</li>
-                                            <li>Javascript Basics</li>
-                                            <li>DOM Manipulation</li>
-                                            <li>Jquery</li>
-                                            <li>Bootstrap 4</li>
-                                            <li>Single Page Website Development</li>
-                                        </ul>
-                                    </div>
-                                </mat-expansion-panel>
-                            </mat-accordion>
-                        </div>
-                    </div>
-                    <div class="right">
-                        <div class="accordionPanel">
-                            <mat-accordion>
-                                <mat-expansion-panel [expanded]="true">
-                                    <mat-expansion-panel-header>
-                                        <mat-panel-title>
-                                            <div class="heading5">Core Java</div>
-                                        </mat-panel-title>
-                                        <mat-panel-description>
-                                            <div class="hours"><em class="icon-Time"></em> <span>18 hrs</span></div>
-                                        </mat-panel-description>
-                                    </mat-expansion-panel-header>
-                                    <div class="expansionContent">
-                                        <ul>
-                                            <li>Basic Concepts</li>
-                                            <li>OOPS with Java</li>
-                                            <li>Inheritance & Abstraction</li>
-                                            <li>Arrays, List</li>
-                                            <li>Regex</li>
-                                            <li>Exception Handling</li>
-                                            <li>File Handing</li>
-                                        </ul>
-                                    </div>
-                                </mat-expansion-panel>
-                            </mat-accordion>
-                        </div>
-                        <div class="accordionPanel">
-                            <mat-accordion>
-                                <mat-expansion-panel [expanded]="true">
-                                    <mat-expansion-panel-header>
-                                        <mat-panel-title>
-                                            <div class="heading5">HTML5, CSS3 and JS</div>
-                                        </mat-panel-title>
-                                        <mat-panel-description>
-                                            <div class="hours"><em class="icon-Time"></em> <span>18 hrs</span></div>
-                                        </mat-panel-description>
-                                    </mat-expansion-panel-header>
-                                    <div class="expansionContent">
-                                        <ul>
-                                            <li>HTML5 Tags</li>
-                                            <li>List, Forms</li>
-                                            <li>CSS3 – Styles</li>
-                                            <li>Flexbox & Grid</li>
-                                            <li>Mobile First Design</li>
-                                            <li>Javascript Basics</li>
-                                            <li>DOM Manipulation</li>
-                                            <li>Jquery</li>
-                                            <li>Bootstrap 4</li>
-                                            <li>Single Page Website Development</li>
-                                        </ul>
-                                    </div>
-                                </mat-expansion-panel>
-                            </mat-accordion>
-                        </div>
+                    <div class="accordionPanel" *ngFor="let keyConceptsDetails of courseData?.courseContents?.keyConcepts?.technology">
+                        <mat-accordion>
+                            <mat-expansion-panel [expanded]="true">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        <div class="heading5">{{keyConceptsDetails?.title}}</div>
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                        <div class="hours"><em class="icon-Time"></em> <span>{{keyConceptsDetails?.hours}}</span></div>
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                                <div class="expansionContent">
+                                    <ul>
+                                        <li *ngFor="let keyConceptsList of keyConceptsDetails?.details">{{keyConceptsList}}</li>
+                                    </ul>
+                                </div>
+                            </mat-expansion-panel>
+                        </mat-accordion>
                     </div>
                 </div>
             </div>
@@ -661,35 +528,14 @@
         <section class="realTimeProjects">
             <div class="container">
                 <div class="heading2">Real Time Projects</div>
-                <div class="heading6">The best way to learn a technology is to apply the technology to solve real-world problems.</div>
+                <div class="heading6">{{courseData?.courseContents?.realTimeProjects?.label}}</div>
                 <div class="realTimeWrapper">
-                    <div class="commonStyle">
+                    <div class="commonStyle" *ngFor="let realTimeProjectsDetails of courseData?.courseContents?.realTimeProjects?.details">
                         <figure>
-                            <img src="/assets/images/icon.png" alt="" />
+                            <img [src]="realTimeProjectsDetails.image" alt="" />
                         </figure>
-                        <div class="heading5">Real World Challenges</div>
-                        <p>Learn and Challenged - Way to Mastery - Practice building solutions for real world problems.</p>
-                    </div>
-                    <div class="commonStyle">
-                        <figure>
-                            <img src="/assets/images/icon.png" alt="" />
-                        </figure>
-                        <div class="heading5">Continuous Mentor Support</div>
-                        <p>Learn and Challenged - Way to Mastery - Practice building solutions for real world problems.</p>
-                    </div>
-                    <div class="commonStyle">
-                        <figure>
-                            <img src="/assets/images/icon.png" alt="" />
-                        </figure>
-                        <div class="heading5">Reflective Learning</div>
-                        <p>Learn and Challenged - Way to Mastery - Practice building solutions for real world problems.</p>
-                    </div>
-                    <div class="commonStyle">
-                        <figure>
-                            <img src="/assets/images/icon.png" alt="" />
-                        </figure>
-                        <div class="heading5">Full Stack Technologies</div>
-                        <p>Learn and Challenged - Way to Mastery - Practice building solutions for real world problems.</p>
+                        <div class="heading5">{{realTimeProjectsDetails?.title}}</div>
+                        <p>{{realTimeProjectsDetails?.desc}}</p>
                     </div>
                 </div>
             </div>
@@ -700,29 +546,24 @@
             <div class="left">
                 <div class="heading2">Career Impact</div>
                 <ul>
-                    <li><em class="icon-Tick"></em> Extensive Mentor support to leverage the candidate potential</li>
-                    <li><em class="icon-Tick"></em> Intense Training with Hands on Practice Labs</li>
-                    <li><em class="icon-Tick"></em> Building Production ready skillset</li>
-                    <li><em class="icon-Tick"></em> Enhancing problem-solving capability</li>
-                    <li><em class="icon-Tick"></em> Training to enhance Technical and Interpersonal skills</li>
-                    <li><em class="icon-Tick"></em> Intelligent Monitoring and Assessment Solution</li>
-                    <li><em class="icon-Tick"></em> 24/7 Query Clarification support</li>
-                    <li><em class="icon-Tick"></em> Personalized Learning Solution and Tracking</li>
+                    <li *ngFor="let careerImpactDetails of courseData?.courseContents?.careerImpact?.benefits">
+                        <em class="icon-Tick"></em> {{careerImpactDetails?.content}}
+                    </li>
                 </ul>
             </div>
             <div class="right">
                 <figure>
-                    <img src="/assets/images/carreer.png" alt="" />
+                    <img [src]="courseData?.courseContents?.careerImpact?.image" alt="" />
                 </figure>
             </div>
         </section>
-
+        
         <!-- Benefits -->
         <section class="benefits">
             <div class="container">
                 <div class="heading2">Benefits of L&T Edutech</div>
                 <figure>
-                    <img src="/assets/images/benefits.jpg" alt="" />
+                    <img [src]="courseData?.courseContents?.benefitsOfLntEdutech?.image" alt="" />
                 </figure>
             </div>
         </section>
