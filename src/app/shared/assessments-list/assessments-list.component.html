@@ -57,7 +57,8 @@
                                     <!-- <button class="topRated">Top Rated</button> Dont Delete this line -->
                                 </figure>
                                 <div class="previewRibbon">
-                                    <span [ngClass]="cards.productType == 'course' ? 'coursetag':''">{{cards.productType | uppercase}}</span>
+                                    <span *ngIf="cards.productType == 'assessment'">Assessment</span>
+                                    <span *ngIf="cards.productType == 'course'" [ngClass]="cards.productType == 'course' ? 'coursetag':''">Learning Path</span>
                                 </div>
                             </div>
                             <div class="listDescription">

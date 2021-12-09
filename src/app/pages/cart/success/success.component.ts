@@ -81,7 +81,12 @@ export class SuccessComponent implements OnInit {
           this.orderlist.forEach(element => {
             if(element?.productType == 'course'){
               this.lxpCheck = true;
-              this.courseId.push(element.cid);
+              if(element.categoryIds.length == 1) {
+                this.courseId.push(element.cid);
+              }
+              else {
+                this.courseId = element.categoryIds;
+              }
             }
           });
           if(this.lxpCheck){

@@ -15,7 +15,6 @@ import { RatingStudentFeedbackComponent } from './rating-studentFeedback/rating-
 import { SearchComponent } from './search/search.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
-
 @NgModule({
   declarations: [
     ZcontentCatalogMainRouteComponent, 
