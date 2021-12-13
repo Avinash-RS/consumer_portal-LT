@@ -25,7 +25,7 @@
             height: 280px;
             object-fit: cover;
             object-position: center top;
-            filter: blur(0.7em);
+            //filter: blur(0.7em);
             @include sm {
                 height: 220px;
             }
@@ -137,7 +137,7 @@
                     font-weight: 300;
                     line-height: 1;
                     em {
-                        color: $secondaryColor;
+                        color: #EBC71A;
                         margin-right: 0.35em;
                     }
                 }
@@ -145,6 +145,8 @@
         }
     }
     .assessmentHighlights {
+        border-left: 1px solid rgba(255,255,255,0.4);
+        padding-left: 15px;
         .heading6 {
             color: $whiteColor;
             font-weight: 700;
@@ -168,7 +170,7 @@
                     width: 47%;
                 }
                 em {
-                    color: $secondaryColor;
+                    color: #EBC71A;
                     margin-right: 0.5em;
                     font-size: 1em;
                 }
