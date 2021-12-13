@@ -135,9 +135,9 @@ footer {
         li {
             display: inline-block;
             border-right: 1px solid $greyColor;
-            padding-right: 0.313em;
-            margin-right: 0.313em;
-            a{
+            padding-right: 10px;
+            margin-right: 10px;
+            a {
                 display: flex;
                 align-items: center ;
                 &:hover {
@@ -145,7 +145,7 @@ footer {
                         color: $primaryColor;
                     }
                 }
-                em{
+                em {
                     margin-right: 5px;
                 }
             }
