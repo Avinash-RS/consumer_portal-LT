@@ -38,12 +38,6 @@ export class AboutAssessmentComponent implements OnInit {
       },
       992: {
         items: 2
-      },
-      1024: {
-        items: 2
-      },
-      1200: {
-        items: 2
       }
     }
   }
