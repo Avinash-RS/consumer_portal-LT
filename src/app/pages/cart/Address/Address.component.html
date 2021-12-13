@@ -47,7 +47,7 @@
                 </mat-form-field>
                 <ng-container *ngIf="mobile.invalid && mobile.touched">
                     <mat-error *ngIf="mobile.errors?.required" class="error">{{'mobile number is required'}}</mat-error>
-                    <mat-error *ngIf="mobile.errors?.alphaNum30" class="error">{{'Alpha numeric with maximum of 10 characters only allowed'}}</mat-error>
+                    <mat-error *ngIf="mobile?.errors?.mobileRegex" class="error">Please enter a valid 10 digit mobile number</mat-error>
                 </ng-container>
             </div>
             <div class="addressSection">

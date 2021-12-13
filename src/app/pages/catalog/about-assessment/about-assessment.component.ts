@@ -53,7 +53,7 @@ export class AboutAssessmentComponent implements OnInit {
   pageNumber = 0;
   aboutArea;
   domainId;
-  isSticky: boolean = false;
+  // isSticky: boolean = false;
   blobToken: string = environment.blobKey;
   bannerImage;
   showAssesment = false;
@@ -78,7 +78,6 @@ export class AboutAssessmentComponent implements OnInit {
     this.getDetails()
     this.route.queryParams
     .subscribe(params => {
-      console.log(params);
       this.domainId = params.selectedTab;
       this.areaId = params.id;
       this.productType = params.productType
@@ -87,8 +86,9 @@ export class AboutAssessmentComponent implements OnInit {
       }
       else{
         this.getArea();
-        this.checkScroll();
+        //this.checkScroll();
       }
+      this.scrollTop();
     })
     //on reload or param change
     // this.router.events.pipe(
@@ -111,7 +111,14 @@ export class AboutAssessmentComponent implements OnInit {
     //   this.showAssesment = false;
     // });
   }
-getAbouCourse() {
+  scrollTop(){
+    let top = document.getElementById('top');
+    if (top !== null) {
+      top.scrollIntoView();
+      top = null;
+    }
+  }
+getAbouCourse(){
   var params = {
     "competencyId":this.areaId
 }
@@ -241,10 +248,10 @@ freeOrderPlace(cartid){
     this.destroyed.complete();
   }
   //Scroll
-  @HostListener('window:scroll', ['$event'])
-  checkScroll() {
-    this.isSticky = window.pageYOffset >= 370;
-  }
+  // @HostListener('window:scroll', ['$event'])
+  // checkScroll() {
+  //   this.isSticky = window.pageYOffset >= 370;
+  // }
   showText() {
     this.isReadMore = !this.isReadMore
   }

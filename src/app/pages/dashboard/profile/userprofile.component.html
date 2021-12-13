@@ -87,7 +87,7 @@
                                 </mat-form-field>
                                 <ng-container *ngIf="mobile.invalid && mobile.touched">
                                     <mat-error *ngIf="mobile.errors?.required" class="error">{{'Mobile number is required'}}</mat-error>
-                                    <mat-error *ngIf="mobile.errors?.alphaNum30" class="error">{{'Please enter valid mobile number'}}</mat-error>
+                                    <mat-error *ngIf="mobile.errors?.mobileRegex" class="error">{{'Please enter valid mobile number'}}</mat-error>
                                 </ng-container>
                             </div>
                             <div>
@@ -231,8 +231,12 @@
                         <div>
                             <label>Current Password</label>
                             <mat-form-field appearance="fill">
-                                <input type="password" matInput autocomplete="Off" placeholder="" formControlName="cp_currentPassword" >
+                                <input placeholder="" autocomplete="Off" formControlName="cp_currentPassword" matInput [type]="currpasshide ? 'password' : 'text'">
+                                <div mat-icon-button matSuffix (click)="currpasshide = !currpasshide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="currpasshide">
+                                <em class="{{currpasshide ? 'icon-Hide' : 'icon-View'}}"></em>
+                                </div>
                             </mat-form-field>
+
                             <ng-container *ngIf="cp_currentPassword.invalid && cp_currentPassword.touched">
                                 <mat-error *ngIf="cp_currentPassword.errors?.required" class="error">{{'Password is required'}}</mat-error>
                                 <mat-error *ngIf="cp_currentPassword.errors?.minlength" class="error">{{'Minimum 8 characters required'}}</mat-error>
@@ -243,7 +247,10 @@
                         <div>
                             <label>New Password</label>
                             <mat-form-field appearance="fill">
-                                <input type="password" matInput autocomplete="Off" placeholder="" formControlName="password">
+                                <input [type]="newpasshide ? 'password' : 'text'" matInput autocomplete="Off" placeholder="" formControlName="password">
+                                <div mat-icon-button matSuffix (click)="newpasshide = !newpasshide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="newpasshide">
+                                    <em class="{{newpasshide ? 'icon-Hide' : 'icon-View'}}"></em>
+                                    </div>
                             </mat-form-field>
                             <ng-container *ngIf="password.invalid && password.touched">
                                 <mat-error *ngIf="password.errors?.required" class="error">{{'Password is required'}}</mat-error>
@@ -255,7 +262,10 @@
                         <div>
                             <label>Confirm password</label>
                             <mat-form-field appearance="fill">
-                                <input type="password" matInput autocomplete="Off" placeholder="" formControlName="password2">
+                                <input [type]="conpasshide ? 'password' : 'text'" matInput autocomplete="Off" placeholder="" formControlName="password2">
+                                <div mat-icon-button matSuffix (click)="conpasshide = !conpasshide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="conpasshide">
+                                    <em class="{{conpasshide ? 'icon-Hide' : 'icon-View'}}"></em>
+                                    </div>
                             </mat-form-field>
                             <ng-container *ngIf="password2.invalid && password2.touched || (accountSettingsForm.errors?.notMatch && (accountSettingsForm.touched || accountSettingsForm.dirty))">
                                 <mat-error *ngIf="password2.invalid && password2.touched && password2.errors?.required" class="error">{{'Confirm Password is required'}}</mat-error>
