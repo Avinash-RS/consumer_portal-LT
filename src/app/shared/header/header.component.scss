@@ -14,25 +14,32 @@ header {
     box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.15);
     width: 100%;
     min-height: 4em;
-    grid-template-columns: 0.08fr 0.4fr 0.5fr 0.8fr;
+    grid-template-columns: 0.1fr 0.4fr 0.5fr 0.8fr;
     grid-template-areas: "hambrg figure megaMenu signIn";
     @include sm {  
-        grid-template-columns: 0.01fr 0.4fr 0.3fr  0.6fr;
+        // grid-template-columns: 0.01fr 0.4fr 0.3fr  0.6fr;
+        grid-template-columns: 0.07fr 0.3fr 0.4fr 0.6fr;
         grid-template-areas: "hambrg figure megaMenu signIn";
     }
     @include md { 
-        grid-template-columns: 0.01fr 0.5fr 0.3fr 1.1fr 0.6fr 0.6fr;
+        // grid-template-columns: 0.01fr 0.5fr 0.3fr 1.1fr 0.6fr 0.6fr;
+        grid-template-columns: 0.2fr 0.5fr 0.7fr 1fr 0.6fr 1.8fr;
         grid-template-areas: "hambrg figure megaMenu megaMenu megaMenu signIn";
     }
     @include lg { 
         font-size: 14px;
-        grid-template-columns: 0.08fr 0.4fr 0.3fr 1fr 0.7fr 0.5fr;
+        // grid-template-columns: 0.08fr 0.4fr 0.3fr 1fr 0.7fr 0.5fr;
+        grid-template-columns: 0.15fr 0.45fr 0.4fr 0.9fr 0.7fr 1.2fr;
         grid-template-areas: "hambrg figure megaMenu megaMenu megaMenu signIn";
     }
     @include xl { 
         font-size: 16px;
-        grid-template-columns: 0.45fr 0.33fr 1.15fr 0.87fr 0.5fr;
+        grid-template-columns: 0.45fr 0.33fr 1.15fr 0.87fr 1.2fr;
         // grid-template-columns: 0.45fr 0 2fr 0.87fr 0.5fr;
+        grid-template-areas: 'figure megaMenu topMenu search_ signIn';
+    }
+    @media only screen and (min-width: 1440px) {
+        grid-template-columns: 0.45fr 0.33fr 1.15fr 0.87fr 0.75fr;
         grid-template-areas: 'figure megaMenu topMenu search_ signIn';
     }
 }
@@ -48,7 +55,19 @@ figure {
     grid-area: figure;
     img {
         vertical-align: middle;
-        width: 57%;
+        width: 80%;
+        @include sm {
+            width: 40%;
+        }
+        @include md {
+            width: 85%;
+        }
+        @include lg {
+            width: 70%;
+        }
+        @include xl {
+            width: 40%;
+        }
     } 
 }
 .megaMenu {
@@ -68,7 +87,7 @@ figure {
         min-width: 78px;
         // height: 23.4px;
         @include sm { 
-            min-width: 100px;
+            min-width: 90px;
             margin-right: 15px;
             // height: 30.2px;
         }
@@ -79,7 +98,6 @@ figure {
             // position: relative;
             // left: 7px;
             // top: 1px;
-
             &.icon-UpArrow {
                 top: 0px;
             }
@@ -238,14 +256,33 @@ em {
 .signInRegister {
     grid-area: signIn;
     text-align: right;
+    display: inline-flex;
+    align-items: center;
     @include md {
-      
     }
     @include lg {
-        
     }
     @include xl {
-       
+    }
+    .recruiter {
+        display: inline-flex;
+        margin-right: 1.75em;
+        a {
+            color: $mediumGrey;
+            font-size: 0.95em;
+            display: flex;
+            em {
+                font-size: 1.3em;
+            }
+        }
+        span {
+            margin-left: 5px;
+        }
+        &:hover {
+            span, em {
+                color: #2EA3F2;
+            }
+        }
     }
     span, button {
         vertical-align: middle;

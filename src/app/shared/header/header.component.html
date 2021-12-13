@@ -7,7 +7,7 @@
         <img src="https://assets.lntedutech.com/edutech_logo.svg" alt="L&T Logo">
     </figure>
     <div class="megaMenu">
-        <button (click)="megaMenuClick()">Catalogue<em [ngClass]="showMenu == 'out' ? 'icon-DownArrow' : 'icon-UpArrow'" ></em></button>
+        <button (click)="megaMenuClick()">Catalog<em [ngClass]="showMenu == 'out' ? 'icon-DownArrow' : 'icon-UpArrow'" ></em></button>
         <!-- <button (click)="courseMenuClick()">Courses<em [ngClass]="showCourseMenu == 'out' ? 'icon-DownArrow' : 'icon-UpArrow'" ></em></button> -->
     </div>
     <!-- <div class="megaMenu">
@@ -28,7 +28,10 @@
         </span>
         <em [ngClass]="(header_width.offsetWidth > '1025') ?  'icon-Search' : 'icon-Close'" (click)="search_sec()" ></em>
     </div> -->
-    <div class="signInRegister"> 
+    <div class="signInRegister">
+        <div class="recruiter">
+            <a href="https://unifiedreport.lntedutech.com/login" target="recruiterLogin"><em class="icon-Recruiter"></em> <span>Recruiter? Login here</span></a>
+        </div>
         <span class="cart">
             <a (click)="openCart(); closeMegaMenu_()">
             <em *ngIf="cartCount == 0" class="icon-Cart"></em>
@@ -68,11 +71,10 @@
                 </mat-menu>
             </div>
         </ng-container>
-    <ng-container *ngIf="!showAvatar">
-        <span class="signIn"><a  (click)="openOnBoard('0'); closeMegaMenu_()">Sign In</a></span>
-        <button class="register" (click)="openOnBoard('1'); closeMegaMenu_()">Register</button>
-    </ng-container>
-
+        <ng-container *ngIf="!showAvatar">
+            <span class="signIn"><a  (click)="openOnBoard('0'); closeMegaMenu_()">Sign In</a></span>
+            <button class="register" (click)="openOnBoard('1'); closeMegaMenu_()">Register</button>
+        </ng-container>
     </div>
 
     <!-- <nav class="menuLevel1" [@slideInOut]="showMenu">
@@ -121,7 +123,7 @@
     <ng-container *ngIf ="catalogMenu.length > 0">
         <ul class="headtxt_">
             <li>
-                <a>Catalogue</a>
+                <a>Catalog</a>
                 <ul>
                     <li><a>DOMAIN</a>
                         <ul>
