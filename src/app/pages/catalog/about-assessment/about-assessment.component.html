@@ -1,3 +1,4 @@
+<div id="top"></div>
 <ng-container *ngIf="productType != 'course'">
 <section class="areaDetail">
     <div class="detailBanner">
@@ -568,8 +569,11 @@
             </div>
         </section>
     </div>
-    <div *ngIf="nocard">
-        <p>No data Available</p>
+    <div *ngIf="nocard" class="noDataFound">
+        <figure>
+            <img src="/assets/images/no-categories.svg" alt="" />
+        </figure>
+        <div class="heading3">no courses found</div>
     </div>
 </ng-container>
 

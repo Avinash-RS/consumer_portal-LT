@@ -52,7 +52,7 @@ export class AddressComponent implements OnInit {
     if (this.isEdit) {
       this.addressEntryForm = this.fb.group({
         name: [this.addressItemData?.name, [Validators.required , this.glovbal_validators.noWhitespaceValidator]],
-        mobile: [this.addressItemData?.mobile, [Validators.required, ]],
+        mobile: [this.addressItemData?.mobile, [Validators.required, this.glovbal_validators.mobileRegex()]],
         addresslines: [this.addressItemData?.addressLine1, [Validators.required  ,this.glovbal_validators.address255()]],
         city: [this.addressItemData?.city, [Validators.required]],
         state: [this.addressItemData?.state, [Validators.required]],
@@ -63,7 +63,7 @@ export class AddressComponent implements OnInit {
     } else {
       this.addressEntryForm = this.fb.group({
         name: ['', [Validators.required , this.glovbal_validators.noWhitespaceValidator]],
-        mobile: ['', [Validators.required]],
+        mobile: ['', [Validators.required,this.glovbal_validators.mobileRegex()]],
         addresslines: ['', [Validators.required, this.glovbal_validators.address255()]],
         city: ['', [Validators.required]],
         state: ['', [Validators.required]],
