@@ -66,6 +66,9 @@ figure {
             width: 70%;
         }
         @include xl {
+            width: 60%;
+        }
+        @media only screen and (min-width: 1440px) {
             width: 40%;
         }
     } 
