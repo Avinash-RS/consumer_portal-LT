@@ -19,6 +19,34 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   styleUrls: ['./about-assessment.component.scss']
 })
 export class AboutAssessmentComponent implements OnInit {
+  TopicsOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    dots: true,
+    margin: 30,
+    navSpeed: 700,
+    navText: ["<i class='icon-LeftArrow'></i>", "<i class='icon-RightArrow'></i>"],
+    nav: false,
+    responsive: {
+      0: {
+        items: 1
+      },
+      600: {
+        items: 2
+      },
+      992: {
+        items: 2
+      },
+      1024: {
+        items: 2
+      },
+      1200: {
+        items: 2
+      }
+    }
+  }
   howItWorks:any
   isReadMore = true
   areaId;
@@ -37,33 +65,8 @@ export class AboutAssessmentComponent implements OnInit {
   courseData:any;
   userDetails;
   nocard:boolean = false;
-  TopicsOptions: OwlOptions = {
-    loop: true,
-    mouseDrag: false,
-    touchDrag: false,
-    pullDrag: false,
-    autoplay: false,
-    margin: 20,
-    dots: false,
-    navSpeed: 700,
-    navText: ['<em class="lxp-Rewind_Arrow"></em>', '<em class="lxp-Forward_Arrow"></em>'],
-    responsive: {
-      0: {
-        items: 1
-      },
-      400: {
-        items: 1
-      },
-      740: {
-        items: 1
-      },
-      940: {
-        items: 2
-      }
-    },
-    nav: true
-  };
   @ViewChild('kycmandate', { static: false }) matDialogRef: TemplateRef<any>;
+  backgroundImageUrl: any;
   constructor(private router: Router, private catalogService : CatalogService,private route:ActivatedRoute,private appconfig: AppConfigService,private commonService : CommonService,public toast: ToastrService ,private util: UtilityService,private dialog: MatDialog) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => {
       return false;
@@ -87,7 +90,6 @@ export class AboutAssessmentComponent implements OnInit {
       }
       this.scrollTop();
     })
-
     //on reload or param change
     // this.router.events.pipe(
     //   filter((event: RouterEvent) => event instanceof NavigationEnd),
@@ -137,7 +139,9 @@ getAbouCourse(){
       this.nocard = true;
     }
   })
+  this.backgroundImageUrl = this.courseData?.image?.url;
 }
+
 dialogSetup(){
   const valdat = this.dialog.open(this.matDialogRef, {
     width: '400px',
