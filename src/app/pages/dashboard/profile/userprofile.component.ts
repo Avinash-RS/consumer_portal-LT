@@ -114,7 +114,9 @@ export class UserprofileComponent implements OnInit {
   secretKey = "(!@#Passcode!@#)";
   minDate: Date;
   maxDate: number;
-
+  currpasshide = true;
+  newpasshide = true;
+  conpasshide = true;
   constructor(public commonService: CommonService,
     public route: ActivatedRoute,
     private router:Router,

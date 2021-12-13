@@ -1,7 +1,7 @@
 <section class="myAssesmentSection">
     <div class="titleContainer">
         <div class="container titelFlex">
-            <div class="txt-area"><h1>My Purchase</h1></div>
+            <div class="txt-area"><h1>{{productType != 'course' ? 'My Assessment':'My Course'}}</h1></div>
             <!-- <button mat-flat-button><em class="icon-Favorite"></em> &nbsp; Wishlist </button> -->
             <div class="progress-area">
                 <span>{{profilePercentage}}% of your profile is complete</span>
@@ -23,7 +23,7 @@
         <div class="imgContainer">
             <figure>
                 <img src="/assets/images/empty-assessment.png" alt="" />
-                <div class="heading3">No assessments found</div>
+                <div class="heading3">{{productType != 'course' ? 'No assessments found ':'No courses found'}}</div>
                 <button (click)="toCatalogue()">Go to Catalogue</button>
             </figure>
         </div>
