@@ -199,3 +199,16 @@ app-zcontent-catalog-main-route {
               color: #ffffff !important;
   }
 }
+
+.instructors {
+    .instructorProfile {
+        .owl-theme .owl-dots .owl-dot span {
+            margin: 5px;
+            background: transparent;
+            border: 1px solid #29ABE2;
+        }
+        .owl-theme .owl-dots .owl-dot.active span {
+            background: #29ABE2;
+        }
+    }
+}

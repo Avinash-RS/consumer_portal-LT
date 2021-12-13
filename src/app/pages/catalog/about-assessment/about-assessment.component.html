@@ -467,7 +467,7 @@
                 <div class="heading2">Instructors</div>
                 <div class="heading6">{{courseData?.courseContents?.instructors?.label}}</div>
                 <div class="instructorProfile">
-                    <div class="profile" *ngFor="let instructorDetails of courseData?.courseContents?.instructors?.details">
+                    <!-- <div class="profile" *ngFor="let instructorDetails of courseData?.courseContents?.instructors?.details">
                         <figure>
                             <img [src]="instructorDetails.image" alt="" />
                         </figure>
@@ -476,21 +476,23 @@
                             <span class="desc">{{instructorDetails?.title}}</span>
                             <div class="heading6">{{instructorDetails?.desc}}</div>
                         </div>
-                    </div>
-                    <!-- <owl-carousel-o [options]="TopicsOptions">
-                        <ng-template *ngFor="let instructorDetails of courseData?.courseContents?.instructors?.details">
-                            <div class="profile">
-                                <figure>
-                                    <img [src]="instructorDetails.image" alt="" />
-                                </figure>
-                                <div>
-                                    <span class="heading5">{{instructorDetails?.name}}</span>
-                                    <span class="desc">{{instructorDetails?.title}}</span>
-                                    <div class="heading6">{{instructorDetails?.desc}}</div>
+                    </div> -->
+                    <owl-carousel-o [options]="TopicsOptions">
+                        <ng-container *ngFor="let instructorDetails of courseData?.courseContents?.instructors?.details">
+                            <ng-template carouselSlide>
+                                <div class="profile">
+                                    <figure>
+                                        <img [src]="instructorDetails.image" alt="" />
+                                    </figure>
+                                    <div>
+                                        <span class="heading5">{{instructorDetails?.name}}</span>
+                                        <span class="desc">{{instructorDetails?.title}}</span>
+                                        <div class="heading6">{{instructorDetails?.desc}}</div>
+                                    </div>
                                 </div>
-                            </div>
-                        </ng-template>
-                    </owl-carousel-o> -->
+                            </ng-template>
+                        </ng-container>
+                    </owl-carousel-o>
                 </div>
             </div>
         </section>

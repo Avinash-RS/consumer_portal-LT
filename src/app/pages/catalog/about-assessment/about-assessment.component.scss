@@ -702,12 +702,12 @@
 
 //Course Product
 .courseProduct {
-    // background-repeat: no-repeat;
-    // background-size: cover;
-    // background-position: center;
-    // display: flex;
-    // width: 100%;
-    // height: 400px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    width: 100%;
+    height: 400px;
     position: relative;
     figure {
         width: 100%;
@@ -732,6 +732,9 @@
         .heading1 {
             font-size: 3.25em;
             margin: 0 0 0.35em 0;
+            max-width: 510px;
+            width: 96%;
+            line-height: 1;
         }
         p {
             font-size: 1.125em;
@@ -755,6 +758,10 @@
                 line-height: normal;
                 padding-left: 1.5em;
                 padding-right: 1.5em;
+                background: #2EA3F2;
+                &:hover {
+                    background: #08558C;
+                }
             }
         }
     }
@@ -913,8 +920,8 @@
             align-items: center;
             flex-wrap: wrap;
             figure {
-                width: 15%;
-                margin: 15px 1em 0 0;
+                width: 10%;
+                margin: 15px 3.1em 0 0;
                 img {
                     width: 100%;
                 }
@@ -944,22 +951,26 @@
         margin-top: 1.5em;
     }
     .instructorProfile {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        flex-wrap: wrap;
-        margin-top: 2em;
+        margin-top: 1em;
         .profile {
             display: flex;
             align-items: flex-start;
-            width: 48%;
+            width: 100%;
             background-color: $whiteColor;
             padding: 1.5em 1em;
             margin-top: 1em;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            // box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
             figure {
                 display: flex;
                 width: 24%;
+                img {
+                    border-radius: 50%;
+                    width: 8em;
+                    height: 8em;
+                    object-fit: cover;
+                    object-position: top;
+                    display: flex;
+                }
             }
             > div {
                 width: 71%;
@@ -986,6 +997,14 @@
                     text-align: left;
                 }
             }
+        }
+        .owl-theme .owl-dots .owl-dot span {
+            margin: 5px;
+            background: transparent;
+            border: 1px solid #29ABE2;
+        }
+        .owl-theme .owl-dots .owl-dot.active span {
+            background: #29ABE2;
         }
     }
 }
