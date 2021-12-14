@@ -2,7 +2,7 @@
     <mat-tab-group mat-align-tabs="center" (selectedTabChange)="tabChange($event)"  [selectedIndex]="entryIndex">
         <mat-tab label="SIGN IN">
             <ng-container *ngIf="entryIndex == 0">
-            <form [formGroup]="loginForm" class="signInContent" (submit)="onSubmit()">
+            <form [formGroup]="loginForm" class="signInContent">
                 <div>
                     <div class="heading4">Sign in to your account</div>
                     <div class="layerContainer">
@@ -48,12 +48,12 @@
                                 </ng-container>
                             </div>
                             <div class="forgotPassword"><span (click)="gotoForgetPwd()">Forgot Password?</span></div>
-                            <div nbRecaptcha formControlName="captcha"></div>
+                            <!-- <div nbRecaptcha formControlName="captcha"></div>
                             <ng-container *ngIf="loginCaptcha.invalid && loginCaptcha.touched">
                                 <mat-error *ngIf="loginCaptcha.errors?.required" class="error">{{'Please fill in Captcha'}}</mat-error>
                                 <mat-error *ngIf="loginCaptcha.errors?.invalid" class="error">{{'Invalid Captcha'}}</mat-error>
-                            </ng-container>
-                            <button type="submit" id="signIn_btn" class="onEntry" mat-stroked-button>Sign In</button>
+                            </ng-container> -->
+                            <button  id="signIn_btn" class="onEntry" mat-stroked-button (click)="checkCaptchaSignIn(captchaRef)">Sign In</button>
                         </div>
                         <!-- <div class="secondLayer">
                             <em class="topLine"></em>
@@ -81,7 +81,7 @@
         </mat-tab>
         <mat-tab label="REGISTER">
             <ng-container *ngIf="entryIndex == 1&& showKyc==false">
-                <form [formGroup]="registerForm" autocomplete="new-password" (submit)="submitRegister()" class="signInContent registerContent">
+                <form [formGroup]="registerForm" autocomplete="new-password" class="signInContent registerContent">
                 <div class="heading4">Create Account</div>
                 <div class="layerContainer">
                     <div class="firstLayer">
@@ -151,12 +151,12 @@
                         <ng-container *ngIf="termsandConditions.invalid && termsandConditions.touched">
                             <mat-error *ngIf="termsandConditions.errors?.required" class="error">{{'Check terms and conditions checkbox'}}</mat-error>
                         </ng-container>
-                        <div nbRecaptcha formControlName="captcha"></div>
+                        <!-- <div nbRecaptcha formControlName="captcha"></div>
                         <ng-container *ngIf="captcha.invalid && captcha.touched">
                             <mat-error *ngIf="captcha.errors?.required" class="error">{{'Please fill in Captcha'}}</mat-error>
                             <mat-error *ngIf="captcha.errors?.invalid" class="error">{{'Invalid Captcha'}}</mat-error>
-                        </ng-container>
-                        <button type="submit" class="onEntry" mat-stroked-button>Register</button>
+                        </ng-container> -->
+                        <button class="onEntry" (click)="checkCaptchaSignIn(captchaRef)" mat-stroked-button>Register</button>
                      </div>
                      <!-- <div class="secondLayer registerLine">
                          <em class="topLine"></em>
@@ -201,4 +201,9 @@
 <ng-template #kycmandate >
   <app-kyc-mandate></app-kyc-mandate>
 </ng-template>
+
+    <re-captcha #captchaRef="reCaptcha"  (resolved)="resolvedSignIn($event)" size='invisible' (error)="onError($event)"
+      errorMode="handled" [siteKey]="siteKey">
+    </re-captcha>
+
 

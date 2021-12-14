@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { CommonService } from "src/app/services/common.service";
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute } from "@angular/router";
@@ -7,6 +7,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms"
 import { AppConfigService } from "src/app/utils/app-config.service";
 import { GlobalValidatorsService } from "src/app/validators/global-validators.service";
 import { APP_CONSTANTS } from "src/app/utils/app-constants.service";
+import { environment } from "@env/environment";
+import { RecaptchaErrorParameters } from "ng-recaptcha";
 
 @Component({
   selector: "app-forgotPassword",
@@ -36,6 +38,10 @@ export class ForgotPasswordComponent implements OnInit {
   userEmail: string;
   pwdSecretKey: void;
   secretKey = "(!@#Passcode!@#)";
+  recaptchaStr = '';
+  siteKey: any = environment.captachaSiteKey;
+  @ViewChild('captchaRef',{ static: false }) captchaRef;
+  
   constructor(
     public commonService: CommonService,
     public toast: ToastrService,
@@ -61,6 +67,9 @@ export class ForgotPasswordComponent implements OnInit {
 
   ngOnInit() {
     this.forgetPwdFormInitialize();
+    setTimeout(()=>{
+      this.captchaRef.reset();
+    },1000);
   }
   nextclicker(){
     this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.forgetpwd, {setPwd: 'kld12sdf4l12sdf23', email: this.forgetPwdForm.value.email});
@@ -91,20 +100,39 @@ export class ForgotPasswordComponent implements OnInit {
         break;
     }
   }
-
+  checkCaptcha(captchaSignIn){
+    if (this.recaptchaStr) {
+      captchaSignIn.reset();
+  }
+  captchaSignIn.execute();
+  }
+  resolvedSubmit(captchaSignInResponse: string){
+    this.recaptchaStr = captchaSignInResponse;
+    if (this.recaptchaStr) {
+      if( this.viewObj.setPassword){
+        this.setNewPassword();
+      }
+      else{
+        this.sendLinkToMail();
+      }
+    }
+  }
+  onError(errorDetails: RecaptchaErrorParameters): void {
+  }
   // this sends mail to user
   sendLinkToMail(){
     if (this.forgetPwdForm.valid){
       let data = {
-        "email" : this.forgetPwdForm.value.email
+        "email" : this.forgetPwdForm.value.email,
+        "badgeRequest" : this.recaptchaStr
        }
       this.commonService.fogetPasswordEmail(data).subscribe((resp: any) => {
         if (resp.success){
           this.toast.success(resp.message)
           this.displayController("mailSent")
         }else{
-          //this.toast.error(resp.message);
-          this.toast.error("Email id does not exist");
+          this.toast.error(resp.message);
+          //this.toast.error("Email id does not exist");
         }
       })
     }else{
@@ -119,7 +147,7 @@ export class ForgotPasswordComponent implements OnInit {
         // const salt = bcrypt.genSaltSync(10);
         // const pass = bcrypt.hashSync(this.resetPwdForm.value.password, salt);
         const encryptPass = this.commonService.encrypt(this.resetPwdForm.value.password,this.secretKey)
-        let data = {"email" : this.userEmail, "password" : encryptPass, "userSecretkey":this.pwdSecretKey}
+        let data = {"email" : this.userEmail, "password" : encryptPass, "userSecretkey":this.pwdSecretKey , "badgeRequest" : this.recaptchaStr}
         this.commonService.resetPassword(data).subscribe((resp: any) => {
           if (resp.success){
             this.toast.success(resp.message)
