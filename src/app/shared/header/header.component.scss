@@ -261,6 +261,7 @@ em {
     text-align: right;
     display: inline-flex;
     align-items: center;
+    justify-content: flex-end;
     @include md {
     }
     @include lg {

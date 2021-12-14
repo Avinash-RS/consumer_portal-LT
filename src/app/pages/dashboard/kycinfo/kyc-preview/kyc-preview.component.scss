@@ -501,6 +501,9 @@
       padding: 1em 0.5em;
       background: $secondaryColor;
       .text {
+          .header-txt{
+              color: $whiteColor;
+          }
         font-size: 20px;
         display: flex;
         align-items: center;

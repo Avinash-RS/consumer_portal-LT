@@ -39,7 +39,7 @@
     justify-content: space-between;
     position: relative;
     .txt-area{
-        width: 70%;
+        width: 80%;
         h1 {
             font-weight: bolder !important;
             font-size: 32px !important;
@@ -47,7 +47,10 @@
         }
     }
     .progress-area{
-        width: 30%;
+        width: 20%;
+        .progress-txt{
+            color: #ffffff;
+        }
         .progressbar{
             margin-top: 10px;
             height: 12px;
@@ -366,9 +369,9 @@
     }
 }
 ::ng-deep .progress-area .mat-progress-bar-fill::after {
-    background-color: #2ED775;
+    background-color: #1b4e9b;
   }
   
   ::ng-deep .progress-area .mat-progress-bar-buffer {
-    background: #E4E8EB;
+    background: #ededed;
   }
