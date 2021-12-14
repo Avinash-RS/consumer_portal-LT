@@ -39,7 +39,7 @@ header {
         grid-template-areas: 'figure megaMenu topMenu search_ signIn';
     }
     @media only screen and (min-width: 1440px) {
-        grid-template-columns: 0.45fr 0.33fr 1.15fr 0.87fr 0.75fr;
+        grid-template-columns: 0.45fr 0.33fr 1.15fr 0.6fr 1fr;
         grid-template-areas: 'figure megaMenu topMenu search_ signIn';
     }
 }
