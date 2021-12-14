@@ -147,8 +147,7 @@ export class LoginComponent implements OnInit {
       let loginData = {
         email: this.loginForm.value.email,
         password: encryptPass,
-        isAdmin: false,
-        badgeRequest: "microsetportal"
+        isAdmin: false
       };
       this.commonService.login(loginData).subscribe((data: any) => {
         // console.log(data, 'karthik Data')
