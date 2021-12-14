@@ -4,7 +4,7 @@
             <div class="txt-area"><h1>{{productType != 'course' ? 'My Assessment':'My Course'}}</h1></div>
             <!-- <button mat-flat-button><em class="icon-Favorite"></em> &nbsp; Wishlist </button> -->
             <div class="progress-area">
-                <span>{{profilePercentage}}% of your profile is complete</span>
+                <span class="progress-txt">{{profilePercentage}}% of your profile is complete</span>
                 <mat-progress-bar class="progressbar" mode="determinate" bufferValue ="100" [value]="profilePercentage"></mat-progress-bar>
             </div>
         </div>
