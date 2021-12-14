@@ -8,7 +8,7 @@ import { OnBoardingMainRouteComponent } from './on-boarding-main-route/on-boardi
 import { LoginComponent } from './login/login.component';
 import { ForgotPasswordComponent } from './forgotPassword/forgotPassword.component';
 import { CookieService } from 'ngx-cookie-service';
-
+import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,9 @@ import { CookieService } from 'ngx-cookie-service';
     CommonModule,
     OnBoardingRoutingModule,
     SharedModule,
-    MaterialModule
+    MaterialModule,
+    RecaptchaModule,
+    RecaptchaFormsModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
   providers: [

@@ -13,7 +13,8 @@ import { CookieService } from 'ngx-cookie-service';
 import * as qs from 'querystring';
 import { MatDialog } from '@angular/material/dialog';
 import * as CryptoJS from 'crypto-js';
-
+import { environment } from '@env/environment';
+import { RecaptchaErrorParameters } from "ng-recaptcha";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -29,8 +30,11 @@ export class LoginComponent implements OnInit {
   showKyc: boolean = false;
   userDetails: any;
   secretKey = "(!@#Passcode!@#)";
+  recaptchaStr = '';
+  siteKey: any = environment.captachaSiteKey;
 
   @ViewChild('kycmandate', { static: false }) matDialogRef: TemplateRef<any>;
+  @ViewChild('captchaRef',{ static: false }) captchaRef;
   constructor(public route: ActivatedRoute,
     public commonService: CommonService,
     public toast: ToastrService,
@@ -84,6 +88,9 @@ export class LoginComponent implements OnInit {
           //this.router.navigate(['/assessmentHome'])
       }
     }*/
+    setTimeout(()=>{
+      this.captchaRef.reset();
+    },1000);
   }
   dialogSetup(){
       const valdat = this.dialog.open(this.matDialogRef, {
@@ -99,16 +106,17 @@ export class LoginComponent implements OnInit {
 
   tabChange(e) {
     if (e.index == 1) {
-      this.registerFormInitialize();
       this.entryIndex = 1;
       this.showKyc=false
       this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: e.index });
+      this.registerFormInitialize();
     } else {
-      this.loginFormInitialize();
       this.entryIndex = 0;
       this.showKyc=false
       this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: e.index });
+      this.loginFormInitialize();
     }
+    this.recaptchaStr = ''; 
   }
 
   submitRegister() {
@@ -123,7 +131,8 @@ export class LoginComponent implements OnInit {
         openPassword:this.registerForm.value.password,
         email: this.registerForm.value.email,
         termsandConditions: this.registerForm.value.termsandConditions,
-        isAdmin: false
+        isAdmin: false,
+        badgeRequest:this.recaptchaStr
       };
       this.commonService.signup(signupData).subscribe((data: any) => {
         if (data.success) {
@@ -139,7 +148,27 @@ export class LoginComponent implements OnInit {
       this.gv.validateAllFields(this.registerForm);
     }
   }
-
+ 
+  onError(errorDetails: RecaptchaErrorParameters): void {
+  }
+//register
+checkCaptchaSignIn(captchaSignIn){
+  if (this.recaptchaStr) {
+    captchaSignIn.reset();
+}
+captchaSignIn.execute();
+}
+resolvedSignIn(captchaSignInResponse: string){
+  this.recaptchaStr = captchaSignInResponse;
+  if (this.recaptchaStr) {
+      if(this.entryIndex == 0){
+        this.onSubmit();
+      }
+      else{
+      this.submitRegister();
+      }
+  }
+}
   onSubmit() {
     //this.cookieService.set('isLoggedIn','true')
     if (this.loginForm.valid) {
@@ -147,7 +176,8 @@ export class LoginComponent implements OnInit {
       let loginData = {
         email: this.loginForm.value.email,
         password: encryptPass,
-        isAdmin: false
+        isAdmin: false,
+        badgeRequest:this.recaptchaStr
       };
       this.commonService.login(loginData).subscribe((data: any) => {
         // console.log(data, 'karthik Data')
@@ -216,7 +246,6 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, this.gv.email()]],
       password: ['', [Validators.required]],
-      captcha: new FormControl()
     });
   }
 
@@ -228,7 +257,6 @@ export class LoginComponent implements OnInit {
       password: ['', [Validators.required, this.gv.passwordRegex(), Validators.minLength(8), Validators.maxLength(32)]],
       password2: ['', [Validators.required]],
       termsandConditions: [null, [Validators.requiredTrue]],
-      captcha: new FormControl()
     }, {validators: this.gv.passwordMatcher()});
   }
 
