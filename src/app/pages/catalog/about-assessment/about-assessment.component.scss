@@ -896,6 +896,9 @@
             @include md {
                 width: 48%;
             }
+            @include xl {
+                width: 30%;
+            }
             .headding {
                 font-size: 1.875em;
                 font-weight: 700;

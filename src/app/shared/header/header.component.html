@@ -29,7 +29,7 @@
         <em [ngClass]="(header_width.offsetWidth > '1025') ?  'icon-Search' : 'icon-Close'" (click)="search_sec()" ></em>
     </div> -->
     <div class="signInRegister">
-        <div class="recruiter">
+        <div *ngIf="!showAvatar" class="recruiter">
             <a href="https://unifiedreport.lntedutech.com/login" target="recruiterLogin"><em class="icon-Recruiter"></em> <span>Recruiter? Login here</span></a>
         </div>
         <span class="cart">
