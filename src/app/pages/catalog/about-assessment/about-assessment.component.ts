@@ -114,7 +114,8 @@ export class AboutAssessmentComponent implements OnInit {
   }
 getAbouCourse(){
   var params = {
-    "competencyId":this.areaId
+    "competencyId":this.areaId,
+    "productType":"course"
 }
   this.catalogService.getAssesments(params).subscribe((response:any)=>{
     if (response.success) { 
