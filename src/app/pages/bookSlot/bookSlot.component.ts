@@ -62,7 +62,7 @@ export class BookSlotComponent implements OnInit {
   ) { this.userDetails = JSON.parse(this.appConfig.getSessionStorage('userDetails')); }
 
   ngOnInit() {
-    this.data.selectedindex = (this.data.selectedindex !== 'undefinded') ? 0 : this.data.selectedindex;
+    this.data.selectedindex = this.data.selectedindex ? this.data.selectedindex : 0;
     this.owlCarouselOptions.startPosition = this.data.selectedindex;
     this.currentCid = this.data.cid;
     this.assesmentName = this.data.assessmentName;
