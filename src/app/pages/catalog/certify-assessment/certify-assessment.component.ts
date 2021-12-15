@@ -35,7 +35,8 @@ export class CertifyAssessmentComponent implements OnInit {
 
   getAssesments(){
     var params = {
-      "competencyId":this.competencyData.cid
+      "competencyId":this.competencyData.cid,
+      "productType":"assessment"
   }
     this.catalogService.getAssesments(params).subscribe((response:any)=>{
       if (response.data.length > 0) {
