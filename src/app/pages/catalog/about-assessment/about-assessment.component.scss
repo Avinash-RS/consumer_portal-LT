@@ -868,6 +868,7 @@
             font-weight: 400;
             color: $blackColor;
             line-height: normal;
+            margin-left: 10px;
         }
     }
 }
@@ -924,6 +925,10 @@
                     margin-bottom: 1em;
                     display: flex;
                     align-items: center;
+                    img{
+                        margin-right: 5px;
+                        max-width: 11%;
+                    }
                     em {
                         color: #00A358;
                         font-size: 1.15em;

@@ -430,7 +430,8 @@
                 <div class="heading2">Programme Highlights</div>
                 <ul>
                     <li *ngFor="let highlight of courseData?.courseContents?.programmeHighlights">
-                        <span class="icon"><em class="icon-AddTask"></em></span> 
+                        <!-- <span class="icon"><em class="icon-AddTask"></em></span>  -->
+                        <img src="/assets/images/highlight-tick.svg" alt="" />
                         <span class="text">{{highlight.title}}</span>
                     </li>
                 </ul>
@@ -447,7 +448,10 @@
                         </figure>
                         <div class="headding">{{opportunitiesDetails?.title}}</div>
                         <ul>
-                            <li *ngFor="let opportunitiesBenefits of opportunitiesDetails.benefits"><em class="icon-Tick"></em> {{opportunitiesBenefits?.content}}</li>
+                            <li *ngFor="let opportunitiesBenefits of opportunitiesDetails.benefits">
+                                <!-- <em class="icon-Tick"></em>  -->
+                                <img src="/assets/images/blue-tick.png" alt="" />
+                            {{opportunitiesBenefits?.content}}</li>
                         </ul>
                     </div>
                 </div>
