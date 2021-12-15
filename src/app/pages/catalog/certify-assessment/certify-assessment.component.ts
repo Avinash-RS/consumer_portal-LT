@@ -86,7 +86,7 @@ export class CertifyAssessmentComponent implements OnInit {
         "assessmentId":id2
       }
       const data = {
-        "noofFields": "15",
+        "noofFields": "44",
         "email": this.userDetails.email ? this.userDetails.email : null
       }
 
@@ -109,9 +109,10 @@ export class CertifyAssessmentComponent implements OnInit {
         )}
 
       this.commonService.getProfilePercentage(data).subscribe((result: any) => {
-        if (result.success) {
-          let profilePercentage = result.data[0].profilePercentage;
-          if (profilePercentage <= 50) {
+        if (result?.success) {
+          //let profilePercentage = result.data[0].profilePercentage;
+          let KYCFlag = result.data[0].KYCMandFlag ? result.data[0].KYCMandFlag : 0;
+          if (KYCFlag == 0) {
             this.showdialog = true
           }else{
             this.showdialog = false

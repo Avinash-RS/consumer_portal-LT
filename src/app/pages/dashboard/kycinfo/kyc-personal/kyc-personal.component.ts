@@ -213,7 +213,7 @@ export class KycPersonalComponent implements OnInit,AfterViewInit, OnDestroy {
     this.commonService.getKycUserDetails(userID).subscribe((result:any)=>{
       if(result.success){
         this.personalDetails = result.data.personalDetails;
-        this.personalDetails.email = result.data.email;
+        //this.personalDetails.email = result.data.email;
         if(this.personalDetails){
           this.getStateAPI(this.personalDetails.nationality ? this.personalDetails.nationality : '5bd0597eb339b81c30d3e7f2');
           this.patchPersonalForm();

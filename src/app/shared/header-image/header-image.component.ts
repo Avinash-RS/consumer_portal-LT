@@ -85,11 +85,11 @@ export class HeaderImageComponent implements OnInit {
     if(this.appConfig.getSessionStorage('token')){
       this.showProgress = true;
       const data = {
-        "noofFields":"15",
+        "noofFields":"44",
         "email" : this.userDetails.email ? this.userDetails.email :null
       }
       this.commonService.getProfilePercentage(data).subscribe((result:any)=>{
-        if(result.success){
+        if(result?.success){
            this.profilePercentage =  result.data[0].profilePercentage;
         }
         else{
