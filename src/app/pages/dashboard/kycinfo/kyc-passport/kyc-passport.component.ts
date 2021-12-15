@@ -40,8 +40,8 @@ export class KycPassportComponent implements OnInit, AfterViewInit,OnDestroy {
   getAllStates: any;
   nonMergedPersonalDetails: any;
   userDetails:any;
-  inputvalue;
-  passportvalue;
+  inputvalue ="";
+  passportvalue ="";
   maxDate;
 
   constructor(
