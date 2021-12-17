@@ -90,7 +90,7 @@
     <button mat-menu-item (click)="getFAQ()">FAQ</button>
 </mat-menu>
 
-<nav class="menuLevel1" [@slideInOut]="showMenu">
+<nav class="menuLevel1 desktopMenu" [@slideInOut]="showMenu">
     <ng-container *ngIf ="catalogMenu.length == 0">
         <div class="SkeletonWrapper">
             <div class="item1 itemSmall">
@@ -169,5 +169,79 @@
                 </ul>
             </li>
         </ul>
+    </ng-container>
+</nav>
+<nav class="mobileMegamenu mobilemenu" [@slideInOut]="showMenu">
+    <ng-container *ngIf ="catalogMenu.length > 0">
+        <ng-container *ngIf="l1.length > 0 && l2.length <= 0 && l3.length <= 0 && l4.length <= 0">
+            <div class="mobilemenuHeader">
+                <div class="header-txt">Catalog</div>
+                <div><em class="icon-Close" (click)="closeMegaMenu()"></em></div>
+            </div>
+            <div class="fisrtLevel">
+                <ul>
+                    <li *ngFor="let item of l1">
+                        <a (click)="firstlevelClick(item)">
+                            <span>{{item.label}}</span><em class="icon-RightArrow"></em>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="l1.length > 0 && l2.length > 0 && l3.length <= 0 && l4.length <= 0">
+            <div class="mobilemenuHeader">
+                <div class="header-txt">Domain</div>
+                <div><em class="icon-Close" (click)="closeMegaMenu()"></em></div>
+            </div>
+            <button (click)="l2 = []">Back</button>
+            <div class="secondLevel">
+                <ul>
+                    <li *ngFor="let item of l2"><a>
+                        <span (click)="catalogHome(item.cid,productType)">{{item.name}}</span>
+                        <em class="icon-RightArrow" (click)="secondlevelclick(item)"></em> 
+                    </a>
+                </li>
+                </ul>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="l1.length > 0 && l2.length > 0 && l3.length > 0 && l4.length <= 0">
+            <div class="mobilemenuHeader">
+                <div class="header-txt">Stream</div>
+                <div><em class="icon-Close" (click)="closeMegaMenu()"></em></div>
+            </div>
+            <button (click)="l3 = []">Back</button>
+            <div class="thirdlevel">
+                <ul>
+                    <li *ngFor="let item of l3">
+                        <a>
+                            <span (click)="gotoArea(item,productType)">{{item.name}}</span>
+                            <em class="icon-RightArrow" (click)="thirdlevelclick(item)"></em> 
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="l1.length > 0 && l2.length > 0 && l3.length > 0 && l4.length > 0">
+
+            <div class="mobilemenuHeader">
+                <div></div>
+                <div><em class="icon-Close" (click)="closeMegaMenu()"></em></div>
+            </div>
+            <button (click)="l4 = []">Back</button>
+            <div class="fourthLevel">
+                <div class="heading4">{{l2name}}</div>
+                <p>
+                    {{ (longdesc.length > 250)? (longdesc | slice:0:250)+'...':(longdesc) }}
+                </p>
+                <figure>
+                    <img [src]="l1image" alt="" />
+                </figure>
+                <button (click)="gotoArea(l3item,productType)">Learn More</button>
+                <div class="heading6">Featured</div>
+                <ul>
+                    <li *ngFor="let item of l4"><a>{{item.name}}</a></li>
+                </ul>
+            </div>
+        </ng-container>
     </ng-container>
 </nav>
