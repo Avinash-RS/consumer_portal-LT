@@ -37,6 +37,14 @@ export class HeaderComponent implements OnInit {
   isCredentials = false;
   offsetFlag = true;
   productType:string = 'assessment';
+  l1:any = [];
+  l2:any = [];
+  l3:any = [];
+  l4:any = [];
+  l3item;
+  l2name ="";
+  longdesc ="";
+  l1image ="";
   constructor(
     private appConfig: AppConfigService,
     private catalogService: CatalogService,
@@ -107,6 +115,10 @@ export class HeaderComponent implements OnInit {
         }
       });
     }
+    this.l1 = this.catalogMenu;
+    this.l2 = [];
+    this.l3 = [];
+    this.l4 = [];
   }
   getCourse(){
     this.catalogService.getCatalog('course').subscribe((response: any) => {
@@ -304,5 +316,19 @@ export class HeaderComponent implements OnInit {
   }
   navigateProfile(type){
     this.router.navigate(['/userProfile'],{queryParams:{tabtype:type}})
+  }
+  firstlevelClick(item){
+    this.l2 = item.data;
+    this.productType = item.type;
+  }
+  secondlevelclick(item){
+    this.l3 = item.children;
+    this.l2name=item.name;
+    this.l1image = item.menuImage.url;
+  }
+  thirdlevelclick(item){
+    this.l4 = item.children;
+    this.l3item = item;
+    this.longdesc=item.longDescription;
   }
 }

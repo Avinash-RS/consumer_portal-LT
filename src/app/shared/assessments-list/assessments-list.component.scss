@@ -4,7 +4,7 @@
     // margin: 2em 0 3em 0;
     background-color: #FFFFFF;
     padding: 3.75em 0;
-    font-size: 10px;
+    font-size: 15px;
     @include md {
         font-size: 12px;
     }
@@ -57,9 +57,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     margin-top: 2em;
     nav {
-        width: 75%;
+        order: 2;
+        width: 100%;
+        @include md {
+            width: 75%;
+            order: 1;
+        }
         a {
             position: relative;
             display: inline-block;
@@ -94,8 +100,15 @@
             }
         }
     }
-    .btn-group{
-        width: 30%;
+    .btn-group {
+        order: 1;
+        width: 100%;
+        margin-bottom: 15px;
+        @include md {
+            width: 30%;
+            order: 2;
+            margin-bottom: 0;
+        }
         .product-btn {
             background-color: transparent;
             color: $primaryColor;

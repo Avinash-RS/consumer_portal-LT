@@ -1,33 +1,22 @@
 
 <header #header_width>
-    <div [ngClass]="(header_width.offsetWidth !> '1025') ?  'hide_' : 'show_'" class="hambrg_">
-    <em class="icon-Hamburger" (click)="search_sec()"></em>
+    <div class="leftWrapper">
+        <div [ngClass]="(header_width.offsetWidth !> '767') ?  'hide_' : 'show_'" class="hambrg_">
+            <em class="icon-Hamburger" (click)="search_sec()"></em>
+        </div>
+        <figure (click)="homepage(); closeMegaMenu_()">
+            <img src="https://assets.lntedutech.com/edutech_logo.svg" alt="L&T Logo">
+        </figure>
+        <div class="megaMenu">
+            <button (click)="megaMenuClick()">Catalog<em [ngClass]="showMenu == 'out' ? 'icon-DownArrow' : 'icon-UpArrow'" ></em></button>
+        </div>
+        <nav [ngClass]="(header_width.offsetWidth > '767') ?  'topMenu' : 'hide_'" [class.topMenu_lap]="menu_tab">
+            <ul>
+                <li><a [ngClass]="isCourse ? 'activeTab' : ''" (click)="onlineAssessment('course')">My Course</a></li>
+                <li><a [ngClass]="isAssement ? 'activeTab' : ''" (click)="onlineAssessment('assessment')">My Assessment</a></li>
+            </ul>
+        </nav>
     </div>
-    <figure (click)="homepage(); closeMegaMenu_()">
-        <img src="https://assets.lntedutech.com/edutech_logo.svg" alt="L&T Logo">
-    </figure>
-    <div class="megaMenu">
-        <button (click)="megaMenuClick()">Catalog<em [ngClass]="showMenu == 'out' ? 'icon-DownArrow' : 'icon-UpArrow'" ></em></button>
-        <!-- <button (click)="courseMenuClick()">Courses<em [ngClass]="showCourseMenu == 'out' ? 'icon-DownArrow' : 'icon-UpArrow'" ></em></button> -->
-    </div>
-    <!-- <div class="megaMenu">
-    </div> -->
-    <nav [ngClass]="(header_width.offsetWidth > '1025') ?  'topMenu' : 'hide_'" [class.topMenu_lap]="menu_tab">
-        <ul>
-            <!-- <li><a [ngClass]="assessmentsList ? 'activeTab' : ''"  (click)="megaMenuClick()"><strong>Assessments</strong><em [ngClass]="showMenu == 'out' ? 'icon-DownArrow' : 'icon-UpArrow'" ></em></a></li>
-            <li><a [ngClass]="coursesList ? 'activeTab' : ''" (click)="courseMenuClick()"><strong>Courses</strong><em [ngClass]="showCourseMenu == 'out' ? 'icon-DownArrow' : 'icon-UpArrow'" ></em></a></li> -->
-            <!-- <li><a [ngClass]="isCertified ? 'activeTab' : ''" (click)="getCertified()">Get Assessed</a></li> -->
-            <li><a [ngClass]="isCourse ? 'activeTab' : ''" (click)="onlineAssessment('course')">My Course</a></li>
-            <li><a [ngClass]="isAssement ? 'activeTab' : ''" (click)="onlineAssessment('assessment')">My Assessment</a></li>
-            <!-- <li><a [ngClass]="isCredentials ? 'activeTab' : ''" [matMenuTriggerFor]="menu" (click)="closeMegaMenu_();showCredenitals()">Credentials <em class="icon-DownArrow"></em></a></li> -->
-        </ul>
-    </nav>
-    <!-- <div [ngClass]="(header_width.offsetWidth > '1025') ?  'searchCertification' : 'hide_'" [class.searchCertification_lap]="menu_tab">
-        <span (click)="getSearch()">
-            <input type="text" class="search" placeholder="What Certification do you want to acquire?" />
-        </span>
-        <em [ngClass]="(header_width.offsetWidth > '1025') ?  'icon-Search' : 'icon-Close'" (click)="search_sec()" ></em>
-    </div> -->
     <div class="signInRegister">
         <div *ngIf="!showAvatar" class="recruiter">
             <a href="https://unifiedreport.lntedutech.com/login" target="recruiterLogin"><em class="icon-Recruiter"></em> <span>Recruiter? Login here</span></a>
@@ -90,7 +79,7 @@
     <button mat-menu-item (click)="getFAQ()">FAQ</button>
 </mat-menu>
 
-<nav class="menuLevel1" [@slideInOut]="showMenu">
+<nav class="menuLevel1 desktopMenu" [@slideInOut]="showMenu">
     <ng-container *ngIf ="catalogMenu.length == 0">
         <div class="SkeletonWrapper">
             <div class="item1 itemSmall">
@@ -169,5 +158,75 @@
                 </ul>
             </li>
         </ul>
+    </ng-container>
+</nav>
+<nav class="mobileMegamenu mobilemenu" [@slideInOut]="showMenu">
+    <ng-container *ngIf ="catalogMenu.length > 0">
+        <ng-container *ngIf="l1.length > 0 && l2.length <= 0 && l3.length <= 0 && l4.length <= 0">
+            <div class="mobilemenuHeader">
+                <div class="header-txt"><span>Catalog</span></div>
+                <div class="closeIcon"><em class="icon-Close" (click)="closeMegaMenu()"></em></div>
+            </div>
+            <div class="fisrtLevel">
+                <ul>
+                    <li *ngFor="let item of l1">
+                        <a (click)="firstlevelClick(item)">
+                            <span>{{item.label}}</span><em class="icon-RightArrow"></em>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="l1.length > 0 && l2.length > 0 && l3.length <= 0 && l4.length <= 0">
+            <div class="mobilemenuHeader">
+                <div class="header-txt"><em (click)="l2 = []" class="icon-LeftArrow"></em> <span>Domain</span></div>
+                <div class="closeIcon"><em class="icon-Close" (click)="closeMegaMenu()"></em></div>
+            </div>
+            <div class="secondLevel">
+                <ul>
+                    <li *ngFor="let item of l2">
+                        <a>
+                            <span (click)="catalogHome(item.cid,productType)">{{item.name}}</span>
+                            <em class="icon-RightArrow" (click)="secondlevelclick(item)"></em>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="l1.length > 0 && l2.length > 0 && l3.length > 0 && l4.length <= 0">
+            <div class="mobilemenuHeader">
+                <div class="header-txt"><em (click)="l3 = []" class="icon-LeftArrow"></em> <span>Stream</span></div>
+                <div class="closeIcon"><em class="icon-Close" (click)="closeMegaMenu()"></em></div>
+            </div>
+            <div class="thirdlevel">
+                <ul>
+                    <li *ngFor="let item of l3">
+                        <a>
+                            <span (click)="gotoArea(item,productType)">{{item.name}}</span>
+                            <em class="icon-RightArrow" (click)="thirdlevelclick(item)"></em> 
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="l1.length > 0 && l2.length > 0 && l3.length > 0 && l4.length > 0">
+            <div class="mobilemenuHeader">
+                <div class="heading">
+                    <em (click)="l4 = []" class="icon-LeftArrow"></em> <span>{{l2name}}</span>
+                </div>
+                <div class="closeIcon"><em class="icon-Close" (click)="closeMegaMenu()"></em></div>
+            </div>
+            <div class="fourthLevel">
+                <p>{{ (longdesc.length > 250)? (longdesc | slice:0:250)+'...':(longdesc) }}</p>
+                <button (click)="gotoArea(l3item,productType)">Learn More</button>
+                <div class="heading6">Featured</div>
+                <nav>
+                    <a *ngFor="let item of l4">{{item.name}}</a>
+                </nav>
+                <figure>
+                    <img [src]="l1image" alt="" />
+                </figure>
+            </div>
+        </ng-container>
     </ng-container>
 </nav>
