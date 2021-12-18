@@ -115,8 +115,14 @@
         z-index: -3;
         width: 100%;
         left: 0;
-        bottom: 0;
+        bottom: 5em;
         opacity: 1;
+        @include sm {
+            bottom: -3em;
+        }
+        @include md {
+            bottom: 0;
+        }
         figure {
             display: inline-block;
             background-image: url('#{$imagePath}/login_bg.svg');

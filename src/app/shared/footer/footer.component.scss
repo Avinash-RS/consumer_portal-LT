@@ -116,13 +116,16 @@ footer {
 }
 .copyrightsTerms {
     // border-top: 1px solid $greyColor;
-    padding: 1.25em 0;
+    padding: 0.75em 0;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     text-align: center;
     @include sm {
         flex-direction: row;
+    }
+    @include md {
+        padding: 1.25em 0;
     }
     ul li a, p {
         font-size: 0.875em;
