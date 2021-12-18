@@ -25,13 +25,13 @@ export class AppComponent {
     private commonservice: CommonService,
     private appConfig: AppConfigService
   ) {
-    console.log('--Browser running on--', navigator.platform);
-    if (!this.runnablePlatforms.includes(navigator.platform)) {
-      this.isMobile = true;
-    }
-    if (window.innerWidth < 767) {
-      this.isMobile = true;
-    }
+    // console.log('--Browser running on--', navigator.platform);
+    // if (!this.runnablePlatforms.includes(navigator.platform)) {
+    //   this.isMobile = true;
+    // }
+    // if (window.innerWidth < 767) {
+    //   this.isMobile = true;
+    // }
   }
 
   ngOnInit() {

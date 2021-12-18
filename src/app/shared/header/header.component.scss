@@ -3,104 +3,100 @@
 header {
     position: relative;
     z-index: 2;
-    display: grid;
+    display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     background-color: $whiteColor;
     padding: 10px 15px;
     font-size: 12px;
-    -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.15);
-    -moz-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.15);
     box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.15);
     width: 100%;
-    min-height: 4em;
-    grid-template-columns: 0.1fr 0.4fr 0.5fr 0.8fr;
-    grid-template-areas: "hambrg figure megaMenu signIn";
-    @include sm {  
-        // grid-template-columns: 0.01fr 0.4fr 0.3fr  0.6fr;
-        grid-template-columns: 0.07fr 0.3fr 0.4fr 0.6fr;
-        grid-template-areas: "hambrg figure megaMenu signIn";
+    .leftWrapper, .signInRegister {
+        width: 100%;
+        @include md {
+            width: 50%;
+        }
     }
-    @include md { 
-        // grid-template-columns: 0.01fr 0.5fr 0.3fr 1.1fr 0.6fr 0.6fr;
-        grid-template-columns: 0.2fr 0.5fr 0.7fr 1fr 0.6fr 1.8fr;
-        grid-template-areas: "hambrg figure megaMenu megaMenu megaMenu signIn";
+    .leftWrapper {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
     }
-    @include lg { 
-        font-size: 14px;
-        // grid-template-columns: 0.08fr 0.4fr 0.3fr 1fr 0.7fr 0.5fr;
-        grid-template-columns: 0.15fr 0.45fr 0.4fr 0.9fr 0.7fr 1.2fr;
-        grid-template-areas: "hambrg figure megaMenu megaMenu megaMenu signIn";
-    }
-    @include xl { 
-        font-size: 16px;
-        grid-template-columns: 0.45fr 0.33fr 1.15fr 0.87fr 1.2fr;
-        // grid-template-columns: 0.45fr 0 2fr 0.87fr 0.5fr;
-        grid-template-areas: 'figure megaMenu topMenu search_ signIn';
-    }
-    @media only screen and (min-width: 1440px) {
-        grid-template-columns: 0.45fr 0.33fr 1.15fr 0.6fr 1fr;
-        grid-template-areas: 'figure megaMenu topMenu search_ signIn';
-    }
+    // min-height: 4em;
+    // grid-template-columns: 0.1fr 0.4fr 0.5fr 0.8fr;
+    // grid-template-areas: "hambrg figure megaMenu signIn";
+    // @include sm {  
+    //     grid-template-columns: 0.07fr 0.3fr 0.4fr 0.6fr;
+    //     grid-template-areas: "hambrg figure megaMenu signIn";
+    // }
+    // @include md { 
+    //     grid-template-columns: 0.2fr 0.5fr 0.7fr 1fr 0.6fr 1.8fr;
+    //     grid-template-areas: "hambrg figure megaMenu megaMenu megaMenu signIn";
+    // }
+    // @include lg { 
+    //     font-size: 14px;
+    //     grid-template-columns: 0.15fr 0.45fr 0.4fr 0.9fr 0.7fr 1.2fr;
+    //     grid-template-areas: "hambrg figure megaMenu megaMenu megaMenu signIn";
+    // }
+    // @include xl { 
+    //     font-size: 16px;
+    //     grid-template-columns: 0.45fr 0.33fr 1.15fr 0.87fr 1.2fr;
+    //     grid-template-areas: 'figure megaMenu topMenu search_ signIn';
+    // }
+    // @media only screen and (min-width: 1440px) {
+    //     grid-template-columns: 0.45fr 0.33fr 1.15fr 0.6fr 1fr;
+    //     grid-template-areas: 'figure megaMenu topMenu search_ signIn';
+    // }
 }
 .hambrg_ {
     color: $lightGrey;
-    grid-area: hambrg;
     position: relative;
     left: -2px;
-    font-size: 1.2em;
+    font-size: 1.5em;
 }
 figure {
     cursor: pointer;
-    grid-area: figure;
+    width: 20%;
+    margin-right: 2em;
+    margin-left: 2em;
+    @include sm {
+        width: 13%;
+    }
+    @include md {
+        width: 19%;
+        margin-left: 0;
+    }
+    @include lg {
+        width: 15%;
+    }
+    @include xl {
+        width: 11%;
+    }
     img {
-        vertical-align: middle;
-        width: 80%;
-        @include sm {
-            width: 40%;
-        }
-        @include md {
-            width: 85%;
-        }
-        @include lg {
-            width: 70%;
-        }
-        @include xl {
-            width: 60%;
-        }
-        @media only screen and (min-width: 1440px) {
-            width: 40%;
-        }
+        width: 100%;
     } 
 }
 .megaMenu {
-    display: flex;
-    grid-area: megaMenu;
+    // display: flex;
     @include xl { 
         padding-left: 0.3em;
     }
     button {
         @include buttonFilled;
-        padding: 0.375em 0.75em;
-        font-size: 0.937em;
+        padding: 0.375em 1em;
+        font-size: 1.1em;
         font-weight: 400;
         display: inline-flex;
         justify-content: space-between;
         align-items: center;
-        min-width: 78px;
-        // height: 23.4px;
-        @include sm { 
-            min-width: 90px;
+        @include sm {
             margin-right: 15px;
-            // height: 30.2px;
         }
         em {
             font-size: 0.8em;
             display: inline-block;
             margin-left: 5px;
-            // position: relative;
-            // left: 7px;
-            // top: 1px;
             &.icon-UpArrow {
                 top: 0px;
             }
@@ -108,15 +104,8 @@ figure {
     }
 }
 .topMenu {
-    grid-area: topMenu;
     .activeTab {
         color: $primaryColor !important;
-    }
-    @include md {
-        
-    }
-    @include xl { 
-
     }
     ul {
         li {
@@ -125,9 +114,6 @@ figure {
             padding: 1em 0;
             @include md {
                 margin-right: 1.3em;
-            }
-            @include xl {
-                
             }
             &:last-child {
                 margin-right: 0;
@@ -144,11 +130,11 @@ figure {
                 }
             }
             a {
-                font-size: 1em;
+                font-size: 1.25em;
                 font-weight: 400;
                 color: $darkGrey;
                 transition: all 0.2s linear;
-                em{
+                em {
                     margin-left: 10px;
                 }
             }
@@ -179,101 +165,23 @@ figure {
         }
     }
 }
-.searchCertification {
-    position: relative;
-    grid-area:search_ ;
-    @include md {
-        
-    }
-    @include xl {
-        margin-left: 1em;
-    }
-    input {
-        border: 1px solid $greyColor;
-        border-radius: 1.56em;
-        padding: 0.45em 2.5em 0.45em 1em;
-        font-size: 0.875em;
-        width: 90%;
-        box-sizing: border-box;
-        color: $mediumGrey;
-    }
-    em {
-        position: absolute;
-        left: 83%;
-        top: 46%;
-        transform: translateY(-50%);
-        font-size: 0.875em;
-        color: $lightGrey;
-
-        &.icon-Search {
-            pointer-events: none;
-        }
-    }
-}
-
-.searchCertification_lap {
-    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
-    width: 100%;
-    background-color: rgb(255 255 255 / 80%);
-    height: 100%;
-    padding: 0 0.5em;
-    z-index:89;
-
-    &.hide_ {
-        display: block;
-    }
-    &:before {
-        font-family: "icomoon" !important;
-        font-size: 1.2em;
-        content: '\e950';
-        position: absolute;
-        z-index: 99;
-        top: 0.85em;
-        left: 0.8em;
-        color: #999;
-    }
-
-input[type='text'] {
-    border-radius: 0;
-    border: none;
-    border-bottom: 1px solid #e2e2e2;
-    height: 3.2em;
-    position: relative;
-    z-index: 89;
-    font-size: 1.1em;
-    padding: 0.4em 2.4em 0.4em 2.2em;
-    width: 100%;
-}
-em {
-    font-size: 0.8em;
-    z-index: 99;
-    top: 1.7em;
-    position: absolute;
-    right: 20px;
-    color: #999999;
-}
-}
 .signInRegister {
     grid-area: signIn;
     text-align: right;
     display: inline-flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
+    margin-top: 10px;
     @include md {
-    }
-    @include lg {
-    }
-    @include xl {
+        margin-top: 0;
+        justify-content: flex-end;
     }
     .recruiter {
         display: inline-flex;
         margin-right: 1.75em;
         a {
             color: $mediumGrey;
-            font-size: 0.95em;
+            font-size: 1.15em;
             display: flex;
             em {
                 font-size: 1.3em;
@@ -296,13 +204,12 @@ em {
         color: $lightGrey;
         display: inline-block;
         margin-right: 0.5em;
-        @include md { 
-        }
+        line-height: normal;
         @include xl {
             margin-right: 1.5em;
         }
         em {
-            font-size: 1.15em;
+            font-size: 1.25em;
             color: $mediumGrey;
             @include lg {
                 margin-right: 0.5em;
@@ -311,7 +218,7 @@ em {
     }
     .signIn {
         margin-right: 0.9em;
-        font-size: 0.937em;
+        font-size: 1.15em;
         font-weight: 400;
         color: $darkGrey;
     }
@@ -319,7 +226,7 @@ em {
         @include buttonOutlined;
         padding-left: 1em;
         padding-right: 1em;
-        font-size: 0.937em;
+        font-size: 1.15em;
         font-weight: 400;
     }
 }
@@ -530,56 +437,215 @@ em {
         }
     }
 }
-.mobileMegamenu{
+.mobileMegamenu {
     position: absolute;
     left: 0;
     bottom: 0;
     right: 0;
-    top: 4em;
-    background-color: $whiteColor;
+    top: 6.5em;
+    background-color: #F6F6F6;
     //border-top: 1px solid #cdcdcd;
     box-shadow: 0px 3px 5px 0px rgb(0 0 0 / 15%);
     transition: opacity 0.5s ease;
-    overflow: hidden;
+    overflow: auto;
     z-index: 99;
-
+    padding: 0 1em;
     &.mobilemenu {
-
         @include md {
             display: none;
         }
-        .mobilemenuHeader{
-            padding-top: 0.5em;
-            margin: 1em;
+        .mobilemenuHeader {
+            padding: 1em 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            .header-txt{
+            .header-txt {
                 position: relative;
                 z-index: 99;
-                color: #8f8f8f;
-                font-size: 0.8em;
-                font-weight: 400;
+                color: $mediumGrey;
+                font-size: 0.95em;
+                font-weight: 300;
                 text-transform: uppercase;
-                border-left: 3px solid transparent;
+                display: flex;
+                align-items: center;
+                span {
+                    line-height: normal;
+                }
+                em {
+                    color: $mediumGrey;
+                    font-size: 1.15em;
+                    margin-right: 8px;
+                }
             }
-            em{
-                cursor: pointer;
+            .closeIcon {
+                line-height: normal;
+                em {
+                    color: $mediumGrey;
+                    font-size: 1em;
+                }
+            }
+            .heading {
+                span {
+                    font-size: 1.15em;
+                    font-weight: 700;
+                    color: $darkGrey;
+                    line-height: normal;
+                }
+                em {
+                    font-size: 1.15em;
+                    margin-right: 8px;
+                }
+            }
+        }
+        ul {
+            list-style-type: none;
+            padding-top: 1em;
+            li {
+                font-size: 1.4em;
+                font-weight: 300;
+                color: $darkGrey;
+                line-height: normal;
+                margin-bottom: 1em;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+                a {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    em {
+                        font-size: 0.85em;
+                        color: $lightGrey;
+                    }
+                }
+            }
+        }
+        .fourthLevel {
+            p {
+                font-size: 1.07em;
+                font-weight: 300;
+                color: $lightGrey;
+                line-height: 1.4;
+            }
+            button {
+                border: 1px solid $greyColor;
+                font-size: 1em;
+                font-weight: 300;
+                color: $lightGrey;
+                border-radius: 1.6em;
+                padding: 0.5em 1.25em;
+            }
+            .heading6 {
+                text-transform: uppercase;
+                color: $mediumGrey;
+                margin: 3em 0 0.5em 0;
+            }
+            nav {
+                display: flex;
+                flex-direction: column;
+                a {
+                    padding: 0;
+                    color: $lightGrey;
+                    font-size: 0.975em;
+                    font-weight: 300;
+                    line-height: 2;
+                }
+            }
+            figure {
+                cursor: initial;
                 position: absolute;
-                top: 2em;
-                right: 2em;
-                font-size: 0.75em;
-                color: #666666;
+                display: block;
+                width: 95%;
+                text-align: right;
+                bottom: 0;
+                right: 0;
+                margin: 0;
+                margin-bottom: 0;
+                img {
+                    width: 40%;
+                    @include xl {
+                        width: 30%;
+                    }
+                }
             }
         }
-        ul{
-            list-style: none;
-            padding: 1em 0em;
-            height: 100%;
-            background-color: #fff;
-            box-sizing: border-box;
-            padding-top: 0.2em;
+    }
+}
+
+.searchCertification {
+    position: relative;
+    grid-area:search_ ;
+    @include md {
+        
+    }
+    @include xl {
+        margin-left: 1em;
+    }
+    input {
+        border: 1px solid $greyColor;
+        border-radius: 1.56em;
+        padding: 0.45em 2.5em 0.45em 1em;
+        font-size: 0.875em;
+        width: 90%;
+        box-sizing: border-box;
+        color: $mediumGrey;
+    }
+    em {
+        position: absolute;
+        left: 83%;
+        top: 46%;
+        transform: translateY(-50%);
+        font-size: 0.875em;
+        color: $lightGrey;
+
+        &.icon-Search {
+            pointer-events: none;
         }
+    }
+}
+
+.searchCertification_lap {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    width: 100%;
+    background-color: rgb(255 255 255 / 80%);
+    height: 100%;
+    padding: 0 0.5em;
+    z-index:89;
+
+    &.hide_ {
+        display: block;
+    }
+    &:before {
+        font-family: "icomoon" !important;
+        font-size: 1.2em;
+        content: '\e950';
+        position: absolute;
+        z-index: 99;
+        top: 0.85em;
+        left: 0.8em;
+        color: #999;
+    }
+    input[type='text'] {
+        border-radius: 0;
+        border: none;
+        border-bottom: 1px solid #e2e2e2;
+        height: 3.2em;
+        position: relative;
+        z-index: 89;
+        font-size: 1.1em;
+        padding: 0.4em 2.4em 0.4em 2.2em;
+        width: 100%;
+    }
+    em {
+        font-size: 0.8em;
+        z-index: 99;
+        top: 1.7em;
+        position: absolute;
+        right: 20px;
+        color: #999999;
     }
 }
 .router-link-active {
