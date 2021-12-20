@@ -62,9 +62,12 @@
     nav {
         order: 2;
         width: 100%;
-        @include md {
-            width: 75%;
+        @include lg {
+            width: 65%;
             order: 1;
+        }
+        @include xl {
+            width: 70%;
         }
         a {
             position: relative;
@@ -73,6 +76,7 @@
             color: $mediumGrey;
             font-size: 1.125em;
             font-weight: 400;
+            line-height: 1.7;
             &.active {
                 color: $darkGrey;
                 &::before {
@@ -85,7 +89,7 @@
                 position: absolute;
                 width: 0;
                 height: 2px;
-                bottom: -1px;
+                bottom: 2px;
                 left: 0;
                 background-color: $primaryColor;
                 visibility: hidden;
@@ -104,10 +108,14 @@
         order: 1;
         width: 100%;
         margin-bottom: 15px;
-        @include md {
-            width: 30%;
+        @include lg {
+            text-align: right;
+            width: 35%;
             order: 2;
             margin-bottom: 0;
+        }
+        @include xl {
+            width: 30%;
         }
         .product-btn {
             background-color: transparent;
