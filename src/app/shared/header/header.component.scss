@@ -247,14 +247,16 @@ figure {
         top: 4em;
     }
     @include md {
-        top: 4.6em;
+        top: 4.7em;
     }
     @include lg {
-        top: 4.3em;
+        top: 4.7em;
     }
     @include xl {
+        top: 4.6em;
+    }
+    @media only screen and (min-width: 1440px) {
         top: 5em;
-        height: calc(100vh - 70px);
     }
     &.show {
         opacity: 1;
