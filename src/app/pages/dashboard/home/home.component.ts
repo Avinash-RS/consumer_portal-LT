@@ -46,11 +46,11 @@ export class HomeComponent implements OnInit {
           // window.location.href = "http://52.172.236.38:3015/simplesso/login?serviceURL="+location.origin;
           // window.location.reload(false)
           // this.login(email.email,password.password)
-          //this.router.navigate(['/assessmentHome'])
+          //this.router.navigate(['/Home'])
         }
       //console.log('redirect')
-     // this.router.navigate(['/assessmentHome'])
-      //window.location.href="https://certification.lntiggnite.com/assessmentHome"
+     // this.router.navigate(['/Home'])
+      //window.location.href="https://certification.lntiggnite.com/Home"
     }*/
   }
 

@@ -104,16 +104,15 @@ export class HeaderComponent implements OnInit {
     
     if(this.showMenu == 'in' && this.catalogMenu.length <= 0){
       this.catalogMenu=[];
-      this.catalogService.getCatalog('assessment').subscribe((response: any) => {
+      this.catalogService.getCatalog('course').subscribe((response: any) => {
         if (response.success && response.data.length > 0) {
-          //this.catalogMenu = response.data;
-          var assobj = {
-            "label":'Assessments',
-            "type":'assessment',
+          var courseobj = {
+            "label":'Courses',
+            "type":'course',
             "data" : response.data
           }
-          this.catalogMenu.push(assobj)
-          this.getCourse();
+          this.catalogMenu.push(courseobj);
+          this.getAssesment();
         } else {
           this.catalogMenu = []
         }
@@ -125,15 +124,16 @@ export class HeaderComponent implements OnInit {
     this.l4 = [];
     return false;
   }
-  getCourse(){
-    this.catalogService.getCatalog('course').subscribe((response: any) => {
+  getAssesment(){
+    this.catalogService.getCatalog('assessment').subscribe((response: any) => {
       if (response.success && response.data.length > 0) {
-        var courseobj = {
-          "label":'Courses',
-          "type":'course',
+        //this.catalogMenu = response.data;
+        var assobj = {
+          "label":'Assessments',
+          "type":'assessment',
           "data" : response.data
         }
-        this.catalogMenu.push(courseobj)
+        this.catalogMenu.push(assobj)
       } else {
         this.catalogMenu = []
       }
