@@ -847,7 +847,10 @@
         li {
             display: flex;
             align-items: center;
-            margin-bottom: 1em;
+            margin-bottom: 1.25em;
+            img {
+                max-width: 5.5%;
+            }
         }
         .icon {
             background-color: rgba(59, 69, 188, 0.25);

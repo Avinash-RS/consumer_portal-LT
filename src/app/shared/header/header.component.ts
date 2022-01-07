@@ -9,6 +9,7 @@ import { environment } from '@env/environment';
 import { Location } from '@angular/common';
 import { SlideInOutAnimation } from '../../animations'
 import Swal from 'sweetalert2';
+import { LoadingService } from 'src/app/services/loading.service';
 @Component({
   selector: "app-header",
   templateUrl: "./header.component.html",
@@ -51,7 +52,8 @@ export class HeaderComponent implements OnInit {
     private util: UtilityService,
     private commonservice: CommonService,
     public router: Router,
-    private location: Location
+    private location: Location,
+    private _loading: LoadingService,
     ) {
       this.profImage = this.appConfig.getSessionStorage('profileImage');
   }
@@ -89,16 +91,18 @@ export class HeaderComponent implements OnInit {
       }
     
   }
+
   megaMenuClick() {
     //this.productType = 'assessment';
-    this.showMenu = this.showMenu === 'out' ? 'in' : 'out';
+    // this.showMenu = this.showMenu === 'out' ? 'in' : 'out';
+    this.showMenu =  'in';
     this.assessmentsList = this.showMenu === 'in' ? true : false;
     this.coursesList = false;
     this.isCertified = false;
     this.isAssement = false;
     this.isCourse = false;
     
-    if(this.showMenu == 'in'){
+    if(this.showMenu == 'in' && this.catalogMenu.length <= 0){
       this.catalogMenu=[];
       this.catalogService.getCatalog('course').subscribe((response: any) => {
         if (response.success && response.data.length > 0) {
@@ -118,6 +122,7 @@ export class HeaderComponent implements OnInit {
     this.l2 = [];
     this.l3 = [];
     this.l4 = [];
+    return false;
   }
   getAssesment(){
     this.catalogService.getCatalog('assessment').subscribe((response: any) => {
