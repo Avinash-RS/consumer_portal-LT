@@ -26,6 +26,12 @@ export class LoadingService {
     if (!url) {
       throw new Error('The request URL must be provided to the LoadingService.setLoading function');
     }
+    if(url==='https://edgeservice.lntiggnite.com/getcatalogue?productType=course'){
+      loading = false
+    }
+    if(url==='https://edgeservice.lntiggnite.com/getcatalogue?productType=assessment'){
+      loading = false
+    }
     if (loading === true) {
       this.loadingMap.set(url, loading);
       this.loadingSub.next(true);
