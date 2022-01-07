@@ -34,15 +34,24 @@
     // @include xl {
     //     height: 24em;
     // }
-    &::before {
+    &::before, &::after {
         content: '';
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height :100%;
-        background-image: linear-gradient(to right top, #0d314e, #0d3757, #0c3e61, #0a446a, #074b74, #05527c, #035a84, #00618c, #026b93, #0a759a, #157fa1, #2089a7);
-        opacity: 0.5;
+    }
+    &::before {
+        background-color: rgba(0, 130, 199, 0.3);
+        // background-image: linear-gradient(to right top, #0d314e, #0d3757, #0c3e61, #0a446a, #074b74, #05527c, #035a84, #00618c, #026b93, #0a759a, #157fa1, #2089a7);
+        opacity: 1;
+    }
+    &::after {
+        background: rgba(255, 255, 255, 0.0);
+        background: -webkit-linear-gradient(right, rgba(255, 255, 255, 0.0), rgba(0, 0, 0, 0.7));
+        background: -moz-linear-gradient(right, rgba(255, 255, 255, 0.0), rgba(0, 0, 0, 0.7));
+        background: linear-gradient(to left, rgba(255, 255, 255, 0.0), rgba(0, 0, 0, 0.7));
     }
     .progression {
         position: absolute;
@@ -50,7 +59,7 @@
         top: 0;
         //height: 100px;
         padding: 8px 15px 8px 15px;
-        background-color: #ffff;
+        background-color: $whiteColor;
         .progressbar{
             margin-top: 8px;
             height: 12px;
@@ -81,7 +90,6 @@
         position: relative;
         z-index: 1;
         width: 100%;
-
         @include md {
             width: 75%;
         }
@@ -93,18 +101,36 @@
             line-height: 1.2;
         }
         .heading {
-            color: #ffff;
-            font-size: 2.3em;
+            color: $whiteColor;
+            font-size: 2.125em;
             line-height: 1.1;
+            font-weight: 300;
+            letter-spacing: 2px;
             strong {
+                display: block;
+                font-size: 1.5em;
                 font-weight: 700;
-                font-size: 1.2em;
+                color: #27B8EE;
+                margin-top: 0.25em;
+                letter-spacing: initial;
             }
-            p {
-                color: #ffff;
-                font-size: 0.38em;
-                margin: 0.75em 0;
-                display: inline-block;
+        }
+        p {
+            color: $whiteColor;
+            font-size: 1.3125em;
+            margin: 1em 0 1.5em 0;
+        }
+        button {
+            background: #27BBEE;
+            border: 0;
+            border-radius: 5px;
+            font-size: 1.25em;
+            font-weight: 400;
+            color: $whiteColor;
+            padding: 0.5em 1em;
+            transition: background 0.3s ease-in-out;
+            &:hover {
+                background: #08558c;
             }
         }
     }
