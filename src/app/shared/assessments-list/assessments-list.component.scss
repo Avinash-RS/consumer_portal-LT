@@ -311,6 +311,13 @@
                     border-left: solid 9px #8D4C99;
                 }
              }
+             &.stepTag {
+                background-color: #06bf86;
+                &::before {
+                    border-bottom: solid 9px #067452;
+                    border-left: solid 9px #067452;
+                }
+             }
               &::before {
                 content: '';
                 position: absolute;

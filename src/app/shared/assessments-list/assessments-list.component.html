@@ -58,7 +58,8 @@
                                 </figure>
                                 <div class="previewRibbon">
                                     <span *ngIf="cards.productType == 'assessment'">Assessment</span>
-                                    <span *ngIf="cards.productType == 'course'" [ngClass]="cards.productType == 'course' ? 'coursetag':''">Learning Path</span>
+                                    <span *ngIf="(cards.productType == 'course') && (cards.courseId != '494' && cards.courseId != '493')" [ngClass]="cards.productType == 'course' ? 'coursetag':''">Learning Path</span>
+                                    <span *ngIf="(cards.productType == 'course') && (cards.courseId == '494'|| cards.courseId == '493')" class="stepTag">Course</span>
                                 </div>
                             </div>
                             <div class="listDescription">
