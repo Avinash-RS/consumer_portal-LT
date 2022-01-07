@@ -746,7 +746,7 @@
         .heading1 {
             font-size: 3.15em;
             margin: 0 0 0.35em 0;
-            max-width: 510px;
+            max-width: 768px;
             width: 96%;
             line-height: 1;
         }
@@ -786,7 +786,7 @@
 .bannerFooter {
     width: 100%;
     background-color: $blackColor;
-    padding: 1.5em 0;
+    padding: 0.5em 0;
     .footerWrapper, .commonStyle {
         display: flex;
         align-items: flex-start;

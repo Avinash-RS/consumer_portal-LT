@@ -48,7 +48,9 @@ export class HeaderImageComponent implements OnInit {
     this.showKycProgress();
   }
 
-
+  navigateCatalog() {
+    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.home, { fromPage: "viewAll", selectedTab: 'All' ,productType : 'all'});
+  }
 
   getSliderContent() {
     this.commonService.getCertificationDetails().subscribe((response :any)=>{
