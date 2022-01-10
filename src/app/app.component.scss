@@ -1,3 +1,5 @@
+@import "variables";
+
 .loading-container {
     display: flex;
     position: fixed;
@@ -21,4 +23,11 @@
    //  display: flex;
    //  flex-direction: column;
     flex-grow: 1;
+    padding-top: 105px;
+    @include md {
+      padding-top: 65px;
+    }
+    @include xl {
+      padding-top: 70px;
+    }
  }

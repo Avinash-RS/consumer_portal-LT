@@ -323,15 +323,18 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/userProfile'],{queryParams:{tabtype:type}})
   }
   firstlevelClick(item){
+    // console.log(item, 'heading name');
     this.l2 = item.data;
     this.productType = item.type;
   }
   secondlevelclick(item){
+    // console.log(item, 'heading name');
     this.l3 = item.children;
     this.l2name=item.name;
     this.l1image = item.menuImage.url;
   }
   thirdlevelclick(item){
+    // console.log(item, 'heading name');
     this.l4 = item.children;
     this.l3item = item;
     this.longdesc=item.longDescription;
