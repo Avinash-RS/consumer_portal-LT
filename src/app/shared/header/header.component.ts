@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit {
   hoveron: boolean;
   // showMenu: boolean;
   showMenu = 'out';
+  mobileshowMenu = 'out';
   assessmentsList:boolean = false;
   coursesList:boolean = false;
   menu_tab: boolean = false;
@@ -43,7 +44,9 @@ export class HeaderComponent implements OnInit {
   l3:any = [];
   l4:any = [];
   l3item;
+  l1name ="";
   l2name ="";
+  l3name ="";
   longdesc ="";
   l1image ="";
   constructor(
@@ -62,6 +65,7 @@ export class HeaderComponent implements OnInit {
   checkScroll() {
     if(window.pageYOffset >= 10) {
       this.showMenu = 'out';
+      this.mobileshowMenu = 'out';
       this.assessmentsList= false;
       this.coursesList = false;
     }
@@ -92,9 +96,14 @@ export class HeaderComponent implements OnInit {
     
   }
 
+  mobileclick() {
+    this.showMenu =  'out';
+    this.mobileshowMenu = this.mobileshowMenu === 'out' ? 'in' : 'out';
+  }
+
   megaMenuClick() {
     //this.productType = 'assessment';
-    // this.showMenu = this.showMenu === 'out' ? 'in' : 'out';
+    this.mobileshowMenu = 'out'
     this.showMenu =  'in';
     this.assessmentsList = this.showMenu === 'in' ? true : false;
     this.coursesList = false;
@@ -206,6 +215,7 @@ export class HeaderComponent implements OnInit {
     this.isCourse = productType == 'course' ? true:false;
     this.isCredentials = false;
     this.showMenu = 'out';
+    this.mobileshowMenu = 'out';
     this.assessmentsList= false;
     this.coursesList = false;
     if(this.userDetails) {
@@ -262,6 +272,7 @@ export class HeaderComponent implements OnInit {
   catalogHome(value,type) {
     this.productType = type;
     this.showMenu = 'out';
+    this.mobileshowMenu = 'out';
     this.assessmentsList= false;
     this.coursesList = false;
     this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.home, { fromPage: "viewAll", selectedTab: value ,productType : this.productType});
@@ -270,6 +281,7 @@ export class HeaderComponent implements OnInit {
   gotoArea(data,type) {
     this.productType = type;
     this.showMenu = 'out';
+    this.mobileshowMenu = 'out';
     this.assessmentsList= false;
     this.coursesList = false;
     this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutAssessment,{id : data.cid, selectedTab : data.parentId ,productType : this.productType});
@@ -278,6 +290,7 @@ export class HeaderComponent implements OnInit {
 
   aboutAssessment(cid) {
     this.showMenu = 'out';
+    this.mobileshowMenu = 'out';
     this.assessmentsList= false;
     this.coursesList = false;
     this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutAssessment, { id: cid, selectedTab: 'All', productType : this.productType});
@@ -287,11 +300,13 @@ export class HeaderComponent implements OnInit {
   closeMegaMenu() {
     // this.showMenu = false;
     this.showMenu = 'out';
+    this.mobileshowMenu = 'out';
     this.assessmentsList= false;
     this.coursesList = false;
   }
   closeMegaMenu_() { 
     this.showMenu = 'out';
+    this.mobileshowMenu = 'out';
     this.assessmentsList= false;
     this.coursesList = false;
   }
@@ -323,19 +338,18 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/userProfile'],{queryParams:{tabtype:type}})
   }
   firstlevelClick(item){
-    // console.log(item, 'heading name');
+    this.l1name=item.label;
     this.l2 = item.data;
     this.productType = item.type;
   }
   secondlevelclick(item){
-    // console.log(item, 'heading name');
     this.l3 = item.children;
     this.l2name=item.name;
     this.l1image = item.menuImage.url;
   }
   thirdlevelclick(item){
-    // console.log(item, 'heading name');
     this.l4 = item.children;
+    this.l3name=item.name;
     this.l3item = item;
     this.longdesc=item.longDescription;
   }
