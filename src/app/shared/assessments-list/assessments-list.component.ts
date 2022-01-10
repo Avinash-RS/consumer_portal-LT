@@ -41,8 +41,8 @@ export class AssessmentsListComponent implements OnInit {
 
   ngOnInit() {
     if (this.route.snapshot.queryParams.selectedTab) {
-      this.fromTab = this.route.snapshot.queryParams.selectedTab;
-      this.productType = this.route.snapshot.queryParams.productType ? this.route.snapshot.queryParams.productType : 'all';
+      this.fromTab = atob(this.route.snapshot.queryParams.selectedTab);
+      this.productType = this.route.snapshot.queryParams.productType ? atob(this.route.snapshot.queryParams.productType) : 'all';
       this.viewMore = false
     }
     this.getDomain(this.productType);
@@ -50,7 +50,7 @@ export class AssessmentsListComponent implements OnInit {
       filter((event: RouterEvent) => event instanceof NavigationEnd),
       takeUntil(this.destroyed)
     ).subscribe(() => {
-      this.fromTab = this.route.snapshot.queryParams.selectedTab;
+      this.fromTab = atob(this.route.snapshot.queryParams.selectedTab);
       this.viewMore = false
       this.getDomain(this.productType);
     })
@@ -109,10 +109,10 @@ export class AssessmentsListComponent implements OnInit {
     this._loading.setLoading(false, environment.API_BASE_URL+"getAreaByDomain");
   }
   catalogHome() {
-    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.home, { fromPage: "viewAll", selectedTab: this.selectedTab });
+    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.home, { fromPage: btoa("viewAll"), selectedTab: btoa(this.selectedTab) });
   }
 
   aboutAssessment(cid,productType) {
-    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutAssessment, { id: cid, selectedTab: this.selectedTab ,productType : productType});
+    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutAssessment, { id: btoa(cid), selectedTab: btoa(this.selectedTab) ,productType : btoa(productType)});
   }
 }

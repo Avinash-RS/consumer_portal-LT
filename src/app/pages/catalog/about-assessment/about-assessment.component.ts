@@ -69,16 +69,16 @@ export class AboutAssessmentComponent implements OnInit {
   public destroyed = new Subject<any>();
   ngOnInit(): void {
     this.userDetails = JSON.parse(this.appconfig.getSessionStorage('userDetails'));
-    this.getDetails()
     this.route.queryParams
     .subscribe(params => {
-      this.domainId = params.selectedTab;
-      this.areaId = params.id;
-      this.productType = params.productType
+      this.domainId = atob(params.selectedTab);
+      this.areaId = atob(params.id);
+      this.productType = atob(params.productType);
       if(this.productType  == 'course'){
         this.getAbouCourse();
       }
       else{
+        this.getDetails();
         this.getArea();
         //this.checkScroll();
       }
