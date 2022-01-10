@@ -49,7 +49,7 @@ export class HeaderImageComponent implements OnInit {
   }
 
   navigateCatalog() {
-    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.home, { fromPage: "viewAll", selectedTab: 'All' ,productType : 'all'});
+    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.home, { fromPage: btoa("viewAll"), selectedTab: btoa('All') ,productType : btoa('all')});
   }
 
   getSliderContent() {

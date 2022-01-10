@@ -210,7 +210,7 @@ export class HeaderComponent implements OnInit {
     this.coursesList = false;
     if(this.userDetails) {
       this.appConfig.routeNavigation('/myAssessment');
-      this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ROUTES.myAssessment,{ "productType" : productType});
+      this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ROUTES.myAssessment,{ "productType" : btoa(productType)});
     } else {
       this.isAssement = false;
       this.isCourse = false;
@@ -264,7 +264,7 @@ export class HeaderComponent implements OnInit {
     this.showMenu = 'out';
     this.assessmentsList= false;
     this.coursesList = false;
-    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.home, { fromPage: "viewAll", selectedTab: value ,productType : this.productType});
+    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.home, { fromPage: btoa("viewAll"), selectedTab: btoa(value) ,productType : btoa(this.productType)});
     this.inActiveTabs();
   }
   gotoArea(data,type) {
@@ -272,7 +272,7 @@ export class HeaderComponent implements OnInit {
     this.showMenu = 'out';
     this.assessmentsList= false;
     this.coursesList = false;
-    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutAssessment,{id : data.cid, selectedTab : data.parentId ,productType : this.productType});
+    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutAssessment,{id : btoa(data.cid), selectedTab : btoa(data.parentId) ,productType : btoa(this.productType)});
     this.inActiveTabs();
   }
 

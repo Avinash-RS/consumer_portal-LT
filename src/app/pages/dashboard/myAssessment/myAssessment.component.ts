@@ -45,7 +45,7 @@ export class MyAssessmentComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe((data:any)=>{
-      this.productType = data?.productType ? data?.productType :'assessment';
+      this.productType = data?.productType ? atob(data?.productType) :'assessment';
       this.getmyAssesments(this.tabList[0]);
     });
     this.getProfilePercentage();
