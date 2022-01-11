@@ -1,7 +1,7 @@
 
 <header #header_width>
     <div class="leftWrapper">
-        <div [ngClass]="(header_width.offsetWidth !> '767') ?  'hide_' : 'show_'" class="hambrg_">
+        <div [ngClass]="(header_width.offsetWidth !> '992') ?  'hide_' : 'show_'" class="hambrg_">
             <em class="icon-Hamburger" (click)="megaMenuClick()"></em>
             <!-- <em class="icon-Hamburger" (click)="search_sec()"></em> -->
         </div>
@@ -11,7 +11,7 @@
         <div class="megaMenu" (mouseenter)="megaMenuClick()">
             <button >Catalog<em [ngClass]="showMenu == 'out' ? 'icon-DownArrow' : 'icon-UpArrow'" ></em></button>
         </div>
-        <nav [ngClass]="(header_width.offsetWidth > '767') ?  'topMenu' : 'hide_'" [class.topMenu_lap]="menu_tab">
+        <nav [ngClass]="(header_width.offsetWidth > '992') ?  'topMenu' : 'hide_'" [class.topMenu_lap]="menu_tab">
             <ul>
                 <li><a [ngClass]="isCourse ? 'activeTab' : ''" (click)="onlineAssessment('course')">My Course</a></li>
                 <li><a [ngClass]="isAssement ? 'activeTab' : ''" (click)="onlineAssessment('assessment')">My Assessment</a></li>
@@ -19,78 +19,79 @@
         </nav>
     </div>
 
-    <div class="signInRegister">
-        <div *ngIf="!showAvatar" class="recruiter">
-            <a href="https://unifiedreport.lntedutech.com/login" target="recruiterLogin"><em class="icon-Recruiter"></em> <span>Recruiter? Login here</span></a>
-        </div>
-        <span class="cart">
-            <a (click)="openCart(); closeMegaMenu_()">
-            <em *ngIf="cartCount == 0" class="icon-Cart"></em>
-            <em *ngIf="cartCount != 0" matBadge="{{cartCount}}" matBadgeColor="warn" class="icon-Cart"></em>
-        </a></span>
-        <ng-container *ngIf="showAvatar">
-            <!-- <span class="cart"><a><em class="icon-Bell"></em></a></span> -->
-            <div [matMenuTriggerFor]="menu" [matTooltipPosition]="'left'" [matTooltip]="userDetails?.firstname + ' ' + userDetails?.lastname" class="avatar">
-                <span *ngIf="!profImage"><em class="icon-User"></em></span>
-                <figure *ngIf="profImage" class="profImg">
-                    <img [src]="profImage + blobToken" alt="" />
-                </figure>
-                <mat-menu #menu="matMenu" class="profileMenu">
-                    <div class="profile">
-                        <div class="profIcon">
-                            <figure class="profImg">
-                                <span class="avatar" *ngIf="!profImage"><em class="icon-User"></em></span>
-                                <img *ngIf="profImage" [src]="profImage + blobToken" alt="" />
-                            </figure>
-                        </div>
-                        <div class="profDesc">
-                            <strong>{{userDetails?.firstname + ' ' + userDetails?.lastname}}</strong>
-                            <span>{{userDetails?.email}}</span>
-                            <button (click)="editProfile()">Edit Profile</button>
-                        </div>
-                    </div>
-                    <div class="settings">
-                        <!-- <span class="heading">Account</span> -->
-                        <div><a   (click)="navigateProfile('account')">Account settings</a></div>
-                        <div><a (click)="navigateProfile('history')">Purchase history</a></div>
-                        <div><a  (click)="navigateProfile('payment')">Payment methods</a></div>
-                    </div>
-                    <div class="signout">
-                        <a>Help</a>
-                        <a class="signOut" (click)="logout()">Sign out</a>
-                    </div>
-                </mat-menu>
+    <div class="rightWrapper">
+        <div class="signInRegister">
+            <div *ngIf="!showAvatar" class="recruiter">
+                <a href="https://unifiedreport.lntedutech.com/login" target="recruiterLogin"><em class="icon-Recruiter"></em> <span>Recruiter? Login here</span></a>
             </div>
-        </ng-container>
-        <ng-container *ngIf="!showAvatar">
-            <span class="signIn"><a  (click)="openOnBoard('0'); closeMegaMenu_()">Sign In</a></span>
-            <button class="register" (click)="openOnBoard('1'); closeMegaMenu_()">Register</button>
-        </ng-container>
-    </div>
-
-    <div *ngIf="!showAvatar" class="mobileLogin">
-        <button (click)="mobileclick()">Login</button>
-    </div>
-
-    <div class="mobileRegister" [@slideInOut]="mobileshowMenu">
-        <div>
-            <div class="closeIcon"><em class="icon-Close" (click)="closeMegaMenu()"></em></div>
+            <span class="cart">
+                <a (click)="openCart(); closeMegaMenu_()">
+                <em *ngIf="cartCount == 0" class="icon-Cart"></em>
+                <em *ngIf="cartCount != 0" matBadge="{{cartCount}}" matBadgeColor="warn" class="icon-Cart"></em>
+            </a></span>
+            <ng-container *ngIf="showAvatar">
+                <!-- <span class="cart"><a><em class="icon-Bell"></em></a></span> -->
+                <div [matMenuTriggerFor]="menu" [matTooltipPosition]="'left'" [matTooltip]="userDetails?.firstname + ' ' + userDetails?.lastname" class="avatar">
+                    <span *ngIf="!profImage"><em class="icon-User"></em></span>
+                    <figure *ngIf="profImage" class="profImg">
+                        <img [src]="profImage + blobToken" alt="" />
+                    </figure>
+                    <mat-menu #menu="matMenu" class="profileMenu">
+                        <div class="profile">
+                            <div class="profIcon">
+                                <figure class="profImg">
+                                    <span class="avatar" *ngIf="!profImage"><em class="icon-User"></em></span>
+                                    <img *ngIf="profImage" [src]="profImage + blobToken" alt="" />
+                                </figure>
+                            </div>
+                            <div class="profDesc">
+                                <strong>{{userDetails?.firstname + ' ' + userDetails?.lastname}}</strong>
+                                <span>{{userDetails?.email}}</span>
+                                <button (click)="editProfile()">Edit Profile</button>
+                            </div>
+                        </div>
+                        <div class="settings">
+                            <!-- <span class="heading">Account</span> -->
+                            <div><a   (click)="navigateProfile('account')">Account settings</a></div>
+                            <div><a (click)="navigateProfile('history')">Purchase history</a></div>
+                            <div><a  (click)="navigateProfile('payment')">Payment methods</a></div>
+                        </div>
+                        <div class="signout">
+                            <a>Help</a>
+                            <a class="signOut" (click)="logout()">Sign out</a>
+                        </div>
+                    </mat-menu>
+                </div>
+            </ng-container>
             <ng-container *ngIf="!showAvatar">
                 <span class="signIn"><a  (click)="openOnBoard('0'); closeMegaMenu_()">Sign In</a></span>
-                <span class="register" (click)="openOnBoard('1'); closeMegaMenu_()">Register</span>
+                <button class="register" (click)="openOnBoard('1'); closeMegaMenu_()">Register</button>
             </ng-container>
-            <div *ngIf="!showAvatar" class="recruiter">
-                <a href="https://unifiedreport.lntedutech.com/login" target="recruiterLogin">
-                    <em class="icon-Recruiter"></em> 
-                    <span>Recruiter? Login here</span>
-                </a>
-            </div>
+        </div>
+    
+        <div *ngIf="!showAvatar" class="mobileLogin">
+            <button (click)="mobileclick()"> <span>Login</span> <em class="icon-DownArrow"></em></button>
         </div>
     </div>
 
-
-    
 </header>
+
+<div class="mobileRegister" [@slideInOut]="mobileshowMenu">
+    <div>
+        <div class="closeIcon"><em class="icon-Close" (click)="closeMegaMenu()"></em></div>
+        <ng-container *ngIf="!showAvatar">
+            <span class="signIn"><a  (click)="openOnBoard('0'); closeMegaMenu_()">Sign In</a></span>
+            <span class="register" (click)="openOnBoard('1'); closeMegaMenu_()">Register</span>
+        </ng-container>
+        <div *ngIf="!showAvatar" class="recruiter">
+            <a href="https://unifiedreport.lntedutech.com/login" target="recruiterLogin">
+                <em class="icon-Recruiter"></em> 
+                <span>Recruiter? Login here</span>
+            </a>
+        </div>
+    </div>
+</div>
+
 <mat-menu class="menuCustomClass" #menu="matMenu" >
     <button mat-menu-item>Check My Score</button>
     <button mat-menu-item>Download My Certificate</button>
