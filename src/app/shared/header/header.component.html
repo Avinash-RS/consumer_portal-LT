@@ -1,78 +1,97 @@
 
 <header #header_width>
     <div class="leftWrapper">
-        <div [ngClass]="(header_width.offsetWidth !> '767') ?  'hide_' : 'show_'" class="hambrg_">
-            <em class="icon-Hamburger" (click)="search_sec()"></em>
+        <div [ngClass]="(header_width.offsetWidth !> '992') ?  'hide_' : 'show_'" class="hambrg_">
+            <em class="icon-Hamburger" (click)="megaMenuClick()"></em>
+            <!-- <em class="icon-Hamburger" (click)="search_sec()"></em> -->
         </div>
-        <figure (click)="homepage(); closeMegaMenu_()">
+        <figure class="edutechLogo" (click)="homepage(); closeMegaMenu_()">
             <img src="https://assets.lntedutech.com/edutech_logo.svg" alt="L&T Logo">
         </figure>
         <div class="megaMenu" (mouseenter)="megaMenuClick()">
             <button >Catalog<em [ngClass]="showMenu == 'out' ? 'icon-DownArrow' : 'icon-UpArrow'" ></em></button>
         </div>
-        <nav [ngClass]="(header_width.offsetWidth > '767') ?  'topMenu' : 'hide_'" [class.topMenu_lap]="menu_tab">
+        <nav [ngClass]="(header_width.offsetWidth > '992') ?  'topMenu' : 'hide_'" [class.topMenu_lap]="menu_tab">
             <ul>
                 <li><a [ngClass]="isCourse ? 'activeTab' : ''" (click)="onlineAssessment('course')">My Course</a></li>
                 <li><a [ngClass]="isAssement ? 'activeTab' : ''" (click)="onlineAssessment('assessment')">My Assessment</a></li>
             </ul>
         </nav>
     </div>
-    <div class="signInRegister">
-        <div *ngIf="!showAvatar" class="recruiter">
-            <a href="https://unifiedreport.lntedutech.com/login" target="recruiterLogin"><em class="icon-Recruiter"></em> <span>Recruiter? Login here</span></a>
-        </div>
-        <span class="cart">
-            <a (click)="openCart(); closeMegaMenu_()">
-            <em *ngIf="cartCount == 0" class="icon-Cart"></em>
-            <em *ngIf="cartCount != 0" matBadge="{{cartCount}}" matBadgeColor="warn" class="icon-Cart"></em>
-        </a></span>
-        <ng-container *ngIf="showAvatar">
-            <!-- <span class="cart"><a><em class="icon-Bell"></em></a></span> -->
-            <div [matMenuTriggerFor]="menu" [matTooltipPosition]="'left'" [matTooltip]="userDetails?.firstname + ' ' + userDetails?.lastname" class="avatar">
-                <span *ngIf="!profImage"><em class="icon-User"></em></span>
-                <figure *ngIf="profImage" class="profImg">
-                    <img [src]="profImage + blobToken" alt="" />
-                </figure>
-                <mat-menu #menu="matMenu" class="profileMenu">
-                    <div class="profile">
-                        <div class="profIcon">
-                            <figure class="profImg">
-                                <span class="avatar" *ngIf="!profImage"><em class="icon-User"></em></span>
-                                <img *ngIf="profImage" [src]="profImage + blobToken" alt="" />
-                            </figure>
-                        </div>
-                        <div class="profDesc">
-                            <strong>{{userDetails?.firstname + ' ' + userDetails?.lastname}}</strong>
-                            <span>{{userDetails?.email}}</span>
-                            <button (click)="editProfile()">Edit Profile</button>
-                        </div>
-                    </div>
-                    <div class="settings">
-                        <!-- <span class="heading">Account</span> -->
-                        <div><a   (click)="navigateProfile('account')">Account settings</a></div>
-                        <div><a (click)="navigateProfile('history')">Purchase history</a></div>
-                        <div><a  (click)="navigateProfile('payment')">Payment methods</a></div>
-                    </div>
-                    <div class="signout">
-                        <a>Help</a>
-                        <a class="signOut" (click)="logout()">Sign out</a>
-                    </div>
-                </mat-menu>
+
+    <div class="rightWrapper">
+        <div class="signInRegister">
+            <div *ngIf="!showAvatar" class="recruiter">
+                <a href="https://unifiedreport.lntedutech.com/login" target="recruiterLogin"><em class="icon-Recruiter"></em> <span>Recruiter? Login here</span></a>
             </div>
-        </ng-container>
-        <ng-container *ngIf="!showAvatar">
-            <span class="signIn"><a  (click)="openOnBoard('0'); closeMegaMenu_()">Sign In</a></span>
-            <button class="register" (click)="openOnBoard('1'); closeMegaMenu_()">Register</button>
-        </ng-container>
+            <span class="cart">
+                <a (click)="openCart(); closeMegaMenu_()">
+                <em *ngIf="cartCount == 0" class="icon-Cart"></em>
+                <em *ngIf="cartCount != 0" matBadge="{{cartCount}}" matBadgeColor="warn" class="icon-Cart"></em>
+            </a></span>
+            <ng-container *ngIf="showAvatar">
+                <!-- <span class="cart"><a><em class="icon-Bell"></em></a></span> -->
+                <div [matMenuTriggerFor]="menu" [matTooltipPosition]="'left'" [matTooltip]="userDetails?.firstname + ' ' + userDetails?.lastname" class="avatar">
+                    <span *ngIf="!profImage"><em class="icon-User"></em></span>
+                    <figure *ngIf="profImage" class="profImg">
+                        <img [src]="profImage + blobToken" alt="" />
+                    </figure>
+                    <mat-menu #menu="matMenu" class="profileMenu">
+                        <div class="profile">
+                            <div class="profIcon">
+                                <figure class="profImg">
+                                    <span class="avatar" *ngIf="!profImage"><em class="icon-User"></em></span>
+                                    <img *ngIf="profImage" [src]="profImage + blobToken" alt="" />
+                                </figure>
+                            </div>
+                            <div class="profDesc">
+                                <strong>{{userDetails?.firstname + ' ' + userDetails?.lastname}}</strong>
+                                <span>{{userDetails?.email}}</span>
+                                <button (click)="editProfile()">Edit Profile</button>
+                            </div>
+                        </div>
+                        <div class="settings">
+                            <!-- <span class="heading">Account</span> -->
+                            <div><a   (click)="navigateProfile('account')">Account settings</a></div>
+                            <div><a (click)="navigateProfile('history')">Purchase history</a></div>
+                            <div><a  (click)="navigateProfile('payment')">Payment methods</a></div>
+                        </div>
+                        <div class="signout">
+                            <a>Help</a>
+                            <a class="signOut" (click)="logout()">Sign out</a>
+                        </div>
+                    </mat-menu>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="!showAvatar">
+                <span class="signIn"><a  (click)="openOnBoard('0'); closeMegaMenu_()">Sign In</a></span>
+                <button class="register" (click)="openOnBoard('1'); closeMegaMenu_()">Register</button>
+            </ng-container>
+        </div>
+    
+        <div *ngIf="!showAvatar" class="mobileLogin">
+            <button (click)="mobileclick()"> <span>Login</span> <em class="icon-DownArrow"></em></button>
+        </div>
     </div>
 
-    <!-- <nav class="menuLevel1" [@slideInOut]="showMenu">
-        <ng-template [ngTemplateOutlet]="navContent"></ng-template>
-    </nav> -->
-
-
-    
 </header>
+
+<div class="mobileRegister" [@slideInOut]="mobileshowMenu">
+    <div>
+        <div class="closeIcon"><em class="icon-Close" (click)="closeMegaMenu()"></em></div>
+        <ng-container *ngIf="!showAvatar">
+            <span class="signIn"><a  (click)="openOnBoard('0'); closeMegaMenu_()">Sign In</a></span>
+            <span class="register" (click)="openOnBoard('1'); closeMegaMenu_()">Register</span>
+        </ng-container>
+        <div *ngIf="!showAvatar" class="recruiter">
+            <a href="https://unifiedreport.lntedutech.com/login" target="recruiterLogin">
+                <em class="icon-Recruiter"></em> 
+                <span>Recruiter? Login here</span>
+            </a>
+        </div>
+    </div>
+</div>
+
 <mat-menu class="menuCustomClass" #menu="matMenu" >
     <button mat-menu-item>Check My Score</button>
     <button mat-menu-item>Download My Certificate</button>
@@ -160,14 +179,21 @@
         </ul>
     </ng-container>
 </nav>
+
 <nav class="mobileMegamenu mobilemenu" [@slideInOut]="showMenu">
     <ng-container *ngIf ="catalogMenu.length > 0">
         <ng-container *ngIf="l1.length > 0 && l2.length <= 0 && l3.length <= 0 && l4.length <= 0">
-            <div class="mobilemenuHeader">
-                <div class="header-txt"><span>Catalog</span></div>
+            <div class="mobilemenuHeader first">
+                <div class="backArrow"><em class="icon-Back"></em></div>
+                <span class="headingStyle">Menu</span>
                 <div class="closeIcon"><em class="icon-Close" (click)="closeMegaMenu()"></em></div>
             </div>
-            <div class="fisrtLevel">
+            <nav class="topMenuMobile">
+                <a [ngClass]="isCourse ? 'activeTab' : ''" (click)="onlineAssessment('course')">My Course</a>
+                <a [ngClass]="isAssement ? 'activeTab' : ''" (click)="onlineAssessment('assessment')">My Assessment</a>
+            </nav>
+            <div class="fisrtLevel commonSyle">
+                <span class="header-txt">Catalog</span>
                 <ul>
                     <li *ngFor="let item of l1">
                         <a (click)="firstlevelClick(item)">
@@ -179,10 +205,12 @@
         </ng-container>
         <ng-container *ngIf="l1.length > 0 && l2.length > 0 && l3.length <= 0 && l4.length <= 0">
             <div class="mobilemenuHeader">
-                <div class="header-txt"><em (click)="l2 = []" class="icon-LeftArrow"></em> <span>Domain</span></div>
+                <div class="backArrow"><em (click)="l2 = []" class="icon-Back"></em></div>
+                <div class="headingStyle">{{l1name}}</div>
                 <div class="closeIcon"><em class="icon-Close" (click)="closeMegaMenu()"></em></div>
             </div>
-            <div class="secondLevel">
+            <div class="secondLevel commonSyle">
+                <span class="header-txt">Domain</span>
                 <ul>
                     <li *ngFor="let item of l2">
                         <a>
@@ -195,10 +223,12 @@
         </ng-container>
         <ng-container *ngIf="l1.length > 0 && l2.length > 0 && l3.length > 0 && l4.length <= 0">
             <div class="mobilemenuHeader">
-                <div class="header-txt"><em (click)="l3 = []" class="icon-LeftArrow"></em> <span>Stream</span></div>
+                <div class="backArrow"><em (click)="l3 = []" class="icon-Back"></em></div>
+                <div class="headingStyle">{{l2name}}</div>
                 <div class="closeIcon"><em class="icon-Close" (click)="closeMegaMenu()"></em></div>
             </div>
-            <div class="thirdlevel">
+            <div class="thirdlevel commonSyle">
+                <span class="header-txt">Stream</span>
                 <ul>
                     <li *ngFor="let item of l3">
                         <a>
@@ -211,12 +241,11 @@
         </ng-container>
         <ng-container *ngIf="l1.length > 0 && l2.length > 0 && l3.length > 0 && l4.length > 0">
             <div class="mobilemenuHeader">
-                <div class="heading">
-                    <em (click)="l4 = []" class="icon-LeftArrow"></em> <span>{{l2name}}</span>
-                </div>
+                <div class="backArrow"><em (click)="l4 = []" class="icon-Back"></em></div>
+                <div class="headingStyle"><span>{{l3name}}</span></div>
                 <div class="closeIcon"><em class="icon-Close" (click)="closeMegaMenu()"></em></div>
             </div>
-            <div class="fourthLevel">
+            <div class="fourthLevel commonSyle">
                 <p>{{ (longdesc.length > 250)? (longdesc | slice:0:250)+'...':(longdesc) }}</p>
                 <button (click)="gotoArea(l3item,productType)">Learn More</button>
                 <div class="heading6">Featured</div>
