@@ -8,7 +8,7 @@
 .banner {
     position: relative;
     padding: 3em 0;
-    background-image: url('#{$imagePath}/Account_pattern.png');
+    background-image: url('https://assets.lntedutech.com/portalicons/Account_pattern.png');
     background-repeat: no-repeat;
     background-size: cover;
     &::before {
@@ -314,7 +314,7 @@
                             content: '';
                             position: absolute;
                             top: 50%;
-                            background-image: url('#{$imagePath}/star.svg');
+                            background-image: url('https://assets.lntedutech.com/portalicons/star.svg');
                             background-repeat: no-repeat;
                             width: 50px;
                             height: 53px;
