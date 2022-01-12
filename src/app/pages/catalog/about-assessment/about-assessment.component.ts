@@ -228,7 +228,7 @@ freeOrderPlace(cartid){
   }
   this.catalogService.createOrder(orderParms).subscribe((data: any) => {
     // this.toast.success("Course order created");
-    this.appconfig.routeNavigationWithQueryParam("cart/success",{ orderId: data.order_id });
+    this.appconfig.routeNavigationWithQueryParam("cart/success",{ orderId: btoa(data.order_id) });
   });
 }
   getDetails() {

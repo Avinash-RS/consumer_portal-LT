@@ -74,7 +74,7 @@ export class SuccessComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       const postData: any = {};
       if (params.orderId) {
-        postData.order_id = params.orderId;
+        postData.order_id = atob(params.orderId);
         this.catalog.getOrder(postData).subscribe((data: any) => {
           this.courseId = [];
           this.orderlist = data.data;
