@@ -390,7 +390,7 @@
 </ng-container>
 
 <ng-container *ngIf="productType == 'course'">
-    <div class="courseContainer" *ngIf="!nocard">
+    <div class="courseContainer" *ngIf="!nocard && !defaultDiv">
         <div class="courseProduct">
             <figure>
                 <img [src]="courseData?.image?.url" alt="" />
@@ -565,11 +565,13 @@
             </div>
         </section>
     </div>
-    <div *ngIf="nocard" class="noDataFound">
+    <div *ngIf="nocard && !defaultDiv" class="noDataFound">
         <figure>
             <img src="https://assets.lntedutech.com/portalicons/no-categories.svg" alt="" />
         </figure>
         <div class="heading3">no courses found</div>
+    </div>
+    <div *ngIf="defaultDiv">
     </div>
 </ng-container>
 

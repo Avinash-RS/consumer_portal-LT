@@ -58,7 +58,8 @@ export class AboutAssessmentComponent implements OnInit {
   abouCourseData:any;
   courseData:any;
   userDetails;
-  nocard:boolean = false;
+  nocard:boolean = true;
+  defaultDiv:boolean = true;
   @ViewChild('kycmandate', { static: false }) matDialogRef: TemplateRef<any>;
   backgroundImageUrl: any;
   constructor(private router: Router, private catalogService : CatalogService,private route:ActivatedRoute,private appconfig: AppConfigService,private commonService : CommonService,public toast: ToastrService ,private util: UtilityService,private dialog: MatDialog) {
@@ -122,15 +123,18 @@ getAbouCourse(){
       if(response.data && response.data.length > 0 && response.data[0].assessmentData && response.data[0].assessmentData.length){
         this.abouCourseData = response.data[0];
         this.courseData = this.abouCourseData.assessmentData[0];
+        this.defaultDiv = false;
         this.nocard = false;
       }
       else{
         this.abouCourseData = [];
+        this.defaultDiv = false;
         this.nocard = true;
       }
     }
     else{
       this.abouCourseData = [];
+      this.defaultDiv = false;
       this.nocard = true;
     }
   })
