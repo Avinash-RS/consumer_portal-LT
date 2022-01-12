@@ -125,7 +125,7 @@
         }
         figure {
             display: inline-block;
-            background-image: url('#{$imagePath}/login_bg.svg');
+            background-image: url('https://assets.lntedutech.com/portalicons/login_bg.svg');
             background-repeat: no-repeat;
             background-size: cover;
             width: 100%;
@@ -236,7 +236,7 @@
         width: 40%;
         margin-top: 1em;
         a {
-            background-image: url('#{$imagePath}/sprite-image.png');
+            background-image: url('https://assets.lntedutech.com/portalicons/sprite-image.png');
             background-size: (1000 / $fontsize) * 1em;
             background-repeat: no-repeat;
             width: (78 / $fontsize) * 1em;

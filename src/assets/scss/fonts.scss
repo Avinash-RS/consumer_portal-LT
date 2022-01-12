@@ -4,22 +4,22 @@
 /* Roboto Condensed Font */
 @font-face {
   font-family: 'RobotoCondensed';
-  src: url('#{$fontPath}/RobotoCondensed-Light.woff2') format('woff2'),
-       url('#{$fontPath}/RobotoCondensed-Light.woff') format('woff');
+  src: url('https://assets.lntedutech.com/fonts/RobotoCondensed-Light.woff2') format('woff2'),
+       url('https://assets.lntedutech.com/fonts/RobotoCondensed-Light.woff') format('woff');
   font-weight: 300;
   font-style: normal;
 }
 @font-face {
     font-family: 'RobotoCondensed';
-    src: url('#{$fontPath}/RobotoCondensed-Regular.woff2') format('woff2'),
-         url('#{$fontPath}/RobotoCondensed-Regular.woff') format('woff');
+    src: url('https://assets.lntedutech.com/fonts/RobotoCondensed-Regular.woff2') format('woff2'),
+         url('https://assets.lntedutech.com/fonts/RobotoCondensed-Regular.woff') format('woff');
     font-weight: 400;
     font-style: normal;
 }
 @font-face {
     font-family: 'RobotoCondensed';
-    src: url('#{$fontPath}/RobotoCondensed-Bold.woff2') format('woff2'),
-         url('#{$fontPath}/RobotoCondensed-Bold.woff') format('woff');
+    src: url('https://assets.lntedutech.com/fonts/RobotoCondensed-Bold.woff2') format('woff2'),
+         url('https://assets.lntedutech.com/fonts/RobotoCondensed-Bold.woff') format('woff');
     font-weight: 700;
     font-style: normal;
 }
