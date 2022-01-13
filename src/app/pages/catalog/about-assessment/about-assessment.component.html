@@ -395,13 +395,10 @@
             <figure>
                 <img [src]="courseData?.image?.url" alt="" />
             </figure>
-            <!-- {{courseData?.image?.url}} -->
-        <!-- <div class="courseProduct" [ngStyle]="{backgroundImage:'url(../../../../assets/images/software-testing-trends.jpg)'}"> -->
             <div class="bannerContent">
                 <div class="container"> 
                     <div class="heading1">{{courseData?.name}}</div>
                     <p>{{courseData?.shortDescription}}</p>
-                    <!-- <span class="courseRate"><em class="icon-Rupee"></em> {{courseData?.sellingPrice}}</span> -->
                     <div class="buttons">
                         <button class="buyNow" (click)="courseBuy()">Buy Now</button>
                     </div>
@@ -430,11 +427,103 @@
                 <div class="heading2">Programme Highlights</div>
                 <ul>
                     <li *ngFor="let highlight of courseData?.courseContents?.programmeHighlights">
-                        <!-- <span class="icon"><em class="icon-AddTask"></em></span>  -->
                         <img src="https://assets.lntedutech.com/portalicons/highlight-tick.png" alt="" />
                         <span class="text">{{highlight.title}}</span>
                     </li>
                 </ul>
+            </div>
+        </section>
+
+        <!-- Why Full Stack -->
+        <section class="whyFullStack">
+            <div class="container">
+                <div class="commonHeadingStyle">Why Java Full Stack</div>
+                <ul>
+                    <li>
+                        <figure>
+                            <img src="/assets/images/demandDecades.svg" alt="" />
+                        </figure>
+                        <div class="heading5">Demand over Decades</div>
+                        <p>Being one of the robust and highly used programming language for decades in the Information Technology Industry, the demand for Java Full Stack developers is high all the time.</p>
+                    </li>
+                    <li>
+                        <figure>
+                            <img src="/assets/images/demandDecades.svg" alt="" />
+                        </figure>
+                        <div class="heading5">Benefits of Learning</div>
+                        <p>Full Stack Java Technologies knowledge will help you work across front-end, middle- ware and back-end layers of an application. You can evolve yourself as a person who can be a part of end-to-end application.</p>
+                    </li>
+                    <li>
+                        <figure>
+                            <img src="/assets/images/employability.svg" alt="" />
+                        </figure>
+                        <div class="heading5">Employability</div>
+                        <p>Java Full Stack talents are recruited in various organization such as LTI, MindTree, Amazon, etc. As many projects were developed in Java technologies, the scope for Java Developers will remain high.</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Program Overivew -->
+        <section class="programOverview">
+            <div class="container">
+                <div class="commonHeadingStyle">Program Overview</div>
+                <div class="programming">
+                    <div class="left">
+                        <p>Full Stack Java developer program is designed to upskill you in all the stacks of application development. The tracks covers Core Java, Front – End Technologies, Database, Java Frameworks – which will set the right skills package to become a Full Stack Java Developer.</p>
+                    </div>
+                    <figure>
+                        <img src="/assets/images/programOverview.png" alt="" />
+                    </figure>
+                </div>
+
+                <div class="projectsCreate">
+                    <div class="heading4">Projects you create</div>
+                    <p>As a part of the course, you will be developing</p>
+                    <ul>
+                        <li>
+                            <div class="left">
+                                <figure>
+                                    <img src="/assets/images/chatApplication.png" alt="" />
+                                </figure>
+                            </div>
+                            <div class="right">
+                                <div class="heading6">Chat Application</div>
+                                <p>Full Stack Java developer program is designed to upskill you in all the stacks of application development.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="left">
+                                <figure>
+                                    <img src="/assets/images/bookingEdge.png" alt="" />
+                                </figure>
+                            </div>
+                            <div class="right">
+                                <div class="heading6">Chat Application</div>
+                                <p>Full Stack Java developer program is designed to upskill you in all the stacks of application development.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="left">
+                                <figure>
+                                    <img src="/assets/images/shoppingApplication.png" alt="" />
+                                </figure>
+                            </div>
+                            <div class="right">
+                                <div class="heading6">Chat Application</div>
+                                <p>Full Stack Java developer program is designed to upskill you in all the stacks of application development.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="programmeHighlights">
+                    <div class="heading4">Programme Highlights</div>
+                    <p>Our program emphasise on building skills and enable people to be functional in their job from Day One. The courses will be delivered in such a way to give them the real exposure of Production Life cycles by involving your real world problems, case studies and Projects relevant to current IT product landscape.</p>
+                    <ul>
+                        <li></li>
+                    </ul>
+                </div>
             </div>
         </section>
 
@@ -449,7 +538,6 @@
                         <div class="headding">{{opportunitiesDetails?.title}}</div>
                         <ul>
                             <li *ngFor="let opportunitiesBenefits of opportunitiesDetails.benefits">
-                                <!-- <em class="icon-Tick"></em>  -->
                                 <img src="https://assets.lntedutech.com/portalicons/blue-tick.png" alt="" />
                             {{opportunitiesBenefits?.content}}</li>
                         </ul>

@@ -822,6 +822,165 @@
         }
     }
 }
+
+// Why Full Stack
+.whyFullStack {
+    background-color: #F8FBFF;
+    padding: 3.75em 0;
+    font-size: 12px;
+    @include md {
+    }
+    @include lg {
+        font-size: 14px;
+    }
+    @include xl {
+        font-size: 16px;
+    }
+    ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        li {
+            width: 30%;
+            text-align: center;
+            position: relative;
+            padding: 15px;
+            &::after {
+                content: '';
+                position: absolute;
+                right: -10%;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 1px;
+                height: 75%;
+                background-color: rgba(169, 141, 221, 1);
+            }
+            &:last-child {
+                &::after {
+                    content: none;
+                }
+            }
+            .heading5 {
+                margin: 0.75em 0;
+            }
+            p {
+                font-size: 0.9375em;
+                font-weight: 400;
+                color: $mediumGrey;
+                line-height: 1.1;
+                margin: 0;
+            }
+        }
+    }
+}
+
+//Program Overview
+.programOverview {
+    background-color: $whiteColor;
+    padding: 3.75em 0;
+    font-size: 12px;
+    @include md {
+    }
+    @include lg {
+        font-size: 14px;
+    }
+    @include xl {
+        font-size: 16px;
+    }
+    .programming {
+        background-color: #F9F9F9;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .left {
+            width: 48%;
+            p {
+                font-size: 1.25em;
+                font-weight: 400;
+                color: $mediumGrey;
+                line-height: 1.5;
+                margin: 0;
+                padding: 0 20px;
+            }
+        }
+        figure {
+            width: 48%;
+            display: flex;
+        }
+    }
+    //
+    .projectsCreate, 
+    .programmeHighlights {
+        margin-top: 1.25em;
+        display: inline-block;
+        width: 100%;
+        .heading4 {
+            color: $darkGrey;
+            margin: 0;
+        }
+        p {
+            font-size: 1.125em;
+            font-weight: 400;
+            color: $mediumGrey;
+            display: block;
+            line-height: 1.4;
+            padding: 0.75em 0 1em 0;
+            margin: 0;
+        }
+    }
+    .projectsCreate {
+        margin-bottom: 1em;
+        ul {
+            display: flex;
+            justify-content: space-between;
+            li {
+                display: flex;
+                align-items: center;
+                width: 31.5%;
+                padding: 0.875em;
+                background-color: #ECEFF0;
+                box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+                .left {
+                    width: 30%;
+                    figure {
+                        border-radius: 50%;
+                        width: 5em;
+                        height: 5em;
+                        background-image: linear-gradient(to right bottom, #25b7d3, #1da7c2, #1497b1, #0a88a0, #007990);
+                        display: inline-flex;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 8px;
+                        img {
+                            max-width: 70%;
+                        }
+                    }
+                }
+                .right {
+                    width: 65%;
+                    margin-left: 5%;
+                    .heading6 {
+                        color: #1B4E9B;
+                        font-weight: 700;
+                        margin-bottom: 10px;
+                    }
+                    p {
+                        font-size: .875em;
+                        font-weight: 400;
+                        color: $mediumGrey;
+                        line-height: 1.2;
+                        margin: 0;
+                        padding: 0;
+                    }
+                }
+            }
+        }
+    }
+    .programmeHighlights {
+
+    }
+}
+
 .programHighlights {
     background-color: $whiteColor;
     padding: 3.75em 0;
