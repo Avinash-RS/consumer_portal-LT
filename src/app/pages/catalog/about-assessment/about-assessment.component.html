@@ -421,15 +421,6 @@
             </div>
         </div>
 
-<!-- Overall tabs -->
-        <section class="tabssection">
-            <div class="container">
-                <ul>
-                    <li *ngFor="let item of this.courseData?.courseContents?.Headings"><a href="">{{item.title}}</a></li>
-                </ul>
-            </div>
-        </section>
-
         <!-- Programming Highlights -->
         <!-- <section class="programHighlights">
             <div class="container">
@@ -446,8 +437,15 @@
 
           <!-- Why Full Stack -->
            <ng-container *ngIf="item.sectionId == 1 && item.dispalystatus">
-            <section class="whyFullStack">
-                <div class="container">
+            <section class="whyFullStack"><!-- Overall tabs -->
+                <div class="tabssection">
+                    <div class="container">
+                        <ul>
+                            <li *ngFor="let item of this.courseData?.courseContents?.Headings"><a href="">{{item.title}}</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="container fullStack">
                     <div class="commonHeadingStyle">{{item?.title}}</div>
                     <ul>
                         <li *ngFor="let child of item.innerArray">
