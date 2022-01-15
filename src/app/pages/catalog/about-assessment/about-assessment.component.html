@@ -520,9 +520,45 @@
                 <div class="programmeHighlights">
                     <div class="heading4">Programme Highlights</div>
                     <p>Our program emphasise on building skills and enable people to be functional in their job from Day One. The courses will be delivered in such a way to give them the real exposure of Production Life cycles by involving your real world problems, case studies and Projects relevant to current IT product landscape.</p>
-                    <ul>
-                        <li></li>
-                    </ul>
+                    <div class="keySkillsCovered">
+                        <div class="keyFeatures">
+                            <div class="heading4">Key Features</div>
+                            <ul>
+                                <li><img src="/assets/images/keyFeatures.png" alt="" /> Production ready Talent Development</li>
+                                <li><img src="/assets/images/keyFeatures.png" alt="" />Project Based Curriculum</li>
+                                <li><img src="/assets/images/keyFeatures.png" alt="" />Performance Coaching and Assessment</li>
+                                <li><img src="/assets/images/keyFeatures.png" alt="" />Blended Learning powered by Digital Technology</li>
+                                <li><img src="/assets/images/keyFeatures.png" alt="" />Continuous Faculty support throughout the programme</li>
+                            </ul>
+                        </div>
+                        <div class="skillsCovered">
+                            <div class="heading4">Skills Covered</div>
+                            <ul>
+                                <li><img src="/assets/images/skillsCovered.png" alt="" /> Proficient in handling Data structures and designing algorithms</li>
+                                <li><img src="/assets/images/skillsCovered.png" alt="" /> Ability to create intuitive user interfaces for web applications</li>
+                                <li><img src="/assets/images/skillsCovered.png" alt="" /> Write clean, neat, reusable code and able to work in a collaborative environment</li>
+                                <li><img src="/assets/images/skillsCovered.png" alt="" /> Write clean, neat, reusable code and able to work in a collaborative environment</li>
+                                <li><img src="/assets/images/skillsCovered.png" alt="" /> Create reliable, high performant applications</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Real Time Projects -->
+        <section class="realTimeProjects">
+            <div class="container">
+                <div class="heading4">Learn by Applying</div>
+                <div class="heading6">{{courseData?.courseContents?.realTimeProjects?.label}}</div>
+                <div class="realTimeWrapper">
+                    <div class="commonStyle" *ngFor="let realTimeProjectsDetails of courseData?.courseContents?.realTimeProjects?.details">
+                        <figure>
+                            <img [src]="realTimeProjectsDetails.image" alt="" />
+                        </figure>
+                        <div class="heading5">{{realTimeProjectsDetails?.title}}</div>
+                        <p>{{realTimeProjectsDetails?.desc}}</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -604,23 +640,6 @@
                                 </div>
                             </mat-expansion-panel>
                         </mat-accordion>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Real Time Projects -->
-        <section class="realTimeProjects">
-            <div class="container">
-                <div class="heading2">Real Time Projects</div>
-                <div class="heading6">{{courseData?.courseContents?.realTimeProjects?.label}}</div>
-                <div class="realTimeWrapper">
-                    <div class="commonStyle" *ngFor="let realTimeProjectsDetails of courseData?.courseContents?.realTimeProjects?.details">
-                        <figure>
-                            <img [src]="realTimeProjectsDetails.image" alt="" />
-                        </figure>
-                        <div class="heading5">{{realTimeProjectsDetails?.title}}</div>
-                        <p>{{realTimeProjectsDetails?.desc}}</p>
                     </div>
                 </div>
             </div>
