@@ -421,8 +421,17 @@
             </div>
         </div>
 
+<!-- Overall tabs -->
+        <section class="tabssection">
+            <div class="container">
+                <ul>
+                    <li *ngFor="let item of this.courseData?.courseContents?.Headings"><a href="">{{item.title}}</a></li>
+                </ul>
+            </div>
+        </section>
+
         <!-- Programming Highlights -->
-        <section class="programHighlights">
+        <!-- <section class="programHighlights">
             <div class="container">
                 <div class="heading2">Programme Highlights</div>
                 <ul>
@@ -432,226 +441,156 @@
                     </li>
                 </ul>
             </div>
-        </section>
+        </section> -->
+        <ng-container *ngFor="let item of this.courseData?.courseContents?.Headings">
 
-        <!-- Why Full Stack -->
-        <section class="whyFullStack">
-            <div class="container">
-                <div class="commonHeadingStyle">Why Java Full Stack</div>
-                <ul>
-                    <li>
-                        <figure>
-                            <img src="/assets/images/demandDecades.svg" alt="" />
-                        </figure>
-                        <div class="heading5">Demand over Decades</div>
-                        <p>Being one of the robust and highly used programming language for decades in the Information Technology Industry, the demand for Java Full Stack developers is high all the time.</p>
-                    </li>
-                    <li>
-                        <figure>
-                            <img src="/assets/images/demandDecades.svg" alt="" />
-                        </figure>
-                        <div class="heading5">Benefits of Learning</div>
-                        <p>Full Stack Java Technologies knowledge will help you work across front-end, middle- ware and back-end layers of an application. You can evolve yourself as a person who can be a part of end-to-end application.</p>
-                    </li>
-                    <li>
-                        <figure>
-                            <img src="/assets/images/employability.svg" alt="" />
-                        </figure>
-                        <div class="heading5">Employability</div>
-                        <p>Java Full Stack talents are recruited in various organization such as LTI, MindTree, Amazon, etc. As many projects were developed in Java technologies, the scope for Java Developers will remain high.</p>
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Program Overivew -->
-        <section class="programOverview">
-            <div class="container">
-                <div class="commonHeadingStyle">Program Overview</div>
-                <div class="programming">
-                    <div class="left">
-                        <p>Full Stack Java developer program is designed to upskill you in all the stacks of application development. The tracks covers Core Java, Front – End Technologies, Database, Java Frameworks – which will set the right skills package to become a Full Stack Java Developer.</p>
-                    </div>
-                    <figure>
-                        <img src="/assets/images/programOverview.png" alt="" />
-                    </figure>
-                </div>
-
-                <div class="projectsCreate">
-                    <div class="heading4">Projects you create</div>
-                    <p>As a part of the course, you will be developing</p>
+          <!-- Why Full Stack -->
+           <ng-container *ngIf="item.sectionId == 1 && item.dispalystatus">
+            <section class="whyFullStack">
+                <div class="container">
+                    <div class="commonHeadingStyle">{{item?.title}}</div>
                     <ul>
-                        <li>
-                            <div class="left">
-                                <figure>
-                                    <img src="/assets/images/chatApplication.png" alt="" />
-                                </figure>
-                            </div>
-                            <div class="right">
-                                <div class="heading6">Chat Application</div>
-                                <p>Full Stack Java developer program is designed to upskill you in all the stacks of application development.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="left">
-                                <figure>
-                                    <img src="/assets/images/bookingEdge.png" alt="" />
-                                </figure>
-                            </div>
-                            <div class="right">
-                                <div class="heading6">Chat Application</div>
-                                <p>Full Stack Java developer program is designed to upskill you in all the stacks of application development.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="left">
-                                <figure>
-                                    <img src="/assets/images/shoppingApplication.png" alt="" />
-                                </figure>
-                            </div>
-                            <div class="right">
-                                <div class="heading6">Chat Application</div>
-                                <p>Full Stack Java developer program is designed to upskill you in all the stacks of application development.</p>
-                            </div>
+                        <li *ngFor="let child of item.innerArray">
+                            <figure>
+                                <img src="/assets/images/demandDecades.svg" alt="" />
+                            </figure>
+                            <div class="heading5">{{child?.title}}</div>
+                            <p>{{child?.description}}</p>
                         </li>
                     </ul>
                 </div>
+            </section>
+           </ng-container>
 
-                <div class="programmeHighlights">
-                    <div class="heading4">Programme Highlights</div>
-                    <p>Our program emphasise on building skills and enable people to be functional in their job from Day One. The courses will be delivered in such a way to give them the real exposure of Production Life cycles by involving your real world problems, case studies and Projects relevant to current IT product landscape.</p>
-                    <div class="keySkillsCovered">
-                        <div class="keyFeatures">
-                            <div class="heading4">Key Features</div>
+             <!-- Program Overivew -->
+            <ng-container *ngIf="item.sectionId == 2 && item.dispalystatus">
+                <section class="programOverview">
+                    <div class="container">
+                        <div class="commonHeadingStyle">{{item?.title}}</div>
+                        <div class="programming">
+                            <div class="left">
+                                <p>{{item?.description}}</p>
+                            </div>
+                            <figure>
+                                <img src="/assets/images/programOverview.png" alt="" />
+                            </figure>
+                        </div>
+        
+                        <div class="projectsCreate" *ngIf="item?.subHeading1?.dispalystatus">
+                            <div class="heading4">{{item?.subHeading1?.title}}</div>
+                            <p>{{item?.subHeading1?.description}}</p>
                             <ul>
-                                <li><img src="/assets/images/keyFeatures.png" alt="" /> Production ready Talent Development</li>
-                                <li><img src="/assets/images/keyFeatures.png" alt="" />Project Based Curriculum</li>
-                                <li><img src="/assets/images/keyFeatures.png" alt="" />Performance Coaching and Assessment</li>
-                                <li><img src="/assets/images/keyFeatures.png" alt="" />Blended Learning powered by Digital Technology</li>
-                                <li><img src="/assets/images/keyFeatures.png" alt="" />Continuous Faculty support throughout the programme</li>
+                                <li *ngFor="let projectChild of item?.subHeading1?.innerArray">
+                                    <div class="left">
+                                        <figure>
+                                            <img src="/assets/images/chatApplication.png" alt="" />
+                                        </figure>
+                                    </div>
+                                    <div class="right">
+                                        <div class="heading6">{{projectChild?.title}}</div>
+                                        <p>{{projectChild?.description}}</p>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
-                        <div class="skillsCovered">
-                            <div class="heading4">Skills Covered</div>
-                            <ul>
-                                <li><img src="/assets/images/skillsCovered.png" alt="" /> Proficient in handling Data structures and designing algorithms</li>
-                                <li><img src="/assets/images/skillsCovered.png" alt="" /> Ability to create intuitive user interfaces for web applications</li>
-                                <li><img src="/assets/images/skillsCovered.png" alt="" /> Write clean, neat, reusable code and able to work in a collaborative environment</li>
-                                <li><img src="/assets/images/skillsCovered.png" alt="" /> Write clean, neat, reusable code and able to work in a collaborative environment</li>
-                                <li><img src="/assets/images/skillsCovered.png" alt="" /> Create reliable, high performant applications</li>
-                            </ul>
+        
+                        <div class="programmeHighlights" *ngIf="item?.subHeading2?.dispalystatus">
+                            <div class="heading4">{{item?.subHeading2?.title}}</div>
+                            <p>{{item?.subHeading2?.description}}</p>
+                            <div class="keySkillsCovered">
+                                <div class="keyFeatures" *ngFor="let highlightChild of item?.subHeading2?.innerArray">
+                                    <div class="heading4">{{highlightChild?.title}}</div>
+                                    <ul>
+                                        <li *ngFor="let subChild of highlightChild?.innersubArray">
+                                            <img src="/assets/images/keyFeatures.png" alt="" />{{subChild}}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </ng-container>
+
+            <!-- Curriculam -->
+            <ng-container *ngIf="item.sectionId == 3 && item.dispalystatus">
+                   <!-- Real Time Projects -->
+                    <section class="realTimeProjects">
+                        <div class="container">
+                            <div class="heading4">{{item?.subHeading1?.title}}</div>
+                            <div class="heading6">{{item?.subHeading1?.description}}</div>
+                            <div class="realTimeWrapper" *ngIf ="item?.subHeading1?.dispalystatus">
+                                <div class="commonStyle" *ngFor="let realTimeProjectsDetails of item?.subHeading1?.innerArray">
+                                    <figure>
+                                        <img [src]="" alt="" />
+                                    </figure>
+                                    <div class="heading5">{{realTimeProjectsDetails?.title}}</div>
+                                    <p>{{realTimeProjectsDetails?.description}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Request Broucher -->
+                    <section class="reqBroucher">
+                        <div class="container">
+                            <span class="heading">Learn the right trending skills with us and Land your Dream Job</span>
+                            <div class="heading6">{{courseData?.name}}</div>
+                            <button><img src="/assets/images/reqBroucher.png" alt="" /> Request Brochure</button>
+                        </div>
+                    </section>
+
+            </ng-container>
+
+            <!-- Carrer Path -->
+            <ng-container *ngIf="item.sectionId == 5 && item.dispalystatus">
+            <section class="careerPath">
+                <div class="container">
+                    <div class="commonHeadingStyle">{{item?.title}}</div>
+                    <div class="careerPathWrapper">
+                        <div class="path" *ngFor="let carerChild of item?.innerArray">
+                            <figure>
+                                <img src="/assets/images/enrollCourse.svg" alt="" />
+                            </figure>
+                            <span class="heading">{{carerChild?.title}}
+                                <em class="icon-RightArrow"></em>
+                            </span>
+                            <p>{{carerChild?.description}}</p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+            </ng-container>
 
-        <!-- Real Time Projects -->
-        <section class="realTimeProjects">
-            <div class="container">
-                <div class="heading4">Learn by Applying</div>
-                <div class="heading6">{{courseData?.courseContents?.realTimeProjects?.label}}</div>
-                <div class="realTimeWrapper">
-                    <div class="commonStyle" *ngFor="let realTimeProjectsDetails of courseData?.courseContents?.realTimeProjects?.details">
-                        <figure>
-                            <img [src]="realTimeProjectsDetails.image" alt="" />
-                        </figure>
-                        <div class="heading5">{{realTimeProjectsDetails?.title}}</div>
-                        <p>{{realTimeProjectsDetails?.desc}}</p>
+            <!-- Programming Language -->
+            <ng-container *ngIf="item.sectionId == 6 && item.dispalystatus">
+                <section class="programmingLanguages">
+                    <div class="container">
+                        <div class="commonHeadingStyle">{{item?.title}}</div>
+                        <!-- <div class="subjectsOpportunities">
+                            <div class="topSubjects commonStyle" *ngFor="let opportunitiesDetails of courseData?.courseContents?.topsubjects_opportunities">
+                                <figure>
+                                    <img [src]="opportunitiesDetails.image" alt="" />
+                                </figure>
+                                <div class="headding">{{opportunitiesDetails?.title}}</div>
+                                <ul>
+                                    <li *ngFor="let opportunitiesBenefits of opportunitiesDetails.benefits">
+                                        <img src="https://assets.lntedutech.com/portalicons/blue-tick.png" alt="" />
+                                    {{opportunitiesBenefits?.content}}</li>
+                                </ul>
+                            </div>
+                        </div> -->
+                        <div class="toolsCovered">
+                            <div class="tools">
+                                <figure *ngFor="let prgmLangNdToolsCoveredDetails of item?.innerArray">
+                                    <img [src]="prgmLangNdToolsCoveredDetails" alt="" />
+                                </figure>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Request Broucher -->
-        <section class="reqBroucher">
-            <div class="container">
-                <span class="heading">Learn the right trending skills with us and Land your Dream Job</span>
-                <div class="heading6">Full Stack Development with Java</div>
-                <button><img src="/assets/images/reqBroucher.png" alt="" /> Request Brochure</button>
-            </div>
-        </section>
-
-        <!-- Career Path -->
-        <section class="careerPath">
-            <div class="container">
-                <div class="commonHeadingStyle">Career Path</div>
-                <div class="careerPathWrapper">
-                    <div class="path">
-                        <figure>
-                            <img src="/assets/images/enrollCourse.svg" alt="" />
-                        </figure>
-                        <span class="heading">Enroll Course
-                            <em class="icon-RightArrow"></em>
-                        </span>
-                        <p>Register with us and Enroll in to the program. Start your journey to master the full stack java technologies.</p>
-                    </div>
-                    <div class="path">
-                        <figure>
-                            <img src="/assets/images/gainSkill.svg" alt="" />
-                        </figure>
-                        <span class="heading">Get Skill
-                            <em class="icon-RightArrow"></em>
-                        </span>
-                        <p>Learn with L&T EduTech’s robust learning program. The industry-oriented training and practice sessions helps you to acquire the respective skills to become an application developer.</p>
-                    </div>
-                    <div class="path">
-                        <figure>
-                            <img src="/assets/images/getCertified.svg" alt="" />
-                        </figure>
-                        <span class="heading">Get Certified
-                            <em class="icon-RightArrow"></em>
-                        </span>
-                        <p>Get your learning accessed and Certified by L&T EduTech. Go through series of Placement Tests and Mock Interview Preparation</p>
-                    </div>
-                    <div class="path">
-                        <figure>
-                            <img src="/assets/images/gainVisibility.svg" alt="" />
-                        </figure>
-                        <span class="heading">Gain Visibility
-                            <em class="icon-RightArrow"></em>
-                        </span>
-                        <p>Exclusive Placement support from L&T EduTech Placement Coach. Your profile will be visible for 100+ recruiting partners of L&T EduTech.</p>
-                    </div>
-                    <div class="path">
-                        <figure>
-                            <img src="/assets/images/getEmployed.svg" alt="" />
-                        </figure>
-                        <span class="heading">Get Employed
-                            <em class="icon-RightArrow"></em>
-                        </span>
-                        <p>With right skill sets in hand, face the interviews confidently. Our Placement team will help land your dream job.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Programming Language -->
-        <section class="programmingLanguages">
-            <div class="container">
-                <div class="subjectsOpportunities">
-                    <div class="topSubjects commonStyle" *ngFor="let opportunitiesDetails of courseData?.courseContents?.topsubjects_opportunities">
-                        <figure>
-                            <img [src]="opportunitiesDetails.image" alt="" />
-                        </figure>
-                        <div class="headding">{{opportunitiesDetails?.title}}</div>
-                        <ul>
-                            <li *ngFor="let opportunitiesBenefits of opportunitiesDetails.benefits">
-                                <img src="https://assets.lntedutech.com/portalicons/blue-tick.png" alt="" />
-                            {{opportunitiesBenefits?.content}}</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="toolsCovered">
-                    <div class="headding">Programming Languages & Tools covered</div>
-                    <div class="tools">
-                        <figure *ngFor="let prgmLangNdToolsCoveredDetails of courseData?.courseContents?.prgmLangNdToolsCovered">
-                            <img [src]="prgmLangNdToolsCoveredDetails.image" alt="" />
-                        </figure>
-                    </div>
-                </div>
-            </div>
-        </section>
+                </section>
+            </ng-container>
+            
+        </ng-container>
 
         <!-- Instructors -->
         <section class="instructors">
@@ -735,6 +674,7 @@
             </div>
         </section>
     </div>
+
     <div *ngIf="nocard && !defaultDiv" class="noDataFound">
         <figure>
             <img src="https://assets.lntedutech.com/portalicons/no-categories.svg" alt="" />
