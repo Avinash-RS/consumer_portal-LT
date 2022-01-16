@@ -392,29 +392,49 @@
 <ng-container *ngIf="productType == 'course'">
     <div class="courseContainer" *ngIf="!nocard && !defaultDiv">
         <div class="courseProduct">
-            <figure>
-                <img [src]="courseData?.image?.url" alt="" />
+            <figure class="bannerBgImage" id="banner">
+                <!-- <img [src]="courseData?.image?.url" alt="" /> -->
+                <img src="/assets/images/bg.png" alt="" />
             </figure>
             <div class="bannerContent">
-                <div class="container"> 
-                    <div class="heading1">{{courseData?.name}}</div>
-                    <p>{{courseData?.shortDescription}}</p>
-                    <div class="buttons">
-                        <button class="buyNow" (click)="courseBuy()">Buy Now</button>
+                <div class="container">
+                    <div class="left">
+                        <div class="heading1">{{courseData?.name}}</div>
+                        <p>{{courseData?.shortDescription}}</p>
+                        <span>for Beginners and Intermediate Learners</span>
+                        <div class="courseContent">
+                            <span class="ratingStar">
+                                <em class="icon-Star"></em>
+                                <em class="icon-Star"></em>
+                                <em class="icon-Star"></em>
+                                <em class="icon-Star"></em>
+                            </span>
+                            <span class="ratings">756 Ratings</span>
+                            <span class="learners">1211 Learners</span>
+                            <div class="buttons">
+                                <span class="courseRate"><em class="icon-Rupee"></em> 11000.00</span>
+                                <button class="buyNow" (click)="courseBuy()">Enroll Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <figure>
+                            <img src="/assets/images/bannerImg.png" alt="" />
+                        </figure>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="bannerFooter">
-            <div class="container">
-                <div class="footerWrapper">
-                    <div class="studentsEnrolled commonStyle" *ngFor="let item of courseData?.courseContents?.bannerFooter">
-                        <figure>
-                            <img [src]="item.image" alt="" />
-                        </figure>
-                        <div>
-                            <p>{{item.title}}</p>
-                            <span class="heading5">{{item.content}}</span>
+            <div class="bannerFooter">
+                <div class="container">
+                    <div class="footerWrapper">
+                        <div class="studentsEnrolled commonStyle" *ngFor="let item of courseData?.courseContents?.bannerFooter">
+                            <figure>
+                                <img [src]="item.image" alt="" />
+                            </figure>
+                            <div>
+                                <p>{{item.title}}</p>
+                                <span class="content">{{item.content}}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -512,31 +532,139 @@
 
             <!-- Curriculam -->
             <ng-container *ngIf="item.sectionId == 3 && item.dispalystatus">
-                   <!-- Real Time Projects -->
-                    <section class="realTimeProjects">
-                        <div class="container">
-                            <div class="heading4">{{item?.subHeading1?.title}}</div>
-                            <div class="heading6">{{item?.subHeading1?.description}}</div>
-                            <div class="realTimeWrapper" *ngIf ="item?.subHeading1?.dispalystatus">
-                                <div class="commonStyle" *ngFor="let realTimeProjectsDetails of item?.subHeading1?.innerArray">
-                                    <figure>
-                                        <img [src]="" alt="" />
-                                    </figure>
-                                    <div class="heading5">{{realTimeProjectsDetails?.title}}</div>
-                                    <p>{{realTimeProjectsDetails?.description}}</p>
+                <section class="curriculam">
+                    <div class="container">
+                        <div class="commonHeadingStyle">Curriculam</div>
+                        <div class="curriculamWrapper">
+                            <div class="left">
+                                <p>Curated by Industry Experts and leading Academicians, the syllabus comprises of Videos, Practice Labs, Projects, Assignments and Live Training Sessions.</p>
+                                <div class="accordionPanel">
+                                    <mat-accordion>
+                                        <mat-expansion-panel [expanded]="true">
+                                            <mat-expansion-panel-header>
+                                                <mat-panel-title>
+                                                    <div class="heading5">Core Java</div>
+                                                </mat-panel-title>
+                                                <mat-panel-description>
+                                                    <div class="hours"><em class="icon-Time"></em> <span>28 hrs</span></div>
+                                                </mat-panel-description>
+                                            </mat-expansion-panel-header>
+                                            <div class="expansionContent">
+                                                <ul>
+                                                    <li><em></em>Basic Concepts</li>
+                                                    <li><em></em>OOPS with Java</li>
+                                                    <li><em></em>Inheritance & Abstraction</li>
+                                                    <li><em></em>Arrays, List</li>
+                                                    <li><em></em>Regex</li>
+                                                    <li><em></em>Exception Handling</li>
+                                                    <li><em></em>Exception Handling</li>
+                                                </ul>
+                                                <figure>
+                                                    <img src="/assets/images/curriculum_accor_bg.svg" alt="" />
+                                                </figure>
+                                            </div>
+                                        </mat-expansion-panel>
+                                    </mat-accordion>
+                                </div>
+                                <div class="accordionPanel">
+                                    <mat-accordion>
+                                        <mat-expansion-panel [expanded]="false">
+                                            <mat-expansion-panel-header>
+                                                <mat-panel-title>
+                                                    <div class="heading5">Core Java</div>
+                                                </mat-panel-title>
+                                                <mat-panel-description>
+                                                    <div class="hours"><em class="icon-Time"></em> <span>28 hrs</span></div>
+                                                </mat-panel-description>
+                                            </mat-expansion-panel-header>
+                                            <div class="expansionContent">
+                                                <ul>
+                                                    <li><em></em>Basic Concepts</li>
+                                                    <li><em></em>OOPS with Java</li>
+                                                    <li><em></em>Inheritance & Abstraction</li>
+                                                    <li><em></em>Arrays, List</li>
+                                                    <li><em></em>Regex</li>
+                                                    <li><em></em>Exception Handling</li>
+                                                    <li><em></em>Exception Handling</li>
+                                                </ul>
+                                                <figure>
+                                                    <img src="/assets/images/curriculum_accor_bg.svg" alt="" />
+                                                </figure>
+                                            </div>
+                                        </mat-expansion-panel>
+                                    </mat-accordion>
+                                </div>
+                                <div class="accordionPanel">
+                                    <mat-accordion>
+                                        <mat-expansion-panel [expanded]="false">
+                                            <mat-expansion-panel-header>
+                                                <mat-panel-title>
+                                                    <div class="heading5">Core Java</div>
+                                                </mat-panel-title>
+                                                <mat-panel-description>
+                                                    <div class="hours"><em class="icon-Time"></em> <span>28 hrs</span></div>
+                                                </mat-panel-description>
+                                            </mat-expansion-panel-header>
+                                            <div class="expansionContent">
+                                                <ul>
+                                                    <li><em></em>Basic Concepts</li>
+                                                    <li><em></em>OOPS with Java</li>
+                                                    <li><em></em>Inheritance & Abstraction</li>
+                                                    <li><em></em>Arrays, List</li>
+                                                    <li><em></em>Regex</li>
+                                                    <li><em></em>Exception Handling</li>
+                                                    <li><em></em>Exception Handling</li>
+                                                </ul>
+                                                <figure>
+                                                    <img src="/assets/images/curriculum_accor_bg.svg" alt="" />
+                                                </figure>
+                                            </div>
+                                        </mat-expansion-panel>
+                                    </mat-accordion>
+                                </div>
+                            </div>
+                            <div class="right">
+                                <div class="heading4">For more Enquiries ?</div>
+                                <div class="contactUs">
+                                    <span class="phone">
+                                        <em class="icon-ContactUs"></em>
+                                    </span>
+                                    <div>
+                                        <span class="heading5">Contact us</span>
+                                        <span class="pnNum">044 - 2252 6000</span>
+                                    </div>
+                                </div>
+                                <div class="form">
+
                                 </div>
                             </div>
                         </div>
-                    </section>
-                    <!-- Request Broucher -->
-                    <section class="reqBroucher">
-                        <div class="container">
-                            <span class="heading">Learn the right trending skills with us and Land your Dream Job</span>
-                            <div class="heading6">{{courseData?.name}}</div>
-                            <button><img src="/assets/images/reqBroucher.png" alt="" /> Request Brochure</button>
+                    </div>
+                </section>
+                <!-- Real Time Projects -->
+                <section class="realTimeProjects">
+                    <div class="container">
+                        <div class="heading4">{{item?.subHeading1?.title}}</div>
+                        <div class="heading6">{{item?.subHeading1?.description}}</div>
+                        <div class="realTimeWrapper" *ngIf ="item?.subHeading1?.dispalystatus">
+                            <div class="commonStyle" *ngFor="let realTimeProjectsDetails of item?.subHeading1?.innerArray">
+                                <figure>
+                                    <img [src]="" alt="" />
+                                </figure>
+                                <div class="heading5">{{realTimeProjectsDetails?.title}}</div>
+                                <p>{{realTimeProjectsDetails?.description}}</p>
+                            </div>
                         </div>
-                    </section>
-
+                    </div>
+                </section>
+                <!-- Request Broucher -->
+                <section class="reqBroucher">
+                    <div class="container">
+                        <span class="heading">Learn the right trending skills with us and Land your Dream Job</span>
+                        <div class="heading6">{{courseData?.name}}</div>
+                        <button><img src="/assets/images/reqBroucher.png" alt="" /> Request Brochure</button>
+                    </div>
+                </section>
             </ng-container>
 
             <!-- Carrer Path -->
@@ -583,6 +711,7 @@
                                     <img [src]="prgmLangNdToolsCoveredDetails" alt="" />
                                 </figure>
                             </div>
+                            <p>L&T EduTech focuses on helping student understand the application of the programming languages and tool and use them in the right context. Intense practice of the languages and tools will make you fluent and comfortable using the tools.</p>
                         </div>
                     </div>
                 </section>
