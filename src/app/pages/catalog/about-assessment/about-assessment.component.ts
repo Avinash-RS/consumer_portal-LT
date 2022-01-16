@@ -41,6 +41,28 @@ export class AboutAssessmentComponent implements OnInit {
       }
     }
   }
+  expertOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    dots: true,
+    margin: 30,
+    navSpeed: 700,
+    navText: ["<i class='icon-LeftArrow'></i>", "<i class='icon-RightArrow'></i>"],
+    nav: false,
+    responsive: {
+      0: {
+        items: 1
+      },
+      600: {
+        items: 2
+      },
+      992: {
+        items: 3
+      }
+    }
+  }
   howItWorks:any
   isReadMore = true
   areaId;

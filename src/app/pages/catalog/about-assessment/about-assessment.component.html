@@ -401,7 +401,7 @@
                     <div class="left">
                         <div class="heading1">{{courseData?.name}}</div>
                         <p>{{courseData?.shortDescription}}</p>
-                        <span>for Beginners and Intermediate Learners</span>
+                        <span>{{courseData?.skillLevel}}</span>
                         <div class="courseContent">
                             <span class="ratingStar">
                                 <em class="icon-Star"></em>
@@ -432,8 +432,8 @@
                                 <img [src]="item.image" alt="" />
                             </figure>
                             <div>
-                                <p>{{item.title}}</p>
-                                <span class="content">{{item.content}}</span>
+                                <p>{{item?.title}}</p>
+                                <span class="content">{{item?.description}}</span>
                             </div>
                         </div>
                     </div>
@@ -534,86 +534,24 @@
             <ng-container *ngIf="item.sectionId == 3 && item.dispalystatus">
                 <section class="curriculam">
                     <div class="container">
-                        <div class="commonHeadingStyle">Curriculam</div>
+                        <div class="commonHeadingStyle">{{item?.title}}</div>
                         <div class="curriculamWrapper">
                             <div class="left">
-                                <p>Curated by Industry Experts and leading Academicians, the syllabus comprises of Videos, Practice Labs, Projects, Assignments and Live Training Sessions.</p>
-                                <div class="accordionPanel">
-                                    <mat-accordion>
-                                        <mat-expansion-panel [expanded]="true">
-                                            <mat-expansion-panel-header>
-                                                <mat-panel-title>
-                                                    <div class="heading5">Core Java</div>
-                                                </mat-panel-title>
-                                                <mat-panel-description>
-                                                    <div class="hours"><em class="icon-Time"></em> <span>28 hrs</span></div>
-                                                </mat-panel-description>
-                                            </mat-expansion-panel-header>
-                                            <div class="expansionContent">
-                                                <ul>
-                                                    <li><em></em>Basic Concepts</li>
-                                                    <li><em></em>OOPS with Java</li>
-                                                    <li><em></em>Inheritance & Abstraction</li>
-                                                    <li><em></em>Arrays, List</li>
-                                                    <li><em></em>Regex</li>
-                                                    <li><em></em>Exception Handling</li>
-                                                    <li><em></em>Exception Handling</li>
-                                                </ul>
-                                                <figure>
-                                                    <img src="/assets/images/curriculum_accor_bg.svg" alt="" />
-                                                </figure>
-                                            </div>
-                                        </mat-expansion-panel>
-                                    </mat-accordion>
-                                </div>
-                                <div class="accordionPanel">
+                                <p>{{item?.description}}</p>
+                                <div class="accordionPanel" *ngFor="let curriculamTopics of item?.innerArray">
                                     <mat-accordion>
                                         <mat-expansion-panel [expanded]="false">
                                             <mat-expansion-panel-header>
                                                 <mat-panel-title>
-                                                    <div class="heading5">Core Java</div>
+                                                    <div class="heading5">{{curriculamTopics?.title}}</div>
                                                 </mat-panel-title>
                                                 <mat-panel-description>
-                                                    <div class="hours"><em class="icon-Time"></em> <span>28 hrs</span></div>
+                                                    <div class="hours"><em class="icon-Time"></em> <span>{{curriculamTopics?.hours}}</span></div>
                                                 </mat-panel-description>
                                             </mat-expansion-panel-header>
                                             <div class="expansionContent">
                                                 <ul>
-                                                    <li><em></em>Basic Concepts</li>
-                                                    <li><em></em>OOPS with Java</li>
-                                                    <li><em></em>Inheritance & Abstraction</li>
-                                                    <li><em></em>Arrays, List</li>
-                                                    <li><em></em>Regex</li>
-                                                    <li><em></em>Exception Handling</li>
-                                                    <li><em></em>Exception Handling</li>
-                                                </ul>
-                                                <figure>
-                                                    <img src="/assets/images/curriculum_accor_bg.svg" alt="" />
-                                                </figure>
-                                            </div>
-                                        </mat-expansion-panel>
-                                    </mat-accordion>
-                                </div>
-                                <div class="accordionPanel">
-                                    <mat-accordion>
-                                        <mat-expansion-panel [expanded]="false">
-                                            <mat-expansion-panel-header>
-                                                <mat-panel-title>
-                                                    <div class="heading5">Core Java</div>
-                                                </mat-panel-title>
-                                                <mat-panel-description>
-                                                    <div class="hours"><em class="icon-Time"></em> <span>28 hrs</span></div>
-                                                </mat-panel-description>
-                                            </mat-expansion-panel-header>
-                                            <div class="expansionContent">
-                                                <ul>
-                                                    <li><em></em>Basic Concepts</li>
-                                                    <li><em></em>OOPS with Java</li>
-                                                    <li><em></em>Inheritance & Abstraction</li>
-                                                    <li><em></em>Arrays, List</li>
-                                                    <li><em></em>Regex</li>
-                                                    <li><em></em>Exception Handling</li>
-                                                    <li><em></em>Exception Handling</li>
+                                                    <li *ngFor="let curriculamTopicsInner of curriculamTopics?.innersubArray"><em></em>{{curriculamTopicsInner}}</li>
                                                 </ul>
                                                 <figure>
                                                     <img src="/assets/images/curriculum_accor_bg.svg" alt="" />
@@ -711,7 +649,7 @@
                                     <img [src]="prgmLangNdToolsCoveredDetails" alt="" />
                                 </figure>
                             </div>
-                            <p>L&T EduTech focuses on helping student understand the application of the programming languages and tool and use them in the right context. Intense practice of the languages and tools will make you fluent and comfortable using the tools.</p>
+                            <p>{{item?.description}}</p>
                         </div>
                     </div>
                 </section>
@@ -719,13 +657,152 @@
             
             <!-- Expert Support System -->
             <ng-container *ngIf="item.sectionId == 4 && item.dispalystatus">
-                Expert
+                <section class="expertSupport">
+                    <div class="container">
+                        <div class="commonHeadingStyle">{{item?.title}}</div>
+                    </div>
+                </section>
+                <section class="expertSupportTab">
+                    <div class="container">
+                        <mat-tab-group class="expertSupportSystem">
+                            <mat-tab> 
+                                <ng-template mat-tab-label>
+                                    Instructors
+                                </ng-template>
+                                <div class="instructorsTab content">
+                                    <owl-carousel-o [options]="TopicsOptions">
+                                        <ng-container *ngFor="let instructorsArray of item?.innerArray[0]?.innersubArray">
+                                            <ng-template carouselSlide>
+                                                <div class="profile">
+                                                    <figure>
+                                                        <img [src]="instructorsArray.imageurl" alt="" />
+                                                    </figure>
+                                                    <div>
+                                                        <span class="heading5">{{instructorsArray?.name}}</span>
+                                                        <span class="desc">{{instructorsArray?.designation}}</span>
+                                                        <p>{{instructorsArray?.description}}</p>
+                                                    </div>
+                                                </div>
+                                            </ng-template>
+                                        </ng-container>
+                                    </owl-carousel-o>
+                                </div>
+                            </mat-tab>
+                            <mat-tab> 
+                                <ng-template mat-tab-label>
+                                    Expert
+                                </ng-template>
+                                <div class="expertTab content">
+                                    <owl-carousel-o [options]="expertOptions">
+                                        <ng-container *ngFor="let expertTab of item?.innerArray[1]?.innersubArray">
+                                            <ng-template carouselSlide>
+                                                <div class="expert">
+                                                    <figure>
+                                                        <img src="/assets/images/jessica.png" alt="" />
+                                                    </figure>
+                                                    <div>
+                                                        <span class="heading5">{{expertTab?.name}}</span>
+                                                        <span class="designation">{{expertTab?.designation}}</span>
+                                                        <p>{{expertTab?.description}}</p>
+                                                    </div>
+                                                </div>
+                                            </ng-template>
+                                        </ng-container>
+                                    </owl-carousel-o>
+                                </div>
+                            </mat-tab>
+                            <mat-tab> 
+                                <ng-template mat-tab-label>
+                                    Career Support
+                                </ng-template>
+                                <div class="careerSupport content">
+                                    <div class="left">
+                                        <div class="heading6">
+                                            {{item?.innerArray[2].description}}
+                                        </div>
+                                        <ul>
+                                            <li *ngFor="let careerSupport of item?.innerArray[2]?.innersubArray"><em class="icon-CheckMark"></em> {{careerSupport}}</li>
+                                        </ul>
+                                    </div>
+                                    <div class="right">
+                                        <figure>
+                                            <img src="/assets/images/careerSupport.jpg" alt="" />
+                                        </figure>
+                                    </div>
+                                </div>
+                            </mat-tab>
+                            <mat-tab> 
+                                <ng-template mat-tab-label>
+                                    Student Success Manager
+                                </ng-template>
+                                <div class="studentSuccess content">
+                                    <div class="left">
+                                        <figure>
+                                            <img src="/assets/images/careerSupport.jpg" alt="" />
+                                        </figure>
+                                    </div>
+                                    <div class="right">
+                                        <div class="heading6">
+                                            {{item?.innerArray[3].description}}
+                                        </div>
+                                        <ul>
+                                            <li *ngFor="let studentSuccess of item?.innerArray[3]?.innersubArray"><em class="icon-CheckMark"></em> {{studentSuccess}}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </mat-tab>
+                        </mat-tab-group>
+                    </div>
+                </section>
+            </ng-container>
+
+            <!-- Expert Support System -->
+            <ng-container *ngIf="item.sectionId == 7 && item.dispalystatus">
+                <section class="testimonials">
+                    <div class="container">
+                        <div class="commonHeadingStyle">{{item?.title}}</div>
+                        <div class="testimonialContent" *ngFor="let testimonial of item?.innerArray">
+                            <div class="left">
+                                <figure>
+                                    <img src="/assets/images/jessica.png" alt="" />
+                                </figure>
+                                <div>
+                                    <div class="heading5">
+                                        {{testimonial?.name}}
+                                    </div>
+                                    <span class="postedDate">2 days ago</span>
+                                </div>
+                            </div>
+                            <div class="right">
+                                <div class="ratingStar">
+                                    <em class="icon-Star"></em>
+                                    <em class="icon-Star"></em>
+                                    <em class="icon-Star"></em>
+                                    <em class="icon-Star"></em>
+                                    <em class="icon-Star"></em>
+                                </div>
+                                <div class="heading6">
+                                    {{testimonial?.description}}
+                                </div>
+                                <div class="review">
+                                    <span class="helpful">Was this review helpful?</span>
+                                    <span class="yes">Yes</span>
+                                    <span class="no">No</span>
+                                    <span class="report">Report</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="moreReviews">
+                            <button>See more reviews</button>
+                        </div>
+                    </div>
+                </section>
             </ng-container>
 
         </ng-container>
 
         <!-- Instructors -->
-        <section class="instructors">
+        <!-- <section class="instructors">
             <div class="container">
                 <div class="heading2">Instructors</div>
                 <div class="heading6">{{courseData?.courseContents?.instructors?.label}}</div>
@@ -748,10 +825,10 @@
                     </owl-carousel-o>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- Key Concepts -->
-        <section class="keyConcepts">
+        <!-- <section class="keyConcepts">
             <div class="container">
                 <div class="heading2">Key Concepts</div>
                 <div class="heading6">{{courseData?.courseContents?.keyConcepts?.label}}</div>
@@ -777,10 +854,10 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- Career Impact -->
-        <section class="careerImpact">
+        <!-- <section class="careerImpact">
             <div class="left">
                 <div class="heading2">Career Impact</div>
                 <ul>
@@ -794,17 +871,17 @@
                     <img [src]="courseData?.courseContents?.careerImpact?.image" alt="" />
                 </figure>
             </div>
-        </section>
+        </section> -->
         
         <!-- Benefits -->
-        <section class="benefits">
+        <!-- <section class="benefits">
             <div class="container">
                 <div class="heading2">Benefits of L&T Edutech</div>
                 <figure>
                     <img [src]="courseData?.courseContents?.benefitsOfLntEdutech?.image" alt="" />
                 </figure>
             </div>
-        </section>
+        </section> -->
     </div>
 
     <div *ngIf="nocard && !defaultDiv" class="noDataFound">
