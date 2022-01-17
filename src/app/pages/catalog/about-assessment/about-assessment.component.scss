@@ -767,7 +767,7 @@
       .right {
         width: 42%;
         figure {
-          width: 70%;
+          width: 80%;
           margin: 0 auto;
         }
       }
@@ -925,6 +925,30 @@
   }
 }
 
+//Overall tabs
+.topTab {
+  background-color: #f8fbff;
+  padding: 5em 0 0 0;
+}
+.tabssection {
+  background-color: #ffffff;
+  padding: 1em 0;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  position: relative;
+  ul {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+    li {
+      margin-right: 20px;
+      a:hover {
+        color: #27bbee;
+        border-bottom: 2px solid #1b4e9b;
+      }
+    }
+  }
+}
 // Why Full Stack
 .whyFullStack {
   background-color: #f8fbff;
@@ -937,27 +961,6 @@
   }
   @include xl {
     font-size: 16px;
-  }
-  //Overall tabs
-  .tabssection {
-    background-color: #ffffff;
-    padding: 1em 0;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-    margin: 1em 0 2em 0;
-    position: relative;
-    ul {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      flex-wrap: nowrap;
-      li {
-        margin-right: 20px;
-        a:hover {
-          color: #27bbee;
-          border-bottom: 2px solid #1b4e9b;
-        }
-      }
-    }
   }
   .fullStack {
     ul {
@@ -1537,9 +1540,10 @@
   // background-size: cover;
   width: 100%;
   text-align: center;
-  padding: 2.5em 0;
+  padding: 3em 0;
   font-size: 12px;
   position: relative;
+  z-index: 6;
   @include md {
   }
   @include lg {
@@ -1548,24 +1552,34 @@
   @include xl {
     font-size: 16px;
   }
-  &::before {
-    content: "";
+  &::before, &::after {
+    content: '';
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
+  }
+  &::before {
     background-color: $blackColor;
     opacity: 0.4;
+    z-index: 1;
+  }
+  &::after {
+    background-image: linear-gradient(to right, #00bcef, #00c0db, #00c1b6, #00be83, #4eb749);
+    opacity: 0.4;
+    z-index: 2;
   }
   .container {
     position: relative;
+    z-index: 9;
   }
   .heading {
     font-size: 1.875em;
     font-weight: 700;
     color: $whiteColor;
     display: block;
+    line-height: normal;
   }
   .heading6 {
     color: #f5f5f5;
