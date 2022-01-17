@@ -457,7 +457,7 @@
             <div class="tabssection">
                 <div class="container">
                     <ul>
-                        <li *ngFor="let item of this.courseData?.courseContents?.Headings"><a href="">{{item.title}}</a></li>
+                        <li *ngFor="let item of this.courseData?.courseContents?.Headings"><a (click)="scroll(item.sectionId)">{{item.title}}</a></li>
                     </ul>
                 </div>
             </div>
@@ -466,7 +466,7 @@
 
           <!-- Why Full Stack -->
            <ng-container *ngIf="item.sectionId == 1 && item.dispalystatus">
-            <section class="whyFullStack"><!-- Overall tabs -->
+            <section class="whyFullStack" [id]="item.sectionId"><!-- Overall tabs -->
                 
                 <div class="container fullStack">
                     <div class="commonHeadingStyle">{{item?.title}}</div>
@@ -485,7 +485,7 @@
 
              <!-- Program Overivew -->
             <ng-container *ngIf="item.sectionId == 2 && item.dispalystatus">
-                <section class="programOverview">
+                <section class="programOverview" [id]="item.sectionId">
                     <div class="container">
                         <div class="commonHeadingStyle">{{item?.title}}</div>
                         <div class="programming">
@@ -535,7 +535,7 @@
 
             <!-- Curriculam -->
             <ng-container *ngIf="item.sectionId == 3 && item.dispalystatus">
-                <section class="curriculam">
+                <section class="curriculam" [id]="item.sectionId">
                     <div class="container">
                         <div class="commonHeadingStyle">{{item?.title}}</div>
                         <div class="curriculamWrapper">
@@ -610,7 +610,7 @@
 
             <!-- Carrer Path -->
             <ng-container *ngIf="item.sectionId == 5 && item.dispalystatus">
-            <section class="careerPath">
+            <section class="careerPath" [id]="item.sectionId">
                 <div class="container">
                     <div class="commonHeadingStyle">{{item?.title}}</div>
                     <div class="careerPathWrapper">
@@ -630,7 +630,7 @@
 
             <!-- Programming Language -->
             <ng-container *ngIf="item.sectionId == 6 && item.dispalystatus">
-                <section class="programmingLanguages">
+                <section class="programmingLanguages" [id]="item.sectionId">
                     <div class="container">
                         <div class="commonHeadingStyle">{{item?.title}}</div>
                         <!-- <div class="subjectsOpportunities">
@@ -660,7 +660,7 @@
             
             <!-- Expert Support System -->
             <ng-container *ngIf="item.sectionId == 4 && item.dispalystatus">
-                <section class="expertSupport">
+                <section class="expertSupport" [id]="item.sectionId">
                     <div class="container">
                         <div class="commonHeadingStyle">{{item?.title}}</div>
                     </div>
@@ -759,7 +759,7 @@
 
             <!-- Expert Support System -->
             <ng-container *ngIf="item.sectionId == 7 && item.dispalystatus">
-                <section class="testimonials">
+                <section class="testimonials" [id]="item.sectionId">
                     <div class="container">
                         <div class="commonHeadingStyle">{{item?.title}}</div>
                         <div class="testimonialContent" *ngFor="let testimonial of item?.innerArray">
