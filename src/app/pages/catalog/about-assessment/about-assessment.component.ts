@@ -340,4 +340,12 @@ freeOrderPlace(cartid){
     this.showAssesment = true;
     this.competencyData = competency
   }
+  scroll(ID) {
+    // document.getElementById(ID).scrollIntoView({behavior: "smooth"});
+    const yOffset = -30; 
+    const element = document.getElementById(ID);
+    const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    window.scrollTo({top: y, behavior: 'smooth'});
+
+}
 }
