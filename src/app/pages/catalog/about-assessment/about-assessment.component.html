@@ -441,18 +441,6 @@
             </div>
         </div>
 
-        <!-- Programming Highlights -->
-        <!-- <section class="programHighlights">
-            <div class="container">
-                <div class="heading2">Programme Highlights</div>
-                <ul>
-                    <li *ngFor="let highlight of courseData?.courseContents?.programmeHighlights">
-                        <img src="https://assets.lntedutech.com/portalicons/highlight-tick.png" alt="" />
-                        <span class="text">{{highlight.title}}</span>
-                    </li>
-                </ul>
-            </div>
-        </section> -->
         <section class="topTab">
             <div class="tabssection" #stickyMenu [class.sticky] = "sticky">
                 <div class="container">
@@ -514,7 +502,10 @@
                                 </li>
                             </ul>
                         </div>
-        
+                    </div>
+                </section>
+                <section class="progHighlightsBg">
+                    <div class="container">
                         <div class="programmeHighlights" *ngIf="item?.subHeading2?.dispalystatus">
                             <div class="heading4">{{item?.subHeading2?.title}}</div>
                             <p>{{item?.subHeading2?.description}}</p>
@@ -576,7 +567,43 @@
                                     </div>
                                 </div>
                                 <div class="form">
-
+                                    <form [formGroup]="contactForm" class="contactContent">
+                                        <div class="inputContainer">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Your Name</mat-label>
+                                                <input type="text" required autocomplete="false" id="contact_name" autocomplete="off" name="name" formControlName="name" matInput placeholder="Your Name">
+                                            </mat-form-field>
+                                            <ng-container *ngIf="name.invalid && name.touched">
+                                            <mat-error *ngIf="name.errors?.required" class="error">{{'Name is required'}}</mat-error>
+                                        </ng-container>
+                                        </div>
+                                        <div class="inputContainer">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Email Address</mat-label>
+                                                <input type="text" required autocomplete="false" id="contact_email" autocomplete="off" name="email" formControlName="email" matInput placeholder="Email Address">
+                                            </mat-form-field>
+                                            <ng-container *ngIf="email.invalid && email.touched">
+                                            <mat-error class="error" *ngIf="email.errors?.email">{{'Please enter a valid email address'}}</mat-error>
+                                            <mat-error *ngIf="email.errors?.required" class="error">{{'Email is required'}}</mat-error>
+                                        </ng-container>
+                                        </div>
+                                        <div class="inputContainer">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Phone</mat-label>
+                                                <input type="text" required autocomplete="false" id="contact_phone" autocomplete="off" name="phone" formControlName="phone" matInput placeholder="Phone">
+                                            </mat-form-field>
+                                            <ng-container *ngIf="phone.invalid && phone.touched">
+                                            <mat-error *ngIf="phone.errors?.required" class="error">{{'Phone numer is required'}}</mat-error>
+                                        </ng-container>
+                                        </div>
+                                        <div class="inputContainer">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Comment</mat-label>
+                                                <textarea type="text" autocomplete="false" id="contact_phone" autocomplete="off" name="comment" formControlName="comment" matInput matInput ></textarea>
+                                            </mat-form-field>
+                                        </div>
+                                        <button  id="contact_btn" class="requestBtn" mat-stroked-button>Request Callback</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -624,6 +651,10 @@
                             <p>{{carerChild?.description}}</p>
                         </div>
                     </div>
+                </div>
+                <div class="ocean">
+                    <div class="wave"></div>
+                    <div class="wave"></div>
                 </div>
             </section>
             </ng-container>
@@ -699,10 +730,10 @@
                                     <owl-carousel-o [options]="expertOptions" class="expertList">
                                         <ng-container *ngFor="let expertTab of item?.innerArray[1]?.innersubArray">
                                             <ng-template carouselSlide>
+                                                <figure>
+                                                    <img [src]="expertTab?.imageurl" alt="" />
+                                                </figure>
                                                 <div class="expert">
-                                                    <figure>
-                                                        <img [src]="expertTab?.imageurl" alt="" />
-                                                    </figure>
                                                     <div>
                                                         <span class="heading5">{{expertTab?.name}}</span>
                                                         <span class="designation">{{expertTab?.designation}}</span>
