@@ -363,7 +363,7 @@ freeOrderPlace(cartid){
     // document.getElementById(ID).scrollIntoView({behavior: "smooth"});
     var yOffset;
     if(this.sticky){
-      yOffset = -78;
+      yOffset = -74;
     }
     else{
       yOffset = -120;
