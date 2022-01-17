@@ -690,10 +690,10 @@
                                     <owl-carousel-o [options]="expertOptions" class="expertList">
                                         <ng-container *ngFor="let expertTab of item?.innerArray[1]?.innersubArray">
                                             <ng-template carouselSlide>
+                                                <figure>
+                                                    <img src="/assets/images/jessica.png" alt="" />
+                                                </figure>
                                                 <div class="expert">
-                                                    <figure>
-                                                        <img src="/assets/images/jessica.png" alt="" />
-                                                    </figure>
                                                     <div>
                                                         <span class="heading5">{{expertTab?.name}}</span>
                                                         <span class="designation">{{expertTab?.designation}}</span>
