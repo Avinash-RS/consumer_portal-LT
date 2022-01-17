@@ -12,7 +12,8 @@ import { ToastrService } from 'ngx-toastr';
 import { UtilityService } from 'src/app/services/utility.service';
 import { MatDialog } from '@angular/material/dialog';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { GlobalValidatorsService } from 'src/app/validators/global-validators.service';
 @Component({
   selector: 'app-about-assessment',
   templateUrl: './about-assessment.component.html',
@@ -86,13 +87,16 @@ export class AboutAssessmentComponent implements OnInit {
   defaultDiv:boolean = true;
   @ViewChild('kycmandate', { static: false }) matDialogRef: TemplateRef<any>;
   backgroundImageUrl: any;
-  constructor(private router: Router, private catalogService : CatalogService,private route:ActivatedRoute,private appconfig: AppConfigService,private commonService : CommonService,public toast: ToastrService ,private util: UtilityService,private dialog: MatDialog) {
+  constructor(private router: Router, private catalogService : CatalogService,private route:ActivatedRoute,private appconfig: AppConfigService,
+    private commonService : CommonService,public toast: ToastrService ,private util: UtilityService,private dialog: MatDialog,private fb: FormBuilder,
+    private gv: GlobalValidatorsService
+    ) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => {
       return false;
     };
    }
   public destroyed = new Subject<any>();
-  
+  contactForm: FormGroup;
   @ViewChild('stickyMenu') menuElement: ElementRef;
   sticky: boolean = false;
   menuPosition: any = 470;
@@ -148,7 +152,25 @@ export class AboutAssessmentComponent implements OnInit {
     //   this.checkScroll();
     //   this.showAssesment = false;
     // });
+    this.contactFormInitilize();
   }
+  contactFormInitilize(){
+    this.contactForm = this.fb.group({
+      name: ['', [Validators.required]],
+      email: ['', [Validators.required, this.gv.email()]],
+      phone: ['', [Validators.required]],
+      comment:['']
+    });
+  }
+  get name() {
+    return this.contactForm.get('name');
+  }
+  get email() {
+    return this.contactForm.get('email');
+  }
+  get phone() {
+    return this.contactForm.get('phone');
+  }  
   scrollTop(){
     let top = document.getElementById('top');
     if (top !== null) {
