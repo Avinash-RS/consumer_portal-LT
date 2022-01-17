@@ -1642,14 +1642,15 @@
     font-size: 16px;
   }
   .content {
-    padding: 3em 1em 2em 1em;
+    padding: 3em 0.25em 2em 0.25em;
   }
   .instructorsTab {
     .profile {
       display: flex;
       align-items: flex-start;
-      width: 100%;
+      width: 99%;
       background-color: $whiteColor;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
       padding: 1.5em 1em;
       margin-top: 1em;
       position: relative;
@@ -1689,7 +1690,6 @@
             height 0.25s ease-out 0.75s;
         }
       }
-      // box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
       figure {
         display: flex;
         width: 24%;
@@ -1741,7 +1741,7 @@
     .expert {
       display: flex;
       flex-direction: column;
-      width: 100%;
+      width: 95%;
       background-color: $whiteColor;
       box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
       padding: 1em;
@@ -2466,5 +2466,8 @@
 }
 
 ::ng-deep .expertTab .owl-carousel .owl-stage-outer{
+  padding: 0.5em;
+}
+::ng-deep .instructorsTab .owl-carousel .owl-stage-outer{
   padding: 0.5em;
 }
