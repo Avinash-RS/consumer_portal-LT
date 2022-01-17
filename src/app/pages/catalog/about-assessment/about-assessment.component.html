@@ -441,18 +441,6 @@
             </div>
         </div>
 
-        <!-- Programming Highlights -->
-        <!-- <section class="programHighlights">
-            <div class="container">
-                <div class="heading2">Programme Highlights</div>
-                <ul>
-                    <li *ngFor="let highlight of courseData?.courseContents?.programmeHighlights">
-                        <img src="https://assets.lntedutech.com/portalicons/highlight-tick.png" alt="" />
-                        <span class="text">{{highlight.title}}</span>
-                    </li>
-                </ul>
-            </div>
-        </section> -->
         <section class="topTab">
             <div class="tabssection" #stickyMenu [class.sticky] = "sticky">
                 <div class="container">
@@ -514,7 +502,10 @@
                                 </li>
                             </ul>
                         </div>
-        
+                    </div>
+                </section>
+                <section class="progHighlightsBg">
+                    <div class="container">
                         <div class="programmeHighlights" *ngIf="item?.subHeading2?.dispalystatus">
                             <div class="heading4">{{item?.subHeading2?.title}}</div>
                             <p>{{item?.subHeading2?.description}}</p>
