@@ -454,7 +454,7 @@
             </div>
         </section> -->
         <section class="topTab">
-            <div class="tabssection">
+            <div class="tabssection" #stickyMenu [class.sticky] = "sticky">
                 <div class="container">
                     <ul>
                         <li *ngFor="let item of this.courseData?.courseContents?.Headings"><a (click)="scroll(item.sectionId)">{{item.title}}</a></li>
@@ -541,9 +541,9 @@
                         <div class="curriculamWrapper">
                             <div class="left">
                                 <p>{{item?.description}}</p>
-                                <div class="accordionPanel" *ngFor="let curriculamTopics of item?.innerArray">
+                                <div class="accordionPanel" *ngFor="let curriculamTopics of item?.innerArray;first as isFirst">
                                     <mat-accordion>
-                                        <mat-expansion-panel [expanded]="false">
+                                        <mat-expansion-panel [expanded]="isFirst">
                                             <mat-expansion-panel-header>
                                                 <mat-panel-title>
                                                     <div class="heading5">{{curriculamTopics?.title}}</div>
