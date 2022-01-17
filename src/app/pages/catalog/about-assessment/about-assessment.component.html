@@ -453,18 +453,21 @@
                 </ul>
             </div>
         </section> -->
+        <section class="topTab">
+            <div class="tabssection">
+                <div class="container">
+                    <ul>
+                        <li *ngFor="let item of this.courseData?.courseContents?.Headings"><a href="">{{item.title}}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
         <ng-container *ngFor="let item of this.courseData?.courseContents?.Headings">
 
           <!-- Why Full Stack -->
            <ng-container *ngIf="item.sectionId == 1 && item.dispalystatus">
             <section class="whyFullStack"><!-- Overall tabs -->
-                <div class="tabssection">
-                    <div class="container">
-                        <ul>
-                            <li *ngFor="let item of this.courseData?.courseContents?.Headings"><a href="">{{item.title}}</a></li>
-                        </ul>
-                    </div>
-                </div>
+                
                 <div class="container fullStack">
                     <div class="commonHeadingStyle">{{item?.title}}</div>
                     <ul>
@@ -724,7 +727,7 @@
                                     </div>
                                     <div class="right">
                                         <figure>
-                                            <img src="/assets/images/careerSupport.jpg" alt="" />
+                                            <img src="/assets/images/careerSupport.png" alt="" />
                                         </figure>
                                     </div>
                                 </div>
@@ -736,7 +739,7 @@
                                 <div class="studentSuccess content">
                                     <div class="left">
                                         <figure>
-                                            <img src="/assets/images/careerSupport.jpg" alt="" />
+                                            <img src="/assets/images/studentSuccess.png" alt="" />
                                         </figure>
                                     </div>
                                     <div class="right">
