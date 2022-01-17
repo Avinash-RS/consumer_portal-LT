@@ -676,10 +676,12 @@
                                     <owl-carousel-o [options]="TopicsOptions">
                                         <ng-template *ngFor="let instructorsArray of item?.innerArray[0]?.innersubArray" carouselSlide>
                                                 <div class="profile">
-                                                    <figure>
-                                                        <img [src]="instructorsArray.imageurl" alt="" />
-                                                    </figure>
-                                                    <div>
+                                                    <div class="image">
+                                                        <figure>
+                                                            <img [src]="instructorsArray.imageurl" alt="" />
+                                                        </figure>
+                                                    </div>
+                                                    <div class="imageContent">
                                                         <span class="heading5">{{instructorsArray?.name}}</span>
                                                         <span class="desc">{{instructorsArray?.designation}}</span>
                                                         <p>{{instructorsArray?.description}}</p>
