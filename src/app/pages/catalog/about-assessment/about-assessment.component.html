@@ -667,15 +667,14 @@
                 </section>
                 <section class="expertSupportTab">
                     <div class="container">
-                        <mat-tab-group class="expertSupportSystem">
+                        <mat-tab-group class="expertSupportSystem" (selectedTabChange)="tabChange($event)">
                             <mat-tab> 
                                 <ng-template mat-tab-label>
                                     Instructors
                                 </ng-template>
-                                <div class="instructorsTab content">
+                                <div class="instructorsTab content" *ngIf="showExpert">
                                     <owl-carousel-o [options]="TopicsOptions">
-                                        <ng-container *ngFor="let instructorsArray of item?.innerArray[0]?.innersubArray">
-                                            <ng-template carouselSlide>
+                                        <ng-template *ngFor="let instructorsArray of item?.innerArray[0]?.innersubArray" carouselSlide>
                                                 <div class="profile">
                                                     <figure>
                                                         <img [src]="instructorsArray.imageurl" alt="" />
@@ -686,8 +685,7 @@
                                                         <p>{{instructorsArray?.description}}</p>
                                                     </div>
                                                 </div>
-                                            </ng-template>
-                                        </ng-container>
+                                        </ng-template>
                                     </owl-carousel-o>
                                 </div>
                             </mat-tab>
@@ -695,8 +693,8 @@
                                 <ng-template mat-tab-label>
                                     Expert
                                 </ng-template>
-                                <div class="expertTab content">
-                                    <owl-carousel-o [options]="expertOptions">
+                                <div class="expertTab content" *ngIf="showExpert">
+                                    <owl-carousel-o [options]="expertOptions" class="expertList">
                                         <ng-container *ngFor="let expertTab of item?.innerArray[1]?.innersubArray">
                                             <ng-template carouselSlide>
                                                 <div class="expert">
