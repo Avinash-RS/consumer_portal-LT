@@ -576,7 +576,43 @@
                                     </div>
                                 </div>
                                 <div class="form">
-
+                                    <form [formGroup]="contactForm" class="contactContent">
+                                        <div class="inputContainer">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Your Name</mat-label>
+                                                <input type="text" required autocomplete="false" id="contact_name" autocomplete="off" name="name" formControlName="name" matInput placeholder="Your Name">
+                                            </mat-form-field>
+                                            <ng-container *ngIf="name.invalid && name.touched">
+                                            <mat-error *ngIf="name.errors?.required" class="error">{{'Name is required'}}</mat-error>
+                                        </ng-container>
+                                        </div>
+                                        <div class="inputContainer">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Email Address</mat-label>
+                                                <input type="text" required autocomplete="false" id="contact_email" autocomplete="off" name="email" formControlName="email" matInput placeholder="Email Address">
+                                            </mat-form-field>
+                                            <ng-container *ngIf="email.invalid && email.touched">
+                                            <mat-error class="error" *ngIf="email.errors?.email">{{'Please enter a valid email address'}}</mat-error>
+                                            <mat-error *ngIf="email.errors?.required" class="error">{{'Email is required'}}</mat-error>
+                                        </ng-container>
+                                        </div>
+                                        <div class="inputContainer">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Phone</mat-label>
+                                                <input type="text" required autocomplete="false" id="contact_phone" autocomplete="off" name="phone" formControlName="phone" matInput placeholder="Phone">
+                                            </mat-form-field>
+                                            <ng-container *ngIf="phone.invalid && phone.touched">
+                                            <mat-error *ngIf="phone.errors?.required" class="error">{{'Phone numer is required'}}</mat-error>
+                                        </ng-container>
+                                        </div>
+                                        <div class="inputContainer">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Comment</mat-label>
+                                                <textarea type="text" autocomplete="false" id="contact_phone" autocomplete="off" name="comment" formControlName="comment" matInput matInput ></textarea>
+                                            </mat-form-field>
+                                        </div>
+                                        <button  id="contact_btn" class="requestBtn" mat-stroked-button>Request Callback</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
