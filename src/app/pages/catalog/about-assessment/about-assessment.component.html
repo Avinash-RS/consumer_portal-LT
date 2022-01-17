@@ -394,7 +394,7 @@
         <div class="courseProduct">
             <figure class="bannerBgImage" id="banner">
                 <!-- <img [src]="courseData?.image?.url" alt="" /> -->
-                <img src="/assets/images/bg.png" alt="" />
+                <img [src]="courseData?.image?.bgurl" alt="" />
             </figure>
             <div class="bannerContent">
                 <div class="container">
@@ -419,7 +419,7 @@
                     </div>
                     <div class="right">
                         <figure>
-                            <img src="/assets/images/bannerImg.png" alt="" />
+                            <img [src]="courseData?.image?.url" alt="" />
                         </figure>
                     </div>
                 </div>
@@ -473,7 +473,7 @@
                     <ul>
                         <li *ngFor="let child of item.innerArray">
                             <figure>
-                                <img src="/assets/images/demandDecades.svg" alt="" />
+                                <img [src]="child?.imageurl" alt="" />
                             </figure>
                             <div class="heading5">{{child?.title}}</div>
                             <p>{{child?.description}}</p>
@@ -493,7 +493,7 @@
                                 <p>{{item?.description}}</p>
                             </div>
                             <figure>
-                                <img src="/assets/images/programOverview.png" alt="" />
+                                <img [src]="item?.imageurl" alt="" />
                             </figure>
                         </div>
         
@@ -504,7 +504,7 @@
                                 <li *ngFor="let projectChild of item?.subHeading1?.innerArray">
                                     <div class="left">
                                         <figure>
-                                            <img src="/assets/images/chatApplication.png" alt="" />
+                                            <img [src]="projectChild?.imageurl" alt="" />
                                         </figure>
                                     </div>
                                     <div class="right">
@@ -523,7 +523,7 @@
                                     <div class="heading4">{{highlightChild?.title}}</div>
                                     <ul>
                                         <li *ngFor="let subChild of highlightChild?.innersubArray">
-                                            <img src="/assets/images/keyFeatures.png" alt="" />{{subChild}}
+                                            <img [src]="highlightChild?.imageurl" alt="" />{{subChild}}
                                         </li>
                                     </ul>
                                 </div>
@@ -557,7 +557,7 @@
                                                     <li *ngFor="let curriculamTopicsInner of curriculamTopics?.innersubArray"><em></em>{{curriculamTopicsInner}}</li>
                                                 </ul>
                                                 <figure>
-                                                    <img src="/assets/images/curriculum_accor_bg.svg" alt="" />
+                                                    <img [src]="item.imageurl" alt="" />
                                                 </figure>
                                             </div>
                                         </mat-expansion-panel>
@@ -590,7 +590,7 @@
                         <div class="realTimeWrapper" *ngIf ="item?.subHeading1?.dispalystatus">
                             <div class="commonStyle" *ngFor="let realTimeProjectsDetails of item?.subHeading1?.innerArray">
                                 <figure>
-                                    <img [src]="" alt="" />
+                                    <img [src]="realTimeProjectsDetails.imageurl" alt="" />
                                 </figure>
                                 <div class="heading5">{{realTimeProjectsDetails?.title}}</div>
                                 <p>{{realTimeProjectsDetails?.description}}</p>
@@ -599,11 +599,11 @@
                     </div>
                 </section>
                 <!-- Request Broucher -->
-                <section class="reqBroucher">
+                <section class="reqBroucher" [ngStyle]="{'background-image': 'url(' + courseData?.image?.broucherimgurl + ')'}">
                     <div class="container">
                         <span class="heading">Learn the right trending skills with us and Land your Dream Job</span>
                         <div class="heading6">{{courseData?.name}}</div>
-                        <button><img src="/assets/images/reqBroucher.png" alt="" /> Request Brochure</button>
+                        <button><img [src]="courseData?.image?.broucherurl" alt="" /> Request Brochure</button>
                     </div>
                 </section>
             </ng-container>
@@ -616,7 +616,7 @@
                     <div class="careerPathWrapper">
                         <div class="path" *ngFor="let carerChild of item?.innerArray">
                             <figure>
-                                <img src="/assets/images/enrollCourse.svg" alt="" />
+                                <img [src]="carerChild?.imageurl" alt="" />
                             </figure>
                             <span class="heading">{{carerChild?.title}}
                                 <em class="icon-RightArrow"></em>
@@ -701,7 +701,7 @@
                                             <ng-template carouselSlide>
                                                 <div class="expert">
                                                     <figure>
-                                                        <img src="/assets/images/jessica.png" alt="" />
+                                                        <img [src]="expertTab?.imageurl" alt="" />
                                                     </figure>
                                                     <div>
                                                         <span class="heading5">{{expertTab?.name}}</span>
@@ -729,7 +729,7 @@
                                     </div>
                                     <div class="right">
                                         <figure>
-                                            <img src="/assets/images/careerSupport.png" alt="" />
+                                            <img [src]="item?.innerArray[2].imageurl" alt="" />
                                         </figure>
                                     </div>
                                 </div>
@@ -741,7 +741,7 @@
                                 <div class="studentSuccess content">
                                     <div class="left">
                                         <figure>
-                                            <img src="/assets/images/studentSuccess.png" alt="" />
+                                            <img [src]="item?.innerArray[3].imageurl" alt="" />
                                         </figure>
                                     </div>
                                     <div class="right">
@@ -767,7 +767,7 @@
                         <div class="testimonialContent" *ngFor="let testimonial of item?.innerArray">
                             <div class="left">
                                 <figure>
-                                    <img src="/assets/images/jessica.png" alt="" />
+                                    <img [src]="testimonial?.imageurl" alt="" />
                                 </figure>
                                 <div>
                                     <div class="heading5">
