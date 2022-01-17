@@ -19,14 +19,16 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   styleUrls: ['./about-assessment.component.scss']
 })
 export class AboutAssessmentComponent implements OnInit {
+  showExpert = false;
+  selectedIndex = 0;
   TopicsOptions: OwlOptions = {
     loop: true,
     mouseDrag: false,
     touchDrag: false,
     pullDrag: false,
     dots: true,
-    margin: 30,
     navSpeed: 700,
+    margin: 30,
     navText: ["<i class='icon-LeftArrow'></i>", "<i class='icon-RightArrow'></i>"],
     nav: false,
     responsive: {
@@ -47,8 +49,8 @@ export class AboutAssessmentComponent implements OnInit {
     touchDrag: false,
     pullDrag: false,
     dots: true,
-    margin: 30,
     navSpeed: 700,
+    margin: 30,
     navText: ["<i class='icon-LeftArrow'></i>", "<i class='icon-RightArrow'></i>"],
     nav: false,
     responsive: {
@@ -153,6 +155,9 @@ getAbouCourse(){
         this.defaultDiv = false;
         this.nocard = true;
       }
+      setTimeout(()=>{
+        this.showExpert = true;
+      },1000)
     }
     else{
       this.abouCourseData = [];
@@ -163,6 +168,13 @@ getAbouCourse(){
   this.backgroundImageUrl = this.courseData?.image?.url;
 }
 
+tabChange(e) {
+  this.showExpert = false;
+    this.selectedIndex = e.index
+    setTimeout(()=>{
+      this.showExpert = true;
+    },1000)
+  }
 dialogSetup(){
   const valdat = this.dialog.open(this.matDialogRef, {
     width: '400px',

@@ -2440,3 +2440,7 @@
     margin: 0.65em 0 0 0;
   }
 }
+
+::ng-deep .expertTab .owl-carousel .owl-stage-outer{
+  padding: 0.5em;
+}
