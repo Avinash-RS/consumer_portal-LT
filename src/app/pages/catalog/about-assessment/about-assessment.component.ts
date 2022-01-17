@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, ViewChild, TemplateRef } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild, TemplateRef, ElementRef } from '@angular/core';
 import { NavigationEnd, Router, RouterEvent } from "@angular/router"
 import {ActivatedRoute} from '@angular/router';
 import { AppConfigService } from 'src/app/utils/app-config.service';
@@ -92,6 +92,25 @@ export class AboutAssessmentComponent implements OnInit {
     };
    }
   public destroyed = new Subject<any>();
+  
+  @ViewChild('stickyMenu') menuElement: ElementRef;
+  sticky: boolean = false;
+  menuPosition: any = 470;
+  @HostListener('window:scroll', ['$event'])
+    handleScroll(){
+        const windowScroll = window.pageYOffset;
+        if(windowScroll >= this.menuPosition){
+            this.sticky = true;
+        } else {
+            this.sticky = false;
+        }
+    }
+    //   ngAfterViewInit(){
+    //     setTimeout(()=>{
+    //       debugger
+    //       this.menuPosition = this.menuElement.nativeElement.offsetTop;
+    //     },1000)
+    // }
   ngOnInit(): void {
     this.userDetails = JSON.parse(this.appconfig.getSessionStorage('userDetails'));
     this.route.queryParams
@@ -342,7 +361,13 @@ freeOrderPlace(cartid){
   }
   scroll(ID) {
     // document.getElementById(ID).scrollIntoView({behavior: "smooth"});
-    const yOffset = -30; 
+    var yOffset;
+    if(this.sticky){
+      yOffset = -78;
+    }
+    else{
+      yOffset = -120;
+    }
     const element = document.getElementById(ID);
     const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
     window.scrollTo({top: y, behavior: 'smooth'});
