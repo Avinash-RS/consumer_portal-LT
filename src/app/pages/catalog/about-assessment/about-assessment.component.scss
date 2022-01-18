@@ -729,7 +729,8 @@
   display: flex;
   width: 100%;
   position: relative;
-  font-size: 10px;
+  overflow: hidden;
+  font-size: 12px;
   @include md {
     font-size: 12px;
   }
@@ -762,14 +763,16 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-bottom: 1.5em;
       .left {
         width: 55%;
       }
       .right {
         width: 42%;
+        display: flex;
+        justify-content: flex-end;
         figure {
           width: 80%;
-          margin: 0 auto;
         }
       }
     }
@@ -804,7 +807,6 @@
       display: flex;
       justify-content: flex-start;
       align-items: center;
-      margin-bottom: 1.5em;
       span {
         margin: 0;
       }
@@ -922,9 +924,10 @@
     }
   }
 }
+
 .bannerFooter {
   position: absolute;
-  bottom: -45px;
+  top: -45px;
   left: 0;
   width: 100%;
   .container {
@@ -979,6 +982,7 @@
 .topTab {
   background-color: #f8fbff;
   padding: 5em 0 0 0;
+  position: relative;
 }
 .tabssection {
   background-color: #ffffff;
@@ -994,6 +998,9 @@
     background-color: #ffffff;
     padding: 1em 0;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    .buyNow {
+      opacity: 1;
+    }
   }
   ul {
     display: flex;
@@ -1012,6 +1019,28 @@
           border-bottom: 2px solid #1b4e9b;
         }
       }
+    }
+  }
+  .container {
+    position: relative;
+  }
+  .buyNow {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.062em;
+    font-weight: 400;
+    color: $whiteColor;
+    line-height: normal;
+    background: #2ea3f2;
+    border-radius: 5px;
+    padding: 0.5em 2em;
+    border: none;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      background: #08558c;
     }
   }
 }

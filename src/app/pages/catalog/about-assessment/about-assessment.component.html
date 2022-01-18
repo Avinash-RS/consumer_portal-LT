@@ -429,6 +429,9 @@
                 <div class='stars2'></div>
                 <div class='stars3'></div>
             </div>
+        </div>
+
+        <section class="topTab">
             <div class="bannerFooter">
                 <div class="container">
                     <div class="footerWrapper">
@@ -444,19 +447,17 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <section class="topTab">
             <div class="tabssection" #stickyMenu [class.sticky] = "sticky">
                 <div class="container">
                     <ul>
                         <li *ngFor="let item of this.courseData?.courseContents?.Headings"><a (click)="scroll(item.sectionId)" [ngClass]="item?.sectionId == activeSection ? 'active':''">{{item.title}}</a></li>
                     </ul>
+                    <button class="buyNow" (click)="courseBuy()">Enroll Now</button>
                 </div>
             </div>
         </section>
-        <ng-container *ngFor="let item of this.courseData?.courseContents?.Headings">
 
+        <ng-container *ngFor="let item of this.courseData?.courseContents?.Headings">
           <!-- Why Full Stack -->
            <ng-container *ngIf="item.sectionId == 1 && item.dispalystatus">
             <section class="whyFullStack" [id]="item.sectionId"><!-- Overall tabs -->
