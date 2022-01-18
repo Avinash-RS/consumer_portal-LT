@@ -20,7 +20,6 @@ import { GlobalValidatorsService } from 'src/app/validators/global-validators.se
   styleUrls: ['./about-assessment.component.scss']
 })
 export class AboutAssessmentComponent implements OnInit {
-  showExpert = false;
   selectedIndex = 0;
   TopicsOptions: OwlOptions = {
     loop: true,
@@ -203,9 +202,6 @@ getAbouCourse(){
         this.defaultDiv = false;
         this.nocard = true;
       }
-      setTimeout(()=>{
-        this.showExpert = true;
-      },1000)
     }
     else{
       this.abouCourseData = [];
@@ -216,13 +212,6 @@ getAbouCourse(){
   this.backgroundImageUrl = this.courseData?.image?.url;
 }
 
-tabChange(e) {
-  this.showExpert = false;
-    this.selectedIndex = e.index
-    setTimeout(()=>{
-      this.showExpert = true;
-    },500)
-  }
 dialogSetup(){
   const valdat = this.dialog.open(this.matDialogRef, {
     width: '400px',
