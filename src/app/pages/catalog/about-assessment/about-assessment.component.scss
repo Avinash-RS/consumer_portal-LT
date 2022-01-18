@@ -1002,9 +1002,15 @@
     flex-wrap: nowrap;
     li {
       margin-right: 20px;
-      a:hover {
-        color: #27bbee;
-        border-bottom: 2px solid #1b4e9b;
+      a {
+        &:hover {
+          color: #27bbee;
+          border-bottom: 2px solid #1b4e9b;
+        }
+        &.active {
+          color: #27bbee;
+          border-bottom: 2px solid #1b4e9b;
+        }
       }
     }
   }

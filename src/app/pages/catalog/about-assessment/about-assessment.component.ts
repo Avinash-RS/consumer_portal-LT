@@ -99,7 +99,8 @@ export class AboutAssessmentComponent implements OnInit {
   contactForm: FormGroup;
   @ViewChild('stickyMenu') menuElement: ElementRef;
   sticky: boolean = false;
-  menuPosition: any = 470;
+  menuPosition: any = 472;
+  activeSection:any;
   @HostListener('window:scroll', ['$event'])
     handleScroll(){
         const windowScroll = window.pageYOffset;
@@ -108,6 +109,12 @@ export class AboutAssessmentComponent implements OnInit {
         } else {
             this.sticky = false;
         }
+       
+        setTimeout(()=>{
+            if(window.pageYOffset < this.menuPosition){
+              this.activeSection = null;
+            }
+              },500);
     }
     //   ngAfterViewInit(){
     //     setTimeout(()=>{
@@ -214,7 +221,7 @@ tabChange(e) {
     this.selectedIndex = e.index
     setTimeout(()=>{
       this.showExpert = true;
-    },1000)
+    },500)
   }
 dialogSetup(){
   const valdat = this.dialog.open(this.matDialogRef, {
@@ -383,9 +390,10 @@ freeOrderPlace(cartid){
   }
   scroll(ID) {
     // document.getElementById(ID).scrollIntoView({behavior: "smooth"});
+    this.activeSection = ID;
     var yOffset;
     if(this.sticky){
-      yOffset = -74;
+      yOffset = -72;
     }
     else{
       yOffset = -120;
