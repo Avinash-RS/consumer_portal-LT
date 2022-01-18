@@ -452,6 +452,7 @@
                     <ul>
                         <li *ngFor="let item of this.courseData?.courseContents?.Headings"><a (click)="scroll(item.sectionId)">{{item.title}}</a></li>
                     </ul>
+                    <button class="buyNow" (click)="courseBuy()">Enroll Now</button>
                 </div>
             </div>
         </section>
