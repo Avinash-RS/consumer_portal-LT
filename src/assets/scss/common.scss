@@ -29,6 +29,26 @@ ul {
         }
     }
 }
+
+.commonHeadingStyle {
+    font-size: 1.875em;
+    font-weight: 400;
+    color: $darkGrey;
+    line-height: 1.1;
+    position: relative;
+    margin-bottom: 1.5em;
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -0.25em;
+        width: 2.5em;
+        height: 3px;
+        border-radius: 1.25em;
+        background-image: linear-gradient(to right, #00bcef, #00c0db, #00c1b6, #00be83, #4eb749);
+    }
+}
+
 .heading2 {
     font-size: 2em;
     font-weight: 700;

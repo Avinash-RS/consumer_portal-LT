@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, ViewChild, TemplateRef } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild, TemplateRef, ElementRef } from '@angular/core';
 import { NavigationEnd, Router, RouterEvent } from "@angular/router"
 import {ActivatedRoute} from '@angular/router';
 import { AppConfigService } from 'src/app/utils/app-config.service';
@@ -12,21 +12,24 @@ import { ToastrService } from 'ngx-toastr';
 import { UtilityService } from 'src/app/services/utility.service';
 import { MatDialog } from '@angular/material/dialog';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { GlobalValidatorsService } from 'src/app/validators/global-validators.service';
 @Component({
   selector: 'app-about-assessment',
   templateUrl: './about-assessment.component.html',
   styleUrls: ['./about-assessment.component.scss']
 })
 export class AboutAssessmentComponent implements OnInit {
+  showExpert = false;
+  selectedIndex = 0;
   TopicsOptions: OwlOptions = {
     loop: true,
     mouseDrag: false,
     touchDrag: false,
     pullDrag: false,
     dots: true,
-    margin: 30,
     navSpeed: 700,
+    margin: 30,
     navText: ["<i class='icon-LeftArrow'></i>", "<i class='icon-RightArrow'></i>"],
     nav: false,
     responsive: {
@@ -38,6 +41,28 @@ export class AboutAssessmentComponent implements OnInit {
       },
       992: {
         items: 2
+      }
+    }
+  }
+  expertOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    dots: true,
+    navSpeed: 700,
+    margin: 30,
+    navText: ["<i class='icon-LeftArrow'></i>", "<i class='icon-RightArrow'></i>"],
+    nav: false,
+    responsive: {
+      0: {
+        items: 1
+      },
+      600: {
+        items: 2
+      },
+      992: {
+        items: 3
       }
     }
   }
@@ -62,12 +87,34 @@ export class AboutAssessmentComponent implements OnInit {
   defaultDiv:boolean = true;
   @ViewChild('kycmandate', { static: false }) matDialogRef: TemplateRef<any>;
   backgroundImageUrl: any;
-  constructor(private router: Router, private catalogService : CatalogService,private route:ActivatedRoute,private appconfig: AppConfigService,private commonService : CommonService,public toast: ToastrService ,private util: UtilityService,private dialog: MatDialog) {
+  constructor(private router: Router, private catalogService : CatalogService,private route:ActivatedRoute,private appconfig: AppConfigService,
+    private commonService : CommonService,public toast: ToastrService ,private util: UtilityService,private dialog: MatDialog,private fb: FormBuilder,
+    private gv: GlobalValidatorsService
+    ) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => {
       return false;
     };
    }
   public destroyed = new Subject<any>();
+  contactForm: FormGroup;
+  @ViewChild('stickyMenu') menuElement: ElementRef;
+  sticky: boolean = false;
+  menuPosition: any = 470;
+  @HostListener('window:scroll', ['$event'])
+    handleScroll(){
+        const windowScroll = window.pageYOffset;
+        if(windowScroll >= this.menuPosition){
+            this.sticky = true;
+        } else {
+            this.sticky = false;
+        }
+    }
+    //   ngAfterViewInit(){
+    //     setTimeout(()=>{
+    //       debugger
+    //       this.menuPosition = this.menuElement.nativeElement.offsetTop;
+    //     },1000)
+    // }
   ngOnInit(): void {
     this.userDetails = JSON.parse(this.appconfig.getSessionStorage('userDetails'));
     this.route.queryParams
@@ -105,7 +152,25 @@ export class AboutAssessmentComponent implements OnInit {
     //   this.checkScroll();
     //   this.showAssesment = false;
     // });
+    this.contactFormInitilize();
   }
+  contactFormInitilize(){
+    this.contactForm = this.fb.group({
+      name: ['', [Validators.required]],
+      email: ['', [Validators.required, this.gv.email()]],
+      phone: ['', [Validators.required]],
+      comment:['']
+    });
+  }
+  get name() {
+    return this.contactForm.get('name');
+  }
+  get email() {
+    return this.contactForm.get('email');
+  }
+  get phone() {
+    return this.contactForm.get('phone');
+  }  
   scrollTop(){
     let top = document.getElementById('top');
     if (top !== null) {
@@ -131,6 +196,9 @@ getAbouCourse(){
         this.defaultDiv = false;
         this.nocard = true;
       }
+      setTimeout(()=>{
+        this.showExpert = true;
+      },1000)
     }
     else{
       this.abouCourseData = [];
@@ -141,6 +209,13 @@ getAbouCourse(){
   this.backgroundImageUrl = this.courseData?.image?.url;
 }
 
+tabChange(e) {
+  this.showExpert = false;
+    this.selectedIndex = e.index
+    setTimeout(()=>{
+      this.showExpert = true;
+    },1000)
+  }
 dialogSetup(){
   const valdat = this.dialog.open(this.matDialogRef, {
     width: '400px',
@@ -306,4 +381,18 @@ freeOrderPlace(cartid){
     this.showAssesment = true;
     this.competencyData = competency
   }
+  scroll(ID) {
+    // document.getElementById(ID).scrollIntoView({behavior: "smooth"});
+    var yOffset;
+    if(this.sticky){
+      yOffset = -74;
+    }
+    else{
+      yOffset = -120;
+    }
+    const element = document.getElementById(ID);
+    const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    window.scrollTo({top: y, behavior: 'smooth'});
+
+}
 }

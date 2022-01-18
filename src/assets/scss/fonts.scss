@@ -1,5 +1,6 @@
 @import "variables.scss";
 
+// font-family: 'Roboto', sans-serif;
 
 /* Roboto Condensed Font */
 @font-face {
@@ -22,6 +23,43 @@
          url('https://assets.lntedutech.com/fonts/RobotoCondensed-Bold.woff') format('woff');
     font-weight: 700;
     font-style: normal;
+}
+
+// Roboto Font
+@font-face {
+  font-family: 'Roboto';
+  src: url('https://assets.lntedutech.com/fonts/Roboto-Light.woff2') format('woff2'),
+       url('https://assets.lntedutech.com/fonts/Roboto-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('https://assets.lntedutech.com/fonts/Roboto-Regular.woff2') format('woff2'),
+       url('https://assets.lntedutech.com/fonts/Roboto-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('https://assets.lntedutech.com/fonts/Roboto-Medium.woff2') format('woff2'),
+       url('https://assets.lntedutech.com/fonts/Roboto-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('https://assets.lntedutech.com/fonts/Roboto-Bold.woff2') format('woff2'),
+       url('https://assets.lntedutech.com/fonts/Roboto-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('https://assets.lntedutech.com/fonts/Roboto-Black.woff2') format('woff2'),
+       url('https://assets.lntedutech.com/fonts/Roboto-Black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
 }
 
 // Icon Fonts - Icomoon
@@ -59,6 +97,9 @@
     -moz-osx-font-smoothing: grayscale;
   }
   
+  .icon-ContactUs:before {
+    content: "\e97a";
+  }
   .icon-Recruiter:before {
     content: "\e979";
   }

@@ -392,82 +392,457 @@
 <ng-container *ngIf="productType == 'course'">
     <div class="courseContainer" *ngIf="!nocard && !defaultDiv">
         <div class="courseProduct">
-            <figure>
-                <img [src]="courseData?.image?.url" alt="" />
+            <figure class="bannerBgImage" id="banner">
+                <!-- <img [src]="courseData?.image?.url" alt="" /> -->
+                <img [src]="courseData?.image?.bgurl" alt="" />
             </figure>
-            <!-- {{courseData?.image?.url}} -->
-        <!-- <div class="courseProduct" [ngStyle]="{backgroundImage:'url(../../../../assets/images/software-testing-trends.jpg)'}"> -->
             <div class="bannerContent">
-                <div class="container"> 
-                    <div class="heading1">{{courseData?.name}}</div>
-                    <p>{{courseData?.shortDescription}}</p>
-                    <!-- <span class="courseRate"><em class="icon-Rupee"></em> {{courseData?.sellingPrice}}</span> -->
-                    <div class="buttons">
-                        <button class="buyNow" (click)="courseBuy()">Buy Now</button>
+                <div class="container">
+                    <div class="left">
+                        <div class="heading1">{{courseData?.name}}</div>
+                        <p>{{courseData?.shortDescription}}</p>
+                        <span>{{courseData?.skillLevel}}</span>
+                        <div class="courseContent">
+                            <span class="ratingStar">
+                                <em class="icon-Star"></em>
+                                <em class="icon-Star"></em>
+                                <em class="icon-Star"></em>
+                                <em class="icon-Star"></em>
+                            </span>
+                            <span class="ratings">756 Ratings</span>
+                            <span class="learners">1211 Learners</span>
+                            <div class="buttons">
+                                <span class="courseRate"><em class="icon-Rupee"></em> 11000.00</span>
+                                <button class="buyNow" (click)="courseBuy()">Enroll Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <figure>
+                            <img [src]="courseData?.image?.url" alt="" />
+                        </figure>
                     </div>
                 </div>
             </div>
+            <div class="starss">
+                <div class='stars'></div>
+                <div class='stars2'></div>
+                <div class='stars3'></div>
+            </div>
         </div>
-        <div class="bannerFooter">
-            <div class="container">
-                <div class="footerWrapper">
-                    <div class="studentsEnrolled commonStyle" *ngFor="let item of courseData?.courseContents?.bannerFooter">
-                        <figure>
-                            <img [src]="item.image" alt="" />
-                        </figure>
-                        <div>
-                            <p>{{item.title}}</p>
-                            <span class="heading5">{{item.content}}</span>
+
+        <section class="topTab">
+            <div class="bannerFooter">
+                <div class="container">
+                    <div class="footerWrapper">
+                        <div class="studentsEnrolled commonStyle" *ngFor="let item of courseData?.courseContents?.bannerFooter">
+                            <figure>
+                                <img [src]="item.image" alt="" />
+                            </figure>
+                            <div>
+                                <p>{{item?.title}}</p>
+                                <span class="content">{{item?.description}}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Programming Highlights -->
-        <section class="programHighlights">
-            <div class="container">
-                <div class="heading2">Programme Highlights</div>
-                <ul>
-                    <li *ngFor="let highlight of courseData?.courseContents?.programmeHighlights">
-                        <!-- <span class="icon"><em class="icon-AddTask"></em></span>  -->
-                        <img src="https://assets.lntedutech.com/portalicons/highlight-tick.png" alt="" />
-                        <span class="text">{{highlight.title}}</span>
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Programming Language -->
-        <section class="programmingLanguages">
-            <div class="container">
-                <div class="subjectsOpportunities">
-                    <div class="topSubjects commonStyle" *ngFor="let opportunitiesDetails of courseData?.courseContents?.topsubjects_opportunities">
-                        <figure>
-                            <img [src]="opportunitiesDetails.image" alt="" />
-                        </figure>
-                        <div class="headding">{{opportunitiesDetails?.title}}</div>
-                        <ul>
-                            <li *ngFor="let opportunitiesBenefits of opportunitiesDetails.benefits">
-                                <!-- <em class="icon-Tick"></em>  -->
-                                <img src="https://assets.lntedutech.com/portalicons/blue-tick.png" alt="" />
-                            {{opportunitiesBenefits?.content}}</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="toolsCovered">
-                    <div class="headding">Programming Languages & Tools covered</div>
-                    <div class="tools">
-                        <figure *ngFor="let prgmLangNdToolsCoveredDetails of courseData?.courseContents?.prgmLangNdToolsCovered">
-                            <img [src]="prgmLangNdToolsCoveredDetails.image" alt="" />
-                        </figure>
-                    </div>
+            <div class="tabssection" #stickyMenu [class.sticky] = "sticky">
+                <div class="container">
+                    <ul>
+                        <li *ngFor="let item of this.courseData?.courseContents?.Headings"><a (click)="scroll(item.sectionId)">{{item.title}}</a></li>
+                    </ul>
+                    <button class="buyNow" (click)="courseBuy()">Enroll Now</button>
                 </div>
             </div>
         </section>
+
+        <ng-container *ngFor="let item of this.courseData?.courseContents?.Headings">
+          <!-- Why Full Stack -->
+           <ng-container *ngIf="item.sectionId == 1 && item.dispalystatus">
+            <section class="whyFullStack" [id]="item.sectionId"><!-- Overall tabs -->
+                
+                <div class="container fullStack">
+                    <div class="commonHeadingStyle">{{item?.title}}</div>
+                    <ul>
+                        <li *ngFor="let child of item.innerArray">
+                            <figure>
+                                <img [src]="child?.imageurl" alt="" />
+                            </figure>
+                            <div class="heading5">{{child?.title}}</div>
+                            <p>{{child?.description}}</p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+           </ng-container>
+
+             <!-- Program Overivew -->
+            <ng-container *ngIf="item.sectionId == 2 && item.dispalystatus">
+                <section class="programOverview" [id]="item.sectionId">
+                    <div class="container">
+                        <div class="commonHeadingStyle">{{item?.title}}</div>
+                        <div class="programming">
+                            <div class="left">
+                                <p>{{item?.description}}</p>
+                            </div>
+                            <figure>
+                                <img [src]="item?.imageurl" alt="" />
+                            </figure>
+                        </div>
+        
+                        <div class="projectsCreate" *ngIf="item?.subHeading1?.dispalystatus">
+                            <div class="heading4">{{item?.subHeading1?.title}}</div>
+                            <p>{{item?.subHeading1?.description}}</p>
+                            <ul>
+                                <li *ngFor="let projectChild of item?.subHeading1?.innerArray">
+                                    <div class="left">
+                                        <figure>
+                                            <img [src]="projectChild?.imageurl" alt="" />
+                                        </figure>
+                                    </div>
+                                    <div class="right">
+                                        <div class="heading6">{{projectChild?.title}}</div>
+                                        <p>{{projectChild?.description}}</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section class="progHighlightsBg">
+                    <div class="container">
+                        <div class="programmeHighlights" *ngIf="item?.subHeading2?.dispalystatus">
+                            <div class="heading4">{{item?.subHeading2?.title}}</div>
+                            <p>{{item?.subHeading2?.description}}</p>
+                            <div class="keySkillsCovered">
+                                <div class="keyFeatures" *ngFor="let highlightChild of item?.subHeading2?.innerArray">
+                                    <div class="heading4">{{highlightChild?.title}}</div>
+                                    <ul>
+                                        <li *ngFor="let subChild of highlightChild?.innersubArray">
+                                            <img [src]="highlightChild?.imageurl" alt="" />{{subChild}}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </ng-container>
+
+            <!-- Curriculam -->
+            <ng-container *ngIf="item.sectionId == 3 && item.dispalystatus">
+                <section class="curriculam" [id]="item.sectionId">
+                    <div class="container">
+                        <div class="commonHeadingStyle">{{item?.title}}</div>
+                        <div class="curriculamWrapper">
+                            <div class="left">
+                                <p>{{item?.description}}</p>
+                                <div class="accordionPanel" *ngFor="let curriculamTopics of item?.innerArray;first as isFirst">
+                                    <mat-accordion>
+                                        <mat-expansion-panel [expanded]="isFirst">
+                                            <mat-expansion-panel-header>
+                                                <mat-panel-title>
+                                                    <div class="heading5">{{curriculamTopics?.title}}</div>
+                                                </mat-panel-title>
+                                                <mat-panel-description>
+                                                    <div class="hours"><em class="icon-Time"></em> <span>{{curriculamTopics?.hours}}</span></div>
+                                                </mat-panel-description>
+                                            </mat-expansion-panel-header>
+                                            <div class="expansionContent">
+                                                <ul>
+                                                    <li *ngFor="let curriculamTopicsInner of curriculamTopics?.innersubArray"><em></em>{{curriculamTopicsInner}}</li>
+                                                </ul>
+                                                <figure>
+                                                    <img [src]="item.imageurl" alt="" />
+                                                </figure>
+                                            </div>
+                                        </mat-expansion-panel>
+                                    </mat-accordion>
+                                </div>
+                            </div>
+                            <div class="right">
+                                <div class="heading4">For more Enquiries ?</div>
+                                <div class="contactUs">
+                                    <span class="phone">
+                                        <em class="icon-ContactUs"></em>
+                                    </span>
+                                    <div>
+                                        <span class="heading5">Contact us</span>
+                                        <span class="pnNum">044 - 2252 6000</span>
+                                    </div>
+                                </div>
+                                <div class="form">
+                                    <form [formGroup]="contactForm" class="contactContent">
+                                        <div class="inputContainer">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Your Name</mat-label>
+                                                <input type="text" required autocomplete="false" id="contact_name" autocomplete="off" name="name" formControlName="name" matInput placeholder="Your Name">
+                                            </mat-form-field>
+                                            <ng-container *ngIf="name.invalid && name.touched">
+                                            <mat-error *ngIf="name.errors?.required" class="error">{{'Name is required'}}</mat-error>
+                                        </ng-container>
+                                        </div>
+                                        <div class="inputContainer">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Email Address</mat-label>
+                                                <input type="text" required autocomplete="false" id="contact_email" autocomplete="off" name="email" formControlName="email" matInput placeholder="Email Address">
+                                            </mat-form-field>
+                                            <ng-container *ngIf="email.invalid && email.touched">
+                                            <mat-error class="error" *ngIf="email.errors?.email">{{'Please enter a valid email address'}}</mat-error>
+                                            <mat-error *ngIf="email.errors?.required" class="error">{{'Email is required'}}</mat-error>
+                                        </ng-container>
+                                        </div>
+                                        <div class="inputContainer">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Phone</mat-label>
+                                                <input type="text" required autocomplete="false" id="contact_phone" autocomplete="off" name="phone" formControlName="phone" matInput placeholder="Phone">
+                                            </mat-form-field>
+                                            <ng-container *ngIf="phone.invalid && phone.touched">
+                                            <mat-error *ngIf="phone.errors?.required" class="error">{{'Phone numer is required'}}</mat-error>
+                                        </ng-container>
+                                        </div>
+                                        <div class="inputContainer">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Comment</mat-label>
+                                                <textarea type="text" autocomplete="false" id="contact_phone" autocomplete="off" name="comment" formControlName="comment" matInput matInput ></textarea>
+                                            </mat-form-field>
+                                        </div>
+                                        <button  id="contact_btn" class="requestBtn" mat-stroked-button>Request Callback</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Real Time Projects -->
+                <section class="realTimeProjects">
+                    <div class="container">
+                        <div class="heading4">{{item?.subHeading1?.title}}</div>
+                        <div class="heading6">{{item?.subHeading1?.description}}</div>
+                        <div class="realTimeWrapper" *ngIf ="item?.subHeading1?.dispalystatus">
+                            <div class="commonStyle" *ngFor="let realTimeProjectsDetails of item?.subHeading1?.innerArray">
+                                <figure>
+                                    <img [src]="realTimeProjectsDetails.imageurl" alt="" />
+                                </figure>
+                                <div class="heading5">{{realTimeProjectsDetails?.title}}</div>
+                                <p>{{realTimeProjectsDetails?.description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Request Broucher -->
+                <section class="reqBroucher" [ngStyle]="{'background-image': 'url(' + courseData?.image?.broucherimgurl + ')'}">
+                    <div class="container">
+                        <span class="heading">Learn the right trending skills with us and Land your Dream Job</span>
+                        <div class="heading6">{{courseData?.name}}</div>
+                        <button><img [src]="courseData?.image?.broucherurl" alt="" /> Request Brochure</button>
+                    </div>
+                </section>
+            </ng-container>
+
+            <!-- Carrer Path -->
+            <ng-container *ngIf="item.sectionId == 5 && item.dispalystatus">
+            <section class="careerPath" [id]="item.sectionId">
+                <div class="container">
+                    <div class="commonHeadingStyle">{{item?.title}}</div>
+                    <div class="careerPathWrapper">
+                        <div class="path" *ngFor="let carerChild of item?.innerArray">
+                            <figure>
+                                <img [src]="carerChild?.imageurl" alt="" />
+                            </figure>
+                            <span class="heading">{{carerChild?.title}}
+                                <em class="icon-RightArrow"></em>
+                            </span>
+                            <p>{{carerChild?.description}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ocean">
+                    <div class="wave" [ngStyle]="{'background-image': 'url(https://assets.lntedutech.com/portalicons/wave2.svg)'}"></div>
+                    <div class="wave" [ngStyle]="{'background-image': 'url(https://assets.lntedutech.com/portalicons/wave1.svg)'}"></div>
+                </div>
+            </section>
+            </ng-container>
+
+            <!-- Programming Language -->
+            <ng-container *ngIf="item.sectionId == 6 && item.dispalystatus">
+                <section class="programmingLanguages" [id]="item.sectionId">
+                    <div class="container">
+                        <div class="commonHeadingStyle">{{item?.title}}</div>
+                        <!-- <div class="subjectsOpportunities">
+                            <div class="topSubjects commonStyle" *ngFor="let opportunitiesDetails of courseData?.courseContents?.topsubjects_opportunities">
+                                <figure>
+                                    <img [src]="opportunitiesDetails.image" alt="" />
+                                </figure>
+                                <div class="headding">{{opportunitiesDetails?.title}}</div>
+                                <ul>
+                                    <li *ngFor="let opportunitiesBenefits of opportunitiesDetails.benefits">
+                                        <img src="https://assets.lntedutech.com/portalicons/blue-tick.png" alt="" />
+                                    {{opportunitiesBenefits?.content}}</li>
+                                </ul>
+                            </div>
+                        </div> -->
+                        <div class="toolsCovered">
+                            <div class="tools">
+                                <figure *ngFor="let prgmLangNdToolsCoveredDetails of item?.innerArray">
+                                    <img [src]="prgmLangNdToolsCoveredDetails" alt="" />
+                                </figure>
+                            </div>
+                            <p>{{item?.description}}</p>
+                        </div>
+                    </div>
+                </section>
+            </ng-container>
+            
+            <!-- Expert Support System -->
+            <ng-container *ngIf="item.sectionId == 4 && item.dispalystatus">
+                <section class="expertSupport" [id]="item.sectionId">
+                    <div class="container">
+                        <div class="commonHeadingStyle">{{item?.title}}</div>
+                    </div>
+                </section>
+                <section class="expertSupportTab">
+                    <div class="container">
+                        <mat-tab-group class="expertSupportSystem" (selectedTabChange)="tabChange($event)">
+                            <mat-tab> 
+                                <ng-template mat-tab-label>
+                                    Instructors
+                                </ng-template>
+                                <div class="instructorsTab content" *ngIf="showExpert">
+                                    <owl-carousel-o [options]="TopicsOptions">
+                                        <ng-template *ngFor="let instructorsArray of item?.innerArray[0]?.innersubArray" carouselSlide>
+                                                <div class="profile">
+                                                    <div class="image">
+                                                        <figure>
+                                                            <img [src]="instructorsArray.imageurl" alt="" />
+                                                        </figure>
+                                                    </div>
+                                                    <div class="imageContent">
+                                                        <span class="heading5">{{instructorsArray?.name}}</span>
+                                                        <span class="desc">{{instructorsArray?.designation}}</span>
+                                                        <p>{{instructorsArray?.description}}</p>
+                                                    </div>
+                                                </div>
+                                        </ng-template>
+                                    </owl-carousel-o>
+                                </div>
+                            </mat-tab>
+                            <mat-tab> 
+                                <ng-template mat-tab-label>
+                                    Expert
+                                </ng-template>
+                                <div class="expertTab content" *ngIf="showExpert">
+                                    <owl-carousel-o [options]="expertOptions" class="expertList">
+                                        <ng-container *ngFor="let expertTab of item?.innerArray[1]?.innersubArray">
+                                            <ng-template carouselSlide>
+                                                <figure>
+                                                    <img [src]="expertTab?.imageurl" alt="" />
+                                                </figure>
+                                                <div class="expert">
+                                                    <div>
+                                                        <span class="heading5">{{expertTab?.name}}</span>
+                                                        <span class="designation">{{expertTab?.designation}}</span>
+                                                        <p>{{expertTab?.description}}</p>
+                                                    </div>
+                                                </div>
+                                            </ng-template>
+                                        </ng-container>
+                                    </owl-carousel-o>
+                                </div>
+                            </mat-tab>
+                            <mat-tab> 
+                                <ng-template mat-tab-label>
+                                    Career Support
+                                </ng-template>
+                                <div class="careerSupport content">
+                                    <div class="left">
+                                        <div class="heading6">
+                                            {{item?.innerArray[2].description}}
+                                        </div>
+                                        <ul>
+                                            <li *ngFor="let careerSupport of item?.innerArray[2]?.innersubArray"><em class="icon-CheckMark"></em> {{careerSupport}}</li>
+                                        </ul>
+                                    </div>
+                                    <div class="right">
+                                        <figure>
+                                            <img [src]="item?.innerArray[2].imageurl" alt="" />
+                                        </figure>
+                                    </div>
+                                </div>
+                            </mat-tab>
+                            <mat-tab> 
+                                <ng-template mat-tab-label>
+                                    Student Success Manager
+                                </ng-template>
+                                <div class="studentSuccess content">
+                                    <div class="left">
+                                        <figure>
+                                            <img [src]="item?.innerArray[3].imageurl" alt="" />
+                                        </figure>
+                                    </div>
+                                    <div class="right">
+                                        <div class="heading6">
+                                            {{item?.innerArray[3].description}}
+                                        </div>
+                                        <ul>
+                                            <li *ngFor="let studentSuccess of item?.innerArray[3]?.innersubArray"><em class="icon-CheckMark"></em> {{studentSuccess}}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </mat-tab>
+                        </mat-tab-group>
+                    </div>
+                </section>
+            </ng-container>
+
+            <!-- Expert Support System -->
+            <ng-container *ngIf="item.sectionId == 7 && item.dispalystatus">
+                <section class="testimonials" [id]="item.sectionId">
+                    <div class="container">
+                        <div class="commonHeadingStyle">{{item?.title}}</div>
+                        <div class="testimonialContent" *ngFor="let testimonial of item?.innerArray">
+                            <div class="left">
+                                <figure>
+                                    <img [src]="testimonial?.imageurl" alt="" />
+                                </figure>
+                                <div>
+                                    <div class="heading5">
+                                        {{testimonial?.name}}
+                                    </div>
+                                    <span class="postedDate">2 days ago</span>
+                                </div>
+                            </div>
+                            <div class="right">
+                                <div class="ratingStar">
+                                    <em class="icon-Star"></em>
+                                    <em class="icon-Star"></em>
+                                    <em class="icon-Star"></em>
+                                    <em class="icon-Star"></em>
+                                    <em class="icon-Star"></em>
+                                </div>
+                                <div class="heading6">
+                                    {{testimonial?.description}}
+                                </div>
+                                <div class="review">
+                                    <span class="helpful">Was this review helpful?</span>
+                                    <span class="yes">Yes</span>
+                                    <span class="no">No</span>
+                                    <span class="report">Report</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="moreReviews">
+                            <button>See more reviews</button>
+                        </div>
+                    </div>
+                </section>
+            </ng-container>
+
+        </ng-container>
 
         <!-- Instructors -->
-        <section class="instructors">
+        <!-- <section class="instructors">
             <div class="container">
                 <div class="heading2">Instructors</div>
                 <div class="heading6">{{courseData?.courseContents?.instructors?.label}}</div>
@@ -490,10 +865,10 @@
                     </owl-carousel-o>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- Key Concepts -->
-        <section class="keyConcepts">
+        <!-- <section class="keyConcepts">
             <div class="container">
                 <div class="heading2">Key Concepts</div>
                 <div class="heading6">{{courseData?.courseContents?.keyConcepts?.label}}</div>
@@ -519,27 +894,10 @@
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- Real Time Projects -->
-        <section class="realTimeProjects">
-            <div class="container">
-                <div class="heading2">Real Time Projects</div>
-                <div class="heading6">{{courseData?.courseContents?.realTimeProjects?.label}}</div>
-                <div class="realTimeWrapper">
-                    <div class="commonStyle" *ngFor="let realTimeProjectsDetails of courseData?.courseContents?.realTimeProjects?.details">
-                        <figure>
-                            <img [src]="realTimeProjectsDetails.image" alt="" />
-                        </figure>
-                        <div class="heading5">{{realTimeProjectsDetails?.title}}</div>
-                        <p>{{realTimeProjectsDetails?.desc}}</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        </section> -->
 
         <!-- Career Impact -->
-        <section class="careerImpact">
+        <!-- <section class="careerImpact">
             <div class="left">
                 <div class="heading2">Career Impact</div>
                 <ul>
@@ -553,18 +911,19 @@
                     <img [src]="courseData?.courseContents?.careerImpact?.image" alt="" />
                 </figure>
             </div>
-        </section>
+        </section> -->
         
         <!-- Benefits -->
-        <section class="benefits">
+        <!-- <section class="benefits">
             <div class="container">
                 <div class="heading2">Benefits of L&T Edutech</div>
                 <figure>
                     <img [src]="courseData?.courseContents?.benefitsOfLntEdutech?.image" alt="" />
                 </figure>
             </div>
-        </section>
+        </section> -->
     </div>
+
     <div *ngIf="nocard && !defaultDiv" class="noDataFound">
         <figure>
             <img src="https://assets.lntedutech.com/portalicons/no-categories.svg" alt="" />
