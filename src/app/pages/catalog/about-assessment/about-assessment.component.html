@@ -705,91 +705,82 @@
                 <section class="expertSupportTab">
                     <div class="container">
                         <mat-tab-group class="expertSupportSystem" (selectedTabChange)="tabChange($event)">
-                            <mat-tab> 
-                                <ng-template mat-tab-label>
-                                    Instructors
-                                </ng-template>
-                                <div class="instructorsTab content" *ngIf="showExpert">
-                                    <owl-carousel-o [options]="TopicsOptions">
-                                        <ng-template *ngFor="let instructorsArray of item?.innerArray[0]?.innersubArray" carouselSlide>
-                                                <div class="profile">
-                                                    <div class="image">
-                                                        <figure>
-                                                            <img [src]="instructorsArray.imageurl" alt="" />
-                                                        </figure>
+                            <mat-tab *ngFor="let childItem of item?.innerArray">
+                                <ng-template mat-tab-label>{{childItem?.title}}</ng-template>
+                                <ng-container *ngIf="childItem?.subSectionID == 1 && showExpert">
+                                    <div class="instructorsTab content">
+                                        <owl-carousel-o [options]="TopicsOptions">
+                                            <ng-template *ngFor="let instructorsArray of item?.innerArray[0]?.innersubArray" carouselSlide>
+                                                    <div class="profile">
+                                                        <div class="image">
+                                                            <figure>
+                                                                <img [src]="instructorsArray.imageurl" alt="" />
+                                                            </figure>
+                                                        </div>
+                                                        <div class="imageContent">
+                                                            <span class="heading5">{{instructorsArray?.name}}</span>
+                                                            <span class="desc">{{instructorsArray?.designation}}</span>
+                                                            <p>{{instructorsArray?.description}}</p>
+                                                        </div>
                                                     </div>
-                                                    <div class="imageContent">
-                                                        <span class="heading5">{{instructorsArray?.name}}</span>
-                                                        <span class="desc">{{instructorsArray?.designation}}</span>
-                                                        <p>{{instructorsArray?.description}}</p>
-                                                    </div>
-                                                </div>
-                                        </ng-template>
-                                    </owl-carousel-o>
-                                </div>
-                            </mat-tab>
-                            <mat-tab> 
-                                <ng-template mat-tab-label>
-                                    Expert
-                                </ng-template>
-                                <div class="expertTab content" *ngIf="showExpert">
-                                    <owl-carousel-o [options]="expertOptions" class="expertList">
-                                        <ng-container *ngFor="let expertTab of item?.innerArray[1]?.innersubArray">
-                                            <ng-template carouselSlide>
-                                                <figure>
-                                                    <img [src]="expertTab?.imageurl" alt="" />
-                                                </figure>
-                                                <div class="expert">
-                                                    <div>
-                                                        <span class="heading5">{{expertTab?.name}}</span>
-                                                        <span class="designation">{{expertTab?.designation}}</span>
-                                                        <p>{{expertTab?.description}}</p>
-                                                    </div>
-                                                </div>
                                             </ng-template>
-                                        </ng-container>
-                                    </owl-carousel-o>
-                                </div>
-                            </mat-tab>
-                            <mat-tab> 
-                                <ng-template mat-tab-label>
-                                    Career Support
-                                </ng-template>
-                                <div class="careerSupport content">
-                                    <div class="left">
-                                        <div class="heading6">
-                                            {{item?.innerArray[2].description}}
+                                        </owl-carousel-o>
+                                    </div>
+                                </ng-container>
+                                <ng-container *ngIf="childItem?.subSectionID == 2 && showExpert">
+                                    <div class="expertTab content">
+                                        <owl-carousel-o [options]="expertOptions" class="expertList">
+                                            <ng-container *ngFor="let expertTab of item?.innerArray[1]?.innersubArray">
+                                                <ng-template carouselSlide>
+                                                    <figure>
+                                                        <img [src]="expertTab?.imageurl" alt="" />
+                                                    </figure>
+                                                    <div class="expert">
+                                                        <div>
+                                                            <span class="heading5">{{expertTab?.name}}</span>
+                                                            <span class="designation">{{expertTab?.designation}}</span>
+                                                            <p>{{expertTab?.description}}</p>
+                                                        </div>
+                                                    </div>
+                                                </ng-template>
+                                            </ng-container>
+                                        </owl-carousel-o>
+                                    </div>
+                                </ng-container>
+                                <ng-container *ngIf="childItem?.subSectionID == 3">
+                                    <div class="careerSupport content">
+                                        <div class="left">
+                                            <div class="heading6">
+                                                {{item?.innerArray[2].description}}
+                                            </div>
+                                            <ul>
+                                                <li *ngFor="let careerSupport of item?.innerArray[2]?.innersubArray"><em class="icon-CheckMark"></em> {{careerSupport}}</li>
+                                            </ul>
                                         </div>
-                                        <ul>
-                                            <li *ngFor="let careerSupport of item?.innerArray[2]?.innersubArray"><em class="icon-CheckMark"></em> {{careerSupport}}</li>
-                                        </ul>
-                                    </div>
-                                    <div class="right">
-                                        <figure>
-                                            <img [src]="item?.innerArray[2].imageurl" alt="" />
-                                        </figure>
-                                    </div>
-                                </div>
-                            </mat-tab>
-                            <mat-tab> 
-                                <ng-template mat-tab-label>
-                                    Student Success Manager
-                                </ng-template>
-                                <div class="studentSuccess content">
-                                    <div class="left">
-                                        <figure>
-                                            <img [src]="item?.innerArray[3].imageurl" alt="" />
-                                        </figure>
-                                    </div>
-                                    <div class="right">
-                                        <div class="heading6">
-                                            {{item?.innerArray[3].description}}
+                                        <div class="right">
+                                            <figure>
+                                                <img [src]="item?.innerArray[2].imageurl" alt="" />
+                                            </figure>
                                         </div>
-                                        <ul>
-                                            <li *ngFor="let studentSuccess of item?.innerArray[3]?.innersubArray"><em class="icon-CheckMark"></em> {{studentSuccess}}</li>
-                                        </ul>
                                     </div>
-                                </div>
+                                </ng-container>
+                                <ng-container *ngIf="childItem?.subSectionID == 4">
+                                    <div class="studentSuccess content">
+                                        <div class="left">
+                                            <figure>
+                                                <img [src]="item?.innerArray[3].imageurl" alt="" />
+                                            </figure>
+                                        </div>
+                                        <div class="right">
+                                            <div class="heading6">
+                                                {{item?.innerArray[3].description}}
+                                            </div>
+                                            <ul>
+                                                <li *ngFor="let studentSuccess of item?.innerArray[3]?.innersubArray"><em class="icon-CheckMark"></em> {{studentSuccess}}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </ng-container>
                             </mat-tab>
                         </mat-tab-group>
                     </div>
