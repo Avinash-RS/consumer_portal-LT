@@ -53,7 +53,9 @@ export class SuccessComponent implements OnInit {
   competencyName: any;
   orderId: any;
   lxpCheck:boolean = false;
+  stepCheck:boolean = false;
   courseId = [];
+  stepCourseId  = [];
   // activate: boolean = false;
   // activeDate: string;
   // activeTime: any;
@@ -76,32 +78,47 @@ export class SuccessComponent implements OnInit {
       if (params.orderId) {
         postData.order_id = atob(params.orderId);
         this.catalog.getOrder(postData).subscribe((data: any) => {
-          this.courseId = [];
           this.orderlist = data.data;
-          this.orderlist.forEach(element => {
-            if(element?.productType == 'course'){
-              this.lxpCheck = true;
-              if(element.categoryIds.length == 1) {
-                this.courseId.push(element.cid);
-              }
-              else {
-                this.courseId = element.categoryIds;
-              }
-            }
-          });
-          if(this.lxpCheck){
-            const apiParam = {
-              "username": this.userDetails.email,
-              "courseId" :this.courseId
-              }
-            this.catalog.userSyncUpLxp(apiParam).subscribe((result:any)=>{
-            });
-          }
+          this.syncLxp();
         });
       }
     });
   }
-
+  syncLxp(){
+    this.courseId = [];
+    this.stepCourseId = [];
+    this.orderlist.forEach(element => {
+      if(element?.productType == 'course' && element?.courseType == 'English'){
+        this.stepCheck = true;
+        this.stepCourseId.push({
+          id:element?.cid,
+          course_grants:element?.course_grants
+        });
+      }
+     else if(element?.productType == 'course' && element?.courseType != 'English'){
+        this.lxpCheck = true;
+        if(element?.categoryIds.length == 1) {
+          this.courseId.push(element?.cid);
+        }
+      }
+    });
+    if(this.lxpCheck){
+      const apiParam = {
+        username: this.userDetails.email,
+        courseId :this.courseId
+        }
+      this.catalog.userSyncUpLxp(apiParam).subscribe((result:any)=>{
+      });
+    }
+    if(this.stepCheck){
+      const apiParam ={
+        user_details:[{email:this.userDetails.email}],
+        course_details:this.stepCourseId
+      }
+      this.catalog.stepCrsFrmMicrocert(apiParam).subscribe((result:any)=>{
+      });
+    }
+  }
   openDialog(templateRef: TemplateRef<any>, orderItem) {
     let dialogData = {
       cid: orderItem.cid,
@@ -125,13 +142,26 @@ export class SuccessComponent implements OnInit {
     this.levelName = orderItem.levelName;
     this.orderId = orderItem.orderNo;
   }
-  goToCourse(){
-    var ValueData = JSON.parse(this.appconfig.getLocalStorage('valueData'));
-    window.open(environment.lxp_url+"?queValue="+encodeURIComponent(ValueData.queValue)+'&rpValue='+encodeURIComponent(ValueData.rpValue)+'&dpValue=microsetportal', 'redirection');
+  goToCourse(course){
+    if(course.courseType == 'English'){
+      this.catalog.getStepRedirectUrl(this.userDetails.email,course.cid).subscribe((result:any)=>{
+        if(result?.success){
+          window.open(result?.stepRedirectUrl,'redirection');
+        }
+        else{
+          this.toast.warning(result?.message);
+        }
+      })
+    }
+    else{
+      var ValueData = JSON.parse(this.appconfig.getLocalStorage('valueData'));
+      window.open(environment.lxp_url+"?queValue="+encodeURIComponent(ValueData.queValue)+'&rpValue='+encodeURIComponent(ValueData.rpValue)+'&dpValue=microsetportal', 'redirection');
+    }
   }
 
   // reschedule(item){
 
   // }
+ 
 
 }

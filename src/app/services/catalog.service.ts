@@ -95,4 +95,10 @@ addToCart(params) {
   userSyncUpLxp(param){
     return this.http.post(this.baseurl +'userSyncUpLxp' , param, this.httpOptions);
   }
+  stepCrsFrmMicrocert(param){
+    return this.http.post(this.baseurl +'stepCrsFrmMicrocert' , param, this.httpOptions);
+  }
+  getStepRedirectUrl(email,courseId){
+    return this.http.get(this.baseurl + 'getStepRedirectUrl?email='+ email + '&course_id=' +courseId, this.httpOptions);
+  }
 }
