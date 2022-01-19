@@ -447,10 +447,13 @@
                     </div>
                 </div>
             </div>
+            <!-- Overall tabs -->
             <div class="tabssection" #stickyMenu [class.sticky] = "sticky">
                 <div class="container">
                     <ul>
-                        <li *ngFor="let item of this.courseData?.courseContents?.Headings"><a (click)="scroll(item.sectionId)" [ngClass]="item?.sectionId == activeSection ? 'active':''">{{item.title}}</a></li>
+                        <li *ngFor="let item of this.courseData?.courseContents?.Headings">
+                            <a (click)="scroll(item.sectionId)" [ngClass]="item?.sectionId == activeSection ? 'active':''">{{item.title}}</a>
+                        </li>
                     </ul>
                     <button class="buyNow" (click)="courseBuy()">Enroll Now</button>
                 </div>
@@ -460,7 +463,7 @@
         <ng-container *ngFor="let item of this.courseData?.courseContents?.Headings">
           <!-- Why Full Stack -->
            <ng-container *ngIf="item.sectionId == 1 && item.dispalystatus">
-            <section class="whyFullStack" [id]="item.sectionId"><!-- Overall tabs -->
+            <section class="whyFullStack" [id]="item.sectionId" #1>
                 
                 <div class="container fullStack">
                     <div class="commonHeadingStyle">{{item?.title}}</div>
@@ -479,7 +482,7 @@
 
              <!-- Program Overivew -->
             <ng-container *ngIf="item.sectionId == 2 && item.dispalystatus">
-                <section class="programOverview" [id]="item.sectionId">
+                <section class="programOverview" [id]="item.sectionId" #2>
                     <div class="container">
                         <div class="commonHeadingStyle">{{item?.title}}</div>
                         <div class="programming">
@@ -532,7 +535,7 @@
 
             <!-- Curriculam -->
             <ng-container *ngIf="item.sectionId == 3 && item.dispalystatus">
-                <section class="curriculam" [id]="item.sectionId">
+                <section class="curriculam" [id]="item.sectionId" #3>
                     <div class="container">
                         <div class="commonHeadingStyle">{{item?.title}}</div>
                         <div class="curriculamWrapper">
@@ -641,63 +644,9 @@
                 </section>
             </ng-container>
 
-            <!-- Carrer Path -->
-            <ng-container *ngIf="item.sectionId == 5 && item.dispalystatus">
-            <section class="careerPath" [id]="item.sectionId">
-                <div class="container">
-                    <div class="commonHeadingStyle">{{item?.title}}</div>
-                    <div class="careerPathWrapper">
-                        <div class="path" *ngFor="let carerChild of item?.innerArray">
-                            <figure>
-                                <img [src]="carerChild?.imageurl" alt="" />
-                            </figure>
-                            <span class="heading">{{carerChild?.title}}
-                                <em class="icon-RightArrow"></em>
-                            </span>
-                            <p>{{carerChild?.description}}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="ocean">
-                    <div class="wave" [ngStyle]="{'background-image': 'url(https://assets.lntedutech.com/portalicons/wave2.svg)'}"></div>
-                    <div class="wave" [ngStyle]="{'background-image': 'url(https://assets.lntedutech.com/portalicons/wave1.svg)'}"></div>
-                </div>
-            </section>
-            </ng-container>
-
-            <!-- Programming Language -->
-            <ng-container *ngIf="item.sectionId == 6 && item.dispalystatus">
-                <section class="programmingLanguages" [id]="item.sectionId">
-                    <div class="container">
-                        <div class="commonHeadingStyle">{{item?.title}}</div>
-                        <!-- <div class="subjectsOpportunities">
-                            <div class="topSubjects commonStyle" *ngFor="let opportunitiesDetails of courseData?.courseContents?.topsubjects_opportunities">
-                                <figure>
-                                    <img [src]="opportunitiesDetails.image" alt="" />
-                                </figure>
-                                <div class="headding">{{opportunitiesDetails?.title}}</div>
-                                <ul>
-                                    <li *ngFor="let opportunitiesBenefits of opportunitiesDetails.benefits">
-                                        <img src="https://assets.lntedutech.com/portalicons/blue-tick.png" alt="" />
-                                    {{opportunitiesBenefits?.content}}</li>
-                                </ul>
-                            </div>
-                        </div> -->
-                        <div class="toolsCovered">
-                            <div class="tools">
-                                <figure *ngFor="let prgmLangNdToolsCoveredDetails of item?.innerArray">
-                                    <img [src]="prgmLangNdToolsCoveredDetails" alt="" />
-                                </figure>
-                            </div>
-                            <p>{{item?.description}}</p>
-                        </div>
-                    </div>
-                </section>
-            </ng-container>
-            
             <!-- Expert Support System -->
             <ng-container *ngIf="item.sectionId == 4 && item.dispalystatus">
-                <section class="expertSupport" [id]="item.sectionId">
+                <section class="expertSupport" [id]="item.sectionId" #4>
                     <div class="container">
                         <div class="commonHeadingStyle">{{item?.title}}</div>
                     </div>
@@ -783,16 +732,72 @@
                                         </div>
                                     </ng-container>
                                 </ng-template>
-                              
+                            
                             </mat-tab>
                         </mat-tab-group>
                     </div>
                 </section>
             </ng-container>
+            
+            <!-- Carrer Path -->
+            <ng-container *ngIf="item.sectionId == 5 && item.dispalystatus">
+            <section class="careerPath" [id]="item.sectionId" #5>
+                <div class="container">
+                    <div class="commonHeadingStyle">{{item?.title}}</div>
+                    <div class="careerPathWrapper">
+                        <div class="path" *ngFor="let carerChild of item?.innerArray">
+                            <figure>
+                                <img [src]="carerChild?.imageurl" alt="" />
+                            </figure>
+                            <span class="heading">{{carerChild?.title}}
+                                <em class="icon-RightArrow"></em>
+                            </span>
+                            <p>{{carerChild?.description}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ocean">
+                    <div class="wave" [ngStyle]="{'background-image': 'url(https://assets.lntedutech.com/portalicons/wave2.svg)'}"></div>
+                    <div class="wave" [ngStyle]="{'background-image': 'url(https://assets.lntedutech.com/portalicons/wave1.svg)'}"></div>
+                </div>
+            </section>
+            </ng-container>
+
+            <!-- Programming Language -->
+            <ng-container *ngIf="item.sectionId == 6 && item.dispalystatus">
+                <section class="programmingLanguages" [id]="item.sectionId" #6>
+                    <div class="container">
+                        <div class="commonHeadingStyle">{{item?.title}}</div>
+                        <!-- <div class="subjectsOpportunities">
+                            <div class="topSubjects commonStyle" *ngFor="let opportunitiesDetails of courseData?.courseContents?.topsubjects_opportunities">
+                                <figure>
+                                    <img [src]="opportunitiesDetails.image" alt="" />
+                                </figure>
+                                <div class="headding">{{opportunitiesDetails?.title}}</div>
+                                <ul>
+                                    <li *ngFor="let opportunitiesBenefits of opportunitiesDetails.benefits">
+                                        <img src="https://assets.lntedutech.com/portalicons/blue-tick.png" alt="" />
+                                    {{opportunitiesBenefits?.content}}</li>
+                                </ul>
+                            </div>
+                        </div> -->
+                        <div class="toolsCovered">
+                            <div class="tools">
+                                <figure *ngFor="let prgmLangNdToolsCoveredDetails of item?.innerArray">
+                                    <img [src]="prgmLangNdToolsCoveredDetails" alt="" />
+                                </figure>
+                            </div>
+                            <p>{{item?.description}}</p>
+                        </div>
+                    </div>
+                </section>
+            </ng-container>
+            
+       
 
             <!-- Expert Support System -->
             <ng-container *ngIf="item.sectionId == 7 && item.dispalystatus">
-                <section class="testimonials" [id]="item.sectionId">
+                <section class="testimonials" [id]="item.sectionId" #7>
                     <div class="container">
                         <div class="commonHeadingStyle">{{item?.title}}</div>
                         <div class="testimonialContent" *ngFor="let testimonial of item?.innerArray">

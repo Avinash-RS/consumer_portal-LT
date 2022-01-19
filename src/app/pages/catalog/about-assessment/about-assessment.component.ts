@@ -100,6 +100,21 @@ export class AboutAssessmentComponent implements OnInit {
   sticky: boolean = false;
   menuPosition: any = 472;
   activeSection:any;
+  @ViewChild('1') firstElement: ElementRef;
+  @ViewChild('2') secondElement: ElementRef;
+  @ViewChild('3') thirdElement: ElementRef;
+  @ViewChild('4') fourthElement: ElementRef;
+  @ViewChild('5') fifthElement: ElementRef;
+  @ViewChild('6') sixthElement: ElementRef;
+  @ViewChild('7') seventhElement: ElementRef;
+  firstOffset: Number = null;
+  secondOffset: Number = null;
+  thirdOffset: Number = null;
+  fourthOffset: Number = null;
+  fifthOffset: Number = null;
+  sixthOffset: Number = null;
+  seventhOffset: Number = null;
+
   @HostListener('window:scroll', ['$event'])
     handleScroll(){
         const windowScroll = window.pageYOffset;
@@ -108,19 +123,50 @@ export class AboutAssessmentComponent implements OnInit {
         } else {
             this.sticky = false;
         }
-       
+       //this.checkOffsetTop();
         setTimeout(()=>{
             if(window.pageYOffset < this.menuPosition){
               this.activeSection = null;
             }
               },500);
     }
-    //   ngAfterViewInit(){
-    //     setTimeout(()=>{
-    //       debugger
-    //       this.menuPosition = this.menuElement.nativeElement.offsetTop;
-    //     },1000)
-    // }
+    checkOffsetTop() {
+      const windowOffSet = window.pageYOffset;
+      if(windowOffSet >= this.firstOffset && windowOffSet < this.secondOffset ){
+        this.activeSection = 1;
+      }
+      else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet < this.thirdOffset && windowOffSet < this.fourthOffset && windowOffSet < this.fifthOffset && windowOffSet < this.sixthOffset  && windowOffSet < this.seventhOffset){
+        this.activeSection = 2;
+      }
+      else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet < this.fourthOffset && windowOffSet < this.fifthOffset && windowOffSet < this.sixthOffset  && windowOffSet < this.seventhOffset){
+        this.activeSection = 3;
+      }
+      else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet >= this.fourthOffset && windowOffSet < this.fifthOffset && windowOffSet < this.sixthOffset  && windowOffSet < this.seventhOffset){
+        this.activeSection = 4;
+      }
+      else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet >= this.fourthOffset && windowOffSet >= this.fifthOffset && windowOffSet < this.sixthOffset  && windowOffSet < this.seventhOffset){
+        this.activeSection = 5;
+      }
+      else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet >= this.fourthOffset && windowOffSet >= this.fifthOffset && windowOffSet >= this.sixthOffset  && windowOffSet < this.seventhOffset){
+        this.activeSection = 6;
+      }
+      else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet >= this.fourthOffset && windowOffSet >= this.fifthOffset && windowOffSet >= this.sixthOffset  && windowOffSet >= this.seventhOffset){
+        this.activeSection = 7;
+      }
+
+    }
+      ngAfterViewInit(){
+        setTimeout(()=>{
+           this.firstOffset =  this.firstElement.nativeElement.offsetTop - 200;
+           this.secondOffset =  this.secondElement.nativeElement.offsetTop - 200;
+           this.thirdOffset =  this.thirdElement.nativeElement.offsetTop - 200;
+           this.fourthOffset =  this.fourthElement.nativeElement.offsetTop - 200;
+           this.fifthOffset =  this.fifthElement.nativeElement.offsetTop - 200;
+           this.sixthOffset =  this.sixthElement.nativeElement.offsetTop - 200;
+           this.seventhOffset =  this.seventhElement.nativeElement.offsetTop -200;
+           console.log(this.seventhOffset);
+        },1000)
+    }
   ngOnInit(): void {
     this.userDetails = JSON.parse(this.appconfig.getSessionStorage('userDetails'));
     this.route.queryParams
