@@ -123,7 +123,7 @@ export class AboutAssessmentComponent implements OnInit {
         } else {
             this.sticky = false;
         }
-       //this.checkOffsetTop();
+       this.checkOffsetTop();
         setTimeout(()=>{
             if(window.pageYOffset < this.menuPosition){
               this.activeSection = null;
