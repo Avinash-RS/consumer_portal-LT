@@ -164,7 +164,6 @@ export class AboutAssessmentComponent implements OnInit {
            this.fifthOffset =  this.fifthElement.nativeElement.offsetTop - 200;
            this.sixthOffset =  this.sixthElement.nativeElement.offsetTop - 200;
            this.seventhOffset =  this.seventhElement.nativeElement.offsetTop -200;
-           console.log(this.seventhOffset);
         },1000)
     }
   ngOnInit(): void {
