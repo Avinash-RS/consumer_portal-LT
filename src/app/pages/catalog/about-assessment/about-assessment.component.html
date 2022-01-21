@@ -994,6 +994,30 @@
                             </div> 
                     </div>
                 </section>
+                <section class="ourPartners">
+                    <div class="container">
+                        <div class="partnersSection" *ngIf="item.subHeading3.dispalystatus">
+                            <div>{{item.subHeading3.title}}</div>
+                                <figure *ngFor="let partner of item.subHeading3.innerArray">
+                                    <img [src]="partner.imageurl" alt="" />
+                                </figure>
+                        </div>
+                        <div class="grievanceSection"  *ngIf="item.subHeading3.dispalystatus">
+                            <p>{{item.subHeading3.description}}</p>
+                        </div>
+                        <div class="poweredSection" *ngIf="item.subHeading4.dispalystatus">
+                            <div class="heading">{{item.subHeading4.title}}</div>
+                            <div class="partnerImage">
+                                <figure class="left">
+                                    <img [src]="item.subHeading4.imageurl" alt="" />
+                                </figure>
+                                <figure class="right">
+                                    <img [src]="item.subHeading4.Subimageurl" alt="" />
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </ng-container>
 
         </ng-container>

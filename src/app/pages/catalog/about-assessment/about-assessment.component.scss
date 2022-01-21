@@ -3015,7 +3015,7 @@
     .heading{
       color: $blueLabelColor;
       font-size: 1.675em;
-      padding-bottom: 1em;
+      padding-bottom: 0.5em;
     }
     .division{
       display: flex;
@@ -3038,6 +3038,67 @@
   }
     
 }
+
+.ourPartners {
+    width: 100%;
+    padding: 4.75em 0;
+    position: relative;
+    background: $bgColor;
+    .partnersSection {
+      display: flex;
+      align-items: center;
+      margin-bottom: 2em;
+      div {
+        font-size: 1.5em;
+        margin-right: 1em
+      }
+      figure {
+        width: 8%;
+        height: 50px;
+        margin-right: 3em;
+        img {
+          object-fit: contain;
+          height: 50px;
+          width: 100%;
+        }
+      }
+
+    }
+    .grievanceSection {
+      display: flex;
+      font-size: 1.3em;
+      p {
+        color: $blueColor;
+        margin-bottom: 2em;
+      }
+    }
+    .poweredSection{
+      display: flex;
+      align-items: center;
+      width:100%;
+      .heading {
+        font-size: 1.5em;
+        margin-right: 1em;
+        width:17%;
+      }
+      .partnerImage{
+        display:flex;
+        width:83%;
+        justify-content: space-between;
+        img{
+          object-fit: contain;
+          height: 50px;
+          width: 100%;
+        }
+        .left{
+          width:15%;
+        }
+        .right{
+          width: 60%;
+        }
+      }
+    }
+  }
 //Instructors
 .instructors {
   background-color: #d9e6f0;
