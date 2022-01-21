@@ -100,6 +100,9 @@ export class SuccessComponent implements OnInit {
         if(element?.categoryIds.length == 1) {
           this.courseId.push(element?.cid);
         }
+        else{
+          this.courseId = this.courseId.concat(element?.categoryIds);
+        }
       }
     });
     if(this.lxpCheck){

@@ -748,7 +748,7 @@
       height: 300px;
       object-fit: cover;
       @include md {
-        height: 400px;
+        height: 450px;
       }
     }
   }
@@ -772,7 +772,7 @@
         display: flex;
         justify-content: flex-end;
         figure {
-          width: 80%;
+          width: 90%;
         }
       }
     }
@@ -994,7 +994,7 @@
     position: fixed;
     top: 74px;
     overflow: hidden;
-    z-index: 999;
+    z-index: 10;
     background-color: #ffffff;
     padding: 1em 0;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
@@ -1136,13 +1136,13 @@
     width: 12%;
   }
   &::before {
-    background-image: url("#{$imagePath}/programOverview_Left.png");
+  //  background-image: url("#{$imagePath}/programOverview_Left.png");
     background-position: top;
     top: 0;
     left: -4em;
   }
   &::after {
-    background-image: url("#{$imagePath}/programOverview_Right.png");
+   // background-image: url("#{$imagePath}/programOverview_Right.png");
     background-position: bottom;
     bottom: 2em;
     right: -4em;
@@ -1151,27 +1151,40 @@
     position: relative;
   }
   .programming {
-    background-color: #f9f9f9;
+    // background-color:$shadeBlueColor;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     .left {
-      width: 48%;
+      width: 50%;
+      display: flex;
+      align-items: center;
+      background-image: url("#{$imagePath}/Program_bg.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      border-radius: 0.3em 0 0 0.3em;
       p {
         font-size: 1.25em;
         font-weight: 400;
-        color: $mediumGrey;
+        color: $whiteColor;
         line-height: 1.5;
         margin: 0;
         padding: 0 20px;
+        text-align: justify;
       }
     }
     figure {
-      width: 48%;
+      width: 50%;
       display: flex;
+      img {
+        border-radius: 0 0.3em 0.3em 0;
+        
+      }
     }
   }
   //
+}
+
+.projectYou{
+  position: relative;
   .projectsCreate {
     margin-bottom: 1em;
     margin-top: 1.25em;
@@ -1248,7 +1261,63 @@
     }
   }
 }
+.projectThink{
+  position: relative;
+  background-image: url("#{$imagePath}/projectThink_bg.png");
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  width: 100%;
+  padding: 1.25em 0 3em 0;
+  font-size: 12px;
+  font-size: 12px;
+  @include md {
+  }
+  @include lg {
+    font-size: 14px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .thinkSection{
+    display: flex;
+    .left{
+      width: 30%;
+    }
+    .right{
+      width: 70%;
+      div{
+        color: $shadeBlueColor;
+        font-size: 22px;
+        margin: 2em 0em;
+        &::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: -0.25em;
+          width: 2.5em;
+          height: 3px;
+          border-radius: 1.25em;
+          background-image: linear-gradient(to right, #00bcef, #00c0db, #00c1b6, #00be83, #4eb749);
+        }
+      }
+      p {
+        color:$mediumGrey;
+        font-size: 20px;
+      }
+    }
+  }
 
+
+}
 //Program Highlights
 .progHighlightsBg {
   background-color: #f9f9f9;
@@ -1279,6 +1348,17 @@
   .container {
     position: relative;
     z-index: 9;
+  }
+  .projectView{
+    position: relative;
+    @include md {
+  }
+  @include lg {
+    font-size: 14px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
   }
   .programmeHighlights {
     margin-top: 1.25em;
@@ -1555,7 +1635,7 @@
     }
   }
 }
-::ng-deep .contactContent{
+::ng-deep .contactContent {
   mat-form-field {
     width: 100%;
   }
@@ -1564,8 +1644,10 @@
   }
   .mat-form-field-outline-thick {
     color: $primaryColor !important;
+  }
 }
-}
+
+// Expert Accordion
 ::ng-deep.accordionPanel {
   .mat-expansion-panel {
     border-radius: 0 !important;
@@ -1636,6 +1718,55 @@
     color: $whiteColor;
   }
 }
+
+// FAQ Accordion
+::ng-deep.faqAccordionPanel {
+  .mat-expansion-panel {
+    border-radius: 5px !important;
+    background: #F8FBFF;
+    box-shadow: none;
+    margin-bottom: 20px;
+    &.mat-expanded {
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+      border-radius: 5px !important;
+    }
+  }
+  .mat-accordion>.mat-expansion-panel-spacing:last-child {
+    margin-bottom: 20px;
+  }
+  .mat-expansion-panel:not(.mat-expanded)
+    .mat-expansion-panel-header:hover:not([aria-disabled="true"]),
+  .mat-expansion-panel-header.mat-expanded:hover {
+    background-color: #F8FBFF;
+  }
+  .mat-expanded {
+    .mat-expansion-panel-header {
+      background-color: #F8FBFF;
+      border-radius: 5px 5px 0 0;
+    }
+  }
+  .mat-expansion-panel-header.mat-expanded:focus,
+  .mat-expansion-panel-header.mat-expanded:hover {
+    background-color: #F8FBFF;
+  }
+  .mat-expansion-panel-header {
+    height: 64px;
+    background-color: #F8FBFF;
+    border-radius: 5px;
+    position: relative;
+    z-index: 9;
+  }
+  .mat-expansion-panel-body {
+    padding: 10px 24px 10px 24px;
+  }
+  .mat-expansion-panel-header-description {
+    justify-content: flex-end;
+  }
+  .mat-expansion-indicator::after {
+    color: #08558C;
+  }
+}
+
 
 // Real Time Projects
 .realTimeProjects {
@@ -2280,17 +2411,6 @@
     position: relative;
     z-index: 9;
   }
-  // &::after {
-  //   content: "";
-  //   position: absolute;
-  //   bottom: 0;
-  //   left: 0;
-  //   width: 100%;
-  //   height: 80%;
-  //   background-image: url("#{$imagePath}/wave.png");
-  //   background-repeat: no-repeat;
-  //   background-size: cover;
-  // }
   .ocean {
     height: 5%;
     width: 100%;
@@ -2370,6 +2490,59 @@
   }
 }
 
+//IndustryStep
+.industryStep {
+  background-image: url("#{$imagePath}/industryStep_bg.svg");
+  background-repeat: no-repeat;
+  width: 100%;
+  padding: 3em 0;
+  font-size: 12px;
+  position: relative;
+  &::before {
+    content: '';
+    display: block;
+    padding-bottom: 17%;
+  }
+  @include md {
+    font-size: 12px;
+  }
+  @include lg {
+    font-size: 14px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
+  .wrapper {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .container {
+    position: relative;
+    .left {
+      max-width: 568px;
+      width: 100%;
+      .heading4 {
+        color: #EBFF4E;
+      }
+      p {
+        font-family: 'Roboto', sans-serif;
+        font-size: 1.25em;
+        font-weight: 400;
+        color: $whiteColor;
+        line-height: 1.4;
+        margin: 1em 0 0 0;
+      }
+    }
+    figure {
+      position: absolute;
+      right: 0;
+      bottom: -99%;
+    }
+  }
+}
+
 // Programming Languages
 .programmingLanguages {
   background-color: $whiteColor;
@@ -2392,7 +2565,7 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background-image: url("#{$imagePath}/programminLanguage_bg.png");
+    background-image: url("#{$imagePath}/programminLanguage_bg.svg");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: right;
@@ -2450,6 +2623,7 @@
   // }
   .toolsCovered {
     position: relative;
+    max-width: 768px;
     width: 100%;
     .headding {
       font-size: 1.875em;
@@ -2482,7 +2656,7 @@
           width: 12.1%;
         }
         @include xl {
-          width: 6%;
+          width: 8%;
         }
         img {
           width: 100%;
@@ -2495,6 +2669,77 @@
       color: $mediumGrey;
       line-height: 1.4;
       margin: 1.5em 0 0 0;
+    }
+  }
+}
+
+//Enroll Now
+.enrollNow {
+  background-image: url("#{$imagePath}/enrollNowBg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  padding-top: 1em;
+  font-size: 12px;
+  @include md {
+  }
+  @include lg {
+    font-size: 14px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
+  .enrollNowWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .left {
+      width: 45%;
+      .heading {
+        font-family: 'Roboto', sans-serif;
+        font-size: 2.1875em;
+        font-weight: 500;
+        color: #0E1D38;
+        line-height: 1.2;
+      }
+      p {
+        font-family: 'Roboto', sans-serif;
+        font-size: 1.125em;
+        font-weight: 300;
+        color: $darkGrey;
+        line-height: 1.4;
+        margin: 0.75em 0 3em 0;
+      }
+      > div {
+        .enrollNowBtn, .reqCallBack {
+          border: 1px solid #27BBEE;
+          border-radius: 25px;
+          padding: 0.6em 1.25em;
+          font-family: 'Roboto', sans-serif;
+          font-size: 1em;
+          font-weight: 500;
+        }
+        .enrollNowBtn {
+          background-color: #27BBEE;
+          color: $whiteColor;
+          text-transform: uppercase;
+        }
+        .reqCallBack {
+          background-color: $whiteColor;
+          color: $darkGrey;
+          margin-left: 2em;
+        }
+      }
+    }
+    .right {
+      width: 45%;
+      margin-top: 1em;
+      figure {
+        display: flex;
+        img {
+          width: 100%;
+        }
+      }
     }
   }
 }
@@ -2615,6 +2860,133 @@
       font-weight: 400;
       color: #0071a3;
       padding: 0.5em 1.25em;
+    }
+  }
+}
+
+//FAQ Section
+.faq {
+  background-image: url("#{$imagePath}/faqBg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  padding: 3.75em 0;
+  font-size: 12px;
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    right: -130px;
+    bottom: 10px;
+    background-image: url("#{$imagePath}/faqMan.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom;
+    // background-attachment: fixed;
+    width: 33%;
+    height: 70%;
+  }
+  @include md {
+  }
+  @include lg {
+    font-size: 14px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
+  .container {
+    position: relative;
+    z-index: 9;
+    .commonHeadingStyle {
+      color: $whiteColor;
+    }
+    .faqAccordionPanel {
+      .heading5, .expansionContent {
+        font-family: 'Roboto', sans-serif;
+        font-size: 1em;
+      }
+      .heading5 {
+        font-weight: 500;
+        color: $blackColor;
+      }
+      .expansionContent {
+        font-weight: 400;
+        color: $darkGrey;
+        line-height: 1.5;
+        margin: 0;
+      }
+    }
+  }
+}
+
+//Hiring Partners
+.hiringPartnres {
+  background-image: url("#{$imagePath}/hiringPartners_bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  padding: 3.75em 0;
+  position: relative;
+  font-size: 12px;
+  @include md {
+  }
+  @include lg {
+    font-size: 14px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #08558C;
+    opacity: 0.9;
+  }
+  .container {
+    position: relative;
+  }
+  .commonHeadingStyle {
+    color: $whiteColor;
+  }
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+  }
+  .left {
+    width: 25%;
+    p {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.125em;
+      font-weight: 300;
+      color: $whiteColor;
+      line-height: 1.5;
+    }
+  }
+  .right {
+    width: 70%;
+    margin-left: 5%;
+    .figWrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    figure {
+      background-color: $whiteColor;
+      border-radius: 5px;
+      padding: 1em;
+      margin: 0.5em 0.5%;
+      width: 32%;
+      text-align: center;
+      img {
+        height: 60px;
+        object-fit: contain;
+      }
     }
   }
 }
