@@ -1298,6 +1298,7 @@
         color: $shadeBlueColor;
         font-size: 22px;
         margin: 2em 0em;
+        position: relative;
         &::after {
           content: "";
           position: absolute;
