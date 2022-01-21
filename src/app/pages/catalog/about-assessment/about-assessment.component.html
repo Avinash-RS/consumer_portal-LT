@@ -493,23 +493,20 @@
                                 <img [src]="item?.imageurl" alt="" />
                             </figure>
                         </div>
-        
-                        <div class="projectsCreate" *ngIf="item?.subHeading1?.dispalystatus">
-                            <div class="heading4">{{item?.subHeading1?.title}}</div>
-                            <p>{{item?.subHeading1?.description}}</p>
-                            <ul>
-                                <li *ngFor="let projectChild of item?.subHeading1?.innerArray">
-                                    <div class="left">
-                                        <figure>
-                                            <img [src]="projectChild?.imageurl" alt="" />
-                                        </figure>
-                                    </div>
-                                    <div class="right">
-                                        <div class="heading6">{{projectChild?.title}}</div>
-                                        <p>{{projectChild?.description}}</p>
-                                    </div>
-                                </li>
-                            </ul>
+                    </div>
+                </section>
+                <section class="projectThink">
+                    <div class="container">
+                        <div class="thinkSection">
+                            <div class="left">
+                                <figure>
+                                    <img src="../../../../assets/images/projectThink_Left.png" alt="" />
+                                </figure>
+                            </div>
+                            <div class="right">
+                                <div>Start to Think & Work like a Software Developer</div>
+                                <p>We put you through an Agile, dynamic practice environment close to real world.</p>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -531,8 +528,28 @@
                         </div>
                     </div>
                 </section>
+                <section class="projectYou">
+                    <div class="container">
+                        <div class="projectsCreate" *ngIf="item?.subHeading1?.dispalystatus">
+                            <div class="heading4">{{item?.subHeading1?.title}}</div>
+                            <p>{{item?.subHeading1?.description}}</p>
+                            <ul>
+                                <li *ngFor="let projectChild of item?.subHeading1?.innerArray">
+                                    <div class="left">
+                                        <figure>
+                                            <img [src]="projectChild?.imageurl" alt="" />
+                                        </figure>
+                                    </div>
+                                    <div class="right">
+                                        <div class="heading6">{{projectChild?.title}}</div>
+                                        <p>{{projectChild?.description}}</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
             </ng-container>
-
             <!-- Curriculam -->
             <ng-container *ngIf="item.sectionId == 3 && item.dispalystatus">
                 <section class="curriculam" [id]="item.sectionId" #3>
