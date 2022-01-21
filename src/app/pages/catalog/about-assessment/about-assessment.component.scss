@@ -984,7 +984,7 @@
 }
 .tabssection {
   background-color: #ffffff;
-  padding: 1.25em 0;
+  padding: 1.5em 0;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
   position: relative;
   &.sticky {
@@ -994,7 +994,7 @@
     overflow: hidden;
     z-index: 10;
     background-color: #ffffff;
-    padding: 1em 0;
+    padding: 1.5em 0;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
     .buyNow {
       opacity: 1;
@@ -3049,7 +3049,8 @@
     background-size: contain;
     background-position: bottom;
     // background-attachment: fixed;
-    width: 33%;
+    // width: 33%;
+    width: 470px;
     height: 70%;
   }
   @include md {
