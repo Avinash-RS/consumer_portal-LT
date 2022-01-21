@@ -1299,6 +1299,7 @@
         color: $shadeBlueColor;
         font-size: 22px;
         margin: 2em 0em;
+        position: relative;
         &::after {
           content: "";
           position: absolute;
@@ -3038,7 +3039,39 @@
     }
   }
 }
-
+.programCourse{
+  width: 100%;
+  padding: 4.75em 0;
+  position: relative;
+  background: $blackBgColor;
+  .listPart{
+    padding-bottom: 4em;
+    .heading{
+      color: $blueLabelColor;
+      font-size: 1.675em;
+      padding-bottom: 1em;
+    }
+    .division{
+      display: flex;
+      color: $greyListColor; 
+      font-size: 1.212em;
+      li {
+        border-right: 1px solid $whiteColor;
+        padding-right: 10px;
+        margin-right: 10px;
+        &:last-child {
+          border-right: none;
+          padding-right: 0;
+          margin-right: 0;
+        }
+      }
+    }
+    &:last-child {
+      padding-bottom: 0em;
+    }
+  }
+    
+}
 //Instructors
 .instructors {
   background-color: #d9e6f0;
