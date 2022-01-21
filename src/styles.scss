@@ -11,7 +11,7 @@
 @import '~@angular/material/theming';
 @import '~ngx-toastr/toastr';
 
-$custom-typography: mat-typography-config($font-family: '"RobotoCondensed", normal !important;');
+$custom-typography: mat-typography-config($font-family: '"Lato", sans-serif !important');
 @include mat-core($custom-typography);
 // body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 

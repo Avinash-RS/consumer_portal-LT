@@ -107,6 +107,7 @@ export class AboutAssessmentComponent implements OnInit {
   @ViewChild('5') fifthElement: ElementRef;
   @ViewChild('6') sixthElement: ElementRef;
   @ViewChild('7') seventhElement: ElementRef;
+  @ViewChild('8') eigthElement: ElementRef;
   firstOffset: Number = null;
   secondOffset: Number = null;
   thirdOffset: Number = null;
@@ -114,6 +115,7 @@ export class AboutAssessmentComponent implements OnInit {
   fifthOffset: Number = null;
   sixthOffset: Number = null;
   seventhOffset: Number = null;
+  eigthOffset: Number = null;
 
   @HostListener('window:scroll', ['$event'])
     handleScroll(){
@@ -150,8 +152,11 @@ export class AboutAssessmentComponent implements OnInit {
       else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet >= this.fourthOffset && windowOffSet >= this.fifthOffset && windowOffSet >= this.sixthOffset  && windowOffSet < this.seventhOffset){
         this.activeSection = 6;
       }
-      else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet >= this.fourthOffset && windowOffSet >= this.fifthOffset && windowOffSet >= this.sixthOffset  && windowOffSet >= this.seventhOffset){
+      else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet >= this.fourthOffset && windowOffSet >= this.fifthOffset && windowOffSet >= this.sixthOffset  && windowOffSet >= this.seventhOffset && windowOffSet < this.eigthOffset){
         this.activeSection = 7;
+      }
+      else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet >= this.fourthOffset && windowOffSet >= this.fifthOffset && windowOffSet >= this.sixthOffset  && windowOffSet >= this.seventhOffset && windowOffSet >= this.eigthOffset){
+        this.activeSection = 8;
       }
 
     }
@@ -164,6 +169,7 @@ export class AboutAssessmentComponent implements OnInit {
            this.fifthOffset =  this.fifthElement.nativeElement.offsetTop - 200;
            this.sixthOffset =  this.sixthElement.nativeElement.offsetTop - 200;
            this.seventhOffset =  this.seventhElement.nativeElement.offsetTop -200;
+           this.eigthOffset =  this.eigthElement.nativeElement.offsetTop -200;
         },1000)
     }
   ngOnInit(): void {

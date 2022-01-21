@@ -62,6 +62,104 @@
   font-style: normal;
 }
 
+
+//Open 
+@font-face {
+  font-family: 'OpenSans';
+  src: url('#{$fontPath}/OpenSans-Light.woff2') format('woff2'),
+      url('#{$fontPath}/OpenSans-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  src: url('#{$fontPath}/OpenSans-Regular.woff2') format('woff2'),
+      url('#{$fontPath}/OpenSans-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  src: url('#{$fontPath}/OpenSans-Medium.woff2') format('woff2'),
+      url('#{$fontPath}/OpenSans-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  src: url('#{$fontPath}/OpenSans-SemiBold.woff2') format('woff2'),
+      url('#{$fontPath}/OpenSans-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  src: url('#{$fontPath}/OpenSans-Bold.woff2') format('woff2'),
+      url('#{$fontPath}/OpenSans-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  src: url('#{$fontPath}/OpenSans-ExtraBold.woff2') format('woff2'),
+      url('#{$fontPath}/OpenSans-ExtraBold.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+//Lato
+@font-face {
+  font-family: 'Lato';
+  src: url('#{$fontPath}/LatoThin.woff2') format('woff2'),
+       url('#{$fontPath}/LatoThin.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('#{$fontPath}/LatoLight.woff2') format('woff2'),
+       url('#{$fontPath}/LatoLight.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('#{$fontPath}/LatoRegular.woff2') format('woff2'),
+       url('#{$fontPath}/LatoRegular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('#{$fontPath}/LatoBold.woff2') format('woff2'),
+       url('#{$fontPath}/LatoBold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('#{$fontPath}/LatoBlack.woff2') format('woff2'),
+       url('#{$fontPath}/LatoBlack.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+}
+
+
 // Icon Fonts - Icomoon
 @font-face {
     font-family: 'icomoon';
