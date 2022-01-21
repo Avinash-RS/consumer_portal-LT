@@ -975,6 +975,22 @@
                         </div>
                     </div>
                 </section>
+                <section class="programCourse">
+                    <div class="container">
+                            <div class="listPart" *ngIf="item.subHeading1.dispalystatus">
+                                <div class="heading">{{item.subHeading1.title}}</div>
+                                <div class="division" *ngFor="let program of item.subHeading1.innerArray">
+                                    <div>{{program}}</div> 
+                                </div>
+                            </div>
+                            <div class="listPart" *ngIf="item.subHeading2.dispalystatus"> 
+                                <div class="heading">{{item.subHeading2.title}}</div>
+                                <div class="division" *ngFor="let course of item.subHeading2.innerArray">
+                                    <div>{{course}}</div>
+                                </div>
+                            </div> 
+                    </div>
+                </section>
             </ng-container>
 
         </ng-container>
