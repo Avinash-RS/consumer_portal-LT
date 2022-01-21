@@ -495,12 +495,12 @@
                         </div>
                     </div>
                 </section>
-                <section class="projectThink" *ngIf="item?.subHeading0?.dispalystatus">
+                <section class="projectThink" *ngIf="item?.subHeading0?.dispalystatus" [ngStyle]="{'background-image': 'url(' + item?.subHeading0?.bgurl + ')'}">
                     <div class="container">
                         <div class="thinkSection">
                             <div class="left">
                                 <figure>
-                                    <img src="../../../../assets/images/projectThink_Left.png" alt="" />
+                                    <img [src]="item?.subHeading0?.imageurl" alt="" />
                                 </figure>
                             </div>
                             <div class="right">
@@ -549,7 +549,7 @@
                         </div>
                     </div>
                 </section>
-                <section class="projectFace" *ngIf="item?.subHeading3?.dispalystatus">
+                <section class="projectFace" *ngIf="item?.subHeading3?.dispalystatus" [ngStyle]="{'background-image': 'url(' + item?.subHeading3?.bgurl + ')'}">
                     <div class="container">
                         <div class="left">
                             <div class="commonHeadingStyle">{{item?.subHeading3?.title}}</div>
@@ -557,7 +557,7 @@
                         </div>
                         <div class="right">
                             <figure>
-                                <img src="../../../../assets/images/projectface.png" alt="" />
+                                <img [src]="item?.subHeading3?.imageurl" alt="" />
                             </figure>
                         </div>
                     </div>
@@ -673,7 +673,7 @@
                     </div>
                 </section>
                 <!-- duration -->
-                <section class="duration" *ngIf="item?.subHeading2?.dispalystatus">
+                <section class="duration" *ngIf="item?.subHeading2?.dispalystatus" [ngStyle]="{'background-image': 'url(' + item?.subHeading2?.imageurl + ')'}">
                     <div class="container">
                         <ul>
                             <li *ngFor="let duration of item?.subHeading2?.innerArray">
@@ -684,7 +684,7 @@
                     </div>
                 </section>
                 <!-- morehelp -->
-                    <section class="morehelp" *ngIf="item?.subHeading3?.dispalystatus">
+                    <section class="morehelp" *ngIf="item?.subHeading3?.dispalystatus" [ngStyle]="{'background-image': 'url(' + item?.subHeading3?.bgurl + ')'}">
                         <div class="container">
                             <div class="left">
                                 <div  class="helpcontent-title"><i>{{item?.subHeading3?.title}}</i></div>
@@ -704,7 +704,7 @@
                             </div>
                             <div class="right">
                                 <figure>
-                                    <img src="../../../../assets/images/request.png" alt="">
+                                    <img [src]="item?.subHeading3?.imageurl" alt="">
                                 </figure>
                             </div>
                         </div>
@@ -837,8 +837,8 @@
                         </div>
                     </div>
                     <div class="ocean">
-                        <div class="wave" [ngStyle]="{'background-image': 'url(https://assets.lntedutech.com/portalicons/wave2.svg)'}"></div>
-                        <div class="wave" [ngStyle]="{'background-image': 'url(https://assets.lntedutech.com/portalicons/wave1.svg)'}"></div>
+                        <div class="wave" [ngStyle]="{'background-image': 'url(' + item?.imageurl + ')'}"></div>
+                        <div class="wave" [ngStyle]="{'background-image': 'url(' + item?.imageurl2 + ')'}"></div>
                     </div>
                 </section>
                 <section class="industryStep" *ngIf="item?.subHeading1?.dispalystatus">
@@ -850,7 +850,7 @@
                                 <p>{{item?.subHeading1?.description}}.</p>
                             </div>
                             <figure>
-                                <img src="/assets/images/industrysSteps.svg" alt="" />
+                                <img [src]="item?.subHeading1?.imageurl" alt="" />
                             </figure>
                         </div>
                     </div>
@@ -887,8 +887,8 @@
                 </section>
             </ng-container>
 
-            <ng-container *ngIf="item.sectionId == 9 && item.dispalystatus">
-                <section class="enrollNow">
+            <ng-container *ngIf="item?.sectionId == 9 && item.dispalystatus">
+                <section class="enrollNow" [ngStyle]="{'background-image': 'url(' + item?.bgurl + ')'}">
                     <div class="container">
                         <div class="enrollNowWrapper">
                             <div class="left">
@@ -901,7 +901,7 @@
                             </div>
                             <div class="right">
                                 <figure>
-                                    <img src="/assets/images/enrollNowImage.png" alt="" />
+                                    <img [src]="item?.imageurl" alt="" />
                                 </figure>
                             </div>
                         </div>
@@ -953,7 +953,7 @@
             </ng-container>
 
             <ng-container *ngIf="item.sectionId == 8 && item.dispalystatus">
-                <section class="faq" [id]="item.sectionId" #8>
+                <section class="faq" [id]="item.sectionId" #8 [ngStyle]="{'background-image': 'url(' + item?.imageurl + ')'}">
                     <div class="container">
                         <div class="commonHeadingStyle">{{item?.title}}</div>
                         <div class="faqAccordionPanel" *ngFor="let faqTopics of item?.innerArray">
@@ -974,8 +974,8 @@
                 </section>
             </ng-container>
 
-            <ng-container *ngIf="item.sectionId == 11 && item.dispalystatus">
-                <section class="hiringPartnres">
+            <ng-container *ngIf="item?.sectionId == 11 && item.dispalystatus">
+                <section class="hiringPartnres" [ngStyle]="{'background-image': 'url(' + item?.imageurl + ')'}">
                     <div class="container">
                         <div class="commonHeadingStyle">{{item?.title}}</div>
                         <div class="wrapper">
@@ -984,21 +984,11 @@
                             </div>
                             <div class="right">
                                 <div class="figWrapper">
-                                    <figure>
-                                        <img src="/assets/images/LNT_Construction.png" alt="" />
-                                    </figure>
-                                    <figure>
-                                        <img src="/assets/images/LNT_Nxt.png" alt="" />
-                                    </figure>
-                                    <figure>
-                                        <img src="/assets/images/LNT_Technology Services.png" alt="" />
-                                    </figure>
-                                    <figure>
-                                        <img src="/assets/images/LNT_LTI.png" alt="" />
-                                    </figure>
-                                    <figure>
-                                        <img src="/assets/images/LNT_Mindtree.png" alt="" />
-                                    </figure>
+                                    <ng-container *ngFor="let img of item?.innerArray">
+                                        <figure>
+                                            <img [src]="img?.imageurl" alt="">
+                                        </figure>
+                                    </ng-container>
                                 </div>
                             </div>
                         </div>
