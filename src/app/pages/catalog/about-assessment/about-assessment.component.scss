@@ -994,7 +994,7 @@
     position: fixed;
     top: 74px;
     overflow: hidden;
-    z-index: 99;
+    z-index: 999;
     background-color: #ffffff;
     padding: 1em 0;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
@@ -1751,7 +1751,101 @@
     }
   }
 }
-
+//Duration
+.duration{
+  background-image: url("../../../../assets/images/duration.png");
+  padding: 4.5em 0;
+ .container{
+   ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 4em;
+    li{
+      .count{
+        color: $primaryColor;
+        font-size: 36px;
+        font-weight: 600;
+        margin-bottom: 30px;
+      }
+      .description{
+        color: $whiteColor;
+        font-size: 20px;
+        font-weight: 400;
+      }
+    }
+  }
+ }
+}
+//morehelp
+.morehelp{
+  //background-image: url("../../../../assets/images/helpbg.png");
+  padding: 4.5em 0;
+  .container{
+    display: flex;
+    justify-content: space-between;
+    .helpcontent{
+      width: 50%;
+      .helpcontent-title{
+        color: $primaryColor;
+        font-size: 24px;
+        font-weight: 500;
+        margin-bottom: 30px;
+      }
+      .helpcontent-decription{
+        color: #49AE31;
+        font-size: 20px;
+        font-weight: 500;
+        margin-bottom: 30px;
+      }
+     
+      .contact{
+        width: 70%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 30px;
+        .contact-content{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          img{
+            width: 32px;
+            margin-right: 15px;
+          }
+          .contact-label{
+            color: $greyColor;
+            font-size: 14px;
+            margin-bottom: 10px;
+            font-weight: 600;
+          }
+          .contact-desc{
+            font-size: 20px;
+            font-weight: 500;
+          }
+        }
+    
+      }
+      button{
+        @include buttonOutlined;
+        padding-left: 1em;
+        padding-right: 1em;
+        font-size: 1.15em;
+        font-weight: 400;
+        display: none;
+        @include lg {
+            display: inline-flex;
+        }
+       }
+    }
+    .imagearea{
+      width: 40%;
+      img{
+        width: 55%;
+      }
+    }
+  }
+}
 //Request Broucher
 .reqBroucher {
   position: relative;
