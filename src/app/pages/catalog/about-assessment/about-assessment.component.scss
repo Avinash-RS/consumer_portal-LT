@@ -1437,8 +1437,6 @@
           figure {
             margin-right: 1.5%;
             width: 2.5%;
-            img {
-            }
           }
           span {
             font-size: 1.125em;
@@ -1456,7 +1454,7 @@
   }
 }
 //projectFace
-.projectFace{
+.projectFace {
   position: relative;
   background-image: url("#{$imagePath}/faceBg.svg");
   background-size: cover;
@@ -1467,22 +1465,39 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    .left{
+    .left {
       width: 50%;
-      .commonHeadingStyle{
+      .heading4 {
         color: $shadeBlueColor;
+        font-family: "OpenSans", sans-serif;
+        font-size: 1.5em;
+        font-weight: 600;
+        margin: 1em 0 2em 0;
+        position: relative;
+        &::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: -0.4em;
+          width: 3em;
+          height: 3px;
+          border-radius: 1.25em;
+          background-image: linear-gradient(to right, #00bcef, #00c0db, #00c1b6, #00be83, #4eb749);
+        }
       }
-      p{
-        font-size: 20px;
+      p {
+        font-size: 1.25em;
         font-weight: 400;
-        line-height: normal;
+        color: $darkGrey;
+        line-height: 1.5;
       }
     }
-    .right{
+    .right {
       width: 50%;
-      figure{
+      figure {
         margin: 0;
-        img{
+        display: flex;
+        img {
           width: 87%;
         }
       }
@@ -1551,7 +1566,7 @@
           margin-left: 1.25em;
           font-family: "OpenSans", sans-serif;
           font-size: 1.125em;
-          font-weight: 500;
+          font-weight: 600;
           color: $whiteColor;
           &::before {
             content: "";
@@ -1586,7 +1601,7 @@
           ul {
             margin-left: 1.6em;
             li {
-              font-size: 1.25em;
+              font-size: 1.125em;
               font-weight: 400;
               color: $blackColor;
               padding-bottom: 0.5em;
@@ -1660,12 +1675,12 @@
             font-size: 1em;
             padding-left: 1.5em;
             padding-right: 1.5em;
-            min-width: 13em;
             margin-top: 1em;
-            font-weight: 400;
+            font-weight: 700;
             line-height: 3;
             color: white;
             background: #27BBEE;
+            text-transform: uppercase;
             border: none;
         }
         }
@@ -1704,7 +1719,7 @@
           .pnNum {
             font-family: "OpenSans", sans-serif;
             font-size: 1.6em;
-            font-weight: 400;
+            font-weight: 600;
             color: #1b4e9b;
             margin-top: 10px;
           }
@@ -1863,6 +1878,8 @@
     font-size: 16px;
   }
   .heading4 {
+    font-family: "OpenSans", sans-serif;
+    font-weight: 600;
     color: $darkGrey;
     margin-bottom: 0.7em;
     display: inline-block;
@@ -1902,23 +1919,24 @@
       }
       figure {
         margin: 0 0 0.75em 0;
-        height: 75px;
+        height: 85px;
         display: flex;
         justify-content: center;
         align-items: center;
         img {
-          max-width: 30%;
+          max-width: 35%;
         }
       }
       .heading5 {
         color: #0071bc;
-        font-weight: 700;
+        font-family: "OpenSans", sans-serif;
+        font-weight: 600;
         margin: 0 0 0.75em 0;
       }
       p {
         font-size: 0.825em;
         font-weight: 400;
-        line-height: normal;
+        line-height: 1.4;
         color: $mediumGrey;
       }
       &::before,
@@ -1965,24 +1983,31 @@
 //Duration
 .duration{
   background-image: url("../../../../assets/images/duration.png");
-  padding: 4.5em 0;
- .container{
-   ul{
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 5em 0;
+ .container {
+   ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 4em;
-    li{
-      .count{
+    li {
+      text-align: center;
+      .count {
         color: $primaryColor;
-        font-size: 36px;
-        font-weight: 600;
-        margin-bottom: 30px;
+        font-size: 2.5em;
+        font-family: "OpenSans", sans-serif;
+        font-weight: 900;
+        margin-bottom: 0.6em;
+        line-height: normal;
       }
-      .description{
+      .description {
         color: $whiteColor;
-        font-size: 20px;
+        font-size: 1.25em;
         font-weight: 400;
+        line-height: normal;
       }
     }
   }
@@ -2088,12 +2113,9 @@
 //Request Broucher
 .reqBroucher {
   position: relative;
-  //background-image: url("../../../../assets/images/requestBroucher.png");
   background-position: 0px 0px;
   background-repeat: repeat-x;
-  // background-repeat: no-repeat;
   animation: animatedBackground 60s linear infinite alternate;
-  // background-size: cover;
   width: 100%;
   text-align: center;
   padding: 3em 0;
@@ -2139,6 +2161,7 @@
     z-index: 9;
   }
   .heading {
+    font-family: "OpenSans", sans-serif;
     font-size: 1.875em;
     font-weight: 700;
     color: $whiteColor;
