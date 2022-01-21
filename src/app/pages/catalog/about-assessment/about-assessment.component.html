@@ -451,8 +451,8 @@
             <div class="tabssection" #stickyMenu [class.sticky] = "sticky">
                 <div class="container">
                     <ul>
-                        <li *ngFor="let item of this.courseData?.courseContents?.Headings">
-                            <a (click)="scroll(item.sectionId)" [ngClass]="item?.sectionId == activeSection ? 'active':''">{{item.title}}</a>
+                        <li *ngFor="let item of this.courseData?.courseContents?.tabs">
+                            <a (click)="scroll(item?.sectionId)" [ngClass]="item?.sectionId == activeSection ? 'active':''">{{item.title}}</a>
                         </li>
                     </ul>
                     <button class="buyNow" (click)="courseBuy()">Enroll Now</button>
