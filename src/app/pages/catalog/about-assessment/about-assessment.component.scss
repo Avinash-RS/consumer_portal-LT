@@ -1418,13 +1418,12 @@
   background-repeat: no-repeat;
   width: 100%;
   .container{
-    padding: 3em 0 0 0;
+    padding: 1em 0 0 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     .left{
       width: 50%;
-      //padding-right: 4em;
       .commonHeadingStyle{
         color: $shadeBlueColor;
       }
@@ -1946,18 +1945,25 @@
 }
 //morehelp
 .morehelp{
-  //background-image: url("../../../../assets/images/helpbg.png");
-  padding: 4.5em 0;
+  position: relative;
+  background-image: url("#{$imagePath}/helpbg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
   .container{
     display: flex;
     justify-content: space-between;
-    .helpcontent{
-      width: 50%;
+    align-items: center;
+    padding: 4.5em 0 0 0;
+    .left{
+      width: 60%;
       .helpcontent-title{
         color: $primaryColor;
         font-size: 24px;
         font-weight: 500;
-        margin-bottom: 30px;
+        margin-bottom: 40px;
+        width: 65%;
+        line-height: normal;
       }
       .helpcontent-decription{
         color: #49AE31;
@@ -2005,10 +2011,13 @@
         }
        }
     }
-    .imagearea{
+    .right{
       width: 40%;
-      img{
-        width: 55%;
+      figure{
+        margin: 0;
+        img{
+          width: 53%;
+        }
       }
     }
   }
@@ -2096,23 +2105,30 @@
   }
 }
 
-.expertSupport {
-  background-color: $whiteColor;
-  padding: 3.75em 0 0 0;
-  font-size: 12px;
-  position: relative;
-  @include md {
-  }
-  @include lg {
-    font-size: 14px;
-  }
-  @include xl {
-    font-size: 16px;
-  }
-}
+// .expertSupport {
+//   background-image: url("#{$imagePath}/expertbg.png");
+//   background-size: cover;
+//   background-repeat: no-repeat;
+//   width: 100%;
+//   font-size: 12px;
+//   position: relative;
+//   @include md {
+//   }
+//   @include lg {
+//     font-size: 14px;
+//   }
+//   @include xl {
+//     font-size: 16px;
+//   }
+// }
+
 .expertSupportTab {
-  background-color: #f8fbff;
-  padding: 0 0 3.75em 0;
+  // background-color: #f8fbff;
+  background-image: url("#{$imagePath}/expertbg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  padding: 3.75em 0;
   font-size: 12px;
   position: relative;
   @include md {
@@ -2125,6 +2141,9 @@
   }
   .content {
     padding: 3em 0.25em 0 0.25em;
+  }
+  .commonHeadingStyle {
+    color: $whiteColor;
   }
   .instructorsTab {
     .profile {
