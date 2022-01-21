@@ -495,7 +495,7 @@
                         </div>
                     </div>
                 </section>
-                <section class="projectThink">
+                <section class="projectThink" *ngIf="item?.subHeading0?.dispalystatus">
                     <div class="container">
                         <div class="thinkSection">
                             <div class="left">
@@ -504,8 +504,8 @@
                                 </figure>
                             </div>
                             <div class="right">
-                                <div>Start to Think & Work like a Software Developer</div>
-                                <p>We put you through an Agile, dynamic practice environment close to real world.</p>
+                                <div>{{item?.subHeading0?.title}}</div>
+                                <p>{{item?.subHeading0?.description}}</p>
                             </div>
                         </div>
                     </div>
@@ -636,11 +636,11 @@
                     </div>
                 </section>
                 <!-- Request Broucher -->
-                <section class="reqBroucher" [ngStyle]="{'background-image': 'url(' + courseData?.image?.broucherimgurl + ')'}">
+                <section class="reqBroucher" [ngStyle]="{'background-image': 'url(' + item?.subHeading0?.imageurl + ')'}" *ngIf="item?.subHeading0?.dispalystatus">
                     <div class="container">
-                        <span class="heading">Learn the right trending skills with us and Land your Dream Job</span>
-                        <div class="heading6">{{courseData?.name}}</div>
-                        <button><img [src]="courseData?.image?.broucherurl" alt="" /> Request Brochure</button>
+                        <span class="heading">{{item?.subHeading0?.title}}</span>
+                        <div class="heading6">{{item?.subHeading0?.description}}</div>
+                        <button><img [src]="item?.subHeading0?.broucherurl" alt="" /> Request Brochure</button>
                     </div>
                 </section>
                 <!-- Real Time Projects -->
@@ -815,12 +815,13 @@
                         <div class="wave" [ngStyle]="{'background-image': 'url(https://assets.lntedutech.com/portalicons/wave1.svg)'}"></div>
                     </div>
                 </section>
-                <section class="industryStep">
+                <section class="industryStep" *ngIf="item?.subHeading1?.dispalystatus">
+                    <div class="bg"></div>
                     <div class="wrapper">
                         <div class="container">
                             <div class="left">
-                                <div class="heading4">Industry is at your next step</div>
-                                <p>L&T Edutech opens the door of Opportunities and stage you as a performer with right skills in hand.</p>
+                                <div class="heading4">{{item?.subHeading1?.title}}</div>
+                                <p>{{item?.subHeading1?.description}}.</p>
                             </div>
                             <figure>
                                 <img src="/assets/images/industrysSteps.svg" alt="" />
@@ -831,7 +832,7 @@
             </ng-container>
 
             <!-- Programming Language -->
-            <ng-container *ngIf="item.sectionId == 6 && item.dispalystatus">
+            <ng-container *ngIf="item.sectionId == 6 && item?.dispalystatus">
                 <section class="programmingLanguages" [id]="item.sectionId" #6>
                     <div class="container">
                         <div class="commonHeadingStyle">{{item?.title}}</div>
@@ -858,12 +859,15 @@
                         </div>
                     </div>
                 </section>
+            </ng-container>
+
+            <ng-container *ngIf="item.sectionId == 9 && item.dispalystatus">
                 <section class="enrollNow">
                     <div class="container">
                         <div class="enrollNowWrapper">
                             <div class="left">
-                                <div class="heading">Need Assistance to Enroll the program</div>
-                                <p>Our 24/7 Support Team will reach you to assist your Onboarding Process at the earliest</p>
+                                <div class="heading">{{item?.title}}</div>
+                                <p>{{item?.description}}</p>
                                 <div>
                                     <button class="enrollNowBtn">ENROLL NOW</button>
                                     <button class="reqCallBack">Request Call Back</button>
@@ -878,7 +882,6 @@
                     </div>
                 </section>
             </ng-container>
-            
 
             <!-- Expert Support System -->
             <ng-container *ngIf="item.sectionId == 7 && item.dispalystatus">
