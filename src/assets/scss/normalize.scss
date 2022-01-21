@@ -25,16 +25,22 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'RobotoCondensed', sans-serif !important;
+    // font-family: 'RobotoCondensed', sans-serif !important;
+    font-family: 'Lato', sans-serif !important;
     background-color: $whiteColor;
   }
   // .mat-tab-group {
-  //   font-family: 'RobotoCondensed', sans-serif !important;
-  // }
-  /**
-   * Render the `main` element consistently in IE.
-   */
-  
+    //   font-family: 'RobotoCondensed', sans-serif !important;
+    // }
+    /**
+    * Render the `main` element consistently in IE.
+    */
+    
+  .mat-typography {
+    font-family: 'Lato', sans-serif !important;
+  }
+
+
   main {
     display: block;
   }
