@@ -510,7 +510,7 @@
                         </div>
                     </div>
                 </section>
-                <section class="progHighlightsBg">
+                <section class="progHighlightsBg" *ngIf="item?.subHeading1?.dispalystatus">
                     <div class="container">
                         <div class="programmeHighlights" *ngIf="item?.subHeading2?.dispalystatus">
                             <div class="heading4">{{item?.subHeading2?.title}}</div>
@@ -528,7 +528,7 @@
                         </div>
                     </div>
                 </section>
-                <section class="projectYou">
+                <section class="projectYou" *ngIf="item?.subHeading2?.dispalystatus">
                     <div class="container">
                         <div class="projectsCreate" *ngIf="item?.subHeading1?.dispalystatus">
                             <div class="heading4">{{item?.subHeading1?.title}}</div>
@@ -546,6 +546,19 @@
                                     </div>
                                 </li>
                             </ul>
+                        </div>
+                    </div>
+                </section>
+                <section class="projectFace" *ngIf="item?.subHeading3?.dispalystatus">
+                    <div class="container">
+                        <div class="left">
+                            <div class="commonHeadingStyle">{{item?.subHeading3?.title}}</div>
+                            <p>{{item?.subHeading3?.description}}</p>
+                        </div>
+                        <div class="right">
+                            <figure>
+                                <img src="../../../../assets/images/projectface.png" alt="" />
+                            </figure>
                         </div>
                     </div>
                 </section>
