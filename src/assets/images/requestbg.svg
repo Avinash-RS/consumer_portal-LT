@@ -1,0 +1,25 @@
+<svg id="Group_18526" data-name="Group 18526" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="542.612" height="394.157" viewBox="0 0 542.612 394.157">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_6327" data-name="Rectangle 6327" width="542.612" height="354.045" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="Rectangle_6328" data-name="Rectangle 6328" width="427.893" height="394.157" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Group_18518" data-name="Group 18518" transform="translate(0 2.1)" style="mix-blend-mode: multiply;isolation: isolate">
+    <g id="Group_18517" data-name="Group 18517">
+      <g id="Group_18516" data-name="Group 18516" clip-path="url(#clip-path)">
+        <path id="Path_27384" data-name="Path 27384" d="M329.641,255.973c-22.073-11.747-49.883-12.428-74.6-16.533-23.017-3.824-64.937-20.6-81.7-38.775-28.965-31.405-27.218-99.992,16.543-121.9,50.209-25.145,113.294-2.066,167.7,5.4,83.959,11.518,102.025-56.218,183.689-67.871,31.233-4.456,75.808,5.323,91.095,38.545,19.405,42.17-6.336,90.621,22.779,130.627,10.884,14.956,81.366,77.909,9.426,102.7-25.747,8.874-52.16,14.629-78.478,21.2-25.325,6.327-49.955,13.889-72.687,27.324-30.349,17.937-63.735,44.695-98.672,26.62-44.958-23.26-44.092-85.506-85.094-107.332" transform="translate(-153.91 -15.271)" fill="rgba(73,174,49,0.2)"/>
+      </g>
+    </g>
+  </g>
+  <g id="Group_18521" data-name="Group 18521" transform="translate(40.612)" style="mix-blend-mode: multiply;isolation: isolate">
+    <g id="Group_18520" data-name="Group 18520">
+      <g id="Group_18519" data-name="Group 18519" clip-path="url(#clip-path-2)">
+        <path id="Path_27385" data-name="Path 27385" d="M193.9,205.844c-86.8,138.893,79.034,202.811,183.914,202.811,103.139,0,219.7-40.641,219.7-165.543,0-321.525-254.628-275.664-403.61-37.268" transform="translate(-169.62 -14.495)" fill="rgba(39,187,238,0.3)"/>
+      </g>
+    </g>
+  </g>
+  <path id="Path_27386" data-name="Path 27386" d="M170.836,202.093a1.939,1.939,0,0,1-1.4-.608,2.138,2.138,0,0,1,0-2.927l78.727-82.238a1.922,1.922,0,0,1,2.8,0,2.136,2.136,0,0,1,0,2.93l-78.727,82.235a1.929,1.929,0,0,1-1.4.608" transform="translate(-130.224 157.633)" fill="#fff"/>
+</svg>

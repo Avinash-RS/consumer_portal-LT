@@ -510,7 +510,7 @@
                         </div>
                     </div>
                 </section>
-                <section class="progHighlightsBg">
+                <section class="progHighlightsBg" *ngIf="item?.subHeading1?.dispalystatus">
                     <div class="container">
                         <div class="programmeHighlights" *ngIf="item?.subHeading2?.dispalystatus">
                             <div class="heading4">{{item?.subHeading2?.title}}</div>
@@ -531,7 +531,7 @@
                         </div>
                     </div>
                 </section>
-                <section class="projectYou">
+                <section class="projectYou" *ngIf="item?.subHeading2?.dispalystatus">
                     <div class="container">
                         <div class="projectsCreate" *ngIf="item?.subHeading1?.dispalystatus">
                             <div class="heading4">{{item?.subHeading1?.title}}</div>
@@ -549,6 +549,19 @@
                                     </div>
                                 </li>
                             </ul>
+                        </div>
+                    </div>
+                </section>
+                <section class="projectFace" *ngIf="item?.subHeading3?.dispalystatus">
+                    <div class="container">
+                        <div class="left">
+                            <div class="commonHeadingStyle">{{item?.subHeading3?.title}}</div>
+                            <p>{{item?.subHeading3?.description}}</p>
+                        </div>
+                        <div class="right">
+                            <figure>
+                                <img src="../../../../assets/images/projectface.png" alt="" />
+                            </figure>
                         </div>
                     </div>
                 </section>
@@ -674,10 +687,10 @@
                     </div>
                 </section>
                 <!-- morehelp -->
-                    <section class="morehelp" *ngIf="item?.subHeading3?.dispalystatus && false">
+                    <section class="morehelp" *ngIf="item?.subHeading3?.dispalystatus">
                         <div class="container">
-                            <div class="helpcontent">
-                                <div class="helpcontent-title">{{item?.subHeading3?.title}}</div>
+                            <div class="left">
+                                <div  class="helpcontent-title"><i>{{item?.subHeading3?.title}}</i></div>
                                     <div class="helpcontent-decription">{{item?.subHeading3?.description}}</div>
                                     <div class="contact">
                                         <div class="contact-content" *ngFor="let contact of item?.subHeading3?.innerArray">
@@ -692,7 +705,7 @@
                                         <button class="">Request Call Back</button>
                                     </div>
                             </div>
-                            <div class="imagearea">
+                            <div class="right">
                                 <figure>
                                     <img src="../../../../assets/images/request.png" alt="">
                                 </figure>
@@ -703,13 +716,9 @@
 
             <!-- Expert Support System -->
             <ng-container *ngIf="item.sectionId == 4 && item.dispalystatus">
-                <section class="expertSupport" [id]="item.sectionId" #4>
+                <section class="expertSupportTab" [id]="item.sectionId" #4>
                     <div class="container">
                         <div class="commonHeadingStyle">{{item?.title}}</div>
-                    </div>
-                </section>
-                <section class="expertSupportTab">
-                    <div class="container">
                         <mat-tab-group class="expertSupportSystem">
                             <mat-tab *ngFor="let childItem of item?.innerArray">
                                 <ng-template mat-tab-label>{{childItem?.title}}</ng-template>
@@ -717,7 +726,7 @@
                                     <ng-container *ngIf="childItem?.subSectionID == 1">
                                         <div class="instructorsTab content">
                                             <owl-carousel-o [options]="TopicsOptions">
-                                                <ng-template *ngFor="let instructorsArray of item?.innerArray[0]?.innersubArray" carouselSlide>
+                                                <ng-template *ngFor="let instructorsArray of childItem?.innersubArray" carouselSlide>
                                                         <div class="profile">
                                                             <div class="image">
                                                                 <figure>
@@ -737,7 +746,7 @@
                                     <ng-container *ngIf="childItem?.subSectionID == 2">
                                         <div class="expertTab content">
                                             <owl-carousel-o [options]="expertOptions" class="expertList">
-                                                <ng-container *ngFor="let expertTab of item?.innerArray[1]?.innersubArray">
+                                                <ng-container *ngFor="let expertTab of childItem?.innersubArray">
                                                     <ng-template carouselSlide>
                                                         <figure>
                                                             <img [src]="expertTab?.imageurl" alt="" />
@@ -758,15 +767,15 @@
                                         <div class="careerSupport content">
                                             <div class="left">
                                                 <div class="heading6">
-                                                    {{item?.innerArray[2].description}}
+                                                    {{childItem?.description}}
                                                 </div>
                                                 <ul>
-                                                    <li *ngFor="let careerSupport of item?.innerArray[2]?.innersubArray"><em class="icon-CheckMark"></em> {{careerSupport}}</li>
+                                                    <li *ngFor="let careerSupport of childItem?.innersubArray"><em class="icon-CheckMark"></em> {{careerSupport}}</li>
                                                 </ul>
                                             </div>
                                             <div class="right">
                                                 <figure>
-                                                    <img [src]="item?.innerArray[2].imageurl" alt="" />
+                                                    <img [src]="childItem?.imageurl" alt="" />
                                                 </figure>
                                             </div>
                                         </div>
@@ -775,16 +784,33 @@
                                         <div class="studentSuccess content">
                                             <div class="left">
                                                 <figure>
-                                                    <img [src]="item?.innerArray[3].imageurl" alt="" />
+                                                    <img [src]="childItem?.imageurl" alt="" />
                                                 </figure>
                                             </div>
                                             <div class="right">
                                                 <div class="heading6">
-                                                    {{item?.innerArray[3].description}}
+                                                    {{childItem?.description}}
                                                 </div>
                                                 <ul>
-                                                    <li *ngFor="let studentSuccess of item?.innerArray[3]?.innersubArray"><em class="icon-CheckMark"></em> {{studentSuccess}}</li>
+                                                    <li *ngFor="let studentSuccess of childItem?.innersubArray"><em class="icon-CheckMark"></em> {{studentSuccess}}</li>
                                                 </ul>
+                                            </div>
+                                        </div>
+                                    </ng-container>
+                                    <ng-container *ngIf="childItem?.subSectionID == 5">
+                                        <div class="careerSupport content">
+                                            <div class="left">
+                                                <div class="heading6">
+                                                    {{childItem?.description}}
+                                                </div>
+                                                <ul>
+                                                    <li *ngFor="let careerSupport of childItem?.innersubArray"><em class="icon-CheckMark"></em> {{careerSupport}}</li>
+                                                </ul>
+                                            </div>
+                                            <div class="right">
+                                                <figure>
+                                                    <img [src]="childItem?.imageurl" alt="" />
+                                                </figure>
                                             </div>
                                         </div>
                                     </ng-container>
