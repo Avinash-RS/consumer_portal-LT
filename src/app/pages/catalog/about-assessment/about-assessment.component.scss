@@ -1204,7 +1204,7 @@
     width: 100%;
     .heading4 {
       font-family: "OpenSans", sans-serif;
-      font-weight: 600;
+      font-weight: 700;
       color: $darkGrey;
       margin: 0;
     }
@@ -1983,7 +1983,10 @@
 //Duration
 .duration{
   //background-image: url("../../../../assets/images/duration.png");
-  padding: 4.5em 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 5em 0;
  .container{
    ul{
     display: flex;
@@ -3168,7 +3171,10 @@
     }
     .division{
       display: flex;
-      color: $greyListColor; 
+      flex-wrap: wrap;
+      line-height: 1.3;
+      color: $greyListColor;
+      font-weight: 400;
       font-size: 1.212em;
       li {
         border-right: 1px solid $whiteColor;
