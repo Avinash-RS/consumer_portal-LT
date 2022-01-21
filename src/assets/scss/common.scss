@@ -31,8 +31,9 @@ ul {
 }
 
 .commonHeadingStyle {
+    font-family: "OpenSans", sans-serif;
     font-size: 1.875em;
-    font-weight: 400;
+    font-weight: 600;
     color: $darkGrey;
     line-height: 1.1;
     position: relative;
@@ -41,9 +42,9 @@ ul {
         content: '';
         position: absolute;
         left: 0;
-        bottom: -0.25em;
-        width: 2.5em;
-        height: 3px;
+        bottom: -0.4em;
+        width: 3em;
+        height: 4px;
         border-radius: 1.25em;
         background-image: linear-gradient(to right, #00bcef, #00c0db, #00c1b6, #00be83, #4eb749);
     }

@@ -520,7 +520,10 @@
                                     <div class="heading4">{{highlightChild?.title}}</div>
                                     <ul>
                                         <li *ngFor="let subChild of highlightChild?.innersubArray">
-                                            <img [src]="highlightChild?.imageurl" alt="" />{{subChild}}
+                                            <figure>
+                                                <img [src]="highlightChild?.imageurl" alt="" />
+                                            </figure>
+                                            <span>{{subChild}}</span>
                                         </li>
                                     </ul>
                                 </div>
