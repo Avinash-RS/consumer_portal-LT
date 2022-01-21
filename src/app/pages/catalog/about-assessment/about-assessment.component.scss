@@ -3086,9 +3086,39 @@
   }
 }
 
+//Related Programs
+.relatedPrograms {
+  background-color: $whiteColor;
+  padding: 3.75em 0;
+  position: relative;
+  font-size: 12px;
+  @include md {
+  }
+  @include lg {
+    font-size: 14px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
+  .grarientBg {
+    background-image: linear-gradient(to right, #ffffff, #fcfcfc, #fafafa, #f7f7f7, #f5f5f5);
+    padding: 0;
+    .wrapper {
+      background-color: #f5f5f5;
+      border-radius: 50px 0 0 50px;
+      padding: 1.25em;
+      ul {
+        li {
+          background-color: $whiteColor;
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+        }
+      }
+    }
+  }
+}
+
 //Hiring Partners
 .hiringPartnres {
-  //background-image: url("#{$imagePath}/hiringPartners_bg.png");
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
@@ -3157,7 +3187,7 @@
     }
   }
 }
-.programCourse{
+.programCourse {
   width: 100%;
   padding: 4.75em 0;
   position: relative;
