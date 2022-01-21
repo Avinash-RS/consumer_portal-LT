@@ -758,26 +758,39 @@
             
             <!-- Carrer Path -->
             <ng-container *ngIf="item.sectionId == 5 && item.dispalystatus">
-            <section class="careerPath" [id]="item.sectionId" #5>
-                <div class="container">
-                    <div class="commonHeadingStyle">{{item?.title}}</div>
-                    <div class="careerPathWrapper">
-                        <div class="path" *ngFor="let carerChild of item?.innerArray">
-                            <figure>
-                                <img [src]="carerChild?.imageurl" alt="" />
-                            </figure>
-                            <span class="heading">{{carerChild?.title}}
-                                <em class="icon-RightArrow"></em>
-                            </span>
-                            <p>{{carerChild?.description}}</p>
+                <section class="careerPath" [id]="item.sectionId" #5>
+                    <div class="container">
+                        <div class="commonHeadingStyle">{{item?.title}}</div>
+                        <div class="careerPathWrapper">
+                            <div class="path" *ngFor="let carerChild of item?.innerArray">
+                                <figure>
+                                    <img [src]="carerChild?.imageurl" alt="" />
+                                </figure>
+                                <span class="heading">{{carerChild?.title}}
+                                    <em class="icon-RightArrow"></em>
+                                </span>
+                                <p>{{carerChild?.description}}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="ocean">
-                    <div class="wave" [ngStyle]="{'background-image': 'url(https://assets.lntedutech.com/portalicons/wave2.svg)'}"></div>
-                    <div class="wave" [ngStyle]="{'background-image': 'url(https://assets.lntedutech.com/portalicons/wave1.svg)'}"></div>
-                </div>
-            </section>
+                    <div class="ocean">
+                        <div class="wave" [ngStyle]="{'background-image': 'url(https://assets.lntedutech.com/portalicons/wave2.svg)'}"></div>
+                        <div class="wave" [ngStyle]="{'background-image': 'url(https://assets.lntedutech.com/portalicons/wave1.svg)'}"></div>
+                    </div>
+                </section>
+                <section class="industryStep">
+                    <div class="wrapper">
+                        <div class="container">
+                            <div class="left">
+                                <div class="heading4">Industry is at your next step</div>
+                                <p>L&T Edutech opens the door of Opportunities and stage you as a performer with right skills in hand.</p>
+                            </div>
+                            <figure>
+                                <img src="/assets/images/industrysSteps.svg" alt="" />
+                            </figure>
+                        </div>
+                    </div>
+                </section>
             </ng-container>
 
             <!-- Programming Language -->
@@ -808,9 +821,27 @@
                         </div>
                     </div>
                 </section>
+                <section class="enrollNow">
+                    <div class="container">
+                        <div class="enrollNowWrapper">
+                            <div class="left">
+                                <div class="heading">Need Assistance to Enroll the program</div>
+                                <p>Our 24/7 Support Team will reach you to assist your Onboarding Process at the earliest</p>
+                                <div>
+                                    <button class="enrollNowBtn">ENROLL NOW</button>
+                                    <button class="reqCallBack">Request Call Back</button>
+                                </div>
+                            </div>
+                            <div class="right">
+                                <figure>
+                                    <img src="/assets/images/enrollNowImage.png" alt="" />
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </ng-container>
             
-       
 
             <!-- Expert Support System -->
             <ng-container *ngIf="item.sectionId == 7 && item.dispalystatus">
@@ -850,6 +881,60 @@
                         </div>
                         <div class="moreReviews">
                             <button>See more reviews</button>
+                        </div>
+                    </div>
+                </section>
+            </ng-container>
+
+            <ng-container *ngIf="item.sectionId == 8 && item.dispalystatus">
+                <section class="faq" [id]="item.sectionId" #8>
+                    <div class="container">
+                        <div class="commonHeadingStyle">{{item?.title}}</div>
+                        <div class="faqAccordionPanel" *ngFor="let faqTopics of item?.innerArray">
+                            <mat-accordion>
+                                <mat-expansion-panel [expanded]="false">
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            <div class="heading5">{{faqTopics?.question}}</div>
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <div class="expansionContent">
+                                        <p>{{faqTopics?.answer}}</p>
+                                    </div>
+                                </mat-expansion-panel>
+                            </mat-accordion>
+                        </div>
+                    </div>
+                </section>
+            </ng-container>
+
+            <ng-container *ngIf="item.sectionId == 11 && item.dispalystatus">
+                <section class="hiringPartnres">
+                    <div class="container">
+                        <div class="commonHeadingStyle">{{item?.title}}</div>
+                        <div class="wrapper">
+                            <div class="left">
+                                <p>{{item?.description}}</p>
+                            </div>
+                            <div class="right">
+                                <div class="figWrapper">
+                                    <figure>
+                                        <img src="/assets/images/LNT_Construction.png" alt="" />
+                                    </figure>
+                                    <figure>
+                                        <img src="/assets/images/LNT_Nxt.png" alt="" />
+                                    </figure>
+                                    <figure>
+                                        <img src="/assets/images/LNT_Technology Services.png" alt="" />
+                                    </figure>
+                                    <figure>
+                                        <img src="/assets/images/LNT_LTI.png" alt="" />
+                                    </figure>
+                                    <figure>
+                                        <img src="/assets/images/LNT_Mindtree.png" alt="" />
+                                    </figure>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
