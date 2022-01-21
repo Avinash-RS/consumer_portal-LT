@@ -1270,6 +1270,7 @@
   padding: 1.25em 0 3em 0;
   font-size: 12px;
   font-size: 12px;
+  background-size: cover;
   @include md {
   }
   @include lg {
@@ -2498,6 +2499,7 @@
   padding: 3em 0;
   font-size: 12px;
   position: relative;
+  background-size: cover;
   &::before {
     content: '';
     display: block;
