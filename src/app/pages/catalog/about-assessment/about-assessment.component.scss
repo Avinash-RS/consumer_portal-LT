@@ -2493,18 +2493,13 @@
 
 //IndustryStep
 .industryStep {
-  background-image: url("#{$imagePath}/industryStep_bg.svg");
-  background-repeat: no-repeat;
+  // background-image: url("#{$imagePath}/industryStep_bg.svg");
+  // background-repeat: no-repeat;
+  background-color: #4D7698;
   width: 100%;
   padding: 3em 0;
   font-size: 12px;
   position: relative;
-  background-size: cover;
-  &::before {
-    content: '';
-    display: block;
-    padding-bottom: 17%;
-  }
   @include md {
     font-size: 12px;
   }
@@ -2514,17 +2509,27 @@
   @include xl {
     font-size: 16px;
   }
+  .bg {
+    background-color: #5F82A0;
+    padding: 6em 0;
+    border-radius: 0 100px 100px 0;
+    width: 55%;
+  }
   .wrapper {
     position: absolute;
     width: 100%;
-    top: 50%;
-    transform: translateY(-50%);
+    height: 100%;
+    bottom: 0;
+    // top: 50%;
+    // transform: translateY(-50%);
   }
   .container {
     position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
     .left {
-      max-width: 568px;
-      width: 100%;
+      width: 55%;
       .heading4 {
         color: #EBFF4E;
       }
@@ -2538,9 +2543,16 @@
       }
     }
     figure {
-      position: absolute;
-      right: 0;
-      bottom: -99%;
+      position: relative;
+      width: 45%;
+      text-align: right;
+      bottom: 20px;
+      img {
+        width: 93%;
+      }
+      // position: absolute;
+      // right: 0;
+      // bottom: -99%;
     }
   }
 }
@@ -2927,7 +2939,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
-  padding: 3.75em 0;
+  padding: 8em 0;
   position: relative;
   font-size: 12px;
   @include md {
