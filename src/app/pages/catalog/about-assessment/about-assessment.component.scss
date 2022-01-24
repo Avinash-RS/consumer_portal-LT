@@ -3173,6 +3173,10 @@
         figure {
           display: block;
           margin: 0.75em 0 1em 0;
+          img {
+            height: 170px;
+            object-fit: cover;
+          }
         }
         .contentWrapper {
           padding: 0 0.5em;
