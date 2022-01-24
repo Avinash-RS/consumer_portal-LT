@@ -3171,6 +3171,35 @@
               }
             }
           }
+          .level{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1em;
+            > div {
+              &:first-child {
+                span {
+                  em {
+                    color: #EEC720;
+                  }
+                }
+              }
+            }
+            p {
+              color: $darkGrey;
+              font-size: 0.625em;
+              font-weight: 400;
+              line-height: normal;
+              margin: 0;
+            }
+            span {
+              color: $darkGrey;
+              font-family: "OpenSans", sans-serif;
+              font-size: 0.75em;
+              font-weight: 600;
+              line-height: normal;
+            }
+          }
         }
       }
     }

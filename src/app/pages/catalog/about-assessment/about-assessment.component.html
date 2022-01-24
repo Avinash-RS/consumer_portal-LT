@@ -954,7 +954,7 @@
                     </div>
                 </section>
             </ng-container>
-
+            <!-- FAQ -->
             <ng-container *ngIf="item.sectionId == 8 && item.dispalystatus">
                 <section class="faq" [id]="item.sectionId" #8 [ngStyle]="{'background-image': 'url(' + item?.imageurl + ')'}">
                     <div class="container">
@@ -975,116 +975,30 @@
                         </div>
                     </div>
                 </section>
-
-                <section class="relatedProgramsAssessments">
+            </ng-container>
+            <!-- Related items -->
+            <ng-container *ngIf="item.sectionId == 10 && item.dispalystatus">
+                <section class="relatedProgramsAssessments" *ngIf="item?.subHeading1?.dispalystatus">
                     <div class="container">
-                        <div class="commonHeadingStyle">Related Programs for you</div>
+                        <div class="commonHeadingStyle">{{item?.subHeading1?.title}}</div>
                     </div>
                     <div class="programBg commonCSS">
                         <div class="container">
                             <div class="wrapper">
                                 <owl-carousel-o [options]="relatedList">
                                     <ng-container>
-                                        <ng-template carouselSlide>
+                                        <ng-template carouselSlide *ngFor="let relatedchild of item?.subHeading1?.innerArray">
                                             <div class="relatedList">
-                                                <span class="heading">Full Stack .NET Application Development</span>
+                                                <span class="heading">{{relatedchild?.title}}</span>
                                                 <figure>
-                                                    <img src="/assets/images/relatedPrograms.png" alt="" />
+                                                    <img [src]="relatedchild?.imageurl" alt="" />
                                                 </figure>
                                                 <div class="contentWrapper">
-                                                    <span class="batchStarts"><em class="icon-Time"></em> Batch starts on : 15 Feb, 2022</span>
+                                                    <span class="batchStarts"><em class="icon-Time"></em> Batch starts on : {{relatedchild?.date}}</span>
                                                     <div class="mnthStarts">
-                                                        <span class="months"><em class="icon-Booked"></em> 4.5 months</span>
+                                                        <span class="months"><em class="icon-Booked"></em> {{relatedchild?.duration}}</span>
                                                         <span class="stars">
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </ng-template>
-                                        <ng-template carouselSlide>
-                                            <div class="relatedList">
-                                                <span class="heading">Full Stack .NET Application Development</span>
-                                                <figure>
-                                                    <img src="/assets/images/relatedPrograms.png" alt="" />
-                                                </figure>
-                                                <div class="contentWrapper">
-                                                    <span class="batchStarts"><em class="icon-Time"></em> Batch starts on : 15 Feb, 2022</span>
-                                                    <div class="mnthStarts">
-                                                        <span class="months"><em class="icon-Booked"></em> 4.5 months</span>
-                                                        <span class="stars">
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </ng-template>
-                                        <ng-template carouselSlide>
-                                            <div class="relatedList">
-                                                <span class="heading">Full Stack .NET Application Development</span>
-                                                <figure>
-                                                    <img src="/assets/images/relatedPrograms.png" alt="" />
-                                                </figure>
-                                                <div class="contentWrapper">
-                                                    <span class="batchStarts"><em class="icon-Time"></em> Batch starts on : 15 Feb, 2022</span>
-                                                    <div class="mnthStarts">
-                                                        <span class="months"><em class="icon-Booked"></em> 4.5 months</span>
-                                                        <span class="stars">
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </ng-template>
-                                        <ng-template carouselSlide>
-                                            <div class="relatedList">
-                                                <span class="heading">Full Stack .NET Application Development</span>
-                                                <figure>
-                                                    <img src="/assets/images/relatedPrograms.png" alt="" />
-                                                </figure>
-                                                <div class="contentWrapper">
-                                                    <span class="batchStarts"><em class="icon-Time"></em> Batch starts on : 15 Feb, 2022</span>
-                                                    <div class="mnthStarts">
-                                                        <span class="months"><em class="icon-Booked"></em> 4.5 months</span>
-                                                        <span class="stars">
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </ng-template>
-                                        <ng-template carouselSlide>
-                                            <div class="relatedList">
-                                                <span class="heading">Full Stack .NET Application Development</span>
-                                                <figure>
-                                                    <img src="/assets/images/relatedPrograms.png" alt="" />
-                                                </figure>
-                                                <div class="contentWrapper">
-                                                    <span class="batchStarts"><em class="icon-Time"></em> Batch starts on : 15 Feb, 2022</span>
-                                                    <div class="mnthStarts">
-                                                        <span class="months"><em class="icon-Booked"></em> 4.5 months</span>
-                                                        <span class="stars">
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
+                                                            <em class="icon-Star" *ngFor="let rate of relatedchild?.rating"></em>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -1097,116 +1011,36 @@
                     </div>
                 </section>
 
-                <section class="relatedProgramsAssessments">
+                <section class="relatedProgramsAssessments" *ngIf="item?.subHeading2?.dispalystatus">
                     <div class="container">
-                        <div class="commonHeadingStyle">Related Assessments for you</div>
+                        <div class="commonHeadingStyle">{{item?.subHeading2?.title}}</div>
                     </div>
                     <div class="assessmentBg commonCSS">
                         <div class="container">
                             <div class="wrapper">
                                 <owl-carousel-o [options]="relatedList">
                                     <ng-container>
-                                        <ng-template carouselSlide>
+                                        <ng-template carouselSlide *ngFor="let relatedcourse of item?.subHeading2?.innerArray">
                                             <div class="relatedList">
-                                                <span class="heading">Full Stack .NET Application Development</span>
+                                                <span class="heading">{{relatedcourse?.title}}</span>
                                                 <figure>
                                                     <img src="/assets/images/relatedPrograms.png" alt="" />
                                                 </figure>
                                                 <div class="contentWrapper">
-                                                    <span class="batchStarts"><em class="icon-Time"></em> Batch starts on : 15 Feb, 2022</span>
                                                     <div class="mnthStarts">
-                                                        <span class="months"><em class="icon-Booked"></em> 4.5 months</span>
                                                         <span class="stars">
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
+                                                            <em class="icon-Star" *ngFor="let rate of relatedcourse?.rating"></em>
                                                         </span>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </ng-template>
-                                        <ng-template carouselSlide>
-                                            <div class="relatedList">
-                                                <span class="heading">Full Stack .NET Application Development</span>
-                                                <figure>
-                                                    <img src="/assets/images/relatedPrograms.png" alt="" />
-                                                </figure>
-                                                <div class="contentWrapper">
-                                                    <span class="batchStarts"><em class="icon-Time"></em> Batch starts on : 15 Feb, 2022</span>
-                                                    <div class="mnthStarts">
-                                                        <span class="months"><em class="icon-Booked"></em> 4.5 months</span>
-                                                        <span class="stars">
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </ng-template>
-                                        <ng-template carouselSlide>
-                                            <div class="relatedList">
-                                                <span class="heading">Full Stack .NET Application Development</span>
-                                                <figure>
-                                                    <img src="/assets/images/relatedPrograms.png" alt="" />
-                                                </figure>
-                                                <div class="contentWrapper">
-                                                    <span class="batchStarts"><em class="icon-Time"></em> Batch starts on : 15 Feb, 2022</span>
-                                                    <div class="mnthStarts">
-                                                        <span class="months"><em class="icon-Booked"></em> 4.5 months</span>
-                                                        <span class="stars">
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </ng-template>
-                                        <ng-template carouselSlide>
-                                            <div class="relatedList">
-                                                <span class="heading">Full Stack .NET Application Development</span>
-                                                <figure>
-                                                    <img src="/assets/images/relatedPrograms.png" alt="" />
-                                                </figure>
-                                                <div class="contentWrapper">
-                                                    <span class="batchStarts"><em class="icon-Time"></em> Batch starts on : 15 Feb, 2022</span>
-                                                    <div class="mnthStarts">
-                                                        <span class="months"><em class="icon-Booked"></em> 4.5 months</span>
-                                                        <span class="stars">
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </ng-template>
-                                        <ng-template carouselSlide>
-                                            <div class="relatedList">
-                                                <span class="heading">Full Stack .NET Application Development</span>
-                                                <figure>
-                                                    <img src="/assets/images/relatedPrograms.png" alt="" />
-                                                </figure>
-                                                <div class="contentWrapper">
-                                                    <span class="batchStarts"><em class="icon-Time"></em> Batch starts on : 15 Feb, 2022</span>
-                                                    <div class="mnthStarts">
-                                                        <span class="months"><em class="icon-Booked"></em> 4.5 months</span>
-                                                        <span class="stars">
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                            <em class="icon-Star"></em>
-                                                        </span>
+                                                    <div class="level">
+                                                        <div>
+                                                            <p>Skill Level</p>
+                                                            <span><em class="icon-Level2"></em> {{relatedcourse?.level}}</span>
+                                                        </div>
+                                                        <div>
+                                                            <p>{{'No. of Assessments '}}</p>
+                                                            <span><em class="icon-Document"></em> {{relatedcourse?.NoOfAssessment}}</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1218,7 +1052,7 @@
                     </div>
                 </section>
             </ng-container>
-
+            <!-- hiringPartnres -->
             <ng-container *ngIf="item?.sectionId == 11 && item.dispalystatus">
                 <section class="hiringPartnres" [ngStyle]="{'background-image': 'url(' + item?.imageurl + ')'}">
                     <div class="container">
