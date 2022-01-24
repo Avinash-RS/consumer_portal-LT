@@ -687,31 +687,31 @@
                     </div>
                 </section>
                 <!-- morehelp -->
-                    <section class="morehelp" *ngIf="item?.subHeading3?.dispalystatus" [ngStyle]="{'background-image': 'url(' + item?.subHeading3?.bgurl + ')'}">
-                        <div class="container">
-                            <div class="left">
-                                <div  class="helpcontent-title"><i>{{item?.subHeading3?.title}}</i></div>
-                                    <div class="helpcontent-decription">{{item?.subHeading3?.description}}</div>
-                                    <div class="contact">
-                                        <div class="contact-content" *ngFor="let contact of item?.subHeading3?.innerArray">
-                                            <img [src]="contact?.imageurl"/>
-                                           <div>
-                                                <div class="contact-label">{{contact?.title}}</div>
-                                                <div class="contact-desc">{{contact?.description}}</div>
-                                           </div>
-                                        </div>
+                <section class="morehelp" *ngIf="item?.subHeading3?.dispalystatus" [ngStyle]="{'background-image': 'url(' + item?.subHeading3?.bgurl + ')'}">
+                    <div class="container">
+                        <div class="left">
+                            <div class="heading4">{{item?.subHeading3?.title}}</div>
+                            <div class="heading6">{{item?.subHeading3?.description}}</div>
+                            <div class="contact">
+                                <div class="contact-content" *ngFor="let contact of item?.subHeading3?.innerArray">
+                                    <div class="icon">
+                                        <img [src]="contact?.imageurl" alt="" />
                                     </div>
-                                    <div>
-                                        <button class="">Request Call Back</button>
+                                    <div class="rightSec">
+                                        <div class="contact-label">{{contact?.title}}</div>
+                                        <div class="contact-desc">{{contact?.description}}</div>
                                     </div>
+                                </div>
                             </div>
-                            <div class="right">
-                                <figure>
-                                    <img [src]="item?.subHeading3?.imageurl" alt="">
-                                </figure>
-                            </div>
+                            <button class="reqCallBack">Request Call Back</button>
                         </div>
-                    </section>
+                        <div class="right">
+                            <figure>
+                                <img [src]="item?.subHeading3?.imageurl" alt="">
+                            </figure>
+                        </div>
+                    </div>
+                </section>
             </ng-container>
 
             <!-- Expert Support System -->
@@ -1093,23 +1093,23 @@
                     <div class="container">
                         <div class="partnersSection" *ngIf="item.subHeading3.dispalystatus">
                             <div>{{item.subHeading3.title}}</div>
-                                <figure *ngFor="let partner of item.subHeading3.innerArray">
-                                    <img [src]="partner.imageurl" alt="" />
-                                </figure>
+                            <figure *ngFor="let partner of item.subHeading3.innerArray">
+                                <img [src]="partner.imageurl" alt="" />
+                            </figure>
                         </div>
                         <div class="grievanceSection"  *ngIf="item.subHeading3.dispalystatus">
-                            <p>{{item.subHeading3.description}}</p>
+                            <p><span>For any grievances</span> - {{item.subHeading3.description}}</p>
                         </div>
                         <div class="poweredSection" *ngIf="item.subHeading4.dispalystatus">
-                            <div class="heading">{{item.subHeading4.title}}</div>
-                            <div class="partnerImage">
-                                <figure class="left">
+                            <div class="left">
+                                <span class="heading">{{item.subHeading4.title}}</span>
+                                <figure>
                                     <img [src]="item.subHeading4.imageurl" alt="" />
                                 </figure>
-                                <figure class="right">
-                                    <img [src]="item.subHeading4.Subimageurl" alt="" />
-                                </figure>
                             </div>
+                            <figure class="right">
+                                <img [src]="item.subHeading4.Subimageurl" alt="" />
+                            </figure>
                         </div>
                     </div>
                 </section>
