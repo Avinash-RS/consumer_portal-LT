@@ -14,6 +14,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { GlobalValidatorsService } from 'src/app/validators/global-validators.service';
+
 @Component({
   selector: 'app-about-assessment',
   templateUrl: './about-assessment.component.html',
@@ -110,9 +111,11 @@ export class AboutAssessmentComponent implements OnInit {
   nocard:boolean = true;
   defaultDiv:boolean = true;
   @ViewChild('kycmandate', { static: false }) matDialogRef: TemplateRef<any>;
+  @ViewChild('enroll', { static: false }) enrollRequest: TemplateRef<any>;
   backgroundImageUrl: any;
   constructor(private router: Router, private catalogService : CatalogService,private route:ActivatedRoute,private appconfig: AppConfigService,
-    private commonService : CommonService,public toast: ToastrService ,private util: UtilityService,private dialog: MatDialog,private fb: FormBuilder,
+    private commonService : CommonService,public toast: ToastrService ,private util: UtilityService,private dialog: MatDialog,
+    private fb: FormBuilder,
     private gv: GlobalValidatorsService
     ) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => {
@@ -121,6 +124,7 @@ export class AboutAssessmentComponent implements OnInit {
    }
   public destroyed = new Subject<any>();
   contactForm: FormGroup;
+  queryForm: FormGroup;
   @ViewChild('stickyMenu') menuElement: ElementRef;
   sticky: boolean = false;
   menuPosition: any = 472;
@@ -244,6 +248,8 @@ export class AboutAssessmentComponent implements OnInit {
       phone: ['', [Validators.required]],
       comment:['']
     });
+
+
   }
   get name() {
     return this.contactForm.get('name');
@@ -468,5 +474,19 @@ freeOrderPlace(cartid){
     const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
     window.scrollTo({top: y, behavior: 'smooth'});
 
+}
+openRequest(){
+  const query = this.dialog.open(this.enrollRequest, {
+    width: '60%',
+    height: '80%',
+    autoFocus: true,
+    closeOnNavigation: true,
+    disableClose: true,
+    panelClass: 'queryFormContainer'
+  });
+  query.afterClosed().subscribe(result => {
+    this.contactForm.reset();
+  });
+  return false;
 }
 }
