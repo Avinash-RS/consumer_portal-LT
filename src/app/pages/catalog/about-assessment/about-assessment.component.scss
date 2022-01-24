@@ -3571,3 +3571,58 @@
 ::ng-deep .instructorsTab .owl-carousel .owl-stage-outer {
   padding: 0.5em;
 }
+
+.queryContainer{
+  padding: 1em;
+  margin: 0 auto;
+  .header{
+    color: $blueLabelColor;
+    font-size: 1.5em;
+    font-weight: 700;
+  }
+  .title{
+    font-size: 2em;
+    font-weight: bold;
+    margin-top: 1em 1em;
+    margin: 1em 0em;
+  }
+  .queryRow{
+    display: flex;
+  }
+  .inputContainer{
+    width: 50%;
+    margin-right: 0.5em;
+  }
+  button {
+    background: linear-gradient(to right,$blueLabelColor 0,$greenColor 100%);
+    color: $whiteColor;
+    line-height: 3.5 !important;
+    width: 20%;
+  }
+}
+.closeBtn{
+  position: absolute;
+    right: 0px;
+    top: -28px;
+    border: 1px solid $whiteColor;
+    color: $whiteColor;
+    border-radius: 1em;
+    width: 2em;
+    height: 2em;
+    font-size: 0.8em;
+    display: flex;
+    /* line-height: 0.5em; */
+    justify-content: center;
+    padding: 0.4em;
+    cursor: pointer;
+}
+
+::ng-deep .queryFormContainer{
+  position:  relative !important;
+}
+
+::ng-deep .cdk-global-scrollblock {
+	position: initial !important;
+	width: initial !important;
+	overflow: hidden !important;
+}
