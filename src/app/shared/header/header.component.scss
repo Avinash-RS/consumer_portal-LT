@@ -309,6 +309,7 @@ header {
     transition: opacity 0.5s ease;
     overflow: hidden;
     z-index: 999;
+    font-size: 14px;
     @include sm {
         top: 4em;
     }
@@ -316,7 +317,7 @@ header {
         top: 4.7em;
     }
     @include lg {
-        top: 6.2em;
+        top: 5.3em;
     }
     @include xl {
         // top: 4.6em;
