@@ -11,7 +11,7 @@ export const environment = {
   sso:'http://52.172.236.38:3015',
 
   // Dev base url
-  API_BASE_URL: 'https://edgeservice.lntiggnite.com/',  
+  API_BASE_URL: 'https://edgeportal.lntiggnite.com/',  
   PAYMENT:'https://devpayment.lntiggnite.com',
   lxp_url:'https://lmsdev.lntiggnite.com/redirection'
 };
