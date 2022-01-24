@@ -687,31 +687,31 @@
                     </div>
                 </section>
                 <!-- morehelp -->
-                    <section class="morehelp" *ngIf="item?.subHeading3?.dispalystatus" [ngStyle]="{'background-image': 'url(' + item?.subHeading3?.bgurl + ')'}">
-                        <div class="container">
-                            <div class="left">
-                                <div  class="helpcontent-title"><i>{{item?.subHeading3?.title}}</i></div>
-                                    <div class="helpcontent-decription">{{item?.subHeading3?.description}}</div>
-                                    <div class="contact">
-                                        <div class="contact-content" *ngFor="let contact of item?.subHeading3?.innerArray">
-                                            <img [src]="contact?.imageurl"/>
-                                           <div>
-                                                <div class="contact-label">{{contact?.title}}</div>
-                                                <div class="contact-desc">{{contact?.description}}</div>
-                                           </div>
-                                        </div>
+                <section class="morehelp" *ngIf="item?.subHeading3?.dispalystatus" [ngStyle]="{'background-image': 'url(' + item?.subHeading3?.bgurl + ')'}">
+                    <div class="container">
+                        <div class="left">
+                            <div class="heading4">{{item?.subHeading3?.title}}</div>
+                            <div class="heading6">{{item?.subHeading3?.description}}</div>
+                            <div class="contact">
+                                <div class="contact-content" *ngFor="let contact of item?.subHeading3?.innerArray">
+                                    <div class="icon">
+                                        <img [src]="contact?.imageurl" alt="" />
                                     </div>
-                                    <div>
-                                        <button (click)="openRequest()" class="">Request Call Back</button>
+                                    <div class="rightSec">
+                                        <div class="contact-label">{{contact?.title}}</div>
+                                        <div class="contact-desc">{{contact?.description}}</div>
                                     </div>
+                                </div>
                             </div>
-                            <div class="right">
-                                <figure>
-                                    <img [src]="item?.subHeading3?.imageurl" alt="">
-                                </figure>
-                            </div>
+                            <button class="reqCallBack" (click)="openRequest()">Request Call Back</button>
                         </div>
-                    </section>
+                        <div class="right">
+                            <figure>
+                                <img [src]="item?.subHeading3?.imageurl" alt="">
+                            </figure>
+                        </div>
+                    </div>
+                </section>
             </ng-container>
 
             <!-- Expert Support System -->
@@ -954,7 +954,7 @@
                     </div>
                 </section>
             </ng-container>
-
+            <!-- FAQ -->
             <ng-container *ngIf="item.sectionId == 8 && item.dispalystatus">
                 <section class="faq" [id]="item.sectionId" #8 [ngStyle]="{'background-image': 'url(' + item?.imageurl + ')'}">
                     <div class="container">
@@ -975,188 +975,84 @@
                         </div>
                     </div>
                 </section>
-
-                <section class="relatedProgramsAssessments">
+            </ng-container>
+            <!-- Related items -->
+            <ng-container *ngIf="item.sectionId == 10 && item.dispalystatus">
+                <section class="relatedProgramsAssessments programList" *ngIf="item?.subHeading1?.dispalystatus">
                     <div class="container">
-                        <div class="commonHeadingStyle">Related Programs for you</div>
+                        <div class="commonHeadingStyle">{{item?.subHeading1?.title}}</div>
                     </div>
                     <div class="programBg commonCSS">
                         <div class="container">
                             <div class="wrapper">
-                                <ul>
-                                    <li>
-                                        <span class="heading">Full Stack .NET Application Development</span>
-                                        <figure>
-                                            <img src="/assets/images/relatedPrograms.png" alt="" />
-                                        </figure>
-                                        <div class="contentWrapper">
-                                            <span class="batchStarts"><em class="icon-Time"></em> Batch starts on : 15 Feb, 2022</span>
-                                            <div class="mnthStarts">
-                                                <span class="months"><em class="icon-Booked"></em> 4.5 months</span>
-                                                <span class="stars">
-                                                    <em class="icon-Star"></em>
-                                                    <em class="icon-Star"></em>
-                                                    <em class="icon-Star"></em>
-                                                    <em class="icon-Star"></em>
-                                                    <em class="icon-Star"></em>
-                                                </span>
+                                <owl-carousel-o [options]="relatedList">
+                                    <ng-container>
+                                        <ng-template carouselSlide *ngFor="let relatedchild of item?.subHeading1?.innerArray">
+                                            <div class="relatedList">
+                                                <span class="heading">{{relatedchild?.title}}</span>
+                                                <figure>
+                                                    <img [src]="relatedchild?.imageurl" alt="" />
+                                                </figure>
+                                                <div class="contentWrapper">
+                                                    <span class="batchStarts"><em class="icon-Time"></em> Batch starts on : {{relatedchild?.date}}</span>
+                                                    <div class="mnthStarts">
+                                                        <span class="months"><em class="icon-Booked"></em> {{relatedchild?.duration}}</span>
+                                                        <span class="stars">
+                                                            <em class="icon-Star" *ngFor="let rate of relatedchild?.rating"></em>
+                                                        </span>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <span class="heading">Full Stack .NET Application Development</span>
-                                        <figure>
-                                            <img src="/assets/images/relatedPrograms.png" alt="" />
-                                        </figure>
-                                        <div class="contentWrapper">
-                                            <span class="batchStarts"><em class="icon-Time"></em> Batch starts on : 15 Feb, 2022</span>
-                                            <div class="mnthStarts">
-                                                <span class="months"><em class="icon-Booked"></em> 4.5 months</span>
-                                                <span class="stars">
-                                                    <em class="icon-Star"></em>
-                                                    <em class="icon-Star"></em>
-                                                    <em class="icon-Star"></em>
-                                                    <em class="icon-Star"></em>
-                                                    <em class="icon-Star"></em>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <span class="heading">Full Stack .NET Application Development</span>
-                                        <figure>
-                                            <img src="/assets/images/relatedPrograms.png" alt="" />
-                                        </figure>
-                                        <div class="contentWrapper">
-                                            <span class="batchStarts"><em class="icon-Time"></em> Batch starts on : 15 Feb, 2022</span>
-                                            <div class="mnthStarts">
-                                                <span class="months"><em class="icon-Booked"></em> 4.5 months</span>
-                                                <span class="stars">
-                                                    <em class="icon-Star"></em>
-                                                    <em class="icon-Star"></em>
-                                                    <em class="icon-Star"></em>
-                                                    <em class="icon-Star"></em>
-                                                    <em class="icon-Star"></em>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <span class="heading">Full Stack .NET Application Development</span>
-                                        <figure>
-                                            <img src="/assets/images/relatedPrograms.png" alt="" />
-                                        </figure>
-                                        <div class="contentWrapper">
-                                            <span class="batchStarts"><em class="icon-Time"></em> Batch starts on : 15 Feb, 2022</span>
-                                            <div class="mnthStarts">
-                                                <span class="months"><em class="icon-Booked"></em> 4.5 months</span>
-                                                <span class="stars">
-                                                    <em class="icon-Star"></em>
-                                                    <em class="icon-Star"></em>
-                                                    <em class="icon-Star"></em>
-                                                    <em class="icon-Star"></em>
-                                                    <em class="icon-Star"></em>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
+                                        </ng-template>
+                                    </ng-container>
+                                </owl-carousel-o>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <section class="relatedProgramsAssessments">
+                <section class="relatedProgramsAssessments assessmentList" *ngIf="item?.subHeading2?.dispalystatus">
                     <div class="container">
-                        <div class="commonHeadingStyle">Related Assessments for you</div>
+                        <div class="commonHeadingStyle">{{item?.subHeading2?.title}}</div>
                     </div>
                     <div class="assessmentBg commonCSS">
                         <div class="container">
                             <div class="wrapper">
-                                <ul>
-                                    <li>
-                                        <span class="heading">Full Stack .NET Application Development</span>
-                                        <figure>
-                                            <img src="/assets/images/relatedPrograms.png" alt="" />
-                                        </figure>
-                                        <div class="contentWrapper">
-                                            <span class="batchStarts"><em class="icon-Time"></em> Batch starts on : 15 Feb, 2022</span>
-                                            <div class="mnthStarts">
-                                                <span class="months"><em class="icon-Booked"></em> 4.5 months</span>
-                                                <span class="stars">
-                                                    <em class="icon-Star"></em>
-                                                    <em class="icon-Star"></em>
-                                                    <em class="icon-Star"></em>
-                                                    <em class="icon-Star"></em>
-                                                    <em class="icon-Star"></em>
-                                                </span>
+                                <owl-carousel-o [options]="relatedList">
+                                    <ng-container>
+                                        <ng-template carouselSlide *ngFor="let relatedcourse of item?.subHeading2?.innerArray">
+                                            <div class="relatedList">
+                                                <span class="heading">{{relatedcourse?.title}}</span>
+                                                <figure>
+                                                    <img [src]="relatedcourse?.imageurl" alt="" />
+                                                </figure>
+                                                <div class="contentWrapper">
+                                                    <div class="mnthStarts">
+                                                        <span class="stars">
+                                                            <em class="icon-Star" *ngFor="let rate of relatedcourse?.rating"></em>
+                                                        </span>
+                                                    </div>
+                                                    <div class="level">
+                                                        <div>
+                                                            <p>Skill Level</p>
+                                                            <span><em class="icon-Level2"></em> {{relatedcourse?.level}}</span>
+                                                        </div>
+                                                        <div>
+                                                            <p>{{'No. of Assessments '}}</p>
+                                                            <span><em class="icon-Document"></em> {{relatedcourse?.NoOfAssessment}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <span class="heading">Full Stack .NET Application Development</span>
-                                        <figure>
-                                            <img src="/assets/images/relatedPrograms.png" alt="" />
-                                        </figure>
-                                        <div class="contentWrapper">
-                                            <span class="batchStarts"><em class="icon-Time"></em> Batch starts on : 15 Feb, 2022</span>
-                                            <div class="mnthStarts">
-                                                <span class="months"><em class="icon-Booked"></em> 4.5 months</span>
-                                                <span class="stars">
-                                                    <em class="icon-Star"></em>
-                                                    <em class="icon-Star"></em>
-                                                    <em class="icon-Star"></em>
-                                                    <em class="icon-Star"></em>
-                                                    <em class="icon-Star"></em>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <span class="heading">Full Stack .NET Application Development</span>
-                                        <figure>
-                                            <img src="/assets/images/relatedPrograms.png" alt="" />
-                                        </figure>
-                                        <div class="contentWrapper">
-                                            <span class="batchStarts"><em class="icon-Time"></em> Batch starts on : 15 Feb, 2022</span>
-                                            <div class="mnthStarts">
-                                                <span class="months"><em class="icon-Booked"></em> 4.5 months</span>
-                                                <span class="stars">
-                                                    <em class="icon-Star"></em>
-                                                    <em class="icon-Star"></em>
-                                                    <em class="icon-Star"></em>
-                                                    <em class="icon-Star"></em>
-                                                    <em class="icon-Star"></em>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <span class="heading">Full Stack .NET Application Development</span>
-                                        <figure>
-                                            <img src="/assets/images/relatedPrograms.png" alt="" />
-                                        </figure>
-                                        <div class="contentWrapper">
-                                            <span class="batchStarts"><em class="icon-Time"></em> Batch starts on : 15 Feb, 2022</span>
-                                            <div class="mnthStarts">
-                                                <span class="months"><em class="icon-Booked"></em> 4.5 months</span>
-                                                <span class="stars">
-                                                    <em class="icon-Star"></em>
-                                                    <em class="icon-Star"></em>
-                                                    <em class="icon-Star"></em>
-                                                    <em class="icon-Star"></em>
-                                                    <em class="icon-Star"></em>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
+                                        </ng-template>
+                                    </ng-container>
+                                </owl-carousel-o>
                             </div>
                         </div>
                     </div>
                 </section>
             </ng-container>
-
+            <!-- hiringPartnres -->
             <ng-container *ngIf="item?.sectionId == 11 && item.dispalystatus">
                 <section class="hiringPartnres" [ngStyle]="{'background-image': 'url(' + item?.imageurl + ')'}">
                     <div class="container">
@@ -1197,23 +1093,23 @@
                     <div class="container">
                         <div class="partnersSection" *ngIf="item.subHeading3.dispalystatus">
                             <div>{{item.subHeading3.title}}</div>
-                                <figure *ngFor="let partner of item.subHeading3.innerArray">
-                                    <img [src]="partner.imageurl" alt="" />
-                                </figure>
+                            <figure *ngFor="let partner of item.subHeading3.innerArray">
+                                <img [src]="partner.imageurl" alt="" />
+                            </figure>
                         </div>
                         <div class="grievanceSection"  *ngIf="item.subHeading3.dispalystatus">
-                            <p>{{item.subHeading3.description}}</p>
+                            <p><span>For any grievances</span> - {{item.subHeading3.description}}</p>
                         </div>
                         <div class="poweredSection" *ngIf="item.subHeading4.dispalystatus">
-                            <div class="heading">{{item.subHeading4.title}}</div>
-                            <div class="partnerImage">
-                                <figure class="left">
+                            <div class="left">
+                                <span class="heading">{{item.subHeading4.title}}</span>
+                                <figure>
                                     <img [src]="item.subHeading4.imageurl" alt="" />
                                 </figure>
-                                <figure class="right">
-                                    <img [src]="item.subHeading4.Subimageurl" alt="" />
-                                </figure>
                             </div>
+                            <figure class="right">
+                                <img [src]="item.subHeading4.Subimageurl" alt="" />
+                            </figure>
                         </div>
                     </div>
                 </section>
