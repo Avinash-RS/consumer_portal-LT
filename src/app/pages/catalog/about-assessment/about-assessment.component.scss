@@ -3120,9 +3120,14 @@
 //Related Programs
 .relatedProgramsAssessments {
   background-color: $whiteColor;
-  padding: 3.75em 0;
   position: relative;
   font-size: 12px;
+  &.programList {
+    padding: 3.75em 0 1.5em 0;
+  }
+  &.assessmentList {
+    padding: 1.5em 0 3.75em 0;
+  }
   @include md {
   }
   @include lg {
@@ -3173,6 +3178,10 @@
         figure {
           display: block;
           margin: 0.75em 0 1em 0;
+          img {
+            height: 170px;
+            object-fit: cover;
+          }
         }
         .contentWrapper {
           padding: 0 0.5em;
