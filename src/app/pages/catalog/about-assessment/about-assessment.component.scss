@@ -2772,14 +2772,16 @@
   }
 }
 ::ng-deep .expertSupportSystem {
+  // margin-top: 5em;
+  .mat-tab-labels {
+    // margin-top: -30px;
+  }
+  .mat-tab-body-wrapper {
     background-image: url("#{$imagePath}/tabbg.png");
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 449.8px;
-    margin-top: 5em;
-    .mat-tab-labels {
-      margin-top: -30px;
-    }
+  }
   .mat-tab-label {
     border: 0;
     font-family: "OpenSans", sans-serif;
@@ -2804,12 +2806,14 @@
   }
   .mat-tab-header {
     border-bottom: 0;
-    overflow: initial;
+    // overflow: initial;
     padding: 0 4em;
+    position: relative;
+    top: 30px;
   }
-  .mat-tab-label-container {
-    overflow: initial;
-  }
+  // .mat-tab-label-container {
+  //   overflow: initial;
+  // }
   .mat-header-row {
     height: 40px !important;
   }
