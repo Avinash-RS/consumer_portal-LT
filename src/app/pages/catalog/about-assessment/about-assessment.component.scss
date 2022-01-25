@@ -1075,10 +1075,15 @@
     li {
       font-family: "OpenSans", sans-serif;
       margin-right: 20px;
-      font-size: 0.9375em;
       font-weight: 500;
       color: $darkMediumGrey;
       line-height: normal;
+      @include lg {
+        font-size: 0.75em;
+      }
+      @include xl {
+        font-size: 0.875em;
+      }
       a {
         padding-bottom: 1.6em;
         &:hover {
@@ -1194,7 +1199,10 @@
           color: $darkMediumGrey;
           line-height: 1.5;
           margin: 0;
-          text-align: left;
+          text-align: center;
+          @include md {
+            text-align: left;
+          }
         }
       }
     }
@@ -1262,7 +1270,7 @@
         color: $whiteColor;
         line-height: 2;
         margin: 0;
-        padding: 1.5em;
+        padding: 1.4em;
         text-align: justify;
         @include md {
           padding: 0 1.25em;
@@ -1286,17 +1294,21 @@
   background-position: 60% 100%;
   background-repeat: no-repeat;
   width: 100%;
-  // padding: 1.25em 0 3em 0;
+  padding: 2em 0 4em 0;
   font-size: 12px;
   @include md {
     background-position: bottom center;
   }
   @include lg {
+    padding: 2em 0 5em 0;
     font-size: 14px;
   }
   @include xl {
-    padding: 4em 2em 7em 2em;
+    padding: 4em 0 6em 0;
     font-size: 16px;
+  }
+  @media only screen and (min-width: 1540px) {
+    padding: 3em 0 7em 0;
   }
   .container {
     position: relative;
@@ -1359,10 +1371,138 @@
   }
 }
 
+//Program Highlights
+.progHighlightsBg {
+  background-color: $whiteColor;
+  padding: 0 0 1.75em 0;
+  font-size: 13px;
+  position: relative;
+  overflow: hidden;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 110%;
+    height: 100%;
+    opacity: 0.065;
+    background-image: url("https://assets.lntedutech.com/portalicons/programHighlights.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+  }
+  @include md {
+  }
+  @include lg {
+    font-size: 14px;
+    padding: 0 0 3em 0;
+  }
+  @include xl {
+    font-size: 16px;
+  }
+  .container {
+    position: relative;
+    z-index: 9;
+  }
+  .programmeHighlights {
+    margin-top: 1.25em;
+    display: inline-block;
+    width: 100%;
+    .heading4 {
+      font-family: "OpenSans", sans-serif;
+      font-weight: 600;
+      color: $darkGrey;
+      margin: 0;
+    }
+    p {
+      font-size: 1em;
+      font-weight: 400;
+      color: $darkMediumGrey;
+      display: block;
+      line-height: 1.5;
+      padding: 0.75em 0 1em 0;
+      margin: 0;
+    }
+    .keySkillsCovered {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      max-width: 1070px;
+      width: 97%;
+      margin: 1em auto 0 auto;
+      @include md {
+        flex-wrap: nowrap;
+      }
+      .keyFeatures {
+        width: 100%;
+        @include md {
+          width: 47%;
+        }
+        @include lg {
+          width: 48%;
+        }
+        position: relative;
+        &:last-child {
+          margin-top: 2em;
+          @include md {
+            margin-top: 0;
+          }
+          &::after {
+            content: none;
+          }
+        }
+        &::after {
+          @include md {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 55%;
+            background-color: #a98ddd;
+          }
+        }
+      }
+      .heading4 {
+        font-family: "OpenSans", sans-serif;
+        font-weight: 600;
+        color: $darkGrey;
+        margin-bottom: 1.25em;
+        text-align: center;
+      }
+      ul {
+        li {
+          display: flex;
+          align-items: flex-start;
+          margin-bottom: 1.5em;
+          @include md {
+            margin-bottom: 2.5em;
+          }
+          figure {
+            margin-right: 2.5%;
+            width: 2.5%;
+            line-height: normal;
+          }
+          span {
+            font-size: 1em;
+            font-weight: 400;
+            color: $darkMediumGrey;
+            line-height: 1.3;
+          }
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+//Projects Create
 .projectYou {
   position: relative;
-  font-size: 12px;
-  position: relative;
+  font-size: 13px;
   @include md {
   }
   @include lg {
@@ -1394,14 +1534,23 @@
     ul {
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
+      @include md {
+        flex-wrap: nowrap;
+      }
       li {
         display: flex;
         align-items: center;
-        width: 31.5%;
+        width: 100%;
         padding: 0.875em;
         background-color: #eceff0;
         box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
         transition: all 0.3s ease-in-out;
+        margin-bottom: 1.5em;
+        @include md {
+          width: 31.5%;
+          margin-bottom: 0;
+        }
         &:hover {
           transform: scale(1.1);
         }
@@ -1432,20 +1581,20 @@
             border-radius: 50%;
             width: 6em;
             height: 6em;
-            // background-image: linear-gradient(
-            //   to right bottom,
-            //   #25b7d3,
-            //   #1da7c2,
-            //   #1497b1,
-            //   #0a88a0,
-            //   #007990
-            // );
             display: inline-flex;
             justify-content: center;
             align-items: center;
             padding: 8px;
             img {
               max-width: 70%;
+            }
+            @include md {
+              width: 4.75em;
+              height: 4.75em;
+            }
+            @include lg {
+              width: 6em;
+              height: 6em;
             }
           }
         }
@@ -1473,26 +1622,17 @@
   }
 }
 
-//Program Highlights
-.progHighlightsBg {
-  background-color: $whiteColor;
-  padding:  0 3.75em;
-  font-size: 12px;
+
+//projectFace
+.projectFace {
   position: relative;
-  overflow: hidden;
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 110%;
-    height: 100%;
-    opacity: 0.065;
-    background-image: url("https://assets.lntedutech.com/portalicons/programHighlights.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 13px;
+  padding-top: 5em;
   @include md {
+    padding-top: 0;
   }
   @include lg {
     font-size: 14px;
@@ -1501,89 +1641,19 @@
     font-size: 16px;
   }
   .container {
-    position: relative;
-    z-index: 9;
-  }
-  .projectView{
-    position: relative;
-    @include md {
-  }
-  @include lg {
-    font-size: 14px;
-  }
-  @include xl {
-    font-size: 16px;
-  }
-  }
-  .programmeHighlights {
-    margin-top: 1.25em;
-    display: inline-block;
-    width: 100%;
-    .heading4 {
-      font-family: "OpenSans", sans-serif;
-      font-weight: 600;
-      color: $darkGrey;
-      margin: 0;
-    }
-    p {
-      font-size: 1em;
-      font-weight: 400;
-      color: $darkMediumGrey;
-      display: block;
-      line-height: 1.5;
-      padding: 0.75em 0 1em 0;
-      margin: 0;
-    }
-    .keySkillsCovered {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 1em;
-      .keyFeatures,
-      .skillsCovered {
-        width: 48%;
-      }
-      .heading4 {
-        font-family: "OpenSans", sans-serif;
-        font-weight: 600;
-        color: $darkGrey;
-        margin-bottom: 1.25em;
-        text-align: center;
-      }
-      ul {
-        li {
-          line-height: 3;
-          display: flex;
-          figure {
-            margin-right: 1.5%;
-            width: 2.5%;
-          }
-          span {
-            font-size: 1em;
-            font-weight: 400;
-            color: $darkMediumGrey;
-          }
-          &:last-child {
-            margin-bottom: 0;
-          }
-        }
-      }
-    }
-  }
-}
-//projectFace
-.projectFace {
-  position: relative;
-  //background-image: url("#{$imagePath}/faceBg.svg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 100%;
-  .container{
     padding: 1em 0 0 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    @include md {
+      flex-wrap: nowrap;
+    }
     .left {
-      width: 50%;
+      width: 100%;
+      @include md {
+        width: 50%;
+      }
       .heading4 {
         color: $shadeBlueColor;
         font-family: "OpenSans", sans-serif;
@@ -1610,12 +1680,18 @@
       }
     }
     .right {
-      width: 50%;
+      width: 100%;
+      @include md {
+        width: 50%;
+      }
       figure {
         margin: 0;
         display: flex;
         img {
-          width: 87%;
+          width: 100%;
+          @include md {
+            width: 87%;
+          }
         }
       }
     }
