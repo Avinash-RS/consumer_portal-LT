@@ -1139,7 +1139,7 @@
       flex-direction: row;
       justify-content: space-between;
       flex-wrap: wrap;
-      @include md {
+      @include sm {
         flex-wrap: nowrap;
       }
       li {
@@ -1149,13 +1149,13 @@
         padding: 15px;
         transition: all 0.3s ease-out 0s;
         @include sm {
-          width: 48%;
+          width: 33%;
         }
         @include md {
           width: 30%;
         }
         &::after {
-          @include md {
+          @include xl {
             content: "";
             position: absolute;
             right: -10%;
@@ -1213,7 +1213,7 @@
 .programOverview {
   background-color: $whiteColor;
   padding: 3.75em 0 1em 0;
-  font-size: 12px;
+  font-size: 13px;
   position: relative;
   @include md {
   }
@@ -1250,18 +1250,17 @@
     flex-wrap: wrap;
     border-radius: 0.3em;
     overflow: hidden;
-    @include md {
+    @include sm {
       flex-wrap: nowrap;
     }
     .left {
       width: 100%;
       display: flex;
       align-items: center;
-      //background-image: url("#{$imagePath}/Program_bg.png");
       background-repeat: no-repeat;
       background-size: cover;
       border-radius: 0;
-      @include md {
+      @include sm {
         width: 50%;
       }
       p {
@@ -1272,15 +1271,15 @@
         margin: 0;
         padding: 1.4em;
         text-align: justify;
-        @include md {
-          padding: 0 1.25em;
+        @include sm {
+          padding: 1.25em;
         }
       }
     }
     figure {
       width: 100%;
       display: flex;
-      @include md {
+      @include sm {
         width: 50%;
       }
     }
@@ -1317,7 +1316,7 @@
   .thinkSection {
     display: flex;
     flex-wrap: wrap;
-    @include md {
+    @include sm {
       flex-wrap: nowrap;
     }
     .left {
@@ -1326,12 +1325,15 @@
       figure {
         margin: 1em auto 0 auto;
         width: 60%;
-        @include md {
-          width: 100%;
+        @include sm {
+          width: 70%;
           margin: 0 auto;
         }
+        @include lg {
+          width: 100%;
+        }
       }
-      @include md {
+      @include sm {
         order: 1;
         width: 40%;
       }
@@ -1339,7 +1341,7 @@
     .right {
       width: 100%;
       order: 1;
-      @include md {
+      @include sm {
         order: 2;
         width: 60%;
       }
@@ -1631,8 +1633,10 @@
   width: 100%;
   font-size: 13px;
   padding-top: 5em;
-  @include md {
+  @include sm {
     padding-top: 0;
+  }
+  @include md {
   }
   @include lg {
     font-size: 14px;
@@ -1651,7 +1655,7 @@
     }
     .left {
       width: 100%;
-      @include md {
+      @include sm {
         width: 50%;
       }
       .heading4 {
@@ -1681,7 +1685,7 @@
     }
     .right {
       width: 100%;
-      @include md {
+      @include sm {
         width: 50%;
       }
       figure {
@@ -1689,7 +1693,7 @@
         display: flex;
         img {
           width: 100%;
-          @include md {
+          @include sm {
             width: 87%;
           }
         }
@@ -1727,13 +1731,13 @@
     }
   }
   &::before {
-    background-image: url("#{$imagePath}/curriculum_left.png");
+    background-image: url("https://assets.lntedutech.com/portalicons/curriculum_left.png");
     background-position: top;
     top: -0;
     left: 0;
   }
   &::after {
-    background-image: url("#{$imagePath}/curriculum_left.png");
+    background-image: url("https://assets.lntedutech.com/portalicons/curriculum_right.png");
     background-position: bottom;
     transform: scaleX(-1);
     bottom: 2em;
@@ -1806,7 +1810,10 @@
         .expansionContent {
           position: relative;
           ul {
-            margin-left: 1.6em;
+            margin-left: 0;
+            @include md {
+              margin-left: 1.6em;
+            }
             li {
               font-size: 1.125em;
               font-weight: 400;
@@ -2087,7 +2094,7 @@
 .realTimeProjects {
   background-color: #ffffff;
   padding: 3.75em 0;
-  font-size: 12px;
+  font-size: 14px;
   @include md {
     font-size: 12px;
   }
@@ -2121,18 +2128,18 @@
       padding: 1em;
       margin: 0 0 15px 1.5em;
       text-align: center;
-      width: 45.7%;
+      width: 100%;
       transition: all 0.25s;
       position: relative;
       @include sm {
-        width: 47.6%;
+        width: 46.2%;
       }
       @include md {
-        width: 47.4%;
+        width: 22.3%;
       }
       @include lg {
         margin: 0 0 0 1.5em;
-        width: 22.8%;
+        width: 22.7%;
       }
       @include xl {
         width: 22.9%;
@@ -2181,28 +2188,30 @@
         transform: scale3d(1, 0, 1);
       }
       &:hover {
-        box-shadow: none;
-        background-color: $whiteColor;
-        &::before {
-          border-top: 1px solid #0071bc;
-          border-bottom: 1px solid #0071bc;
-        }
-        &::after {
-          border-left: 1px solid #0071bc;
-          border-right: 1px solid #0071bc;
-        }
-        &::before,
-        &::after {
-          transform: scale3d(1, 1, 1);
-          transition: transform 0.5s;
+        @include xl {
+          box-shadow: none;
+          background-color: $whiteColor;
+          &::before {
+            border-top: 1px solid #0071bc;
+            border-bottom: 1px solid #0071bc;
+          }
+          &::after {
+            border-left: 1px solid #0071bc;
+            border-right: 1px solid #0071bc;
+          }
+          &::before,
+          &::after {
+            transform: scale3d(1, 1, 1);
+            transition: transform 0.5s;
+          }
         }
       }
     }
   }
 }
+
 //Duration
 .duration {
-  //background-image: url("../../../../assets/images/duration.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -2217,13 +2226,25 @@
     font-size: 16px;
   }
  .container {
-   ul{
+   ul {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 0 4em;
+    padding: 0;
+    flex-wrap: wrap;
+    @include sm {
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
     li {
       text-align: center;
+      width: 45%;
+      margin: 0.5em 0;
+      @include sm {
+        width: 19%;
+        margin: 0;
+      }
       .count {
         color: $primaryColor;
         font-size: 2.5em;
@@ -2245,6 +2266,7 @@
   }
  }
 }
+
 //morehelp
 .morehelp {
   position: relative;
@@ -2845,14 +2867,30 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    flex-wrap: wrap;
     .path {
       position: relative;
-      width: 18%;
+      width: 48%;
       transition: all 0.3s ease-out 0s;
+      margin-bottom: 1em;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      @include sm {
+        width: 31%;
+        margin-left: 2%;
+        margin-bottom: 0;
+      }
+      @include md {
+        width: 18%;
+      }
       figure {
         height: 30px;
         img {
-          max-width: 12%;
+          max-width: 17%;
+          @include lg {
+            max-width: 12%;
+          }
         }
       }
       .heading {
@@ -2898,15 +2936,12 @@
 
 //IndustryStep
 .industryStep {
-  // background-image: url("#{$imagePath}/industryStep_bg.svg");
-  // background-repeat: no-repeat;
   background-color: #4D7698;
   width: 100%;
   padding: 3em 0;
-  font-size: 12px;
+  font-size: 13px;
   position: relative;
   @include md {
-    font-size: 12px;
   }
   @include lg {
     font-size: 14px;
@@ -2916,25 +2951,39 @@
   }
   .bg {
     background-color: #5F82A0;
-    padding: 6em 0;
+    padding: 5em 0;
     border-radius: 0 100px 100px 0;
     width: 55%;
+    @include md {
+      padding: 5em 0;
+    }
+    @include lg {
+      padding: 5.2em 0;
+    }
+    @include xl {
+      padding: 6em 0;
+    }
   }
   .wrapper {
     position: absolute;
     width: 100%;
     height: 100%;
     bottom: 0;
-    // top: 50%;
-    // transform: translateY(-50%);
   }
   .container {
     position: relative;
     height: 100%;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    @include md {
+      flex-wrap: nowrap;
+    }
     .left {
-      width: 55%;
+      width: 95%;
+      @include md {
+        width: 55%;
+      }
       .heading4 {
         color: #EBFF4E;
         font-size: 1.5625em;
@@ -2944,17 +2993,27 @@
         font-size: 1em;
         font-weight: 400;
         color: $whiteColor;
-        line-height: 2;
+        line-height: 1.5;
         margin: 1em 0 0 0;
+        padding-right: 2em;
       }
     }
     figure {
       position: relative;
-      width: 45%;
+      width: 100%;
       text-align: right;
-      bottom: 20px;
+      bottom: 4px;
+      @include md {
+        width: 45%;
+      }
+      @include lg {
+        bottom: 20px;
+      }
       img {
-        width: 93%;
+        width: 100%;
+        @include lg {
+          width: 93%;
+        }
       }
       // position: absolute;
       // right: 0;
