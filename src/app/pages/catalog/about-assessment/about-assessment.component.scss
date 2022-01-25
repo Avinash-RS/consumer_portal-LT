@@ -1075,10 +1075,15 @@
     li {
       font-family: "OpenSans", sans-serif;
       margin-right: 20px;
-      font-size: 0.9375em;
       font-weight: 500;
       color: $darkMediumGrey;
       line-height: normal;
+      @include lg {
+        font-size: 0.75em;
+      }
+      @include xl {
+        font-size: 0.875em;
+      }
       a {
         padding-bottom: 1.6em;
         &:hover {
@@ -1194,7 +1199,10 @@
           color: $darkMediumGrey;
           line-height: 1.5;
           margin: 0;
-          text-align: left;
+          text-align: center;
+          @include md {
+            text-align: left;
+          }
         }
       }
     }
@@ -1262,7 +1270,7 @@
         color: $whiteColor;
         line-height: 2;
         margin: 0;
-        padding: 1.5em;
+        padding: 1.4em;
         text-align: justify;
         @include md {
           padding: 0 1.25em;
@@ -1286,17 +1294,21 @@
   background-position: 60% 100%;
   background-repeat: no-repeat;
   width: 100%;
-  // padding: 1.25em 0 3em 0;
+  padding: 2em 0 4em 0;
   font-size: 12px;
   @include md {
     background-position: bottom center;
   }
   @include lg {
+    padding: 2em 0 5em 0;
     font-size: 14px;
   }
   @include xl {
-    padding: 4em 2em 7em 2em;
+    padding: 4em 0 6em 0;
     font-size: 16px;
+  }
+  @media only screen and (min-width: 1540px) {
+    padding: 3em 0 7em 0;
   }
   .container {
     position: relative;
@@ -1475,8 +1487,8 @@
 //Program Highlights
 .progHighlightsBg {
   background-color: $whiteColor;
-  padding:  0 3.75em;
-  font-size: 12px;
+  padding: 0 0 3.75em 0;
+  font-size: 13px;
   position: relative;
   overflow: hidden;
   &::after {
@@ -1490,6 +1502,7 @@
     background-image: url("https://assets.lntedutech.com/portalicons/programHighlights.png");
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: bottom;
   }
   @include md {
   }
@@ -1502,17 +1515,6 @@
   .container {
     position: relative;
     z-index: 9;
-  }
-  .projectView{
-    position: relative;
-    @include md {
-  }
-  @include lg {
-    font-size: 14px;
-  }
-  @include xl {
-    font-size: 16px;
-  }
   }
   .programmeHighlights {
     margin-top: 1.25em;
@@ -1536,10 +1538,43 @@
     .keySkillsCovered {
       display: flex;
       justify-content: space-between;
-      margin-top: 1em;
-      .keyFeatures,
-      .skillsCovered {
-        width: 48%;
+      flex-wrap: wrap;
+      max-width: 1070px;
+      width: 97%;
+      margin: 1em auto 0 auto;
+      @include md {
+        flex-wrap: nowrap;
+      }
+      .keyFeatures {
+        width: 100%;
+        @include md {
+          width: 47%;
+        }
+        @include lg {
+          width: 48%;
+        }
+        position: relative;
+        &:last-child {
+          margin-top: 2em;
+          @include md {
+            margin-top: 0;
+          }
+          &::after {
+            content: none;
+          }
+        }
+        &::after {
+          @include md {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 55%;
+            background-color: #a98ddd;
+          }
+        }
       }
       .heading4 {
         font-family: "OpenSans", sans-serif;
@@ -1550,16 +1585,22 @@
       }
       ul {
         li {
-          line-height: 3;
           display: flex;
+          align-items: flex-start;
+          margin-bottom: 1.5em;
+          @include md {
+            margin-bottom: 2.5em;
+          }
           figure {
-            margin-right: 1.5%;
+            margin-right: 2.5%;
             width: 2.5%;
+            line-height: normal;
           }
           span {
             font-size: 1em;
             font-weight: 400;
             color: $darkMediumGrey;
+            line-height: 1.3;
           }
           &:last-child {
             margin-bottom: 0;
