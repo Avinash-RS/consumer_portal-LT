@@ -603,7 +603,7 @@
                                         <em class="icon-ContactUs"></em>
                                     </span>
                                     <div>
-                                        <span class="heading5">Contact us</span>
+                                        <!-- <span class="heading5">Contact us</span> -->
                                         <span class="pnNum">044 - 2252 6000</span>
                                     </div>
                                 </div>
@@ -679,7 +679,7 @@
                     <div class="container">
                         <ul>
                             <li *ngFor="let duration of item?.subHeading2?.innerArray">
-                                <div class="count">{{duration?.title}}</div>
+                                <div class="count">{{duration?.title}}<span>{{duration?.quantifier}}</span></div>
                                 <div class="description">{{duration?.description}}</div>
                             </li>
                         </ul>
