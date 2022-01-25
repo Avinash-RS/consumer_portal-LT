@@ -745,9 +745,12 @@
     display: flex;
     img {
       width: 100%;
-      height: 300px;
+      height: calc(100vh - 74px);
       object-fit: cover;
-      @include md {
+      @include sm {
+        height: 350px;
+      }
+      @include lg {
         height: 450px;
       }
     }
@@ -763,27 +766,49 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
       margin-bottom: 1.5em;
+      @include sm {
+        flex-wrap: nowrap;
+      }
       .left {
-        width: 55%;
+        width: 100%;
+        @include sm {
+          width: 55%;
+        }
       }
       .right {
-        width: 42%;
+        width: 100%;
         display: flex;
         justify-content: flex-end;
+        margin: 1.5em 0;
         figure {
-          width: 90%;
+          width: 100%;
+          @include sm {
+            width: 90%;
+            margin: 0;
+          }
+        }
+        @include sm {
+          width: 42%;
         }
       }
     }
     .heading1 {
       color: $whiteColor;
       font-family: "OpenSans", sans-serif;
-      font-size: 2.25em;
+      font-size: 2em;
       font-weight: 700;
       max-width: 568px;
       width: 96%;
       line-height: 1.2;
+      margin-top: 1em;
+      @include sm {
+        margin-top: 0;
+      }
+      @include md {
+        font-size: 2.25em;
+      }
     }
     p {
       font-size: 1.35em;
@@ -925,11 +950,14 @@
 }
 
 .bannerFooter {
-  position: absolute;
-  top: -45px;
-  left: 0;
+  position: relative;
   width: 100%;
   z-index: 9;
+  @include md {
+    position: absolute;
+    top: -45px;
+    left: 0;
+  }
   .container {
     background-color: $whiteColor;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.07);
@@ -940,24 +968,45 @@
   .commonStyle {
     display: flex;
     align-items: flex-start;
-    justify-content: space-between;
   }
   .footerWrapper {
     width: 100%;
     flex-wrap: wrap;
+    justify-content: space-between;
   }
   .commonStyle {
     width: 50%;
     margin: 1em 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
     @include sm {
       width: 18%;
     }
+    @include lg {
+      text-align: left;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+    }
     figure {
-      width: 15%;
+      width: 30%;
+      img {
+        height: 25px;
+        object-fit: contain;
+        @include lg {
+          height: auto;
+        }
+      }
+      @include lg {
+        width: 15%;
+      }
     }
     > div {
-      width: 80%;
-      margin-left: 5%;
+      width: 100%;
+      @include lg {
+        width: 80%;
+        margin-left: 5%;
+      }
     }
     p {
       font-family: "OpenSans", sans-serif;
@@ -965,13 +1014,16 @@
       font-weight: 600;
       color: #08558c;
       line-height: normal;
-      margin: 0 0 0.35em 0;
+      margin: 0;
       text-transform: uppercase;
+      @include lg {
+        margin: 0 0 0.35em 0;
+      }
     }
     .content {
-      color: $darkGrey;
+      color: #222222;
       font-size: 1em;
-      font-weight: 700;
+      font-weight: 400;
       line-height: 1;
     }
   }
@@ -980,14 +1032,28 @@
 //Overall tabs
 .topTab {
   background-color: #f8fbff;
-  padding: 5em 0 0 0;
+  padding: 1em 0 0 0;
   position: relative;
+  font-size: 12px;
+  @include md {
+    padding: 5em 0 0 0;
+  }
+  @include lg {
+    font-size: 14px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
 }
 .tabssection {
   background-color: #ffffff;
   padding: 1.5em 0;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
   position: relative;
+  display: none;
+  @include lg {
+    display: flex;
+  }
   &.sticky {
     width: 100%;
     position: fixed;
@@ -1051,7 +1117,7 @@
 .whyFullStack {
   background-color: #f8fbff;
   padding: 3.75em 0;
-  font-size: 12px;
+  font-size: 13px;
   @include md {
   }
   @include lg {
@@ -1065,26 +1131,40 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      flex-wrap: wrap;
+      @include md {
+        flex-wrap: nowrap;
+      }
       li {
-        width: 30%;
+        width: 100%;
         text-align: center;
         position: relative;
         padding: 15px;
         transition: all 0.3s ease-out 0s;
+        @include sm {
+          width: 48%;
+        }
+        @include md {
+          width: 30%;
+        }
         &::after {
-          content: "";
-          position: absolute;
-          right: -10%;
-          top: 50%;
-          transform: translateY(-50%);
-          width: 1px;
-          height: 75%;
-          background-color: rgba(169, 141, 221, 1);
+          @include md {
+            content: "";
+            position: absolute;
+            right: -10%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 75%;
+            background-color: rgba(169, 141, 221, 1);
+          }
         }
         &:hover {
-          box-shadow: 0 0 30px 0 rgb(0 0 0 / 18%);
-          transform: translate(0px, -10px);
-          background-color: #f8fbff;
+          @include xl {
+            box-shadow: 0 0 30px 0 rgb(0 0 0 / 18%);
+            transform: translate(0px, -10px);
+            background-color: #f8fbff;
+          }
         }
         &:last-child {
           &::after {
@@ -1154,36 +1234,125 @@
     position: relative;
   }
   .programming {
-    // background-color:$shadeBlueColor;
     display: flex;
+    flex-wrap: wrap;
+    border-radius: 0.3em;
+    overflow: hidden;
+    @include md {
+      flex-wrap: nowrap;
+    }
     .left {
-      width: 50%;
+      width: 100%;
       display: flex;
       align-items: center;
       background-image: url("#{$imagePath}/Program_bg.png");
       background-repeat: no-repeat;
       background-size: cover;
-      border-radius: 0.3em 0 0 0.3em;
+      border-radius: 0;
+      @include md {
+        width: 50%;
+      }
       p {
         font-size: 1.125em;
         font-weight: 400;
         color: $whiteColor;
         line-height: 1.5;
         margin: 0;
-        padding: 0 1.25em;
+        padding: 1.5em;
         text-align: justify;
+        @include md {
+          padding: 0 1.25em;
+        }
       }
     }
     figure {
-      width: 50%;
+      width: 100%;
       display: flex;
-      img {
-        border-radius: 0 0.3em 0.3em 0;
-        
+      @include md {
+        width: 50%;
       }
     }
   }
-  //
+}
+
+//Project Think
+.projectThink {
+  position: relative;
+  background-size: cover;
+  background-position: 60% 100%;
+  background-repeat: no-repeat;
+  width: 100%;
+  padding: 1.25em 0 3em 0;
+  font-size: 12px;
+  font-size: 12px;
+  @include md {
+    background-position: bottom center;
+  }
+  @include lg {
+    font-size: 14px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
+  .container {
+    position: relative;
+    z-index: 9;
+  }
+  .thinkSection {
+    display: flex;
+    flex-wrap: wrap;
+    @include md {
+      flex-wrap: nowrap;
+    }
+    .left {
+      width: 100%;
+      order: 2;
+      figure {
+        margin: 1em auto 0 auto;
+        width: 60%;
+        @include md {
+          width: 100%;
+          margin: 0 auto;
+        }
+      }
+      @include md {
+        order: 1;
+        width: 30%;
+      }
+    }
+    .right {
+      width: 100%;
+      order: 1;
+      @include md {
+        order: 2;
+        width: 70%;
+      }
+      div {
+        color: $shadeBlueColor;
+        font-family: "OpenSans", sans-serif;
+        font-size: 1.5em;
+        font-weight: 600;
+        margin: 1em 0 2em 0;
+        position: relative;
+        &::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: -0.4em;
+          width: 3em;
+          height: 3px;
+          border-radius: 1.25em;
+          background-image: linear-gradient(to right, #00bcef, #00c0db, #00c1b6, #00be83, #4eb749);
+        }
+      }
+      p {
+        color:$darkGrey;
+        font-size: 1.25em;
+        font-weight: 400;
+        line-height: normal;
+      }
+    }
+  }
 }
 
 .projectYou {
@@ -1298,64 +1467,7 @@
     }
   }
 }
-.projectThink{
-  position: relative;
-  //background-image: url("#{$imagePath}/projectThink_bg.png");
-  background-position: bottom center;
-  background-repeat: no-repeat;
-  width: 100%;
-  padding: 1.25em 0 3em 0;
-  font-size: 12px;
-  font-size: 12px;
-  background-size: cover;
-  @include md {
-  }
-  @include lg {
-    font-size: 14px;
-  }
-  @include xl {
-    font-size: 16px;
-  }
-  .container {
-    position: relative;
-    z-index: 9;
-  }
-  .thinkSection {
-    display: flex;
-    .left {
-      width: 30%;
-    }
-    .right {
-      width: 70%;
-      div{
-        color: $shadeBlueColor;
-        font-family: "OpenSans", sans-serif;
-        font-size: 1.5em;
-        font-weight: 600;
-        margin: 1em 0 2em 0;
-        position: relative;
-        &::after {
-          content: "";
-          position: absolute;
-          left: 0;
-          bottom: -0.4em;
-          width: 3em;
-          height: 3px;
-          border-radius: 1.25em;
-          background-image: linear-gradient(to right, #00bcef, #00c0db, #00c1b6, #00be83, #4eb749);
-        }
-      }
-      p {
-        color:$darkGrey;
-        font-size: 1.25em;
-        font-weight: 400;
-        line-height: normal;
-      }
-    }
-  }
 
-
-}
 //Program Highlights
 .progHighlightsBg {
   background-color: $whiteColor;
