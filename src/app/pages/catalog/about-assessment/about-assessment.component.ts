@@ -14,7 +14,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { GlobalValidatorsService } from 'src/app/validators/global-validators.service';
-
 @Component({
   selector: 'app-about-assessment',
   templateUrl: './about-assessment.component.html',
@@ -27,11 +26,11 @@ export class AboutAssessmentComponent implements OnInit {
     mouseDrag: false,
     touchDrag: false,
     pullDrag: false,
-    dots: false,
+    dots: true,
     navSpeed: 700,
     margin: 30,
     navText: ["<i class='icon-LeftArrow'></i>", "<i class='icon-RightArrow'></i>"],
-    nav: true,
+    nav: false,
     responsive: {
       0: {
         items: 1
@@ -49,11 +48,11 @@ export class AboutAssessmentComponent implements OnInit {
     mouseDrag: false,
     touchDrag: false,
     pullDrag: false,
-    dots: false,
+    dots: true,
     navSpeed: 700,
     margin: 30,
     navText: ["<i class='icon-LeftArrow'></i>", "<i class='icon-RightArrow'></i>"],
-    nav: true,
+    nav: false,
     responsive: {
       0: {
         items: 1
@@ -66,31 +65,6 @@ export class AboutAssessmentComponent implements OnInit {
       }
     }
   }
-  //
-  relatedList: OwlOptions = {
-    loop: true,
-    mouseDrag: false,
-    touchDrag: false,
-    pullDrag: false,
-    dots: true,
-    navSpeed: 700,
-    margin: 30,
-    navText: ["<i class='icon-Back'></i>", "<i class='icon-right-next'></i>"],
-    nav: true,
-    responsive: {
-      0: {
-        items: 1
-      },
-      600: {
-        items: 2
-      },
-      992: {
-        items: 4,
-        slideBy: 4
-      }
-    }
-  }
-
   howItWorks:any
   isReadMore = true
   areaId;
@@ -111,11 +85,9 @@ export class AboutAssessmentComponent implements OnInit {
   nocard:boolean = true;
   defaultDiv:boolean = true;
   @ViewChild('kycmandate', { static: false }) matDialogRef: TemplateRef<any>;
-  @ViewChild('enroll', { static: false }) enrollRequest: TemplateRef<any>;
   backgroundImageUrl: any;
   constructor(private router: Router, private catalogService : CatalogService,private route:ActivatedRoute,private appconfig: AppConfigService,
-    private commonService : CommonService,public toast: ToastrService ,private util: UtilityService,private dialog: MatDialog,
-    private fb: FormBuilder,
+    private commonService : CommonService,public toast: ToastrService ,private util: UtilityService,private dialog: MatDialog,private fb: FormBuilder,
     private gv: GlobalValidatorsService
     ) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => {
@@ -124,7 +96,6 @@ export class AboutAssessmentComponent implements OnInit {
    }
   public destroyed = new Subject<any>();
   contactForm: FormGroup;
-  queryForm: FormGroup;
   @ViewChild('stickyMenu') menuElement: ElementRef;
   sticky: boolean = false;
   menuPosition: any = 472;
@@ -163,40 +134,40 @@ export class AboutAssessmentComponent implements OnInit {
     }
     checkOffsetTop() {
       const windowOffSet = window.pageYOffset;
-      if(windowOffSet >= this.firstOffset && windowOffSet < this.secondOffset && windowOffSet < this.thirdOffset && windowOffSet < this.fourthOffset && windowOffSet < this.fifthOffset && windowOffSet < this.sixthOffset  && windowOffSet < this.seventhOffset && windowOffSet < this.eigthOffset){
+      if(windowOffSet >= this.firstOffset && windowOffSet < this.secondOffset ){
         this.activeSection = 1;
       }
-      else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet < this.thirdOffset && windowOffSet < this.fourthOffset && windowOffSet < this.fifthOffset && windowOffSet < this.sixthOffset  && windowOffSet < this.seventhOffset && windowOffSet < this.eigthOffset){
+      else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet < this.thirdOffset && windowOffSet < this.fourthOffset && windowOffSet < this.fifthOffset && windowOffSet < this.sixthOffset  && windowOffSet < this.seventhOffset){
         this.activeSection = 2;
       }
-      else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet < this.fourthOffset && windowOffSet < this.fifthOffset && windowOffSet < this.sixthOffset  && windowOffSet < this.seventhOffset && windowOffSet < this.eigthOffset){
+      else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet < this.fourthOffset && windowOffSet < this.fifthOffset && windowOffSet < this.sixthOffset  && windowOffSet < this.seventhOffset){
         this.activeSection = 3;
       }
-      else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet >= this.fourthOffset && windowOffSet < this.fifthOffset && windowOffSet < this.sixthOffset  && windowOffSet < this.seventhOffset && windowOffSet < this.eigthOffset){
+      else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet >= this.fourthOffset && windowOffSet < this.fifthOffset && windowOffSet < this.sixthOffset  && windowOffSet < this.seventhOffset){
         this.activeSection = 4;
       }
-      else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet >= this.fourthOffset && windowOffSet >= this.fifthOffset && windowOffSet < this.sixthOffset  && windowOffSet < this.seventhOffset && windowOffSet < this.eigthOffset){
+      else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet >= this.fourthOffset && windowOffSet >= this.fifthOffset && windowOffSet < this.sixthOffset  && windowOffSet < this.seventhOffset){
         this.activeSection = 5;
       }
-      else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet >= this.fourthOffset && windowOffSet >= this.fifthOffset && windowOffSet >= this.sixthOffset  && windowOffSet < this.seventhOffset && windowOffSet < this.eigthOffset){
+      else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet >= this.fourthOffset && windowOffSet >= this.fifthOffset && windowOffSet >= this.sixthOffset  && windowOffSet < this.seventhOffset){
         this.activeSection = 6;
       }
       else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet >= this.fourthOffset && windowOffSet >= this.fifthOffset && windowOffSet >= this.sixthOffset  && windowOffSet >= this.seventhOffset && windowOffSet < this.eigthOffset){
         this.activeSection = 7;
-      }  else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet >= this.fourthOffset && windowOffSet >= this.fifthOffset && windowOffSet >= this.sixthOffset  && windowOffSet >= this.seventhOffset && windowOffSet >= this.eigthOffset){
+      }
+      else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet >= this.fourthOffset && windowOffSet >= this.fifthOffset && windowOffSet >= this.sixthOffset  && windowOffSet >= this.seventhOffset && windowOffSet >= this.eigthOffset){
         this.activeSection = 8;
       }
-    
 
     }
       ngAfterViewInit(){
         setTimeout(()=>{
-           this.firstOffset =  this.firstElement.nativeElement.offsetTop -200;
+           this.firstOffset =  this.firstElement.nativeElement.offsetTop - 200;
            this.secondOffset =  this.secondElement.nativeElement.offsetTop - 200;
-           this.thirdOffset =  this.thirdElement.nativeElement.offsetTop -200;
-           this.fourthOffset =  this.fourthElement.nativeElement.offsetTop -200;
-           this.fifthOffset =  this.fifthElement.nativeElement.offsetTop -200;
-           this.sixthOffset =  this.sixthElement.nativeElement.offsetTop -200;
+           this.thirdOffset =  this.thirdElement.nativeElement.offsetTop - 200;
+           this.fourthOffset =  this.fourthElement.nativeElement.offsetTop - 200;
+           this.fifthOffset =  this.fifthElement.nativeElement.offsetTop - 200;
+           this.sixthOffset =  this.sixthElement.nativeElement.offsetTop - 200;
            this.seventhOffset =  this.seventhElement.nativeElement.offsetTop -200;
            this.eigthOffset =  this.eigthElement.nativeElement.offsetTop -200;
         },1000)
@@ -247,8 +218,6 @@ export class AboutAssessmentComponent implements OnInit {
       phone: ['', [Validators.required]],
       comment:['']
     });
-
-
   }
   get name() {
     return this.contactForm.get('name');
@@ -464,7 +433,7 @@ freeOrderPlace(cartid){
     this.activeSection = ID;
     var yOffset;
     if(this.sticky){
-      yOffset = -72;
+      yOffset = -100;
     }
     else{
       yOffset = -120;
@@ -473,19 +442,5 @@ freeOrderPlace(cartid){
     const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
     window.scrollTo({top: y, behavior: 'smooth'});
 
-}
-openRequest(){
-  const query = this.dialog.open(this.enrollRequest, {
-    width: '60%',
-    height: '80%',
-    autoFocus: true,
-    closeOnNavigation: true,
-    disableClose: true,
-    panelClass: 'queryFormContainer'
-  });
-  query.afterClosed().subscribe(result => {
-    this.contactForm.reset();
-  });
-  return false;
 }
 }

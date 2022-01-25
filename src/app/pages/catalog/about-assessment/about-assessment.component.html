@@ -486,7 +486,7 @@
                     <div class="container">
                         <div class="commonHeadingStyle">{{item?.title}}</div>
                         <div class="programming">
-                            <div class="left">
+                            <div class="left" [ngStyle]="{'background-image': 'url(' + item?.bgurl + ')'}">
                                 <p>{{item?.description}}</p>
                             </div>
                             <figure>

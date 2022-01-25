@@ -748,7 +748,7 @@
       height: 300px;
       object-fit: cover;
       @include md {
-        height: 450px;
+        height: 500px;
       }
     }
   }
@@ -934,7 +934,7 @@
     background-color: $whiteColor;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.07);
     border-radius: 5px;
-    padding: 0.5em 1em;
+    padding: 1em;
   }
   .footerWrapper,
   .commonStyle {
@@ -980,13 +980,13 @@
 //Overall tabs
 .topTab {
   background-color: #f8fbff;
-  padding: 5em 0 0 0;
+  padding: 4.5em 0 0 0;
   position: relative;
 }
 .tabssection {
-  background-color: #ffffff;
+  background-color: $whiteColor;
   padding: 1.5em 0;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   position: relative;
   &.sticky {
     width: 100%;
@@ -994,9 +994,9 @@
     top: 74px;
     overflow: hidden;
     z-index: 10;
-    background-color: #ffffff;
-    padding: 1.5em 0;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    background-color: $whiteColor;
+    padding: 1.75em 0;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
     .buyNow {
       opacity: 1;
     }
@@ -1007,19 +1007,21 @@
     align-items: center;
     flex-wrap: nowrap;
     li {
+      font-family: "OpenSans", sans-serif;
       margin-right: 20px;
       font-size: 0.9375em;
-      font-weight: 700;
-      color: $darkGrey;
+      font-weight: 500;
+      color: $darkMediumGrey;
       line-height: normal;
       a {
+        padding-bottom: 1.6em;
         &:hover {
           color: #27bbee;
-          border-bottom: 2px solid #1b4e9b;
+          border-bottom: 3px solid #1b4e9b;
         }
         &.active {
           color: #27bbee;
-          border-bottom: 2px solid #1b4e9b;
+          border-bottom: 3px solid #1b4e9b;
         }
       }
     }
@@ -1106,11 +1108,13 @@
           font-weight: 600;
         }
         p {
+          font-family: "OpenSans", sans-serif;
           font-size: 0.9375em;
-          font-weight: 400;
-          color: $mediumGrey;
+          font-weight: 500;
+          color: $darkMediumGrey;
           line-height: 1.5;
           margin: 0;
+          text-align: left;
         }
       }
     }
@@ -1160,15 +1164,15 @@
       width: 50%;
       display: flex;
       align-items: center;
-      background-image: url("#{$imagePath}/Program_bg.png");
+      //background-image: url("#{$imagePath}/Program_bg.png");
       background-repeat: no-repeat;
       background-size: cover;
       border-radius: 0.3em 0 0 0.3em;
       p {
-        font-size: 1.125em;
+        font-size: 1em;
         font-weight: 400;
         color: $whiteColor;
-        line-height: 1.5;
+        line-height: 2;
         margin: 0;
         padding: 0 1.25em;
         text-align: justify;
@@ -1301,10 +1305,10 @@
 .projectThink{
   position: relative;
   //background-image: url("#{$imagePath}/projectThink_bg.png");
-  background-position: bottom center;
+  // background-position: bottom center;
   background-repeat: no-repeat;
   width: 100%;
-  padding: 1.25em 0 3em 0;
+  padding: 4em 2em 7em 2em;
   font-size: 12px;
   font-size: 12px;
   background-size: cover;
@@ -1323,10 +1327,10 @@
   .thinkSection {
     display: flex;
     .left {
-      width: 30%;
+      width: 40%;
     }
     .right {
-      width: 70%;
+      width: 60%;
       div{
         color: $shadeBlueColor;
         font-family: "OpenSans", sans-serif;
@@ -1346,10 +1350,11 @@
         }
       }
       p {
-        color:$darkGrey;
+        width: 85%;
+        color:$darkMediumGrey;
         font-size: 1.25em;
         font-weight: 400;
-        line-height: normal;
+        line-height: 1.5;
       }
     }
   }
@@ -1359,7 +1364,7 @@
 //Program Highlights
 .progHighlightsBg {
   background-color: $whiteColor;
-  padding: 1em 0 3.75em 0;
+  padding:  0 3.75em;
   font-size: 12px;
   position: relative;
   overflow: hidden;
@@ -1371,7 +1376,7 @@
     width: 110%;
     height: 100%;
     opacity: 0.065;
-    background-image: url("#{$imagePath}/programHighlights.png");
+    background-image: url("https://assets.lntedutech.com/portalicons/programHighlights.png");
     background-repeat: no-repeat;
     background-size: cover;
   }
@@ -1409,11 +1414,11 @@
       margin: 0;
     }
     p {
-      font-size: 1.125em;
+      font-size: 1em;
       font-weight: 400;
-      color: $darkGrey;
+      color: $darkMediumGrey;
       display: block;
-      line-height: 1.4;
+      line-height: 1.5;
       padding: 0.75em 0 1em 0;
       margin: 0;
     }
@@ -1430,21 +1435,20 @@
         font-weight: 600;
         color: $darkGrey;
         margin-bottom: 1.25em;
+        text-align: center;
       }
       ul {
         li {
-          margin-bottom: 2em;
+          line-height: 3;
           display: flex;
           figure {
             margin-right: 1.5%;
             width: 2.5%;
           }
           span {
-            font-size: 1.125em;
+            font-size: 1em;
             font-weight: 400;
-            color: $darkGrey;
-            line-height: 1;
-            width: 96%;
+            color: $darkMediumGrey;
           }
           &:last-child {
             margin-bottom: 0;
@@ -1457,7 +1461,7 @@
 //projectFace
 .projectFace {
   position: relative;
-  background-image: url("#{$imagePath}/faceBg.svg");
+  //background-image: url("#{$imagePath}/faceBg.svg");
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
@@ -2116,7 +2120,7 @@
       &::before {
         content: "";
         position: absolute;
-        background-image: url(/assets/images/requestbg.svg);
+        background-image: url('https://assets.lntedutech.com/portalicons/requestbg.svg');
         background-size: contain;
         background-repeat: no-repeat;
         left: 50%;
@@ -2762,7 +2766,7 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background-image: url("#{$imagePath}/programminLanguage_bg.svg");
+    background-image: url("https://assets.lntedutech.com/portalicons/programbg.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: right;
