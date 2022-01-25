@@ -62,6 +62,7 @@ header {
 .megaMenu {
     // display: flex;
     display: none;
+    margin-right: 30px;
     @include lg {
         display: inline-flex;
     }
@@ -69,15 +70,22 @@ header {
         padding-left: 0.3em;
     }
     button {
-        @include buttonFilled;
         padding: 0.375em 1em;
-        font-size: 1.1em;
-        font-weight: 400;
-        display: inline-flex;
+        display: flex;
         justify-content: space-between;
         align-items: center;
-        @include sm {
-            margin-right: 15px;
+        font-size: 1.1em;
+        font-weight: 400;
+        background-color: $secondaryColor;
+        color: $whiteColor;
+        border-radius: 5px;
+        border: none;
+        transition: all 0.3s ease-in-out;
+        &:hover {
+          background: $primaryColor;
+        }
+        span{
+            margin: 0 0.5em;
         }
         em {
             font-size: 0.8em;

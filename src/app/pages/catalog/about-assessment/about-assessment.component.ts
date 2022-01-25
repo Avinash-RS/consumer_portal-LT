@@ -163,40 +163,40 @@ export class AboutAssessmentComponent implements OnInit {
     }
     checkOffsetTop() {
       const windowOffSet = window.pageYOffset;
-      if(windowOffSet >= this.firstOffset && windowOffSet < this.secondOffset ){
+      if(windowOffSet >= this.firstOffset && windowOffSet < this.secondOffset && windowOffSet < this.thirdOffset && windowOffSet < this.fourthOffset && windowOffSet < this.fifthOffset && windowOffSet < this.sixthOffset  && windowOffSet < this.seventhOffset && windowOffSet < this.eigthOffset){
         this.activeSection = 1;
       }
-      else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet < this.thirdOffset && windowOffSet < this.fourthOffset && windowOffSet < this.fifthOffset && windowOffSet < this.sixthOffset  && windowOffSet < this.seventhOffset){
+      else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet < this.thirdOffset && windowOffSet < this.fourthOffset && windowOffSet < this.fifthOffset && windowOffSet < this.sixthOffset  && windowOffSet < this.seventhOffset && windowOffSet < this.eigthOffset){
         this.activeSection = 2;
       }
-      else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet < this.fourthOffset && windowOffSet < this.fifthOffset && windowOffSet < this.sixthOffset  && windowOffSet < this.seventhOffset){
+      else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet < this.fourthOffset && windowOffSet < this.fifthOffset && windowOffSet < this.sixthOffset  && windowOffSet < this.seventhOffset && windowOffSet < this.eigthOffset){
         this.activeSection = 3;
       }
-      else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet >= this.fourthOffset && windowOffSet < this.fifthOffset && windowOffSet < this.sixthOffset  && windowOffSet < this.seventhOffset){
+      else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet >= this.fourthOffset && windowOffSet < this.fifthOffset && windowOffSet < this.sixthOffset  && windowOffSet < this.seventhOffset && windowOffSet < this.eigthOffset){
         this.activeSection = 4;
       }
-      else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet >= this.fourthOffset && windowOffSet >= this.fifthOffset && windowOffSet < this.sixthOffset  && windowOffSet < this.seventhOffset){
+      else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet >= this.fourthOffset && windowOffSet >= this.fifthOffset && windowOffSet < this.sixthOffset  && windowOffSet < this.seventhOffset && windowOffSet < this.eigthOffset){
         this.activeSection = 5;
       }
-      else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet >= this.fourthOffset && windowOffSet >= this.fifthOffset && windowOffSet >= this.sixthOffset  && windowOffSet < this.seventhOffset){
+      else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet >= this.fourthOffset && windowOffSet >= this.fifthOffset && windowOffSet >= this.sixthOffset  && windowOffSet < this.seventhOffset && windowOffSet < this.eigthOffset){
         this.activeSection = 6;
       }
       else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet >= this.fourthOffset && windowOffSet >= this.fifthOffset && windowOffSet >= this.sixthOffset  && windowOffSet >= this.seventhOffset && windowOffSet < this.eigthOffset){
         this.activeSection = 7;
-      }
-      else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet >= this.fourthOffset && windowOffSet >= this.fifthOffset && windowOffSet >= this.sixthOffset  && windowOffSet >= this.seventhOffset && windowOffSet >= this.eigthOffset){
+      }  else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet >= this.fourthOffset && windowOffSet >= this.fifthOffset && windowOffSet >= this.sixthOffset  && windowOffSet >= this.seventhOffset && windowOffSet >= this.eigthOffset){
         this.activeSection = 8;
       }
+    
 
     }
       ngAfterViewInit(){
         setTimeout(()=>{
-           this.firstOffset =  this.firstElement.nativeElement.offsetTop - 200;
+           this.firstOffset =  this.firstElement.nativeElement.offsetTop -200;
            this.secondOffset =  this.secondElement.nativeElement.offsetTop - 200;
-           this.thirdOffset =  this.thirdElement.nativeElement.offsetTop - 200;
-           this.fourthOffset =  this.fourthElement.nativeElement.offsetTop - 200;
-           this.fifthOffset =  this.fifthElement.nativeElement.offsetTop - 200;
-           this.sixthOffset =  this.sixthElement.nativeElement.offsetTop - 200;
+           this.thirdOffset =  this.thirdElement.nativeElement.offsetTop -200;
+           this.fourthOffset =  this.fourthElement.nativeElement.offsetTop -200;
+           this.fifthOffset =  this.fifthElement.nativeElement.offsetTop -200;
+           this.sixthOffset =  this.sixthElement.nativeElement.offsetTop -200;
            this.seventhOffset =  this.seventhElement.nativeElement.offsetTop -200;
            this.eigthOffset =  this.eigthElement.nativeElement.offsetTop -200;
         },1000)
