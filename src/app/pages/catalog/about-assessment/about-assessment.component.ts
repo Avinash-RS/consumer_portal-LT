@@ -162,7 +162,6 @@ export class AboutAssessmentComponent implements OnInit {
               },500);
     }
     checkOffsetTop() {
-      debugger;
       const windowOffSet = window.pageYOffset;
       if(windowOffSet >= this.firstOffset && windowOffSet < this.secondOffset && windowOffSet < this.thirdOffset && windowOffSet < this.fourthOffset && windowOffSet < this.fifthOffset && windowOffSet < this.sixthOffset  && windowOffSet < this.seventhOffset && windowOffSet < this.eigthOffset){
         this.activeSection = 1;

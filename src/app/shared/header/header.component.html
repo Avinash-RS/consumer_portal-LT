@@ -9,7 +9,11 @@
             <img src="https://assets.lntedutech.com/edutech_logo.svg" alt="L&T Logo">
         </figure>
         <div class="megaMenu" (mouseenter)="megaMenuClick()">
-            <button >Catalog<em [ngClass]="showMenu == 'out' ? 'icon-DownArrow' : 'icon-UpArrow'" ></em></button>
+            <button >
+                <img src="../../../assets/images/catalog.svg" alt="">
+                <span>Catalog</span>
+                <em [ngClass]="showMenu == 'out' ? 'icon-DownArrow' : 'icon-UpArrow'" ></em>
+            </button>
         </div>
         <nav [ngClass]="(header_width.offsetWidth > '992') ?  'topMenu' : 'hide_'" [class.topMenu_lap]="menu_tab">
             <ul>
