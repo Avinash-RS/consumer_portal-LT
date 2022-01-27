@@ -464,7 +464,7 @@ freeOrderPlace(cartid){
     this.activeSection = ID;
     var yOffset;
     if(this.sticky){
-      yOffset = -72;
+      yOffset = -100;
     }
     else{
       yOffset = -120;

@@ -393,7 +393,6 @@
     <div class="courseContainer" *ngIf="!nocard && !defaultDiv">
         <div class="courseProduct">
             <figure class="bannerBgImage" id="banner">
-                <!-- <img [src]="courseData?.image?.url" alt="" /> -->
                 <img [src]="courseData?.image?.bgurl" alt="" />
             </figure>
             <div class="bannerContent">
@@ -486,7 +485,7 @@
                     <div class="container">
                         <div class="commonHeadingStyle">{{item?.title}}</div>
                         <div class="programming">
-                            <div class="left">
+                            <div class="left" [ngStyle]="{'background-image': 'url(' + item?.bgurl + ')'}">
                                 <p>{{item?.description}}</p>
                             </div>
                             <figure>
@@ -604,7 +603,7 @@
                                         <em class="icon-ContactUs"></em>
                                     </span>
                                     <div>
-                                        <span class="heading5">Contact us</span>
+                                        <!-- <span class="heading5">Contact us</span> -->
                                         <span class="pnNum">044 - 2252 6000</span>
                                     </div>
                                 </div>
@@ -680,7 +679,7 @@
                     <div class="container">
                         <ul>
                             <li *ngFor="let duration of item?.subHeading2?.innerArray">
-                                <div class="count">{{duration?.title}}</div>
+                                <div class="count">{{duration?.title}}<span>{{duration?.quantifier}}</span></div>
                                 <div class="description">{{duration?.description}}</div>
                             </li>
                         </ul>

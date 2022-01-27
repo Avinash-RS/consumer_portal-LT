@@ -745,10 +745,19 @@
     display: flex;
     img {
       width: 100%;
-      height: 300px;
+      height: calc(100vh - 74px);
       object-fit: cover;
-      @include md {
+      @include sm {
+        height: 350px;
+      }
+      @include lg {
         height: 450px;
+      }
+      @include xl {
+        height: 480px;
+      }
+      @media only screen and (min-width: 1540px) {
+        height: 500px;
       }
     }
   }
@@ -763,27 +772,49 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
       margin-bottom: 1.5em;
+      @include sm {
+        flex-wrap: nowrap;
+      }
       .left {
-        width: 55%;
+        width: 100%;
+        @include sm {
+          width: 55%;
+        }
       }
       .right {
-        width: 42%;
+        width: 100%;
         display: flex;
         justify-content: flex-end;
+        margin: 1.5em 0;
         figure {
-          width: 90%;
+          width: 100%;
+          @include sm {
+            width: 90%;
+            margin: 0;
+          }
+        }
+        @include sm {
+          width: 42%;
         }
       }
     }
     .heading1 {
       color: $whiteColor;
       font-family: "OpenSans", sans-serif;
-      font-size: 2.25em;
+      font-size: 2em;
       font-weight: 700;
       max-width: 568px;
       width: 96%;
       line-height: 1.2;
+      margin-top: 1em;
+      @include sm {
+        margin-top: 0;
+      }
+      @include md {
+        font-size: 2.25em;
+      }
     }
     p {
       font-size: 1.35em;
@@ -793,6 +824,9 @@
       line-height: 1.3;
       @include md {
         font-size: 0.9375em;
+      }
+      @include xl {
+        margin: 3em 0;
       }
     }
     span {
@@ -925,39 +959,63 @@
 }
 
 .bannerFooter {
-  position: absolute;
-  top: -45px;
-  left: 0;
+  position: relative;
   width: 100%;
   z-index: 9;
+  @include md {
+    position: absolute;
+    top: -45px;
+    left: 0;
+  }
   .container {
     background-color: $whiteColor;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.07);
     border-radius: 5px;
-    padding: 0.5em 1em;
+    padding: 1em;
   }
   .footerWrapper,
   .commonStyle {
     display: flex;
     align-items: flex-start;
-    justify-content: space-between;
   }
   .footerWrapper {
     width: 100%;
     flex-wrap: wrap;
+    justify-content: space-between;
   }
   .commonStyle {
     width: 50%;
     margin: 1em 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
     @include sm {
       width: 18%;
     }
+    @include lg {
+      text-align: left;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+    }
     figure {
-      width: 15%;
+      width: 30%;
+      img {
+        height: 25px;
+        object-fit: contain;
+        @include lg {
+          height: auto;
+        }
+      }
+      @include lg {
+        width: 15%;
+      }
     }
     > div {
-      width: 80%;
-      margin-left: 5%;
+      width: 100%;
+      @include lg {
+        width: 80%;
+        margin-left: 5%;
+      }
     }
     p {
       font-family: "OpenSans", sans-serif;
@@ -965,13 +1023,16 @@
       font-weight: 600;
       color: #08558c;
       line-height: normal;
-      margin: 0 0 0.35em 0;
+      margin: 0;
       text-transform: uppercase;
+      @include lg {
+        margin: 0 0 0.35em 0;
+      }
     }
     .content {
-      color: $darkGrey;
+      color: #222222;
       font-size: 1em;
-      font-weight: 700;
+      font-weight: 400;
       line-height: 1;
     }
   }
@@ -980,23 +1041,37 @@
 //Overall tabs
 .topTab {
   background-color: #f8fbff;
-  padding: 5em 0 0 0;
+  padding: 1em 0 0 0;
   position: relative;
+  font-size: 12px;
+  @include md {
+    padding: 5em 0 0 0;
+  }
+  @include lg {
+    font-size: 14px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
 }
 .tabssection {
-  background-color: #ffffff;
+  background-color: $whiteColor;
   padding: 1.5em 0;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   position: relative;
+  display: none;
+  @include lg {
+    display: flex;
+  }
   &.sticky {
     width: 100%;
     position: fixed;
     top: 74px;
     overflow: hidden;
     z-index: 10;
-    background-color: #ffffff;
-    padding: 1.5em 0;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    background-color: $whiteColor;
+    padding: 1.75em 0;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
     .buyNow {
       opacity: 1;
     }
@@ -1007,19 +1082,26 @@
     align-items: center;
     flex-wrap: nowrap;
     li {
+      font-family: "OpenSans", sans-serif;
       margin-right: 20px;
-      font-size: 0.9375em;
-      font-weight: 700;
-      color: $darkGrey;
+      font-weight: 500;
+      color: $darkMediumGrey;
       line-height: normal;
+      @include lg {
+        font-size: 0.75em;
+      }
+      @include xl {
+        font-size: 0.825em;
+      }
       a {
+        padding-bottom: 1.6em;
         &:hover {
           color: #27bbee;
-          border-bottom: 2px solid #1b4e9b;
+          border-bottom: 3px solid #1b4e9b;
         }
         &.active {
           color: #27bbee;
-          border-bottom: 2px solid #1b4e9b;
+          border-bottom: 3px solid #1b4e9b;
         }
       }
     }
@@ -1051,7 +1133,7 @@
 .whyFullStack {
   background-color: #f8fbff;
   padding: 3.75em 0;
-  font-size: 12px;
+  font-size: 13px;
   @include md {
   }
   @include lg {
@@ -1065,26 +1147,40 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      flex-wrap: wrap;
+      @include sm {
+        flex-wrap: nowrap;
+      }
       li {
-        width: 30%;
+        width: 100%;
         text-align: center;
         position: relative;
         padding: 15px;
         transition: all 0.3s ease-out 0s;
+        @include sm {
+          width: 33%;
+        }
+        @include md {
+          width: 30%;
+        }
         &::after {
-          content: "";
-          position: absolute;
-          right: -10%;
-          top: 50%;
-          transform: translateY(-50%);
-          width: 1px;
-          height: 75%;
-          background-color: rgba(169, 141, 221, 1);
+          @include xl {
+            content: "";
+            position: absolute;
+            right: -10%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 75%;
+            background-color: rgba(169, 141, 221, 1);
+          }
         }
         &:hover {
-          box-shadow: 0 0 30px 0 rgb(0 0 0 / 18%);
-          transform: translate(0px, -10px);
-          background-color: #f8fbff;
+          @include xl {
+            box-shadow: 0 0 30px 0 rgb(0 0 0 / 18%);
+            transform: translate(0px, -10px);
+            background-color: #f8fbff;
+          }
         }
         &:last-child {
           &::after {
@@ -1106,11 +1202,16 @@
           font-weight: 600;
         }
         p {
+          font-family: "OpenSans", sans-serif;
           font-size: 0.9375em;
-          font-weight: 400;
-          color: $mediumGrey;
+          font-weight: 500;
+          color: $darkMediumGrey;
           line-height: 1.5;
           margin: 0;
+          text-align: center;
+          @include md {
+            text-align: left;
+          }
         }
       }
     }
@@ -1121,7 +1222,7 @@
 .programOverview {
   background-color: $whiteColor;
   padding: 3.75em 0 1em 0;
-  font-size: 12px;
+  font-size: 13px;
   position: relative;
   @include md {
   }
@@ -1154,42 +1255,265 @@
     position: relative;
   }
   .programming {
-    // background-color:$shadeBlueColor;
     display: flex;
+    flex-wrap: wrap;
+    border-radius: 0.3em;
+    overflow: hidden;
+    @include sm {
+      flex-wrap: nowrap;
+    }
     .left {
-      width: 50%;
+      width: 100%;
       display: flex;
       align-items: center;
-      background-image: url("#{$imagePath}/Program_bg.png");
       background-repeat: no-repeat;
       background-size: cover;
-      border-radius: 0.3em 0 0 0.3em;
+      border-radius: 0;
+      @include sm {
+        width: 50%;
+      }
       p {
-        font-size: 1.125em;
+        font-size: 1em;
         font-weight: 400;
         color: $whiteColor;
-        line-height: 1.5;
+        line-height: 2;
         margin: 0;
-        padding: 0 1.25em;
+        padding: 1.4em;
         text-align: justify;
+        @include sm {
+          padding: 1.25em;
+        }
       }
     }
     figure {
-      width: 50%;
+      width: 100%;
       display: flex;
-      img {
-        border-radius: 0 0.3em 0.3em 0;
-        
+      @include sm {
+        width: 50%;
       }
     }
   }
-  //
 }
 
+//Project Think
+.projectThink {
+  position: relative;
+  background-size: cover;
+  background-position: 60% 100%;
+  background-repeat: no-repeat;
+  width: 100%;
+  padding: 2em 0 4em 0;
+  font-size: 12px;
+  @include md {
+    background-position: bottom center;
+  }
+  @include lg {
+    padding: 2em 0 5em 0;
+    font-size: 14px;
+  }
+  @include xl {
+    padding: 4em 0 6em 0;
+    font-size: 16px;
+  }
+  @media only screen and (min-width: 1540px) {
+    padding: 3em 0 7em 0;
+  }
+  .container {
+    position: relative;
+    z-index: 9;
+  }
+  .thinkSection {
+    display: flex;
+    flex-wrap: wrap;
+    @include sm {
+      flex-wrap: nowrap;
+    }
+    .left {
+      width: 100%;
+      order: 2;
+      figure {
+        margin: 1em auto 0 auto;
+        width: 60%;
+        @include sm {
+          width: 70%;
+          margin: 0 auto;
+        }
+        @include lg {
+          width: 100%;
+        }
+      }
+      @include sm {
+        order: 1;
+        width: 40%;
+      }
+    }
+    .right {
+      width: 100%;
+      order: 1;
+      @include sm {
+        order: 2;
+        width: 60%;
+      }
+      div {
+        color: $shadeBlueColor;
+        font-family: "OpenSans", sans-serif;
+        font-size: 1.5em;
+        font-weight: 600;
+        margin: 1em 0 2em 0;
+        position: relative;
+        &::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: -0.4em;
+          width: 3em;
+          height: 3px;
+          border-radius: 1.25em;
+          background-image: linear-gradient(to right, #00bcef, #00c0db, #00c1b6, #00be83, #4eb749);
+        }
+      }
+      p {
+        color:$darkMediumGrey;
+        font-size: 1.25em;
+        font-weight: 400;
+        line-height: 1.5;
+      }
+    }
+  }
+}
+
+//Program Highlights
+.progHighlightsBg {
+  background-color: $whiteColor;
+  padding: 0 0 1.75em 0;
+  font-size: 13px;
+  position: relative;
+  overflow: hidden;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 110%;
+    height: 100%;
+    opacity: 0.065;
+    background-image: url("https://assets.lntedutech.com/portalicons/programHighlights.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+  }
+  @include md {
+  }
+  @include lg {
+    font-size: 14px;
+    padding: 0 0 3em 0;
+  }
+  @include xl {
+    font-size: 16px;
+  }
+  .container {
+    position: relative;
+    z-index: 9;
+  }
+  .programmeHighlights {
+    margin-top: 1.25em;
+    display: inline-block;
+    width: 100%;
+    .heading4 {
+      font-family: "OpenSans", sans-serif;
+      font-weight: 600;
+      color: $darkGrey;
+      margin: 0;
+    }
+    p {
+      font-size: 1em;
+      font-weight: 400;
+      color: $darkMediumGrey;
+      display: block;
+      line-height: 1.5;
+      padding: 0.75em 0 1em 0;
+      margin: 0;
+    }
+    .keySkillsCovered {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      max-width: 1070px;
+      width: 97%;
+      margin: 1em auto 0 auto;
+      @include md {
+        flex-wrap: nowrap;
+      }
+      .keyFeatures {
+        width: 100%;
+        @include md {
+          width: 47%;
+        }
+        @include lg {
+          width: 48%;
+        }
+        position: relative;
+        &:last-child {
+          margin-top: 2em;
+          @include md {
+            margin-top: 0;
+          }
+          &::after {
+            content: none;
+          }
+        }
+        &::after {
+          @include md {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 55%;
+            background-color: #a98ddd;
+          }
+        }
+      }
+      .heading4 {
+        font-family: "OpenSans", sans-serif;
+        font-weight: 600;
+        color: $darkGrey;
+        margin-bottom: 1.25em;
+        text-align: center;
+      }
+      ul {
+        li {
+          display: flex;
+          align-items: flex-start;
+          margin-bottom: 1.5em;
+          @include md {
+            margin-bottom: 2.5em;
+          }
+          figure {
+            margin-right: 2.5%;
+            width: 2.5%;
+            line-height: normal;
+          }
+          span {
+            font-size: 1em;
+            font-weight: 400;
+            color: $darkMediumGrey;
+            line-height: 1.3;
+          }
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+//Projects Create
 .projectYou {
   position: relative;
-  font-size: 12px;
-  position: relative;
+  font-size: 13px;
   @include md {
   }
   @include lg {
@@ -1212,7 +1536,7 @@
     p {
       font-size: 1.125em;
       font-weight: 400;
-      color: $mediumGrey;
+      color: $darkMediumGrey;
       display: block;
       line-height: 1.4;
       padding: 1em 0 1em 0;
@@ -1221,14 +1545,23 @@
     ul {
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
+      @include md {
+        flex-wrap: nowrap;
+      }
       li {
         display: flex;
         align-items: center;
-        width: 31.5%;
+        width: 100%;
         padding: 0.875em;
         background-color: #eceff0;
         box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
         transition: all 0.3s ease-in-out;
+        margin-bottom: 1.5em;
+        @include md {
+          width: 31.5%;
+          margin-bottom: 0;
+        }
         &:hover {
           transform: scale(1.1);
         }
@@ -1259,20 +1592,20 @@
             border-radius: 50%;
             width: 6em;
             height: 6em;
-            // background-image: linear-gradient(
-            //   to right bottom,
-            //   #25b7d3,
-            //   #1da7c2,
-            //   #1497b1,
-            //   #0a88a0,
-            //   #007990
-            // );
             display: inline-flex;
             justify-content: center;
             align-items: center;
             padding: 8px;
             img {
               max-width: 70%;
+            }
+            @include md {
+              width: 4.75em;
+              height: 4.75em;
+            }
+            @include lg {
+              width: 6em;
+              height: 6em;
             }
           }
         }
@@ -1284,11 +1617,12 @@
             font-family: "OpenSans", sans-serif;
             font-weight: 600;
             margin-bottom: 10px;
+            font-size: 1.125em;
           }
           p {
             font-size: 0.875em;
             font-weight: 400;
-            color: $darkGrey;
+            color: $darkMediumGrey;
             line-height: 1.3;
             margin: 0;
             padding: 0;
@@ -1298,176 +1632,41 @@
     }
   }
 }
-.projectThink{
-  position: relative;
-  //background-image: url("#{$imagePath}/projectThink_bg.png");
-  background-position: bottom center;
-  background-repeat: no-repeat;
-  width: 100%;
-  padding: 1.25em 0 3em 0;
-  font-size: 12px;
-  font-size: 12px;
-  background-size: cover;
-  @include md {
-  }
-  @include lg {
-    font-size: 14px;
-  }
-  @include xl {
-    font-size: 16px;
-  }
-  .container {
-    position: relative;
-    z-index: 9;
-  }
-  .thinkSection {
-    display: flex;
-    .left {
-      width: 30%;
-    }
-    .right {
-      width: 70%;
-      div{
-        color: $shadeBlueColor;
-        font-family: "OpenSans", sans-serif;
-        font-size: 1.5em;
-        font-weight: 600;
-        margin: 1em 0 2em 0;
-        position: relative;
-        &::after {
-          content: "";
-          position: absolute;
-          left: 0;
-          bottom: -0.4em;
-          width: 3em;
-          height: 3px;
-          border-radius: 1.25em;
-          background-image: linear-gradient(to right, #00bcef, #00c0db, #00c1b6, #00be83, #4eb749);
-        }
-      }
-      p {
-        color:$darkGrey;
-        font-size: 1.25em;
-        font-weight: 400;
-        line-height: normal;
-      }
-    }
-  }
 
 
-}
-//Program Highlights
-.progHighlightsBg {
-  background-color: $whiteColor;
-  padding: 1em 0 3.75em 0;
-  font-size: 12px;
-  position: relative;
-  overflow: hidden;
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 110%;
-    height: 100%;
-    opacity: 0.065;
-    background-image: url("#{$imagePath}/programHighlights.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-  @include md {
-  }
-  @include lg {
-    font-size: 14px;
-  }
-  @include xl {
-    font-size: 16px;
-  }
-  .container {
-    position: relative;
-    z-index: 9;
-  }
-  .projectView{
-    position: relative;
-    @include md {
-  }
-  @include lg {
-    font-size: 14px;
-  }
-  @include xl {
-    font-size: 16px;
-  }
-  }
-  .programmeHighlights {
-    margin-top: 1.25em;
-    display: inline-block;
-    width: 100%;
-    .heading4 {
-      font-family: "OpenSans", sans-serif;
-      font-weight: 600;
-      color: $darkGrey;
-      margin: 0;
-    }
-    p {
-      font-size: 1.125em;
-      font-weight: 400;
-      color: $darkGrey;
-      display: block;
-      line-height: 1.4;
-      padding: 0.75em 0 1em 0;
-      margin: 0;
-    }
-    .keySkillsCovered {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 1em;
-      .keyFeatures,
-      .skillsCovered {
-        width: 48%;
-      }
-      .heading4 {
-        font-family: "OpenSans", sans-serif;
-        font-weight: 600;
-        color: $darkGrey;
-        margin-bottom: 1.25em;
-      }
-      ul {
-        li {
-          margin-bottom: 2em;
-          display: flex;
-          figure {
-            margin-right: 1.5%;
-            width: 2.5%;
-          }
-          span {
-            font-size: 1.125em;
-            font-weight: 400;
-            color: $darkGrey;
-            line-height: 1;
-            width: 96%;
-          }
-          &:last-child {
-            margin-bottom: 0;
-          }
-        }
-      }
-    }
-  }
-}
 //projectFace
 .projectFace {
   position: relative;
-  background-image: url("#{$imagePath}/faceBg.svg");
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
-  .container{
+  font-size: 13px;
+  padding-top: 5em;
+  @include sm {
+    padding-top: 0;
+  }
+  @include md {
+  }
+  @include lg {
+    font-size: 14px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
+  .container {
     padding: 1em 0 0 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    @include md {
+      flex-wrap: nowrap;
+    }
     .left {
-      width: 50%;
+      width: 100%;
+      @include sm {
+        width: 50%;
+      }
       .heading4 {
         color: $shadeBlueColor;
         font-family: "OpenSans", sans-serif;
@@ -1489,22 +1688,29 @@
       p {
         font-size: 1.25em;
         font-weight: 400;
-        color: $darkGrey;
+        color: $darkMediumGrey;
         line-height: 1.5;
       }
     }
     .right {
-      width: 50%;
+      width: 100%;
+      @include sm {
+        width: 50%;
+      }
       figure {
         margin: 0;
         display: flex;
         img {
-          width: 87%;
+          width: 100%;
+          @include sm {
+            width: 87%;
+          }
         }
       }
     }
   }
 }
+
 //Curriculam
 .curriculam {
   background-color: #f8fbff;
@@ -1513,7 +1719,7 @@
   position: relative;
   overflow: hidden;
   @include md {
-    font-size: 12px;
+    font-size: 13px;
   }
   @include lg {
     font-size: 14px;
@@ -1528,16 +1734,19 @@
     background-repeat: no-repeat;
     background-size: contain;
     height: 65%;
-    width: 13%;
+    width: 50%;
+    @include lg {
+      width: 13%;
+    }
   }
   &::before {
-    background-image: url("#{$imagePath}/curriculum_left.png");
+    background-image: url("https://assets.lntedutech.com/portalicons/curriculum_left.png");
     background-position: top;
     top: -0;
     left: 0;
   }
   &::after {
-    background-image: url("#{$imagePath}/curriculum_left.png");
+    background-image: url("https://assets.lntedutech.com/portalicons/curriculum_right.png");
     background-position: bottom;
     transform: scaleX(-1);
     bottom: 2em;
@@ -1547,11 +1756,21 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    flex-wrap: wrap;
+    @include md {
+      flex-wrap: nowrap;
+    }
     .left {
-      width: 53.5%;
+      width: 100%;
+      @include md {
+        width: 48.5%;
+      }
+      @include lg {
+        width: 53.5%;
+      }
       p {
-        color: $mediumGrey;
-        font-size: 1.125em;
+        color: $darkMediumGrey;
+        font-size: 1em;
         font-weight: 400;
         line-height: 1.4;
         margin-bottom: 1.5em;
@@ -1600,7 +1819,10 @@
         .expansionContent {
           position: relative;
           ul {
-            margin-left: 1.6em;
+            margin-left: 0;
+            @include md {
+              margin-left: 1.6em;
+            }
             li {
               font-size: 1.125em;
               font-weight: 400;
@@ -1657,9 +1879,22 @@
       }
     }
     .right {
-      width: 40.5%;
+      position: relative;
+      width: 100%;
+      margin-top: 2em;
+      z-index: 9;
+      @include md {
+        width: 48.5%;
+        margin-top: 0;
+      }
+      @include lg {
+        width: 40.5%;
+      }
       .heading4 {
-        color: $darkGrey;
+        font-family: "OpenSans", sans-serif;
+        color: $shadeBlueColor;
+        font-size: 1.5625em;
+        font-weight: 600;
       }
       .form,
       .contactUs {
@@ -1868,7 +2103,7 @@
 .realTimeProjects {
   background-color: #ffffff;
   padding: 3.75em 0;
-  font-size: 12px;
+  font-size: 14px;
   @include md {
     font-size: 12px;
   }
@@ -1902,18 +2137,18 @@
       padding: 1em;
       margin: 0 0 15px 1.5em;
       text-align: center;
-      width: 45.7%;
+      width: 100%;
       transition: all 0.25s;
       position: relative;
       @include sm {
-        width: 47.6%;
+        width: 46.2%;
       }
       @include md {
-        width: 47.4%;
+        width: 22.3%;
       }
       @include lg {
         margin: 0 0 0 1.5em;
-        width: 22.8%;
+        width: 22.7%;
       }
       @include xl {
         width: 22.9%;
@@ -1962,28 +2197,30 @@
         transform: scale3d(1, 0, 1);
       }
       &:hover {
-        box-shadow: none;
-        background-color: $whiteColor;
-        &::before {
-          border-top: 1px solid #0071bc;
-          border-bottom: 1px solid #0071bc;
-        }
-        &::after {
-          border-left: 1px solid #0071bc;
-          border-right: 1px solid #0071bc;
-        }
-        &::before,
-        &::after {
-          transform: scale3d(1, 1, 1);
-          transition: transform 0.5s;
+        @include xl {
+          box-shadow: none;
+          background-color: $whiteColor;
+          &::before {
+            border-top: 1px solid #0071bc;
+            border-bottom: 1px solid #0071bc;
+          }
+          &::after {
+            border-left: 1px solid #0071bc;
+            border-right: 1px solid #0071bc;
+          }
+          &::before,
+          &::after {
+            transform: scale3d(1, 1, 1);
+            transition: transform 0.5s;
+          }
         }
       }
     }
   }
 }
+
 //Duration
 .duration {
-  //background-image: url("../../../../assets/images/duration.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -1998,13 +2235,25 @@
     font-size: 16px;
   }
  .container {
-   ul{
+   ul {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 0 4em;
+    padding: 0;
+    flex-wrap: wrap;
+    @include sm {
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
     li {
       text-align: center;
+      width: 45%;
+      margin: 0.5em 0;
+      @include sm {
+        width: 19%;
+        margin: 0;
+      }
       .count {
         color: $primaryColor;
         font-size: 2.5em;
@@ -2012,6 +2261,9 @@
         font-weight: 900;
         margin-bottom: 0.6em;
         line-height: normal;
+        span{
+          font-size: 0.75em;
+        }
       }
       .description {
         color: $whiteColor;
@@ -2023,6 +2275,7 @@
   }
  }
 }
+
 //morehelp
 .morehelp {
   position: relative;
@@ -2116,7 +2369,7 @@
       &::before {
         content: "";
         position: absolute;
-        background-image: url(/assets/images/requestbg.svg);
+        background-image: url('https://assets.lntedutech.com/portalicons/requestbg.svg');
         background-size: contain;
         background-repeat: no-repeat;
         left: 50%;
@@ -2528,14 +2781,16 @@
   }
 }
 ::ng-deep .expertSupportSystem {
+  // margin-top: 5em;
+  .mat-tab-labels {
+    // margin-top: -30px;
+  }
+  .mat-tab-body-wrapper {
     background-image: url("#{$imagePath}/tabbg.png");
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 449.8px;
-    margin-top: 5em;
-    .mat-tab-labels {
-      margin-top: -30px;
-    }
+  }
   .mat-tab-label {
     border: 0;
     font-family: "OpenSans", sans-serif;
@@ -2560,12 +2815,14 @@
   }
   .mat-tab-header {
     border-bottom: 0;
-    overflow: initial;
+    // overflow: initial;
     padding: 0 4em;
+    position: relative;
+    top: 30px;
   }
-  .mat-tab-label-container {
-    overflow: initial;
-  }
+  // .mat-tab-label-container {
+  //   overflow: initial;
+  // }
   .mat-header-row {
     height: 40px !important;
   }
@@ -2623,14 +2880,30 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    flex-wrap: wrap;
     .path {
       position: relative;
-      width: 18%;
+      width: 48%;
       transition: all 0.3s ease-out 0s;
+      margin-bottom: 1em;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      @include sm {
+        width: 31%;
+        margin-left: 2%;
+        margin-bottom: 0;
+      }
+      @include md {
+        width: 18%;
+      }
       figure {
         height: 30px;
         img {
-          max-width: 12%;
+          max-width: 17%;
+          @include lg {
+            max-width: 12%;
+          }
         }
       }
       .heading {
@@ -2653,8 +2926,8 @@
       p {
         font-size: 0.9375em;
         font-weight: 400;
-        color: $mediumGrey;
-        line-height: 1.4;
+        color: $darkMediumGrey;
+        line-height: 1.5;
         padding-right: 20px;
       }
       &:first-child {
@@ -2676,15 +2949,12 @@
 
 //IndustryStep
 .industryStep {
-  // background-image: url("#{$imagePath}/industryStep_bg.svg");
-  // background-repeat: no-repeat;
   background-color: #4D7698;
   width: 100%;
   padding: 3em 0;
-  font-size: 12px;
+  font-size: 13px;
   position: relative;
   @include md {
-    font-size: 12px;
   }
   @include lg {
     font-size: 14px;
@@ -2694,44 +2964,69 @@
   }
   .bg {
     background-color: #5F82A0;
-    padding: 6em 0;
+    padding: 5em 0;
     border-radius: 0 100px 100px 0;
     width: 55%;
+    @include md {
+      padding: 5em 0;
+    }
+    @include lg {
+      padding: 5.2em 0;
+    }
+    @include xl {
+      padding: 6em 0;
+    }
   }
   .wrapper {
     position: absolute;
     width: 100%;
     height: 100%;
     bottom: 0;
-    // top: 50%;
-    // transform: translateY(-50%);
   }
   .container {
     position: relative;
     height: 100%;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    @include md {
+      flex-wrap: nowrap;
+    }
     .left {
-      width: 55%;
+      width: 95%;
+      @include md {
+        width: 55%;
+      }
       .heading4 {
         color: #EBFF4E;
+        font-size: 1.5625em;
+        font-weight: 800;
       }
       p {
-        font-family: 'Roboto', sans-serif;
-        font-size: 1.25em;
+        font-size: 1em;
         font-weight: 400;
         color: $whiteColor;
-        line-height: 1.4;
+        line-height: 1.5;
         margin: 1em 0 0 0;
+        padding-right: 2em;
       }
     }
     figure {
       position: relative;
-      width: 45%;
+      width: 100%;
       text-align: right;
-      bottom: 20px;
+      bottom: 4px;
+      @include md {
+        width: 45%;
+      }
+      @include lg {
+        bottom: 20px;
+      }
       img {
-        width: 93%;
+        width: 100%;
+        @include lg {
+          width: 93%;
+        }
       }
       // position: absolute;
       // right: 0;
@@ -2762,10 +3057,14 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background-image: url("#{$imagePath}/programminLanguage_bg.svg");
+    background-image: url("https://assets.lntedutech.com/portalicons/programbg.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: right;
+    opacity: 0.5;
+    @include lg {
+      opacity: 1;
+    }
   }
   // .subjectsOpportunities {
   //     display: flex;
@@ -2836,21 +3135,18 @@
       align-items: center;
       flex-wrap: wrap;
       figure {
-        width: 22.7%;
-        margin: 15px 3.2em 0 0;
-        @media only screen and (min-width: 360px) {
-          width: 24%;
-        }
+        width: 19.3%;
+        margin: 15px 1.5em 0 0;
         @include sm {
-          width: 19%;
-          margin: 15px 3.7em 0 0;
+          width: 12%;
+          margin: 15px 2em 0 0;
         }
         @include md {
-          width: 14.5%;
+          width: 11%;
           margin: 15px 3.1em 0 0;
         }
-        @include md {
-          width: 12.1%;
+        @include lg {
+          width: 10%;
         }
         @include xl {
           width: 8%;
@@ -2861,10 +3157,10 @@
       }
     }
     p {
-      font-size: 1.125em;
+      font-size: 1em;
       font-weight: 400;
-      color: $mediumGrey;
-      line-height: 1.4;
+      color: $darkMediumGrey;
+      line-height: 1.5;
       margin: 1.5em 0 0 0;
     }
   }
@@ -2872,15 +3168,15 @@
 
 //Enroll Now
 .enrollNow {
-  //background-image: url("#{$imagePath}/enrollNowBg.png");
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
-  padding-top: 1em;
+  padding-top: 2em;
   font-size: 12px;
   @include md {
   }
   @include lg {
+    padding-top: 1em;
     font-size: 14px;
   }
   @include xl {
@@ -2890,8 +3186,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    @include md {
+      flex-wrap: nowrap;
+    }
     .left {
-      width: 45%;
+      width: 100%;
+      @include md {
+        width: 45%;
+      }
       .heading {
         font-family: 'Roboto', sans-serif;
         font-size: 2.1875em;
@@ -2929,8 +3232,11 @@
       }
     }
     .right {
-      width: 45%;
       margin-top: 1em;
+      width: 100%;
+      @include md {
+        width: 45%;
+      }
       figure {
         display: flex;
         img {
