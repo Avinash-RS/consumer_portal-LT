@@ -20,6 +20,29 @@ import { GlobalValidatorsService } from 'src/app/validators/global-validators.se
   styleUrls: ['./about-course.component.scss']
 })
 export class AboutCourseComponent implements OnInit {
+  selectedIndex = 0;
+  TopicsOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    dots: false,
+    navSpeed: 700,
+    margin: 30,
+    navText: ["<i class='icon-LeftArrow'></i>", "<i class='icon-RightArrow'></i>"],
+    nav: true,
+    responsive: {
+      0: {
+        items: 1
+      },
+      600: {
+        items: 2
+      },
+      992: {
+        items: 2
+      }
+    }
+  }
   expertOptions: OwlOptions = {
     loop: true,
     mouseDrag: false,
