@@ -350,7 +350,7 @@
       overflow: hidden;
       z-index: 10;
       background-color: $whiteColor;
-      padding: 1.75em 0;
+      padding: 1.5em 0;
       box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
       .buyNow {
         opacity: 1;
@@ -1561,14 +1561,17 @@
   position: relative;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: 90%;
   width: 100%;
   padding: 3.75em 0 0 0;
   font-size: 12px;
+  z-index: -1;
   @include md {
+    background-position: top;
   }
   @include lg {
     font-size: 14px;
+    background-position: center;
   }
   @include xl {
     font-size: 16px;
@@ -1576,9 +1579,16 @@
   .container {
     display: flex;
     justify-content: space-between;
-    align-items: center; 
+    align-items: center;
+    flex-wrap: wrap;
+    @include md {
+      flex-wrap: nowrap;
+    }
     .left {
-      width: 50%;
+      width: 100%;
+      @include md {
+        width: 50%;
+      }
       .heading4 {
         font-family: "OpenSans", sans-serif;
         font-style: italic;
@@ -1592,11 +1602,17 @@
         margin: 2.5em 0;
       }
       .contact {
-        width: 70%;
+        width: 100%;
         display: flex;
         align-items: center;
         justify-content: space-between;
         margin-bottom: 30px;
+        @include lg {
+          width: 80%;
+        }
+        @include xl {
+          width: 70%;
+        }
         .contact-content {
           display: flex;
           align-items: center;
@@ -1644,8 +1660,13 @@
       }
     }
     .right {
-      width: 47%;
+      width: 100%;
+      margin-top: 2em;
       position: relative;
+      @include md {
+        width: 47%;
+        margin-top: 0;
+      }
       &::before {
         content: "";
         position: absolute;
@@ -1843,10 +1864,14 @@
         figure {
           border-radius: 50%;
           border: 1px solid rgba(73, 174, 49, 0.5);
-          width: 8em;
-          height: 8em;
+          width: 7em;
+          height: 7em;
           overflow: hidden;
           box-shadow: 3px 5px 6px rgba(0, 0, 0, 0.16);
+          @include xl {
+            width: 8em;
+            height: 8em;
+          }
           // display: flex;
           // overflow: hidden;
           // position: relative;
@@ -1974,8 +1999,15 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    flex-wrap: wrap;
+    @include md {
+      flex-wrap: nowrap;
+    }
     .left {
-      width: 58%;
+      width: 100%;
+      @include md {
+        width: 58%;
+      }
       .heading6 {
         color: $darkGrey;
         line-height: 1.4;
@@ -2002,7 +2034,10 @@
       }
     }
     .right {
-      width: 39%;
+      width: 100%;
+      @include md {
+        width: 39%;
+      }
       figure {
         display: flex;
         border-radius: 5px;
@@ -2014,8 +2049,15 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    flex-wrap: wrap;
+    @include md {
+      flex-wrap: nowrap;
+    }
     .right {
-      width: 58%;
+      width: 100%;
+      @include md {
+        width: 58%;
+      }
       .heading6 {
         color: $darkGrey;
         line-height: 1.4;
@@ -2042,7 +2084,10 @@
       }
     }
     .left {
-      width: 39%;
+      width: 100%;
+      @include md {
+        width: 39%;
+      }
       figure {
         display: flex;
         border-radius: 5px;
@@ -2069,12 +2114,13 @@
     background-image: url("#{$imagePath}/tabbg.png");
     background-size: cover;
     background-repeat: no-repeat;
-    min-height: 449.8px;
+    min-height: 450px;
+    align-items: center;
   }
   .mat-tab-label {
     border: 0;
-    font-family: "OpenSans", sans-serif;
-    font-style: 0.9375em;
+    font-family: "OpenSans", sans-serif !important;
+    font-size: 0.875em;
     font-weight: 600;
     line-height: normal;
     color: $darkGrey;
@@ -2084,9 +2130,13 @@
     opacity: 1;
     border-radius: 5px;
     margin-right: 4px;
-    width: 24.8%;
+    width: 35%;
     height: auto;
     padding: 1.25em 1em;
+    @include md {
+      width: 24.8%;
+      font-size: 0.9375em;
+    }
   }
   .mat-tab-label.mat-tab-label-active {
     background-color: $whiteColor;
@@ -2095,10 +2145,13 @@
   }
   .mat-tab-header {
     border-bottom: 0;
-    // overflow: initial;
-    padding: 0 4em;
+    padding: 0;
     position: relative;
-    top: 30px;
+    top: 0;
+    @include lg {
+      padding: 0 4em;
+      top: 30px;
+    }
   }
   // .mat-tab-label-container {
   //   overflow: initial;
@@ -2110,7 +2163,18 @@
     color: black !important;
   }
   .mat-tab-body-content{
-    padding: 0 4em;
+    padding: 0 1em;
+    @include lg {
+      padding: 0 4em;
+    }
+  }
+  .mat-tab-header-pagination-chevron {
+    border-color: $whiteColor;
+    height: 12px;
+    width: 12px;
+  }
+  .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron {
+    border-color: rgba(255, 255, 255, 0.5);
   }
 }
 
