@@ -31,6 +31,7 @@ export const APP_CONSTANTS = {
       home: '/catalog',
       catalogHome: '/catalog/catalogHome',
       aboutAssessment: '/catalog/aboutAssessment',
+      aboutCourse :'/catalog/aboutCourse',
       assessmentType: '/catalog/assessmentType',
       certifyAssessment: '/catalog/certifyAssessment',
       search: '/catalog/search'
@@ -56,6 +57,7 @@ export const APP_CONSTANTS = {
       home: 'catalog',
       catalogHome: 'catalogHome',
       aboutAssessment: 'aboutAssessment',
+      aboutCourse: 'aboutCourse',
       assessmentType: 'assessmentType',
       certifyAssessment: 'certifyAssessment',
       search: 'search'

@@ -14,6 +14,7 @@ import { CertifyAssessmentComponent } from './certify-assessment/certify-assessm
 import { RatingStudentFeedbackComponent } from './rating-studentFeedback/rating-studentFeedback.component';
 import { SearchComponent } from './search/search.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { AboutCourseComponent } from './about-course/about-course.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     AssessmentTypeComponent, 
     CertifyAssessmentComponent,
     RatingStudentFeedbackComponent,
-    SearchComponent
+    SearchComponent,
+    AboutCourseComponent
   ],
   imports: [
     CommonModule,
