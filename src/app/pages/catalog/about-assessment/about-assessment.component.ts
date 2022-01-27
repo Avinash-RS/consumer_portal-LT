@@ -84,9 +84,13 @@ export class AboutAssessmentComponent implements OnInit {
       600: {
         items: 2
       },
-      992: {
+      700: {
+        items: 3,
+        slideBy: 3
+      },
+      1200: {
         items: 4,
-        slideBy: 4
+        slideBy: 4  
       }
     }
   }
