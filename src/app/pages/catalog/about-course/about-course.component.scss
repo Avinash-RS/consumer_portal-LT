@@ -2314,8 +2314,11 @@
     background-color: #5F82A0;
     padding: 5em 0;
     border-radius: 0 100px 100px 0;
-    width: 55%;
+    width: 95%;
+    position: absolute;
     @include md {
+      position: relative;
+      width: 55%;
       padding: 5em 0;
     }
     @include lg {
@@ -2326,10 +2329,15 @@
     }
   }
   .wrapper {
-    position: absolute;
+    position: relative;
     width: 100%;
     height: 100%;
-    bottom: 0;
+    top: 30px;
+    @include md {
+      position: absolute;
+      top: auto;
+      bottom: 0;
+    }
   }
   .container {
     position: relative;
@@ -2363,8 +2371,9 @@
       position: relative;
       width: 100%;
       text-align: right;
-      bottom: 4px;
+      bottom: -15px;
       @include md {
+        bottom: 4px;
         width: 45%;
       }
       @include lg {
