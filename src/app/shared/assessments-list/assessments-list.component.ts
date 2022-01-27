@@ -113,6 +113,12 @@ export class AssessmentsListComponent implements OnInit {
   }
 
   aboutAssessment(cid,productType) {
-    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutAssessment, { id: btoa(cid), selectedTab: btoa(this.selectedTab) ,productType : btoa(productType)});
+    if(productType == 'course'){
+      this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutCourse, { id: btoa(cid), selectedTab: btoa(this.selectedTab) ,productType : btoa(productType)});
+    }
+    else{
+      this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutAssessment, { id: btoa(cid), selectedTab: btoa(this.selectedTab) ,productType : btoa(productType)});
+    }
+   
   }
 }

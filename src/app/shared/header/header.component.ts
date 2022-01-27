@@ -284,7 +284,12 @@ export class HeaderComponent implements OnInit {
     this.mobileshowMenu = 'out';
     this.assessmentsList= false;
     this.coursesList = false;
-    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutAssessment,{id : btoa(data.cid), selectedTab : btoa(data.parentId) ,productType : btoa(this.productType)});
+    if(this.productType == 'course'){
+      this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutCourse,{id : btoa(data.cid), selectedTab : btoa(data.parentId) ,productType : btoa(this.productType)});
+    }
+    else{
+      this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutAssessment,{id : btoa(data.cid), selectedTab : btoa(data.parentId) ,productType : btoa(this.productType)});
+    }
     this.inActiveTabs();
   }
 

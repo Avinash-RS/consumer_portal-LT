@@ -1,1223 +1,503 @@
 @import "variables";
 @import "keyframes";
 
-.detailBanner {
-  font-size: 14px;
-  width: 100%;
-  position: relative;
-  figure {
-    overflow: hidden;
-    &::after {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      left: 0;
-      top: 0;
-      background: rgb(255, 255, 255);
-      background: -moz-linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0),
-        rgba(0, 0, 0, 1) 100%
-      );
-      background: -webkit-linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0),
-        rgba(0, 0, 0, 1) 100%
-      );
-      background: linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0),
-        rgba(0, 0, 0, 1) 100%
-      );
-      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#000000",GradientType=1);
-    }
-    img {
-      display: block;
-      width: 100%;
-      height: 350px;
-      object-fit: cover;
-      object-position: center top;
-      //filter: blur(0.7em);
-      @include sm {
-        height: 220px;
-      }
-      @include md {
-        height: 250px;
-      }
-      @include lg {
-        height: 280px;
-      }
-      @include xl {
-        height: 350px;
-      }
-    }
-  }
-  // background-position: center 55%;
-  // background-repeat: no-repeat;
-  // background-size: cover;
-  // &::before {
-  //     content: '';
-  //     display: block;
-  //     padding-bottom: 90%;
-  //     @media only screen and (min-width: 375px) {
-  //         padding-bottom: 75%;
-  //     }
-  //     @include sm {
-  //         padding-bottom: 36%;
-  //     }
-  //     @include md {
-  //         padding-bottom: 32%;
-  //     }
-  //     @include lg {
-  //         padding-bottom: 26%;
-  //     }
-  // }
-  @include md {
-    font-size: 12px;
-  }
-  @include lg {
-    font-size: 14px;
-  }
-  @include xl {
-    font-size: 16px;
-  }
-  .detailBannerPosition {
-    position: absolute;
-    width: 100%;
-    left: 0;
-    bottom: 1em;
-    z-index: 1;
-    padding: 1em 0;
-  }
-}
-
-.bannerDescription {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  .assessmentArea {
-    width: 100%;
-    @include md {
-      width: 57%;
-    }
-    @include lg {
-      width: 63%;
-    }
-  }
-  .assessmentHighlights {
-    width: 100%;
-    margin-top: 1em;
-    @include md {
-      width: 41%;
-      margin-top: 0;
-    }
-    @include lg {
-      width: 35%;
-    }
-  }
-}
-
-.detailBannerPosition {
-  .assessmentArea {
-    > div {
-      margin-top: 1.5em;
-      display: flex;
-      justify-content: flex-start;
-      width: 85%;
-      @include md {
-        width: 75%;
-      }
-      @include lg {
-        width: 60%;
-      }
-      @include xl {
-        width: 55%;
-      }
-      > div {
-        width: 30%;
-        p {
-          font-size: 0.75em;
-          font-weight: 400;
-          color: $whiteColor;
-          line-height: 1;
-          margin: 0;
-        }
-        span {
-          color: $whiteColor;
-          font-size: 0.68em;
-          font-weight: 300;
-          line-height: 1;
-          em {
-            color: #ebc71a;
-            margin-right: 0.35em;
-          }
-        }
-      }
-    }
-  }
-  .assessmentHighlights {
-    border-left: 1px solid rgba(255, 255, 255, 0.4);
-    padding-left: 15px;
-    .heading6 {
-      color: $whiteColor;
-      font-weight: 700;
-      line-height: 1;
-    }
-    ul {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      margin-top: 1.5em;
-      li {
-        width: 47%;
-        font-size: 0.87em;
-        font-weight: 400;
-        color: $whiteColor;
-        margin-bottom: 1em;
-        @include sm {
-          width: 32%;
-        }
-        @include md {
-          width: 47%;
-        }
-        em {
-          color: #ebc71a;
-          margin-right: 0.5em;
-          font-size: 1em;
-        }
-      }
-    }
-  }
-  ul {
-    margin-bottom: 1em;
-    li {
-      display: inline-block;
-      font-size: 0.814em;
-      font-weight: 400;
-      color: $whiteColor;
-      line-height: 1.2;
-      em {
-        font-size: 0.7em;
-        margin: 0 0.6em 0 0.5em;
-      }
-    }
-  }
-  .heading1 {
-    display: block;
-    font-size: 2.375em;
-    font-weight: 700;
-  }
-  p {
-    font-size: 0.875em;
-    font-weight: 400;
-  }
-  .heading1,
-  p {
-    color: $whiteColor;
-    line-height: normal;
-    margin-bottom: 0.3em;
-  }
-  .ratingStar {
-    .icon-Star,
-    .icon-Star {
-      font-size: 0.5em;
-      margin-right: 0.2em;
-    }
-    .icon-Star {
-      color: $secondaryColor;
-    }
-  }
-  .icon-Level2 {
-    color: $secondaryColor;
-  }
-}
-
-//Sticky Header
-.stickyBar {
-  position: fixed;
-  background: $whiteColor;
-  top: 0;
-  padding: 0;
-  opacity: 0;
-  transition: opacity 0.25s ease-out, padding 0.15s ease;
-  cursor: default;
-  user-select: none;
-  width: 100%;
-  padding: 0 15px;
-  box-shadow: 0 1px 5px rgb(0 0 0 / 25%);
-  box-sizing: border-box;
-  font-size: 10px;
-  @include md {
-    font-size: 12px;
-  }
-  @include lg {
-    font-size: 14px;
-  }
-  @include xl {
-    font-size: 16px;
-  }
-  .container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: column;
-    @include md {
-      flex-direction: row;
-    }
-  }
-  .heading3 {
-    width: 100%;
-    font-weight: 700;
-    @include md {
-      width: 40%;
-      font-weight: 700;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-    @include xl {
-      width: 30%;
-    }
-  }
-  .bannerDescription {
-    width: 100%;
-    margin-top: 1em;
-    @include md {
-      margin-top: 0;
-      margin-left: 3%;
-      width: 57%;
-    }
-    @include xl {
-      width: 67%;
-    }
-  }
-  .detailBannerPosition {
-    .assessmentArea {
-      width: 100%;
-      @include xl {
-        width: 65%;
-      }
-      > div {
-        width: 100%;
-        margin-top: 0;
-        > div {
-          p,
-          span {
-            color: $blackColor;
-          }
-          p {
-            font-size: 0.85em;
-          }
-          span {
-            font-size: 0.75em;
-          }
-        }
-      }
-    }
-  }
-}
-.sticky {
-  padding: 1em 8px;
-  opacity: 1;
-  transition: opacity 0.25s ease-out, padding 0.15s ease;
-  z-index: 2;
-  p {
-    margin: 0;
-  }
-  @include md {
-    padding: 1.25em 15px;
-  }
-}
-
-.sectorProject {
-  border-collapse: collapse;
-  width: 100%;
-  border: 1px solid $lightGrey;
-  tr {
-    &:first-child {
-      td {
-        p {
-          color: $darkGrey;
-          b {
-            font-weight: bold;
-          }
-        }
-      }
-    }
-    td {
-      padding: 10px;
-      p {
-        color: $mediumGrey;
-        font-weight: 400;
-      }
-      b {
-        font-weight: 400;
-      }
-    }
-  }
-}
-//About Assessment
-.areaDetailDescription {
-  margin: 2em 0 0.5em 0;
-  .container {
-    > div {
-      // max-width: 850px;
-      width: 100%;
-      margin-bottom: 3.75em;
-    }
-  }
-  .heading4 {
-    color: $darkGrey;
-    margin-bottom: 0.4em;
-  }
-  p {
-    color: $lightGrey;
-    font-size: 1em;
-    font-weight: 400;
-    line-height: 1.5;
-    margin-bottom: 0;
-  }
-  ul {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    li {
-      width: 100%;
-      margin-top: 1em;
-      @include sm {
-        //width: 47%;
-      }
-      em,
-      p {
-        display: inline-block;
-        vertical-align: middle;
-      }
-      em {
-        width: 4%;
-        color: $mediumGrey;
-      }
-      p {
-        width: 92%;
-        margin-left: 4%;
-        @include sm {
-          width: 94%;
-          margin-left: 2%;
-        }
-      }
-    }
-  }
-  .limitTextHeight {
-    transition: max-height 1s;
-    max-height: 75px;
-    position: relative;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    &::before {
-      content: "";
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      left: 0;
-      top: 0;
-      background: linear-gradient(transparent 20px, white);
-    }
-  }
-  button {
-    @include buttonOutlined;
-    padding-left: 1.5em;
-    padding-right: 1.5em;
-    color: $mediumGrey;
-    line-height: 1.4;
-    margin-top: 0.75em;
-    font-size: 0.875em;
-    font-weight: 400;
-  }
-  .achieve {
-    .heading4 {
-      margin-bottom: 0;
-    }
-  }
-  .achieve,
-  .requirements,
-  .description {
-    margin-bottom: 1.3em;
-  }
-  .requirements {
-    &.specialization {
-      .heading4 {
-        margin-bottom: 15px;
-      }
-    }
-    p {
-      color: #999999;
-    }
-    .heading4 {
-      margin-bottom: 0;
-    }
-    .heading5 {
-      color: #666666;
-      margin-bottom: 5px;
-    }
-  }
-}
-
-//How it Works
-.howitWorksSection {
-  padding: 3.75em 0 3.75em 0;
-  font-size: 12px;
-  position: relative;
-  @include md {
-    font-size: 12px;
-  }
-  @include lg {
-    font-size: 14px;
-  }
-  @include xl {
-    font-size: 16px;
-  }
-  ul {
-    list-style-type: none;
-    padding: 0;
-    margin-top: 2em;
-    li {
-      position: relative;
-      padding: 0 0 0.75em 5em;
-      &:last-child {
-        padding: 0 0 0 5em;
-        .icons {
-          &::after {
-            width: 0;
-          }
-        }
-      }
-      &:first-child {
-        .icons {
-          &::before {
-            width: 0;
-          }
-        }
-      }
-    }
-    .icons {
-      position: absolute;
-      left: 0;
-      top: 0;
-      border-radius: 35%;
-      border: 1px solid $greyColor;
-      padding: 1em;
-      width: 3em;
-      height: 3em;
-      box-sizing: border-box;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      &::before,
-      &::after {
-        content: "";
-        position: absolute;
-        width: 1px;
-        height: 100%;
-        background-color: #cdcdcd;
-      }
-      &::after {
-        top: 100%;
-      }
-      &::before {
-        bottom: 100%;
-      }
-      em {
-        font-size: 1.75em;
-        color: $primaryColor;
-      }
-    }
-    .heading5 {
-      color: $blackColor;
-    }
-    p {
-      color: $mediumGrey;
-      font-size: 1em;
-      font-weight: 400;
-      line-height: 1.3;
-    }
-  }
-}
-
-.assessmentSection {
-  background-color: $bgColor;
-  padding: 3.75em 0 3.75em 0;
-  font-size: 15px;
-  position: relative;
-  @include md {
-    font-size: 12px;
-  }
-  @include lg {
-    font-size: 14px;
-  }
-  @include xl {
-    font-size: 16px;
-  }
-  p {
-    font-size: 0.875em;
-    font-weight: 400;
-    color: $mediumGrey;
-    line-height: 1.3;
-  }
-}
-.assessmentsArea {
-  // background-color: $whiteColor;
-  padding: 1em 0 0 0;
-  .heading3,
-  .totalAssessments {
-    display: inline-block;
-    vertical-align: middle;
-  }
-  .heading3 {
-    color: $darkGrey;
-    width: 100%;
-    @include md {
-      width: 75%;
-    }
-  }
-  .totalAssessments {
-    width: 100%;
-    text-align: left;
-    color: $lightGrey;
-    margin-top: 0.5em;
-    @include md {
-      width: 24%;
-      margin-left: 1%;
-      margin-top: 0;
-      text-align: right;
-    }
-    em {
-      display: inline-block;
-      margin-right: 0.5em;
-    }
-  }
-}
-.assessments {
-  margin: 1em 0 0 0;
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  @include sm {
-    margin: 1em 0 0 -2%;
-  }
-  @include xl {
-    margin: 1em 0 0 -1.8%;
-  }
-  > div {
-    position: relative;
-    width: 100%;
-    background-color: $whiteColor;
-    border-radius: 5px;
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.15);
-    padding: 0 0 0.5em 0;
-    margin: 1em 0 0 0;
-    transition: all 0.3s ease-in-out;
-    cursor: pointer;
-    overflow: hidden;
-    @include sm {
-      width: 47.6%;
-      margin: 1em 0 0 2%;
-      padding: 0 0 1.65em 0;
-    }
-    @include md {
-      width: 31%;
-    }
-    @include lg {
-      width: 22.7%;
-    }
-    @include xl {
-      margin: 1em 0 0 2%;
-      width: 23%;
-    }
-    &:hover {
-      > div {
-      }
-      box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
-      .viewDetails {
-        border-top: 1px solid $secondaryColor;
-      }
-    }
-    > div {
-      position: relative;
-      overflow: hidden;
-      padding: 1em 1em 0 1.5em;
-      &::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 60px;
-        width: 5px;
-        background: $secondaryColor;
-      }
-    }
-  }
-  .heading5 {
-    font-weight: 400;
-    color: $primaryColor;
-    position: relative;
-    min-height: 40px;
-  }
-  .assessmentCount {
-    font-size: 0.875em;
-    font-weight: 400;
-    color: $lightGrey;
-    line-height: 1.3;
-    display: block;
-    margin: 2em 0 0.5em 0;
-    position: relative;
-    em {
-      font-size: 1.15em;
-      margin-right: 0.35em;
-      display: inline-block;
-    }
-  }
-  p {
-    display: inline-block;
-    width: 100%;
-    box-sizing: border-box;
-    font-size: 0.93em;
-    line-height: 1.4;
-    color: $mediumGrey;
-    padding: 0 1.5em 1em 1.5em;
-    margin: 0;
-    @include sm {
-      margin: 1em 0 2em 0;
-    }
-    @include lg {
-    }
-  }
-  .viewDetails {
-    box-sizing: border-box;
-    border-top: 1px solid rgba(149, 149, 149, 0.25);
-    display: inline-block;
-    width: 100%;
-    color: $mediumGrey;
-    font-size: 0.75em;
-    padding: 1em 1.5em 1em 2em;
-    transition: all 0.3s ease-in-out;
-    em {
-      font-size: 0.75em;
-      margin-left: 0.5em;
-    }
-    @include sm {
-      position: absolute;
-      left: 0;
-      bottom: 0;
-    }
-  }
-}
-
-.d-flex {
-  display: flex;
-}
-
-.imageSection {
-  width: auto !important;
-}
-
 //Course Product
 .courseProduct {
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-  font-size: 12px;
-  @include md {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
     font-size: 12px;
-  }
-  @include lg {
-    font-size: 14px;
-  }
-  @include xl {
-    font-size: 16px;
-  }
-  .bannerBgImage {
-    width: 100%;
-    display: flex;
-    img {
-      width: 100%;
-      height: calc(100vh - 74px);
-      object-fit: cover;
-      @include sm {
-        height: 350px;
-      }
-      @include lg {
-        height: 450px;
-      }
-      @include xl {
-        height: 480px;
-      }
-      @media only screen and (min-width: 1540px) {
-        height: 500px;
-      }
-    }
-  }
-  .bannerContent {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    width: 100%;
-    z-index: 2;
-    .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      margin-bottom: 1.5em;
-      @include sm {
-        flex-wrap: nowrap;
-      }
-      .left {
-        width: 100%;
-        @include sm {
-          width: 55%;
-        }
-      }
-      .right {
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-        margin: 1.5em 0;
-        figure {
-          width: 100%;
-          @include sm {
-            width: 90%;
-            margin: 0;
-          }
-        }
-        @include sm {
-          width: 42%;
-        }
-      }
-    }
-    .heading1 {
-      color: $whiteColor;
-      font-family: "OpenSans", sans-serif;
-      font-size: 2em;
-      font-weight: 700;
-      max-width: 568px;
-      width: 96%;
-      line-height: 1.2;
-      margin-top: 1em;
-      @include sm {
-        margin-top: 0;
-      }
-      @include md {
-        font-size: 2.25em;
-      }
-    }
-    p {
-      font-size: 1.35em;
-      font-weight: 300;
-      color: #e6e6e6;
-      margin: 2em 0;
-      line-height: 1.3;
-      @include md {
-        font-size: 0.9375em;
-      }
-      @include xl {
-        margin: 3em 0;
-      }
-    }
-    span {
-      font-size: 1.125em;
-      font-weight: 400;
-      color: #ff8a02;
-      line-height: 1.2;
-      display: block;
-      margin: 1.5em 0;
-    }
-    .courseContent {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      span {
-        margin: 0;
-      }
-      .ratingStar {
-        em {
-          color: #eec720;
-          font-size: 0.75em;
-          margin-right: 3px;
-        }
-      }
-      .ratings {
-        margin: 0 1.25em 0 1em;
-        padding-right: 1.5em;
-        position: relative;
-        &::after {
-          content: "";
-          position: absolute;
-          right: 0;
-          top: 50%;
-          transform: translateY(-50%);
-          width: 1px;
-          height: 75%;
-          background-color: #ff8a02;
-        }
-      }
-      .ratings,
-      .learners {
-        font-size: 0.85em;
-        font-weight: 300;
-        color: #e6e6e6;
-      }
-      .buttons {
-        position: relative;
-        margin-left: 2em;
-        .buyNow {
-          font-family: "OpenSans", sans-serif;
-          font-size: 0.9375em;
-          font-weight: 700;
-          color: $whiteColor;
-          line-height: normal;
-          background: #2ea3f2;
-          border-radius: 5px;
-          padding: 0.5em 2em;
-          border: none;
-          transition: background 0.3s ease-in-out;
-          &:hover {
-            background: #08558c;
-          }
-        }
-        .courseRate {
-          position: absolute;
-          top: -25px;
-          left: 50%;
-          transform: translateX(-50%);
-          font-size: 1em;
-          font-weight: 500;
-          color: $whiteColor;
-          display: flex;
-          align-items: center;
-          em {
-            font-size: 0.85em;
-            margin-right: 5px;
-          }
-        }
-      }
-    }
-  }
-  .starss {
-    position: absolute;
-    z-index: 1;
-    .stars, .stars2, .stars3 {
-      &::after {
-        content: " ";
-        position: absolute;
-        top: 2000px;
-        background: transparent;
-      }
-    }
-    .stars {
-      width: 1px;
-      height: 1px;
-      background: transparent;
-      box-shadow: $shadows-small;
-      animation: animStar 50s linear infinite;
-      &:after {
-        width: 1px;
-        height: 1px;
-        box-shadow: $shadows-small;
-      }
-    }
-    .stars2 {
-      width: 2px;
-      height: 2px;
-      background: transparent;
-      box-shadow: $shadows-medium;
-      animation: animStar 100s linear infinite;
-      &:after {
-        width: 2px;
-        height: 2px;
-        box-shadow: $shadows-medium;
-      }
-    }
-    .stars3 {
-      width: 3px;
-      height: 3px;
-      background: transparent;
-      box-shadow: $shadows-big;
-      animation: animStar 150s linear infinite;
-      &:after {
-        width: 3px;
-        height: 3px;
-        box-shadow: $shadows-big;
-      }
-    }
-  }
-}
-
-.bannerFooter {
-  position: relative;
-  width: 100%;
-  z-index: 9;
-  @include md {
-    position: absolute;
-    top: -45px;
-    left: 0;
-  }
-  .container {
-    background-color: $whiteColor;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.07);
-    border-radius: 5px;
-    padding: 1em;
-  }
-  .footerWrapper,
-  .commonStyle {
-    display: flex;
-    align-items: flex-start;
-  }
-  .footerWrapper {
-    width: 100%;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  .commonStyle {
-    width: 50%;
-    margin: 1em 0;
-    flex-wrap: wrap;
-    justify-content: center;
-    text-align: center;
-    @include sm {
-      width: 18%;
+    @include md {
+      font-size: 12px;
     }
     @include lg {
-      text-align: left;
-      flex-wrap: nowrap;
-      justify-content: space-between;
+      font-size: 14px;
     }
-    figure {
-      width: 30%;
-      img {
-        height: 25px;
-        object-fit: contain;
-        @include lg {
-          height: auto;
-        }
-      }
-      @include lg {
-        width: 15%;
-      }
+    @include xl {
+      font-size: 16px;
     }
-    > div {
+    .bannerBgImage {
       width: 100%;
-      @include lg {
-        width: 80%;
-        margin-left: 5%;
-      }
-    }
-    p {
-      font-family: "OpenSans", sans-serif;
-      font-size: 0.6875em;
-      font-weight: 600;
-      color: #08558c;
-      line-height: normal;
-      margin: 0;
-      text-transform: uppercase;
-      @include lg {
-        margin: 0 0 0.35em 0;
-      }
-    }
-    .content {
-      color: #222222;
-      font-size: 1em;
-      font-weight: 400;
-      line-height: 1;
-    }
-  }
-}
-
-//Overall tabs
-.topTab {
-  background-color: #f8fbff;
-  padding: 1em 0 0 0;
-  position: relative;
-  font-size: 12px;
-  @include md {
-    padding: 5em 0 0 0;
-  }
-  @include lg {
-    font-size: 14px;
-  }
-  @include xl {
-    font-size: 16px;
-  }
-}
-.tabssection {
-  background-color: $whiteColor;
-  padding: 1.5em 0;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-  position: relative;
-  display: none;
-  @include lg {
-    display: flex;
-  }
-  &.sticky {
-    width: 100%;
-    position: fixed;
-    top: 74px;
-    overflow: hidden;
-    z-index: 10;
-    background-color: $whiteColor;
-    padding: 1.75em 0;
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-    .buyNow {
-      opacity: 1;
-    }
-  }
-  ul {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-wrap: nowrap;
-    li {
-      font-family: "OpenSans", sans-serif;
-      margin-right: 20px;
-      font-weight: 500;
-      color: $darkMediumGrey;
-      line-height: normal;
-      @include lg {
-        font-size: 0.75em;
-      }
-      @include xl {
-        font-size: 0.825em;
-      }
-      a {
-        padding-bottom: 1.6em;
-        &:hover {
-          color: #27bbee;
-          border-bottom: 3px solid #1b4e9b;
-        }
-        &.active {
-          color: #27bbee;
-          border-bottom: 3px solid #1b4e9b;
-        }
-      }
-    }
-  }
-  .container {
-    position: relative;
-  }
-  .buyNow {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.062em;
-    font-weight: 400;
-    color: $whiteColor;
-    line-height: normal;
-    background: #2ea3f2;
-    border-radius: 5px;
-    padding: 0.5em 2em;
-    border: none;
-    opacity: 0;
-    transition: all 0.3s ease-in-out;
-    &:hover {
-      background: #08558c;
-    }
-  }
-}
-// Why Full Stack
-.whyFullStack {
-  background-color: #f8fbff;
-  padding: 3.75em 0;
-  font-size: 13px;
-  @include md {
-  }
-  @include lg {
-    font-size: 14px;
-  }
-  @include xl {
-    font-size: 16px;
-  }
-  .fullStack {
-    ul {
       display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      @include sm {
-        flex-wrap: nowrap;
-      }
-      li {
+      img {
         width: 100%;
-        text-align: center;
-        position: relative;
-        padding: 15px;
-        transition: all 0.3s ease-out 0s;
+        height: calc(100vh - 74px);
+        object-fit: cover;
         @include sm {
-          width: 33%;
+          height: 350px;
+        }
+        @include lg {
+          height: 450px;
+        }
+        @include xl {
+          height: 480px;
+        }
+        @media only screen and (min-width: 1540px) {
+          height: 500px;
+        }
+      }
+    }
+    .bannerContent {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 100%;
+      z-index: 2;
+      .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 1.5em;
+        @include sm {
+          flex-wrap: nowrap;
+        }
+        .left {
+          width: 100%;
+          @include sm {
+            width: 55%;
+          }
+        }
+        .right {
+          width: 100%;
+          display: flex;
+          justify-content: flex-end;
+          margin: 1.5em 0;
+          figure {
+            width: 100%;
+            @include sm {
+              width: 90%;
+              margin: 0;
+            }
+          }
+          @include sm {
+            width: 42%;
+          }
+        }
+      }
+      .heading1 {
+        color: $whiteColor;
+        font-family: "OpenSans", sans-serif;
+        font-size: 2em;
+        font-weight: 700;
+        max-width: 568px;
+        width: 96%;
+        line-height: 1.2;
+        margin-top: 1em;
+        @include sm {
+          margin-top: 0;
         }
         @include md {
-          width: 30%;
+          font-size: 2.25em;
         }
-        &::after {
-          @include xl {
+      }
+      p {
+        font-size: 1.35em;
+        font-weight: 300;
+        color: #e6e6e6;
+        margin: 2em 0;
+        line-height: 1.3;
+        @include md {
+          font-size: 0.9375em;
+        }
+        @include xl {
+          margin: 3em 0;
+        }
+      }
+      span {
+        font-size: 1.125em;
+        font-weight: 400;
+        color: #ff8a02;
+        line-height: 1.2;
+        display: block;
+        margin: 1.5em 0;
+      }
+      .courseContent {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        span {
+          margin: 0;
+        }
+        .ratingStar {
+          em {
+            color: #eec720;
+            font-size: 0.75em;
+            margin-right: 3px;
+          }
+        }
+        .ratings {
+          margin: 0 1.25em 0 1em;
+          padding-right: 1.5em;
+          position: relative;
+          &::after {
             content: "";
             position: absolute;
-            right: -10%;
+            right: 0;
             top: 50%;
             transform: translateY(-50%);
             width: 1px;
             height: 75%;
-            background-color: rgba(169, 141, 221, 1);
+            background-color: #ff8a02;
           }
         }
-        &:hover {
-          @include xl {
-            box-shadow: 0 0 30px 0 rgb(0 0 0 / 18%);
-            transform: translate(0px, -10px);
-            background-color: #f8fbff;
+        .ratings,
+        .learners {
+          font-size: 0.85em;
+          font-weight: 300;
+          color: #e6e6e6;
+        }
+        .buttons {
+          position: relative;
+          margin-left: 2em;
+          .buyNow {
+            font-family: "OpenSans", sans-serif;
+            font-size: 0.9375em;
+            font-weight: 700;
+            color: $whiteColor;
+            line-height: normal;
+            background: #2ea3f2;
+            border-radius: 5px;
+            padding: 0.5em 2em;
+            border: none;
+            transition: background 0.3s ease-in-out;
+            &:hover {
+              background: #08558c;
+            }
+          }
+          .courseRate {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1em;
+            font-weight: 500;
+            color: $whiteColor;
+            display: flex;
+            align-items: center;
+            em {
+              font-size: 0.85em;
+              margin-right: 5px;
+            }
           }
         }
-        &:last-child {
-          &::after {
-            content: none;
+      }
+    }
+    .starss {
+      position: absolute;
+      z-index: 1;
+      .stars, .stars2, .stars3 {
+        &::after {
+          content: " ";
+          position: absolute;
+          top: 2000px;
+          background: transparent;
+        }
+      }
+      .stars {
+        width: 1px;
+        height: 1px;
+        background: transparent;
+        box-shadow: $shadows-small;
+        animation: animStar 50s linear infinite;
+        &:after {
+          width: 1px;
+          height: 1px;
+          box-shadow: $shadows-small;
+        }
+      }
+      .stars2 {
+        width: 2px;
+        height: 2px;
+        background: transparent;
+        box-shadow: $shadows-medium;
+        animation: animStar 100s linear infinite;
+        &:after {
+          width: 2px;
+          height: 2px;
+          box-shadow: $shadows-medium;
+        }
+      }
+      .stars3 {
+        width: 3px;
+        height: 3px;
+        background: transparent;
+        box-shadow: $shadows-big;
+        animation: animStar 150s linear infinite;
+        &:after {
+          width: 3px;
+          height: 3px;
+          box-shadow: $shadows-big;
+        }
+      }
+    }
+  }
+  
+  .bannerFooter {
+    position: relative;
+    width: 100%;
+    z-index: 9;
+    @include md {
+      position: absolute;
+      top: -45px;
+      left: 0;
+    }
+    .container {
+      background-color: $whiteColor;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.07);
+      border-radius: 5px;
+      padding: 1em;
+    }
+    .footerWrapper,
+    .commonStyle {
+      display: flex;
+      align-items: flex-start;
+    }
+    .footerWrapper {
+      width: 100%;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .commonStyle {
+      width: 50%;
+      margin: 1em 0;
+      flex-wrap: wrap;
+      justify-content: center;
+      text-align: center;
+      @include sm {
+        width: 18%;
+      }
+      @include lg {
+        text-align: left;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+      }
+      figure {
+        width: 30%;
+        img {
+          height: 25px;
+          object-fit: contain;
+          @include lg {
+            height: auto;
           }
         }
-        figure {
-          height: 100px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          img {
-            max-width: 35%;
+        @include lg {
+          width: 15%;
+        }
+      }
+      > div {
+        width: 100%;
+        @include lg {
+          width: 80%;
+          margin-left: 5%;
+        }
+      }
+      p {
+        font-family: "OpenSans", sans-serif;
+        font-size: 0.6875em;
+        font-weight: 600;
+        color: #08558c;
+        line-height: normal;
+        margin: 0;
+        text-transform: uppercase;
+        @include lg {
+          margin: 0 0 0.35em 0;
+        }
+      }
+      .content {
+        color: #222222;
+        font-size: 1em;
+        font-weight: 400;
+        line-height: 1;
+      }
+    }
+  }
+  
+  //Overall tabs
+  .topTab {
+    background-color: #f8fbff;
+    padding: 1em 0 0 0;
+    position: relative;
+    font-size: 12px;
+    @include md {
+      padding: 5em 0 0 0;
+    }
+    @include lg {
+      font-size: 14px;
+    }
+    @include xl {
+      font-size: 16px;
+    }
+  }
+  .tabssection {
+    background-color: $whiteColor;
+    padding: 1.5em 0;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    position: relative;
+    display: none;
+    @include lg {
+      display: flex;
+    }
+    &.sticky {
+      width: 100%;
+      position: fixed;
+      top: 74px;
+      overflow: hidden;
+      z-index: 10;
+      background-color: $whiteColor;
+      padding: 1.5em 0;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+      .buyNow {
+        opacity: 1;
+      }
+    }
+    ul {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: nowrap;
+      li {
+        font-family: "OpenSans", sans-serif;
+        margin-right: 20px;
+        font-weight: 500;
+        color: $darkMediumGrey;
+        line-height: normal;
+        @include lg {
+          font-size: 0.75em;
+        }
+        @include xl {
+          font-size: 0.825em;
+        }
+        a {
+          padding-bottom: 1.6em;
+          &:hover {
+            color: #27bbee;
+            border-bottom: 3px solid #1b4e9b;
+          }
+          &.active {
+            color: #27bbee;
+            border-bottom: 3px solid #1b4e9b;
           }
         }
-        .heading5 {
-          margin: 0.75em 0;
-          font-family: "OpenSans", sans-serif;
-          font-weight: 600;
+      }
+    }
+    .container {
+      position: relative;
+    }
+    .buyNow {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.062em;
+      font-weight: 400;
+      color: $whiteColor;
+      line-height: normal;
+      background: #2ea3f2;
+      border-radius: 5px;
+      padding: 0.5em 2em;
+      border: none;
+      opacity: 0;
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        background: #08558c;
+      }
+    }
+  }
+  // Why Full Stack
+  .whyFullStack {
+    background-color: #f8fbff;
+    padding: 3.75em 0;
+    font-size: 13px;
+    @include md {
+    }
+    @include lg {
+      font-size: 14px;
+    }
+    @include xl {
+      font-size: 16px;
+    }
+    .fullStack {
+      ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        @include sm {
+          flex-wrap: nowrap;
         }
-        p {
-          font-family: "OpenSans", sans-serif;
-          font-size: 0.9375em;
-          font-weight: 500;
-          color: $darkMediumGrey;
-          line-height: 1.5;
-          margin: 0;
+        li {
+          width: 100%;
           text-align: center;
+          position: relative;
+          padding: 15px;
+          transition: all 0.3s ease-out 0s;
+          @include sm {
+            width: 33%;
+          }
           @include md {
-            text-align: left;
+            width: 30%;
+          }
+          &::after {
+            @include xl {
+              content: "";
+              position: absolute;
+              right: -10%;
+              top: 50%;
+              transform: translateY(-50%);
+              width: 1px;
+              height: 75%;
+              background-color: rgba(169, 141, 221, 1);
+            }
+          }
+          &:hover {
+            @include xl {
+              box-shadow: 0 0 30px 0 rgb(0 0 0 / 18%);
+              transform: translate(0px, -10px);
+              background-color: #f8fbff;
+            }
+          }
+          &:last-child {
+            &::after {
+              content: none;
+            }
+          }
+          figure {
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+              max-width: 35%;
+            }
+          }
+          .heading5 {
+            margin: 0.75em 0;
+            font-family: "OpenSans", sans-serif;
+            font-weight: 600;
+          }
+          p {
+            font-family: "OpenSans", sans-serif;
+            font-size: 0.9375em;
+            font-weight: 500;
+            color: $darkMediumGrey;
+            line-height: 1.5;
+            margin: 0;
+            text-align: center;
+            @include md {
+              text-align: left;
+            }
           }
         }
       }
     }
   }
-}
-
+  
 //Program Overview
 .programOverview {
   background-color: $whiteColor;
@@ -2281,14 +1561,17 @@
   position: relative;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: 90%;
   width: 100%;
   padding: 3.75em 0 0 0;
   font-size: 12px;
+  z-index: -1;
   @include md {
+    background-position: top;
   }
   @include lg {
     font-size: 14px;
+    background-position: center;
   }
   @include xl {
     font-size: 16px;
@@ -2296,9 +1579,16 @@
   .container {
     display: flex;
     justify-content: space-between;
-    align-items: center; 
+    align-items: center;
+    flex-wrap: wrap;
+    @include md {
+      flex-wrap: nowrap;
+    }
     .left {
-      width: 50%;
+      width: 100%;
+      @include md {
+        width: 50%;
+      }
       .heading4 {
         font-family: "OpenSans", sans-serif;
         font-style: italic;
@@ -2312,11 +1602,17 @@
         margin: 2.5em 0;
       }
       .contact {
-        width: 70%;
+        width: 100%;
         display: flex;
         align-items: center;
         justify-content: space-between;
         margin-bottom: 30px;
+        @include lg {
+          width: 80%;
+        }
+        @include xl {
+          width: 70%;
+        }
         .contact-content {
           display: flex;
           align-items: center;
@@ -2364,8 +1660,13 @@
       }
     }
     .right {
-      width: 47%;
+      width: 100%;
+      margin-top: 2em;
       position: relative;
+      @include md {
+        width: 47%;
+        margin-top: 0;
+      }
       &::before {
         content: "";
         position: absolute;
@@ -2563,10 +1864,14 @@
         figure {
           border-radius: 50%;
           border: 1px solid rgba(73, 174, 49, 0.5);
-          width: 8em;
-          height: 8em;
+          width: 7em;
+          height: 7em;
           overflow: hidden;
           box-shadow: 3px 5px 6px rgba(0, 0, 0, 0.16);
+          @include xl {
+            width: 8em;
+            height: 8em;
+          }
           // display: flex;
           // overflow: hidden;
           // position: relative;
@@ -2694,8 +1999,15 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    flex-wrap: wrap;
+    @include md {
+      flex-wrap: nowrap;
+    }
     .left {
-      width: 58%;
+      width: 100%;
+      @include md {
+        width: 58%;
+      }
       .heading6 {
         color: $darkGrey;
         line-height: 1.4;
@@ -2722,7 +2034,12 @@
       }
     }
     .right {
-      width: 39%;
+      width: 100%;
+      margin-top: 2em;
+      @include md {
+        width: 39%;
+        margin-top: 0;
+      }
       figure {
         display: flex;
         border-radius: 5px;
@@ -2734,8 +2051,17 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    flex-wrap: wrap;
+    @include md {
+      flex-wrap: nowrap;
+    }
     .right {
-      width: 58%;
+      width: 100%;
+      margin-top: 2em;
+      @include md {
+        width: 58%;
+        margin-top: 0;
+      }
       .heading6 {
         color: $darkGrey;
         line-height: 1.4;
@@ -2762,7 +2088,10 @@
       }
     }
     .left {
-      width: 39%;
+      width: 100%;
+      @include md {
+        width: 39%;
+      }
       figure {
         display: flex;
         border-radius: 5px;
@@ -2789,12 +2118,13 @@
     background-image: url("#{$imagePath}/tabbg.png");
     background-size: cover;
     background-repeat: no-repeat;
-    min-height: 449.8px;
+    min-height: 450px;
+    align-items: center;
   }
   .mat-tab-label {
     border: 0;
-    font-family: "OpenSans", sans-serif;
-    font-style: 0.9375em;
+    font-family: "OpenSans", sans-serif !important;
+    font-size: 0.875em;
     font-weight: 600;
     line-height: normal;
     color: $darkGrey;
@@ -2804,9 +2134,13 @@
     opacity: 1;
     border-radius: 5px;
     margin-right: 4px;
-    width: 24.8%;
+    width: 35%;
     height: auto;
     padding: 1.25em 1em;
+    @include md {
+      width: 24.8%;
+      font-size: 0.9375em;
+    }
   }
   .mat-tab-label.mat-tab-label-active {
     background-color: $whiteColor;
@@ -2815,10 +2149,13 @@
   }
   .mat-tab-header {
     border-bottom: 0;
-    // overflow: initial;
-    padding: 0 4em;
+    padding: 0;
     position: relative;
-    top: 30px;
+    top: 0;
+    @include lg {
+      padding: 0 4em;
+      top: 30px;
+    }
   }
   // .mat-tab-label-container {
   //   overflow: initial;
@@ -2830,7 +2167,18 @@
     color: black !important;
   }
   .mat-tab-body-content{
-    padding: 0 4em;
+    padding: 0 1em;
+    @include lg {
+      padding: 0 4em;
+    }
+  }
+  .mat-tab-header-pagination-chevron {
+    border-color: $whiteColor;
+    height: 12px;
+    width: 12px;
+  }
+  .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron {
+    border-color: rgba(255, 255, 255, 0.5);
   }
 }
 
@@ -2966,8 +2314,11 @@
     background-color: #5F82A0;
     padding: 5em 0;
     border-radius: 0 100px 100px 0;
-    width: 55%;
+    width: 95%;
+    position: absolute;
     @include md {
+      position: relative;
+      width: 55%;
       padding: 5em 0;
     }
     @include lg {
@@ -2978,10 +2329,15 @@
     }
   }
   .wrapper {
-    position: absolute;
+    position: relative;
     width: 100%;
     height: 100%;
-    bottom: 0;
+    top: 30px;
+    @include md {
+      position: absolute;
+      top: auto;
+      bottom: 0;
+    }
   }
   .container {
     position: relative;
@@ -3015,8 +2371,9 @@
       position: relative;
       width: 100%;
       text-align: right;
-      bottom: 4px;
+      bottom: -15px;
       @include md {
+        bottom: 4px;
         width: 45%;
       }
       @include lg {
