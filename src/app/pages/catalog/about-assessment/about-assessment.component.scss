@@ -2,79 +2,49 @@
 @import "keyframes";
 
 .detailBanner {
-  font-size: 14px;
   width: 100%;
   position: relative;
+  font-size: 14px;
   figure {
     overflow: hidden;
-    &::after {
-      content: "";
+    &::before, &::after {
+      content: '';
       position: absolute;
       width: 100%;
       height: 100%;
       left: 0;
       top: 0;
-      background: rgb(255, 255, 255);
-      background: -moz-linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0),
-        rgba(0, 0, 0, 1) 100%
-      );
-      background: -webkit-linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0),
-        rgba(0, 0, 0, 1) 100%
-      );
-      background: linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0),
-        rgba(0, 0, 0, 1) 100%
-      );
-      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#000000",GradientType=1);
+    }
+    &::before {
+      background: rgba(0, 0, 0, 0.3);
+    }
+    &::after {
+      background: rgba(0, 0, 0, 0.1);
+      background: -webkit-linear-gradient(right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 1.0));
+      background: -moz-linear-gradient(right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 1.0));
+      background: linear-gradient(to left, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 1.0));
     }
     img {
       display: block;
       width: 100%;
-      height: 350px;
+      height: calc(100vh - 74px);
       object-fit: cover;
       object-position: center top;
-      //filter: blur(0.7em);
       @include sm {
-        height: 220px;
-      }
-      @include md {
-        height: 250px;
+        height: 350px;
       }
       @include lg {
-        height: 280px;
+        height: 450px;
       }
       @include xl {
-        height: 350px;
+        height: 480px;
+      }
+      @media only screen and (min-width: 1540px) {
+        height: 500px;
       }
     }
   }
-  // background-position: center 55%;
-  // background-repeat: no-repeat;
-  // background-size: cover;
-  // &::before {
-  //     content: '';
-  //     display: block;
-  //     padding-bottom: 90%;
-  //     @media only screen and (min-width: 375px) {
-  //         padding-bottom: 75%;
-  //     }
-  //     @include sm {
-  //         padding-bottom: 36%;
-  //     }
-  //     @include md {
-  //         padding-bottom: 32%;
-  //     }
-  //     @include lg {
-  //         padding-bottom: 26%;
-  //     }
-  // }
   @include md {
-    font-size: 12px;
   }
   @include lg {
     font-size: 14px;
@@ -86,7 +56,8 @@
     position: absolute;
     width: 100%;
     left: 0;
-    bottom: 1em;
+    top: 50%;
+    transform: translateY(-50%);
     z-index: 1;
     padding: 1em 0;
   }
@@ -94,53 +65,42 @@
 
 .bannerDescription {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  .assessmentArea {
-    width: 100%;
-    @include md {
-      width: 57%;
-    }
-    @include lg {
-      width: 63%;
-    }
-  }
-  .assessmentHighlights {
-    width: 100%;
-    margin-top: 1em;
-    @include md {
-      width: 41%;
-      margin-top: 0;
-    }
-    @include lg {
-      width: 35%;
-    }
-  }
+  flex-direction: column;
+  width: 96%;
+  max-width: 768px;
 }
 
 .detailBannerPosition {
   .assessmentArea {
     > div {
-      margin-top: 1.5em;
-      display: flex;
+      width: 100%;
+      display: inline-flex;
       justify-content: flex-start;
-      width: 85%;
-      @include md {
-        width: 75%;
-      }
-      @include lg {
-        width: 60%;
-      }
-      @include xl {
-        width: 55%;
-      }
       > div {
-        width: 30%;
+        padding-right: 2em;
+        margin-right: 2em;
+        position: relative;
+        &:last-child {
+          margin-right: 0;
+          padding-right: 0;
+          &::after {
+            content: none;
+          }
+        }
+        &::after {
+          content: '';
+          position: absolute;
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 1px;
+          height: 70%;
+          background-color: #FF8A02;
+        }
         p {
           font-size: 0.75em;
           font-weight: 400;
-          color: $whiteColor;
+          color: #E6E6E6;
           line-height: 1;
           margin: 0;
         }
@@ -150,74 +110,40 @@
           font-weight: 300;
           line-height: 1;
           em {
-            color: #ebc71a;
+            color: #EBC71A;
             margin-right: 0.35em;
           }
         }
       }
     }
   }
-  .assessmentHighlights {
-    border-left: 1px solid rgba(255, 255, 255, 0.4);
-    padding-left: 15px;
-    .heading6 {
-      color: $whiteColor;
-      font-weight: 700;
-      line-height: 1;
-    }
-    ul {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      margin-top: 1.5em;
-      li {
-        width: 47%;
-        font-size: 0.87em;
-        font-weight: 400;
-        color: $whiteColor;
-        margin-bottom: 1em;
-        @include sm {
-          width: 32%;
-        }
-        @include md {
-          width: 47%;
-        }
-        em {
-          color: #ebc71a;
-          margin-right: 0.5em;
-          font-size: 1em;
-        }
-      }
-    }
-  }
-  ul {
-    margin-bottom: 1em;
-    li {
-      display: inline-block;
-      font-size: 0.814em;
-      font-weight: 400;
-      color: $whiteColor;
-      line-height: 1.2;
-      em {
-        font-size: 0.7em;
-        margin: 0 0.6em 0 0.5em;
-      }
-    }
-  }
+  // ul {
+  //   margin-bottom: 1em;
+  //   li {
+  //     display: inline-block;
+  //     font-size: 0.814em;
+  //     font-weight: 400;
+  //     color: $whiteColor;
+  //     line-height: 1.2;
+  //     em {
+  //       font-size: 0.7em;
+  //     }
+  //   }
+  // }
   .heading1 {
     display: block;
-    font-size: 2.375em;
+    font-family: "OpenSans", sans-serif;
+    font-size: 2.8125em;
     font-weight: 700;
-  }
-  p {
-    font-size: 0.875em;
-    font-weight: 400;
-  }
-  .heading1,
-  p {
     color: $whiteColor;
     line-height: normal;
-    margin-bottom: 0.3em;
+  }
+  .shortDescription {
+    font-size: 0.9375em;
+    font-weight: 400;
+    color: #E6E6E6;
+    line-height: 1.5;
+    margin: 2.5em 0;
   }
   .ratingStar {
     .icon-Star,
@@ -232,104 +158,140 @@
   .icon-Level2 {
     color: $secondaryColor;
   }
-}
-
-//Sticky Header
-.stickyBar {
-  position: fixed;
-  background: $whiteColor;
-  top: 0;
-  padding: 0;
-  opacity: 0;
-  transition: opacity 0.25s ease-out, padding 0.15s ease;
-  cursor: default;
-  user-select: none;
-  width: 100%;
-  padding: 0 15px;
-  box-shadow: 0 1px 5px rgb(0 0 0 / 25%);
-  box-sizing: border-box;
-  font-size: 10px;
-  @include md {
-    font-size: 12px;
-  }
-  @include lg {
-    font-size: 14px;
-  }
-  @include xl {
-    font-size: 16px;
-  }
-  .container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: column;
-    @include md {
-      flex-direction: row;
-    }
-  }
-  .heading3 {
-    width: 100%;
-    font-weight: 700;
-    @include md {
-      width: 40%;
+  .assessmentHighlights {
+    margin: 3em 0 0 0;
+    .heading6 {
+      color: $whiteColor;
       font-weight: 700;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      white-space: nowrap;
+      line-height: 1;
     }
-    @include xl {
-      width: 30%;
-    }
-  }
-  .bannerDescription {
-    width: 100%;
-    margin-top: 1em;
-    @include md {
-      margin-top: 0;
-      margin-left: 3%;
-      width: 57%;
-    }
-    @include xl {
-      width: 67%;
-    }
-  }
-  .detailBannerPosition {
-    .assessmentArea {
-      width: 100%;
-      @include xl {
-        width: 65%;
+    ul {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      flex-direction: column;
+      @include md {
+        flex-direction: row;
       }
-      > div {
-        width: 100%;
-        margin-top: 0;
-        > div {
-          p,
-          span {
-            color: $blackColor;
-          }
-          p {
-            font-size: 0.85em;
-          }
-          span {
-            font-size: 0.75em;
-          }
+      li {
+        font-size: 0.9375em;
+        font-weight: 400;
+        color: $whiteColor;
+        line-height: 2;
+        margin-right: 2em;
+        &:last-child {
+          margin-right: 0;
+        }
+        @include md {
+          line-height: normal;
+        }
+        em {
+          color: #EBC71A;
+          margin-right: 0.5em;
+          font-size: 1em;
         }
       }
     }
   }
 }
-.sticky {
-  padding: 1em 8px;
-  opacity: 1;
-  transition: opacity 0.25s ease-out, padding 0.15s ease;
-  z-index: 2;
-  p {
-    margin: 0;
-  }
-  @include md {
-    padding: 1.25em 15px;
-  }
-}
+
+//Sticky Header
+// .stickyBar {
+//   position: fixed;
+//   background: $whiteColor;
+//   top: 0;
+//   padding: 0;
+//   opacity: 0;
+//   transition: opacity 0.25s ease-out, padding 0.15s ease;
+//   cursor: default;
+//   user-select: none;
+//   width: 100%;
+//   padding: 0 15px;
+//   box-shadow: 0 1px 5px rgb(0 0 0 / 25%);
+//   box-sizing: border-box;
+//   font-size: 10px;
+//   @include md {
+//     font-size: 12px;
+//   }
+//   @include lg {
+//     font-size: 14px;
+//   }
+//   @include xl {
+//     font-size: 16px;
+//   }
+//   .container {
+//     display: flex;
+//     align-items: center;
+//     justify-content: flex-start;
+//     flex-direction: column;
+//     @include md {
+//       flex-direction: row;
+//     }
+//   }
+//   .heading3 {
+//     width: 100%;
+//     font-weight: 700;
+//     @include md {
+//       width: 40%;
+//       font-weight: 700;
+//       text-overflow: ellipsis;
+//       overflow: hidden;
+//       white-space: nowrap;
+//     }
+//     @include xl {
+//       width: 30%;
+//     }
+//   }
+//   .bannerDescription {
+//     width: 100%;
+//     margin-top: 1em;
+//     @include md {
+//       margin-top: 0;
+//       margin-left: 3%;
+//       width: 57%;
+//     }
+//     @include xl {
+//       width: 67%;
+//     }
+//   }
+//   .detailBannerPosition {
+//     .assessmentArea {
+//       width: 100%;
+//       @include xl {
+//         width: 65%;
+//       }
+//       > div {
+//         width: 100%;
+//         margin-top: 0;
+//         > div {
+//           p,
+//           span {
+//             color: $blackColor;
+//           }
+//           p {
+//             font-size: 0.85em;
+//           }
+//           span {
+//             font-size: 0.75em;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+// .sticky {
+//   padding: 1em 8px;
+//   opacity: 1;
+//   transition: opacity 0.25s ease-out, padding 0.15s ease;
+//   z-index: 2;
+//   p {
+//     margin: 0;
+//   }
+//   @include md {
+//     padding: 1.25em 15px;
+//   }
+// }
 
 .sectorProject {
   border-collapse: collapse;

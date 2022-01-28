@@ -7,16 +7,16 @@
         </figure>
         <div class="detailBannerPosition">
             <div class="container">
-                <ul>
+                <!-- <ul>
                     <a href="/catalog/catalogHome?fromPage=viewAll&selectedTab={{aboutArea?.parentId}}"><li>{{aboutArea?.domainName}}<em class="icon-RightArrow"></em></li></a>
                     <li *ngIf = '!showAssesment'>{{aboutArea?.name}}</li>
                     <li *ngIf = 'showAssesment'><a href = "/catalog/aboutAssessment?id={{competencyData?.parentId}}&selectedTab=All">{{aboutArea?.name}}</a><em class="icon-RightArrow"></em></li>
                     <li *ngIf = "showAssesment">{{competencyData?.name}}</li>
-                </ul>
+                </ul> -->
                 <div class="bannerDescription">
                     <div class="assessmentArea">
                         <span class="heading1">{{aboutArea?.name}}</span>
-                        <p>{{ (aboutArea?.shortDescription.length > 250)? (aboutArea?.shortDescription | slice:0:250)+'...':(aboutArea?.shortDescription) }}</p>
+                        <p class="shortDescription">{{ (aboutArea?.shortDescription.length > 250)? (aboutArea?.shortDescription | slice:0:250)+'...':(aboutArea?.shortDescription) }}</p>
                         <div>
                             <!-- <div>
                                 <p>Rating</p>
@@ -29,6 +29,10 @@
                                 </div>
                             </div> -->
                             <div>
+                                <p>{{'No. of Assessments '}}</p>
+                                <span><em class="icon-Document"></em> {{totalAssessmentCount}}</span>
+                            </div>
+                            <div>
                                 <p>Skill Level</p>
                                 <span><em class="icon-Level2"></em> Intermediate</span>
                             </div>
@@ -36,14 +40,9 @@
                                 <p>Duration</p>
                                 <span><em class="icon-Time"></em>{{aboutArea?.totalDuration}}h</span>
                             </div> -->
-                            <div>
-                                <p>{{'No. of Assessments '}}</p>
-                                <span><em class="icon-Document"></em> {{totalAssessmentCount}}</span>
-                            </div>
                         </div>
                     </div>
                     <div class="assessmentHighlights">
-                        <div class="heading6">Assessments Highlights</div>
                         <ul>
                             <li><em class="icon-Globe"></em> 100% online Assessments</li>
                             <li><em class="icon-Badge"></em> Certificate of completion</li>
