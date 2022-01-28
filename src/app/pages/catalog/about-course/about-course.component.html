@@ -319,7 +319,7 @@
             </ng-container>
             <!-- Expert Support System -->
             <ng-container *ngIf="item.sectionId == 4 && item.dispalystatus">
-                <section class="expertSupportTab" [id]="item.sectionId" #4>
+                <section class="expertSupportTab" [id]="item.sectionId" #4 [ngStyle]="{'background-image': 'url(https://assets.lntedutech.com/portalicons/expertbg.png)'}">
                     <div class="container">
                         <div class="commonHeadingStyle">{{item?.title}}</div>
                         <mat-tab-group class="expertSupportSystem">
