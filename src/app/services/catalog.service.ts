@@ -107,4 +107,7 @@ addToCart(params) {
   getStepRedirectUrl(email,courseId){
     return this.http.get(this.baseurl + 'getStepRedirectUrl?email='+ email + '&course_id=' +courseId, this.httpOptions);
   }
+  registerQuery(param){
+    return this.http.post(this.baseurl +'portalForms' , param, this.httpOptions);
+  }
 }
