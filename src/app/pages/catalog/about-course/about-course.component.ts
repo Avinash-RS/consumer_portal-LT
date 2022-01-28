@@ -87,7 +87,7 @@ export class AboutCourseComponent implements OnInit {
         items: 3,
         slideBy: 3
       },
-      1200: {
+      1024: {
         items: 4,
         slideBy: 4
       }
