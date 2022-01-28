@@ -5,7 +5,6 @@ import { AppConfigService } from 'src/app/utils/app-config.service';
 import { APP_CONSTANTS } from 'src/app/utils/app-constants.service';
 import { CatalogService } from "../../../services/catalog.service";
 import { environment } from '@env/environment';
-import { Subject } from 'rxjs';
 import { CommonService } from 'src/app/services/common.service';
 import { ToastrService } from 'ngx-toastr';
 import { UtilityService } from 'src/app/services/utility.service';
@@ -116,7 +115,6 @@ export class AboutCourseComponent implements OnInit {
   @ViewChild('kycmandate', { static: false }) matDialogRef: TemplateRef<any>;
   @ViewChild('enroll', { static: false }) enrollRequest: TemplateRef<any>;
   backgroundImageUrl: any;
-  public destroyed = new Subject<any>();
   contactForm: FormGroup;
   queryForm: FormGroup;
   @ViewChild('stickyMenu') menuElement: ElementRef;
@@ -175,13 +173,25 @@ export class AboutCourseComponent implements OnInit {
       this.getAbouCourse();
     });
     this.contactFormInitilize();
+    this.queryFormInitilize();
   }
   contactFormInitilize(){
     this.contactForm = this.fb.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.required, this.gv.email()]],
       phone: ['', [Validators.required]],
-      comment:['']
+      comment:[''],
+
+    });
+  }
+  queryFormInitilize(){
+    this.queryForm = this.fb.group({
+      name: ['', [Validators.required]],
+      email: ['', [Validators.required, this.gv.email()]],
+      phone: ['', [Validators.required]],
+      subject:['', [Validators.required]],
+      message:['']
+      
     });
   }
   get name() {
@@ -193,6 +203,19 @@ export class AboutCourseComponent implements OnInit {
   get phone() {
     return this.contactForm.get('phone');
   } 
+  get queryname() {
+    return this.queryForm.get('name');
+  }
+  get queryemail() {
+    return this.queryForm.get('email');
+  }
+  get queryphone() {
+    return this.queryForm.get('phone');
+  }
+  get querysubject() {
+    return this.queryForm.get('subject');
+  }
+
   ngAfterViewInit(){
     setTimeout(()=>{
        this.firstOffset =  this.firstElement.nativeElement.offsetTop -200;
@@ -377,12 +400,44 @@ export class AboutCourseComponent implements OnInit {
         panelClass: 'queryFormContainer'
       });
       query.afterClosed().subscribe(result => {
-        this.contactForm.reset();
+        //this.contactForm.reset();
       });
       return false;
     }
-      ngOnDestroy(): void {
-        this.destroyed.next();
-        this.destroyed.complete();
+    requestQuery(formType){
+      var apidata;
+      if(formType == 'academicCouncillor'){
+       apidata = {
+          formType:formType,
+          name: this.contactForm.value.name,
+          email:this.contactForm.value.email,
+          phone:this.contactForm.value.phone,
+          comment:this.contactForm.value.comment
+        }
       }
+      else if(formType == 'careerCouncillor' || formType == 'assistToEnroll'){
+        apidata = {
+           formType:formType,
+           name: this.queryForm.value.name,
+           email:this.queryForm.value.email,
+           phone:this.queryForm.value.phone,
+           subject:this.queryForm.value.subject,
+           message:this.queryForm.value.message
+         }
+       }
+      this.catalogService.registerQuery(apidata).subscribe((result:any)=>{
+        if(result?.success){
+          this.toast.success(result?.message);
+          this.contactForm.reset();
+          this.queryForm.reset();
+          this.dialog.closeAll();
+        }
+        else{
+          this.toast.success(result?.message);
+          this.contactForm.reset();
+          this.queryForm.reset();
+          this.dialog.closeAll();
+        }
+      });
+    }
 }
