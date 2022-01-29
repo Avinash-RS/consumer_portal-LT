@@ -19,8 +19,9 @@
                             <span class="ratings">756 Ratings</span>
                             <span class="learners">1211 Learners</span>
                             <div class="buttons">
-                                <span class="courseRate"><em class="icon-Rupee"></em> 11000.00</span>
-                                <button class="buyNow" (click)="courseBuy()">Enroll Now</button>
+                                <span class="courseRate" *ngIf="courseData?.is_free">{{'Free'}}</span>
+                                <span class="courseRate" *ngIf="!courseData?.is_free">{{courseData?.sellingPrice}}</span>
+                                <button class="buyNow" (click)="courseBuy()">Add to Cart</button>
                             </div>
                         </div>
                     </div>
@@ -61,7 +62,7 @@
                             <a (click)="scroll(item?.sectionId)" [ngClass]="item?.sectionId == activeSection ? 'active':''">{{item.title}}</a>
                         </li>
                     </ul>
-                    <button class="buyNow" (click)="courseBuy()">Enroll Now</button>
+                    <button class="buyNow" (click)="courseBuy()">Add to Cart</button>
                 </div>
             </div>
         </section>
@@ -248,7 +249,7 @@
                                                 <textarea type="text" autocomplete="false" id="contact_phone" autocomplete="off" name="comment" formControlName="comment" matInput matInput ></textarea>
                                             </mat-form-field>
                                         </div>
-                                        <button  id="contact_btn" class="requestBtn" mat-stroked-button>Request Callback</button>
+                                        <button  id="contact_btn" class="requestBtn" mat-stroked-button (click)="requestQuery('academicCouncillor')">Request Callback</button>
                                     </form>
                                 </div>
                             </div>
@@ -256,7 +257,7 @@
                     </div>
                 </section>
                 <!-- Request Broucher -->
-                <section class="reqBroucher" [ngStyle]="{'background-image': 'url(' + item?.subHeading0?.imageurl + ')'}" *ngIf="item?.subHeading0?.dispalystatus">
+                <section class="reqBroucher" [ngStyle]="{'background-image': 'url(https://assets.lntedutech.com/portalicons/reqbg.png)'}" *ngIf="item?.subHeading0?.dispalystatus">
                     <div class="container">
                         <span class="heading">{{item?.subHeading0?.title}}</span>
                         <div class="heading6">{{item?.subHeading0?.description}}</div>
@@ -499,7 +500,7 @@
                                 <div class="heading">{{item?.title}}</div>
                                 <p>{{item?.description}}</p>
                                 <div>
-                                    <button class="enrollNowBtn">ENROLL NOW</button>
+                                    <button class="enrollNowBtn" (click)="courseBuy()">Add to Cart</button>
                                     <button class="reqCallBack" (click)="openRequest()">Request Call Back</button>
                                 </div>
                             </div>
@@ -738,15 +739,15 @@
     <div class="header">Get In Touch</div>
     <div class="title">Raise your query</div>
     <div class="form">
-        <form [formGroup]="contactForm" class="contactContent">
+        <form [formGroup]="queryForm" class="contactContent">
             <div class="queryRow">
                 <div class="inputContainer">
                     <mat-form-field appearance="outline">
                         <mat-label>Your Name</mat-label>
                         <input type="text" required autocomplete="false" id="contact_name" autocomplete="off" name="name" formControlName="name" matInput placeholder="Your Name">
                     </mat-form-field>
-                    <ng-container *ngIf="name.invalid && name.touched">
-                    <mat-error *ngIf="name.errors?.required" class="error">{{'Name is required'}}</mat-error>
+                    <ng-container *ngIf="queryname.invalid && queryname.touched">
+                    <mat-error *ngIf="queryname.errors?.required" class="error">{{'Name is required'}}</mat-error>
                 </ng-container>
                 </div>
                 <div class="inputContainer">
@@ -754,9 +755,9 @@
                         <mat-label>Email Address</mat-label>
                         <input type="text" required autocomplete="false" id="contact_email" autocomplete="off" name="email" formControlName="email" matInput placeholder="Email Address">
                     </mat-form-field>
-                    <ng-container *ngIf="email.invalid && email.touched">
-                    <mat-error class="error" *ngIf="email.errors?.email">{{'Please enter a valid email address'}}</mat-error>
-                    <mat-error *ngIf="email.errors?.required" class="error">{{'Email is required'}}</mat-error>
+                    <ng-container *ngIf="queryemail.invalid && queryemail.touched">
+                    <mat-error class="error" *ngIf="queryemail.errors?.email">{{'Please enter a valid email address'}}</mat-error>
+                    <mat-error *ngIf="queryemail.errors?.required" class="error">{{'Email is required'}}</mat-error>
                 </ng-container>
                 </div>
             </div>
@@ -766,8 +767,8 @@
                         <mat-label>Phone</mat-label>
                         <input type="text" required autocomplete="false" id="contact_phone" autocomplete="off" name="phone" formControlName="phone" matInput placeholder="Phone">
                     </mat-form-field>
-                    <ng-container *ngIf="phone.invalid && phone.touched">
-                    <mat-error *ngIf="phone.errors?.required" class="error">{{'Phone numer is required'}}</mat-error>
+                    <ng-container *ngIf="queryphone.invalid && queryphone.touched">
+                    <mat-error *ngIf="queryphone.errors?.required" class="error">{{'Phone numer is required'}}</mat-error>
                 </ng-container>
                 </div>
                 <div class="inputContainer">
@@ -775,6 +776,9 @@
                         <mat-label>Subject</mat-label>
                         <input type="text" required autocomplete="false" id="subject" autocomplete="off" name="subject" formControlName="subject" matInput placeholder="Subject">
                     </mat-form-field>
+                    <ng-container *ngIf="querysubject.invalid && querysubject.touched">
+                        <mat-error *ngIf="querysubject.errors?.required" class="error">{{'Subject is required'}}</mat-error>
+                    </ng-container>
                 </div>
             </div>
             <div>
@@ -783,7 +787,7 @@
                     <textarea type="text" rows="4" autocomplete="false" id="message" autocomplete="off" name="message" formControlName="message" matInput matInput ></textarea>
                 </mat-form-field>
             </div>
-            <button  id="contact_btn" class="requestBtn" mat-stroked-button>Send Now</button>
+            <button  id="contact_btn" class="requestBtn" mat-stroked-button (click)="requestQuery('careerCouncillor')">Send Now</button>
         </form>
     </div>
 </div>
