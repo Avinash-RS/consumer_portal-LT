@@ -549,10 +549,13 @@
     font-size: 1em;
     font-weight: 400;
     color: $darkGrey;
+    margin-top: 0.5em;
+    @include sm {
+      margin-top: 0;
+    }
     @include md {
       width: 24%;
       margin-left: 1%;
-      margin-top: 0;
       text-align: right;
     }
     em {
@@ -569,6 +572,9 @@
   @include sm {
     margin: 1em 0 0 -2%;
   }
+  @include md {
+    margin: 1em 0 0 -3.3%;
+  }
   @include xl {
     margin: 1em 0 0 -1.8%;
   }
@@ -580,21 +586,24 @@
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.15);
     margin: 1em 0 0 0;
     transition: all 0.3s ease-in-out;
-    cursor: pointer;
     overflow: hidden;
+    height: 250px;
     @include sm {
       width: 47.6%;
       margin: 1em 0 0 2%;
     }
     @include md {
-      width: 31%;
+      width: 30%;
+      margin: 1em 0 0 3.3%;
+      height: 275px;
     }
     @include lg {
-      width: 22.7%;
+      height: 300px;
     }
     @include xl {
       margin: 1em 0 0 2%;
       width: 23%;
+      height: 325px;
     }
     &::after {
       content: '';
@@ -607,16 +616,19 @@
       z-index: 1;
     }
     &:hover {
-      .hoverSection {
-        top: 0;
-        opacity: 1;
+      @include xl {
+        .hoverSection {
+          top: 0;
+          opacity: 1;
+        }
       }
     }
     figure {
       display: flex;
+      height: 100%;
       img {
+        height: 100%;
         width: 100%;
-        height: 325px;
         object-fit: cover;
       }
     }
@@ -628,6 +640,13 @@
       transform: translateX(-50%);
       text-align: center;
       z-index: 2;
+      .viewDetails {
+        display: inline-flex;
+        margin-top: 0.75em;
+        @include xl {
+          display: none;
+        }
+      }
     }
     .hoverSection {
       position: absolute;
@@ -639,9 +658,28 @@
       background-color: $primaryColor;
       z-index: 3;
       transition: all .5s cubic-bezier(0,-0.09,0,.95);
+      display: flex;
+      flex-direction: column;
       .hoverContent {
         background-color: $whiteColor;
         border-radius: 10px 10px 0 0;
+        flex-grow: 1;
+        text-align: center;
+      }
+      .heading5 {
+        color: $whiteColor;
+        padding: 1em 0;
+        font-size: 0.9375em;
+      }
+      p {
+        font-size: 0.825em;
+        color: $lightGrey;
+        min-height: 150px;
+        margin: 1em 0;
+      }
+      .assessmentCount {
+        color: $darkGrey;
+        margin: 0.75em 0;
       }
     }
   }
@@ -659,8 +697,8 @@
     color: $whiteColor;
     line-height: 1.3;
     display: block;
-    position: relative;
     margin-top: 0.75em;
+    position: relative;
     em {
       font-size: 1em;
       margin-right: 0.35em;
@@ -683,22 +721,24 @@
     }
   }
   .viewDetails {
-    box-sizing: border-box;
-    border-top: 1px solid rgba(149, 149, 149, 0.25);
-    display: inline-block;
-    width: 100%;
-    color: $mediumGrey;
-    font-size: 0.75em;
-    padding: 1em 1.5em 1em 2em;
+    color: $whiteColor;
+    font-family: "OpenSans", sans-serif;
+    font-size: 0.875em;
+    padding: 0.5em 2em;
     transition: all 0.3s ease-in-out;
-    em {
-      font-size: 0.75em;
-      margin-left: 0.5em;
-    }
-    @include sm {
-      position: absolute;
-      left: 0;
-      bottom: 0;
+    box-sizing: border-box;
+    background-color: #117CD8;
+    border: 1px solid #117CD8;
+    border-radius: 5px;
+    position: relative;
+    display: inline-flex;
+    transition: all 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+    cursor: pointer;
+    &:hover {
+      @include xl {
+        background-color: $whiteColor;
+        color: #117CD8;
+      }
     }
   }
 }
