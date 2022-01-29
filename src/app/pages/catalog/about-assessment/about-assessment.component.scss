@@ -821,7 +821,7 @@
 }
 //benifits
 .benifits {
-  background-color: #004C65;
+  background-image: linear-gradient(to right, #004C65, #01516C, #004C65);
   padding: 5em 0;
   font-size: 14px;
   .container {
@@ -831,7 +831,7 @@
       font-family: "OpenSans", sans-serif;
       text-align: center;
       font-weight: 600;
-      margin-bottom: 1.5em;
+      margin-bottom: 2em;
     }
     p {
       color: $whiteColor;
@@ -839,7 +839,7 @@
       font-family: "OpenSans", sans-serif;
       text-align: center;
       font-weight: 400;
-      margin-bottom: 1.5em;
+      margin-bottom: 2em;
     }
     ul {
       display: flex;
