@@ -509,10 +509,10 @@
 .assessmentSection {
   background-color: $bgColor;
   padding: 3.75em 0 3.75em 0;
-  font-size: 15px;
   position: relative;
+  font-size: 14px;
   @include md {
-    font-size: 12px;
+    font-size: 13px;
   }
   @include lg {
     font-size: 14px;
@@ -756,32 +756,42 @@
 .assessmentOverview {
   background-color: #F7F7F7;
   padding: 3.75em 0 0 0;
+  font-size: 14px;
+  @include md {
+    font-size: 13px;
+  }
+  @include lg {
+    font-size: 14px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
   .commonHeadingStyle{
     margin-bottom: 0;
   }
-.wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  .left {
-    width: 80%;
-    p {
-      color: $darkMediumGrey;
-      font-size: 1em;
-      font-weight: 400;
-      line-height: 2;
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .left {
+      width: 80%;
+      p {
+        color: $darkMediumGrey;
+        font-size: 1em;
+        font-weight: 400;
+        line-height: 2;
+      }
     }
-  }
-  .right {
-    width: 15%;
-    figure {
-      display: flex;
-      img {
-        width: 72%;
+    .right {
+      width: 15%;
+      figure {
+        display: flex;
+        img {
+          width: 72%;
+        }
       }
     }
   }
-}
 }
 
 
