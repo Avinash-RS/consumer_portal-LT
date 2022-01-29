@@ -427,6 +427,7 @@
 
 //How it Works
 .howitWorksSection {
+  background-image: linear-gradient(to bottom, #f7f7f7, #f4f4f6, #f0f1f5, #ebeff4, #e5edf3);
   padding: 3.75em 0 3.75em 0;
   font-size: 12px;
   position: relative;
@@ -439,77 +440,87 @@
   @include xl {
     font-size: 16px;
   }
+  .smalltext {
+    font-family: "OpenSans", sans-serif;
+    font-size: 1em;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #A2A9B0;
+    text-align: center;
+  }
+  .heading {
+    font-family: "OpenSans", sans-serif;
+    font-size: 1.875em;
+    font-weight: 700;
+    color: #283646;
+    text-align: center;
+    margin: 1em 0;
+    display: inline-block;
+    width: 100%;
+  }
   ul {
     list-style-type: none;
     padding: 0;
-    margin-top: 2em;
-    li {
-      position: relative;
-      padding: 0 0 0.75em 5em;
-      &:last-child {
-        padding: 0 0 0 5em;
-        .icons {
-          &::after {
-            width: 0;
-          }
-        }
-      }
-      &:first-child {
-        .icons {
-          &::before {
-            width: 0;
-          }
-        }
-      }
-    }
-    .icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 1em;
+    position: relative;
+    &::after {
+      content: '';
       position: absolute;
-      left: 0;
-      top: 0;
-      border-radius: 35%;
-      border: 1px solid $greyColor;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      border-top: 2px dashed #3A86FF;
+      z-index: 1;
+    }
+    li {
+      text-align: center;
+      position: relative;
       padding: 1em;
-      width: 3em;
-      height: 3em;
-      box-sizing: border-box;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      &::before,
-      &::after {
-        content: "";
-        position: absolute;
-        width: 1px;
-        height: 100%;
-        background-color: #cdcdcd;
+      width: 23%;
+      transition: all 0.3s ease-in-out;
+      z-index: 2;
+      &:hover {
+        @include xl {
+          box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.18);
+        }
       }
-      &::after {
-        top: 100%;
+      figure {
+        display: inline-flex;
+        width: 10em;
+        height: 10em;
+        border-radius: 50%;
+        border: 4px solid #27BBEE;
+        overflow: hidden;
+        img {
+          width: 100%;
+        }
       }
-      &::before {
-        bottom: 100%;
+      .heading6 {
+        color: #283646;
+        margin: 1em 0;
+        font-family: "OpenSans", sans-serif;
+        font-weight: 600;
+        min-height: 50px;
       }
-      em {
-        font-size: 1.75em;
-        color: $primaryColor;
+      p {
+        color: #77808B;
+        font-size: 0.9375em;
+        font-weight: 400;
+        line-height: 1.4;
       }
-    }
-    .heading5 {
-      color: $blackColor;
-    }
-    p {
-      color: $mediumGrey;
-      font-size: 1em;
-      font-weight: 400;
-      line-height: 1.3;
     }
   }
 }
 
 .assessmentSection {
-  background-color: $bgColor;
+  background-color: #F8FBFF;
   padding: 3.75em 0 3.75em 0;
   position: relative;
+  overflow: hidden;
   font-size: 14px;
   @include md {
     font-size: 13px;
@@ -519,6 +530,18 @@
   }
   @include xl {
     font-size: 16px;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('#{$imagePath}/enhanceBG.png');
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: contain;
+    display: inline-flex;
+    opacity: 0.2;
   }
   p {
     font-size: 0.875em;

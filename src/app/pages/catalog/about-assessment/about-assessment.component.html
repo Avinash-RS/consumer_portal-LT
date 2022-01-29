@@ -359,21 +359,21 @@
             <div class="heading5">{{aboutArea?.name}}</div>
             <span class="totalAssessments"><em class="icon-Assessment"></em>{{totalAssessmentCount}} {{totalAssessmentCount > 1 ? 'Assessments':'Assessment'}}</span>
             <div class="assessments">
-                <div *ngFor="let competency of competencyList" (click)="openAssessments(competency)">
+                <div *ngFor="let competency of competencyList">
                     <figure>
                         <img src="/assets/images/assessments_img.png" alt="" />
                     </figure>
                     <div class="content">
                         <div class="heading5">{{competency.name}}</div>
                         <span class="assessmentCount"><em class="icon-Assessment"></em>{{competency?.totalAssessment}} {{competency?.totalAssessment > 1 ? 'Assessments': 'Assessment'}}</span>
-                        <span class="viewDetails">View Details</span>
+                        <span class="viewDetails" (click)="openAssessments(competency)">View Details</span>
                     </div>
                     <div class="hoverSection">
                         <div class="heading5">{{competency.name}}</div>
                         <div class="hoverContent">
                             <p>{{competency?.shortDescription}}</p>
                             <span class="assessmentCount"><em class="icon-Assessment"></em>{{competency?.totalAssessment}} {{competency?.totalAssessment > 1 ? 'Assessments': 'Assessment'}}</span>
-                            <span class="viewDetails">View Details</span>
+                            <span class="viewDetails" (click)="openAssessments(competency)">View Details</span>
                         </div>
                     </div>
                 </div>
@@ -384,13 +384,14 @@
 <app-certify-assessment *ngIf="showAssesment" [competencyData]="competencyData" [areaData]= "aboutArea"></app-certify-assessment>
 <section class="howitWorksSection">
     <div class="container">
-        <div class="heading3">How It Works</div>
+        <div class="smalltext">How It Works</div>
+        <div class="heading">Get Started with 4 Easy Steps</div>
         <ul *ngIf = "howItWorks">
-            <li *ngFor = "let contents of howItWorks.howItWorksContents">
-                <div class="icons">
-                    <em class="icon-AssessmentView"></em>
-                </div>
-                <div class="heading5">{{contents.title}}</div>
+            <li *ngFor="let contents of howItWorks.howItWorksContents">
+                <figure>
+                    <img src="/assets/images/assessments_img.png" alt="" />
+                </figure>
+                <div class="heading6">{{contents.title}}</div>
                 <p>{{contents.content}}</p>
             </li>
         </ul>
