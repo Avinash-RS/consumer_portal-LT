@@ -297,43 +297,61 @@
 // bannerCount
 .bannerCount {
   background-color: $whiteColor;
-  padding: 5em 0;
+  padding: 1.5em 0;
   font-size: 14px;
+  @include sm {
+    padding: 2.75em 0;
+  }
+  @include md {
+    font-size: 13px;
+  }
+  @include lg {
+    font-size: 14px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
   .container {
     ul {
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 0;
       flex-wrap: wrap;
-      @include sm {
+      padding: 0;
+      max-width: 768px;
+      width: 100%;
+      margin: 0 auto;
+      @include md {
         flex-wrap: nowrap;
         justify-content: space-between;
         align-items: flex-start;
       }
       li {
         text-align: center;
-        width: 38%;
-        margin: 0.5em 0;
-        border-left: 2px solid #46455C;
-        &:first-child{
-          border-left:none;
-        }
+        width: 50%;
+        margin: 1em 0;
         @include sm {
-          width: 12%;
+          width: 25%;
+          padding-left: 1em;
+          text-align: left;
           margin: 0;
+          border-left: 1px solid #46455C;
         }
-        .count {
-          color: #27BBEE;
-          font-size: 1.5625em;
+        &:first-child {
+          border-left: none;
+          padding-left: 0;
+        }
+        .heading4 {
+          color: $blueLabelColor;
           font-weight: 400;
           line-height: normal;
-          margin-bottom: 0.6em;
+          margin-bottom: 0.35em;
         }
         .desc {
-          color: #46455C;
+          color: $darkMediumGrey;
+          font-family: "OpenSans", sans-serif;
           font-size: 0.75em;
-          font-weight: 800;
+          font-weight: 700;
           line-height: normal;
         }
       }
@@ -355,28 +373,55 @@
   @include xl {
     font-size: 16px;
   }
-  .commonHeadingStyle{
-    margin-bottom: 0;
+  .container {
+    position: relative;
   }
   .wrapper {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     .left {
-      width: 80%;
+      width: 100%;
+      position: relative;
+      z-index: 2;
+      @include sm {
+        width: 75%;
+      }
+      @include md {
+        width: 80%;
+      }
       p {
         color: $darkMediumGrey;
         font-size: 1em;
         font-weight: 400;
         line-height: 2;
+        margin-bottom: 3.75em;
       }
     }
     .right {
-      width: 15%;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 50%;
+      z-index: 1;
+      opacity: 0.2;
+      @include sm {
+        width: 23%;
+        opacity: 1;
+      }
+      @include md {
+        width: 19%;
+      }
+      @include lg {
+        width: 13%;
+      }
+      @include xl {
+        width: 13%;
+      }
       figure {
         display: flex;
         img {
-          width: 75%;
+          width: 100%;
         }
       }
     }
@@ -554,10 +599,11 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    flex-wrap: wrap;
     margin-top: 1em;
     position: relative;
     &::after {
-      content: '';
+      content: none;
       position: absolute;
       top: 20%;
       left: 50%;
@@ -565,14 +611,26 @@
       width: 80%;
       border-top: 2px dashed #3A86FF;
       z-index: 1;
+      @include md {
+        content: '';
+      }
+    }
+    @include md {
+      flex-wrap: nowrap;
     }
     li {
       text-align: center;
       position: relative;
       padding: 1em;
-      width: 23%;
+      width: 100%;
       transition: all 0.3s ease-in-out;
       z-index: 2;
+      @include sm {
+        width: 47%;
+      }
+      @include md {
+        width: 23%;
+      }
       &:hover {
         @include xl {
           box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.18);
@@ -594,7 +652,9 @@
         margin: 1em 0;
         font-family: "OpenSans", sans-serif;
         font-weight: 600;
-        min-height: 50px;
+        @include sm {
+          min-height: 50px;
+        }
       }
       p {
         color: #77808B;
@@ -607,9 +667,139 @@
 }
 
 .assessmentCertification {
-  background-color: #FAF3F2;
-  padding: 10em 0;
-  clip-path: ellipse(60% 100% at 50% 0%);
+  background-image: linear-gradient(to bottom, #ffffff, #fdfcfd, #fcf9fa, #fbf6f7, #faf3f2);
+  padding: 3em 0 0 0;
+  clip-path: ellipse(120% 100% at 50% 0%);
+  overflow: hidden;
+  font-size: 14px;
+  @include sm {
+    clip-path: ellipse(95% 100% at 50% 0%);
+  }
+  @include md {
+    font-size: 13px;
+    padding: 6em 0 0 0;
+    clip-path: ellipse(85% 100% at 50% 0%);
+  }
+  @include lg {
+    font-size: 14px;
+    clip-path: ellipse(80% 100% at 50% 0%);
+  }
+  @include xl {
+    clip-path: ellipse(75% 100% at 50% 0%);
+    font-size: 16px;
+  }
+  @media only screen and (min-width: 1540px) {
+    clip-path: ellipse(60% 100% at 50% 0%);
+  }
+  .container {
+    position: relative;
+  }
+  .wrapper {
+    display: flex;
+  }
+  .left {
+    width: 100%;
+    padding-bottom: 6em;
+    z-index: 2;
+    @include sm {
+      width: 65%;
+      padding-bottom: 12em;
+    }
+    .heading {
+      font-family: "OpenSans", sans-serif;
+      font-size: 1.875em;
+      font-weight: 600;
+      color: $blackColor;
+      line-height: normal;
+    }
+    p {
+      font-size: 1em;
+      font-weight: 400;
+      color: $blackColor;
+      line-height: 1.3;
+      margin: 1.75em 0;
+    }
+    .viewMore {
+      background-color: #117CD8;
+      border: 1px solid #117CD8;
+      border-radius: 5px;
+      padding: 0.75em 1.5em;
+      font-size: 1em;
+      font-weight: 400;
+      color: $whiteColor;
+    }
+  }
+  .right {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 63%;
+    opacity: 0.1;
+    z-index: 1;
+    @media only screen and (min-width: 411px) {
+      width: 50%;
+    }
+    @include sm {
+      top: 0;
+      width: 45%;
+      bottom: auto;
+      opacity: 1;
+    }
+    @include md {
+      top: -5em;
+      width: 37%;
+    }
+    @include lg {
+    }
+    @include xl {
+    }
+    figure {
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+//Assessment Tools
+.assessmentTools {
+  position: relative;
+  padding: 3.75em 0;
+  font-size: 14px;
+  @include md {
+    font-size: 13px;
+  }
+  @include lg {
+    font-size: 14px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
+  p, .topSix {
+    font-size: 1em;
+    font-weight: 700;
+    line-height: normal;
+  }
+  p {
+    color: $darkMediumGrey;
+  }
+  .topSix {
+    color: $shadeBlueColor;
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 1.5em;
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      height: 1px;
+      width: 100%;
+      background-color: $shadeBlueColor;
+    }
+  }
 }
 
 .assessmentSection {
@@ -870,56 +1060,64 @@
   width: auto !important;
 }
 
+
 //benifits
 .benifits {
   background-image: linear-gradient(to right, #004C65, #01516C, #004C65);
   padding: 5em 0;
   font-size: 14px;
+  @include md {
+    font-size: 13px;
+  }
+  @include lg {
+    font-size: 14px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
   .container {
-    .heading {
+    .heading, .heading5 {
       color: $whiteColor;
-      font-size: 2.0625em;
       font-family: "OpenSans", sans-serif;
+      line-height: normal;
       text-align: center;
-      font-weight: 600;
-      margin-bottom: 2em;
     }
-    p {
-      color: $whiteColor;
-      font-size: 1.125em;
-      font-family: "OpenSans", sans-serif;
-      text-align: center;
+    .heading {
+      font-size: 2.0625em;
+      font-weight: 600;
+      margin-bottom: 0.75em;
+    }
+    .heading5 {
       font-weight: 400;
       margin-bottom: 2em;
     }
     ul {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 0;
+      justify-content: space-between;
       flex-wrap: wrap;
-      @include sm {
+      padding: 0;
+      @include md {
         flex-wrap: nowrap;
-        justify-content: space-between;
-        align-items: flex-start;
       }
       li {
-        text-align: center;
-        width: 38%;
+        width: 100%;
         margin: 0.5em 0;
-        color: $whiteColor;
         text-align: center;
-        img {
-          margin-bottom: 1em;
+        color: $whiteColor;
+        @include sm {
+          width: 27%;
         }
         .benifitTitle {
+          font-family: "OpenSans", sans-serif;
           font-size: 1.125em;
           font-weight: 700;
-          margin-bottom: 1em;
+          line-height: normal;
+          margin: 1em 0;
         }
         p {
           font-size: 1em;
           font-weight: 400;
+          line-height: normal;
         }
       }
     }
