@@ -501,7 +501,7 @@
 //Program Overview
 .programOverview {
   background-color: $whiteColor;
-  padding: 3.75em 0 1em 0;
+  padding: 3.75em 0 3em 0;
   font-size: 13px;
   position: relative;
   @include md {
@@ -639,7 +639,7 @@
         font-family: "OpenSans", sans-serif;
         font-size: 1.5em;
         font-weight: 600;
-        margin: 1em 0 2em 0;
+        margin: 0 0 2em 0;
         position: relative;
         &::after {
           content: "";
@@ -653,10 +653,11 @@
         }
       }
       p {
+        width: 89%;
         color:$darkMediumGrey;
         font-size: 1.25em;
         font-weight: 400;
-        line-height: 1.5;
+        line-height: 2;
       }
     }
   }
@@ -665,7 +666,7 @@
 //Program Highlights
 .progHighlightsBg {
   background-color: $whiteColor;
-  padding: 0 0 1.75em 0;
+  padding: 1em 0 2.5em 0;
   font-size: 13px;
   position: relative;
   overflow: hidden;
@@ -711,7 +712,7 @@
       color: $darkMediumGrey;
       display: block;
       line-height: 1.5;
-      padding: 0.75em 0 1em 0;
+      padding: 1em 0 2em 0;
       margin: 0;
     }
     .keySkillsCovered {
@@ -819,7 +820,7 @@
       color: $darkMediumGrey;
       display: block;
       line-height: 1.4;
-      padding: 1em 0 1em 0;
+      padding: 1em 0 2em 0;
       margin: 0;
     }
     ul {
@@ -1052,7 +1053,7 @@
         font-size: 1em;
         font-weight: 400;
         line-height: 1.4;
-        margin-bottom: 1.5em;
+        margin-bottom: 2.5em;
       }
       .accordionPanel {
         width: 100%;
@@ -1114,6 +1115,7 @@
               display: flex;
               align-items: center;
               position: relative;
+              line-height: 2;
               &::before {
                 content: "";
                 position: absolute;
@@ -1399,7 +1401,7 @@
     font-family: "OpenSans", sans-serif;
     font-weight: 600;
     color: $darkGrey;
-    margin-bottom: 0.7em;
+    // margin-bottom: 0.7em;
     display: inline-block;
     width: 100%;
   }
@@ -1407,6 +1409,7 @@
     color: $mediumGrey;
     font-weight: 400;
     margin-top: 0;
+    padding: 1em 0 1.5em 0;
   }
   .realTimeWrapper {
     display: flex;
@@ -1506,7 +1509,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  padding: 5em 0;
+  padding: 5.5em 0;
   font-size: 12px;
   @include md {
   }
@@ -1583,13 +1586,14 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    margin-left:15em ;
     @include md {
       flex-wrap: nowrap;
     }
     .left {
       width: 100%;
       @include md {
-        width: 50%;
+        width: 49%;
       }
       .heading4 {
         font-family: "OpenSans", sans-serif;
@@ -1619,6 +1623,7 @@
           display: flex;
           align-items: center;
           justify-content: space-between;
+          margin-right: 1em;
           .icon {
             width: 12%;
             img {
@@ -1637,7 +1642,7 @@
               margin-bottom: 0.6375em;
             }
             .contact-desc {
-              font-size: 1.125em;
+              font-size: 1em;
               font-weight: 700;
               color: $darkGrey;
               line-height: normal;
@@ -1906,11 +1911,11 @@
           &.heading5 {
             color: $blackColor;
             font-weight: 700;
-            text-transform: uppercase;
-            margin: 0 0 0.25em 0;
+            // text-transform: uppercase;
+            margin: 0 0 0.5em 0;
           }
           &.desc {
-            color: #5e5e5e;
+            color: #5dadec;
             font-size: 0.9375em;
             font-weight: 400;
             line-height: normal;
@@ -2010,14 +2015,16 @@
         width: 58%;
       }
       .heading6 {
-        color: $darkGrey;
+        color: $darkMediumGrey;
         line-height: 1.4;
+        font-size: 1em;
+        font-weight: 400;
       }
       ul {
         margin: 1.75em 0 0 1em;
         li {
           color: $darkGrey;
-          font-size: 1.125em;
+          font-size: 1em;
           font-weight: 400;
           line-height: 1.4;
           margin-bottom: 1.25em;
@@ -2064,14 +2071,16 @@
         margin-top: 0;
       }
       .heading6 {
-        color: $darkGrey;
+        color: $darkMediumGrey;
         line-height: 1.4;
+        font-size: 1em;
+        font-weight: 400;
       }
       ul {
         margin: 1.75em 0 0 1em;
         li {
           color: $darkGrey;
-          font-size: 1.125em;
+          font-size: 1em;
           font-weight: 400;
           line-height: 1.4;
           margin-bottom: 1.25em;
@@ -2128,7 +2137,7 @@
     font-size: 0.875em;
     font-weight: 600;
     line-height: normal;
-    color: $darkGrey;
+    color: $darkMediumGrey;
     text-transform: uppercase;
     background: #f5f5f5;
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
@@ -2147,6 +2156,8 @@
     background-color: $whiteColor;
     border-bottom: 2px solid #1b4e9b;
     border-radius: 5px;
+    color: $darkGrey;
+    
   }
   .mat-tab-header {
     border-bottom: 0;
@@ -2230,6 +2241,7 @@
     justify-content: space-between;
     align-items: flex-start;
     flex-wrap: wrap;
+    margin-top: 4em;
     .path {
       position: relative;
       width: 48%;
@@ -2277,7 +2289,7 @@
         font-weight: 400;
         color: $darkMediumGrey;
         line-height: 1.5;
-        padding-right: 20px;
+        padding:1.25em 1.25em 0 0;
       }
       &:first-child {
         .heading {
@@ -2515,11 +2527,11 @@
       }
     }
     p {
-      font-size: 1em;
+      font-size: 0.875em;
       font-weight: 400;
       color: $darkMediumGrey;
-      line-height: 1.5;
-      margin: 1.5em 0 0 0;
+      line-height: 1.6;
+      margin: 2.5em 0 0 0;
     }
   }
 }
@@ -3092,7 +3104,7 @@
         margin-right: 1em;
         @include md {
           width: 8%;
-          margin-right: 3em;
+          margin-right: 1em;
         }
         &:last-child {
           margin-right: 0;
@@ -3100,7 +3112,7 @@
         img {
           object-fit: contain;
           height: 50px;
-          width: 100%;
+          width: 75%;
         }
       }
 
@@ -3256,16 +3268,16 @@
             margin: 0 0 0.25em 0;
           }
           &.desc {
-            color: #5e5e5e;
+            color: $mediumGrey;
             font-size: 0.9375em;
             font-weight: 400;
             line-height: normal;
           }
         }
         .heading6 {
-          color: #5e5e5e;
+          color: $darkMediumGrey;
           font-weight: 400;
-          margin-top: 1.05em;
+          margin-top: 1em;
           text-align: left;
         }
       }
