@@ -932,11 +932,24 @@
   background-repeat: no-repeat;
   width: 100%;
   .container {
+    ul {
+      li {
+        
+      }
+    }
     .requirements {
       color:$darkGrey;
       font-size: 1.25em;
       font-weight: 400;
       margin-bottom: 1em;
+      line-height: normal;
+    }
+    p {
+      color:$lightGrey;
+      font-size: 1.125em;
+      font-weight: 400;
+      line-height: normal;
+      padding-left: 2em;
     }
   }
 }
