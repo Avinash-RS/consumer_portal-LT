@@ -10,8 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 import { UtilityService } from 'src/app/services/utility.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FormGroup } from '@angular/forms';
-
-
+import { OwlOptions } from 'ngx-owl-carousel-o';
 @Component({
   selector: 'app-about-assessment',
   templateUrl: './about-assessment.component.html',
@@ -19,6 +18,78 @@ import { FormGroup } from '@angular/forms';
 })
 export class AboutAssessmentComponent implements OnInit {
   selectedIndex = 0;
+  TopicsOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    dots: false,
+    navSpeed: 700,
+    margin: 30,
+    navText: ["<i class='icon-LeftArrow'></i>", "<i class='icon-RightArrow'></i>"],
+    nav: true,
+    responsive: {
+      0: {
+        items: 1
+      },
+      600: {
+        items: 2
+      },
+      992: {
+        items: 2
+      }
+    }
+  }
+  expertOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    dots: false,
+    navSpeed: 700,
+    margin: 30,
+    navText: ["<i class='icon-LeftArrow'></i>", "<i class='icon-RightArrow'></i>"],
+    nav: true,
+    responsive: {
+      0: {
+        items: 1
+      },
+      600: {
+        items: 2
+      },
+      992: {
+        items: 3
+      }
+    }
+  }
+  //
+  relatedList: OwlOptions = {
+    loop: true,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    dots: true,
+    navSpeed: 700,
+    margin: 30,
+    navText: ["<i class='icon-Back'></i>", "<i class='icon-right-next'></i>"],
+    nav: true,
+    responsive: {
+      0: {
+        items: 1
+      },
+      600: {
+        items: 2
+      },
+      700: {
+        items: 3,
+        slideBy: 3
+      },
+      1024: {
+        items: 4,
+        slideBy: 4
+      }
+    }
+  }
   howItWorks:any
   isReadMore = true
   areaId;
@@ -48,7 +119,179 @@ export class AboutAssessmentComponent implements OnInit {
    }
   public destroyed = new Subject<any>();
   contactForm: FormGroup;
-
+  hireimage = [
+    {
+      "title" : "L&T Construction",
+      "imageurl" : "https://assets.lntedutech.com/portalicons/lntcc.png"
+  }, 
+  {
+      "title" : "L&T NXT",
+      "imageurl" : "https://assets.lntedutech.com/portalicons/nxt.png"
+  }, 
+  {
+      "title" : "L&T Technology",
+      "imageurl" : "https://assets.lntedutech.com/portalicons/techservice.png"
+  }, 
+  {
+      "title" : "LTI",
+      "imageurl" : "https://assets.lntedutech.com/portalicons/lti.png"
+  }, 
+  {
+      "title" : "Mind Tree Construction",
+      "imageurl" : "https://assets.lntedutech.com/portalicons/mindtree.png"
+  }
+  ];
+  Programs = [
+    "Full Stack .NET Application Development Cyber Security", 
+    "Python and Data Management", 
+    "MEAN Application Development"
+  ];
+  Courses = [
+    "Modern Web Design", 
+    "Angular 7", 
+    "Complete Node JS", 
+    "MongoDB", 
+    "Complete Java", 
+    "MySQL", 
+    "Modern Web Design", 
+    "Spring Boot", 
+    "Complete C#", 
+    "ASP.NET"
+  ];
+  partners =[
+    {
+      "title" : "Pack",
+      "imageurl" : "https://assets.lntedutech.com/portalicons/packt.png"
+  }, 
+  {
+      "title" : "Pack",
+      "imageurl" : "https://assets.lntedutech.com/portalicons/step.png"
+  }, 
+  {
+      "title" : "Pack",
+      "imageurl" : "https://assets.lntedutech.com/portalicons/wecp.png"
+  }, 
+  {
+      "title" : "Pack",
+      "imageurl" : "https://assets.lntedutech.com/portalicons/amphisoft.png"
+  }
+  ];
+  relatedcourses =[
+    {
+      "title" : "Full Stack .NET Application Development",
+      "date" : "20-01-2022",
+      "duration" : "4 months",
+      "rating" : [ 
+          1, 
+          2, 
+          3, 
+          4, 
+          5
+      ],
+      "imageurl" : "https://assets.lntedutech.com/portalicons/fullstack.png"
+  }, 
+  {
+      "title" : "Python and Data Management",
+      "date" : "20-01-2022",
+      "duration" : "4 months",
+      "rating" : [ 
+          1, 
+          2, 
+          3, 
+          4
+      ],
+      "imageurl" : "https://assets.lntedutech.com/portalicons/pycours.png"
+  }, 
+  {
+      "title" : "Cyber Security",
+      "date" : "20-01-2022",
+      "duration" : "4 months",
+      "rating" : [ 
+          1, 
+          2, 
+          3, 
+          4, 
+          5
+      ],
+      "imageurl" : "https://assets.lntedutech.com/portalicons/cybersecurity.png"
+  }, 
+  {
+      "title" : "MEAN Application Development",
+      "date" : "20-01-2022",
+      "duration" : "4 months",
+      "rating" : [ 
+          1, 
+          2, 
+          3
+      ],
+      "imageurl" : "https://assets.lntedutech.com/portalicons/meanstack.png"
+  }
+  ];
+ 
+  relatedassesment =  [ 
+    {
+        "title" : "Aptitude Skill Assessment",
+        "rating" : [ 
+            1, 
+            2, 
+            3, 
+            4
+        ],
+        "NoOfAssessment" : "2",
+        "level" : "Beginner",
+        "imageurl" : "https://assets.lntedutech.com/portalicons/apptitude.png"
+    }, 
+    {
+        "title" : "Communication Skills",
+        "rating" : [ 
+            1, 
+            2, 
+            3, 
+            4
+        ],
+        "NoOfAssessment" : "2",
+        "level" : "Intermediate",
+        "imageurl" : "https://assets.lntedutech.com/portalicons/communication.png"
+    }, 
+    {
+        "title" : "Behavioural Personal Profile",
+        "rating" : [ 
+            1, 
+            2, 
+            3, 
+            4
+        ],
+        "NoOfAssessment" : "2",
+        "level" : "Advanced",
+        "imageurl" : "https://assets.lntedutech.com/portalicons/behavioral.png"
+    }, 
+    {
+        "title" : "Assessment for IT learning",
+        "rating" : [ 
+            1, 
+            2, 
+            3, 
+            4
+        ],
+        "NoOfAssessment" : "2",
+        "level" : "Beginner",
+        "imageurl" : "https://assets.lntedutech.com/portalicons/assessmentit.png"
+    }
+]
+testimonals = [ 
+  {
+      "name" : "Natasa Ishrel",
+      "designation" : "Vice President",
+      "description" : "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero",
+      "imageurl" : "https://assets.lntedutech.com/portalicons/jessica.png"
+  }, 
+  {
+      "name" : "Johnson",
+      "designation" : "Vice President",
+      "description" : "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero",
+      "imageurl" : "https://assets.lntedutech.com/portalicons/instructor2_2.png"
+  }
+]
   ngOnInit(): void {
     this.userDetails = JSON.parse(this.appconfig.getSessionStorage('userDetails'));
     this.route.queryParams
