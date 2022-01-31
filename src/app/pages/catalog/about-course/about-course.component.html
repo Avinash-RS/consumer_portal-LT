@@ -11,13 +11,10 @@
                         <span>{{courseData?.skillLevel}}</span>
                         <div class="courseContent">
                             <span class="ratingStar">
-                                <em class="icon-Star"></em>
-                                <em class="icon-Star"></em>
-                                <em class="icon-Star"></em>
-                                <em class="icon-Star"></em>
+                                <em class="icon-Star" *ngFor="let rate of courseData?.courseContents?.ratings"></em>
                             </span>
-                            <span class="ratings">756 Ratings</span>
-                            <span class="learners">1211 Learners</span>
+                            <span class="ratings">{{courseData?.courseContents?.ratingsCount}}</span>
+                            <span class="learners">{{courseData?.courseContents?.learners}}</span>
                             <div class="buttons">
                                 <span class="courseRate" *ngIf="courseData?.is_free">{{'Free'}}</span>
                                 <span class="courseRate" *ngIf="!courseData?.is_free">{{courseData?.sellingPrice}}</span>
