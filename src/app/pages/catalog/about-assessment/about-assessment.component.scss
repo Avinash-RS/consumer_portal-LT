@@ -1132,6 +1132,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
+  background-position:center;
   @include md {
     font-size: 13px;
   }
@@ -1151,7 +1152,10 @@
       li {
         display: flex;
         align-items: flex-start;
-        width: 47%;
+        width: 100%;
+        @include md {
+          width: 47%;
+        }
         margin-bottom: 0.75em;
         em {
           width: 5%;
