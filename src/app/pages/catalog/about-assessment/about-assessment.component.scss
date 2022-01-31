@@ -777,7 +777,7 @@
   }
   p, .topSix {
     font-size: 1em;
-    font-weight: 700;
+    font-weight: 400;
     line-height: normal;
   }
   p {
@@ -789,7 +789,7 @@
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    margin-top: 1.5em;
+    margin: 1.5em 0 3em 0;
     &::after {
       content: '';
       position: absolute;
@@ -798,6 +798,87 @@
       height: 1px;
       width: 100%;
       background-color: $shadeBlueColor;
+    }
+  }
+  .threeColumn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    @include md {
+      flex-wrap: nowrap;
+    }
+    .left, .right {
+      width: 100%;
+      margin-top: 1em;
+      @include md {
+        width: 30%;
+        margin-top: 0;
+      }
+      .commonStyle {
+        padding: 0.75em 1em;
+        border-radius: 5px;
+        margin-bottom: 1em;
+        &:last-child {
+          margin-bottom: 0;
+        }
+        .heading {
+          font-family: "OpenSans", sans-serif;
+          font-size: 0.9375em;
+          font-weight: 600;
+          color: $mediumGrey;
+          line-height: normal;
+          text-transform: uppercase;
+        }
+        p {
+          font-size: 0.9375em;
+          font-weight: 400;
+          color: $darkMediumGrey;
+          line-height: 1.6;
+          margin: 0.5em 0 0 0;
+          @include md {
+            line-height: 1.2;
+          }
+          @include lg {
+            line-height: 1.6;
+          }
+        }
+      }
+    }
+    .left {
+      order: 2;
+      @include md {
+        order: 1;
+      }
+      .sec1 {
+        background-color: rgba(232, 248, 234, 1);
+      }
+      .sec2 {
+        background-color: rgba(169, 141, 221, 0.2);
+      }
+      .sec3 {
+        background-color: rgba(39, 187, 238, 0.2);
+      }
+    }
+    .center {
+      width: 100%;
+      order: 1;
+      @include md {
+        width: 35%;
+        order: 2;
+      }
+    }
+    .right {
+      order: 3;
+      .sec1 {
+        background-color: rgba(232, 246, 248, 1);
+      }
+      .sec2 {
+        background-color: rgba(255, 255, 226, 1);
+      }
+      .sec3 {
+        background-color: rgba(242, 232, 232, 1);
+      }
     }
   }
 }
@@ -1131,6 +1212,7 @@
   background-image: url("#{$imagePath}/achievebg.svg");
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
   width: 100%;
   @include md {
     font-size: 13px;
