@@ -278,6 +278,20 @@ export class AboutAssessmentComponent implements OnInit {
         "imageurl" : "https://assets.lntedutech.com/portalicons/assessmentit.png"
     }
 ]
+testimonals = [ 
+  {
+      "name" : "Natasa Ishrel",
+      "designation" : "Vice President",
+      "description" : "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero",
+      "imageurl" : "https://assets.lntedutech.com/portalicons/jessica.png"
+  }, 
+  {
+      "name" : "Johnson",
+      "designation" : "Vice President",
+      "description" : "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero",
+      "imageurl" : "https://assets.lntedutech.com/portalicons/instructor2_2.png"
+  }
+]
   ngOnInit(): void {
     this.userDetails = JSON.parse(this.appconfig.getSessionStorage('userDetails'));
     this.route.queryParams
