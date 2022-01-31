@@ -143,7 +143,7 @@
                             <p>{{aboutArea?.contentAchieve}}</p>
                         </li>
                      </ul>
-                </div>
+                </div> -->
                 <div class="requirements require">
                     <div class="heading4">Requirements</div>
                     <p>{{aboutArea?.contentRequirement}}</p>
@@ -156,7 +156,7 @@
                     <button *ngIf="aboutArea?.contentDescription.length > 370" type="button" (click)="showText()">
                         {{ isReadMore ? 'Show More': 'Show Less' }} <em class="icon-DownArrow"></em>
                     </button>
-                </div> -->
+                </div>
                 
     <div *ngIf="aboutArea?.cid==='A0004'">
         <div class="requirements pecialization">
@@ -471,7 +471,7 @@
 
 
 <!-- achieve -->
-<section class="achieve">
+<section class="achievement">
     <div class="container">
         <div class="commonHeadingStyle">{{'What you will you achieve'}}</div>
           <ul>
@@ -479,9 +479,21 @@
                     <em class="icon-checked"></em>
                     <p>You will be fully competent in drawing shear force and bending moment diagrams for statically determinate beams and frames.</p>
                 </li>
+                <li>
+                    <em class="icon-checked"></em>
+                    <p>You will understand the link between internal stresses and their shear force and bending moment resultants.</p>
+                </li>
+                <li>
+                    <em class="icon-checked"></em>
+                    <p>You will understand the link between internal stresses and their shear force and bending moment resultants.</p>
+                </li>
+                <li>
+                    <em class="icon-checked"></em>
+                    <p>You will have a robust system of analysis that allows you to confidently tackle the analysis of any statically determinate structure.</p>
+                </li>
          </ul> 
         <div class="requirements">Requirements</div>
-        <p>A basic understanding of statics would be helpful but not essential - we’ll review the basics to bring you up to speed.</p>
+        <p class="desc">A basic understanding of statics would be helpful but not essential - we’ll review the basics to bring you up to speed.</p>
     </div>
 </section>
     <!-- Related items -->
