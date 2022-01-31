@@ -428,6 +428,73 @@
   }
 }
 
+// achieve
+.achievement {
+  padding: 3.75em 0;
+  font-size: 14px;
+  background-image: url("#{$imagePath}/achievebg.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  background-position:center;
+  @include md {
+    font-size: 13px;
+  }
+  @include lg {
+    font-size: 14px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
+  .container {
+    ul {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2em;
+      flex-wrap: wrap;
+      li {
+        display: flex;
+        align-items: flex-start;
+        width: 100%;
+        @include md {
+          width: 47%;
+        }
+        margin-bottom: 0.75em;
+        em {
+          width: 5%;
+          color: #49ae31;
+          font-size: 1.007em;
+          position: relative;
+          top: 7px;
+        }
+        p {
+          width: 93%;
+          color: $darkMediumGrey;
+          font-size: 1em;
+          font-weight: 400;
+          line-height: 1.7;
+        }
+      }
+    }
+    .requirements {
+      color:$darkGrey;
+      font-size: 1.25em;
+      font-weight: 400;
+      margin-bottom: 1em;
+      line-height: normal;
+    }
+    desc {
+      color:$lightGrey;
+      font-size: 1.125em;
+      font-weight: 400;
+      line-height: normal;
+      padding-left: 2em;
+    }
+  }
+}
+
 .sectorProject {
   border-collapse: collapse;
   width: 100%;
@@ -455,12 +522,12 @@
     }
   }
 }
+
 //About Assessment
 .areaDetailDescription {
   margin: 2em 0 0.5em 0;
   .container {
     > div {
-      // max-width: 850px;
       width: 100%;
       margin-bottom: 3.75em;
     }
@@ -484,7 +551,6 @@
       width: 100%;
       margin-top: 1em;
       @include sm {
-        //width: 47%;
       }
       em,
       p {
@@ -666,6 +732,7 @@
   }
 }
 
+//Assessment Certification
 .assessmentCertification {
   background-image: linear-gradient(to bottom, #ffffff, #fdfcfd, #fcf9fa, #fbf6f7, #faf3f2);
   padding: 3em 0 0 0;
@@ -918,7 +985,6 @@
   }
 }
 .assessmentsArea {
-  // background-color: $whiteColor;
   .heading5,
   .totalAssessments {
     display: inline-block;
@@ -1205,72 +1271,6 @@
   }
 }
 
-// achieve
-.achievement {
-  padding: 3.75em 0;
-  font-size: 14px;
-  background-image: url("#{$imagePath}/achievebg.svg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 100%;
-  background-position:center;
-  @include md {
-    font-size: 13px;
-  }
-  @include lg {
-    font-size: 14px;
-  }
-  @include xl {
-    font-size: 16px;
-  }
-  .container {
-    ul {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 2em;
-      flex-wrap: wrap;
-      li {
-        display: flex;
-        align-items: flex-start;
-        width: 100%;
-        @include md {
-          width: 47%;
-        }
-        margin-bottom: 0.75em;
-        em {
-          width: 5%;
-          color: #49ae31;
-          font-size: 1.007em;
-          position: relative;
-          top: 7px;
-        }
-        p {
-          width: 93%;
-          color: $darkMediumGrey;
-          font-size: 1em;
-          font-weight: 400;
-          line-height: 1.7;
-        }
-      }
-    }
-    .requirements {
-      color:$darkGrey;
-      font-size: 1.25em;
-      font-weight: 400;
-      margin-bottom: 1em;
-      line-height: normal;
-    }
-    desc {
-      color:$lightGrey;
-      font-size: 1.125em;
-      font-weight: 400;
-      line-height: normal;
-      padding-left: 2em;
-    }
-  }
-}
 //Testimonials
 .testimonials {
   background-color: #f9f9f9;
