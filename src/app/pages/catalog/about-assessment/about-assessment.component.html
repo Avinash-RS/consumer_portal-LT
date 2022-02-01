@@ -674,68 +674,7 @@
         </section>
     </ng-container>
 
-      <!-- hiringPartnres -->
-      <ng-container >
-        <section class="hiringPartnres" [ngStyle]="{'background-image': 'url(https://lmsassetspremium.lntedutech.com/portalicons/hiringPartners_bg.png)'}">
-            <div class="container">
-                <div class="commonHeadingStyle">{{'Hiring Partners'}}</div>
-                <div class="wrapper">
-                    <div class="left">
-                        <p>{{'L&T EduTech collaborates with 100+ recruiting partners, identify and understand the key talent expectations trending across the globe, design curriculum on right technologies, train learners with industry oriented practice eco-system to place them successfully.'}}</p>
-                    </div>
-                    <div class="right">
-                        <div class="figWrapper">
-                            <ng-container *ngFor="let img of hireimage">
-                                <figure>
-                                    <img [src]="img?.imageurl" alt="">
-                                </figure>
-                            </ng-container>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="programCourse">
-            <div class="container">
-                    <div class="listPart">
-                        <div class="heading">{{'Programs'}}</div>
-                            <ul class="division">
-                                <li *ngFor="let program of Programs">{{program}}</li> 
-                            </ul>
-                    </div>
-                    <div class="listPart"> 
-                        <div class="heading">{{'Courses'}}</div>
-                            <ul class="division">
-                                <li *ngFor="let course of Courses">{{course}}</li>
-                            </ul>
-                    </div> 
-            </div>
-        </section>
-        <section class="ourPartners">
-            <div class="container">
-                <div class="partnersSection">
-                    <div>{{'Our partners :'}}</div>
-                    <figure *ngFor="let partner of partners">
-                        <img [src]="partner.imageurl" alt="" />
-                    </figure>
-                </div>
-                <div class="grievanceSection">
-                    <p><span>For any grievances</span> - {{'students can reach us at – call: 000-000-0000 email: xyz@lntedutech.com'}}</p>
-                </div>
-                <div class="poweredSection">
-                    <div class="left">
-                        <span class="heading">{{'Payment powered by :'}}</span>
-                        <figure>
-                            <img src="https://lmsassetspremium.lntedutech.com/portalicons/cc.png" alt="" />
-                        </figure>
-                    </div>
-                    <figure class="right">
-                        <img src="https://lmsassetspremium.lntedutech.com/portalicons/ccavenue.png" alt="" />
-                    </figure>
-                </div>
-            </div>
-        </section>
-    </ng-container>
+    <app-partners-list class="app-Partners" [OurPartners]="OurPartners"></app-partners-list>
 
     </ng-container>
 
