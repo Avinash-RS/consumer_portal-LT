@@ -512,7 +512,7 @@
           color: $darkMediumGrey;
           font-size: 1em;
           font-weight: 400;
-          line-height: 1.7;
+          line-height: 1.4;
         }
       }
     }
@@ -792,34 +792,6 @@
       background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5), rgba(0,0,0,0.9));
       z-index: 1;
     }
-    &:hover {
-      @include xl {
-        .hoverSection {
-          top: 0;
-          opacity: 1;
-          .heading5 {
-            opacity: 1;
-            transition-delay: 0.3s;
-            transform: translateY(0);
-          }
-          p {
-            opacity: 1;
-            transition-delay: 0.4s;
-            transform: translateY(0);
-          }
-          .assessmentCount {
-            opacity: 1;
-            transition-delay: 0.5s;
-            transform: translateY(0);
-          }
-          .viewDetails {
-            opacity: 1;
-            transition-delay: 0.5s;
-            transform: translateY(0);
-          }
-        }
-      }
-    }
     figure {
       display: flex;
       height: 100%;
@@ -845,6 +817,30 @@
         }
       }
     }
+    .viewDetails {
+      color: $whiteColor;
+      font-family: "OpenSans", sans-serif;
+      font-size: 0.875em;
+      padding: 0.5em 2em;
+      transition: all 0.3s ease-in-out;
+      box-sizing: border-box;
+      background-color: #117CD8;
+      border: 1px solid #117CD8;
+      border-radius: 5px;
+      position: relative;
+      display: inline-flex;
+      transition: all 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+      cursor: pointer;
+      // opacity: 0;
+      // transform: translateY(10px);
+      &:hover {
+        @include xl {
+          background-color: $whiteColor;
+          color: #117CD8;
+          transition-delay: 0s;
+        }
+      }
+    }
     .hoverSection {
       position: absolute;
       width: 100%;
@@ -864,10 +860,10 @@
         text-align: center;
       }
       .heading5, p, .assessmentCount {
-        opacity: 0;
-        transition: all 0.2s linear;
-        will-change: transform;
-        transform: translateY(20px);
+        // opacity: 0;
+        // transition: all 0.2s linear;
+        // will-change: transform;
+        // transform: translateY(20px);
       }
       .heading5 {
         color: $whiteColor;
@@ -885,6 +881,34 @@
         margin: 0.75em 0;
       }
     }
+    &:hover {
+      @include xl {
+        .hoverSection {
+          top: 0;
+          opacity: 1;
+          // .heading5 {
+          //   opacity: 1;
+          //   transition-delay: 0.3s;
+          //   transform: translateY(0);
+          // }
+          // p {
+          //   opacity: 1;
+          //   transition-delay: 0.4s;
+          //   transform: translateY(0);
+          // }
+          // .assessmentCount {
+          //   opacity: 1;
+          //   transition-delay: 0.5s;
+          //   transform: translateY(0);
+          // }
+          // .viewDetails {
+          //   opacity: 1;
+          //   transition-delay: 0.5s;
+          //   transform: translateY(0);
+          // }
+        }
+      }
+    }
   }
   .heading5 {
     font-weight: 400;
@@ -893,6 +917,13 @@
     // min-height: 40px;
     width: 100%;
     text-align: center;
+    @include xl {
+      width: 95%;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      margin: 0 auto;
+    }
   }
   .assessmentCount {
     font-size: 0.9375em;
@@ -921,29 +952,6 @@
       margin: 1em 0 2em 0;
     }
     @include lg {
-    }
-  }
-  .viewDetails {
-    color: $whiteColor;
-    font-family: "OpenSans", sans-serif;
-    font-size: 0.875em;
-    padding: 0.5em 2em;
-    transition: all 0.3s ease-in-out;
-    box-sizing: border-box;
-    background-color: #117CD8;
-    border: 1px solid #117CD8;
-    border-radius: 5px;
-    position: relative;
-    display: inline-flex;
-    transition: all 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
-    cursor: pointer;
-    opacity: 0;
-    transform: translateY(10px);
-    &:hover {
-      @include xl {
-        background-color: $whiteColor;
-        color: #117CD8;
-      }
     }
   }
 }
