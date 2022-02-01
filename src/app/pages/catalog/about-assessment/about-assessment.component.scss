@@ -441,6 +441,7 @@
     font-size: 16px;
   }
   .container {
+    position: relative;
     .wrapper {
       display: flex;
       justify-content: space-between;
@@ -455,11 +456,93 @@
        }
       }
       .right {
-        width: 30%;
+        width: 300px;
+        position: absolute;
+        right: 0;
+        top: -10em;
         .buyCard {
           background-color: $whiteColor;
           box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
-          padding: 1.5em 2em;
+          padding: 2em 0.5em;
+          border-radius: 5px;
+          font-size: 14px;
+          text-align: center;
+          @include md {
+            font-size: 13px;
+          }
+          @include lg {
+            font-size: 14px;
+          }
+          @include xl {
+            font-size: 16px;
+          }
+          .price {
+            color: $blackColor;
+            em {
+              margin-right: 0.625em;
+            }
+            span {
+              font-size: 1.25em;
+              font-weight: 900;
+              line-height: normal;
+            }
+          }
+          .count {
+            color: $darkMediumGrey;
+            font-size: 0.9375em;
+            font-weight: 300;
+            line-height: normal;
+            margin: 1em 0;
+          }
+          .buyBtn,.cartBtn {
+            padding: 0.625em 1em;
+            font-family: "OpenSans", sans-serif;
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+            font-size: 1em;
+            font-weight: 700;
+            border-radius: 5px;
+            margin-bottom: 1em;
+            width: 220px;
+            border: 1px solid  $blueLabelColor;
+            transition: all 0.3s ease-in-out;
+          }
+          .buyBtn {
+            background-color: $blueLabelColor;
+            color: $whiteColor;
+            &:hover {
+              background-color: $whiteColor;
+              color: $blueLabelColor;
+            }
+          }
+          .cartBtn {
+            background-color: $whiteColor;
+            color: $blueLabelColor;
+            &:hover {
+              background-color: $blueLabelColor;
+              color: $whiteColor;
+            }
+          }
+          ul {
+            width: 220px;
+            margin: 0 auto;
+            li {
+              text-align: center;
+              display: flex;
+              justify-content: flex-start;
+              align-items: center;
+              line-height: 2.5;
+              em {
+                font-weight: 600;
+                color: $secondaryColor;
+                margin-right: 0.625em;
+              } 
+              div {
+                color: $darkMediumGrey;
+                font-size: 0.935em;
+                font-weight: 400;
+              }
+            }
+          }
         }
       }
     }
