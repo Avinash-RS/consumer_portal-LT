@@ -39,6 +39,9 @@ export class PartnersListComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
+    this.OurPartners;
+    
   }
 
 }

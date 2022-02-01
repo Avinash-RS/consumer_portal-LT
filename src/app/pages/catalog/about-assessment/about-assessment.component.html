@@ -7,12 +7,12 @@
         </figure>
         <div class="detailBannerPosition">
             <div class="container">
-                <!-- <ul>
-                    <a href="/catalog/catalogHome?fromPage=viewAll&selectedTab={{aboutArea?.parentId}}"><li>{{aboutArea?.domainName}}<em class="icon-RightArrow"></em></li></a>
+                <ul>
+                    <a href="/catalog/catalogHome?fromPage=viewAll&selectedTab={{btoaId}}"><li>{{aboutArea?.domainName}}<em class="icon-RightArrow"></em></li></a>
                     <li *ngIf = '!showAssesment'>{{aboutArea?.name}}</li>
-                    <li *ngIf = 'showAssesment'><a href = "/catalog/aboutAssessment?id={{competencyData?.parentId}}&selectedTab=All">{{aboutArea?.name}}</a><em class="icon-RightArrow"></em></li>
+                    <li *ngIf = 'showAssesment'><a href = "/catalog/aboutAssessment?id={{btoaId}}&selectedTab={{btoaAll}}&productType={{btoaproductType}}">{{aboutArea?.name}}</a><em class="icon-RightArrow"></em></li>
                     <li *ngIf = "showAssesment">{{competencyData?.name}}</li>
-                </ul> -->
+                </ul>
                 <div class="bannerDescription">
                     <div class="assessmentArea">
                         <span class="heading1">{{aboutArea?.name}}</span>
@@ -91,7 +91,7 @@
     <!-- Sticky Content Ends -->
 
 <!-- bannerCount -->
-<section class="bannerCount">
+<section class="bannerCount" *ngIf="!showAssesment">
     <div class="container">
         <ul>
             <li>
@@ -115,7 +115,7 @@
 </section>
 
 <!-- assessmentOverview -->
-<section class="assessmentOverview">
+<section class="assessmentOverview" *ngIf="!showAssesment">
     <div class="container">
         <div class="commonHeadingStyle">Assessment Overview</div>
         <div class="wrapper">
@@ -130,7 +130,34 @@
         </div>
     </div>
 </section>
+<!-- skill assessment -->
+<section class="skill" *ngIf="showAssesment">
+    <div class="container">
+        <div class="commonHeadingStyle">Aptitude Skill Assessment</div>
+        <div class="wrapper">
+            <div class="left">
+                <p>
+                    Each lecture is developed and delivered with the benefit of my experience as a university lecturer in structural engineering. The teaching style appeals to all types of learners with material developed through hand-drawn notes and sketches. Students are encouraged to engage with each lecture by actively developing their own notes during each video lecture…no ‘death by PowerPoint’ here! We’ll focus on pinning down the basics before diving into worked examples.
+                </p>
+            </div>
+            <div class="right">
+                <div class="buyCard">
+                    <div class="price"><em class="icon-Rupee"></em><span>6999.00</span></div>
+                    <div class="count">(2 Assessments)</div>
+                    <button class="buyBtn">BUY NOW</button>
+                    <button class="cartBtn">ADD TO CART</button>
+                    <ul>
+                        <li><em class="icon-Globe"></em> <div>100% online Assessments</div></li>
+                        <li><em class="icon-Badge"></em> <div>Certificate of completion</div></li>
+                        <li><em class="icon-Portfolio"></em> <div>Job ready portfolio</div></li>
+                        <li><em class="icon-Globe"></em> <div>24*7 Customer Support</div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
+    </div>
+</section>
 <!-- achieve -->
 <section class="achievement">
     <div class="container">
@@ -674,68 +701,7 @@
         </section>
     </ng-container>
 
-      <!-- hiringPartnres -->
-      <ng-container >
-        <section class="hiringPartnres" [ngStyle]="{'background-image': 'url(https://lmsassetspremium.lntedutech.com/portalicons/hiringPartners_bg.png)'}">
-            <div class="container">
-                <div class="commonHeadingStyle">{{'Hiring Partners'}}</div>
-                <div class="wrapper">
-                    <div class="left">
-                        <p>{{'L&T EduTech collaborates with 100+ recruiting partners, identify and understand the key talent expectations trending across the globe, design curriculum on right technologies, train learners with industry oriented practice eco-system to place them successfully.'}}</p>
-                    </div>
-                    <div class="right">
-                        <div class="figWrapper">
-                            <ng-container *ngFor="let img of hireimage">
-                                <figure>
-                                    <img [src]="img?.imageurl" alt="">
-                                </figure>
-                            </ng-container>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="programCourse">
-            <div class="container">
-                    <div class="listPart">
-                        <div class="heading">{{'Programs'}}</div>
-                            <ul class="division">
-                                <li *ngFor="let program of Programs">{{program}}</li> 
-                            </ul>
-                    </div>
-                    <div class="listPart"> 
-                        <div class="heading">{{'Courses'}}</div>
-                            <ul class="division">
-                                <li *ngFor="let course of Courses">{{course}}</li>
-                            </ul>
-                    </div> 
-            </div>
-        </section>
-        <section class="ourPartners">
-            <div class="container">
-                <div class="partnersSection">
-                    <div>{{'Our partners :'}}</div>
-                    <figure *ngFor="let partner of partners">
-                        <img [src]="partner.imageurl" alt="" />
-                    </figure>
-                </div>
-                <div class="grievanceSection">
-                    <p><span>For any grievances</span> - {{'students can reach us at – call: 000-000-0000 email: xyz@lntedutech.com'}}</p>
-                </div>
-                <div class="poweredSection">
-                    <div class="left">
-                        <span class="heading">{{'Payment powered by :'}}</span>
-                        <figure>
-                            <img src="https://lmsassetspremium.lntedutech.com/portalicons/cc.png" alt="" />
-                        </figure>
-                    </div>
-                    <figure class="right">
-                        <img src="https://lmsassetspremium.lntedutech.com/portalicons/ccavenue.png" alt="" />
-                    </figure>
-                </div>
-            </div>
-        </section>
-    </ng-container>
+    <app-partners-list class="app-Partners" [OurPartners]="OurPartners"></app-partners-list>
 
     </ng-container>
 
