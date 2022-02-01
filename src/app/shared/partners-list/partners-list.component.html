@@ -1,82 +1,60 @@
-<section class="partnersSection">
-    <div class="container">
-        <div class="heading2">Our Partners</div>
-        <div class="partnersList">
-            <div class="partnersContent hide-on-init" animateOnScroll animationName="animated fadeInLeft">
-                <p>{{OurPartners.longDescription}}</p>
+     <!-- hiringPartnres -->
+        <section class="hiringPartnres" [ngStyle]="{'background-image': 'url(' + OurPartners?.imageurl + ')'}">
+            <div class="container">
+                <div class="commonHeadingStyle">{{OurPartners?.title}}</div>
+                <div class="wrapper">
+                    <div class="left">
+                        <p>{{OurPartners?.description}}</p>
+                    </div>
+                    <div class="right">
+                        <div class="figWrapper">
+                            <ng-container *ngFor="let img of OurPartners?.innerArray">
+                                <figure>
+                                    <img [src]="img?.imageurl" alt="">
+                                </figure>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="partnersLogo hide-on-init" animateOnScroll animationName="animated fadeInRight">
-                <owl-carousel-o [options]="partnersCarousel">
-                    <ng-template carouselSlide>
-                        <div class="partnersImages">
-                            <ng-container *ngFor = "let Image1 of OurPartners.image1">
-                                <figure>
-                                    <img [src]="Image1 + blobToken" alt="" />
-                                </figure>
-                            </ng-container>
-                        </div>
-                    </ng-template>
-                    <ng-template carouselSlide>
-                        <div class="partnersImages">
-                            <ng-container *ngFor = "let Image2 of OurPartners.image2">
-                                <figure>
-                                    <img [src]="Image2 + blobToken" alt="" />
-                                </figure>
-                            </ng-container>
-                        </div>
-                    </ng-template>
-                    <ng-template carouselSlide>
-                        <div class="partnersImages">
-                            <ng-container *ngFor = "let Image3 of OurPartners.image3">
-                                <figure>
-                                    <img [src]="Image3 + blobToken" alt="" />
-                                </figure>
-                            </ng-container>
-                        </div>
-                    </ng-template>
-                    <ng-template carouselSlide>
-                        <div class="partnersImages">
-                            <ng-container *ngFor = "let Image4 of OurPartners.image4">
-                                <figure>
-                                    <img [src]="Image4 + blobToken" alt="" />
-                                </figure>
-                            </ng-container>
-                        </div>
-                    </ng-template>
-                </owl-carousel-o>
+        </section>
+        <section class="programCourse">
+            <div class="container">
+                    <div class="listPart" *ngIf="OurPartners?.subHeading1?.dispalystatus">
+                        <div class="heading">{{OurPartners?.subHeading1?.title}}</div>
+                            <ul class="division">
+                                <li *ngFor="let program of OurPartners?.subHeading1?.innerArray">{{program}}</li> 
+                            </ul>
+                    </div>
+                    <div class="listPart" *ngIf="OurPartners?.subHeading2?.dispalystatus"> 
+                        <div class="heading">{{OurPartners?.subHeading2.title}}</div>
+                            <ul class="division">
+                                <li *ngFor="let course of OurPartners?.subHeading2?.innerArray">{{course}}</li>
+                            </ul>
+                    </div> 
             </div>
-        </div>
-    </div>
-</section>
-
-<!-- <section class="findussection">
-    <div class="section-wrapper">
-        <div class="about">
-            <h3>L&T EduTech</h3>
-            <ul>
-                <li> <a href="">Home</a></li>
-                <li> <a href="">About</a></li>
-                <li> <a href="">Contact</a></li>
-                <li> <a href="">Terms of use</a></li>
-                <li> <a href="">Larsen & Toubro (Corporate)</a></li>
-            </ul>
-        </div>
-        <div class="offer">
-            <h3>Offerings</h3>
-            <ul>
-                <li> <a href="">CollegeConnect</a></li>
-                <li> <a href="">Vocational Skilling</a></li>
-                <li> <a href="">Professional Certification</a></li>
-                <li> <a href="">Assessments</a></li>
-            </ul>
-        </div>
-        <div class="findus">
-            <h3>Find Us</h3>
-            <p>We are always pleased to serve you, come share your experiences with us.</p>
-            <p>Mt. Poonamallee Road, Manapakkam, Chennai - 600089 +91-44-22526000 / 22528000 info@lntedutech.com</p>
-        </div>
-        <div class="apps">
-            <h3>Apps</h3>
-        </div>
-    </div>
-</section> -->
+        </section>
+        <section class="ourPartners">
+            <div class="container">
+                <div class="partnersSection" *ngIf="OurPartners?.subHeading3?.dispalystatus">
+                    <div>{{OurPartners?.subHeading3.title}}</div>
+                    <figure *ngFor="let partner of OurPartners?.subHeading3?.innerArray">
+                        <img [src]="partner?.imageurl" alt="" />
+                    </figure>
+                </div>
+                <div class="grievanceSection"  *ngIf="OurPartners?.subHeading3?.dispalystatus">
+                    <p><span>For any grievances</span> - {{OurPartners?.subHeading3?.description}}</p>
+                </div>
+                <div class="poweredSection" *ngIf="OurPartners?.subHeading4?.dispalystatus">
+                    <div class="left">
+                        <span class="heading">{{OurPartners?.subHeading4.title}}</span>
+                        <figure>
+                            <img [src]="OurPartners?.subHeading4?.imageurl" alt="" />
+                        </figure>
+                    </div>
+                    <figure class="right">
+                        <img [src]="OurPartners?.subHeading4?.Subimageurl" alt="" />
+                    </figure>
+                </div>
+            </div>
+        </section>
