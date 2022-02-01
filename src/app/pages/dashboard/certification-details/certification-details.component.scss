@@ -65,14 +65,14 @@
     &::before {
         left: 0;
         top: 0;
-        background-image: url('https://assets.lntedutech.com/portalicons/assessment-details1.svg');
+        background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/assessment-details1.svg');
         width: 50%;
         height: 33%;
     }
     &::after {
         right: 0;
         bottom: 0;
-        background-image: url('https://assets.lntedutech.com/portalicons/assessment-details.svg');
+        background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/assessment-details.svg');
         width: 60%;
         height: 10%;
         @include sm {
@@ -155,7 +155,7 @@
 
 .assessmentSteps {
     font-size: 10px;
-    background-image: url('https://assets.lntedutech.com/portalicons/AssessmentSteps_bg.jpg');
+    background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/AssessmentSteps_bg.jpg');
     background-position: center 55%;
     background-repeat: no-repeat;
     background-size: cover;

@@ -7,16 +7,16 @@
         </figure>
         <div class="detailBannerPosition">
             <div class="container">
-                <ul>
+                <!-- <ul>
                     <a href="/catalog/catalogHome?fromPage=viewAll&selectedTab={{aboutArea?.parentId}}"><li>{{aboutArea?.domainName}}<em class="icon-RightArrow"></em></li></a>
                     <li *ngIf = '!showAssesment'>{{aboutArea?.name}}</li>
                     <li *ngIf = 'showAssesment'><a href = "/catalog/aboutAssessment?id={{competencyData?.parentId}}&selectedTab=All">{{aboutArea?.name}}</a><em class="icon-RightArrow"></em></li>
                     <li *ngIf = "showAssesment">{{competencyData?.name}}</li>
-                </ul>
+                </ul> -->
                 <div class="bannerDescription">
                     <div class="assessmentArea">
                         <span class="heading1">{{aboutArea?.name}}</span>
-                        <p>{{ (aboutArea?.shortDescription.length > 250)? (aboutArea?.shortDescription | slice:0:250)+'...':(aboutArea?.shortDescription) }}</p>
+                        <p class="shortDescription">{{ (aboutArea?.shortDescription.length > 250)? (aboutArea?.shortDescription | slice:0:250)+'...':(aboutArea?.shortDescription) }}</p>
                         <div>
                             <!-- <div>
                                 <p>Rating</p>
@@ -29,6 +29,10 @@
                                 </div>
                             </div> -->
                             <div>
+                                <p>{{'No. of Assessments '}}</p>
+                                <span><em class="icon-Document"></em> {{totalAssessmentCount}}</span>
+                            </div>
+                            <div>
                                 <p>Skill Level</p>
                                 <span><em class="icon-Level2"></em> Intermediate</span>
                             </div>
@@ -36,14 +40,9 @@
                                 <p>Duration</p>
                                 <span><em class="icon-Time"></em>{{aboutArea?.totalDuration}}h</span>
                             </div> -->
-                            <div>
-                                <p>{{'No. of Assessments '}}</p>
-                                <span><em class="icon-Document"></em> {{totalAssessmentCount}}</span>
-                            </div>
                         </div>
                     </div>
                     <div class="assessmentHighlights">
-                        <div class="heading6">Assessments Highlights</div>
                         <ul>
                             <li><em class="icon-Globe"></em> 100% online Assessments</li>
                             <li><em class="icon-Badge"></em> Certificate of completion</li>
@@ -54,7 +53,7 @@
             </div>
         </div>
     </div>
-
+</section>
     <!-- Sticky Content -->
     <!-- <div class="stickyBar" [ngClass]="{'sticky' : isSticky}">
         <div class="container">
@@ -91,23 +90,93 @@
     </div> -->
     <!-- Sticky Content Ends -->
 
+<!-- bannerCount -->
+<section class="bannerCount">
+    <div class="container">
+        <ul>
+            <li>
+               <div class="heading4">100+</div> 
+               <div class="desc">RECRUITERS</div>
+            </li>
+            <li>
+                <div class="heading4">13K</div> 
+                <div class="desc">CANDIDATES</div>
+             </li>
+             <li>
+                <div class="heading4">450+</div> 
+                <div class="desc">SKILLS COVERED</div>
+             </li>
+             <li>
+                <div class="heading4">450+</div> 
+                <div class="desc">JOB OPPORTUNITIES</div>
+             </li>
+        </ul>
+    </div>
+</section>
+
+<!-- assessmentOverview -->
+<section class="assessmentOverview">
+    <div class="container">
+        <div class="commonHeadingStyle">Assessment Overview</div>
+        <div class="wrapper">
+            <div class="left">
+                <p>Each lecture is developed and delivered with the benefit of my experience as a university lecturer in structural engineering. The teaching style appeals to all types of learners with material developed through hand-drawn notes and sketches. Students are encouraged to engage with each lecture by actively developing their own notes during each video lecture…no ‘death by PowerPoint’ here! We’ll focus on pinning down the basics before diving into worked examples.</p>
+            </div>
+            <div class="right">
+                <figure>
+                    <img src="../../../../assets/images/overview.png" alt="">
+                </figure>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- achieve -->
+<section class="achievement">
+    <div class="container">
+        <div class="commonHeadingStyle">{{'What you will you achieve'}}</div>
+          <ul>
+                <li>
+                    <em class="icon-checked"></em>
+                    <p>You will be fully competent in drawing shear force and bending moment diagrams for statically determinate beams and frames.</p>
+                </li>
+                <li>
+                    <em class="icon-checked"></em>
+                    <p>You will understand the link between internal stresses and their shear force and bending moment resultants.</p>
+                </li>
+                <li>
+                    <em class="icon-checked"></em>
+                    <p>You will understand the link between internal stresses and their shear force and bending moment resultants.</p>
+                </li>
+                <li>
+                    <em class="icon-checked"></em>
+                    <p>You will have a robust system of analysis that allows you to confidently tackle the analysis of any statically determinate structure.</p>
+                </li>
+         </ul> 
+        <div class="requirements">Requirements</div>
+        <p class="desc">A basic understanding of statics would be helpful but not essential - we’ll review the basics to bring you up to speed.</p>
+    </div>
+</section>
+
+<!-- Area Detail Section -->
+<section class="requirementsSection">
     <div class="areaDetailDescription">
         <div class="container d-flex">
             <div class="descriptionSection">
-                <!--<div class="achieve">
+                <!-- <div class="achieve">
                     <div class="heading4">What you will achieve</div>
                      <ul>
-                        <li> -->
-                            <!-- <em class="icon-checked"></em> 
-                            <p>{{aboutArea?.contentAchieve}}</p>-->
-                        <!--</li>
-                     </ul> -->
-                <!-- </div>
+                        <li>
+                            <em class="icon-checked"></em> 
+                            <p>{{aboutArea?.contentAchieve}}</p>
+                        </li>
+                     </ul>
+                </div> -->
                 <div class="requirements require">
                     <div class="heading4">Requirements</div>
                     <p>{{aboutArea?.contentRequirement}}</p>
-                </div> -->
-                <!-- <div class="description">
+                </div>
+                <div class="description">
                     <span class="heading4">Description</span>
                     <div [ngClass]="{'limitTextHeight': isReadMore}">
                         <p>{{aboutArea?.contentDescription}}</p>
@@ -115,7 +184,7 @@
                     <button *ngIf="aboutArea?.contentDescription.length > 370" type="button" (click)="showText()">
                         {{ isReadMore ? 'Show More': 'Show Less' }} <em class="icon-DownArrow"></em>
                     </button>
-                </div> -->
+                </div>
                 
     <div *ngIf="aboutArea?.cid==='A0004'">
         <div class="requirements pecialization">
@@ -330,7 +399,7 @@
 
 <section *ngIf="!showAssesment" class="assessmentSection">
     <div class="container">
-        <div class="heading3 ">Enhance employability using these {{'Assessments'}}</div>
+        <div class="commonHeadingStyle">Enhance employability using these {{'Assessments'}}</div>
         <!-- <p>Best for those who want a series of Assessment</p> -->
         <div class="descriptionSection " style="display: none;">
             <div class="achieve">
@@ -355,39 +424,322 @@
                     {{ isReadMore ? 'Show More': 'Show Less' }} <em class="icon-DownArrow"></em>
                 </button>
             </div> -->
-            </div>
+        </div>
         <div class="assessmentsArea">
-            <div class="heading3">{{aboutArea?.name}}</div>
+            <div class="heading5">{{aboutArea?.name}}</div>
             <span class="totalAssessments"><em class="icon-Assessment"></em>{{totalAssessmentCount}} {{totalAssessmentCount > 1 ? 'Assessments':'Assessment'}}</span>
             <div class="assessments">
-                <div *ngFor="let competency of competencyList" (click)="openAssessments(competency)">
-                    <div>
+                <div *ngFor="let competency of competencyList">
+                    <figure>
+                        <img src="/assets/images/assessments_img.png" alt="" />
+                    </figure>
+                    <div class="content">
                         <div class="heading5">{{competency.name}}</div>
                         <span class="assessmentCount"><em class="icon-Assessment"></em>{{competency?.totalAssessment}} {{competency?.totalAssessment > 1 ? 'Assessments': 'Assessment'}}</span>
+                        <span class="viewDetails" (click)="openAssessments(competency)">View Details</span>
                     </div>
-                    <p>{{competency?.shortDescription}}</p>
-                    <span class="viewDetails">View Details <em class="icon-DownArrow"></em></span>
+                    <div class="hoverSection">
+                        <div class="heading5">{{competency.name}}</div>
+                        <div class="hoverContent">
+                            <p>{{competency?.shortDescription}}</p>
+                            <span class="assessmentCount"><em class="icon-Assessment"></em>{{competency?.totalAssessment}} {{competency?.totalAssessment > 1 ? 'Assessments': 'Assessment'}}</span>
+                            <span class="viewDetails" (click)="openAssessments(competency)">View Details</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 <app-certify-assessment *ngIf="showAssesment" [competencyData]="competencyData" [areaData]= "aboutArea"></app-certify-assessment>
+
+<!-- How it works -->
 <section class="howitWorksSection">
     <div class="container">
-        <div class="heading3">How It Works</div>
+        <div class="smalltext">How It Works</div>
+        <div class="heading">Get Started with 4 Easy Steps</div>
         <ul *ngIf = "howItWorks">
-            <li *ngFor = "let contents of howItWorks.howItWorksContents">
-                <div class="icons">
-                    <em class="icon-AssessmentView"></em>
-                </div>
-                <div class="heading5">{{contents.title}}</div>
+            <li *ngFor="let contents of howItWorks.howItWorksContents">
+                <figure>
+                    <img src="/assets/images/assessments_img.png" alt="" />
+                </figure>
+                <div class="heading6">{{contents.title}}</div>
                 <p>{{contents.content}}</p>
             </li>
         </ul>
     </div>
 </section>
-</ng-container>
+
+<!-- Assessment Certification -->
+<section class="assessmentCertification">
+    <div class="container">
+        <div class="wrapper">
+            <div class="left">
+                <div class="heading">Assessment and Certification</div>
+                <p>Fusce tempor, tortor et vehicula posuere, mi est iaculis quam, nec luctus enim erat non augue. Nunc accumsan semper aliquet.</p>
+                <button class="viewMore">View More</button>
+            </div>
+            <div class="right">
+                <figure>
+                    <img src="/assets/images/assessmentCertification.png" alt="" />
+                </figure>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Assessment Tools -->
+<section class="assessmentTools">
+    <div class="container">
+        <div class="commonHeadingStyle">Assessment Tools Used in Hiring and Employee Development</div>
+        <p>Choose Various Types of Tests From Our Skills Assessment Library or Get Them Customized to Your Needs</p>
+        <div class="topSix">The Top 6 Tests Used in Hiring</div>
+        <div class="threeColumn">
+            <div class="left">
+                <div class="sec1 commonStyle">
+                    <span class="heading">PSYCHOMETRIC</span>
+                    <p>On successful completion of the test, the test-taker will get a comprehensive employability scorecard benchmarking competencies with industry requirements.</p>
+                </div>
+                <div class="sec2 commonStyle">
+                    <span class="heading">Code</span>
+                    <p>On successful completion of the test, the test-taker will get a comprehensive employability scorecard benchmarking competencies with industry requirements.</p>
+                </div>
+                <div class="sec3 commonStyle">
+                    <span class="heading">Apptitude</span>
+                    <p>On successful completion of the test, the test-taker will get a comprehensive employability scorecard benchmarking competencies with industry requirements.</p>
+                </div>
+            </div>
+            <div class="center">
+                <figure>
+                    <img src="/assets/images/assessmentTools.png" alt="" />
+                </figure>
+            </div>
+            <div class="right">
+                <div class="sec1 commonStyle">
+                    <span class="heading">Domain</span>
+                    <p>On successful completion of the test, the test-taker will get a comprehensive employability scorecard benchmarking competencies with industry requirements.</p>
+                </div>
+                <div class="sec2 commonStyle">
+                    <span class="heading">Case Study</span>
+                    <p>On successful completion of the test, the test-taker will get a comprehensive employability scorecard benchmarking competencies with industry requirements.</p>
+                </div>
+                <div class="sec3 commonStyle">
+                    <span class="heading">English</span>
+                    <p>On successful completion of the test, the test-taker will get a comprehensive employability scorecard benchmarking competencies with industry requirements.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- benifits -->
+<section class="benifits">
+    <div class="container">
+        <div class="heading">Our Benefits</div>
+        <div class="heading5">Our workforce has grown because we make taking care of our employees a priority.</div>
+        <ul>
+            <li>
+                <img src="../../../../assets/images/shapecareer.svg" alt="">
+                <div class="benifitTitle">Shape your career</div>
+                <p>Bring your ideas and pursue innovative career tracks, opportunities, and job rotations.</p>
+            </li>
+            <li>
+                <img src="../../../../assets/images/grow.svg" alt="">
+                <div class="benifitTitle">Learn and grow</div>
+                <p>Enhance your professional development through education and training.</p>
+            </li>
+            <li>
+                <img src="../../../../assets/images/current.svg" alt="">
+                <div class="benifitTitle">Keep current</div>
+                <p>Our skills training helps you keep pace with the changing workplace.</p>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<!-- testimonials -->
+<section class="testimonials">
+    <div class="container">
+        <div class="commonHeadingStyle">{{'Testimonials'}}</div>
+        <div class="testimonialContent" *ngFor="let testimonial of testimonals">
+            <div class="left">
+                <figure>
+                    <img [src]="testimonial?.imageurl" alt="" />
+                </figure>
+                <div>
+                    <div class="heading5">
+                        {{testimonial?.name}}
+                    </div>
+                    <span class="postedDate">2 days ago</span>
+                </div>
+            </div>
+            <div class="right">
+                <div class="ratingStar">
+                    <em class="icon-Star"></em>
+                    <em class="icon-Star"></em>
+                    <em class="icon-Star"></em>
+                    <em class="icon-Star"></em>
+                    <em class="icon-Star"></em>
+                </div>
+                <div class="heading6">
+                    {{testimonial?.description}}
+                </div>
+                <div class="review">
+                    <span class="helpful">Was this review helpful?</span>
+                    <span class="yes">Yes</span>
+                    <span class="no">No</span>
+                    <span class="report">Report</span>
+                </div>
+            </div>
+        </div>
+        <div class="moreReviews">
+            <button>See more reviews</button>
+        </div>
+    </div>
+</section>
+    <!-- Related items -->
+    <ng-container>
+        <section class="relatedProgramsAssessments programList">
+            <div class="container">
+                <div class="commonHeadingStyle">{{'Related Programs for you'}}</div>
+            </div>
+            <div class="programBg commonCSS">
+                <div class="container">
+                    <div class="wrapper">
+                        <owl-carousel-o [options]="relatedList">
+                            <ng-container>
+                                <ng-template carouselSlide *ngFor="let relatedchild of relatedcourses">
+                                    <div class="relatedList">
+                                        <span class="heading">{{relatedchild?.title}}</span>
+                                        <figure>
+                                            <img [src]="relatedchild?.imageurl" alt="" />
+                                        </figure>
+                                        <div class="contentWrapper">
+                                            <span class="batchStarts"><em class="icon-Time"></em> Batch starts on : {{relatedchild?.date}}</span>
+                                            <div class="mnthStarts">
+                                                <span class="months"><em class="icon-Booked"></em> {{relatedchild?.duration}}</span>
+                                                <span class="stars">
+                                                    <em class="icon-Star" *ngFor="let rate of relatedchild?.rating"></em>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </ng-container>
+                        </owl-carousel-o>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="relatedProgramsAssessments assessmentList">
+            <div class="container">
+                <div class="commonHeadingStyle">{{'Related Assessment for you'}}</div>
+            </div>
+            <div class="assessmentBg commonCSS">
+                <div class="container">
+                    <div class="wrapper">
+                        <owl-carousel-o [options]="relatedList">
+                            <ng-container>
+                                <ng-template carouselSlide *ngFor="let relatedcourse of relatedassesment">
+                                    <div class="relatedList">
+                                        <span class="heading">{{relatedcourse?.title}}</span>
+                                        <figure>
+                                            <img [src]="relatedcourse?.imageurl" alt="" />
+                                        </figure>
+                                        <div class="contentWrapper">
+                                            <div class="mnthStarts">
+                                                <span class="stars">
+                                                    <em class="icon-Star" *ngFor="let rate of relatedcourse?.rating"></em>
+                                                </span>
+                                            </div>
+                                            <div class="level">
+                                                <div>
+                                                    <p>Skill Level</p>
+                                                    <span><em class="icon-Level2"></em> {{relatedcourse?.level}}</span>
+                                                </div>
+                                                <div>
+                                                    <p>{{'No. of Assessments '}}</p>
+                                                    <span><em class="icon-Document"></em> {{relatedcourse?.NoOfAssessment}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </ng-container>
+                        </owl-carousel-o>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </ng-container>
+
+      <!-- hiringPartnres -->
+      <ng-container >
+        <section class="hiringPartnres" [ngStyle]="{'background-image': 'url(https://lmsassetspremium.lntedutech.com/portalicons/hiringPartners_bg.png)'}">
+            <div class="container">
+                <div class="commonHeadingStyle">{{'Hiring Partners'}}</div>
+                <div class="wrapper">
+                    <div class="left">
+                        <p>{{'L&T EduTech collaborates with 100+ recruiting partners, identify and understand the key talent expectations trending across the globe, design curriculum on right technologies, train learners with industry oriented practice eco-system to place them successfully.'}}</p>
+                    </div>
+                    <div class="right">
+                        <div class="figWrapper">
+                            <ng-container *ngFor="let img of hireimage">
+                                <figure>
+                                    <img [src]="img?.imageurl" alt="">
+                                </figure>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="programCourse">
+            <div class="container">
+                    <div class="listPart">
+                        <div class="heading">{{'Programs'}}</div>
+                            <ul class="division">
+                                <li *ngFor="let program of Programs">{{program}}</li> 
+                            </ul>
+                    </div>
+                    <div class="listPart"> 
+                        <div class="heading">{{'Courses'}}</div>
+                            <ul class="division">
+                                <li *ngFor="let course of Courses">{{course}}</li>
+                            </ul>
+                    </div> 
+            </div>
+        </section>
+        <section class="ourPartners">
+            <div class="container">
+                <div class="partnersSection">
+                    <div>{{'Our partners :'}}</div>
+                    <figure *ngFor="let partner of partners">
+                        <img [src]="partner.imageurl" alt="" />
+                    </figure>
+                </div>
+                <div class="grievanceSection">
+                    <p><span>For any grievances</span> - {{'students can reach us at – call: 000-000-0000 email: xyz@lntedutech.com'}}</p>
+                </div>
+                <div class="poweredSection">
+                    <div class="left">
+                        <span class="heading">{{'Payment powered by :'}}</span>
+                        <figure>
+                            <img src="https://lmsassetspremium.lntedutech.com/portalicons/cc.png" alt="" />
+                        </figure>
+                    </div>
+                    <figure class="right">
+                        <img src="https://lmsassetspremium.lntedutech.com/portalicons/ccavenue.png" alt="" />
+                    </figure>
+                </div>
+            </div>
+        </section>
+    </ng-container>
+
+    </ng-container>
+
+
 
 <ng-template #kycmandate >
     <app-kyc-mandate></app-kyc-mandate>
