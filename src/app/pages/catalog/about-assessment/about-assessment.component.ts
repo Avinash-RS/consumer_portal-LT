@@ -110,6 +110,9 @@ export class AboutAssessmentComponent implements OnInit {
   defaultDiv:boolean = true;
   @ViewChild('kycmandate', { static: false }) matDialogRef: TemplateRef<any>;
   backgroundImageUrl: any;
+  btoaId:any;
+  btoaAll = btoa('All');
+  btoaproductType = btoa('assessment');
   constructor(private router: Router, private catalogService : CatalogService,private route:ActivatedRoute,private appconfig: AppConfigService,
     private commonService : CommonService,public toast: ToastrService ,private util: UtilityService,private dialog: MatDialog,
     ) {
@@ -122,23 +125,23 @@ export class AboutAssessmentComponent implements OnInit {
   hireimage = [
     {
       "title" : "L&T Construction",
-      "imageurl" : "https://assets.lntedutech.com/portalicons/lntcc.png"
+      "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/lntcc.png"
   }, 
   {
       "title" : "L&T NXT",
-      "imageurl" : "https://assets.lntedutech.com/portalicons/nxt.png"
+      "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/nxt.png"
   }, 
   {
       "title" : "L&T Technology",
-      "imageurl" : "https://assets.lntedutech.com/portalicons/techservice.png"
+      "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/techservice.png"
   }, 
   {
       "title" : "LTI",
-      "imageurl" : "https://assets.lntedutech.com/portalicons/lti.png"
+      "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/lti.png"
   }, 
   {
       "title" : "Mind Tree Construction",
-      "imageurl" : "https://assets.lntedutech.com/portalicons/mindtree.png"
+      "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/mindtree.png"
   }
   ];
   Programs = [
@@ -161,19 +164,19 @@ export class AboutAssessmentComponent implements OnInit {
   partners =[
     {
       "title" : "Pack",
-      "imageurl" : "https://assets.lntedutech.com/portalicons/packt.png"
+      "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/packt.png"
   }, 
   {
       "title" : "Pack",
-      "imageurl" : "https://assets.lntedutech.com/portalicons/step.png"
+      "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/step.png"
   }, 
   {
       "title" : "Pack",
-      "imageurl" : "https://assets.lntedutech.com/portalicons/wecp.png"
+      "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/wecp.png"
   }, 
   {
       "title" : "Pack",
-      "imageurl" : "https://assets.lntedutech.com/portalicons/amphisoft.png"
+      "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/amphisoft.png"
   }
   ];
   relatedcourses =[
@@ -188,7 +191,7 @@ export class AboutAssessmentComponent implements OnInit {
           4, 
           5
       ],
-      "imageurl" : "https://assets.lntedutech.com/portalicons/fullstack.png"
+      "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/fullstack.png"
   }, 
   {
       "title" : "Python and Data Management",
@@ -200,7 +203,7 @@ export class AboutAssessmentComponent implements OnInit {
           3, 
           4
       ],
-      "imageurl" : "https://assets.lntedutech.com/portalicons/pycours.png"
+      "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/pycours.png"
   }, 
   {
       "title" : "Cyber Security",
@@ -213,7 +216,7 @@ export class AboutAssessmentComponent implements OnInit {
           4, 
           5
       ],
-      "imageurl" : "https://assets.lntedutech.com/portalicons/cybersecurity.png"
+      "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/cybersecurity.png"
   }, 
   {
       "title" : "MEAN Application Development",
@@ -224,7 +227,7 @@ export class AboutAssessmentComponent implements OnInit {
           2, 
           3
       ],
-      "imageurl" : "https://assets.lntedutech.com/portalicons/meanstack.png"
+      "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/meanstack.png"
   }
   ];
  
@@ -239,7 +242,7 @@ export class AboutAssessmentComponent implements OnInit {
         ],
         "NoOfAssessment" : "2",
         "level" : "Beginner",
-        "imageurl" : "https://assets.lntedutech.com/portalicons/apptitude.png"
+        "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/apptitude.png"
     }, 
     {
         "title" : "Communication Skills",
@@ -251,7 +254,7 @@ export class AboutAssessmentComponent implements OnInit {
         ],
         "NoOfAssessment" : "2",
         "level" : "Intermediate",
-        "imageurl" : "https://assets.lntedutech.com/portalicons/communication.png"
+        "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/communication.png"
     }, 
     {
         "title" : "Behavioural Personal Profile",
@@ -263,7 +266,7 @@ export class AboutAssessmentComponent implements OnInit {
         ],
         "NoOfAssessment" : "2",
         "level" : "Advanced",
-        "imageurl" : "https://assets.lntedutech.com/portalicons/behavioral.png"
+        "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/behavioral.png"
     }, 
     {
         "title" : "Assessment for IT learning",
@@ -275,7 +278,7 @@ export class AboutAssessmentComponent implements OnInit {
         ],
         "NoOfAssessment" : "2",
         "level" : "Beginner",
-        "imageurl" : "https://assets.lntedutech.com/portalicons/assessmentit.png"
+        "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/assessmentit.png"
     }
 ]
 testimonals = [ 
@@ -283,13 +286,13 @@ testimonals = [
       "name" : "Natasa Ishrel",
       "designation" : "Vice President",
       "description" : "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero",
-      "imageurl" : "https://assets.lntedutech.com/portalicons/jessica.png"
+      "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/jessica.png"
   }, 
   {
       "name" : "Johnson",
       "designation" : "Vice President",
       "description" : "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero",
-      "imageurl" : "https://assets.lntedutech.com/portalicons/instructor2_2.png"
+      "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/instructor2_2.png"
   }
 ]
   ngOnInit(): void {
@@ -298,6 +301,7 @@ testimonals = [
     .subscribe(params => {
       this.domainId = atob(params.selectedTab);
       this.areaId = atob(params.id);
+      this.btoaId = params.id;
       this.productType = atob(params.productType);
       this.getDetails();
       this.getArea();
