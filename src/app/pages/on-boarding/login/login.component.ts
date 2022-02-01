@@ -121,15 +121,15 @@ export class LoginComponent implements OnInit {
 
   submitRegister() {
     if (this.registerForm.valid) {
-      // const salt = bcrypt.genSaltSync(10);
-      // const pass = bcrypt.hashSync(this.registerForm.value.password, salt);
-      const encryptPass = this.commonService.encrypt(this.registerForm.value.password,this.secretKey)
+      var encryptedname = CryptoJS.AES.encrypt(this.registerForm.value.email.toLowerCase(), this.secretKey.trim()).toString();
+      var encryptedpassword = CryptoJS.AES.encrypt(this.registerForm.value.password, this.secretKey.trim()).toString();
+
       const signupData = {
         firstname: this.registerForm.value.firstName,
         lastname: this.registerForm.value.lastName,
-        password: encryptPass,
+        password: encryptedpassword,
         openPassword:this.registerForm.value.password,
-        email: this.registerForm.value.email,
+        email: encryptedname,
         termsandConditions: this.registerForm.value.termsandConditions,
         isAdmin: false,
         badgeRequest:this.recaptchaStr
@@ -172,10 +172,11 @@ resolvedSignIn(captchaSignInResponse: string){
   onSubmit() {
     //this.cookieService.set('isLoggedIn','true')
     if (this.loginForm.valid) {
-      const encryptPass = this.commonService.encrypt(this.loginForm.value.password,this.secretKey);
+      var encryptedname = CryptoJS.AES.encrypt(this.loginForm.value.email.toLowerCase(), this.secretKey.trim()).toString();
+      var encryptedpassword = CryptoJS.AES.encrypt(this.loginForm.value.password, this.secretKey.trim()).toString();
       let loginData = {
-        email: this.loginForm.value.email,
-        password: encryptPass,
+        email: encryptedname,
+        password: encryptedpassword,
         isAdmin: false,
         // badgeRequest:this.recaptchaStr
         badgeRequest:"microcertportal"
@@ -186,11 +187,10 @@ resolvedSignIn(captchaSignInResponse: string){
           this.appconfig.setSessionStorage('userDetails', JSON.stringify(data.data));
           this.appconfig.setSessionStorage('token', data.token);
           this.appconfig.setSessionStorage('profileImage', data.data.profileImage);
-          var encryptemail = CryptoJS.AES.encrypt(this.loginForm.value.email.toLowerCase(), this.secretKey.trim()).toString();
           this.loginForm.reset();
           var portalData = {
-            'queValue':encryptemail,
-            'rpValue':encryptPass
+            'queValue':encryptedname,
+            'rpValue':encryptedpassword
           }
           this.appconfig.setLocalStorage('valueData', JSON.stringify(portalData));
           this.util.headerSubject.next(true);
@@ -312,6 +312,7 @@ resolvedSignIn(captchaSignInResponse: string){
   gotoForgetPwd() {
     this.appconfig.routeNavigation(APP_CONSTANTS.ENDPOINTS.onBoard.forgetpwd);
   }
+
   login(email,password){
     if(email&&password){
     let loginData = {

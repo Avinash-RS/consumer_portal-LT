@@ -9,7 +9,7 @@ import { GlobalValidatorsService } from "src/app/validators/global-validators.se
 import { APP_CONSTANTS } from "src/app/utils/app-constants.service";
 import { environment } from "@env/environment";
 import { RecaptchaErrorParameters } from "ng-recaptcha";
-
+import * as CryptoJS from 'crypto-js';
 @Component({
   selector: "app-forgotPassword",
   templateUrl: "./forgotPassword.component.html",
@@ -18,6 +18,7 @@ import { RecaptchaErrorParameters } from "ng-recaptcha";
 
 export class ForgotPasswordComponent implements OnInit {
   hide = true;
+  secretKey = "(!@#Passcode!@#)";
   forgetPwdForm: FormGroup;
   resetPwdForm: FormGroup;
   mailId: string
@@ -37,7 +38,6 @@ export class ForgotPasswordComponent implements OnInit {
   }
   userEmail: string;
   pwdSecretKey: void;
-  secretKey = "(!@#Passcode!@#)";
   recaptchaStr = '';
   siteKey: any = environment.captachaSiteKey;
   @ViewChild('captchaRef',{ static: false }) captchaRef;
@@ -122,8 +122,9 @@ export class ForgotPasswordComponent implements OnInit {
   // this sends mail to user
   sendLinkToMail(){
     if (this.forgetPwdForm.valid){
+      var encryptedname = CryptoJS.AES.encrypt(this.forgetPwdForm.value.email.toLowerCase(), this.secretKey.trim()).toString();
       let data = {
-        "email" : this.forgetPwdForm.value.email,
+        "email" : encryptedname,
         "badgeRequest" : this.recaptchaStr
        }
       this.commonService.fogetPasswordEmail(data).subscribe((resp: any) => {
@@ -147,7 +148,10 @@ export class ForgotPasswordComponent implements OnInit {
         // const salt = bcrypt.genSaltSync(10);
         // const pass = bcrypt.hashSync(this.resetPwdForm.value.password, salt);
         const encryptPass = this.commonService.encrypt(this.resetPwdForm.value.password,this.secretKey)
-        let data = {"email" : this.userEmail, "password" : encryptPass, "userSecretkey":this.pwdSecretKey , "badgeRequest" : this.recaptchaStr}
+
+        var encryptedname = CryptoJS.AES.encrypt(this.userEmail.toLowerCase(), this.secretKey.trim()).toString();
+        var encryptedpassword = CryptoJS.AES.encrypt(this.resetPwdForm.value.password, this.secretKey.trim()).toString();
+        let data = {"email" : encryptedname, "password" : encryptedpassword, "userSecretkey":this.pwdSecretKey , "badgeRequest" : this.recaptchaStr}
         this.commonService.resetPassword(data).subscribe((resp: any) => {
           if (resp.success){
             this.toast.success(resp.message)
