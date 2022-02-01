@@ -91,7 +91,7 @@
     <!-- Sticky Content Ends -->
 
 <!-- bannerCount -->
-<section class="bannerCount">
+<section class="bannerCount" *ngIf="!showAssesment">
     <div class="container">
         <ul>
             <li>
@@ -115,7 +115,7 @@
 </section>
 
 <!-- assessmentOverview -->
-<section class="assessmentOverview">
+<section class="assessmentOverview" *ngIf="!showAssesment">
     <div class="container">
         <div class="commonHeadingStyle">Assessment Overview</div>
         <div class="wrapper">
@@ -130,7 +130,25 @@
         </div>
     </div>
 </section>
+<!-- skill assessment -->
+<section class="skill" *ngIf="showAssesment">
+    <div class="container">
+        <div class="commonHeadingStyle">Aptitude Skill Assessment</div>
+        <div class="wrapper">
+            <div class="left">
+                <p>
+                    Each lecture is developed and delivered with the benefit of my experience as a university lecturer in structural engineering. The teaching style appeals to all types of learners with material developed through hand-drawn notes and sketches. Students are encouraged to engage with each lecture by actively developing their own notes during each video lecture…no ‘death by PowerPoint’ here! We’ll focus on pinning down the basics before diving into worked examples.
+                </p>
+            </div>
+            <div class="right">
+                <div class="buyCard">
+                    test
+                </div>
+            </div>
+        </div>
 
+    </div>
+</section>
 <!-- achieve -->
 <section class="achievement">
     <div class="container">

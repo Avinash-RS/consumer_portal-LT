@@ -427,7 +427,45 @@
     }
   }
 }
+.skill {
+  background-color: #F7F7F7;
+  padding: 3.75em 0;
+  font-size: 14px;
+  @include md {
+    font-size: 13px;
+  }
+  @include lg {
+    font-size: 14px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
+  .container {
+    .wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      .left { 
+        width: 65%;
+        p {
+          color: $darkMediumGrey;
+          font-size: 1em;
+          font-weight: 400;
+          line-height: 1.7;
+       }
+      }
+      .right {
+        width: 30%;
+        .buyCard {
+          background-color: $whiteColor;
+          box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+          padding: 1.5em 2em;
+        }
+      }
+    }
 
+  }
+}
 // achieve
 .achievement {
   padding: 3.75em 0;
