@@ -122,114 +122,99 @@ export class AboutAssessmentComponent implements OnInit {
    }
   public destroyed = new Subject<any>();
   contactForm: FormGroup;
-  hireimage = [
-    {
-      "title" : "L&T Construction",
-      "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/lntcc.png"
-  }, 
-  {
-      "title" : "L&T NXT",
-      "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/nxt.png"
-  }, 
-  {
-      "title" : "L&T Technology",
-      "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/techservice.png"
-  }, 
-  {
-      "title" : "LTI",
-      "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/lti.png"
-  }, 
-  {
-      "title" : "Mind Tree Construction",
-      "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/mindtree.png"
-  }
-  ];
-  Programs = [
-    "Full Stack .NET Application Development Cyber Security", 
-    "Python and Data Management", 
-    "MEAN Application Development"
-  ];
-  Courses = [
-    "Modern Web Design", 
-    "Angular 7", 
-    "Complete Node JS", 
-    "MongoDB", 
-    "Complete Java", 
-    "MySQL", 
-    "Modern Web Design", 
-    "Spring Boot", 
-    "Complete C#", 
-    "ASP.NET"
-  ];
-  partners =[
-    {
-      "title" : "Pack",
-      "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/packt.png"
-  }, 
-  {
-      "title" : "Pack",
-      "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/step.png"
-  }, 
-  {
-      "title" : "Pack",
-      "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/wecp.png"
-  }, 
-  {
-      "title" : "Pack",
-      "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/amphisoft.png"
-  }
-  ];
-  relatedcourses =[
-    {
-      "title" : "Full Stack .NET Application Development",
-      "date" : "20-01-2022",
-      "duration" : "4 months",
-      "rating" : [ 
-          1, 
-          2, 
-          3, 
-          4, 
-          5
-      ],
-      "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/fullstack.png"
-  }, 
-  {
-      "title" : "Python and Data Management",
-      "date" : "20-01-2022",
-      "duration" : "4 months",
-      "rating" : [ 
-          1, 
-          2, 
-          3, 
-          4
-      ],
-      "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/pycours.png"
-  }, 
-  {
-      "title" : "Cyber Security",
-      "date" : "20-01-2022",
-      "duration" : "4 months",
-      "rating" : [ 
-          1, 
-          2, 
-          3, 
-          4, 
-          5
-      ],
-      "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/cybersecurity.png"
-  }, 
-  {
-      "title" : "MEAN Application Development",
-      "date" : "20-01-2022",
-      "duration" : "4 months",
-      "rating" : [ 
-          1, 
-          2, 
-          3
-      ],
-      "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/meanstack.png"
-  }
-  ];
+  OurPartners =  {
+    "sectionId" : 11,
+    "dispalystatus" : true,
+    "title" : "Hiring Partners",
+    "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/hiringPartners_bg.png",
+    "description" : "L&T EduTech collaborates with 100+ recruiting partners, identify and understand the key talent expectations trending across the globe, design curriculum on right technologies, train learners with industry oriented practice eco-system to place them successfully.",
+    "innerArray" : [ 
+        {
+            "title" : "L&T Construction",
+            "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/lntcc.png"
+        }, 
+        {
+            "title" : "L&T NXT",
+            "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/nxt.png"
+        }, 
+        {
+            "title" : "L&T Technology",
+            "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/techservice.png"
+        }, 
+        {
+            "title" : "LTI",
+            "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/lti.png"
+        }, 
+        {
+            "title" : "Mind Tree Construction",
+            "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/mindtree.png"
+        }
+    ],
+    "subHeading1" : {
+        "dispalystatus" : true,
+        "title" : "Programs",
+        "imageurl" : "",
+        "description" : "",
+        "innerArray" : [ 
+            "Full Stack .NET Application Development Cyber Security", 
+            "Python and Data Management", 
+            "MEAN Application Development"
+        ]
+    },
+    "subHeading2" : {
+        "dispalystatus" : true,
+        "title" : "Courses",
+        "imageurl" : "",
+        "description" : "",
+        "innerArray" : [ 
+            "Modern Web Design", 
+            "Angular 7", 
+            "Complete Node JS", 
+            "MongoDB", 
+            "Complete Java", 
+            "MySQL", 
+            "Modern Web Design", 
+            "Spring Boot", 
+            "Complete C#", 
+            "ASP.NET", 
+            "Data Science and Machine Learning with Python", 
+            "Data Visualization with PowerBI", 
+            "Restful Services with ASP.NET", 
+            "Web Services with Java"
+        ]
+    },
+    "subHeading3" : {
+        "dispalystatus" : true,
+        "title" : "Our Partners :",
+        "imageurl" : "",
+        "description" : "students can reach us at – call: 000-000-0000 email: xyz@lntedutech.com",
+        "innerArray" : [ 
+            {
+                "title" : "Pack",
+                "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/packt.png"
+            }, 
+            {
+                "title" : "Pack",
+                "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/step.png"
+            }, 
+            {
+                "title" : "Pack",
+                "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/wecp.png"
+            }, 
+            {
+                "title" : "Pack",
+                "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/amphisoft.png"
+            }
+        ]
+    },
+    "subHeading4" : {
+        "dispalystatus" : true,
+        "title" : "Payment Powered by :",
+        "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/cc.png",
+        "Subimageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/ccavenue.png",
+        "description" : ""
+    }
+}
  
   relatedassesment =  [ 
     {
@@ -280,6 +265,57 @@ export class AboutAssessmentComponent implements OnInit {
         "level" : "Beginner",
         "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/assessmentit.png"
     }
+]
+relatedcourses = [
+  {
+    "title" : "Full Stack .NET Application Development",
+    "date" : "20-01-2022",
+    "duration" : "4 months",
+    "rating" : [ 
+        1, 
+        2, 
+        3, 
+        4, 
+        5
+    ],
+    "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/fullstack.png"
+}, 
+{
+    "title" : "Python and Data Management",
+    "date" : "20-01-2022",
+    "duration" : "4 months",
+    "rating" : [ 
+        1, 
+        2, 
+        3, 
+        4
+    ],
+    "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/pycours.png"
+}, 
+{
+    "title" : "Cyber Security",
+    "date" : "20-01-2022",
+    "duration" : "4 months",
+    "rating" : [ 
+        1, 
+        2, 
+        3, 
+        4, 
+        5
+    ],
+    "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/cybersecurity.png"
+}, 
+{
+    "title" : "MEAN Application Development",
+    "date" : "20-01-2022",
+    "duration" : "4 months",
+    "rating" : [ 
+        1, 
+        2, 
+        3
+    ],
+    "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/meanstack.png"
+}
 ]
 testimonals = [ 
   {
