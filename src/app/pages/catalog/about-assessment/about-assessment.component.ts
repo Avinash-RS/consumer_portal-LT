@@ -266,6 +266,57 @@ export class AboutAssessmentComponent implements OnInit {
         "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/assessmentit.png"
     }
 ]
+relatedcourses = [
+  {
+    "title" : "Full Stack .NET Application Development",
+    "date" : "20-01-2022",
+    "duration" : "4 months",
+    "rating" : [ 
+        1, 
+        2, 
+        3, 
+        4, 
+        5
+    ],
+    "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/fullstack.png"
+}, 
+{
+    "title" : "Python and Data Management",
+    "date" : "20-01-2022",
+    "duration" : "4 months",
+    "rating" : [ 
+        1, 
+        2, 
+        3, 
+        4
+    ],
+    "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/pycours.png"
+}, 
+{
+    "title" : "Cyber Security",
+    "date" : "20-01-2022",
+    "duration" : "4 months",
+    "rating" : [ 
+        1, 
+        2, 
+        3, 
+        4, 
+        5
+    ],
+    "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/cybersecurity.png"
+}, 
+{
+    "title" : "MEAN Application Development",
+    "date" : "20-01-2022",
+    "duration" : "4 months",
+    "rating" : [ 
+        1, 
+        2, 
+        3
+    ],
+    "imageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/meanstack.png"
+}
+]
 testimonals = [ 
   {
       "name" : "Natasa Ishrel",
