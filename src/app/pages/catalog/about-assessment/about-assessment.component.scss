@@ -117,19 +117,19 @@
       }
     }
   }
-  // ul {
-  //   margin-bottom: 1em;
-  //   li {
-  //     display: inline-block;
-  //     font-size: 0.814em;
-  //     font-weight: 400;
-  //     color: $whiteColor;
-  //     line-height: 1.2;
-  //     em {
-  //       font-size: 0.7em;
-  //     }
-  //   }
-  // }
+  ul {
+    margin-bottom: 1em;
+    li {
+      display: inline-block;
+      font-size: 0.814em;
+      font-weight: 400;
+      color: $whiteColor;
+      line-height: 1.2;
+      em {
+        font-size: 0.7em;
+      }
+    }
+  }
   .heading1 {
     display: block;
     font-family: "OpenSans", sans-serif;
