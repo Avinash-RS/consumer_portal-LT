@@ -110,6 +110,9 @@ export class AboutAssessmentComponent implements OnInit {
   defaultDiv:boolean = true;
   @ViewChild('kycmandate', { static: false }) matDialogRef: TemplateRef<any>;
   backgroundImageUrl: any;
+  btoaId:any;
+  btoaAll = btoa('All');
+  btoaproductType = btoa('assessment');
   constructor(private router: Router, private catalogService : CatalogService,private route:ActivatedRoute,private appconfig: AppConfigService,
     private commonService : CommonService,public toast: ToastrService ,private util: UtilityService,private dialog: MatDialog,
     ) {
@@ -298,6 +301,7 @@ testimonals = [
     .subscribe(params => {
       this.domainId = atob(params.selectedTab);
       this.areaId = atob(params.id);
+      this.btoaId = params.id;
       this.productType = atob(params.productType);
       this.getDetails();
       this.getArea();
