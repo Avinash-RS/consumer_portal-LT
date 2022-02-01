@@ -2,79 +2,49 @@
 @import "keyframes";
 
 .detailBanner {
-  font-size: 14px;
   width: 100%;
   position: relative;
+  font-size: 14px;
   figure {
     overflow: hidden;
-    &::after {
-      content: "";
+    &::before, &::after {
+      content: '';
       position: absolute;
       width: 100%;
       height: 100%;
       left: 0;
       top: 0;
-      background: rgb(255, 255, 255);
-      background: -moz-linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0),
-        rgba(0, 0, 0, 1) 100%
-      );
-      background: -webkit-linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0),
-        rgba(0, 0, 0, 1) 100%
-      );
-      background: linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0),
-        rgba(0, 0, 0, 1) 100%
-      );
-      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#000000",GradientType=1);
+    }
+    &::before {
+      background: rgba(0, 0, 0, 0.3);
+    }
+    &::after {
+      background: rgba(0, 0, 0, 0.1);
+      background: -webkit-linear-gradient(right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 1.0));
+      background: -moz-linear-gradient(right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 1.0));
+      background: linear-gradient(to left, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 1.0));
     }
     img {
       display: block;
       width: 100%;
-      height: 350px;
+      height: calc(100vh - 74px);
       object-fit: cover;
       object-position: center top;
-      //filter: blur(0.7em);
       @include sm {
-        height: 220px;
-      }
-      @include md {
-        height: 250px;
+        height: 350px;
       }
       @include lg {
-        height: 280px;
+        height: 450px;
       }
       @include xl {
-        height: 350px;
+        height: 480px;
+      }
+      @media only screen and (min-width: 1540px) {
+        height: 500px;
       }
     }
   }
-  // background-position: center 55%;
-  // background-repeat: no-repeat;
-  // background-size: cover;
-  // &::before {
-  //     content: '';
-  //     display: block;
-  //     padding-bottom: 90%;
-  //     @media only screen and (min-width: 375px) {
-  //         padding-bottom: 75%;
-  //     }
-  //     @include sm {
-  //         padding-bottom: 36%;
-  //     }
-  //     @include md {
-  //         padding-bottom: 32%;
-  //     }
-  //     @include lg {
-  //         padding-bottom: 26%;
-  //     }
-  // }
   @include md {
-    font-size: 12px;
   }
   @include lg {
     font-size: 14px;
@@ -86,7 +56,8 @@
     position: absolute;
     width: 100%;
     left: 0;
-    bottom: 1em;
+    top: 50%;
+    transform: translateY(-50%);
     z-index: 1;
     padding: 1em 0;
   }
@@ -94,53 +65,42 @@
 
 .bannerDescription {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  .assessmentArea {
-    width: 100%;
-    @include md {
-      width: 57%;
-    }
-    @include lg {
-      width: 63%;
-    }
-  }
-  .assessmentHighlights {
-    width: 100%;
-    margin-top: 1em;
-    @include md {
-      width: 41%;
-      margin-top: 0;
-    }
-    @include lg {
-      width: 35%;
-    }
-  }
+  flex-direction: column;
+  width: 96%;
+  max-width: 768px;
 }
 
 .detailBannerPosition {
   .assessmentArea {
     > div {
-      margin-top: 1.5em;
-      display: flex;
+      width: 100%;
+      display: inline-flex;
       justify-content: flex-start;
-      width: 85%;
-      @include md {
-        width: 75%;
-      }
-      @include lg {
-        width: 60%;
-      }
-      @include xl {
-        width: 55%;
-      }
       > div {
-        width: 30%;
+        padding-right: 2em;
+        margin-right: 2em;
+        position: relative;
+        &:last-child {
+          margin-right: 0;
+          padding-right: 0;
+          &::after {
+            content: none;
+          }
+        }
+        &::after {
+          content: '';
+          position: absolute;
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 1px;
+          height: 70%;
+          background-color: #FF8A02;
+        }
         p {
           font-size: 0.75em;
           font-weight: 400;
-          color: $whiteColor;
+          color: #E6E6E6;
           line-height: 1;
           margin: 0;
         }
@@ -150,74 +110,40 @@
           font-weight: 300;
           line-height: 1;
           em {
-            color: #ebc71a;
+            color: #EBC71A;
             margin-right: 0.35em;
           }
         }
       }
     }
   }
-  .assessmentHighlights {
-    border-left: 1px solid rgba(255, 255, 255, 0.4);
-    padding-left: 15px;
-    .heading6 {
-      color: $whiteColor;
-      font-weight: 700;
-      line-height: 1;
-    }
-    ul {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      margin-top: 1.5em;
-      li {
-        width: 47%;
-        font-size: 0.87em;
-        font-weight: 400;
-        color: $whiteColor;
-        margin-bottom: 1em;
-        @include sm {
-          width: 32%;
-        }
-        @include md {
-          width: 47%;
-        }
-        em {
-          color: #ebc71a;
-          margin-right: 0.5em;
-          font-size: 1em;
-        }
-      }
-    }
-  }
-  ul {
-    margin-bottom: 1em;
-    li {
-      display: inline-block;
-      font-size: 0.814em;
-      font-weight: 400;
-      color: $whiteColor;
-      line-height: 1.2;
-      em {
-        font-size: 0.7em;
-        margin: 0 0.6em 0 0.5em;
-      }
-    }
-  }
+  // ul {
+  //   margin-bottom: 1em;
+  //   li {
+  //     display: inline-block;
+  //     font-size: 0.814em;
+  //     font-weight: 400;
+  //     color: $whiteColor;
+  //     line-height: 1.2;
+  //     em {
+  //       font-size: 0.7em;
+  //     }
+  //   }
+  // }
   .heading1 {
     display: block;
-    font-size: 2.375em;
+    font-family: "OpenSans", sans-serif;
+    font-size: 2.8125em;
     font-weight: 700;
-  }
-  p {
-    font-size: 0.875em;
-    font-weight: 400;
-  }
-  .heading1,
-  p {
     color: $whiteColor;
     line-height: normal;
-    margin-bottom: 0.3em;
+  }
+  .shortDescription {
+    font-size: 0.9375em;
+    font-weight: 400;
+    color: #E6E6E6;
+    line-height: 1.5;
+    margin: 2.5em 0;
   }
   .ratingStar {
     .icon-Star,
@@ -232,25 +158,152 @@
   .icon-Level2 {
     color: $secondaryColor;
   }
+  .assessmentHighlights {
+    margin: 3em 0 0 0;
+    .heading6 {
+      color: $whiteColor;
+      font-weight: 700;
+      line-height: 1;
+    }
+    ul {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      flex-direction: column;
+      @include md {
+        flex-direction: row;
+      }
+      li {
+        font-size: 0.9375em;
+        font-weight: 400;
+        color: $whiteColor;
+        line-height: 2;
+        margin-right: 2em;
+        &:last-child {
+          margin-right: 0;
+        }
+        @include md {
+          line-height: normal;
+        }
+        em {
+          color: #EBC71A;
+          margin-right: 0.5em;
+          font-size: 1em;
+        }
+      }
+    }
+  }
 }
 
 //Sticky Header
-.stickyBar {
-  position: fixed;
-  background: $whiteColor;
-  top: 0;
-  padding: 0;
-  opacity: 0;
-  transition: opacity 0.25s ease-out, padding 0.15s ease;
-  cursor: default;
-  user-select: none;
-  width: 100%;
-  padding: 0 15px;
-  box-shadow: 0 1px 5px rgb(0 0 0 / 25%);
-  box-sizing: border-box;
-  font-size: 10px;
+// .stickyBar {
+//   position: fixed;
+//   background: $whiteColor;
+//   top: 0;
+//   padding: 0;
+//   opacity: 0;
+//   transition: opacity 0.25s ease-out, padding 0.15s ease;
+//   cursor: default;
+//   user-select: none;
+//   width: 100%;
+//   padding: 0 15px;
+//   box-shadow: 0 1px 5px rgb(0 0 0 / 25%);
+//   box-sizing: border-box;
+//   font-size: 10px;
+//   @include md {
+//     font-size: 12px;
+//   }
+//   @include lg {
+//     font-size: 14px;
+//   }
+//   @include xl {
+//     font-size: 16px;
+//   }
+//   .container {
+//     display: flex;
+//     align-items: center;
+//     justify-content: flex-start;
+//     flex-direction: column;
+//     @include md {
+//       flex-direction: row;
+//     }
+//   }
+//   .heading3 {
+//     width: 100%;
+//     font-weight: 700;
+//     @include md {
+//       width: 40%;
+//       font-weight: 700;
+//       text-overflow: ellipsis;
+//       overflow: hidden;
+//       white-space: nowrap;
+//     }
+//     @include xl {
+//       width: 30%;
+//     }
+//   }
+//   .bannerDescription {
+//     width: 100%;
+//     margin-top: 1em;
+//     @include md {
+//       margin-top: 0;
+//       margin-left: 3%;
+//       width: 57%;
+//     }
+//     @include xl {
+//       width: 67%;
+//     }
+//   }
+//   .detailBannerPosition {
+//     .assessmentArea {
+//       width: 100%;
+//       @include xl {
+//         width: 65%;
+//       }
+//       > div {
+//         width: 100%;
+//         margin-top: 0;
+//         > div {
+//           p,
+//           span {
+//             color: $blackColor;
+//           }
+//           p {
+//             font-size: 0.85em;
+//           }
+//           span {
+//             font-size: 0.75em;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+// .sticky {
+//   padding: 1em 8px;
+//   opacity: 1;
+//   transition: opacity 0.25s ease-out, padding 0.15s ease;
+//   z-index: 2;
+//   p {
+//     margin: 0;
+//   }
+//   @include md {
+//     padding: 1.25em 15px;
+//   }
+// }
+
+
+// bannerCount
+.bannerCount {
+  background-color: $whiteColor;
+  padding: 1.5em 0;
+  font-size: 14px;
+  @include sm {
+    padding: 2.75em 0;
+  }
   @include md {
-    font-size: 12px;
+    font-size: 13px;
   }
   @include lg {
     font-size: 14px;
@@ -259,111 +312,198 @@
     font-size: 16px;
   }
   .container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: column;
-    @include md {
-      flex-direction: row;
-    }
-  }
-  .heading3 {
-    width: 100%;
-    font-weight: 700;
-    @include md {
-      width: 40%;
-      font-weight: 700;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-    @include xl {
-      width: 30%;
-    }
-  }
-  .bannerDescription {
-    width: 100%;
-    margin-top: 1em;
-    @include md {
-      margin-top: 0;
-      margin-left: 3%;
-      width: 57%;
-    }
-    @include xl {
-      width: 67%;
-    }
-  }
-  .detailBannerPosition {
-    .assessmentArea {
+    ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 0;
+      max-width: 768px;
       width: 100%;
-      @include xl {
-        width: 65%;
+      margin: 0 auto;
+      @include md {
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: flex-start;
       }
-      > div {
-        width: 100%;
-        margin-top: 0;
-        > div {
-          p,
-          span {
-            color: $blackColor;
-          }
-          p {
-            font-size: 0.85em;
-          }
-          span {
-            font-size: 0.75em;
-          }
+      li {
+        text-align: center;
+        width: 50%;
+        margin: 1em 0;
+        @include sm {
+          width: 25%;
+          padding-left: 1em;
+          text-align: left;
+          margin: 0;
+          border-left: 1px solid #46455C;
+        }
+        &:first-child {
+          border-left: none;
+          padding-left: 0;
+        }
+        .heading4 {
+          color: $blueLabelColor;
+          font-weight: 400;
+          line-height: normal;
+          margin-bottom: 0.35em;
+        }
+        .desc {
+          color: $darkMediumGrey;
+          font-family: "OpenSans", sans-serif;
+          font-size: 0.75em;
+          font-weight: 700;
+          line-height: normal;
         }
       }
     }
-  }
-}
-.sticky {
-  padding: 1em 8px;
-  opacity: 1;
-  transition: opacity 0.25s ease-out, padding 0.15s ease;
-  z-index: 2;
-  p {
-    margin: 0;
-  }
-  @include md {
-    padding: 1.25em 15px;
   }
 }
 
-.sectorProject {
-  border-collapse: collapse;
-  width: 100%;
-  border: 1px solid $lightGrey;
-  tr {
-    &:first-child {
-      td {
-        p {
-          color: $darkGrey;
-          b {
-            font-weight: bold;
-          }
-        }
+// assessmentOverview
+.assessmentOverview {
+  background-color: #F7F7F7;
+  padding: 3.75em 0 0 0;
+  font-size: 14px;
+  @include md {
+    font-size: 13px;
+  }
+  @include lg {
+    font-size: 14px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
+  .container {
+    position: relative;
+  }
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    .left {
+      width: 100%;
+      position: relative;
+      z-index: 2;
+      @include sm {
+        width: 75%;
+      }
+      @include md {
+        width: 80%;
+      }
+      p {
+        color: $darkMediumGrey;
+        font-size: 1em;
+        font-weight: 400;
+        line-height: 2;
+        margin-bottom: 3.75em;
       }
     }
-    td {
-      padding: 10px;
-      p {
-        color: $mediumGrey;
-        font-weight: 400;
+    .right {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 50%;
+      z-index: 1;
+      opacity: 0.2;
+      @include sm {
+        width: 23%;
+        opacity: 1;
       }
-      b {
-        font-weight: 400;
+      @include md {
+        width: 19%;
+      }
+      @include lg {
+        width: 13%;
+      }
+      @include xl {
+        width: 13%;
+      }
+      figure {
+        display: flex;
+        img {
+          width: 100%;
+        }
       }
     }
   }
 }
+
+// achieve
+.achievement {
+  padding: 3.75em 0;
+  font-size: 14px;
+  background-image: url("#{$imagePath}/achievebg.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  background-position:center;
+  @include md {
+    font-size: 13px;
+  }
+  @include lg {
+    font-size: 14px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
+  .container {
+    ul {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2em;
+      flex-wrap: wrap;
+      li {
+        display: flex;
+        align-items: flex-start;
+        width: 100%;
+        @include md {
+          width: 47%;
+        }
+        margin-bottom: 0.75em;
+        em {
+          width: 5%;
+          color: #49ae31;
+          font-size: 1.007em;
+          position: relative;
+          top: 7px;
+        }
+        p {
+          width: 93%;
+          color: $darkMediumGrey;
+          font-size: 1em;
+          font-weight: 400;
+          line-height: 1.7;
+        }
+      }
+    }
+    .requirements {
+      color:$darkGrey;
+      font-size: 1.25em;
+      font-weight: 400;
+      margin-bottom: 1em;
+      line-height: normal;
+    }
+    desc {
+      color:$lightGrey;
+      font-size: 1.125em;
+      font-weight: 400;
+      line-height: normal;
+      padding-left: 2em;
+    }
+  }
+}
+
 //About Assessment
+.requirementsSection {
+  background-color: #f9f9f9;
+  padding: 3.75em 0;
+}
 .areaDetailDescription {
-  margin: 2em 0 0.5em 0;
+  margin: 0;
   .container {
     > div {
-      // max-width: 850px;
       width: 100%;
       margin-bottom: 3.75em;
     }
@@ -387,7 +527,6 @@
       width: 100%;
       margin-top: 1em;
       @include sm {
-        //width: 47%;
       }
       em,
       p {
@@ -462,101 +601,62 @@
     }
   }
 }
-
-//How it Works
-.howitWorksSection {
-  padding: 3.75em 0 3.75em 0;
-  font-size: 12px;
-  position: relative;
-  @include md {
-    font-size: 12px;
-  }
-  @include lg {
-    font-size: 14px;
-  }
-  @include xl {
-    font-size: 16px;
-  }
-  ul {
-    list-style-type: none;
-    padding: 0;
-    margin-top: 2em;
-    li {
-      position: relative;
-      padding: 0 0 0.75em 5em;
-      &:last-child {
-        padding: 0 0 0 5em;
-        .icons {
-          &::after {
-            width: 0;
-          }
-        }
-      }
-      &:first-child {
-        .icons {
-          &::before {
-            width: 0;
+.sectorProject {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid $lightGrey;
+  tr {
+    &:first-child {
+      td {
+        p {
+          color: $darkGrey;
+          b {
+            font-weight: bold;
           }
         }
       }
     }
-    .icons {
-      position: absolute;
-      left: 0;
-      top: 0;
-      border-radius: 35%;
-      border: 1px solid $greyColor;
-      padding: 1em;
-      width: 3em;
-      height: 3em;
-      box-sizing: border-box;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      &::before,
-      &::after {
-        content: "";
-        position: absolute;
-        width: 1px;
-        height: 100%;
-        background-color: #cdcdcd;
+    td {
+      padding: 10px;
+      p {
+        color: $mediumGrey;
+        font-weight: 400;
       }
-      &::after {
-        top: 100%;
+      b {
+        font-weight: 400;
       }
-      &::before {
-        bottom: 100%;
-      }
-      em {
-        font-size: 1.75em;
-        color: $primaryColor;
-      }
-    }
-    .heading5 {
-      color: $blackColor;
-    }
-    p {
-      color: $mediumGrey;
-      font-size: 1em;
-      font-weight: 400;
-      line-height: 1.3;
     }
   }
 }
 
+
+//Enhance Section
 .assessmentSection {
-  background-color: $bgColor;
+  background-color: #F8FBFF;
   padding: 3.75em 0 3.75em 0;
-  font-size: 15px;
   position: relative;
+  overflow: hidden;
+  font-size: 14px;
   @include md {
-    font-size: 12px;
+    font-size: 13px;
   }
   @include lg {
     font-size: 14px;
   }
   @include xl {
     font-size: 16px;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('#{$imagePath}/enhanceBG.png');
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: contain;
+    display: inline-flex;
+    opacity: 0.2;
   }
   p {
     font-size: 0.875em;
@@ -565,15 +665,15 @@
     line-height: 1.3;
   }
 }
+
 .assessmentsArea {
-  // background-color: $whiteColor;
-  padding: 1em 0 0 0;
-  .heading3,
+  .heading5,
   .totalAssessments {
     display: inline-block;
     vertical-align: middle;
   }
-  .heading3 {
+  .heading5 {
+    font-family: "OpenSans", sans-serif;
     color: $darkGrey;
     width: 100%;
     @include md {
@@ -583,12 +683,17 @@
   .totalAssessments {
     width: 100%;
     text-align: left;
-    color: $lightGrey;
+    font-family: "OpenSans", sans-serif;
+    font-size: 1em;
+    font-weight: 400;
+    color: $darkGrey;
     margin-top: 0.5em;
+    @include sm {
+      margin-top: 0;
+    }
     @include md {
       width: 24%;
       margin-left: 1%;
-      margin-top: 0;
       text-align: right;
     }
     em {
@@ -597,6 +702,7 @@
     }
   }
 }
+
 .assessments {
   margin: 1em 0 0 0;
   display: flex;
@@ -604,6 +710,9 @@
   flex-wrap: wrap;
   @include sm {
     margin: 1em 0 0 -2%;
+  }
+  @include md {
+    margin: 1em 0 0 -3.3%;
   }
   @include xl {
     margin: 1em 0 0 -1.8%;
@@ -614,65 +723,149 @@
     background-color: $whiteColor;
     border-radius: 5px;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.15);
-    padding: 0 0 0.5em 0;
     margin: 1em 0 0 0;
     transition: all 0.3s ease-in-out;
-    cursor: pointer;
     overflow: hidden;
+    height: 250px;
     @include sm {
       width: 47.6%;
       margin: 1em 0 0 2%;
-      padding: 0 0 1.65em 0;
     }
     @include md {
-      width: 31%;
+      width: 30%;
+      margin: 1em 0 0 3.3%;
+      height: 275px;
     }
     @include lg {
-      width: 22.7%;
+      height: 300px;
     }
     @include xl {
       margin: 1em 0 0 2%;
       width: 23%;
+      height: 325px;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5), rgba(0,0,0,0.9));
+      z-index: 1;
     }
     &:hover {
-      > div {
-      }
-      box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
-      .viewDetails {
-        border-top: 1px solid $secondaryColor;
+      @include xl {
+        .hoverSection {
+          top: 0;
+          opacity: 1;
+          .heading5 {
+            opacity: 1;
+            transition-delay: 0.3s;
+            transform: translateY(0);
+          }
+          p {
+            opacity: 1;
+            transition-delay: 0.4s;
+            transform: translateY(0);
+          }
+          .assessmentCount {
+            opacity: 1;
+            transition-delay: 0.5s;
+            transform: translateY(0);
+          }
+          .viewDetails {
+            opacity: 1;
+            transition-delay: 0.5s;
+            transform: translateY(0);
+          }
+        }
       }
     }
-    > div {
-      position: relative;
-      overflow: hidden;
-      padding: 1em 1em 0 1.5em;
-      &::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 60px;
-        width: 5px;
-        background: $secondaryColor;
+    figure {
+      display: flex;
+      height: 100%;
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+    .content {
+      position: absolute;
+      bottom: 1em;
+      left: 50%;
+      width: 90%;
+      transform: translateX(-50%);
+      text-align: center;
+      z-index: 2;
+      .viewDetails {
+        display: inline-flex;
+        margin-top: 0.75em;
+        @include xl {
+          display: none;
+        }
+      }
+    }
+    .hoverSection {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 100%;
+      left: 0;
+      opacity: 0;
+      background-color: $primaryColor;
+      z-index: 3;
+      transition: all .5s cubic-bezier(0,-0.09,0,.95);
+      display: flex;
+      flex-direction: column;
+      .hoverContent {
+        background-color: $whiteColor;
+        border-radius: 10px 10px 0 0;
+        flex-grow: 1;
+        text-align: center;
+      }
+      .heading5, p, .assessmentCount {
+        opacity: 0;
+        transition: all 0.2s linear;
+        will-change: transform;
+        transform: translateY(20px);
+      }
+      .heading5 {
+        color: $whiteColor;
+        padding: 1em 0;
+        font-size: 0.9375em;
+      }
+      p {
+        font-size: 0.825em;
+        color: $lightGrey;
+        min-height: 150px;
+        margin: 1em 0;
+      }
+      .assessmentCount {
+        color: $darkGrey;
+        margin: 0.75em 0;
       }
     }
   }
   .heading5 {
     font-weight: 400;
-    color: $primaryColor;
+    color: $blueLabelColor;
     position: relative;
-    min-height: 40px;
+    // min-height: 40px;
+    width: 100%;
+    text-align: center;
   }
   .assessmentCount {
-    font-size: 0.875em;
+    font-size: 0.9375em;
     font-weight: 400;
-    color: $lightGrey;
+    color: $whiteColor;
     line-height: 1.3;
     display: block;
-    margin: 2em 0 0.5em 0;
+    margin-top: 0.75em;
     position: relative;
     em {
-      font-size: 1.15em;
+      font-size: 1em;
       margin-right: 0.35em;
       display: inline-block;
     }
@@ -693,22 +886,351 @@
     }
   }
   .viewDetails {
+    color: $whiteColor;
+    font-family: "OpenSans", sans-serif;
+    font-size: 0.875em;
+    padding: 0.5em 2em;
+    transition: all 0.3s ease-in-out;
     box-sizing: border-box;
-    border-top: 1px solid rgba(149, 149, 149, 0.25);
+    background-color: #117CD8;
+    border: 1px solid #117CD8;
+    border-radius: 5px;
+    position: relative;
+    display: inline-flex;
+    transition: all 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(10px);
+    &:hover {
+      @include xl {
+        background-color: $whiteColor;
+        color: #117CD8;
+      }
+    }
+  }
+}
+
+
+//How it Works
+.howitWorksSection {
+  background-image: linear-gradient(to bottom, #f7f7f7, #f4f4f6, #f0f1f5, #ebeff4, #e5edf3);
+  padding: 3.75em 0 3.75em 0;
+  font-size: 12px;
+  position: relative;
+  @include md {
+    font-size: 12px;
+  }
+  @include lg {
+    font-size: 14px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
+  .smalltext {
+    font-family: "OpenSans", sans-serif;
+    font-size: 1em;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #A2A9B0;
+    text-align: center;
+  }
+  .heading {
+    font-family: "OpenSans", sans-serif;
+    font-size: 1.875em;
+    font-weight: 700;
+    color: #283646;
+    text-align: center;
+    margin: 1em 0;
     display: inline-block;
     width: 100%;
-    color: $mediumGrey;
-    font-size: 0.75em;
-    padding: 1em 1.5em 1em 2em;
-    transition: all 0.3s ease-in-out;
-    em {
-      font-size: 0.75em;
-      margin-left: 0.5em;
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-top: 1em;
+    position: relative;
+    &::after {
+      content: none;
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      border-top: 2px dashed #3A86FF;
+      z-index: 1;
+      @include md {
+        content: '';
+      }
+    }
+    @include md {
+      flex-wrap: nowrap;
+    }
+    li {
+      text-align: center;
+      position: relative;
+      padding: 1em;
+      width: 100%;
+      transition: all 0.3s ease-in-out;
+      z-index: 2;
+      @include sm {
+        width: 47%;
+      }
+      @include md {
+        width: 23%;
+      }
+      &:hover {
+        @include xl {
+          box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.18);
+        }
+      }
+      figure {
+        display: inline-flex;
+        width: 10em;
+        height: 10em;
+        border-radius: 50%;
+        border: 4px solid #27BBEE;
+        overflow: hidden;
+        img {
+          width: 100%;
+        }
+      }
+      .heading6 {
+        color: #283646;
+        margin: 1em 0;
+        font-family: "OpenSans", sans-serif;
+        font-weight: 600;
+        @include sm {
+          min-height: 50px;
+        }
+      }
+      p {
+        color: #77808B;
+        font-size: 0.9375em;
+        font-weight: 400;
+        line-height: 1.4;
+      }
+    }
+  }
+}
+
+//Assessment Certification
+.assessmentCertification {
+  background-image: linear-gradient(to bottom, #ffffff, #fdfcfd, #fcf9fa, #fbf6f7, #faf3f2);
+  padding: 3em 0 0 0;
+  clip-path: ellipse(120% 100% at 50% 0%);
+  overflow: hidden;
+  font-size: 14px;
+  @include sm {
+    clip-path: ellipse(95% 100% at 50% 0%);
+  }
+  @include md {
+    font-size: 13px;
+    padding: 6em 0 0 0;
+    clip-path: ellipse(85% 100% at 50% 0%);
+  }
+  @include lg {
+    font-size: 14px;
+    clip-path: ellipse(80% 100% at 50% 0%);
+  }
+  @include xl {
+    clip-path: ellipse(75% 100% at 50% 0%);
+    font-size: 16px;
+  }
+  @media only screen and (min-width: 1540px) {
+    clip-path: ellipse(60% 100% at 50% 0%);
+  }
+  .container {
+    position: relative;
+  }
+  .wrapper {
+    display: flex;
+  }
+  .left {
+    width: 100%;
+    padding-bottom: 6em;
+    z-index: 2;
+    @include sm {
+      width: 65%;
+      padding-bottom: 12em;
+    }
+    .heading {
+      font-family: "OpenSans", sans-serif;
+      font-size: 1.875em;
+      font-weight: 600;
+      color: $blackColor;
+      line-height: normal;
+    }
+    p {
+      font-size: 1em;
+      font-weight: 400;
+      color: $blackColor;
+      line-height: 1.3;
+      margin: 1.75em 0;
+    }
+    .viewMore {
+      background-color: #117CD8;
+      border: 1px solid #117CD8;
+      border-radius: 5px;
+      padding: 0.75em 1.5em;
+      font-size: 1em;
+      font-weight: 400;
+      color: $whiteColor;
+    }
+  }
+  .right {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 63%;
+    opacity: 0.1;
+    z-index: 1;
+    @media only screen and (min-width: 411px) {
+      width: 50%;
     }
     @include sm {
+      top: 0;
+      width: 45%;
+      bottom: auto;
+      opacity: 1;
+    }
+    @include md {
+      top: -5em;
+      width: 37%;
+    }
+    @include lg {
+    }
+    @include xl {
+    }
+    figure {
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+//Assessment Tools
+.assessmentTools {
+  position: relative;
+  padding: 3.75em 0;
+  font-size: 14px;
+  @include md {
+    font-size: 13px;
+  }
+  @include lg {
+    font-size: 14px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
+  p, .topSix {
+    font-size: 1em;
+    font-weight: 400;
+    line-height: normal;
+  }
+  p {
+    color: $darkMediumGrey;
+  }
+  .topSix {
+    color: $shadeBlueColor;
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 1.5em 0 3em 0;
+    &::after {
+      content: '';
       position: absolute;
       left: 0;
-      bottom: 0;
+      bottom: -3px;
+      height: 1px;
+      width: 100%;
+      background-color: $shadeBlueColor;
+    }
+  }
+  .threeColumn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    @include md {
+      flex-wrap: nowrap;
+    }
+    .left, .right {
+      width: 100%;
+      margin-top: 1em;
+      @include md {
+        width: 30%;
+        margin-top: 0;
+      }
+      .commonStyle {
+        padding: 0.75em 1em;
+        border-radius: 5px;
+        margin-bottom: 1em;
+        &:last-child {
+          margin-bottom: 0;
+        }
+        .heading {
+          font-family: "OpenSans", sans-serif;
+          font-size: 0.9375em;
+          font-weight: 600;
+          color: $mediumGrey;
+          line-height: normal;
+          text-transform: uppercase;
+        }
+        p {
+          font-size: 0.9375em;
+          font-weight: 400;
+          color: $darkMediumGrey;
+          line-height: 1.6;
+          margin: 0.5em 0 0 0;
+          @include md {
+            line-height: 1.2;
+          }
+          @include lg {
+            line-height: 1.6;
+          }
+        }
+      }
+    }
+    .left {
+      order: 2;
+      @include md {
+        order: 1;
+      }
+      .sec1 {
+        background-color: rgba(232, 248, 234, 1);
+      }
+      .sec2 {
+        background-color: rgba(169, 141, 221, 0.2);
+      }
+      .sec3 {
+        background-color: rgba(39, 187, 238, 0.2);
+      }
+    }
+    .center {
+      width: 100%;
+      order: 1;
+      @include md {
+        width: 35%;
+        order: 2;
+      }
+    }
+    .right {
+      order: 3;
+      .sec1 {
+        background-color: rgba(232, 246, 248, 1);
+      }
+      .sec2 {
+        background-color: rgba(255, 255, 226, 1);
+      }
+      .sec3 {
+        background-color: rgba(242, 232, 232, 1);
+      }
     }
   }
 }
@@ -720,3 +1242,626 @@
 .imageSection {
   width: auto !important;
 }
+
+
+//benifits
+.benifits {
+  background-image: linear-gradient(to right, #004C65, #01516C, #004C65);
+  padding: 5em 0;
+  font-size: 14px;
+  @include md {
+    font-size: 13px;
+  }
+  @include lg {
+    font-size: 14px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
+  .container {
+    .heading, .heading5 {
+      color: $whiteColor;
+      font-family: "OpenSans", sans-serif;
+      line-height: normal;
+      text-align: center;
+    }
+    .heading {
+      font-size: 2.0625em;
+      font-weight: 600;
+      margin-bottom: 0.75em;
+    }
+    .heading5 {
+      font-weight: 400;
+      margin-bottom: 2em;
+    }
+    ul {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 0;
+      @include md {
+        flex-wrap: nowrap;
+      }
+      li {
+        width: 100%;
+        margin: 0.5em 0;
+        text-align: center;
+        color: $whiteColor;
+        @include sm {
+          width: 27%;
+        }
+        .benifitTitle {
+          font-family: "OpenSans", sans-serif;
+          font-size: 1.125em;
+          font-weight: 700;
+          line-height: normal;
+          margin: 1em 0;
+        }
+        p {
+          font-size: 1em;
+          font-weight: 400;
+          line-height: normal;
+        }
+      }
+    }
+  }
+}
+
+//Testimonials
+.testimonials {
+  background-color: #f9f9f9;
+  padding: 3.75em 0;
+  font-size: 12px;
+  @include md {
+    font-size: 12px;
+  }
+  @include lg {
+    font-size: 14px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
+  .testimonialContent {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 2em;
+    margin-bottom: 2em;
+    @include md {
+      flex-wrap: nowrap;
+    }
+    .left {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      @include md {
+        width: 35%;
+      }
+      figure {
+        border-radius: 50%;
+        width: 7em;
+        height: 7em;
+        overflow: hidden;
+        border: 1px solid rgba(112, 112, 112, 1);
+      }
+      > div {
+        margin-left: 1em;
+        .heading5 {
+          color: #1b4e9b;
+          line-height: normal;
+          font-family: "OpenSans", sans-serif;
+          font-weight: 500;
+        }
+        .postedDate {
+          display: block;
+          font-family: "OpenSans", sans-serif;
+          font-size: 0.875em;
+          font-weight: 400;
+          color: #5e5e5e;
+          margin-top: 0.5em;
+        }
+      }
+    }
+    .right {
+      width: 100%;
+      margin-top: 2em;
+      @include md {
+        width: 60%;
+        margin-top: 0;
+        margin-left: 5%;
+      }
+      .ratingStar {
+        display: flex;
+        flex-direction: row;
+        em {
+          font-size: 0.75em;
+          margin-right: 3px;
+          color: #eec720;
+        }
+      }
+      .heading6 {
+        color: $mediumGrey;
+        line-height: 1.4;
+        margin-top: 0.5em;
+      }
+      .review {
+        margin-top: 2em;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        .report,
+        .helpful {
+          font-size: 0.75em;
+          font-weight: 400;
+          line-height: normal;
+          margin-right: 1em;
+        }
+        .yes,
+        .no {
+          border: 1px solid rgba(153, 153, 153, 0.5);
+          background-color: $whiteColor;
+          font-size: 0.625em;
+          font-weight: 300;
+          padding: 1px 10px;
+          margin-right: 1em;
+          line-height: normal;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+        .helpful {
+          color: #1b4e9b;
+        }
+        .yes {
+          color: #49ae31;
+        }
+        .no {
+          color: #ff8a02;
+        }
+        .report {
+          color: #c02222;
+        }
+      }
+    }
+  }
+  .moreReviews {
+    text-align: center;
+    button {
+      background-color: $whiteColor;
+      border-radius: 10px;
+      border: 1px solid rgba(0, 113, 163, 1);
+      font-size: 1.375em;
+      font-weight: 400;
+      color: #0071a3;
+      padding: 0.5em 1.25em;
+    }
+  }
+}
+//Related Programs
+.relatedProgramsAssessments {
+  background-color: $whiteColor;
+  position: relative;
+  font-size: 12px;
+  &.programList {
+    padding: 3.75em 0 1.5em 0;
+  }
+  &.assessmentList {
+    padding: 1.5em 0 3.75em 0;
+  }
+  @include md {
+  }
+  @include lg {
+    font-size: 14px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
+  .programBg {
+    background-image: linear-gradient(to right, #ffffff, #fcfcfc, #fafafa, #f7f7f7, #f5f5f5);
+    .wrapper {
+      border-radius: 50px 0 0 50px;
+      padding: 2.25em 0 2.25em 2.25em;
+    }
+  }
+  .assessmentBg {
+    background-image: linear-gradient(to right, #f5f5f5, #f7f7f7, #fafafa, #fcfcfc, #ffffff);
+    .wrapper {
+      border-radius: 0 50px 50px 0;
+      padding: 2.25em 2.25em 2.25em 0;
+    }
+  }
+  .commonCSS {
+    padding: 0;
+    .wrapper {
+      background-color: #f5f5f5;
+      ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      .relatedList {
+        background-color: $whiteColor;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        padding: 0.75em 0;
+        width: 95%;
+        .heading {
+          display: block;
+          font-family: "OpenSans", sans-serif;
+          font-size: 1em;
+          font-weight: 400;
+          line-height: 1.3;
+          color: $blackColor;
+          padding: 0 0.5em;
+          min-height: 42px;
+        }
+        figure {
+          display: block;
+          margin: 0.75em 0 1em 0;
+          img {
+            height: 170px;
+            object-fit: cover;
+          }
+        }
+        .contentWrapper {
+          padding: 0 0.5em;
+          font-size: 16px;
+          .batchStarts, .months {
+            font-size: 0.6875em;
+            font-weight: 400;
+            color: $darkGrey;
+            line-height: normal;
+            em {
+              color: #08558C;
+              font-size: 1em;
+              margin-right: 2px;
+            }
+          }
+          > div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 5px;
+            .stars {
+              em {
+                color: #EEC720;
+                font-size: 0.75em;
+                margin-left: 1px;
+              }
+            }
+          }
+          .level{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1em;
+            > div {
+              &:first-child {
+                span {
+                  em {
+                    color: #EEC720;
+                  }
+                }
+              }
+            }
+            p {
+              color: $darkGrey;
+              font-size: 0.625em;
+              font-weight: 400;
+              line-height: normal;
+              margin: 0;
+            }
+            span {
+              color: $darkGrey;
+              font-family: "OpenSans", sans-serif;
+              font-size: 0.75em;
+              font-weight: 600;
+              line-height: normal;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+::ng-deep .relatedProgramsAssessments {
+  .owl-theme .owl-dots {
+    position: absolute;
+    right: 33px;
+    bottom: -18px;
+    width: 80px;
+    height: 5px;
+    background-color: #D8D8D8;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  .owl-theme .owl-dots .owl-dot {
+    width: 100%;
+  }
+  .owl-theme .owl-dots .owl-dot span {
+    width: auto;
+    height: 5px;
+    background-color: #D8D8D8;
+    margin: 0;
+  }
+  .owl-theme .owl-dots .owl-dot.active span {
+    background-image: linear-gradient(to right, #00bcef, #00c0db, #00c1b6, #00be83, #4eb749);
+    background-color: transparent;
+  }
+  .owl-carousel .owl-stage-outer {
+    padding: 0.5em;
+  }
+  //Navigation
+  .owl-theme .owl-nav {
+    position: absolute;
+    right: 0;
+    bottom: -29px;
+    width: 150px;
+    display: inline-flex;
+    justify-content: space-between;
+    margin-top: 0;
+  }
+  .owl-theme .owl-nav [class*=owl-] {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    i {
+      color: #08558C;
+      font-size: 1.5em;
+    }
+  }
+}
+
+
+//Hiring Partners
+.hiringPartnres {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  padding: 4em 0;
+  position: relative;
+  font-size: 12px;
+  @include md {
+    padding: 8em 0;
+  }
+  @include lg {
+    font-size: 14px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #08558C;
+    opacity: 0.9;
+  }
+  .container {
+    position: relative;
+  }
+  .commonHeadingStyle {
+    color: $whiteColor;
+  }
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+    flex-wrap: wrap;
+    @include md {
+      flex-wrap: nowrap;
+    }
+  }
+  .left {
+    width: 100%;
+    @include md {
+      width: 30%;
+    }
+    @include lg {
+      width: 25%;
+    }
+    p {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.125em;
+      font-weight: 300;
+      color: $whiteColor;
+      line-height: 1.5;
+    }
+  }
+  .right {
+    width: 100%;
+    @include md {
+      width: 65%;
+      margin-left: 5%;
+    }
+    @include lg {
+      width: 70%;
+    }
+    .figWrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    figure {
+      background-color: $whiteColor;
+      border-radius: 5px;
+      padding: 1em;
+      margin: 0.5em 0.5%;
+      width: 32%;
+      text-align: center;
+      img {
+        height: 40px;
+        object-fit: contain;
+        @include lg {
+          height: 60px;
+        }
+      }
+    }
+  }
+}
+.programCourse {
+  width: 100%;
+  padding: 3.75em 0;
+  position: relative;
+  background: $blackBgColor;
+  font-size: 12px;
+    @include md {
+    }
+    @include lg {
+      font-size: 14px;
+    }
+    @include xl {
+      font-size: 16px;
+  }
+  .listPart {
+    padding-bottom: 4em;
+    .heading {
+      font-size: 1.125em;
+      font-weight: 500;
+      color: $blueLabelColor;
+      line-height: normal;
+      padding-bottom: 0.5em;
+    }
+    .division {
+      display: flex;
+      flex-wrap: wrap;
+      line-height: 1.7;
+      color: $greyListColor;
+      font-weight: 400;
+      font-size: 0.875em;
+      @include md {
+        line-height: 1.3;
+      }
+      li {
+        border-right: 1px solid $whiteColor;
+        padding-right: 10px;
+        margin-right: 10px;
+        &:last-child {
+          border-right: none;
+          padding-right: 0;
+          margin-right: 0;
+        }
+      }
+    }
+    &:last-child {
+      padding-bottom: 0em;
+    }
+  }
+    
+}
+
+.ourPartners {
+    width: 100%;
+    padding: 3.75em 0;
+    position: relative;
+    background: $bgColor;
+    font-size: 12px;
+    @include md {
+    }
+    @include lg {
+      font-size: 14px;
+    }
+    @include xl {
+      font-size: 16px;
+    }
+    .partnersSection {
+      display: flex;
+      align-items: center;
+      margin-bottom: 2em;
+      div {
+        font-family: "OpenSans", sans-serif;
+        font-size: 1.125em;
+        font-weight: 600;
+        color: $darkGrey;
+        margin-right: 1em;
+        line-height: normal;
+      }
+      figure {
+        height: 50px;
+        width: 14%;
+        margin-right: 1em;
+        @include md {
+          width: 8%;
+          margin-right: 3em;
+        }
+        &:last-child {
+          margin-right: 0;
+        }
+        img {
+          object-fit: contain;
+          height: 50px;
+          width: 100%;
+        }
+      }
+
+    }
+    .grievanceSection {
+      display: flex;
+      margin: 2em 0;
+      p {
+        font-family: "OpenSans", sans-serif;
+        font-size: 1em;
+        font-weight: 400;
+        color: #0C1854;
+        margin: 0;
+        span {
+          font-style: italic;
+        }
+      }
+    }
+    .poweredSection {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      width: 100%;
+      @include md {
+        flex-wrap: nowrap;
+      }
+      .left {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        @include md {
+          width: 40%;
+        }
+        .heading {
+          font-family: "OpenSans", sans-serif;
+          font-size: 1em;
+          font-weight: 400;
+          color: $blackColor;
+          margin-right: 1em;
+        }
+        img {
+          object-fit: contain;
+          height: 30px;
+          width: 100%;
+        }
+      }
+      .right {
+        width: 100%;
+        text-align: left;
+        @include md {
+          text-align: right;
+          width: 55%;
+        }
+        img {
+          object-fit: contain;
+          height: 50px;
+          width: 100%;
+          @include md {
+            width: 60%;
+          }
+        }
+      }
+    }
+  }
