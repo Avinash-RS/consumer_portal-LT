@@ -1,4 +1,4 @@
-    <div class="courseContainer" *ngIf="!nocard && !defaultDiv">
+        <div class="courseContainer" *ngIf="!nocard && !defaultDiv">
         <div class="courseProduct">
             <figure class="bannerBgImage" id="banner">
                 <img [src]="courseData?.image?.bgurl" alt="" />
@@ -512,28 +512,11 @@
                     </div>
                 </section>
             </ng-container>
-            <!-- Expert Support System -->
-            
+            <!-- testimonial -->
             <ng-container *ngIf="item.sectionId == 7 && item.dispalystatus">
-                <section class="testi" [id]="item.sectionId" #7>
-                    <div class="container">
-                        <div class="commonHeadingStyle">{{item?.title}}</div>
-                        <div class="testimonialContent">
-                            <owl-carousel-o [options]="testimonial">
-                                    <ng-template carouselSlide *ngFor="let testimonial of item?.innerArray">
-                                        <div class="caption">
-                                            <p class="text">{{testimonial?.description}}</p>
-                                            <figure>
-                                                <img [src]="testimonial?.imageurl" alt="" />
-                                            </figure>
-                                        </div>
-                                        <div class="author">{{testimonial?.name}}</div>
-                                        <div class="role">Progression</div>
-                                    </ng-template>
-                            </owl-carousel-o>
-                        </div>
-                    </div>
-                </section>
+               <div [id]="item?.sectionId" #7>
+                    <app-testimonial [testimonal]="item"></app-testimonial>
+               </div>
             </ng-container>
 
             <!-- FAQ -->

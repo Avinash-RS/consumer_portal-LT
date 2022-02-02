@@ -534,45 +534,9 @@
 </section>
 
 <!-- testimonials -->
-<section class="testimonials" *ngIf="aboutArea?.assessmentContents?.testimonials?.dispalystatus">
-    <div class="container">
-        <div class="commonHeadingStyle">{{aboutArea?.assessmentContents?.testimonials?.title}}</div>
-        <div class="testimonialContent" *ngFor="let testimonial of aboutArea?.assessmentContents?.testimonials?.innerArray">
-            <div class="left">
-                <figure>
-                    <img [src]="testimonial?.imageurl" alt="" />
-                </figure>
-                <div>
-                    <div class="heading5">
-                        {{testimonial?.name}}
-                    </div>
-                    <span class="postedDate">2 days ago</span>
-                </div>
-            </div>
-            <div class="right">
-                <div class="ratingStar">
-                    <em class="icon-Star"></em>
-                    <em class="icon-Star"></em>
-                    <em class="icon-Star"></em>
-                    <em class="icon-Star"></em>
-                    <em class="icon-Star"></em>
-                </div>
-                <div class="heading6">
-                    {{testimonial?.description}}
-                </div>
-                <div class="review">
-                    <span class="helpful">Was this review helpful?</span>
-                    <span class="yes">Yes</span>
-                    <span class="no">No</span>
-                    <span class="report">Report</span>
-                </div>
-            </div>
-        </div>
-        <div class="moreReviews">
-            <button>See more reviews</button>
-        </div>
-    </div>
-</section>
+    <ng-container *ngIf="aboutArea?.assessmentContents?.testimonials?.dispalystatus">
+        <app-testimonial [testimonal]="aboutArea?.assessmentContents?.testimonials" [id]="testimonal.sectionId" #7></app-testimonial>
+    </ng-container>
     <!-- Related items -->
     <ng-container *ngIf="aboutArea?.assessmentContents?.relatedItems?.dispalystatus">
         <section class="relatedProgramsAssessments programList" *ngIf="aboutArea?.assessmentContents?.relatedItems?.subHeading1?.dispalystatus">

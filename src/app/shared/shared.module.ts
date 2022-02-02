@@ -27,6 +27,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { BarChartComponent } from './barChart/barChart.component';
 import { RecruiterComponent } from './recruiter/recruiter.component';
 import { KycMandateComponent } from './kyc-mandate/kyc-mandate.component';
+import { TestimonialComponent } from './testimonial/testimonial.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { KycMandateComponent } from './kyc-mandate/kyc-mandate.component';
     CaptchaDirective,
     BarChartComponent,
     RecruiterComponent,
-    KycMandateComponent
+    KycMandateComponent,
+    TestimonialComponent
   ],
   imports: [
     CommonModule,
@@ -69,7 +71,8 @@ import { KycMandateComponent } from './kyc-mandate/kyc-mandate.component';
     MaterialModule,
     BarChartComponent,
     RecruiterComponent,
-    KycMandateComponent
+    KycMandateComponent,
+    TestimonialComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 
