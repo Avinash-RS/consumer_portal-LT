@@ -40,8 +40,6 @@ export class PartnersListComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.OurPartners;
-    
   }
 
 }
