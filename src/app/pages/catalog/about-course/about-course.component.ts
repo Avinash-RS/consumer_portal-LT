@@ -93,6 +93,34 @@ export class AboutCourseComponent implements OnInit {
     }
   }
 
+  // Testimonial
+  testimonial: OwlOptions = {
+    loop: true,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    dots: false,
+    navSpeed: 700,
+    margin: 30,
+    center: true,
+    navText: ["<i class='icon-Back'></i>", "<i class='icon-right-next'></i>"],
+    nav: true,
+    responsive: {
+      0: {
+        items: 1
+      },
+      600: {
+        items: 1
+      },
+      650: {
+        items: 3
+      },
+      1024: {
+        items: 3
+      }
+    }
+  }
+
   howItWorks:any
   isReadMore = true
   areaId;
@@ -137,7 +165,6 @@ export class AboutCourseComponent implements OnInit {
   sixthOffset: Number = null;
   seventhOffset: Number = null;
   eigthOffset: Number = null;
-
   @HostListener('window:scroll', ['$event'])
     handleScroll(){
         const windowScroll = window.pageYOffset;
