@@ -254,7 +254,8 @@
                     </div>
                 </section>
                 <!-- Request Broucher -->
-                <section class="reqBroucher" [ngStyle]="{'background-image': 'url(https://lmsassetspremium.lntedutech.com/portalicons/reqbg.png)'}" *ngIf="item?.subHeading0?.dispalystatus">
+                <!-- <section class="reqBroucher" [ngStyle]="{'background-image': 'url(https://lmsassetspremium.lntedutech.com/portalicons/reqbg.png)'}" *ngIf="item?.subHeading0?.dispalystatus"> -->
+                <section class="reqBroucher" *ngIf="item?.subHeading0?.dispalystatus">
                     <div class="container">
                         <span class="heading">{{item?.subHeading0?.title}}</span>
                         <div class="heading6">{{item?.subHeading0?.description}}</div>
@@ -512,47 +513,29 @@
                 </section>
             </ng-container>
             <!-- Expert Support System -->
+            
             <ng-container *ngIf="item.sectionId == 7 && item.dispalystatus">
-                <section class="testimonials" [id]="item.sectionId" #7>
+                <section class="testi" [id]="item.sectionId" #7>
                     <div class="container">
                         <div class="commonHeadingStyle">{{item?.title}}</div>
-                        <div class="testimonialContent" *ngFor="let testimonial of item?.innerArray">
-                            <div class="left">
-                                <figure>
-                                    <img [src]="testimonial?.imageurl" alt="" />
-                                </figure>
-                                <div>
-                                    <div class="heading5">
-                                        {{testimonial?.name}}
-                                    </div>
-                                    <span class="postedDate">2 days ago</span>
-                                </div>
-                            </div>
-                            <div class="right">
-                                <div class="ratingStar">
-                                    <em class="icon-Star"></em>
-                                    <em class="icon-Star"></em>
-                                    <em class="icon-Star"></em>
-                                    <em class="icon-Star"></em>
-                                    <em class="icon-Star"></em>
-                                </div>
-                                <div class="heading6">
-                                    {{testimonial?.description}}
-                                </div>
-                                <div class="review">
-                                    <span class="helpful">Was this review helpful?</span>
-                                    <span class="yes">Yes</span>
-                                    <span class="no">No</span>
-                                    <span class="report">Report</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="moreReviews">
-                            <button>See more reviews</button>
+                        <div class="testimonialContent">
+                            <owl-carousel-o [options]="testimonial">
+                                    <ng-template carouselSlide *ngFor="let testimonial of item?.innerArray">
+                                        <div class="caption">
+                                            <p class="text">{{testimonial?.description}}</p>
+                                            <figure>
+                                                <img [src]="testimonial?.imageurl" alt="" />
+                                            </figure>
+                                        </div>
+                                        <div class="author">{{testimonial?.name}}</div>
+                                        <div class="role">Progression</div>
+                                    </ng-template>
+                            </owl-carousel-o>
                         </div>
                     </div>
                 </section>
             </ng-container>
+
             <!-- FAQ -->
             <ng-container *ngIf="item.sectionId == 8 && item.dispalystatus">
                 <section class="faq" [id]="item.sectionId" #8 [ngStyle]="{'background-image': 'url(' + item?.imageurl + ')'}">
@@ -575,6 +558,7 @@
                     </div>
                 </section>
             </ng-container>
+            
             <!-- Related items -->
             <ng-container *ngIf="item.sectionId == 10 && item.dispalystatus">
                 <section class="relatedProgramsAssessments programList" *ngIf="item?.subHeading1?.dispalystatus">

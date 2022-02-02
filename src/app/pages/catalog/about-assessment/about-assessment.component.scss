@@ -553,7 +553,7 @@
 .achievement {
   padding: 3.75em 0;
   font-size: 14px;
-  background-image: url("#{$imagePath}/achievebg.svg");
+  // background-image: url("#{$imagePath}/achievebg.svg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -772,7 +772,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: url('#{$imagePath}/enhanceBG.png');
+    background-image: url(https://lmsassetspremium.lntedutech.com/portalicons/enhanceBG.png);
     background-repeat: no-repeat;
     background-position: right bottom;
     background-size: contain;
@@ -1124,6 +1124,7 @@
         overflow: hidden;
         img {
           width: 100%;
+          object-fit: cover;
         }
       }
       .heading6 {
@@ -1428,7 +1429,7 @@
           border-radius: 20px;
           z-index: 1;
           transform: scale(0) rotate(100deg);
-          transition: all 0.5s;
+          transition: all 0.3s;
         }
         &:hover {
           &::before {
