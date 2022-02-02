@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, ViewChild, TemplateRef, ElementRef } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild, TemplateRef, ElementRef, AfterViewChecked } from '@angular/core';
 import { NavigationEnd, Router, RouterEvent } from "@angular/router"
 import {ActivatedRoute} from '@angular/router';
 import { AppConfigService } from 'src/app/utils/app-config.service';
@@ -18,7 +18,7 @@ import { GlobalValidatorsService } from 'src/app/validators/global-validators.se
   templateUrl: './about-course.component.html',
   styleUrls: ['./about-course.component.scss']
 })
-export class AboutCourseComponent implements OnInit {
+export class AboutCourseComponent implements OnInit,AfterViewChecked {
   selectedIndex = 0;
   TopicsOptions: OwlOptions = {
     loop: true,
@@ -89,34 +89,6 @@ export class AboutCourseComponent implements OnInit {
       1024: {
         items: 4,
         slideBy: 4
-      }
-    }
-  }
-
-  // Testimonial
-  testimonial: OwlOptions = {
-    loop: true,
-    mouseDrag: false,
-    touchDrag: false,
-    pullDrag: false,
-    dots: false,
-    navSpeed: 700,
-    margin: 30,
-    center: true,
-    navText: ["<i class='icon-Back'></i>", "<i class='icon-right-next'></i>"],
-    nav: true,
-    responsive: {
-      0: {
-        items: 1
-      },
-      600: {
-        items: 1
-      },
-      650: {
-        items: 3
-      },
-      1024: {
-        items: 3
       }
     }
   }
@@ -243,17 +215,26 @@ export class AboutCourseComponent implements OnInit {
     return this.queryForm.get('subject');
   }
 
-  ngAfterViewInit(){
-    setTimeout(()=>{
-       this.firstOffset =  this.firstElement.nativeElement.offsetTop -200;
-       this.secondOffset =  this.secondElement.nativeElement.offsetTop - 200;
-       this.thirdOffset =  this.thirdElement.nativeElement.offsetTop -200;
-       this.fourthOffset =  this.fourthElement.nativeElement.offsetTop -200;
-       this.fifthOffset =  this.fifthElement.nativeElement.offsetTop -200;
-       this.sixthOffset =  this.sixthElement.nativeElement.offsetTop -200;
-       this.seventhOffset =  this.seventhElement.nativeElement.offsetTop -200;
-       this.eigthOffset =  this.eigthElement.nativeElement.offsetTop -200;
-    },1000)
+//   ngAfterViewInit(){
+//     setTimeout(()=>{
+//         this.setOffset();
+//     },3000)
+// }
+
+ngAfterViewChecked(){
+  setTimeout(()=>{
+    this.setOffset();
+},1000)
+}
+setOffset(){
+  this.firstOffset =  this.firstElement.nativeElement.offsetTop -200;
+  this.secondOffset =  this.secondElement.nativeElement.offsetTop - 200;
+  this.thirdOffset =  this.thirdElement.nativeElement.offsetTop -200;
+  this.fourthOffset =  this.fourthElement.nativeElement.offsetTop -200;
+  this.fifthOffset =  this.fifthElement.nativeElement.offsetTop -200;
+  this.sixthOffset =  this.sixthElement.nativeElement.offsetTop -200;
+  this.seventhOffset =  this.seventhElement.nativeElement.offsetTop -200;
+  this.eigthOffset =  this.eigthElement.nativeElement.offsetTop -200;
 }
   checkOffsetTop() {
     const windowOffSet = window.pageYOffset;
@@ -293,6 +274,7 @@ export class AboutCourseComponent implements OnInit {
           this.courseData = this.abouCourseData.assessmentData[0];
           this.defaultDiv = false;
           this.nocard = false;
+          this.setOffset();
         }
         else{
           this.abouCourseData = [];
@@ -407,10 +389,10 @@ export class AboutCourseComponent implements OnInit {
         this.activeSection = ID;
         var yOffset;
         if(this.sticky){
-          yOffset = -100;
+          yOffset = -140;
         }
         else{
-          yOffset = -120;
+          yOffset = -170;
         }
         const element = document.getElementById(ID);
         const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
