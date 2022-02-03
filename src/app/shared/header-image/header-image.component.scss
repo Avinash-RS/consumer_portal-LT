@@ -14,13 +14,23 @@
     background-image: url('https://assets.lntedutech.com/millionUI_home.png');
     background-repeat: repeat;
     width: 100%;
+    height: calc(100vh - 74px);
     display: flex;
     align-items: center;
     padding: 1em 0.9em;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 540px;
     background-position: 100% 40%;
+    @include sm {
+        height: 400px;
+    }
+    @include md {
+        height: 470px;
+    }
+    @include lg {
+        height: 540px;
+    }
+    // height: 540px;
     // @media only screen and (min-width: 568px) {
     //     height: 45em;
     //     padding:0;

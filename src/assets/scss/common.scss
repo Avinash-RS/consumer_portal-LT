@@ -29,45 +29,38 @@ ul {
     }
 }
 
-.commonHeadingStyle {
+.commonHeadingStyle, .heading2 {
     font-family: "OpenSans", sans-serif;
     font-size: 1.875em;
     font-weight: 600;
     color: $darkGrey;
     line-height: 1.1;
     position: relative;
-    margin-bottom: 1.5em;
     &::after {
         content: '';
         position: absolute;
-        left: 0;
-        bottom: -0.4em;
+        background-image: linear-gradient(to right, #00bcef, #00c0db, #00c1b6, #00be83, #4eb749);
         width: 3em;
         height: 4px;
         border-radius: 1.25em;
-        background-image: linear-gradient(to right, #00bcef, #00c0db, #00c1b6, #00be83, #4eb749);
+        bottom: -0.4em;
+    }
+}
+.commonHeadingStyle {
+    margin-bottom: 1.5em;
+    &::after {
+        left: 0;
+    }
+}
+.heading2 {
+    text-align: center;
+    margin-bottom: 1em;
+    &::after {
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
 
-.heading2 {
-    font-size: 2em;
-    font-weight: 700;
-    color: $darkGrey;
-    line-height: 1.2;
-    text-transform: uppercase;
-    position: relative;
-    text-align: center;
-    &::after {
-        content: '';
-        position: absolute;
-        bottom: -0.35em;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 2em;
-        height: 3px;
-        background-color: $primaryColor;
-    }
-}
 .heading3 {
     font-size: 1.75em;
     line-height: 1.3;
