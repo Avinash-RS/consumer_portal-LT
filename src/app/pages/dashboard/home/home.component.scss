@@ -173,6 +173,7 @@
     }
     .container { 
         .owlCarouselWrapper {
+          margin-top: 3em;
           position: relative;
           width: 100%;
           text-align: center;
@@ -180,10 +181,9 @@
             position: relative;
             width: 100%;
             background-color: $whiteColor;
-            box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
             padding: 2.75em;
             border-radius: 5px;
-            margin-bottom: 1em;
+            margin: 0.5em 0 1em 0;
             .title {
               color: $darkMediumGrey;
               font-family: "OpenSans", sans-serif;
@@ -198,18 +198,35 @@
               line-height: 1.5;
               margin: 0;
             }
-            figure {
+            .imagearea {
               margin-top: 20px;
-              display: inline-block;
-              overflow: hidden;
-              border-radius: 50%;
-              box-shadow: 15px 15px 10px 0 rgb(0 0 0 / 10%);
-              transition: all 0.4s ease;
-              width: 4.5em;
               position: absolute;
-              left: 38%;
+              left: 50%;
+              transform: translateX(-50%);
               bottom: -40px;
+              display: flex;
+              align-items: center;
+                  .greencircle {
+                    height: 4.5em;
+                    width: 4.5em;
+                    border-radius: 50%;
+                    background-color:#20B19A;
+                    display: inline-block;
+                    position: relative;
+                    left: 0.65em;
+                  }
+                  figure {
+                    display: inline-block;
+                    overflow: hidden;
+                    border-radius: 50%;
+                    box-shadow: 15px 15px 10px 0 rgb(0 0 0 / 10%);
+                    transition: all 0.4s ease;
+                    width: 4.5em;
+                    position: relative;
+                    right: 0.65em;
+                  }
             }
+       
           }
           .footer {
             margin-top: 4em;
@@ -230,6 +247,27 @@
     }
 }
 ::ng-deep.owlCarouselWrapper {
+  .owl-carousel { 
+    .owl-item { 
+      .card ,.footer {
+        opacity: 0.6;
+      }
+      .card {
+        &::before {
+          box-shadow: none;
+          background: #f5f5f5;
+        }
+      }
+      &.center { 
+        .card ,.footer { 
+          opacity: 1;
+        }
+        .card {
+          box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+        }
+      }
+    }
+  }
   .owl-theme {
     .owl-dots {
       margin-top: 2.5em;
@@ -241,6 +279,10 @@
         width: 0.5em;
         height: 0.5em;
         border-radius: 50%;
+        background-color: #E9EBF0;
+        &:hover {
+          background-color: #2EA3F2;
+        }
       }
     }
   }
