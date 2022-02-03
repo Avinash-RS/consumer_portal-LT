@@ -17,6 +17,7 @@ import { KycPassportComponent } from './kycinfo/kyc-passport/kyc-passport.compon
 import { KycEducationComponent } from './kycinfo/kyc-education/kyc-education.component';
 import { KycQuestionComponent } from './kycinfo/kyc-question/kyc-question.component';
 import { KycPreviewComponent } from './kycinfo/kyc-preview/kyc-preview.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { KycPreviewComponent } from './kycinfo/kyc-preview/kyc-preview.component
     CommonModule,
     DashboardRoutingModule,
     SharedModule,
-    NgxSkeletonLoaderModule
+    NgxSkeletonLoaderModule,
+    CarouselModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
   providers: [
