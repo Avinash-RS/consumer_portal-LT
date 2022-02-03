@@ -178,12 +178,14 @@ resolvedSignIn(captchaSignInResponse: string){
         email: encryptedname,
         password: encryptedpassword,
         isAdmin: false,
-        // badgeRequest:this.recaptchaStr
-        badgeRequest:"microcertportal"
+        badgeRequest:this.recaptchaStr
       };
       this.commonService.login(loginData).subscribe((data: any) => {
         // console.log(data, 'karthik Data')
         if (data.success) {
+          data.data['emailId'] = data.data.email
+          data.data.email = CryptoJS.AES.encrypt(data.data.email.toLowerCase(), this.secretKey.trim()).toString();
+          data.data.userId = CryptoJS.AES.encrypt(data.data.userId.toLowerCase(), this.secretKey.trim()).toString();
           this.appconfig.setSessionStorage('userDetails', JSON.stringify(data.data));
           this.appconfig.setSessionStorage('token', data.token);
           this.appconfig.setSessionStorage('profileImage', data.data.profileImage);
