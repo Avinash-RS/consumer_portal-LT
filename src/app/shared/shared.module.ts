@@ -28,6 +28,7 @@ import { BarChartComponent } from './barChart/barChart.component';
 import { RecruiterComponent } from './recruiter/recruiter.component';
 import { KycMandateComponent } from './kyc-mandate/kyc-mandate.component';
 import { TestimonialComponent } from './testimonial/testimonial.component';
+import { RelateditemsComponent } from './relateditems/relateditems.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { TestimonialComponent } from './testimonial/testimonial.component';
     BarChartComponent,
     RecruiterComponent,
     KycMandateComponent,
-    TestimonialComponent
+    TestimonialComponent,
+    RelateditemsComponent
   ],
   imports: [
     CommonModule,
@@ -72,7 +74,8 @@ import { TestimonialComponent } from './testimonial/testimonial.component';
     BarChartComponent,
     RecruiterComponent,
     KycMandateComponent,
-    TestimonialComponent
+    TestimonialComponent,
+    RelateditemsComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 

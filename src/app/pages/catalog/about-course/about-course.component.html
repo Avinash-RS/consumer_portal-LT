@@ -65,7 +65,7 @@
         </section>
         <ng-container *ngFor="let item of this.courseData?.courseContents?.Headings">
           <!-- Why Full Stack -->
-           <ng-container *ngIf="item.sectionId == 1 && item.dispalystatus">
+           <ng-container *ngIf="item?.sectionId == 1 && item?.dispalystatus">
             <section class="whyFullStack" [id]="item.sectionId" #1>
                 
                 <div class="container fullStack">
@@ -83,7 +83,7 @@
             </section>
            </ng-container>
              <!-- Program Overivew -->
-            <ng-container *ngIf="item.sectionId == 2 && item.dispalystatus">
+            <ng-container *ngIf="item?.sectionId == 2 && item?.dispalystatus">
                 <section class="programOverview" [id]="item.sectionId" #2>
                     <div class="container">
                         <div class="commonHeadingStyle">{{item?.title}}</div>
@@ -169,7 +169,7 @@
                 </section>
             </ng-container>
             <!-- Curriculam -->
-            <ng-container *ngIf="item.sectionId == 3 && item.dispalystatus">
+            <ng-container *ngIf="item?.sectionId == 3 && item?.dispalystatus">
                 <section class="curriculam" [id]="item.sectionId" #3>
                     <div class="container">
                         <div class="commonHeadingStyle">{{item?.title}}</div>
@@ -317,7 +317,7 @@
                 </section>
             </ng-container>
             <!-- Expert Support System -->
-            <ng-container *ngIf="item.sectionId == 4 && item.dispalystatus">
+            <ng-container *ngIf="item?.sectionId == 4 && item?.dispalystatus">
                 <section class="expertSupportTab" [id]="item.sectionId" #4 [ngStyle]="{'background-image': 'url(https://lmsassetspremium.lntedutech.com/portalicons/expertbg.png)'}">
                     <div class="container">
                         <div class="commonHeadingStyle">{{item?.title}}</div>
@@ -424,7 +424,7 @@
                 </section>
             </ng-container>          
             <!-- Carrer Path -->
-            <ng-container *ngIf="item.sectionId == 5 && item.dispalystatus">
+            <ng-container *ngIf="item?.sectionId == 5 && item?.dispalystatus">
                 <section class="careerPath" [id]="item.sectionId" #5>
                     <div class="container">
                         <div class="commonHeadingStyle">{{item?.title}}</div>
@@ -461,7 +461,7 @@
                 </section>
             </ng-container>
             <!-- Programming Language -->
-            <ng-container *ngIf="item.sectionId == 6 && item?.dispalystatus">
+            <ng-container *ngIf="item?.sectionId == 6 && item?.dispalystatus">
                 <section class="programmingLanguages" [id]="item.sectionId" #6>
                     <div class="container">
                         <div class="commonHeadingStyle">{{item?.title}}</div>
@@ -490,7 +490,7 @@
                 </section>
             </ng-container>
             <!-- enrollNow -->
-            <ng-container *ngIf="item?.sectionId == 9 && item.dispalystatus">
+            <ng-container *ngIf="item?.sectionId == 9 && item?.dispalystatus">
                 <!-- <section class="enrollNow" [ngStyle]="{'background-image': 'url(' + item?.bgurl + ')'}"> -->
                 <section class="enrollNow">
                     <div class="container">
@@ -513,14 +513,14 @@
                 </section>
             </ng-container>
             <!-- testimonial -->
-            <ng-container *ngIf="item.sectionId == 7 && item.dispalystatus">
+            <ng-container *ngIf="item?.sectionId == 7 && item?.dispalystatus">
                <div [id]="item?.sectionId" #7>
                     <app-testimonial [testimonal]="item"></app-testimonial>
                </div>
             </ng-container>
 
             <!-- FAQ -->
-            <ng-container *ngIf="item.sectionId == 8 && item.dispalystatus">
+            <ng-container *ngIf="item?.sectionId == 8 && item?.dispalystatus">
                 <section class="faq" [id]="item.sectionId" #8 [ngStyle]="{'background-image': 'url(' + item?.imageurl + ')'}">
                     <div class="container">
                         <div class="commonHeadingStyle">{{item?.title}}</div>
@@ -543,80 +543,8 @@
             </ng-container>
             
             <!-- Related items -->
-            <ng-container *ngIf="item.sectionId == 10 && item.dispalystatus">
-                <section class="relatedProgramsAssessments programList" *ngIf="item?.subHeading1?.dispalystatus">
-                    <div class="container">
-                        <div class="commonHeadingStyle">{{item?.subHeading1?.title}}</div>
-                    </div>
-                    <div class="programBg commonCSS">
-                        <div class="container">
-                            <div class="wrapper">
-                                <owl-carousel-o [options]="relatedList">
-                                    <ng-container>
-                                        <ng-template carouselSlide *ngFor="let relatedchild of item?.subHeading1?.innerArray">
-                                            <div class="relatedList">
-                                                <span class="heading">{{relatedchild?.title}}</span>
-                                                <figure>
-                                                    <img [src]="relatedchild?.imageurl" alt="" />
-                                                </figure>
-                                                <div class="contentWrapper">
-                                                    <span class="batchStarts"><em class="icon-Time"></em> Batch starts on : {{relatedchild?.date}}</span>
-                                                    <div class="mnthStarts">
-                                                        <span class="months"><em class="icon-Booked"></em> {{relatedchild?.duration}}</span>
-                                                        <span class="stars">
-                                                            <em class="icon-Star" *ngFor="let rate of relatedchild?.rating"></em>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </ng-template>
-                                    </ng-container>
-                                </owl-carousel-o>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="relatedProgramsAssessments assessmentList" *ngIf="item?.subHeading2?.dispalystatus">
-                    <div class="container">
-                        <div class="commonHeadingStyle">{{item?.subHeading2?.title}}</div>
-                    </div>
-                    <div class="assessmentBg commonCSS">
-                        <div class="container">
-                            <div class="wrapper">
-                                <owl-carousel-o [options]="relatedList">
-                                    <ng-container>
-                                        <ng-template carouselSlide *ngFor="let relatedcourse of item?.subHeading2?.innerArray">
-                                            <div class="relatedList">
-                                                <span class="heading">{{relatedcourse?.title}}</span>
-                                                <figure>
-                                                    <img [src]="relatedcourse?.imageurl" alt="" />
-                                                </figure>
-                                                <div class="contentWrapper">
-                                                    <div class="mnthStarts">
-                                                        <span class="stars">
-                                                            <em class="icon-Star" *ngFor="let rate of relatedcourse?.rating"></em>
-                                                        </span>
-                                                    </div>
-                                                    <div class="level">
-                                                        <div>
-                                                            <p>Skill Level</p>
-                                                            <span><em class="icon-Level2"></em> {{relatedcourse?.level}}</span>
-                                                        </div>
-                                                        <div>
-                                                            <p>{{'No. of Assessments '}}</p>
-                                                            <span><em class="icon-Document"></em> {{relatedcourse?.NoOfAssessment}}</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </ng-template>
-                                    </ng-container>
-                                </owl-carousel-o>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+            <ng-container *ngIf="item?.sectionId == 10 && item?.dispalystatus">
+                <app-relateditems [relateditem]="item"></app-relateditems>
             </ng-container>
             <!-- hiringPartnres -->
             <ng-container *ngIf="item?.sectionId == 11 && item.dispalystatus">
