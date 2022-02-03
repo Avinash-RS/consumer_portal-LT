@@ -5,15 +5,14 @@
     display: inline-block;
     width: 100%;
 }
-.app-Goals{
-    background-color: #F7F7F7;
-}
+
 // bannercount
 .bannercount {
-    background-color: $whiteColor;
-    font-size: 14px;
+    background-color: #F9FDFF;
+    padding: 2.75em 0;
+    font-size: 11px;
     @include sm {
-      padding: 2.75em 0;
+      font-size: 12px;
     }
     @include md {
       font-size: 13px;
@@ -27,37 +26,60 @@
     .container {
         ul {
             display: flex;
-            justify-content: center;
-            align-items: center;
+            justify-content: space-between;
+            align-items: flex-start;
             flex-wrap: wrap;
             padding: 0;
-            max-width: 980px;
-            width: 100%;
-            margin: 0 auto;
-            @include md {
-                flex-wrap: nowrap;
-                justify-content: space-between;
-                align-items: flex-start;
-              }
             li {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+                width: 100%;
+                margin-top: 1em;
+                &:first-child {
+                  margin-top: 0;
+                }
+                &:nth-child(2) {
+                  @include md {
+                    margin-top: 0;
+                  }
+                }
+                &:last-child {
+                  @include sm {
+                    margin-top: 1em;
+                  }
+                  @include md {
+                    margin-top: 0;
+                  }
+                }
+                @include sm {
+                  width: 45%;
+                }
+                @include md {
+                  width: 30%;
+                }
+                @include lg {
+                }
                 figure {
-                    margin-right: 1.5em;
+                    margin-right: 2em;
+                    width: 17%;
                 }
                 .right {
+                  width: 81%;
                     .count {
                         color: $blueLabelColor;
                         font-family: "OpenSans", sans-serif;
                         font-size: 2.1875em;
-                        font-weight: 800;
-                        margin-bottom: 0.5em;
+                        font-weight: 400;
+                        margin-bottom: 0.25em;
+                        line-height: normal;
                     }
                     p {
                         color: $shadeBlueColor;
                         font-size: 1.125em;
                         font-weight: 700;
+                        line-height: normal;
+                        margin: 0;
                     }
                 }
             }
