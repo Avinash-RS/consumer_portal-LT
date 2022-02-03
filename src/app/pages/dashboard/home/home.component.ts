@@ -10,6 +10,7 @@ import { CatalogService } from "../../../services/catalog.service";
 import { APP_CONSTANTS } from 'src/app/utils/app-constants.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from "@angular/material/dialog";
+import { OwlOptions } from "ngx-owl-carousel-o";
 @Component({
   selector: "app-home",
   templateUrl: "./home.component.html",
@@ -113,6 +114,35 @@ export class HomeComponent implements OnInit {
         "Subimageurl" : "https://lmsassetspremium.lntedutech.com/portalicons/ccavenue.png",
         "description" : ""
     }
+}
+HomeBannerImage = [
+  1,2,3,4,5
+];
+testimonialOptions: OwlOptions = {
+  loop: true,
+  mouseDrag: false,
+  touchDrag: false,
+  pullDrag: false,
+  dots: true,
+  navSpeed: 700,
+  margin: 30,
+  center: true,
+  navText: ["<i class='icon-Back'></i>", "<i class='icon-right-next'></i>"],
+  nav: true,
+  responsive: {
+    0: {
+      items: 1
+    },
+    600: {
+      items: 1
+    },
+    650: {
+      items: 3
+    },
+    1024: {
+      items: 3
+    }
+  }
 }
   constructor(private util: UtilityService, private dialog: MatDialog, public commonService: CommonService, private cookieService: CookieService, private router: Router, private appconfig: AppConfigService, private catalogService: CatalogService, public toast: ToastrService,) {
 

@@ -38,6 +38,34 @@
     <app-assessments-list class="app-Assessment"></app-assessments-list>
     <app-goals class="app-Goals" [AchieveGoal]="commonData.acheiveData"></app-goals>
     <!-- <app-examination class="app-Examination" [Examination]="commonData.examinationData"></app-examination> -->
+    <!-- feedback -->
+    <section class="feedback">
+      <div class="container">
+        <div class="heading2">What Our Students Have To Say</div>
+        <div class="owlCarouselWrapper">
+          <owl-carousel-o [options]="testimonialOptions">
+            <ng-container *ngFor = "let bannerSection of HomeBannerImage;">
+              <ng-template carouselSlide>
+                  <div class="card">
+                      <p class="title">A great place to grow</p>
+                      <p class="desc">“ Donec nec justo eget felis morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam.”</p>
+                  <div class="imagearea">
+                      <div class="greencircle"></div>
+                    <figure>
+                      <img src="../../../../assets/images/jessica.png" alt="">
+                    </figure>
+                  </div>
+                  </div>
+                  <div class="footer">
+                    <p>Taylor Mohamed</p>
+                    <span>Businessman</span>
+                  </div>
+              </ng-template>
+            </ng-container>
+          </owl-carousel-o>
+        </div>
+      </div>
+    </section>
     <!-- trail -->
     <section class="trail">
       <div class="container">
