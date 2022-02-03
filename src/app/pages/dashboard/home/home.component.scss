@@ -179,7 +179,7 @@
     }
 }
 .feedback {
-  position: relative;
+      position: relative;
       font-size: 14px;
       background-color: #F6F7FA;
       padding: 3.75em 0;
@@ -324,6 +324,70 @@
         background-color: #E9EBF0;
         &:hover {
           background-color: #2EA3F2;
+        }
+      }
+    }
+  }
+}
+.chooseus {
+  background-color: $whiteColor;
+  font-size: 14px;
+  @include sm {
+    padding: 2.75em 0;
+  }
+  @include md {
+    font-size: 13px;
+  }
+  @include lg {
+    font-size: 14px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
+  .container {
+    .contentwrapper {
+      display: flex;
+      justify-content: space-between;
+      .left {
+        width: 46%;
+        ul {
+          li {
+            margin-bottom: 1em;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            .listleft {
+              margin-right: 1.5em;
+              .circle {
+                background-color: #EDF4F8;
+                width: 4em;
+                height: 4em;
+                border-radius: 50%;
+              }
+            }
+            .listright {
+              div {
+                color: $mediumGrey;
+                font-family: "OpenSans", sans-serif;
+                font-size: 1.125em;
+                font-weight: 700;
+                line-height: 3;
+              }
+              p {
+                color: $mediumGrey;
+                font-size: 0.9375em;
+                font-weight: 400;
+                line-height: 2;
+              }
+            }
+           
+          }
+        }
+      }
+      .right {
+        width: 50%;
+        figure {
+
         }
       }
     }
