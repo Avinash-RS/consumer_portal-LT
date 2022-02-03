@@ -159,7 +159,10 @@ export class CommonService {
     return this.http.post(this.baseurl + 'addUserDetails',kycData,this.httpOptionsWithToken)
   }
   getKycUserDetails(userId){
-    return this.http.get(this.baseurl + 'getProfileDetailsById?userId=' + userId,this.httpOptionsWithToken) 
+    var value = {
+      'userId': userId
+    }
+    return this.http.post(this.baseurl + 'getProfileDetailsById',value,this.httpOptionsWithToken) 
   }
   getProfilePercentage(data){
     return this.http.post(this.baseurl + 'profilePercentage',data,this.httpOptions)
