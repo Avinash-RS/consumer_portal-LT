@@ -535,83 +535,11 @@
 
 <!-- testimonials -->
     <ng-container *ngIf="aboutArea?.assessmentContents?.testimonials?.dispalystatus">
-        <app-testimonial [testimonal]="aboutArea?.assessmentContents?.testimonials" [id]="testimonal.sectionId" #7></app-testimonial>
+        <app-testimonial [testimonal]="aboutArea?.assessmentContents?.testimonials"></app-testimonial>
     </ng-container>
     <!-- Related items -->
     <ng-container *ngIf="aboutArea?.assessmentContents?.relatedItems?.dispalystatus">
-        <section class="relatedProgramsAssessments programList" *ngIf="aboutArea?.assessmentContents?.relatedItems?.subHeading1?.dispalystatus">
-            <div class="container">
-                <div class="commonHeadingStyle">{{aboutArea?.assessmentContents?.relatedItems?.subHeading1?.title}}</div>
-            </div>
-            <div class="programBg commonCSS">
-                <div class="container">
-                    <div class="wrapper">
-                        <owl-carousel-o [options]="relatedList">
-                            <ng-container>
-                                <ng-template carouselSlide *ngFor="let relatedchild of aboutArea?.assessmentContents?.relatedItems?.subHeading1?.innerArray">
-                                    <div class="relatedList">
-                                        <span class="heading">{{relatedchild?.title}}</span>
-                                        <figure>
-                                            <img [src]="relatedchild?.imageurl" alt="" />
-                                        </figure>
-                                        <div class="contentWrapper">
-                                            <span class="batchStarts"><em class="icon-Time"></em> Batch starts on : {{relatedchild?.date}}</span>
-                                            <div class="mnthStarts">
-                                                <span class="months"><em class="icon-Booked"></em> {{relatedchild?.duration}}</span>
-                                                <span class="stars">
-                                                    <em class="icon-Star" *ngFor="let rate of relatedchild?.rating"></em>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </ng-template>
-                            </ng-container>
-                        </owl-carousel-o>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="relatedProgramsAssessments assessmentList" *ngIf="aboutArea?.assessmentContents?.relatedItems?.subHeading2?.dispalystatus">
-            <div class="container">
-                <div class="commonHeadingStyle">{{aboutArea?.assessmentContents?.relatedItems?.subHeading2?.title}}</div>
-            </div>
-            <div class="assessmentBg commonCSS">
-                <div class="container">
-                    <div class="wrapper">
-                        <owl-carousel-o [options]="relatedList">
-                            <ng-container>
-                                <ng-template carouselSlide *ngFor="let relatedcourse of let relatedchild of aboutArea?.assessmentContents?.relatedItems?.subHeading2?.innerArray">
-                                    <div class="relatedList">
-                                        <span class="heading">{{relatedcourse?.title}}</span>
-                                        <figure>
-                                            <img [src]="relatedcourse?.imageurl" alt="" />
-                                        </figure>
-                                        <div class="contentWrapper">
-                                            <div class="mnthStarts">
-                                                <span class="stars">
-                                                    <em class="icon-Star" *ngFor="let rate of relatedcourse?.rating"></em>
-                                                </span>
-                                            </div>
-                                            <div class="level">
-                                                <div>
-                                                    <p>Skill Level</p>
-                                                    <span><em class="icon-Level2"></em> {{relatedcourse?.level}}</span>
-                                                </div>
-                                                <div>
-                                                    <p>{{'No. of Assessments '}}</p>
-                                                    <span><em class="icon-Document"></em> {{relatedcourse?.NoOfAssessment}}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </ng-template>
-                            </ng-container>
-                        </owl-carousel-o>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <app-relateditems [relateditem]="aboutArea?.assessmentContents?.relatedItems"></app-relateditems>
     </ng-container>
 
     <!-- hirring partners -->
