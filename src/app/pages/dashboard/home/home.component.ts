@@ -133,7 +133,7 @@ testimonialOptions: OwlOptions = {
     0: {
       items: 1
     },
-    600: {
+    500: {
       items: 1
     },
     650: {
