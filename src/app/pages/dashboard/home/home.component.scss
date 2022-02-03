@@ -91,8 +91,8 @@
     position: relative;
     background-color: $whiteColor;
     font-size: 14px;
+    padding: 3.75em 0;
     @include sm {
-      padding: 2.75em 0;
     }
     @include md {
       font-size: 13px;
@@ -103,29 +103,47 @@
     @include xl {
       font-size: 16px;
     }
+    &::before, &::after {
+      content: "";
+      position: absolute;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: top;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 93%;
+      width: 70%;
+      opacity: 0.2;
+      @include sm {
+        opacity: 1;
+        width: 45%;
+      }
+      @include md {
+        width: 29%;
+      }
+      @include lg {
+        width: 25%;
+      }
+      @include xl {
+        width: 20%;
+      }
+      @media only screen and (min-width: 1540px) {
+        width: 14%;
+      }
+    }
     &::before {
-        content: "";
-        position: absolute;
-        background-repeat: no-repeat;
-        background-size: contain;
         background-image: url("#{$imagePath}/trail-left.svg");
-        background-position: top;
-        top: 10px;
-        left: -373px;
-        width: 50%;
-        height: 90%;
+        left: -11em;
+        @include md {
+          left: -8em;
+        }
     }
     &::after {
-        content: "";
-        position: absolute;
-        background-repeat: no-repeat;
-        background-size: contain;
         background-image: url("#{$imagePath}/trail-right.svg");
-        background-position: top;
-        top: 10px;
-        right: -373px;
-        width: 50%;
-        height: 90%;
+        right: -11em;
+        @include md {
+          right: -8em;
+        }
     }
     .container {
         text-align: center;
@@ -164,8 +182,7 @@
       position: relative;
       font-size: 14px;
       background-color: #F6F7FA;
-      margin-bottom: 1em;
-      padding: 2em 0 5em 0;
+      padding: 3.75em 0;
         &::before {
           position: absolute;
           content: '';
@@ -201,11 +218,14 @@
           text-align: center;
           .card {
             position: relative;
-            width: 100%;
+            width: 90%;
             background-color: $whiteColor;
             padding: 2.75em;
             border-radius: 5px;
-            margin: 0.5em 0 1em 0;
+            margin: 1em auto 1em auto;
+            @include md {
+              width: 100%;
+            }
             .title {
               color: $darkMediumGrey;
               font-family: "OpenSans", sans-serif;
@@ -292,7 +312,7 @@
   }
   .owl-theme {
     .owl-dots {
-      margin-top: 2.5em;
+      margin-top: 1em;
       position: absolute;
       bottom: auto;
       left: 0;
