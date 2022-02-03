@@ -1,6 +1,8 @@
 <section class="assessmentSection">
+    <span class="obstacles"></span>
     <div class="container">
-        <div class="heading2">Industry Leader in Engineering</div>
+        <div class="heading2">Industry Leader in Engineering Assessments</div>
+        <p>Build your proficiency in the hottest industry of the 21st century.</p>
         <!-- <nav class="mainTab">
             <a (click)="getDomain('assessment')" [ngClass]="productType == 'assessment' ? 'active' :''">Assessments</a>
             <a (click)="getDomain('course')" [ngClass]="productType == 'course' ? 'active' :''">Courses</a>
@@ -12,15 +14,15 @@
                         <a [ngClass]="tab.isSelected ? 'active': '' " (click)="getArea(tab.cid)">{{tab.name}}</a>
                     </ng-container>
                 </nav>
-                <div class="btn-group">
+                <!-- <div class="btn-group">
                     <button class="product-btn" (click)="getDomain('all');fromTab='All'" [ngClass]="productType == 'all' ? 'active' :''">All</button>
                     <button class="product-btn" (click)="getDomain('course');fromTab='All'" [ngClass]="productType == 'course' ? 'active' :''">Courses</button>
                     <button class="product-btn" (click)="getDomain('assessment');fromTab='All'" [ngClass]="productType == 'assessment' ? 'active' :''">Assessments</button>
-                </div>
+                </div> -->
                 <!-- <button class="filter"><em class="icon-Filter"></em><span>Filters</span></button> Dont Delete this line -->
             </div>
             <div class="assessmentList" [@listAnimation]="areaCards.length">
-                <ng-container *ngIf ="noDataSkeleton">
+                <!-- <ng-container *ngIf ="noDataSkeleton">
                     <div class="skeletonWrapper">
                         <div class="items">
                             <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '50px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
@@ -47,7 +49,7 @@
                             <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
                         </div>
                     </div>
-                </ng-container>
+                </ng-container> -->
                 <ng-container *ngIf ="areaCards?.length > 0">
                     <ng-container *ngFor="let cards of areaCards">
                         <div class="list" (click)="aboutAssessment(cards.cid ,cards.productType)">
@@ -56,42 +58,58 @@
                                     <img [src] = "cards.image.url" alt="" />
                                     <!-- <button class="topRated">Top Rated</button> Dont Delete this line -->
                                 </figure>
-                                <div class="previewRibbon">
-                                    <span *ngIf="cards.productType == 'assessment'">Assessment</span>
-                                    <span *ngIf="(cards.productType == 'course') && (cards.courseId != '494' && cards.courseId != '493')" [ngClass]="cards.productType == 'course' ? 'coursetag':''">Learning Path</span>
-                                    <span *ngIf="(cards.productType == 'course') && (cards.courseId == '494'|| cards.courseId == '493')" class="stepTag">Course</span>
-                                </div>
                             </div>
                             <div class="listDescription">
                                 <!-- <div class="heart"><em class="icon-Favorite"></em></div> Dont Delete this line-->
                                 <div class="headings">
-                                    <span class="domainName">{{cards.domainName}}</span>
-                                    <span class="heading6">{{cards.name}}</span>
+                                    <span class="domainName" *ngIf="cards.productType == 'assessment'"><em class="icon-Right_Play"></em> {{cards.domainName}}</span>
+                                    <span class="domainName" *ngIf="(cards.productType == 'course') && (cards.courseId != '494' && cards.courseId != '493')" [ngClass]="cards.productType == 'course' ? 'collegeConnect':''"><em class="icon-Right_Play"></em> {{cards.domainName}}</span>
+                                    <span class="domainName english" *ngIf="(cards.productType == 'course') && (cards.courseId == '494'|| cards.courseId == '493')"><em class="icon-Right_Play"></em> {{cards.domainName}}</span>
+
+                                    <span class="heading5">{{cards.name}}</span>
                                 </div>
                                 <div class="ratingSkills">
-                                    <!--  Dont Delete this div <div>
-                                        <span class="commonStyle">Rating</span>
+                                    <div>
+                                        <span class="commonStyle">No. of {{cards.productType =='course' ? 'Modules' :'Assessments'}}</span>
+                                        <span class="iconwithText"><em class="icon-Document"></em> {{cards.totalAssessment}}</span>
+                                    </div>
+                                    <div *ngIf="cards.productType == 'assessment'">
+                                        <span class="commonStyle">Skill Level</span>
+                                        <span class="iconwithText"><em class="icon-Level2"></em> Intermediate</span>
+                                    </div>
+                                    <div *ngIf="(cards.productType == 'course') && (cards.courseId != '494' && cards.courseId != '493')">
+                                        <span class="commonStyle">Batch starts on</span>
+                                        <span class="iconwithText"><em class="icon-Time"></em> 15 Feb, 2022</span>
+                                    </div>
+                                    <div *ngIf="(cards.productType == 'course') && (cards.courseId == '494'|| cards.courseId == '493')">
+                                        <span class="commonStyle">Step</span>
+                                        <span class="iconwithText"><em class="icon-Level2"></em> Intermediate</span>
+                                    </div>
+                                </div>
+                                <div class="assessmentDuration">
+                                     <!-- Dont Delete this div  -->
+                                     <div>
                                         <span class="ratingStar">
                                             <em class="icon-Star"></em>
                                             <em class="icon-Star"></em>
                                             <em class="icon-Star"></em>
                                         </span>
-                                    </div> -->
-                                    <div>
-                                        <span class="commonStyle">Skill Level</span>
-                                        <span class="iconwithText"><em class="icon-Level2"></em> Intermediate</span>
+                                    </div>
+                                    <div *ngIf="cards.productType == 'assessment'">
+                                        <span class="iconwithText assessmentIcon"><em class="icon-p_mid"></em></span>
+                                    </div>
+                                    <div *ngIf="(cards.productType == 'course') && (cards.courseId != '494' && cards.courseId != '493')">
+                                        <span class="iconwithText"><em class="icon-Time"></em> {{cards.totalDuration}} h</span>
+                                    </div>
+                                    <div *ngIf="(cards.productType == 'course') && (cards.courseId == '494'|| cards.courseId == '493')">
+                                        <span class="iconwithText"><em class="icon-Time"></em> {{cards.totalDuration}} h</span>
                                     </div>
                                 </div>
-                                <div class="assessmentDuration">
-                                    <div>
-                                        <span class="commonStyle">No. of {{cards.productType =='course' ? 'Modules' :'Assessments'}}</span>
-                                        <span class="iconwithText"><em class="icon-Document"></em> {{cards.totalAssessment}}</span>
-                                    </div>
-                                    <div style="display: none;">
-                                        <span class="commonStyle">Duration</span>
-                                        <span class="iconwithText"><em class="icon-Time"></em> {{cards.totalDuration}}h</span>
-                                    </div>
-                                </div>
+                            </div>
+                            <div class="previewRibbon">
+                                <span *ngIf="cards.productType == 'assessment'">Assessment</span>
+                                <span *ngIf="(cards.productType == 'course') && (cards.courseId != '494' && cards.courseId != '493')" [ngClass]="cards.productType == 'course' ? 'coursetag':''">Learning Path</span>
+                                <span *ngIf="(cards.productType == 'course') && (cards.courseId == '494'|| cards.courseId == '493')" class="stepTag">Course</span>
                             </div>
                         </div>
                     </ng-container>

@@ -1,10 +1,13 @@
-<section class="achieveGoals hide-on-init" animateOnScroll animationName="animated fadeInDown">
+<!-- <section class="achieveGoals hide-on-init" animateOnScroll animationName="animated fadeInDown"> -->
+<section class="achieveGoals">
     <div class="container">
-        <div class="heading2">DISCOVER, IMPROVE & ACHIEVE</div>
+        <div class="heading2">Achieve Your Goals With <span>L&T Edutech</span></div>
+        <p>Choose from hundreds of free courses, or get a degree or certificate at a breakthrough price. Learn at your own pace, 100% online.</p>
         <div class="goalsWrapper">
-            <div class="benchmark goals" *ngFor = "let goals of AchieveGoal">
-                <div class="">
+            <div class="goals" *ngFor = "let goals of AchieveGoal">
+                <div class="goalsNumber">
                     <em class="{{goals.icon}}"></em>
+                    <span>01</span>
                 </div>
                 <div class="heading5">{{goals.name}}</div>
                 <p>{{goals.longDescription}}</p>

@@ -1,7 +1,447 @@
+@import "variables";
+@import "keyframes";
+
 [class*=app-] {
     display: inline-block;
     width: 100%;
 }
-.app-Goals{
-    background-color: #F7F7F7;
+
+// bannercount
+.bannercount {
+    background-color: #F9FDFF;
+    padding: 2.75em 0;
+    font-size: 11px;
+    @include sm {
+      font-size: 12px;
+    }
+    @include md {
+      font-size: 13px;
+    }
+    @include lg {
+      font-size: 14px;
+    }
+    @include xl {
+      font-size: 16px;
+    }
+    .container {
+        ul {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            padding: 0;
+            li {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                margin-top: 1em;
+                &:first-child {
+                  margin-top: 0;
+                }
+                &:nth-child(2) {
+                  @include md {
+                    margin-top: 0;
+                  }
+                }
+                &:last-child {
+                  @include sm {
+                    margin-top: 1em;
+                  }
+                  @include md {
+                    margin-top: 0;
+                  }
+                }
+                @include sm {
+                  width: 45%;
+                }
+                @include md {
+                  width: 30%;
+                }
+                @include lg {
+                }
+                figure {
+                    margin-right: 2em;
+                    width: 17%;
+                }
+                .right {
+                  width: 81%;
+                    .count {
+                        color: $blueLabelColor;
+                        font-family: "OpenSans", sans-serif;
+                        font-size: 2.1875em;
+                        font-weight: 400;
+                        margin-bottom: 0.25em;
+                        line-height: normal;
+                    }
+                    p {
+                        color: $shadeBlueColor;
+                        font-size: 1.125em;
+                        font-weight: 700;
+                        line-height: normal;
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+// trail
+.trail {
+    position: relative;
+    background-color: $whiteColor;
+    font-size: 14px;
+    padding: 3.75em 0;
+    @include sm {
+    }
+    @include md {
+      font-size: 13px;
+    }
+    @include lg {
+      font-size: 14px;
+    }
+    @include xl {
+      font-size: 16px;
+    }
+    &::before, &::after {
+      content: "";
+      position: absolute;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: top;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 93%;
+      width: 70%;
+      opacity: 0.2;
+      @include sm {
+        opacity: 1;
+        width: 45%;
+      }
+      @include md {
+        width: 29%;
+      }
+      @include lg {
+        width: 25%;
+      }
+      @include xl {
+        width: 20%;
+      }
+      @media only screen and (min-width: 1540px) {
+        width: 14%;
+      }
+    }
+    &::before {
+        background-image: url("#{$imagePath}/trail-left.svg");
+        left: -11em;
+        @include md {
+          left: -8em;
+        }
+    }
+    &::after {
+        background-image: url("#{$imagePath}/trail-right.svg");
+        right: -11em;
+        @include md {
+          right: -8em;
+        }
+    }
+    .container {
+        text-align: center;
+        line-height: normal;
+        p {
+            color: $blueLabelColor;
+            font-family: "OpenSans", sans-serif;
+            font-size: 2.1875em;
+            font-weight: 800;
+        }
+        .desc {
+            margin: 1.5em 0;
+            color: $shadeBlueColor;
+            font-size: 0.8125;
+            font-weight: 400;
+        }
+        button {
+            font-family: "OpenSans", sans-serif;
+            padding: 0.35em 1.5em;
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+            font-size: 1.3125em;
+            font-weight: 700;
+            border-radius: 5px;
+            background-color: #49AE31;
+            color: $whiteColor;
+            border: 1px solid  #49AE31;
+            transition: all 0.3s ease-in-out;
+            &:hover {
+                background-color:$whiteColor;
+                color: #49AE31;
+            }
+        }
+    }
+}
+.feedback {
+      position: relative;
+      font-size: 14px;
+      background-color: #F6F7FA;
+      padding: 3.75em 0;
+        &::before {
+          position: absolute;
+          content: '';
+          top: 0;
+          left: 0;
+          width: 100%;
+          height :100%;
+          background-image: url("#{$imagePath}/feedbackbg.svg");
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center;
+          width: 100%;
+          background-position:center;
+          opacity: 1;
+        }
+    @include sm {
+      padding: 4.75em ​0;
+    }
+    @include md {
+      font-size: 13px;
+    }
+    @include lg {
+      font-size: 14px;
+    }
+    @include xl {
+      font-size: 16px;
+    }
+    .container { 
+        .owlCarouselWrapper {
+          margin-top: 3em;
+          position: relative;
+          width: 100%;
+          text-align: center;
+          .card {
+            position: relative;
+            width: 90%;
+            background-color: $whiteColor;
+            padding: 2.75em;
+            border-radius: 5px;
+            margin: 1em auto 1em auto;
+            @include md {
+              width: 100%;
+            }
+            .title {
+              color: $darkMediumGrey;
+              font-family: "OpenSans", sans-serif;
+              font-size: 1.125em;
+              font-weight: 700;
+              margin-bottom: 1.25em;
+            }
+            .desc {
+              color:$lightGrey;
+              font-size: 1em;
+              font-weight: 400;
+              line-height: 1.5;
+              margin: 0;
+            }
+            .imagearea {
+              margin-top: 20px;
+              position: absolute;
+              left: 50%;
+              transform: translateX(-50%);
+              bottom: -40px;
+              display: flex;
+              align-items: center;
+                  .greencircle {
+                    height: 4.5em;
+                    width: 4.5em;
+                    border-radius: 50%;
+                    background-color:#20B19A;
+                    display: inline-block;
+                    position: relative;
+                    left: 0.65em;
+                  }
+                  figure {
+                    display: inline-block;
+                    overflow: hidden;
+                    border-radius: 50%;
+                    box-shadow: 15px 15px 10px 0 rgb(0 0 0 / 10%);
+                    transition: all 0.4s ease;
+                    width: 4.5em;
+                    position: relative;
+                    right: 0.65em;
+                  }
+            }
+       
+          }
+          .footer {
+            margin-top: 4em;
+            p {
+              color: $darkMediumGrey;
+              font-family: "OpenSans", sans-serif;
+              font-size: 0.9375em;
+              font-weight: 700;
+            }
+            span {
+              color:$lightGrey;
+              font-size: 0.9375em;
+              font-weight: 400;
+              margin: 1em 0;
+            }
+          }
+        }
+    }
+}
+::ng-deep.owlCarouselWrapper {
+  .owl-carousel { 
+    .owl-item { 
+      .card ,.footer {
+        opacity: 0.6;
+      }
+      .card {
+        &::before {
+          box-shadow: none;
+          background: #f5f5f5;
+        }
+      }
+      &.center { 
+        .card ,.footer { 
+          opacity: 1;
+        }
+        .card {
+          box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+        }
+      }
+    }
+  }
+  .owl-theme {
+    .owl-dots {
+      margin-top: 1em;
+      position: absolute;
+      bottom: auto;
+      left: 0;
+      width: 100%;
+      .owl-dot span {
+        width: 0.5em;
+        height: 0.5em;
+        border-radius: 50%;
+        background-color: #E9EBF0;
+        &:hover {
+          background-color: #2EA3F2;
+        }
+      }
+    }
+  }
+}
+
+//Choose Us
+.chooseus {
+  background-color: $whiteColor;
+  font-size: 14px;
+  padding: 3.75em 0;
+  @include sm {
+  }
+  @include md {
+    padding: 3.75em 0 5em 0;
+    font-size: 13px;
+  }
+  @include lg {
+    font-size: 14px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
+  .container {
+    position: relative;
+    margin-top: 2.5em;
+    @include xl {
+      margin-top: 5em;
+    }
+  }
+  .contentwrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    @include md {
+      flex-wrap: nowrap;
+    }
+    .left {
+      width: 100%;
+      @include md {
+        width: 45%;
+      }
+      ul {
+        li {
+          margin-bottom: 1em;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          .listleft {
+            width: 22%;
+            margin-right: 2em;
+            @include sm {
+              width: 13%;
+            }
+            @include md {
+              width: 22%;
+            }
+            @include lg {
+              width: 19%;
+            }
+            .circle {
+              background-color: #EDF4F8;
+              width: 5.5em;
+              height: 5.5em;
+              border-radius: 50%;
+              position: relative;
+              em {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 2em;
+                color: #5EB4E7;
+              }
+            }
+          }
+          .listright {
+            width: 76%;
+            @include sm {
+              width: 85%;
+            }
+            @include md {
+              width: 76%;
+            }
+            @include lg {
+              width: 79%;
+            }
+            div {
+              color: $mediumGrey;
+              font-family: "OpenSans", sans-serif;
+              font-size: 1.125em;
+              font-weight: 700;
+              line-height: normal;
+              margin-bottom: 0.75em;
+            }
+            p {
+              color: $mediumGrey;
+              font-size: 0.9375em;
+              font-weight: 400;
+              line-height: 1.7;
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+    .right {
+      width: 100%;
+      @include md {
+        width: 50%;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      figure {
+
+      }
+    }
+  }
 }

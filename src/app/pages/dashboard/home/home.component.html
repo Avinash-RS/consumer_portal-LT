@@ -1,9 +1,130 @@
 <ng-container *ngIf="commonData">
     <app-header-image class="app-Header" [HomeBannerImage]="commonData.ImageData"></app-header-image>
+    <!-- bannercount -->
+    <section class="bannercount">
+      <div class="container">
+          <ul>
+            <li>
+              <figure>
+                 <img src="../../../../assets/images/papperclip.svg" alt="">
+              </figure>
+                <div class="right">
+                    <div class="count">2,500+</div>
+                    <p class="desc">Courses & Specializations</p>
+                </div>
+            </li>
+            <li>
+              <figure>
+                <img src="../../../../assets/images/graduate.svg" alt="">
+             </figure>
+              <div class="right">
+                  <div class="count">18</div>
+                  <p>Certificates</p>
+              </div>
+            </li>
+            <li>
+              <figure>
+                <img src="../../../../assets/images/peoplevoice.svg" alt="">
+             </figure>
+              <div class="right">
+                  <div class="count">1,200,000+</div>
+                  <p>People Are Learning on Voce</p>
+              </div>
+            </li>
+          </ul>
+      </div>
+    </section>
     <!-- <app-domain-list class="app-Domain"></app-domain-list> -->
     <app-assessments-list class="app-Assessment"></app-assessments-list>
+
+    <!-- chooseus -->
+    <section class="chooseus">
+      <div class="heading2">Why Choose Us</div>
+      <div class="container">
+        <div class="contentwrapper">
+          <div class="left">
+            <ul>
+              <li>
+                <div class="listleft">
+                  <div class="circle">
+                    <em class="icon-CheckMark"></em>
+                  </div>
+                </div>
+                <div class="listright">
+                  <div>Curabitur congue pretium</div>
+                  <p>Sed euismod orci erat, a ultricies orci fringilla ac. Praesent et mi tristique, iaculis ipsum sit amet, pulvinar libero.estibulum feugiat sollicitudin lacinia.</p>
+                </div>
+              </li>
+              <li>
+                <div class="listleft">
+                  <div class="circle">
+                    <em class="icon-CheckMark"></em>
+                  </div>
+                </div>
+                <div class="listright">
+                  <div>Curabitur congue pretium</div>
+                  <p>Sed euismod orci erat, a ultricies orci fringilla ac. Praesent et mi tristique, iaculis ipsum sit amet, pulvinar libero.estibulum feugiat sollicitudin lacinia.</p>
+                </div>
+              </li>
+              <li>
+                <div class="listleft">
+                  <div class="circle">
+                    <em class="icon-CheckMark"></em>
+                  </div>
+                </div>
+                <div class="listright">
+                  <div>Curabitur congue pretium</div>
+                  <p>Sed euismod orci erat, a ultricies orci fringilla ac. Praesent et mi tristique, iaculis ipsum sit amet, pulvinar libero.estibulum feugiat sollicitudin lacinia.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="right">
+            <figure>
+              <img src="../../../../assets/images/whyChooseUs.png" alt="">
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
     <app-goals class="app-Goals" [AchieveGoal]="commonData.acheiveData"></app-goals>
     <!-- <app-examination class="app-Examination" [Examination]="commonData.examinationData"></app-examination> -->
+    <!-- feedback -->
+    <section class="feedback">
+      <div class="container">
+        <div class="heading2">What Our Students Have To Say</div>
+        <div class="owlCarouselWrapper">
+          <owl-carousel-o [options]="testimonialOptions">
+            <ng-container *ngFor = "let bannerSection of HomeBannerImage;">
+              <ng-template carouselSlide>
+                  <div class="card">
+                      <p class="title">A great place to grow</p>
+                      <p class="desc">“ Donec nec justo eget felis morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam.”</p>
+                  <div class="imagearea">
+                      <div class="greencircle"></div>
+                    <figure>
+                      <img src="../../../../assets/images/jessica.png" alt="">
+                    </figure>
+                  </div>
+                  </div>
+                  <div class="footer">
+                    <p>Taylor Mohamed</p>
+                    <span>Businessman</span>
+                  </div>
+              </ng-template>
+            </ng-container>
+          </owl-carousel-o>
+        </div>
+      </div>
+    </section>
+    <!-- trail -->
+    <section class="trail">
+      <div class="container">
+        <p>Ready to blaze your trail?</p>
+        <div class="desc">Skill up for the future for free.</div>
+        <button>Get Started</button>
+      </div>
+    </section>
     <app-partners-list class="app-Partners" [OurPartners]="OurPartners"></app-partners-list>
 </ng-container>
 <ng-template #kycmandate >
