@@ -147,8 +147,6 @@ export class ForgotPasswordComponent implements OnInit {
     if (this.resetPwdForm.valid){
         // const salt = bcrypt.genSaltSync(10);
         // const pass = bcrypt.hashSync(this.resetPwdForm.value.password, salt);
-        const encryptPass = this.commonService.encrypt(this.resetPwdForm.value.password,this.secretKey)
-
         var encryptedname = CryptoJS.AES.encrypt(this.userEmail.toLowerCase(), this.secretKey.trim()).toString();
         var encryptedpassword = CryptoJS.AES.encrypt(this.resetPwdForm.value.password, this.secretKey.trim()).toString();
         let data = {"email" : encryptedname, "password" : encryptedpassword, "userSecretkey":this.pwdSecretKey , "badgeRequest" : this.recaptchaStr}
