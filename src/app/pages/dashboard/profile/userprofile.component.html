@@ -52,7 +52,7 @@
                         <div class="formFields">
                             <div>
                                 <label>First Name <span class="mandatory">*</span></label>
-                                <mat-form-field appearance="fill" [color]="primary">
+                                <mat-form-field appearance="fill">
                                     <input type="text" matInput placeholder="First Name" formControlName="firstname">
                                 </mat-form-field>
                                 <ng-container *ngIf="firstname.invalid && firstname.touched">
@@ -109,7 +109,7 @@
                         </div>
                         <div class="primaryAccount">
                             <div class="heading">Primary Account Email</div>
-                            <p><span>{{userDetails.email}}</span> This is your primary Email Address for LNT iGGnite Account. <br />Primary account email can not be changed.</p>
+                            <p><span>{{userDetails.emailId}}</span> This is your primary Email Address for LNT iGGnite Account. <br />Primary account email can not be changed.</p>
                         </div>
                         <button type="submit" class="save">Save</button>
                     </form>
@@ -223,7 +223,7 @@
                         <div>
                             <label>Email Address</label>
                             <mat-form-field appearance="fill">
-                                <input type="email" matInput placeholder="{{userDetails.email}}" readonly>
+                                <input type="email" matInput placeholder="{{userDetails.emailId}}" readonly>
                             </mat-form-field>
                             <span class="security">For your security, if you change your email address your saved data information will be deleted.</span>
 
@@ -343,7 +343,7 @@
                         <div>
                             <label>Email Address</label>
                             <mat-form-field appearance="fill">
-                                <input type="email" matInput placeholder="{{userDetails.email}}"  readonly>
+                                <input type="email" matInput placeholder="{{userDetails.emailId}}"  readonly>
                             </mat-form-field>
 
                         </div>
@@ -438,7 +438,7 @@
                                 formControlName="CertificationUrl">
                         </mat-form-field>
                     </div>
-                    <div class="formControlDiv full">
+                    <!-- <div class="formControlDiv full">
                         <label>Upload Badge</label>
                         <button mat-raised-button class="uploadBtn" (click)="onClick($event)">
                             <em class="icon-Upload"></em> Drag and drop file to upload or <span>Browse file</span> {{chooseLabel}}
@@ -453,7 +453,7 @@
                                 <mat-icon>{{deleteButtonIcon}} <em class="icon-Delete"></em></mat-icon>
                             </button>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="AddBadgeBtn">
