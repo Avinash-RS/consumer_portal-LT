@@ -55,6 +55,7 @@ export class CommonService {
     this.cookieService.delete('isLoggedIn')
     this.cookieService.delete('isLoggedInFunc')
     this.appconfig.clearSessionStorage();
+    this.appconfig.clearLocalStorage();
     this.http.post(this.baseurl + 'logout', {}, this.httpOptions);
     if(!value){
       this.appconfig.routeNavigation(APP_CONSTANTS.ENDPOINTS.home);
@@ -106,20 +107,23 @@ export class CommonService {
 
   getProfile(params){
     this.getToken();
-    return this.http.get(this.baseurl + 'getUserInfoById?userId='+ params, this.httpOptionsWithToken);
+    var value = {
+      'userId': params
+    }
+    return this.http.post(this.baseurl + 'getUserInfoById',value, this.httpOptionsWithToken);
   }
   // code added
   getmyAssesments(param){
     this.getToken();
-    return this.http.post(this.baseurl + 'getmyAssesments',param, this.httpOptionsWithToken); //"userId": "go7m52"
+    return this.http.post(this.baseurl + 'getmyAssesments',param, this.httpOptionsWithToken);
   }
   deactivateAccount(param){
     this.getToken();
-    return this.http.post(this.baseurl + 'deactivateAccount',param, this.httpOptionsWithToken); //"userId": "go7m52"
+    return this.http.post(this.baseurl + 'deactivateAccount',param, this.httpOptionsWithToken); 
   }
   updatePassword(param){
     this.getToken();
-    return this.http.post(this.baseurl + 'updatePassword',param, this.httpOptionsWithToken); //"userId": "go7m52"
+    return this.http.post(this.baseurl + 'updatePassword',param, this.httpOptionsWithToken); 
   }
   //skill profile
   getPortfolioDetails(param){
@@ -128,11 +132,11 @@ export class CommonService {
   }
   verifySsotoken(param){
 
-    return this.http.get(environment.sso + '/simplesso/verifytoken?ssoToken='+param, this.httpOptionsWithToken); //"userId": "go7m52"
+    return this.http.get(environment.sso + '/simplesso/verifytoken?ssoToken='+param, this.httpOptionsWithToken); 
   }
   getSsotoken(param){
 
-    return this.http.get(environment.sso + '/simplesso/login?serviceURL='+param, this.httpOptionsWithToken); //"userId": "go7m52"
+    return this.http.get(environment.sso + '/simplesso/login?serviceURL='+param, this.httpOptionsWithToken); 
   }
   //skillometer
   getjobDetails(){
@@ -149,7 +153,7 @@ export class CommonService {
   }//"userId": "go7m52"
   gototest(param){
     this.getToken();
-    return this.http.post(this.baseurl + 'gototest',param, this.httpOptionsWithToken); //"userId": "go7m52"
+    return this.http.post(this.baseurl + 'gototest',param, this.httpOptionsWithToken); 
   }
   postKycUserDetails(kycData){
     return this.http.post(this.baseurl + 'addUserDetails',kycData,this.httpOptionsWithToken)
@@ -167,7 +171,6 @@ export class CommonService {
     try {
       return CryptoJS.AES.encrypt(data, encryptionKey.trim()).toString();
     } catch (e) {
-      console.log(e);
       return data;
     }
   }
