@@ -1,7 +1,65 @@
+@import "variables";
+@import "keyframes";
+
 [class*=app-] {
     display: inline-block;
     width: 100%;
 }
 .app-Goals{
     background-color: #F7F7F7;
+}
+.bannercount {
+    background-color: $whiteColor;
+    font-size: 14px;
+    @include sm {
+      padding: 2.75em 0;
+    }
+    @include md {
+      font-size: 13px;
+    }
+    @include lg {
+      font-size: 14px;
+    }
+    @include xl {
+      font-size: 16px;
+    }
+    .container {
+        ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 0;
+            max-width: 980px;
+            width: 100%;
+            margin: 0 auto;
+            @include md {
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                align-items: flex-start;
+              }
+            li {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                figure {
+                    margin-right: 1.5em;
+                }
+                .right {
+                    .count {
+                        color: $blueLabelColor;
+                        font-family: "OpenSans", sans-serif;
+                        font-size: 2.1875em;
+                        font-weight: 800;
+                        margin-bottom: 0.5em;
+                    }
+                    p {
+                        color: $shadeBlueColor;
+                        font-size: 1.125em;
+                        font-weight: 700;
+                    }
+                }
+            }
+        }
+    }
 }

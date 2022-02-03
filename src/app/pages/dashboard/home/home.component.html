@@ -1,5 +1,39 @@
 <ng-container *ngIf="commonData">
     <app-header-image class="app-Header" [HomeBannerImage]="commonData.ImageData"></app-header-image>
+    <!-- bannercount -->
+    <section class="bannercount">
+      <div class="container">
+          <ul>
+            <li>
+              <figure>
+                 <img src="../../../../assets/images/papperclip.svg" alt="">
+              </figure>
+                <div class="right">
+                    <div class="count">2,500+</div>
+                    <p class="desc">Courses & Specializations</p>
+                </div>
+            </li>
+            <li>
+              <figure>
+                <img src="../../../../assets/images/graduate.svg" alt="">
+             </figure>
+              <div class="right">
+                  <div class="count">18</div>
+                  <p>Certificates</p>
+              </div>
+            </li>
+            <li>
+              <figure>
+                <img src="../../../../assets/images/peoplevoice.svg" alt="">
+             </figure>
+              <div class="right">
+                  <div class="count">1,200,000+</div>
+                  <p>People Are Learning on Voce</p>
+              </div>
+            </li>
+          </ul>
+      </div>
+    </section>
     <!-- <app-domain-list class="app-Domain"></app-domain-list> -->
     <app-assessments-list class="app-Assessment"></app-assessments-list>
     <app-goals class="app-Goals" [AchieveGoal]="commonData.acheiveData"></app-goals>
