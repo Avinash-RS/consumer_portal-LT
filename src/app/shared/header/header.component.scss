@@ -225,12 +225,19 @@ header {
         }
     }
     .register {
-        @include buttonOutlined;
-        padding-left: 1em;
-        padding-right: 1em;
+        padding: 0.375em 1.5em;
+        background-color: $whiteColor;
+        color: $secondaryColor;
         font-size: 1.15em;
         font-weight: 400;
-        display: none;
+        border-radius: 5px;
+        border: 1px solid $primaryColor;
+        box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease-in-out;
+        &:hover {
+            color: $whiteColor;
+            background-color: $primaryColor;
+        }
         @include lg {
             display: inline-flex;
         }
