@@ -8,6 +8,7 @@
 .app-Goals{
     background-color: #F7F7F7;
 }
+// bannercount
 .bannercount {
     background-color: $whiteColor;
     font-size: 14px;
@@ -59,6 +60,80 @@
                         font-weight: 700;
                     }
                 }
+            }
+        }
+    }
+}
+// trail
+.trail {
+    position: relative;
+    background-color: $whiteColor;
+    font-size: 14px;
+    @include sm {
+      padding: 2.75em 0;
+    }
+    @include md {
+      font-size: 13px;
+    }
+    @include lg {
+      font-size: 14px;
+    }
+    @include xl {
+      font-size: 16px;
+    }
+    &::before {
+        content: "";
+        position: absolute;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url("#{$imagePath}/trail-left.svg");
+        background-position: top;
+        top: 10px;
+        left: -373px;
+        width: 50%;
+        height: 90%;
+    }
+    &::after {
+        content: "";
+        position: absolute;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url("#{$imagePath}/trail-right.svg");
+        background-position: top;
+        top: 10px;
+        right: -373px;
+        width: 50%;
+        height: 90%;
+    }
+    .container {
+        text-align: center;
+        line-height: normal;
+        p {
+            color: $blueLabelColor;
+            font-family: "OpenSans", sans-serif;
+            font-size: 2.1875em;
+            font-weight: 800;
+        }
+        .desc{
+            margin: 1.5em 0;
+            color: $shadeBlueColor;
+            font-size: 0.8125;
+            font-weight: 400;
+        }
+        button {
+            font-family: "OpenSans", sans-serif;
+            padding: 0.35em 1.5em;
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+            font-size: 1.3125em;
+            font-weight: 700;
+            border-radius: 5px;
+            background-color: #49AE31;
+            color: $whiteColor;
+            border: 1px solid  #49AE31;
+            transition: all 0.3s ease-in-out;
+            &:hover {
+                background-color:$whiteColor;
+                color: #49AE31;
             }
         }
     }
