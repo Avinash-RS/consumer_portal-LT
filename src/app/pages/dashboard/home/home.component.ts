@@ -118,6 +118,7 @@ export class HomeComponent implements OnInit {
 HomeBannerImage = [
   1,2,3,4,5
 ];
+activeButton = '';
 testimonialOptions: OwlOptions = {
   loop: true,
   mouseDrag: false,
@@ -193,6 +194,9 @@ testimonialOptions: OwlOptions = {
     }
   }
 
+  showPhase(event){
+    this.activeButton = event;
+  }
 
   getStaticHomeData() {
     this.commonService.getStaticDataHome().subscribe((response: any) => {
