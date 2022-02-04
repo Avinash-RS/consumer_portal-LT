@@ -480,6 +480,7 @@
     line-height: 2em;
     padding-bottom: 2em;
     margin: 0;
+    text-align: justify;
     @include sm {
       font-size: 1.1em;
       line-height: 1.5em;
@@ -497,7 +498,7 @@
       display: flex;
       justify-content: space-between;
       span{
-        font-size: 1.2em;
+        font-size: 1em;
         font-weight: 800;
         color: $blackColor;
         width: 80%;
