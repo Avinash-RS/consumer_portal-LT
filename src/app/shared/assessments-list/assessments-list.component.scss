@@ -16,7 +16,7 @@
     }
     .obstacles {
         position: absolute;
-        background-image: url('#{$imagePath}/industryLeater_TopLeft.svg');
+        background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/industryLeater_TopLeft.svg');
         background-repeat: no-repeat;
         background-size: contain;
         z-index: 1;
@@ -47,7 +47,7 @@
         z-index: 1;
     }
     &::before {
-        background-image: url('#{$imagePath}/industryLeater_bottomRgiht.png');
+        background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/industryLeater_bottomRgiht.png');
         width: 45%;
         height: 35%;
         left: -15em;
@@ -57,7 +57,7 @@
         }
     }
     &::after {
-        background-image: url('#{$imagePath}/industryLeater_bottomLeft.png');
+        background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/industryLeater_bottomLeft.png');
         width: 57%;
         height: 40%;
         right: 0;

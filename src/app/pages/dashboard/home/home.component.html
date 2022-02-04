@@ -4,32 +4,14 @@
     <section class="bannercount">
       <div class="container">
           <ul>
-            <li>
+            <li *ngFor="let item of commonData?.landingPageContents?.bannerFooter">
               <figure>
-                 <img src="../../../../assets/images/papperclip.svg" alt="">
+                 <img [src]="item?.imageurl" alt="">
               </figure>
                 <div class="right">
-                    <div class="count">2,500+</div>
-                    <p class="desc">Courses & Specializations</p>
+                    <div class="count">{{item?.title}}</div>
+                    <p class="desc">{{item?.description}}</p>
                 </div>
-            </li>
-            <li>
-              <figure>
-                <img src="../../../../assets/images/graduate.svg" alt="">
-             </figure>
-              <div class="right">
-                  <div class="count">18</div>
-                  <p>Certificates</p>
-              </div>
-            </li>
-            <li>
-              <figure>
-                <img src="../../../../assets/images/peoplevoice.svg" alt="">
-             </figure>
-              <div class="right">
-                  <div class="count">1,200,000+</div>
-                  <p>People Are Learning on Voce</p>
-              </div>
             </li>
           </ul>
       </div>
@@ -57,22 +39,22 @@
     <app-assessments-list class="app-Assessment"></app-assessments-list>
 
     <!-- What we Do -->
-    <section class="whatWeDo">
+    <section class="whatWeDo" *ngIf="commonData?.landingPageContents?.weDo?.displaystatus">
       <div class="banner">
         <div class="headingContent">
-          <div class="heading2">What We Do</div>
-          <div class="heading5">Rapid technology changes in various business areas brings a huge skill gap.</div>
-          <div class="heading6">Reskilling and Upskilling are the major solutions that organizations focus.</div>
+          <div class="heading2">{{commonData?.landingPageContents?.weDo?.title}}</div>
+          <div class="heading5">{{commonData?.landingPageContents?.weDo?.description}}</div>
+          <div class="heading6">{{commonData?.landingPageContents?.weDo?.secondDescription}}</div>
         </div>
       </div>
       <div class="container">
         <div class="bannerContent">
           <ul>
-            <li *ngFor="let bannerSection of HomeBannerImage;">
+            <li *ngFor="let item of commonData?.landingPageContents?.weDo?.innerArray">
               <figure>
                 <em class="icon-Folder"></em>
               </figure>
-              <p>At Agency, we focus on our clients’ most critical issues and opportunities. Generally, the services we offer involve preparing a financial plan or rendering a financial consultation for clients based on the client’s financial goals and objectives.</p>
+              <p>{{item?.description}}</p>
             </li>
           </ul>
         </div>
@@ -80,50 +62,28 @@
     </section>
 
     <!-- chooseus -->
-    <section class="chooseus">
-      <div class="heading2">Why Choose Us</div>
+    <section class="chooseus" *ngIf="commonData?.landingPageContents?.chooseUs?.displaystatus">
+      <div class="heading2">{{commonData?.landingPageContents?.chooseUs?.title}}</div>
       <div class="container">
         <div class="contentwrapper">
           <div class="left">
             <ul>
-              <li>
+              <li *ngFor="let item of commonData?.landingPageContents?.chooseUs?.innerArray">
                 <div class="listleft">
                   <div class="circle">
                     <em class="icon-CheckMark"></em>
                   </div>
                 </div>
                 <div class="listright">
-                  <div>Curabitur congue pretium</div>
-                  <p>Sed euismod orci erat, a ultricies orci fringilla ac. Praesent et mi tristique, iaculis ipsum sit amet, pulvinar libero.estibulum feugiat sollicitudin lacinia.</p>
-                </div>
-              </li>
-              <li>
-                <div class="listleft">
-                  <div class="circle">
-                    <em class="icon-CheckMark"></em>
-                  </div>
-                </div>
-                <div class="listright">
-                  <div>Curabitur congue pretium</div>
-                  <p>Sed euismod orci erat, a ultricies orci fringilla ac. Praesent et mi tristique, iaculis ipsum sit amet, pulvinar libero.estibulum feugiat sollicitudin lacinia.</p>
-                </div>
-              </li>
-              <li>
-                <div class="listleft">
-                  <div class="circle">
-                    <em class="icon-CheckMark"></em>
-                  </div>
-                </div>
-                <div class="listright">
-                  <div>Curabitur congue pretium</div>
-                  <p>Sed euismod orci erat, a ultricies orci fringilla ac. Praesent et mi tristique, iaculis ipsum sit amet, pulvinar libero.estibulum feugiat sollicitudin lacinia.</p>
+                  <div>{{item?.title}}</div>
+                  <p>{{item?.description}}</p>
                 </div>
               </li>
             </ul>
           </div>
           <div class="right">
             <figure>
-              <img src="../../../../assets/images/whyChooseUs.png" alt="">
+              <img [src]="commonData?.landingPageContents?.chooseUs?.imageurl" alt="">
             </figure>
           </div>
         </div>
@@ -132,28 +92,28 @@
     <app-goals class="app-Goals" [AchieveGoal]="commonData.acheiveData"></app-goals>
     <!-- <app-examination class="app-Examination" [Examination]="commonData.examinationData"></app-examination> -->
     <!-- feedback -->
-    <section class="feedback">
+    <section class="feedback" *ngIf="commonData?.landingPageContents?.studentAboutUs?.displaystatus">
       <div class="container">
-        <div class="heading2">What Our Students Have To Say</div>
+        <div class="heading2">{{commonData?.landingPageContents?.studentAboutUs?.title}}</div>
         <div class="owlCarouselWrapper">
           <owl-carousel-o [options]="testimonialOptions">
-            <ng-container *ngFor = "let bannerSection of HomeBannerImage;">
+            <ng-container *ngFor="let item of commonData?.landingPageContents?.studentAboutUs?.innerArray">
               <ng-template carouselSlide>
                   <div class="card">
-                      <p class="title">A great place to grow</p>
-                      <p class="desc">“ Donec nec justo eget felis morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam.”</p>
+                      <p class="title">{{item?.title}}</p>
+                      <p class="desc">{{item?.description}}</p>
                   <div class="imagearea">
                       <div class="greencircle">
                         <em class="icon-MetroQuote"></em>
                       </div>
                     <figure>
-                      <img src="../../../../assets/images/jessica.png" alt="">
+                      <img [src]="item?.imageurl" alt="">
                     </figure>
                   </div>
                   </div>
                   <div class="footer">
-                    <p>Taylor Mohamed</p>
-                    <span>Businessman</span>
+                    <p>{{item?.name}}</p>
+                    <span>{{item?.designation}}</span>
                   </div>
               </ng-template>
             </ng-container>
@@ -162,14 +122,17 @@
       </div>
     </section>
     <!-- trail -->
-    <section class="trail">
+    <section class="trail" *ngIf="commonData?.landingPageContents?.trail?.displaystatus">
       <div class="container">
-        <p>Ready to blaze your trail?</p>
-        <div class="desc">Skill up for the future for free.</div>
+        <p>{{commonData?.landingPageContents?.trail?.title}}</p>
+        <div class="desc">{{commonData?.landingPageContents?.trail?.description}}</div>
         <button>Get Started</button>
       </div>
     </section>
-    <app-partners-list class="app-Partners" [OurPartners]="OurPartners"></app-partners-list>
+    <!-- Hiring Partners -->
+    <ng-container *ngIf="commonData?.landingPageContents?.hiringPartners?.dispalystatus">
+      <app-partners-list class="app-Partners" [OurPartners]="commonData?.landingPageContents?.hiringPartners"></app-partners-list>
+    </ng-container>
 </ng-container>
 <ng-template #kycmandate >
   <app-kyc-mandate></app-kyc-mandate>
