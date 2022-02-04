@@ -52,7 +52,8 @@ testimonialOptions: OwlOptions = {
     }
   }
 }
-  constructor(private util: UtilityService, private dialog: MatDialog, public commonService: CommonService, private cookieService: CookieService, private router: Router, private appconfig: AppConfigService, private catalogService: CatalogService, public toast: ToastrService,) {
+  constructor(private util: UtilityService, private dialog: MatDialog, public commonService: CommonService, private cookieService: CookieService, private router: Router, 
+    private appConfig: AppConfigService, private catalogService: CatalogService, public toast: ToastrService,) {
 
   }
 
@@ -132,14 +133,14 @@ testimonialOptions: OwlOptions = {
         // console.log(data, 'karthik Data')
         if (data.success) {
 
-          this.appconfig.setSessionStorage('userDetails', JSON.stringify(data.data));
-          this.appconfig.setSessionStorage('token', data.token);
-          this.appconfig.setSessionStorage('profileImage', data.data.profileImage);
+          this.appConfig.setSessionStorage('userDetails', JSON.stringify(data.data));
+          this.appConfig.setSessionStorage('token', data.token);
+          this.appConfig.setSessionStorage('profileImage', data.data.profileImage);
           this.util.headerSubject.next(true);
           this.util.cartSubject.next(true);
           this.util.getValue().subscribe((response) => {
             if (response) {
-              this.userDetails = JSON.parse(this.appconfig.getSessionStorage('userDetails'));
+              this.userDetails = JSON.parse(this.appConfig.getSessionStorage('userDetails'));
               if (this.userDetails) {
 
               const data = {
@@ -152,13 +153,13 @@ testimonialOptions: OwlOptions = {
                   let KYCFlag = result.data[0].KYCMandFlag ? result.data[0].KYCMandFlag : 0;
                   if (KYCFlag == 0) {
                     this.dialogSetup();
-                    this.appconfig.routeNavigation(APP_CONSTANTS.ENDPOINTS.home);
+                    this.appConfig.routeNavigation(APP_CONSTANTS.ENDPOINTS.home);
                   }else{
                     response.userId = this.userDetails.userId
                   this.catalogService.addToCart(response).subscribe((cart: any) => {
                     if (cart.success) {
                       this.util.cartSubject.next(true);
-                      this.appconfig.routeNavigation('cart/purchase');
+                      this.appConfig.routeNavigation('cart/purchase');
                     } else {
                       this.toast.warning('Something went wrong')
                     }
@@ -172,7 +173,7 @@ testimonialOptions: OwlOptions = {
                 //   this.cookieService.set('isLoggedIn','true')
               }
             } else {
-              this.appconfig.routeNavigation(APP_CONSTANTS.ENDPOINTS.home);
+              this.appConfig.routeNavigation(APP_CONSTANTS.ENDPOINTS.home);
             }
           })
         } else {
@@ -182,5 +183,8 @@ testimonialOptions: OwlOptions = {
     } else {
       console.log('trying to login ')
     }
+  }
+  navigateCatalog() {
+    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.home, { fromPage: btoa("viewAll"), selectedTab: btoa('All') ,productType : btoa('all')});
   }
 }
