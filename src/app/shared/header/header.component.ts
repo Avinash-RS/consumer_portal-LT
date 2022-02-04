@@ -144,7 +144,7 @@ export class HeaderComponent implements OnInit {
             "label":'Courses',
             "type":'course',
             "data" : response.data,
-            "desc" :"Scientifically designed assessments for various levels"
+            "desc" :"Scientifically designed Courses for various levels"
           }
           this.catalogMenu.push(courseobj);
           this.getAssesment();
@@ -172,7 +172,7 @@ export class HeaderComponent implements OnInit {
             "label":'Courses',
             "type":'course',
             "data" : response.data,
-            "desc" :"Scientifically designed assessments for various levels"
+            "desc" :"Scientifically designed Courses for various levels"
           }
           this.catalogMenu.push(courseobj);
           this.getAssesment();
