@@ -89,7 +89,6 @@ export class CheckoutComponent implements OnInit {
         }
       )
     });
-    console.log(param)
     if (this.selectedAddress) {
       this.catalogService.createOrder(param).subscribe((data: any) => {
         this._loading.setLoading(true, environment.API_BASE_URL+"createorder");

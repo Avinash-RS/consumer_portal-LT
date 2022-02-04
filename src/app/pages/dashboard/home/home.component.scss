@@ -86,6 +86,87 @@
         }
     }
 }
+
+//Success Career
+.successfulCareer {
+  position: relative;
+  background-color: $whiteColor;
+  font-size: 14px;
+  padding: 3.75em 0;
+  @include sm {
+  }
+  @include md {
+    font-size: 13px;
+  }
+  @include lg {
+    font-size: 14px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
+  .wrapper {
+    ul {
+      display: flex;
+      max-height: 20vh;
+      min-height: 20vh;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      list-style-type: none;
+    }
+    li {
+      flex: 1;
+      display: flex;
+      align-items: stretch;
+      padding: 20px;
+      background: #E74C3C;
+      cursor: pointer;
+      transition: all .5s ease;
+      &:hover {
+        background: darken(#E74C3C, 3);
+      }
+      &.active {
+        flex: 5;
+        background: #fff;
+        cursor: default;
+        h2 {
+          color: #E74C3C;
+        }
+        .section-content {
+          flex: 4;
+          opacity: 1;
+          transform: scaleX(1);
+          color: #E74C3C;
+        }
+      }
+      .section-title {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        color: white;
+        h2 {
+          margin: 0;
+          transform: rotate(-90deg);
+          white-space: nowrap;
+        }
+      }
+      .section-content {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        opacity: 0;
+        transition: all .25s .1s ease-out;
+      }
+    }    
+  }
+}
+
 // trail
 .trail {
     position: relative;
@@ -132,14 +213,14 @@
       }
     }
     &::before {
-        background-image: url("#{$imagePath}/trail-left.svg");
+        background-image: url("https://lmsassetspremium.lntedutech.com/portalicons/trail-left.svg");
         left: -11em;
         @include md {
           left: -8em;
         }
     }
     &::after {
-        background-image: url("#{$imagePath}/trail-right.svg");
+        background-image: url("https://lmsassetspremium.lntedutech.com/portalicons/trail-right.svg");
         right: -11em;
         @include md {
           right: -8em;
@@ -190,7 +271,7 @@
           left: 0;
           width: 100%;
           height :100%;
-          background-image: url("#{$imagePath}/feedbackbg.svg");
+          background-image: url("https://lmsassetspremium.lntedutech.com/portalicons/feedbackbg.svg");
           background-size: cover;
           background-repeat: no-repeat;
           background-position: center;
@@ -253,9 +334,15 @@
                     width: 4.5em;
                     border-radius: 50%;
                     background-color:#20B19A;
-                    display: inline-block;
+                    display: inline-flex;
+                    justify-content: center;
+                    align-items: center;
                     position: relative;
                     left: 0.65em;
+                    em {
+                      font-size: 1.5em;
+                      color: $whiteColor;
+                    }
                   }
                   figure {
                     display: inline-block;
@@ -324,6 +411,280 @@
         background-color: #E9EBF0;
         &:hover {
           background-color: #2EA3F2;
+        }
+      }
+    }
+  }
+}
+
+// capabilities
+.capabilities{
+  position: relative;
+  padding: 3.75em 0;
+  @include sm {
+  }
+  @include md {
+    font-size: 13px;
+  }
+  @include lg {
+    font-size: 14px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
+  .container{
+    position: relative;
+    z-index: 9;
+  }
+  .division{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    @include md {
+      flex-wrap: nowrap;
+    }
+  }
+  .heading2 {
+    background-color: $whiteColor;
+    text-align: start;
+    div{
+      margin-top: 0.3em;
+    }
+    &::after {
+        content: none;
+    }
+    span {
+        position: relative;
+        margin-left: 0.2em;
+        &::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/border.svg');
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+    }
+}
+.left {
+  width: 100%;
+  @include md {
+    width: 45%;
+  }
+  p {
+    color: $text-color;
+    font-size: 1.41em;
+    line-height: 2em;
+    padding-bottom: 2em;
+    margin: 0;
+    text-align: justify;
+    @include sm {
+      font-size: 1.1em;
+      line-height: 1.5em;
+      margin: 1em 0em;
+    }
+  }
+  ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 0;
+    li {
+      width: 47%;
+      display: flex;
+      justify-content: space-between;
+      span{
+        font-size: 1em;
+        font-weight: 800;
+        color: $blackColor;
+        width: 80%;
+      }
+    }
+    figure{
+      width: 17%;
+    }
+    p{
+      font-size: 1.2em;
+      font-weight: 800;
+    }
+  }
+  button {
+    background: $shadeBlueColor;
+    border: 0;
+    border-radius: 5px;
+    font-size: 1.25em;
+    font-weight: 400;
+    color: $whiteColor;
+    padding: 0.5em 1em;
+    transition: background 0.3s ease-in-out;
+    margin: 3em 0em;
+    line-height: 1.8em;
+    width: 40%;
+    &:hover {
+        background: $primaryColor;
+    }
+    @include sm {
+      line-height: 2em;
+      font-size: 1em;
+    }
+}
+}
+
+.right{
+  width: 100%;
+  @include md {
+    width: 45%;
+    position: absolute;
+    right: 0;
+    top: 45%;
+    transform: translateY(-50%);
+  }
+}
+&::before{
+  content: "";
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 93%;
+  width: 70%;
+  opacity: 0.2;
+  @include sm {
+    opacity: 1;
+    width: 45%;
+  }
+  @include md {
+    width: 29%;
+  }
+  @include lg {
+    width: 25%;
+  }
+  @include xl {
+    width: 20%;
+  }
+  @media only screen and (min-width: 1540px) {
+    width: 14%;
+  }
+}
+&::before {
+    background-image: url("https://lmsassetspremium.lntedutech.com/portalicons/curriculum_left.png");
+    left: -11em;
+    @include md {
+      left: -1em;
+    }
+}
+}
+.whatWeDo {
+  background-color: #f9f9f9;
+  padding: 0 0 3.75em 0;
+  .banner {
+    background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/whatWeDo.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 250px;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: #003F72;
+      opacity: 0.75;
+      z-index: 1;
+    }
+    @include md {
+      height: 300px;
+    }
+    @include lg {
+      height: 350px;
+    }
+  }
+  .headingContent {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding-top: 1.5em;
+    @include md {
+      padding-top: 3.5em;
+    }
+    @include lg {
+      padding-top: 6em;
+    }
+    .heading2, .heading5, .heading6 {
+      color: $whiteColor;
+    }
+    .heading5 {
+      margin: 0.75em 0 0.5em 0;
+      display: inline-flex;
+    }
+    .heading5, .heading6 {
+      font-weight: 400;
+    }
+  }
+  .bannerContent {
+    background-color: $whiteColor;
+    border: 1px solid $greyColor;
+    border-radius: 10px;
+    padding: 2.5em;
+    margin-top: -3.5em;
+    position: relative;
+    z-index: 9;
+    @include sm {
+      margin-top: -6em;
+    }
+    ul {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      li {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        position: relative;
+        margin: 1em 0;
+        @include md {
+          margin: 2em 0;
+          width: 45%;
+        }
+        &:nth-of-type(2n+1) {
+          &::before {
+            content: none;
+            position: absolute;
+            width: 1px;
+            height: 100%;
+            right: -2em;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: $blackColor;
+            @include md {
+              content: '';
+            }
+            @include lg {
+              right: -3.5em;
+            }
+          }
+        }
+        figure {
+          width: 10%;
+          em {
+            color: $blackColor;
+            font-size: 1.75em;
+          }
+        }
+        p {
+          width: 86%;
+          margin: 0 0 0 4%;
+          font-size: 1em;
+          font-weight: 300;
+          color: $darkGrey;
+          line-height: 2;
         }
       }
     }
