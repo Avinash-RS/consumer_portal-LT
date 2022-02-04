@@ -255,7 +255,7 @@ export class UserprofileComponent implements OnInit {
       gender: ['', [Validators.required]],
       image: ['']
     });
-    this.addressEntryForm.controls.email.patchValue(this.userDetails.email);
+    this.addressEntryForm.controls.email.patchValue(this.userDetails.emailId);
   }
 
   profileSubmit() {
@@ -266,6 +266,7 @@ export class UserprofileComponent implements OnInit {
     // console.log(this.addressEntryForm);
     // return;
     if (this.addressEntryForm.valid) {
+      this.addressEntryForm.value.email = this.userDetails.email;
       this.commonService.profileUpdate(this.addressEntryForm.value).subscribe((data: any) => {
         if (data.success) {
           this.userDetails.firstname = this.addressEntryForm.value.firstname;
