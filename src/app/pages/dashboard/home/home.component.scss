@@ -580,6 +580,52 @@
     }
 }
 }
+//carrerpath
+.carrerpath {
+  background-image: url("#{$imagePath}/carrerpathbg.png");
+  background-repeat: no-repeat; 
+  background-size: cover;
+  font-size: 14px;
+  padding: 3.75em 0;
+  @include sm {
+  }
+  @include md {
+    font-size: 13px;
+  }
+  @include lg {
+    font-size: 14px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
+  .container {
+    text-align: center;
+    p {
+      text-align: center;
+      color: $darkMediumGrey;
+      font-size: 1em;
+      font-weight: 400;
+      line-height: normal;
+      margin-bottom: 1em;
+    }
+    button {
+      color: $whiteColor;
+      background-color: $secondaryColor;
+      padding: 0.5em 1.5em;
+      border: 1px solid $secondaryColor;
+      border-radius: 5px;
+      font-family: "OpenSans", sans-serif;
+      font-size: 1em;
+      font-weight: 400;
+      line-height: normal;
+      transition: all 0.3s ease-in-out;
+      &:hover {
+          background-color:$whiteColor;
+          color: $secondaryColor;
+      }
+    }
+  }
+}
 .whatWeDo {
   background-color: #f9f9f9;
   padding: 0 0 3.75em 0;
