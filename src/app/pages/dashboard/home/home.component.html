@@ -17,27 +17,21 @@
       </div>
     </section>
     <!-- capabilities -->
-    <section class="capabilities">
+    <section class="capabilities" *ngIf="commonData?.landingPageContents?.capabilities?.displaystatus">
       <span class="obstacles"></span>
       <div class="container">
-        <div class="heading2">Build your capabailities
+        <div class="heading2">{{commonData?.landingPageContents?.capabilities?.title}}
           <div>With<span>L&T Edutech</span></div>
         </div>
         <div class="division">
           <div class="left">
-            <p>Rapid technology changes in various business areas brings a huge skill gap. Reskilling and Upskilling are the major solutions that organizations focus.</p>
+            <p>{{commonData?.landingPageContents?.capabilities?.description}}</p>
             <ul>
-              <li>
+              <li *ngFor="let item of commonData?.landingPageContents?.capabilities?.innerArray">
                 <figure>
-                  <img src="../../../../assets/images/capablitiy1.png" alt="">
+                  <img [src]="item?.imageurl" alt="">
                 </figure>
-                <span>Start learning from our experts</span>
-              </li>
-              <li>
-                <figure>
-                  <img src="../../../../assets/images/capability2.png" alt="">
-                </figure>
-                <span>Enhance your skills with us now</span>
+                <span>{{item?.title}}</span>
               </li>
             </ul>
             <button (click)="navigateCatalog()">Explore Catalog</button>
