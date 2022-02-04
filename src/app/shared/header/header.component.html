@@ -1,21 +1,24 @@
 
-<header #header_width>
+<header #header_width (mouseleave)="triggerLeave()">
+    <div class="outline" (mouseenter)="triggerLeave()">
+
+    </div>
     <div class="leftWrapper">
         <div [ngClass]="(header_width.offsetWidth !> '992') ?  'hide_' : 'show_'" class="hambrg_">
-            <em class="icon-Hamburger" (click)="megaMenuClick()"></em>
+            <em class="icon-Hamburger" (click)="megaMobileMenuClick()"></em>
             <!-- <em class="icon-Hamburger" (click)="search_sec()"></em> -->
         </div>
-        <figure class="edutechLogo" (click)="homepage(); closeMegaMenu_()">
+        <figure class="edutechLogo" (click)="homepage(); closeMegaMenu_()" (mouseenter)="triggerLeave()">
             <img src="https://assets.lntedutech.com/edutech_logo.svg" alt="L&T Logo">
         </figure>
-        <div class="megaMenu" (mouseenter)="megaMenuClick()">
-            <button >
+        <div class="megaMenu">
+            <button (mouseenter)="megaMenuClick()">
                 <img src="../../../assets/images/catalog.svg" alt="">
                 <span>Catalog</span>
                 <em [ngClass]="showMenu == 'out' ? 'icon-DownArrow' : 'icon-UpArrow'" ></em>
             </button>
         </div>
-        <nav [ngClass]="(header_width.offsetWidth > '992') ?  'topMenu' : 'hide_'" [class.topMenu_lap]="menu_tab">
+        <nav (mouseenter)="triggerLeave()" [ngClass]="(header_width.offsetWidth > '992') ?  'topMenu' : 'hide_'" [class.topMenu_lap]="menu_tab">
             <ul>
                 <li><a [ngClass]="isCourse ? 'activeTab' : ''" (click)="onlineAssessment('course')">My Course</a></li>
                 <li><a [ngClass]="isAssement ? 'activeTab' : ''" (click)="onlineAssessment('assessment')">My Assessment</a></li>
@@ -77,7 +80,7 @@
             <button (click)="mobileclick()"> <span>Login</span> <em class="icon-DownArrow"></em></button>
         </div>
     </div>
-    <nav class="menuLevel1 desktopMenu" [@slideInOut]="showMenu">
+    <nav class="menuLevel1 desktopMenu" [@slideInOut]="showMenu" (mouseleave)="triggerLeave()">
         <ng-container *ngIf ="catalogMenu.length == 0">
             <div class="SkeletonWrapper">
                 <div class="item1 itemSmall">
@@ -129,7 +132,7 @@
                                     <ng-container *ngFor="let level2 of level1.children">
                                         
                                         <li><a (click)="gotoArea(level2,level0.type)">{{level2.name}}</a>
-                                            <ul class="thirdLevel">
+                                            <!-- <ul class="thirdLevel">
                                                 <li>
                                                     <em class="icon-Close" (click)="closeMegaMenu()"></em>
                                                     <div class="heading4">{{level2.name}}</div>
@@ -147,7 +150,7 @@
                                                         </ng-container>
                                                     </nav>
                                                 </li>
-                                            </ul>
+                                            </ul> -->
                                         </li>
                                     </ng-container>
                                 </ul>
@@ -160,9 +163,9 @@
     </nav>
 </header>
 
-<div class="mobileRegister" [@slideInOut]="mobileshowMenu">
+<div class="mobileRegister" [@mobileslideInOut]="registerMenu">
     <div>
-        <div class="closeIcon"><em class="icon-Close" (click)="closeMegaMenu()"></em></div>
+        <div class="closeIcon"><em class="icon-Close" (click)="closeMegaMenu_()"></em></div>
         <ng-container *ngIf="!showAvatar">
             <span class="signIn"><a  (click)="openOnBoard('0'); closeMegaMenu_()">Sign In</a></span>
             <span class="register" (click)="openOnBoard('1'); closeMegaMenu_()">Register</span>
@@ -182,13 +185,13 @@
     <button mat-menu-item (click)="getFAQ()">FAQ</button>
 </mat-menu>
 
-<nav class="mobileMegamenu mobilemenu" [@slideInOut]="showMenu">
+<nav class="mobileMegamenu mobilemenu" [@mobileslideInOut]="mobileshowMenu">
     <ng-container *ngIf ="catalogMenu.length > 0">
         <ng-container *ngIf="l1.length > 0 && l2.length <= 0 && l3.length <= 0 && l4.length <= 0">
             <div class="mobilemenuHeader first">
                 <div class="backArrow"><em class="icon-Back"></em></div>
                 <span class="headingStyle">Menu</span>
-                <div class="closeIcon"><em class="icon-Close" (click)="closeMegaMenu()"></em></div>
+                <div class="closeIcon"><em class="icon-Close" (click)="closeMegaMenu_()"></em></div>
             </div>
             <nav class="topMenuMobile">
                 <a [ngClass]="isCourse ? 'activeTab' : ''" (click)="onlineAssessment('course')">My Course</a>
@@ -209,7 +212,7 @@
             <div class="mobilemenuHeader">
                 <div class="backArrow"><em (click)="l2 = []" class="icon-Back"></em></div>
                 <div class="headingStyle">{{l1name}}</div>
-                <div class="closeIcon"><em class="icon-Close" (click)="closeMegaMenu()"></em></div>
+                <div class="closeIcon"><em class="icon-Close" (click)="closeMegaMenu_()"></em></div>
             </div>
             <div class="secondLevel commonSyle">
                 <span class="header-txt">Domain</span>
@@ -227,7 +230,7 @@
             <div class="mobilemenuHeader">
                 <div class="backArrow"><em (click)="l3 = []" class="icon-Back"></em></div>
                 <div class="headingStyle">{{l2name}}</div>
-                <div class="closeIcon"><em class="icon-Close" (click)="closeMegaMenu()"></em></div>
+                <div class="closeIcon"><em class="icon-Close" (click)="closeMegaMenu_()"></em></div>
             </div>
             <div class="thirdlevel commonSyle">
                 <span class="header-txt">Stream</span>
@@ -245,7 +248,7 @@
             <div class="mobilemenuHeader">
                 <div class="backArrow"><em (click)="l4 = []" class="icon-Back"></em></div>
                 <div class="headingStyle"><span>{{l3name}}</span></div>
-                <div class="closeIcon"><em class="icon-Close" (click)="closeMegaMenu()"></em></div>
+                <div class="closeIcon"><em class="icon-Close" (click)="closeMegaMenu_()"></em></div>
             </div>
             <div class="fourthLevel commonSyle">
                 <p>{{ (longdesc.length > 250)? (longdesc | slice:0:250)+'...':(longdesc) }}</p>

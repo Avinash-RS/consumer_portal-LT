@@ -10,11 +10,34 @@ import { Location } from '@angular/common';
 import { SlideInOutAnimation } from '../../animations'
 import Swal from 'sweetalert2';
 import { LoadingService } from 'src/app/services/loading.service';
+import { trigger, state, style, transition,
+  animate, group
+} from '@angular/animations';
 @Component({
   selector: "app-header",
   templateUrl: "./header.component.html",
   styleUrls: ["./header.component.scss"],
-  animations: SlideInOutAnimation
+  animations: [SlideInOutAnimation,
+    trigger('mobileslideInOut', [
+      state('in', style({
+          'height': 'calc(100vh - 74px)' 
+      })),
+      state('out', style({
+          'height': '0px' 
+      })),
+      transition('in => out', [group([
+          animate('600ms ease-in-out', style({
+              'height': '0px'
+          })),
+      ]
+      )]),
+      transition('out => in', [group([          
+          animate('600ms ease-in-out', style({
+              'height': 'calc(100vh - 74px)'
+          }))
+      ]
+      )])
+  ]),]
 })
 
 export class HeaderComponent implements OnInit {
@@ -23,6 +46,7 @@ export class HeaderComponent implements OnInit {
   // showMenu: boolean;
   showMenu = 'out';
   mobileshowMenu = 'out';
+  registerMenu = 'out';
   assessmentsList:boolean = false;
   coursesList:boolean = false;
   menu_tab: boolean = false;
@@ -98,7 +122,8 @@ export class HeaderComponent implements OnInit {
 
   mobileclick() {
     this.showMenu =  'out';
-    this.mobileshowMenu = this.mobileshowMenu === 'out' ? 'in' : 'out';
+    this.mobileshowMenu =  'out';
+    this.registerMenu = this.registerMenu == 'out' ? 'in' : 'out';
   }
 
   megaMenuClick() {
@@ -118,7 +143,36 @@ export class HeaderComponent implements OnInit {
           var courseobj = {
             "label":'Courses',
             "type":'course',
-            "data" : response.data
+            "data" : response.data,
+            "desc" :"Scientifically designed assessments for various levels"
+          }
+          this.catalogMenu.push(courseobj);
+          this.getAssesment();
+        } else {
+          this.catalogMenu = []
+        }
+      });
+    }
+    return false;
+  }
+  megaMobileMenuClick (){
+    this.showMenu =  'out';
+    this.mobileshowMenu = 'in'
+    this.registerMenu = 'out';
+    this.assessmentsList = false;
+    this.coursesList = false;
+    this.isCertified = false;
+    this.isAssement = false;
+    this.isCourse = false;
+    if(this.mobileshowMenu == 'in' && this.catalogMenu.length <= 0){
+      this.catalogMenu=[];
+      this.catalogService.getCatalog('course').subscribe((response: any) => {
+        if (response.success && response.data.length > 0) {
+          var courseobj = {
+            "label":'Courses',
+            "type":'course',
+            "data" : response.data,
+            "desc" :"Scientifically designed assessments for various levels"
           }
           this.catalogMenu.push(courseobj);
           this.getAssesment();
@@ -140,7 +194,8 @@ export class HeaderComponent implements OnInit {
         var assobj = {
           "label":'Assessments',
           "type":'assessment',
-          "data" : response.data
+          "data" : response.data,
+          "desc" :"Scientifically designed assessments for various levels"
         }
         this.catalogMenu.push(assobj)
       } else {
@@ -303,15 +358,14 @@ export class HeaderComponent implements OnInit {
   }
 
   closeMegaMenu() {
-    // this.showMenu = false;
     this.showMenu = 'out';
-    this.mobileshowMenu = 'out';
     this.assessmentsList= false;
     this.coursesList = false;
   }
   closeMegaMenu_() { 
     this.showMenu = 'out';
     this.mobileshowMenu = 'out';
+    this.registerMenu = 'out';
     this.assessmentsList= false;
     this.coursesList = false;
   }
@@ -357,5 +411,10 @@ export class HeaderComponent implements OnInit {
     this.l3name=item.name;
     this.l3item = item;
     this.longdesc=item.longDescription;
+  }
+  triggerLeave(){
+    if(this.showMenu == 'in'){
+      // this.closeMegaMenu();
+    } 
   }
 }

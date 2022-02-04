@@ -316,38 +316,22 @@ setOffset(){
           "competencyId":this.areaId,
           "productType" :this.productType
       }
-       //profile percentage check 
-      this.commonService.getProfilePercentage(data).subscribe((result: any) => {
-        if (result?.success) {
-          //let profilePercentage = result.data[0].profilePercentage;
-          let KYCFlag = result.data[0].KYCMandFlag ? result.data[0].KYCMandFlag : 0;
-              if (KYCFlag == 0) {
-                this.dialogSetup();
-              }
-              else{
-                //Add to Cart
-                this.catalogService.addToCart(cartParams).subscribe((response:any) =>{
-                  if(response.success) {
-                    //is Free check
-                    if(this.abouCourseData?.is_free){
-                      this.freeOrderPlace(response?.data[0].cartId);
-                    }
-                    else{
-                      this.toast.success("Course added to cart");
-                      this.util.cartSubject.next(true);
-                    }
-                  }
-                  else {
-                    this.toast.warning(response.message);
-                  }
-                });
-              }
-        }
-        else{
-          this.toast.warning(result.message);
-          return false;
-        }
-      });
+        //Add to Cart
+        this.catalogService.addToCart(cartParams).subscribe((response:any) =>{
+          if(response.success) {
+            //is Free check
+            if(this.abouCourseData?.is_free){
+              this.freeOrderPlace(response?.data[0].cartId);
+            }
+            else{
+              this.toast.success("Course added to cart");
+              this.util.cartSubject.next(true);
+            }
+          }
+          else {
+            this.toast.warning(response.message);
+          }
+        });
     }
     else{
       cartParams = {
