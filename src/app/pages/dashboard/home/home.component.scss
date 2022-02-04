@@ -474,6 +474,12 @@
   @include md {
     width: 45%;
   }
+  div{
+    text-align: center;
+    @include md {
+      text-align: start;
+    }
+  }
   p {
     color: $text-color;
     font-size: 1.41em;
@@ -481,27 +487,40 @@
     padding-bottom: 2em;
     margin: 0;
     text-align: justify;
-    @include sm {
+    @include md {
       font-size: 1.1em;
       line-height: 1.5em;
       margin: 1em 0em;
     }
   }
   ul{
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    padding: 0;
-    li {
-      width: 47%;
+    margin-bottom: 1em;
+    @include md {
       display: flex;
       justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      padding: 0;
+    }
+    li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1em;
+      @include md {
+        width: 47%;
+        margin-bottom: 0em;
+        justify-content: space-between;
+      }
       span{
-        font-size: 1em;
-        font-weight: 800;
         color: $blackColor;
-        width: 80%;
+        font-size: 1.3em;
+        font-weight: 800;
+        @include md {
+          font-size: 1em;
+          font-weight: 800;
+          width: 80%;
+        }
+        
       }
     }
     figure{
@@ -516,20 +535,17 @@
     background: $shadeBlueColor;
     border: 0;
     border-radius: 5px;
-    font-size: 1.25em;
     font-weight: 400;
     color: $whiteColor;
     padding: 0.5em 1em;
     transition: background 0.3s ease-in-out;
-    margin: 3em 0em;
-    line-height: 1.8em;
     width: 40%;
     &:hover {
         background: $primaryColor;
     }
-    @include sm {
-      line-height: 2em;
-      font-size: 1em;
+    @include md {
+      margin: 3em 0em;
+      font-size: 1.1em;
     }
 }
 }
