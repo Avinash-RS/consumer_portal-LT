@@ -106,6 +106,7 @@ export class HeaderComponent implements OnInit {
       }
     });
     this.getUrl()
+    this.getCatologmenu();
   }
 
   getUrl(){
@@ -126,8 +127,28 @@ export class HeaderComponent implements OnInit {
     this.registerMenu = this.registerMenu == 'out' ? 'in' : 'out';
   }
 
+  getCatologmenu(){
+    this.catalogMenu=[];
+    this.catalogService.getCatalog('course').subscribe((response: any) => {
+      if (response.success && response.data.length > 0) {
+        var courseobj = {
+          "label":'Courses',
+          "type":'course',
+          "data" : response.data,
+          "desc" :"Scientifically designed assessments for various levels"
+        }
+        this.catalogMenu.push(courseobj);
+        this.getAssesment();
+      } else {
+        this.catalogMenu = []
+      }
+    });
+    this.l1 = this.catalogMenu;
+    this.l2 = [];
+    this.l3 = [];
+    this.l4 = [];
+  }
   megaMenuClick() {
-    //this.productType = 'assessment';
     this.mobileshowMenu = 'out'
     this.showMenu =  'in';
     this.assessmentsList = this.showMenu === 'in' ? true : false;
@@ -135,24 +156,6 @@ export class HeaderComponent implements OnInit {
     this.isCertified = false;
     this.isAssement = false;
     this.isCourse = false;
-    
-    if(this.showMenu == 'in' && this.catalogMenu.length <= 0){
-      this.catalogMenu=[];
-      this.catalogService.getCatalog('course').subscribe((response: any) => {
-        if (response.success && response.data.length > 0) {
-          var courseobj = {
-            "label":'Courses',
-            "type":'course',
-            "data" : response.data,
-            "desc" :"Scientifically designed assessments for various levels"
-          }
-          this.catalogMenu.push(courseobj);
-          this.getAssesment();
-        } else {
-          this.catalogMenu = []
-        }
-      });
-    }
     return false;
   }
   megaMobileMenuClick (){
@@ -164,27 +167,6 @@ export class HeaderComponent implements OnInit {
     this.isCertified = false;
     this.isAssement = false;
     this.isCourse = false;
-    if(this.mobileshowMenu == 'in' && this.catalogMenu.length <= 0){
-      this.catalogMenu=[];
-      this.catalogService.getCatalog('course').subscribe((response: any) => {
-        if (response.success && response.data.length > 0) {
-          var courseobj = {
-            "label":'Courses',
-            "type":'course',
-            "data" : response.data,
-            "desc" :"Scientifically designed assessments for various levels"
-          }
-          this.catalogMenu.push(courseobj);
-          this.getAssesment();
-        } else {
-          this.catalogMenu = []
-        }
-      });
-    }
-    this.l1 = this.catalogMenu;
-    this.l2 = [];
-    this.l3 = [];
-    this.l4 = [];
     return false;
   }
   getAssesment(){
