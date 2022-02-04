@@ -267,7 +267,7 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
     }
     if (this.contactForm.valid) {
       this.getState_city_CountryName();
-      var email =this.userDetails.email ? this.userDetails.email :null
+      var email =this.userDetails.emailId ? this.userDetails.emailId :null
       let rawContactFormValue = this.contactForm.getRawValue();
         const apiData = {
           type : "contactDetails",
@@ -309,6 +309,7 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
 
   }
   saveContactDetails(apiData){
+    apiData.emailId = this.userDetails.email;
     this.commonService.postKycUserDetails(apiData).subscribe((result:any)=>{
       if(result.success){
         //this.toast.success(result.message);
@@ -363,7 +364,7 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
   }
 
   formInitialize() {
-    var email =this.userDetails.email ? this.userDetails.email :null
+    var email =this.userDetails.emailId ? this.userDetails.emailId :null
     this.contactForm = this.fb.group({
       [this.form_mobile]: [{value: null, disabled: true}, [RemoveWhitespace.whitespace(), this.glovbal_validators.mobileRegex()]],
       [this.form_alternate_mobile]: [{value: null, disabled: false}, [RemoveWhitespace.whitespace(), this.glovbal_validators.mobileRegex()]],
