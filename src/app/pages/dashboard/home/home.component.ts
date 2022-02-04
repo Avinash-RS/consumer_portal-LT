@@ -116,7 +116,7 @@ export class HomeComponent implements OnInit {
     }
 }
 HomeBannerImage = [
-  1,2,3,4,5
+  1,2,3,4
 ];
 activeButton = '';
 testimonialOptions: OwlOptions = {
