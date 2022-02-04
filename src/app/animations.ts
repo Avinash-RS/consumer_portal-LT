@@ -5,7 +5,7 @@ import { trigger, state, style, transition,
 export const SlideInOutAnimation = [
     trigger('slideInOut', [
         state('in', style({
-            'height': 'calc(100vh - 74px)' 
+            'height': '500px' 
         })),
         state('out', style({
             'height': '0px' 
@@ -18,13 +18,12 @@ export const SlideInOutAnimation = [
         )]),
         transition('out => in', [group([          
             animate('600ms ease-in-out', style({
-                'height': 'calc(100vh - 74px)'
+                'height': '500px'
             }))
         ]
         )])
     ]),
 ]
-
 
 export const Slidefade = [
     trigger('fade', [ 
