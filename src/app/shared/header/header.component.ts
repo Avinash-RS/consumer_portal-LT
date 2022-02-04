@@ -46,6 +46,7 @@ export class HeaderComponent implements OnInit {
   // showMenu: boolean;
   showMenu = 'out';
   mobileshowMenu = 'out';
+  registerMenu = 'out';
   assessmentsList:boolean = false;
   coursesList:boolean = false;
   menu_tab: boolean = false;
@@ -121,7 +122,8 @@ export class HeaderComponent implements OnInit {
 
   mobileclick() {
     this.showMenu =  'out';
-    this.mobileshowMenu = this.mobileshowMenu === 'out' ? 'in' : 'out';
+    this.mobileshowMenu =  'out';
+    this.registerMenu = this.registerMenu == 'out' ? 'in' : 'out';
   }
 
   megaMenuClick() {
@@ -141,7 +143,8 @@ export class HeaderComponent implements OnInit {
           var courseobj = {
             "label":'Courses',
             "type":'course',
-            "data" : response.data
+            "data" : response.data,
+            "desc" :"Scientifically designed assessments for various levels"
           }
           this.catalogMenu.push(courseobj);
           this.getAssesment();
@@ -155,6 +158,7 @@ export class HeaderComponent implements OnInit {
   megaMobileMenuClick (){
     this.showMenu =  'out';
     this.mobileshowMenu = 'in'
+    this.registerMenu = 'out';
     this.assessmentsList = false;
     this.coursesList = false;
     this.isCertified = false;
@@ -167,7 +171,8 @@ export class HeaderComponent implements OnInit {
           var courseobj = {
             "label":'Courses',
             "type":'course',
-            "data" : response.data
+            "data" : response.data,
+            "desc" :"Scientifically designed assessments for various levels"
           }
           this.catalogMenu.push(courseobj);
           this.getAssesment();
@@ -189,7 +194,8 @@ export class HeaderComponent implements OnInit {
         var assobj = {
           "label":'Assessments',
           "type":'assessment',
-          "data" : response.data
+          "data" : response.data,
+          "desc" :"Scientifically designed assessments for various levels"
         }
         this.catalogMenu.push(assobj)
       } else {
@@ -359,6 +365,7 @@ export class HeaderComponent implements OnInit {
   closeMegaMenu_() { 
     this.showMenu = 'out';
     this.mobileshowMenu = 'out';
+    this.registerMenu = 'out';
     this.assessmentsList= false;
     this.coursesList = false;
   }
