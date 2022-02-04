@@ -4,10 +4,10 @@
         <div class="heading2">Achieve Your Goals With <span>L&T Edutech</span></div>
         <p>Choose from hundreds of free courses, or get a degree or certificate at a breakthrough price. Learn at your own pace, 100% online.</p>
         <div class="goalsWrapper">
-            <div class="goals" *ngFor = "let goals of AchieveGoal">
+            <div class="goals" *ngFor = "let goals of AchieveGoal;let i = index">
                 <div class="goalsNumber">
                     <em class="{{goals.icon}}"></em>
-                    <span>01</span>
+                    <span>{{0}}{{i+1}}</span>
                 </div>
                 <div class="heading5">{{goals.name}}</div>
                 <p>{{goals.longDescription}}</p>
