@@ -213,14 +213,14 @@
       }
     }
     &::before {
-        background-image: url("#{$imagePath}/trail-left.svg");
+        background-image: url("https://lmsassetspremium.lntedutech.com/portalicons/trail-left.svg");
         left: -11em;
         @include md {
           left: -8em;
         }
     }
     &::after {
-        background-image: url("#{$imagePath}/trail-right.svg");
+        background-image: url("https://lmsassetspremium.lntedutech.com/portalicons/trail-right.svg");
         right: -11em;
         @include md {
           right: -8em;
@@ -572,7 +572,7 @@
   }
 }
 &::before {
-    background-image: url("#{$imagePath}/capability4.png");
+    background-image: url("https://lmsassetspremium.lntedutech.com/portalicons/curriculum_left.png");
     left: -11em;
     @include md {
       left: -1em;
@@ -583,7 +583,7 @@
   background-color: #f9f9f9;
   padding: 0 0 3.75em 0;
   .banner {
-    background-image: url('#{$imagePath}/whatWeDo.png');
+    background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/whatWeDo.png');
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
