@@ -60,6 +60,7 @@
 }
 .orderHeading {
     display: flex;
+    justify-content: space-between;
     span {
         color: $lightGrey;
         font-size: 0.937em;
@@ -72,6 +73,7 @@
         width: 100%;
         display: flex;
         align-items: center;
+        justify-content: space-between;
         padding-bottom: 10px;
         margin-bottom: 5px;
         border-bottom: 1px solid #cdcdcd;
@@ -82,11 +84,11 @@
         }
         span {
             width: 100%;
-            &:first-child {
-                @include lg {
-                    width: 35%;
-                }
-            }
+            // &:first-child {
+            //     @include lg {
+            //         width: 35%;
+            //     }
+            // }
             @include sm {
                 width: 48%;
             }
@@ -94,7 +96,7 @@
                 width: 31%;
             }
             @include lg {
-                width: 14.5%;
+                width: 14%;
             }
         }
     }
@@ -109,11 +111,11 @@
 .commonClass {
     width: 100%;
     margin-top: 1em;
-    &:first-child {
-        @include lg {
-            width: 35%;
-        }
-    }
+    // &:first-child {
+    //     @include lg {
+    //         width: 35%;
+    //     }
+    // }
     @include sm {
         width: 48%;
     }
@@ -121,7 +123,7 @@
         width: 31%;
     }
     @include lg {
-        width: 14.5%;
+        width: 14%;
     }
     span {
         display: block;
