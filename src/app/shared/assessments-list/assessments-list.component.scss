@@ -389,14 +389,14 @@
             align-items: center;
         }
         .domainName {
-            color: #5B6ABA;
+            color: $blueLabelColor;
             margin-bottom: 1em;
             em {
                 font-size: 0.75em;
                 margin-right: 3px;
             }
             &.collegeConnect {
-                color: #C471D4;
+                color: $secondaryColor;
             }
             &.english {
                 color: #20B19A;
@@ -461,7 +461,7 @@
             font-size: 1em;
             font-weight: 400;
             color: $whiteColor;
-            background-color: #5B6ABA;
+            background-color: $blueLabelColor;
             padding: 0.35em 0.5em;
             position: relative;
             display: inline-block;
@@ -469,7 +469,7 @@
             text-align: center;
             z-index: 1;
             &.coursetag {
-                background-color: #C471D4;
+                background-color: $secondaryColor;
             }
             &.stepTag {
                 background-color: #20B19A;

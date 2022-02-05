@@ -126,7 +126,17 @@ export class HeaderComponent implements OnInit {
     this.mobileshowMenu =  'out';
     this.registerMenu = this.registerMenu == 'out' ? 'in' : 'out';
   }
-
+  megaMenuClick(type) {
+    this.showMenu = type == 'desktop' ? 'in' : 'out';
+    this.mobileshowMenu = type == 'desktop' ? 'out' : 'in';
+    this.registerMenu = 'out';
+    this.assessmentsList = this.showMenu === 'in' ? true : false;
+    this.coursesList = false;
+    this.isCertified = false;
+    this.isAssement = false;
+    this.isCourse = false;
+    return false;
+  }
   getCatologmenu(){
     this.catalogMenu=[];
     this.catalogService.getCatalog('course').subscribe((response: any) => {
@@ -148,27 +158,7 @@ export class HeaderComponent implements OnInit {
     this.l3 = [];
     this.l4 = [];
   }
-  megaMenuClick() {
-    this.mobileshowMenu = 'out'
-    this.showMenu =  'in';
-    this.assessmentsList = this.showMenu === 'in' ? true : false;
-    this.coursesList = false;
-    this.isCertified = false;
-    this.isAssement = false;
-    this.isCourse = false;
-    return false;
-  }
-  megaMobileMenuClick (){
-    this.showMenu =  'out';
-    this.mobileshowMenu = 'in'
-    this.registerMenu = 'out';
-    this.assessmentsList = false;
-    this.coursesList = false;
-    this.isCertified = false;
-    this.isAssement = false;
-    this.isCourse = false;
-    return false;
-  }
+
   getAssesment(){
     this.catalogService.getCatalog('assessment').subscribe((response: any) => {
       if (response.success && response.data.length > 0) {
@@ -185,22 +175,7 @@ export class HeaderComponent implements OnInit {
       }
     });
   }
-  // courseMenuClick(){
-  //   this.productType = 'course';
-  //   this.showCourseMenu = this.showCourseMenu === 'out' ? 'in' : 'out';
-  //   this.showMenu = 'out';
-  //   this.coursesList = this.showCourseMenu === 'in' ? true : false;
-  //   this.assessmentsList = false;
-  //   this.isCertified = false;
-  //   this.isAssement = false;
-  //   this.catalogService.getCatalog(this.productType).subscribe((response: any) => {
-  //     if (response.success && response.data.length > 0) {
-  //       this.catalogMenu = response.data;
-  //     } else {
-  //       this.catalogMenu = []
-  //     }
-  //   })
-  // }
+
   rxjsHeaderAvatarUpdate() {
     if (this.appConfig.getSessionStorage('token')) {
       this.showAvatar = true;

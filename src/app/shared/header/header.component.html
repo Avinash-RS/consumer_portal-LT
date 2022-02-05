@@ -5,14 +5,14 @@
     </div>
     <div class="leftWrapper">
         <div [ngClass]="(header_width.offsetWidth !> '992') ?  'hide_' : 'show_'" class="hambrg_">
-            <em class="icon-Hamburger" (click)="megaMobileMenuClick()"></em>
+            <em class="icon-Hamburger" (click)="megaMenuClick('mobileclick')"></em>
             <!-- <em class="icon-Hamburger" (click)="search_sec()"></em> -->
         </div>
         <figure class="edutechLogo" (click)="homepage(); closeMegaMenu_()" (mouseenter)="triggerLeave()">
             <img src="https://assets.lntedutech.com/edutech_logo.svg" alt="L&T Logo">
         </figure>
         <div class="megaMenu">
-            <button (mouseenter)="megaMenuClick()">
+            <button (mouseenter)="megaMenuClick('desktop')">
                 <img src="https://lmsassetspremium.lntedutech.com/portalicons/catalogicon.svg" alt="">
                 <span>Catalog</span>
                 <em [ngClass]="showMenu == 'out' ? 'icon-DownArrow' : 'icon-UpArrow'" ></em>
