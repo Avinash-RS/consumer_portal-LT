@@ -140,14 +140,16 @@
                     <ul>
                         <ng-container *ngFor="let level1 of level0.data">
                             <li>
-                                <div (click)="catalogHome(level1.cid ,level0.type)">
-                                    {{level1.name}}
+                                <div>
+                                    <span (click)="catalogHome(level1.cid ,level0.type)">{{level1.name}}</span>
+                                    <em class="icon-RightArrow"></em>
                                 </div>
                                 <ul>
                                     <ng-container *ngFor="let level2 of level1.children">
                                         <li>
                                             <div (click)="gotoArea(level2,level0.type)">
-                                                {{level2.name}}
+                                                <img src="/assets/images/meanstack.png" alt="" />
+                                                <span>{{level2.name}}</span>
                                             </div>
                                             <!-- <ul class="thirdLevel">
                                                 <li>
