@@ -274,6 +274,7 @@
     box-shadow: 0 0 10px rgba(32, 177, 154, 0.2);
     margin: 2em 0 0 0;
     cursor: pointer;
+    transition: all 0.3s;
     float: left; 
     @include sm {
         width: 48%;
@@ -459,6 +460,7 @@
         }
     }
     &:hover {
+        box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
         .listDescription {
             .heart {
                 em {
