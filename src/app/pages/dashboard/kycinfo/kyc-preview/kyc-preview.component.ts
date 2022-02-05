@@ -10,7 +10,7 @@ import { CommonService } from 'src/app/services/common.service';
 import { GlobalValidatorService } from 'src/app/services/global-validator.service';
 import { UtilityService } from 'src/app/services/utility.service';
 import Swal from 'sweetalert2';
-
+import { environment } from '@env/environment';
 export const MY_FORMATS = {
   parse: {
     dateInput: 'DD-MM-YYYY',
@@ -273,7 +273,7 @@ export class KycPreviewComponent implements OnInit, AfterViewInit,OnDestroy {
   userDetails:any;
   Countries;
   secondaryPersonalDetails;
-
+  blobToken: string = environment.blobKey;
   constructor(
     private utilService:UtilityService,
     private fb: FormBuilder,
