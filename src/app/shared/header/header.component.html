@@ -129,7 +129,7 @@
                 <li *ngFor="let level0 of catalogMenu">
                     <div class="firstLevel">
                         <span class="icon">
-                            <em class="icon-AssessmentPlatform"></em>
+                            <em [class]="level0?.icon"></em>
                         </span>
                         <span class="content">
                             <span>{{level0.label}}</span>
@@ -148,7 +148,7 @@
                                     <ng-container *ngFor="let level2 of level1.children">
                                         <li>
                                             <div (click)="gotoArea(level2,level0.type)">
-                                                <img src="/assets/images/meanstack.png" alt="" />
+                                                <img [src]="level2?.areaicon" alt="" />
                                                 <span>{{level2.name}}</span>
                                             </div>
                                             <!-- <ul class="thirdLevel">

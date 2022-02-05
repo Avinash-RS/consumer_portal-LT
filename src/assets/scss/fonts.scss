@@ -194,7 +194,10 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  
+  .icon-coursePlatform:before {
+    content: "\e97d";
+    color: #fff;
+  }
   .icon-MetroQuote:before {
     content: "\e97c";
   }

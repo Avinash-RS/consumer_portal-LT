@@ -145,6 +145,7 @@ export class HeaderComponent implements OnInit {
           "label":'Courses',
           "type":'course',
           "data" : response.data,
+          "icon" :"icon-coursePlatform",
           "desc" :"Scientifically designed courses for various levels"
         }
         this.catalogMenu.push(courseobj);
@@ -167,6 +168,7 @@ export class HeaderComponent implements OnInit {
           "label":'Assessments',
           "type":'assessment',
           "data" : response.data,
+          "icon" :"icon-AssessmentPlatform",
           "desc" :"Scientifically designed assessments for various levels"
         }
         this.catalogMenu.push(assobj)
