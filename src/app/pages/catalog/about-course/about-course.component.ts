@@ -324,7 +324,7 @@ setOffset(){
               this.freeOrderPlace(response?.data[0].cartId);
             }
             else{
-              this.toast.success("Course added to cart");
+              this.toast.success("Added to cart");
               this.util.cartSubject.next(true);
             }
           }

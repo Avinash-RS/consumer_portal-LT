@@ -126,7 +126,7 @@ export class CertifyAssessmentComponent implements OnInit {
               if(freeData){
                 this.toast.success("Assessment order created");
               }else
-              {this.toast.success("Assessment added to cart");}
+              {this.toast.success("Added to cart");}
               this.util.cartSubject.next(true);
               if(freeData){
                 freeTest.cartId = response?.data[0].cartId;

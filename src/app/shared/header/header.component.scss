@@ -461,7 +461,7 @@ header {
         background-color: $secondaryColor;
         &::after {
             content: '';
-            background-image: url('#{$imagePath}/menuBg.svg');
+            background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/menuBg.svg');
             background-repeat: no-repeat;
             background-size: contain;
             width: 100%;
