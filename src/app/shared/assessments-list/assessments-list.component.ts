@@ -35,7 +35,7 @@ export class AssessmentsListComponent implements OnInit {
   filteredTab:string = 'all';
   filterTabs = [
     {label:"All",value:"all"},
-    {label:"Course",value:"courses"},
+    {label:"Course",value:"course"},
     {label:"Assessments",value:"assessment"},
   ]
   constructor(private _loading: LoadingService,
