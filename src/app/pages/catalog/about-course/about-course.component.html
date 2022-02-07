@@ -176,26 +176,26 @@
                         <div class="curriculamWrapper">
                             <div class="left">
                                 <p>{{item?.description}}</p>
-                                <div class="accordionPanel" *ngFor="let curriculamTopics of item?.innerArray;first as isFirst">
+                                <div class="accordionPanel"*ngFor="let curriculamTopics of item?.innerArray;first as isFirst">
                                     <mat-accordion>
-                                        <mat-expansion-panel [expanded]="isFirst">
-                                            <mat-expansion-panel-header>
-                                                <mat-panel-title>
-                                                    <div class="heading5">{{curriculamTopics?.title}}</div>
-                                                </mat-panel-title>
-                                                <mat-panel-description>
-                                                    <div class="hours"><em class="icon-Time"></em> <span>{{curriculamTopics?.hours}}</span></div>
-                                                </mat-panel-description>
-                                            </mat-expansion-panel-header>
-                                            <div class="expansionContent">
-                                                <ul>
-                                                    <li *ngFor="let curriculamTopicsInner of curriculamTopics?.innersubArray"><em></em>{{curriculamTopicsInner}}</li>
-                                                </ul>
-                                                <figure>
-                                                    <img [src]="item.imageurl" alt="" />
-                                                </figure>
-                                            </div>
-                                        </mat-expansion-panel>
+                                            <mat-expansion-panel [expanded]="isFirst">
+                                                <mat-expansion-panel-header>
+                                                    <mat-panel-title>
+                                                        <div class="heading5">{{curriculamTopics?.title}}</div>
+                                                    </mat-panel-title>
+                                                    <mat-panel-description>
+                                                        <div class="hours"><em class="icon-Time"></em> <span>{{curriculamTopics?.hours}}</span></div>
+                                                    </mat-panel-description>
+                                                </mat-expansion-panel-header>
+                                                <div class="expansionContent">
+                                                    <ul>
+                                                        <li *ngFor="let curriculamTopicsInner of curriculamTopics?.innersubArray"><em></em>{{curriculamTopicsInner}}</li>
+                                                    </ul>
+                                                    <figure>
+                                                        <img [src]="item.imageurl" alt="" />
+                                                    </figure>
+                                                </div>
+                                            </mat-expansion-panel>
                                     </mat-accordion>
                                 </div>
                             </div>
@@ -259,7 +259,7 @@
                     <div class="container">
                         <span class="heading">{{item?.subHeading0?.title}}</span>
                         <div class="heading6">{{item?.subHeading0?.description}}</div>
-                        <button><img [src]="item?.subHeading0?.broucherurl" alt="" /> Request Brochure</button>
+                        <button (click)="openRequest()"><img [src]="item?.subHeading0?.broucherurl" alt="" /> Request Brochure</button>
                     </div>
                 </section>
                 <!-- Real Time Projects -->
@@ -451,7 +451,7 @@
                         <div class="container">
                             <div class="left">
                                 <div class="heading4">{{item?.subHeading1?.title}}</div>
-                                <p>{{item?.subHeading1?.description}}.</p>
+                                <p>{{item?.subHeading1?.description}}</p>
                             </div>
                             <figure>
                                 <img [src]="item?.subHeading1?.imageurl" alt="" />
@@ -524,8 +524,9 @@
                 <section class="faq" [id]="item.sectionId" #8 [ngStyle]="{'background-image': 'url(' + item?.imageurl + ')'}">
                     <div class="container">
                         <div class="commonHeadingStyle">{{item?.title}}</div>
-                        <div class="faqAccordionPanel" *ngFor="let faqTopics of item?.innerArray">
-                            <mat-accordion>
+                        <div class="faqAccordionPanel">
+                            <mat-accordion [multi]="false">
+                                <ng-container *ngFor="let faqTopics of item?.innerArray">
                                 <mat-expansion-panel [expanded]="false">
                                     <mat-expansion-panel-header>
                                         <mat-panel-title>
@@ -535,7 +536,8 @@
                                     <div class="expansionContent">
                                         <p>{{faqTopics?.answer}}</p>
                                     </div>
-                                </mat-expansion-panel>
+                                </mat-expansion-panel>                                 
+                            </ng-container>
                             </mat-accordion>
                         </div>
                     </div>
@@ -622,7 +624,8 @@
                     <textarea type="text" rows="4" autocomplete="false" id="message" autocomplete="off" name="message" formControlName="message" matInput matInput ></textarea>
                 </mat-form-field>
             </div>
-            <button  id="contact_btn" class="requestBtn" mat-stroked-button (click)="requestQuery('careerCouncillor')">Send Now</button>
+            <!-- <button  id="contact_btn" class="requestBtn" mat-stroked-button (click)="requestQuery('careerCouncillor')">Send Now</button> -->
+            <button  id="contact_btn"  (click)="requestQuery('careerCouncillor')">Send Now</button>
         </form>
     </div>
 </div>
