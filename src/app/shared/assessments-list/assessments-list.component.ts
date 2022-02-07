@@ -32,6 +32,12 @@ export class AssessmentsListComponent implements OnInit {
   public destroyed = new Subject<any>();
   subscriberdata: any;
   productType:string = 'all';
+  filteredTab:string = 'all';
+  filterTabs = [
+    {label:"All",value:"all"},
+    {label:"Course",value:"courses"},
+    {label:"Assessments",value:"assessment"},
+  ]
   constructor(private _loading: LoadingService,
               private router: Router,
               private catalogService: CatalogService,
@@ -120,5 +126,9 @@ export class AssessmentsListComponent implements OnInit {
       this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutAssessment, { id: btoa(cid), selectedTab: btoa(this.selectedTab) ,productType : btoa(productType)});
     }
    
+  }
+  filterTab(e){
+    this.fromTab='All';
+    this.getDomain(this.filteredTab);
   }
 }
