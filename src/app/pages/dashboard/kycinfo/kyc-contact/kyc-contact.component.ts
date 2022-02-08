@@ -161,7 +161,7 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
     } else {
       this.permanentState = this.presentState;
       this.permanentCity = this.presentCity;
-      this.updatePermanentAsPerPresent();
+      this.emptyPermanentAddress();
     }
   }
 
@@ -454,6 +454,15 @@ export class KycContactComponent implements OnInit,AfterViewInit, OnDestroy {
       [this.form_permanent_state]: this.contactForm['value'][this.form_present_state] ? this.contactForm['value'][this.form_present_state] : null,
       [this.form_permanent_region]: this.contactForm['value'][this.form_present_region] ? this.contactForm['value'][this.form_present_region] : null,
       [this.form_permanent_zip_code]: this.contactForm['value'][this.form_present_zip_code] ? this.contactForm['value'][this.form_present_zip_code] : null
+    }, { emitEvent: false });
+  }
+  emptyPermanentAddress() {
+    this.contactForm.patchValue({
+      [this.form_permanent_address_1]:  null,
+      [this.form_permanent_city]: null,
+      [this.form_permanent_state]:  null,
+      [this.form_permanent_region]: null,
+      [this.form_permanent_zip_code]: null
     }, { emitEvent: false });
   }
 
