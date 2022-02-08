@@ -45,20 +45,59 @@
           </div>
         </div>
       </div>
+    </section>
 
-    </section>
     <!-- carrerpath -->
-    <section class="carrerpath" *ngIf="false">
+    <section class="successfulCareer">
       <div class="container">
-          <div class="heading2">{{'Successful Career Paths'}}</div>
-             <p>Market is full of opportunities. Align your interest and skills to utilise the opportunities.</p>
-               <p class="desc">Explore the pathways suitable to you.</p>
-               <div>
-                 
-               </div>
-               <button>More Careers</button>
-    </div>
+        <div class="heading2">{{'Successful Career Paths'}}</div>
+        <p>{{commonData?.landingPageContents?.careerPaths?.description}}</p>
+        <div class="wrapper">
+          <ul>
+            <li *ngFor="let career of commonData?.landingPageContents?.careerPaths?.innerArray" (mouseenter)="showPhase(commonData?.landingPageContents?.careerPaths?.innerArray,career)" [class.active]= "career.isActive">
+              <div class="content-container">
+                <figure>
+                  <img [src]="career?.imageurl" alt="">
+                  <span class="title">
+                    {{career?.title}}
+                  </span>
+                </figure>
+                <div class="content">
+                  <div class="heading">
+                    {{career?.title}}
+                  </div>
+                  <p>{{career?.description}}</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <!-- <div class="wrapper">
+          <ul class="sub_modules">
+            <li *ngFor="let career of commonData?.landingPageContents?.careerPaths?.innerArray" (click)="showPhase(commonData?.landingPageContents?.careerPaths?.innerArray,career)" [class.active]= "career.isActive">
+              <div>
+                <div class="section-title">
+                  <figure>
+                    <img [src]="career?.imageurl" alt="">
+                  </figure>
+                  <div class="heading">
+                    {{career?.title}}
+                  </div>
+                </div> 
+                <div class="section-content">
+                  <div class="heading">
+                    {{career?.title}}
+                  </div>
+                  <p>{{career?.description}}</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div> -->
+        <button>More Careers</button>
+      </div>
     </section>
+
     <!-- Successful Career paths -->
     <!-- <section class="successfulCareer">
       <div class="container">
