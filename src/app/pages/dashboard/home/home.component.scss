@@ -456,6 +456,7 @@
     span {
         position: relative;
         margin-left: 0.2em;
+        color: $secondaryColor;
         &::after {
             content: '';
             position: absolute;
@@ -481,8 +482,8 @@
     }
   }
   p {
-    color: $text-color;
-    font-size: 1.41em;
+    color: $darkMediumGrey;
+    font-size: 1em;
     line-height: 2em;
     padding-bottom: 2em;
     margin: 0;
@@ -512,9 +513,9 @@
         justify-content: space-between;
       }
       span{
-        color: $blackColor;
+        color: $darkGrey;
         font-size: 1.3em;
-        font-weight: 800;
+        font-weight: 700;
         @include md {
           font-size: 1em;
           font-weight: 800;
@@ -839,7 +840,7 @@
               color: $mediumGrey;
               font-family: "OpenSans", sans-serif;
               font-size: 1.125em;
-              font-weight: 700;
+              font-weight: 600;
               line-height: normal;
               margin-bottom: 0.75em;
             }
