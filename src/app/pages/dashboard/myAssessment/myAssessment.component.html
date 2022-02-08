@@ -46,8 +46,8 @@
                     <img [src]="item.assessmentDetails?.image?.url" alt="" />
                 </figure>
                 <div class="itemNames">
-                    <span>{{item.cart.competencyName}}</span>
-                    <div class="heading4">{{item.cart.assessmentName}}</div>
+                    <span [matTooltip]="item?.cart?.competencyName">{{item.cart.competencyName}}</span>
+                    <div class="heading4" [matTooltip]="item?.cart?.assessmentName">{{item.cart.assessmentName}}</div>
                     <label *ngIf="item.assessmentDetails.productType !='course'">{{item.cart.levelName}}</label>
                 </div>
                 <div class="itemTypes">
