@@ -9,11 +9,11 @@
             <!-- <em class="icon-Hamburger" (click)="search_sec()"></em> -->
         </div>
         <figure class="edutechLogo" (click)="homepage(); closeMegaMenu_()" (mouseenter)="triggerLeave()">
-            <img src="https://assets.lntedutech.com/edutech_logo.svg" alt="L&T Logo">
+            <img src="https://assets.lntedutech.com/edutech_logo.svg"  alt="L&T Logo">
         </figure>
         <div class="megaMenu">
-            <button (mouseenter)="megaMenuClick('desktop')">
-                <img src="https://lmsassetspremium.lntedutech.com/portalicons/catalogicon.svg" alt="">
+            <button (mouseenter)="megaMenuClick('desktop')"  [class.catalogActive]="showMenu == 'in'">
+                <img [src]="showMenu == 'in' ? 'https://lmsassetspremium.lntedutech.com/portalicons/cataloghover.svg' : 'https://lmsassetspremium.lntedutech.com/portalicons/catalogicon.svg'" alt="">
                 <span>Catalog</span>
                 <em [ngClass]="showMenu == 'out' ? 'icon-DownArrow' : 'icon-UpArrow'" ></em>
             </button>

@@ -62,7 +62,7 @@ header {
         margin-left: 0;
     }
     @include xl {
-        width: 8%;
+        width: 13%;
     }
     img {
         width: 100%;
@@ -90,8 +90,11 @@ header {
         border-radius: 5px;
         border: none;
         transition: all 0.3s ease-in-out;
-        &:hover {
-          background: $primaryColor;
+        box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+        &.catalogActive {
+            background-color: $whiteColor !important;
+            color: $primaryColor !important;
+            border: 1px solid $primaryColor !important;  
         }
         span{
             margin: 0 0.5em;
@@ -555,7 +558,7 @@ header {
                         line-height: 1.4;
                         font-family: "OpenSans", sans-serif;
                         font-size: 0.9375em;
-                        font-weight: 600;
+                        font-weight: 400;
                         color: $darkGrey;
                         position: relative;
                         cursor: pointer;
@@ -575,7 +578,7 @@ header {
                     &:hover {
                         > div {
                             color: $secondaryColor;
-                            font-weight: 600;
+                            font-weight: 700;
                         }
                     }
                     & > ul {
@@ -593,6 +596,7 @@ header {
                                 display: flex;
                                 align-items: center;
                                 cursor: pointer;
+                                transition: 0.3s ease-in-out;
                                 &::before {
                                     content: '';
                                     position: absolute;
@@ -616,6 +620,7 @@ header {
                             }
                             &:hover {
                                 > div {
+
                                 }
                             }
                             &:last-child {

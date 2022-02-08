@@ -33,6 +33,7 @@
             content: none;
         }
         span {
+            color: $secondaryColor;
             position: relative;
             &::after {
                 content: '';
@@ -155,6 +156,7 @@
             font-weight: 700;
             color: $secondaryColor;
             margin: 0.55em 0 0.65em 0;
+            height: 48px;
             @include lg {
                 margin: 1em 0;
             }
@@ -176,7 +178,7 @@
                 @include xl {
                     z-index: -1;
                     height: 100%;
-                    opacity: 0.5;
+                    opacity: 0.3;
                 }
             }
             @include xl {

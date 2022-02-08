@@ -108,10 +108,10 @@
                                         <span class="iconwithText assessmentIcon"><em class="icon-p_mid"></em></span>
                                     </div>
                                     <div *ngIf="(cards.productType == 'course') && (cards.courseId != '494' && cards.courseId != '493')">
-                                        <span class="iconwithText"><em class="icon-Time"></em> {{cards.totalDuration}} h</span>
+                                        <span class="iconwithText"><em class="icon-Booked"></em> {{cards.totalDuration}} h</span>
                                     </div>
                                     <div *ngIf="(cards.productType == 'course') && (cards.courseId == '494'|| cards.courseId == '493')">
-                                        <span class="iconwithText"><em class="icon-Time"></em> {{cards.totalDuration}} h</span>
+                                        <span class="iconwithText"><em class="icon-Booked"></em> {{cards.totalDuration}} h</span>
                                     </div>
                                 </div>
                             </div>
@@ -131,9 +131,9 @@
                 </div>
                 <div style="clear: both;"></div>
             </div>
-            <div *ngIf="viewMore" class="viewMore">
-                <button (click)="catalogHome()">View More <em class="icon-RightArrow"></em></button>
-            </div>
+            <!-- <div *ngIf="viewMore" class="viewMore">
+                <button   (click)="catalogHome()">View More <em class="icon-RightArrow"></em></button>
+            </div> -->
         </div>
     </div>
 </section>
