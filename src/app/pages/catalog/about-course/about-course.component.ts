@@ -386,7 +386,7 @@ setOffset(){
     openRequest(){
       const query = this.dialog.open(this.enrollRequest, {
         width: '60%',
-        height: '80%',
+        height: '75%',
         autoFocus: true,
         closeOnNavigation: true,
         disableClose: true,

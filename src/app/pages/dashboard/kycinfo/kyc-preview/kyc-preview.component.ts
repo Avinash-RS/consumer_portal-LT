@@ -429,7 +429,7 @@ patchACkdetails(){
       // [this.form_joining]: [null, [Validators.requiredTrue]],
       [this.form_terms_conditions]: [null, [Validators.requiredTrue]],
       [this.form_ack_place]: [null, [Validators.required,]],
-      [this.form_ack_date]: [{ value: this.dateConvertionForm(new Date()), disabled: true }, [Validators.required]]
+      [this.form_ack_date]: [{ value: this.dateConvertionForm(new Date()), disabled: false }, [Validators.required]]
     });
   }
 

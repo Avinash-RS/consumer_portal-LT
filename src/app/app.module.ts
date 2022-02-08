@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule,CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA,ErrorHandler } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,7 +12,7 @@ import { InterceptorService } from './interceptor/interceptor.service';
 import { FormsModule } from '@angular/forms';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
-
+import { GlobalErrorHandlerService } from './global-error-handler'
 // import third-party module
 import { AnimateOnScrollModule } from 'ng2-animate-on-scroll';
 import { BnNgIdleService } from 'bn-ng-idle';
@@ -55,7 +55,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
   providers: [BnNgIdleService,
     {
     provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true
-    }
+    },
+    { provide: ErrorHandler, useClass: GlobalErrorHandlerService }
     // { provide: RECAPTCHA_V3_SITE_KEY, useValue: "6LfgJbYaAAAAAN1uClJ5r0UyrPzLarZpFSGaU85I" }
   ],
   bootstrap: [AppComponent],

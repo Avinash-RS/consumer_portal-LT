@@ -41,7 +41,6 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit() {
     this.userDetails = JSON.parse(this.appconfig.getSessionStorage('userDetails'));
-    console.log(this.userDetails)
     this.totalCalculator();
   }
   ngOnChanges(data: any) {
@@ -113,7 +112,7 @@ export class CheckoutComponent implements OnInit {
         );
         }else{
           this._loading.setLoading(false, environment.API_BASE_URL+"createorder");
-          this.appconfig.routeNavigationWithQueryParam("cart/success",{ orderId: data.order_id });
+          this.appconfig.routeNavigationWithQueryParam("cart/success",{ orderId: btoa(data.order_id) });
           // cart/success?orderId=6313-311893-1133
           // navigate to this section
         }
