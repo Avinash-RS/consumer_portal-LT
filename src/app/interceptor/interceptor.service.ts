@@ -13,13 +13,15 @@ import { map, catchError, retry } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { LoadingService } from '../services/loading.service';
 import { CommonService } from "src/app/services/common.service";
+import { AppConfigService } from '../utils/app-config.service';
 @Injectable()
 export class InterceptorService implements HttpInterceptor {
 
 
   constructor(
     private _loading: LoadingService,
-    private commonservice: CommonService
+    private commonservice: CommonService,
+    private appConfig: AppConfigService
   ) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -37,9 +39,20 @@ export class InterceptorService implements HttpInterceptor {
     //     return evt;
     //   }));
 
-
+    let userDetails: any = JSON.parse(this.appConfig.getSessionStorage('userDetails'));
+    if(userDetails){
+      var id = userDetails.userId;
+      var token = 'Bearer ' + this.appConfig.getSessionStorage('token');
+    } else {
+      id = 'RNpS7aki0COQm6WEg9WE8VWiopu9rF5oQank2AdWyM3UKr62WUu9l1R1BfaO9';
+      token = 'Bearer aqSkKT6qguVyANMPtR6qqWaiCLUTRNpS7aki0COQm6WEg9WE8VWiopu9rF5oQank2AdWyM3UKr62WUu9l1R1BfaO9CzM16Vi89ecAX6ADPfhGBzpAEXze1do0SqtMkdQ5oGqFqtXphoc4DZL4hb6wRdg09RWzEJcnYJLtvska9HfvQiywtu1LZvDt1AD104ypzLaIRV6dGtKWHrhYgxVn7D3Q9mkTS3oejbVX8z81RwN3Ely6g59t5RRU88BVJiv'
+    }
     const clone = request.clone({
-      headers: request.headers.set('Accept', 'application/json'),
+              headers: new HttpHeaders({
+              'Accept': 'application/json',
+              'requestId': id,
+              'Authorization':token
+            })
     });
     this._loading.setLoading(true, request.url);
     return next.handle(clone).pipe(

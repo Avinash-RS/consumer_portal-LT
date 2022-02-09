@@ -14,34 +14,30 @@ export class CartService {
 
   baseurl = environment.API_BASE_URL;
   constructor(private http: HttpClient, private appconfig: AppConfigService) { }
-  httpOptionsWithToken = {
-    headers: new HttpHeaders({
-      Authorization: this.appconfig.getSessionStorage('token') ? this.appconfig.getSessionStorage('token') : ''
-    })
-  };
+
 
   getAddressByUserid(params) {
-    return this.http.post(this.baseurl + 'getAddressByUser', params, this.httpOptionsWithToken);
+    return this.http.post(this.baseurl + 'getAddressByUser', params);
   }
   addOrEditAddress(params) {
-      return this.http.post(this.baseurl + 'addOrEditAddress', params, this.httpOptionsWithToken);
+      return this.http.post(this.baseurl + 'addOrEditAddress', params);
     }
   removeAddress(params) {
-    return this.http.post(this.baseurl + 'removeAddress', params, this.httpOptionsWithToken);
+    return this.http.post(this.baseurl + 'removeAddress', params);
   }
   getCountryDetails(){
-    return this.http.post(this.baseurl + 'getCountryDetails', {}, this.httpOptionsWithToken);
+    return this.http.post(this.baseurl + 'getCountryDetails', {});
   }
   getStateDetails(params){
-    return this.http.post(this.baseurl + 'getStateDetails',params, this.httpOptionsWithToken);
+    return this.http.post(this.baseurl + 'getStateDetails',params);
   }
   getDistrictDetails(params){
-    return this.http.post(this.baseurl + 'getDistrictDetails', params, this.httpOptionsWithToken);
+    return this.http.post(this.baseurl + 'getDistrictDetails', params);
   }
   getAddressTag(){
-    return this.http.post(this.baseurl + 'getAddressTag', {}, this.httpOptionsWithToken);
+    return this.http.post(this.baseurl + 'getAddressTag', {});
   }
   removeCartDetails(params){
-    return this.http.post(this.baseurl + 'removeCartDetails', params, this.httpOptionsWithToken);
+    return this.http.post(this.baseurl + 'removeCartDetails', params);
   }
 }

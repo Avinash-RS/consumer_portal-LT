@@ -16,38 +16,25 @@ import * as CryptoJS from 'crypto-js';
 })
 export class CommonService {
   baseurl = environment.API_BASE_URL;
-  httpOptionsWithToken;
 
   constructor(    private cookieService: CookieService ,private http: HttpClient, private appconfig: AppConfigService,
-    public toast: ToastrService, private util: UtilityService) {this.getToken()}
-  httpOptions = {
-    headers: new HttpHeaders({
-      Authorization: 'Bearer aqSkKT6qguVyANMPtR6qqWaiCLUTRNpS7aki0COQm6WEg9WE8VWiopu9rF5oQank2AdWyM3UKr62WUu9l1R1BfaO9CzM16Vi89ecAX6ADPfhGBzpAEXze1do0SqtMkdQ5oGqFqtXphoc4DZL4hb6wRdg09RWzEJcnYJLtvska9HfvQiywtu1LZvDt1AD104ypzLaIRV6dGtKWHrhYgxVn7D3Q9mkTS3oejbVX8z81RwN3Ely6g59t5RRU88BVJiv'
-    })
-  };
+    public toast: ToastrService, private util: UtilityService) {}
 
-  getToken(){
-    this.httpOptionsWithToken = {
-      headers: new HttpHeaders({
-        Authorization: this.appconfig.getSessionStorage('token') ? this.appconfig.getSessionStorage('token') : ''
-      }),
-      params: {}
-    };
-  }
+
 
   // tslint:disable-next-line: typedef
   signup(signupData) {
-    return this.http.post(this.baseurl + 'userRegistration', signupData, this.httpOptions);
+    return this.http.post(this.baseurl + 'userRegistration', signupData);
   }
   // tslint:disable-next-line: typedef
   login(loginData) {
-    return this.http.post(this.baseurl + 'userLogin', loginData, this.httpOptions);
+    return this.http.post(this.baseurl + 'userLogin', loginData);
   }
   fogetPasswordEmail(mailData) {
-    return this.http.post(this.baseurl + 'userforgotPassword', mailData, this.httpOptions);
+    return this.http.post(this.baseurl + 'userforgotPassword', mailData);
   }
   resetPassword(pwdData) {
-    return this.http.post(this.baseurl + 'submitResetPassword', pwdData, this.httpOptions);
+    return this.http.post(this.baseurl + 'submitResetPassword', pwdData);
   }
 
   // Logout
@@ -56,7 +43,7 @@ export class CommonService {
     this.cookieService.delete('isLoggedInFunc')
     this.appconfig.clearSessionStorage();
     this.appconfig.clearLocalStorage();
-    this.http.post(this.baseurl + 'logout', {}, this.httpOptions);
+    this.http.post(this.baseurl + 'logout', {});
     if(!value){
       this.appconfig.routeNavigation(APP_CONSTANTS.ENDPOINTS.home);
     } else {
@@ -82,22 +69,22 @@ export class CommonService {
 
   //Static Page - Home
   getStaticDataHome() {
-    return this.http.get(this.baseurl + 'getdynamicPage1', this.httpOptions);
+    return this.http.get(this.baseurl + 'getdynamicPage1');
   }
 
   //footer
   getFooter() {
-    return this.http.get(this.baseurl + 'getdynamicPageFooter', this.httpOptions);
+    return this.http.get(this.baseurl + 'getdynamicPageFooter');
   }
 
   // certification details
   getCertificationDetails() {
-    return this.http.get(this.baseurl + 'getdynamicPage2', this.httpOptions);
+    return this.http.get(this.baseurl + 'getdynamicPage2');
   }
   
   profileUpdate(profileData){
-    this.getToken();
-    return this.http.post(this.baseurl + 'updateProfile', profileData, this.httpOptionsWithToken);
+    
+    return this.http.post(this.baseurl + 'updateProfile', profileData);
   }
 
   //UpdateImage
@@ -106,69 +93,69 @@ export class CommonService {
   }
 
   getProfile(params){
-    this.getToken();
+    
     var value = {
       'userId': params
     }
-    return this.http.post(this.baseurl + 'getUserInfoById',value, this.httpOptionsWithToken);
+    return this.http.post(this.baseurl + 'getUserInfoById',value);
   }
   // code added
   getmyAssesments(param){
-    this.getToken();
-    return this.http.post(this.baseurl + 'getmyAssesments',param, this.httpOptionsWithToken);
+    
+    return this.http.post(this.baseurl + 'getmyAssesments',param);
   }
   deactivateAccount(param){
-    this.getToken();
-    return this.http.post(this.baseurl + 'deactivateAccount',param, this.httpOptionsWithToken); 
+    
+    return this.http.post(this.baseurl + 'deactivateAccount',param); 
   }
   updatePassword(param){
-    this.getToken();
-    return this.http.post(this.baseurl + 'updatePassword',param, this.httpOptionsWithToken); 
+    
+    return this.http.post(this.baseurl + 'updatePassword',param); 
   }
   //skill profile
   getPortfolioDetails(param){
-    this.getToken();
-    return this.http.post(this.baseurl + 'getPortfolioDetails',param, this.httpOptions);
+    
+    return this.http.post(this.baseurl + 'getPortfolioDetails',param);
   }
   verifySsotoken(param){
 
-    return this.http.get(environment.sso + '/simplesso/verifytoken?ssoToken='+param, this.httpOptionsWithToken); 
+    return this.http.get(environment.sso + '/simplesso/verifytoken?ssoToken='+param); 
   }
   getSsotoken(param){
 
-    return this.http.get(environment.sso + '/simplesso/login?serviceURL='+param, this.httpOptionsWithToken); 
+    return this.http.get(environment.sso + '/simplesso/login?serviceURL='+param); 
   }
   //skillometer
   getjobDetails(){
-    this.getToken();
-    return this.http.get(this.baseurl + 'getjobDetails', this.httpOptions);
+    
+    return this.http.get(this.baseurl + 'getjobDetails');
   }
   getroleDetails(){
-    this.getToken();
-    return this.http.get(this.baseurl + 'getroleDetails ', this.httpOptions);
+    
+    return this.http.get(this.baseurl + 'getroleDetails ');
   }
   getskillDetails​(param){
-    this.getToken();
-    return this.http.post(this.baseurl + 'getskillDetails​',param, this.httpOptionsWithToken); 
+    
+    return this.http.post(this.baseurl + 'getskillDetails​',param); 
   }//"userId": "go7m52"
   gototest(param){
-    this.getToken();
-    return this.http.post(this.baseurl + 'gototest',param, this.httpOptionsWithToken); 
+    
+    return this.http.post(this.baseurl + 'gototest',param); 
   }
   postKycUserDetails(kycData){
-    return this.http.post(this.baseurl + 'addUserDetails',kycData,this.httpOptionsWithToken)
+    return this.http.post(this.baseurl + 'addUserDetails',kycData)
   }
   getKycUserDetails(userId){
     var value = {
       'userId': userId
     }
-    return this.http.post(this.baseurl + 'getProfileDetailsById',value,this.httpOptionsWithToken) 
+    return this.http.post(this.baseurl + 'getProfileDetailsById',value) 
   }
   getProfilePercentage(data){
-    return this.http.post(this.baseurl + 'profilePercentage',data,this.httpOptions)
+    return this.http.post(this.baseurl + 'profilePercentage',data)
   }
   submitUserProfile(data){
-    return this.http.post(this.baseurl + 'submitUserProfile',data,this.httpOptions);
+    return this.http.post(this.baseurl + 'submitUserProfile',data);
   }
   encrypt(data,encryptionKey) {
     try {
