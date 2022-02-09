@@ -772,7 +772,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: url(https://lmsassetspremium.lntedutech.com/portalicons/enhanceBG.png);
+    background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/enhanceBG.png');
     background-repeat: no-repeat;
     background-position: right bottom;
     background-size: contain;
@@ -809,11 +809,12 @@
     font-weight: 400;
     color: $darkGrey;
     margin-top: 0.5em;
+    position: absolute;
     @include sm {
       margin-top: 0;
     }
     @include md {
-      width: 24%;
+      width: 20%;
       margin-left: 1%;
       text-align: right;
     }
@@ -829,14 +830,18 @@
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+  font-size: 14px;
   @include sm {
     margin: 1em 0 0 -2%;
+    font-size: 13px;
   }
   @include md {
     margin: 1em 0 0 -3.3%;
+    font-size: 14px;
   }
   @include xl {
     margin: 1em 0 0 -1.8%;
+    font-size: 14px;
   }
   > div {
     position: relative;
@@ -872,7 +877,7 @@
       top: 0;
       width: 100%;
       height: 100%;
-      background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5), rgba(0,0,0,0.9));
+      background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.1), rgba(0,0,0,1.7));
       z-index: 1;
     }
     figure {
@@ -907,8 +912,8 @@
       padding: 0.5em 2em;
       transition: all 0.3s ease-in-out;
       box-sizing: border-box;
-      background-color: #117CD8;
-      border: 1px solid #117CD8;
+      background-color: $secondaryColor;
+      border: 1px solid $secondaryColor;
       border-radius: 5px;
       position: relative;
       display: inline-flex;
@@ -950,8 +955,8 @@
       }
       .heading5 {
         color: $whiteColor;
-        padding: 1em 0;
-        font-size: 0.9375em;
+        padding: 1.25em 0;
+        font-size: 1.25em;
       }
       p {
         font-size: 0.825em;
@@ -994,7 +999,8 @@
     }
   }
   .heading5 {
-    font-weight: 400;
+    font-size: 1.25em;
+    font-weight: 700;
     color: $blueLabelColor;
     position: relative;
     // min-height: 40px;
@@ -1300,6 +1306,11 @@
         padding: 0.75em 1em;
         border-radius: 5px;
         margin-bottom: 1em;
+        transition: 0.3s ease-in-out;
+        &:hover {
+          box-shadow: 0 0 30px 0 rgb(0 0 0 / 18%);
+          transform: translate(0px, -10px);
+        }
         &:last-child {
           margin-bottom: 0;
         }
@@ -1432,6 +1443,9 @@
           transition: all 0.3s;
         }
         &:hover {
+          img {
+            animation: up-down 5s infinite ease-in-out;
+          }
           &::before {
             @include xl {
               transform: scale(1);
@@ -1461,6 +1475,34 @@
     }
   }
 }
-
+@keyframes up-down {
+  0% {
+    transform: translate(0);
+  }
+  12.5% {
+    transform: translate(0, 3%);
+  }
+  25% {
+    transform: translate(0);
+  }
+  37.5% {
+    transform: translate(0, 3%);
+  }
+  50% {
+    transform: translate(0);
+  }
+  62.5% {
+    transform: translate(0, 3%);
+  }
+  75% {
+    transform: translate(0);
+  }
+  87.5% {
+    transform: translate(0, 3%);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
 
 

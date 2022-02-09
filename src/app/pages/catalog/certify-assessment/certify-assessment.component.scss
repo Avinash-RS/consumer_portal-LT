@@ -48,16 +48,16 @@
 .levelsandSkills {
     .heading {
         font-family: "OpenSans", sans-serif;
-        font-size: 1.875em;
+        font-size: 1.35em;
         font-weight: 600;
         color: $darkGrey;
         line-height: 1.2;
-        margin-bottom: 0.35em;
+        margin-bottom: 1em;
     }
     p {
         font-size: 1em;
         font-weight: 400;
-        color: $lightGrey;
+        color: $darkMediumGrey;
         line-height: normal;
         margin: 0;
     }
@@ -77,7 +77,7 @@
         }
         .heading {
             font-family: "OpenSans", sans-serif;
-            font-size: 1.875em;
+            font-size: 1.35em;
             font-weight: 600;
             color: $darkGrey;
             line-height: normal;
