@@ -206,4 +206,7 @@ export class AboutAssessmentComponent implements OnInit {
     this.showAssesment = true;
     this.competencyData = competency
   }
+  navigatedBack(e){
+    this.showAssesment = e;
+  }
 }

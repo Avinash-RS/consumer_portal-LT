@@ -449,7 +449,7 @@
         </div>
     </div>
 </section>
-<app-certify-assessment *ngIf="showAssesment" [competencyData]="competencyData" [areaData]= "aboutArea"></app-certify-assessment>
+<app-certify-assessment *ngIf="showAssesment" [competencyData]="competencyData" [areaData]= "aboutArea" (navBack)="navigatedBack($event)"></app-certify-assessment>
 
 <!-- How it works -->
 <section class="howitWorksSection" *ngIf="aboutArea?.assessmentContents?.getStarted?.dispalystatus">
