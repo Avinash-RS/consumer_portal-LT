@@ -8,7 +8,11 @@ import { environment } from '@env/environment';
 import { filter, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { LoadingService } from 'src/app/services/loading.service';
-import { SlideIn } from '../../animations'
+import { SlideIn } from '../../animations';
+import {
+  BreakpointObserver,
+  BreakpointState
+} from '@angular/cdk/layout';
 @Component({
   selector: 'app-assessments-list',
   templateUrl: './assessments-list.component.html',
@@ -37,19 +41,23 @@ export class AssessmentsListComponent implements OnInit {
     {label:"All",value:"all"},
     {label:"Course",value:"course"},
     {label:"Assessments",value:"assessment"},
-  ]
+  ];
+  isNavigated:boolean = false;
+  sliceDigits:number = 6;
   constructor(private _loading: LoadingService,
               private router: Router,
               private catalogService: CatalogService,
               private route: ActivatedRoute,
-              private appConfig: AppConfigService
+              private appConfig: AppConfigService,
+              public breakpointObserver: BreakpointObserver
   ) { }
 
   ngOnInit() {
+    this.setSliceValue();
     if (this.route.snapshot.queryParams.selectedTab) {
       this.fromTab = atob(this.route.snapshot.queryParams.selectedTab);
       this.productType = this.route.snapshot.queryParams.productType ? atob(this.route.snapshot.queryParams.productType) : 'all';
-      this.viewMore = false
+      this.isNavigated = true;
     }
     this.getDomain(this.productType);
     this.subscriberdata = this.router.events.pipe(
@@ -57,7 +65,6 @@ export class AssessmentsListComponent implements OnInit {
       takeUntil(this.destroyed)
     ).subscribe(() => {
       this.fromTab = atob(this.route.snapshot.queryParams.selectedTab);
-      this.viewMore = false
       this.getDomain(this.productType);
     })
 
@@ -65,7 +72,17 @@ export class AssessmentsListComponent implements OnInit {
   ngOnDestroy(){
     this.subscriberdata.unsubscribe();
   }
-
+  setSliceValue(){
+    this.breakpointObserver
+      .observe(['(min-width: 500px)'])
+      .subscribe((state: BreakpointState) => {
+        if (state.matches) {
+         this.sliceDigits = 6;
+        } else {
+          this.sliceDigits = 3;
+        }
+      });
+  }
   getDomain(type) {
     this.productType = type;
     this.catalogService.getCatalog(type).subscribe((response: any) => {
@@ -100,12 +117,8 @@ export class AssessmentsListComponent implements OnInit {
       if (response.data?.length > 0) {
         this.areaCards = response.data;
         this.noDataFound = false;
-        if (this.areaCards?.length < 7) {
-          this.viewMore = false;
-        }
-        else {
-          this.viewMore = true;
-        }
+        this.viewMore = (!this.isNavigated && this.areaCards?.length > 6) ? true : false;
+        this.sliceDigits =  !this.viewMore ? this.areaCards?.length + 1 : 6;
       } else {
         this.viewMore = false;
         this.areaCards = [];

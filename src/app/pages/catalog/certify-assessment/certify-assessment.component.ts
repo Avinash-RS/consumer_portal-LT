@@ -1,4 +1,4 @@
-import { Component, OnInit,Input, ViewChild, TemplateRef} from '@angular/core';
+import { Component, OnInit,Input, ViewChild, TemplateRef, Output, EventEmitter} from '@angular/core';
 import { CatalogService } from "../../../services/catalog.service";
 import { ToastrService } from 'ngx-toastr';
 import { AppConfigService } from 'src/app/utils/app-config.service';
@@ -21,7 +21,7 @@ export class CertifyAssessmentComponent implements OnInit {
   @Input('areaData') areaData: any;
   @ViewChild('kycmandate', { static: false }) matDialogRef: TemplateRef<any>;
   showdialog: boolean = false;
-
+  @Output ('navBack') navBack = new EventEmitter();
   constructor(private catalogService : CatalogService, public toast: ToastrService,
               private appconfig: AppConfigService, private appConfig: AppConfigService,
               private util: UtilityService,private dialog: MatDialog,public commonService: CommonService,
@@ -41,6 +41,9 @@ export class CertifyAssessmentComponent implements OnInit {
     this.catalogService.getAssesments(params).subscribe((response:any)=>{
       if (response.data.length > 0) {
        this.assessmentList = response.data
+       const element = document.getElementById('certification');
+       const y = element.getBoundingClientRect().top + window.pageYOffset -70;
+       window.scrollTo({top: y, behavior: 'smooth'});
       }
 
     })
@@ -181,5 +184,8 @@ export class CertifyAssessmentComponent implements OnInit {
   //     this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, {fromPage: '0'});
   //   }
   // }
+  back(){
+    this.navBack.emit(false);
+  }
 
 }

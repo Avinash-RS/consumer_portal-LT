@@ -30,7 +30,7 @@
                             </div>
                             <div>
                                 <p>Skill Level</p>
-                                <span><em class="icon-Level2"></em> Intermediate</span>
+                                <span><em class="icon-Level2"></em> {{aboutArea?.assessmentContents?.skilllevel}}</span>
                             </div>
                             <!-- <div>
                                 <p>Duration</p>
@@ -449,7 +449,7 @@
         </div>
     </div>
 </section>
-<app-certify-assessment *ngIf="showAssesment" [competencyData]="competencyData" [areaData]= "aboutArea"></app-certify-assessment>
+<app-certify-assessment *ngIf="showAssesment" [competencyData]="competencyData" [areaData]= "aboutArea" (navBack)="navigatedBack($event)"></app-certify-assessment>
 
 <!-- How it works -->
 <section class="howitWorksSection" *ngIf="aboutArea?.assessmentContents?.getStarted?.dispalystatus">
