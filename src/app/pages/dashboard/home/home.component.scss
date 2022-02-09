@@ -70,14 +70,14 @@
                         color: $blueLabelColor;
                         font-family: "OpenSans", sans-serif;
                         font-size: 2.1875em;
-                        font-weight: 400;
+                        font-weight: 600;
                         margin-bottom: 0.25em;
                         line-height: normal;
                     }
                     p {
                         color: $shadeBlueColor;
                         font-size: 1.125em;
-                        font-weight: 700;
+                        font-weight: 400;
                         line-height: normal;
                         margin: 0;
                     }
@@ -853,6 +853,7 @@
   .heading2 {
     background-color: $whiteColor;
     text-align: start;
+    line-height: 1.3;
     div{
       margin-top: 0.3em;
     }
@@ -922,9 +923,10 @@
         color: $darkGrey;
         font-size: 1.3em;
         font-weight: 700;
+        line-height: 1.5;
         @include md {
           font-size: 1em;
-          font-weight: 800;
+          font-weight: 700;
           width: 80%;
         }
         

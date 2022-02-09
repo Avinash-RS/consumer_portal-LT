@@ -59,7 +59,7 @@
                     </div>
                 </ng-container> -->
                 <ng-container *ngIf ="areaCards?.length > 0">
-                    <ng-container *ngFor="let cards of areaCards">
+                    <ng-container *ngFor="let cards of areaCards | slice : 0:sliceDigits">
                         <div class="list" (click)="aboutAssessment(cards.cid ,cards.productType)">
                             <div class="figWrapper">
                                 <figure>
@@ -84,7 +84,7 @@
                                     </div>
                                     <div *ngIf="cards.productType == 'assessment'">
                                         <span class="commonStyle">Skill Level</span>
-                                        <span class="iconwithText"><em class="icon-Level2"></em> Intermediate</span>
+                                        <span class="iconwithText"><em class="icon-Level2"></em>{{cards?.assessmentContents?.skilllevel}}</span>
                                     </div>
                                     <div *ngIf="(cards.productType == 'course') && (cards.courseId != '494' && cards.courseId != '493')">
                                         <span class="commonStyle">Batch starts on</span>
@@ -96,12 +96,14 @@
                                     </div>
                                 </div>
                                 <div class="assessmentDuration">
-                                     <!-- Dont Delete this div  -->
                                      <div>
-                                        <span class="ratingStar">
+                                        <span class="ratingStar" *ngIf="cards.productType == 'course'">
                                             <em class="icon-Star"></em>
                                             <em class="icon-Star"></em>
                                             <em class="icon-Star"></em>
+                                        </span>
+                                        <span class="ratingStar" *ngIf="cards.productType != 'course'">
+                                            <em class="icon-Star" *ngFor="let star of cards?.assessmentContents?.ratings"></em>
                                         </span>
                                     </div>
                                     <div *ngIf="cards.productType == 'assessment'">
@@ -131,9 +133,9 @@
                 </div>
                 <div style="clear: both;"></div>
             </div>
-            <!-- <div *ngIf="viewMore" class="viewMore">
+            <div *ngIf="viewMore" class="viewMore">
                 <button   (click)="catalogHome()">View More <em class="icon-RightArrow"></em></button>
-            </div> -->
+            </div>
         </div>
     </div>
 </section>

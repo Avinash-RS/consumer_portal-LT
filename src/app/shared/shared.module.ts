@@ -29,6 +29,7 @@ import { RecruiterComponent } from './recruiter/recruiter.component';
 import { KycMandateComponent } from './kyc-mandate/kyc-mandate.component';
 import { TestimonialComponent } from './testimonial/testimonial.component';
 import { RelateditemsComponent } from './relateditems/relateditems.component';
+import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { RelateditemsComponent } from './relateditems/relateditems.component';
     CarouselModule,
     FormsModule,
     ReactiveFormsModule,
+    LayoutModule,
     AnimateOnScrollModule.forRoot(),
     NgxSkeletonLoaderModule.forRoot()
   ],
@@ -75,7 +77,8 @@ import { RelateditemsComponent } from './relateditems/relateditems.component';
     RecruiterComponent,
     KycMandateComponent,
     TestimonialComponent,
-    RelateditemsComponent
+    RelateditemsComponent,
+    LayoutModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 
