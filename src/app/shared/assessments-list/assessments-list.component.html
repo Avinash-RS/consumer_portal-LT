@@ -86,21 +86,15 @@
                                         <span class="commonStyle">Skill Level</span>
                                         <span class="iconwithText"><em class="icon-Level2"></em>{{cards?.assessmentContents?.skilllevel}}</span>
                                     </div>
-                                    <div *ngIf="(cards.productType == 'course') && (cards.courseId != '494' && cards.courseId != '493')">
+                                    <div *ngIf="cards.productType == 'course'">
                                         <span class="commonStyle">Batch starts on</span>
-                                        <span class="iconwithText"><em class="icon-Time"></em> 15 Feb, 2022</span>
-                                    </div>
-                                    <div *ngIf="(cards.productType == 'course') && (cards.courseId == '494'|| cards.courseId == '493')">
-                                        <span class="commonStyle">Step</span>
-                                        <span class="iconwithText"><em class="icon-Level2"></em> Intermediate</span>
+                                        <span class="iconwithText"><em class="icon-Time"></em>{{cards?.courseContents?.batchStartDate | date :'dd MMM ,yyyy'}}</span>
                                     </div>
                                 </div>
                                 <div class="assessmentDuration">
                                      <div>
                                         <span class="ratingStar" *ngIf="cards.productType == 'course'">
-                                            <em class="icon-Star"></em>
-                                            <em class="icon-Star"></em>
-                                            <em class="icon-Star"></em>
+                                            <em class="icon-Star"  *ngFor="let star of cards?.courseContents?.ratings"></em>
                                         </span>
                                         <span class="ratingStar" *ngIf="cards.productType != 'course'">
                                             <em class="icon-Star" *ngFor="let star of cards?.assessmentContents?.ratings"></em>
@@ -109,11 +103,8 @@
                                     <div *ngIf="cards.productType == 'assessment'">
                                         <span class="iconwithText assessmentIcon"><em class="icon-p_mid"></em></span>
                                     </div>
-                                    <div *ngIf="(cards.productType == 'course') && (cards.courseId != '494' && cards.courseId != '493')">
-                                        <span class="iconwithText"><em class="icon-Booked"></em> {{cards.totalDuration}} h</span>
-                                    </div>
-                                    <div *ngIf="(cards.productType == 'course') && (cards.courseId == '494'|| cards.courseId == '493')">
-                                        <span class="iconwithText"><em class="icon-Booked"></em> {{cards.totalDuration}} h</span>
+                                    <div *ngIf="cards.productType == 'course'">
+                                        <span class="iconwithText"><em class="icon-Booked"></em> {{cards?.courseContents?.duration}}</span>
                                     </div>
                                 </div>
                             </div>
