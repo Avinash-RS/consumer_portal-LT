@@ -102,8 +102,16 @@ testimonialOptions: OwlOptions = {
     }
   }
 
-  showPhase(event){
-    this.activeButton = event;
+  showPhase(carrerData,activeData){
+    // this.activeButton = event;
+    carrerData.forEach(element => {
+     if(element.id == activeData?.id){
+      element.isActive = true;
+     }
+     else {
+      element.isActive = false;
+     }
+    });
   }
 
   getStaticHomeData() {

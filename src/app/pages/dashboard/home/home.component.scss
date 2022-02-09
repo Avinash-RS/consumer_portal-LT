@@ -104,67 +104,473 @@
   @include xl {
     font-size: 16px;
   }
-  .wrapper {
-    ul {
-      display: flex;
-      max-height: 20vh;
-      min-height: 20vh;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      list-style-type: none;
-    }
-    li {
-      flex: 1;
-      display: flex;
-      align-items: stretch;
-      padding: 20px;
-      background: #E74C3C;
-      cursor: pointer;
-      transition: all .5s ease;
-      &:hover {
-        background: darken(#E74C3C, 3);
-      }
-      &.active {
-        flex: 5;
-        background: #fff;
-        cursor: default;
-        h2 {
-          color: #E74C3C;
-        }
-        .section-content {
-          flex: 4;
-          opacity: 1;
-          transform: scaleX(1);
-          color: #E74C3C;
-        }
-      }
-      .section-title {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        text-align: center;
-        color: white;
-        h2 {
-          margin: 0;
-          transform: rotate(-90deg);
-          white-space: nowrap;
-        }
-      }
-      .section-content {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        margin: 0;
-        padding: 0;
-        opacity: 0;
-        transition: all .25s .1s ease-out;
-      }
-    }    
+}
+
+//carrerpath
+.successfulCareer {
+  background-image: url("https://lmsassetspremium.lntedutech.com/portalicons/carrerpathbg.png");
+  background-repeat: no-repeat; 
+  background-size: cover;
+  font-size: 14px;
+  padding: 3.75em 0;
+  @include sm {
   }
+  @include md {
+    font-size: 13px;
+  }
+  @include lg {
+    font-size: 14px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
+  .container {
+    text-align: center;
+    p {
+      text-align: center;
+      color: $darkMediumGrey;
+      font-size: 1em;
+      font-weight: 400;
+      line-height: normal;
+      margin-bottom: 1em;
+    }
+    button {
+      color: $whiteColor;
+      background-color: $secondaryColor;
+      padding: 0.5em 1.5em;
+      border: 1px solid $secondaryColor;
+      border-radius: 5px;
+      font-family: "OpenSans", sans-serif;
+      font-size: 1em;
+      font-weight: 400;
+      line-height: normal;
+      transition: all 0.3s ease-in-out;
+      &:hover {
+          background-color:$whiteColor;
+          color: $secondaryColor;
+      }
+    }
+  }
+  .wrapper {
+    margin: 3.5em 0;
+    position: relative;
+    overflow: hidden;
+    ul {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+      @include md {
+        width: 100%;
+        display: table;
+        table-layout: fixed;
+      }
+      li {
+        width: auto;
+        transition: all .5s ease;
+        cursor: pointer;
+        border-radius: 10px;
+        overflow: hidden;
+        @media only screen and (max-width: 699px) {
+          margin-bottom: 3px;
+        }
+        @include md {
+          width: 20%;
+          display: table-cell;
+          position: relative;
+          border: 2px solid $whiteColor;
+        }
+        &:first-child {
+          background-color: #585F0B;
+          .content-container {
+            figure {
+              @include lg {
+                &::after {
+                  background: rgba(88, 95, 11, 0.4);
+                  background: linear-gradient(to top, rgba(88, 95, 11, 1), rgba(88, 95, 11, 0.4), rgba(88, 95, 11, 0));
+                }
+              }
+            }
+          }
+        }
+        &:nth-child(2) {
+          background-color: #1E876B;
+          .content-container {
+            figure {
+              @include lg {
+                &::after {
+                  background: rgba(30, 135, 107, 0.4);
+                  background: linear-gradient(to top, rgba(30, 135, 107, 1), rgba(30, 135, 107, 0.4), rgba(30, 135, 107, 0));
+                }
+              }
+            }
+          }
+        }
+        &:nth-child(3) {
+          background-color: #5E2D83;
+          .content-container {
+            figure {
+              @include lg {
+                &::after {
+                  background: rgba(30, 135, 107, 0.4);
+                  background: linear-gradient(to top, rgba(94, 45, 131, 1), rgba(94, 45, 131, 0.4), rgba(94, 45, 131, 0));
+                }
+              }
+            }
+          }
+        }
+        &:nth-child(4) {
+          background-color: #1C4586;
+          .content-container {
+            figure {
+              @include lg {
+                &::after {
+                  background: rgba(30, 135, 107, 0.4);
+                  background: linear-gradient(to top, rgba(28, 69, 134, 1), rgba(28, 69, 134, 0.4), rgba(28, 69, 134, 0));
+                }
+              }
+            }
+          }
+        }
+        &:last-child {
+          background-color: #1E7387;
+          .content-container {
+            figure {
+              @include lg {
+                &::after {
+                  background: rgba(30, 135, 107, 0.4);
+                  background: linear-gradient(to top, rgba(30, 115, 135, 1), rgba(30, 135, 107, 0.4), rgba(30, 115, 135, 0));
+                }
+              }
+            }
+          }
+        }
+        &.active {
+          width: auto;
+          outline: none;
+          overflow: hidden;
+          cursor: initial;
+          @include md {
+            width: 100%;
+          }
+          @include lg {
+            width: 75%;
+          }
+          .content-container {
+            height: 250px;
+            @include md {
+              height: 300px;
+            }
+            figure {
+              @media only screen and (max-width: 699px) {
+                width: 30%;
+              }
+              @include md {
+                width: auto;
+              }
+              img {
+                @media only screen and (max-width: 699px) {
+                  object-position: bottom;
+                }
+                @include md {
+                  width: auto;
+                }
+              }
+              &::after {
+                content: none;
+              }
+              .title {
+                opacity: 0;
+              }
+            }
+            .content {
+              height: 100%;
+              text-align: left;
+              @media only screen and (max-width: 699px) {
+                width: 70%;
+              }
+              @include md {
+                padding: 0 20px 10px 20px;
+                margin-left: 37%;
+              }
+              @include lg {
+                margin-left: 31%;
+                padding: 0 20px 20px 20px;
+              }
+              @include xl {
+                margin-left: 27%;
+              }
+              .heading, p {
+                opacity: 1;
+                transition-delay: 0.3s;
+              }
+            }
+          }
+        }
+        .content-container {
+          height: 140px;
+          transition: all .5s ease;
+          overflow: hidden;
+          display: flex;
+          @include md {
+            display: block;
+            height: 300px;
+          }
+          figure {
+            position: relative;
+            left: 0;
+            top: 0;
+            order: 2;
+            @media only screen and (max-width: 699px) {
+              width: 30%;
+            }
+            @include md {
+              position: absolute;
+              order: 1;
+            }
+            img {
+              @media only screen and (max-width: 699px) {
+                object-position: top;
+              }
+              width: 100%;
+              height: 300px;
+              object-fit: cover;
+            }
+            @include lg {
+              &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 50%;
+              }
+            }
+            .title {
+              position: absolute;
+              bottom: 1em;
+              left: 0;
+              width: 100%;
+              font-family: "OpenSans", sans-serif;
+              font-size: 0.875em;
+              font-weight: 600;
+              color: $whiteColor;
+              line-height: normal;
+              z-index: 1;
+              opacity: 0;
+              transition: opacity 0.3s 0s ease-in-out;
+              @include lg {
+                opacity: 1;
+              }
+            }
+          }
+          .content {
+            position: relative;
+            @media only screen and (max-width: 699px) {
+              width: 70%;
+              padding: 15px;
+            }
+            .heading, p {
+              color: $whiteColor;
+              text-align: left;
+              position: relative;
+            }
+            .heading {
+              opacity: 1;
+              font-family: "OpenSans", sans-serif;
+              font-size: 1.25em;
+              font-weight: 700;
+              top: 1.5em;
+              @media only screen and (max-width: 699px) {
+                top: 0.75em;
+              }
+              @include md {
+                opacity: 0;
+              }
+            }
+            p {
+              opacity: 0;
+              margin: 0;
+              font-size: 0.9375em;
+              font-weight: 300;
+              line-height: 1.7;
+              top: 2em;
+              @media only screen and (max-width: 699px) {
+                transition: all 0.3s;
+              }
+              @include md {
+                top: 3em;
+              }
+            }
+            &::before {
+              content: '';
+              position: absolute;
+              background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/pathbg.png');
+              background-repeat: no-repeat;
+              background-size: cover;
+              background-position: bottom;
+              width: 100%;
+              height: 100%;
+              bottom: 0;
+              right: 0;
+              opacity: 0.15;
+            }
+          }
+        }
+      }
+    }
+  }
+  // .wrapper {
+  //   margin: 2.5em 0;
+  //   ul {
+  //     display: flex;
+  //     max-height: 300px;
+  //     min-height: 300px;
+  //     margin: 0;
+  //     padding: 0;
+  //     overflow: hidden;
+  //     list-style-type: none;
+  //   }
+  //   li {
+  //     flex: 1;
+  //     display: flex;
+  //     align-items: stretch;
+  //     margin: 0 3px;
+  //     border-radius: 10px;
+  //     cursor: pointer;
+  //     overflow: hidden;
+  //     transition: all .5s ease;
+  //     width: 20%;
+  //     &:first-child {
+  //       background-color: #585F0B;
+  //     }
+  //     &:nth-child(2) {
+  //       background-color: #1E876B;
+  //     }
+  //     &:nth-child(3) {
+  //       background-color: #5E2D83;
+  //     }
+  //     &:nth-child(4) {
+  //       background-color: #1C4586;
+  //     }
+  //     &:last-child {
+  //       background-color: #1E7387;
+  //     }
+  //     &.active {
+  //       flex: 5;
+  //       cursor: default;
+  //       border-radius: 10px;
+  //       &:first-child {
+  //         background-color: #585F0B;
+  //       }
+  //       &:nth-child(2) {
+  //         background-color: #1E876B;
+  //       }
+  //       &:nth-child(3) {
+  //         background-color: #5E2D83;
+  //       }
+  //       &:nth-child(4) {
+  //         background-color: #1C4586;
+  //       }
+  //       &:last-child {
+  //         background-color: #1E7387;
+  //       }
+  //       > div {
+  //         display: flex;
+  //         align-items: flex-start;
+  //         position: relative;
+  //         &::before {
+  //           content: '';
+  //           position: absolute;
+  //           background-image: url('#{$imagePath}/careerPathBg.png');
+  //           background-repeat: no-repeat;
+  //           background-size: cover;
+  //           background-position: bottom;
+  //           width: 100%;
+  //           height: 100%;
+  //           bottom: 0;
+  //           right: 0;
+  //           opacity: 0.15;
+  //         }
+  //       }
+  //       h2 {
+  //         color: #E74C3C;
+  //       }
+  //       .section-title {
+  //         text-align: left;
+  //         flex: 1;
+  //         .heading {
+  //           display: none;
+  //         }
+  //       }
+  //       .section-content {
+  //         flex: 3;
+  //         opacity: 1;
+  //         flex-direction: column;
+  //         width: 72%;
+  //         .heading {
+  //           font-family: "OpenSans", sans-serif;
+  //           font-size: 1.25em;
+  //           font-weight: 700;
+  //           color: $whiteColor;
+  //           padding: 1.5em 0 0 1em;
+  //         }
+  //         p {
+  //           padding: 1.25em;
+  //         }
+  //       }
+  //     }
+  //     .section-title {
+  //       flex: 1;
+  //       display: flex;
+  //       align-items: center;
+  //       width: 100%;
+  //       margin: 0;
+  //       padding: 0;
+  //       text-align: center;
+  //       color: white;
+  //       position: relative;
+  //       transition-delay: 0.5s;
+  //       .heading {
+  //         opacity: 1;
+  //       }
+  //       figure {
+  //         img {
+  //           height: 300px;
+  //           object-fit: cover;
+  //         }
+  //       }
+  //       .heading {
+  //         position: absolute;
+  //         left: 0;
+  //         bottom: 10px;
+  //         margin: 0;
+  //         width: 100%;
+  //         font-family: "OpenSans", sans-serif;
+  //         font-size: 0.9375em;
+  //         font-weight: 600;
+  //         color: $whiteColor;
+  //       }
+  //     }
+  //     .section-content {
+  //       flex: 1;
+  //       display: flex;
+  //       margin: 0;
+  //       padding: 0;
+  //       opacity: 0;
+  //       transition: all .25s .5s ease-out;
+  //       text-align: left;
+  //       p {
+  //         margin: 0;
+  //         text-align: left;
+  //         font-size: 0.9375em;
+  //         font-weight: 400;
+  //         color: $whiteColor;
+  //         line-height: 2;
+  //       }
+  //     }
+  //   }    
+  // }
 }
 
 // trail
@@ -592,59 +998,15 @@
   }
 }
 &::before {
-    background-image: url("https://lmsassetspremium.lntedutech.com/portalicons/curriculum_left.png");
-    left: -11em;
-    @include md {
-      left: -1em;
-    }
-}
-}
-//carrerpath
-.carrerpath {
-  background-image: url("https://lmsassetspremium.lntedutech.com/portalicons/carrerpathbg.png");
-  background-repeat: no-repeat; 
-  background-size: cover;
-  font-size: 14px;
-  padding: 3.75em 0;
-  @include sm {
-  }
+  background-image: url("https://lmsassetspremium.lntedutech.com/portalicons/curriculum_left.png");
+  left: -11em;
   @include md {
-    font-size: 13px;
-  }
-  @include lg {
-    font-size: 14px;
-  }
-  @include xl {
-    font-size: 16px;
-  }
-  .container {
-    text-align: center;
-    p {
-      text-align: center;
-      color: $darkMediumGrey;
-      font-size: 1em;
-      font-weight: 400;
-      line-height: normal;
-      margin-bottom: 1em;
-    }
-    button {
-      color: $whiteColor;
-      background-color: $secondaryColor;
-      padding: 0.5em 1.5em;
-      border: 1px solid $secondaryColor;
-      border-radius: 5px;
-      font-family: "OpenSans", sans-serif;
-      font-size: 1em;
-      font-weight: 400;
-      line-height: normal;
-      transition: all 0.3s ease-in-out;
-      &:hover {
-          background-color:$whiteColor;
-          color: $secondaryColor;
-      }
-    }
+    left: -1em;
   }
 }
+}
+
+//What We Do
 .whatWeDo {
   background-color: #f9f9f9;
   padding: 0 0 3.75em 0;
@@ -747,10 +1109,9 @@
           width: 86%;
           margin: 0 0 0 4%;
           font-size: 1em;
-          font-weight: 500;
+          font-weight: 300;
           color: $darkGrey;
           line-height: 2;
-          text-align: justify;
         }
       }
     }
