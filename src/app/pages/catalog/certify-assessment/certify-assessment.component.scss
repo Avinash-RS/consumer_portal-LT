@@ -21,7 +21,30 @@
         line-height: 1.3;
     }
 }
-
+.headWrapper {
+    display: flex;
+    justify-content: space-between;
+    .btnWrapper {
+        a {
+            color: $secondaryColor;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            em {
+                margin-right: 0.625em;
+            }
+            span {
+                font-family: "OpenSans", sans-serif;
+                font-size: 0.9375em;
+                font-weight: 500;
+                line-height: normal;
+            }
+            &:hover {
+                color: $primaryColor;
+            }
+        }
+    }
+}
 .levelsandSkills {
     .heading {
         font-family: "OpenSans", sans-serif;

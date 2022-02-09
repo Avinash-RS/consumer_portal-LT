@@ -1,5 +1,11 @@
-<section class="skillLevelSection">
+<section class="skillLevelSection" id="certification">
     <div class="container">
+       <div class="headWrapper">
+            <div class="commonHeadingStyle">{{competencyData?.name}}</div>
+            <div class="btnWrapper">
+                <a (click)="back()"><em class="icon-Back"></em><span>Back</span></a>
+            </div>
+       </div>
         <div class="levelsandSkills">
             <div class="heading">Accelerate your career path in this {{competencyData?.productType == 'course' ? 'Course': 'Assessment'}}</div>
             <p>Best for those who want a series of Assessment</p>
