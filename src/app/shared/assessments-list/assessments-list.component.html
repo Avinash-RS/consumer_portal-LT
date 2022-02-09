@@ -59,7 +59,7 @@
                     </div>
                 </ng-container> -->
                 <ng-container *ngIf ="areaCards?.length > 0">
-                    <ng-container *ngFor="let cards of areaCards">
+                    <ng-container *ngFor="let cards of areaCards | slice : 0:sliceDigits">
                         <div class="list" (click)="aboutAssessment(cards.cid ,cards.productType)">
                             <div class="figWrapper">
                                 <figure>
