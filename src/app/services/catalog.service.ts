@@ -51,9 +51,6 @@ addToCart(params) {
   }
   encryptdata(request){
     let url = this.baseurl + 'ccavRequestHandler';
-    let data = {
-    request : request
-    }
     return this.http.post(url,request)
   }
   checkassessment(params) {
