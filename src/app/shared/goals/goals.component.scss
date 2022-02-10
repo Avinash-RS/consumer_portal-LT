@@ -156,7 +156,12 @@
             font-weight: 700;
             color: $secondaryColor;
             margin: 0.55em 0 0.65em 0;
-            height: 48px;
+            @include sm {
+                height: 43px;
+            }
+            @include md {
+                height: 48px;
+            }
             @include lg {
                 margin: 1em 0;
             }
