@@ -54,7 +54,7 @@ export class MyAssessmentComponent implements OnInit {
 
   goToCourse(){
     var ValueData = JSON.parse(this.appconfig.getLocalStorage('valueData'));
-    window.open(environment.lxp_url+"?queValue="+encodeURIComponent(ValueData.queValue)+'&rpValue='+encodeURIComponent(ValueData.rpValue)+'&dpValue=microsetportal', 'redirection');
+    window.open(environment.lxp_url+"?queValue="+encodeURIComponent(ValueData.queValue)+'&rpValue='+encodeURIComponent(ValueData.rpValue)+'&dpValue=microsetportal', '_self');
   }
   getmyAssesments(typeData){
     let param = {"userId": this.userDetails.userId, "email": this.userDetails.email, 'type':typeData.tabName,'productType':this.productType}
