@@ -15,7 +15,9 @@
                         <div class="courseHeading">{{item?.cart?.assessmentName}}</div>
                         <div class="contentWrapper">
                             <p>{{item?.assessmentDetails?.shortDescription}}</p>
-                            <button (click)="goToCourse()">Go To course</button>
+                            <div class="btnarea">
+                                <button (click)="goToCourse()">Go To course</button>
+                            </div>
                         </div>
                         <div class="durationwrapper">
                             <div class="durationTxt">Batch starts on</div>
@@ -39,7 +41,7 @@
                     </div>
                     <div class="right">
                         <div class="assessmentWrapper">
-                            <div>
+                            <div class="contentarea">
                                 <div class="heading" [ngStyle]="{'color' : productType == 'course' ? '#20B19A' :'#5B6ABA'}"><em class="icon-Right_Play"></em> <span >{{item.cart.competencyName}}</span></div>
                                 <div class="levels">{{item.cart.levelName}}</div>
                                 <div class="subHeading">{{item.cart.assessmentName}}</div>
