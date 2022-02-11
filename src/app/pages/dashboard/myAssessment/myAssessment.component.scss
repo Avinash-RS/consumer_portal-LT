@@ -26,68 +26,62 @@
             width: 100%;
             box-sizing: border-box;
             box-shadow: 0px 5px 15px rgb(0 0 0 / 25%);
+            flex-wrap: wrap;
             .left {
-                width: 22%;
+                width: 100%;
+                @include md {
+                    width: 22%;
+                   }
             }
             .right {
-                width: 75%;
+                width: 100%;
+                @include md {
+                    width: 75%;
+                   }
                 .assessmentWrapper{
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
                     padding-bottom: 1.5em;
                     border-bottom: 1px solid #848484;
-                    .heading {
-                        font-size: 0.75em;
-                        font-weight: 400;
-                        em {
-                            margin-right: 0.3125em;
+                    flex-wrap: wrap;
+                    .contentarea {
+                        width: 100%;
+                        @include md {
+                            width: 80%;
                         }
-                    }
-                    .levels {
-                        color: $blueLabelColor;
-                        font-size: 0.75em;
-                        font-weight: 400;
-                        margin: 0.5em 0 1em 0;
-                    }
-                   .courseHeading,.subHeading {
-                        font-family: "OpenSans", sans-serif;
-                        color: $darkGrey;
-                        font-size: 1.25em;
-                        font-weight: 600;
-                    }
-                    .courseHeading {
-                        margin: 1em 0;
-                    }
-                    .contentWrapper {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        p {
-                            color: $darkMediumGrey;
+                        .heading {
                             font-size: 0.75em;
                             font-weight: 400;
-                            line-height: normal;
-                            margin: 0;
-                        }
-                        button {
-                            padding: 0.5em 1.65em;
-                            font-family: "OpenSans", sans-serif;
-                            font-size: 1em;
-                            font-weight: 700;
-                            background-color: $primaryColor;
-                            color: $whiteColor;
-                            border: 1px solid $primaryColor;
-                            transition: 0.4s ease-in-out;
-                            border-radius: 5px;
-                            box-shadow: 2px 2px 3px rgb(0 0 0 / 20%);
-                            &:hover {
-                                background-color: $whiteColor;
-                                color: $primaryColor;
+                            em {
+                                margin-right: 0.3125em;
                             }
+                        }
+                        .levels {
+                            color: $blueLabelColor;
+                            font-size: 0.75em;
+                            font-weight: 400;
+                            margin: 0.5em 0 1em 0;
+                        }
+                       .courseHeading,.subHeading {
+                            font-family: "OpenSans", sans-serif;
+                            color: $darkGrey;
+                            font-size: 1.25em;
+                            font-weight: 600;
+                        }
+                        .courseHeading {
+                            margin: 1em 0;
                         }
                     }
                     .btnarea {
+                        width: 100%;
+                        margin-top: 1em;
+                        text-align: center;
+                        @include md {
+                            width: 20%;
+                            margin-top: 0;
+                            text-align: inherit;
+                        }
                         button {
                             padding: 0.5em 1.65em;
                             font-family: "OpenSans", sans-serif;
@@ -126,27 +120,42 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+                flex-wrap: wrap;
                 p {
                     color: $darkMediumGrey;
                     font-size: 0.75em;
                     font-weight: 400;
-                    line-height: normal;
+                    line-height: 1.5;
                     margin: 0;
+                    width: 100%;
+                    @include md {
+                        width: 75%;
+                       }
                 }
-                button {
-                    padding: 0.5em 1.65em;
-                    font-family: "OpenSans", sans-serif;
-                    font-size: 1em;
-                    font-weight: 700;
-                    background-color: $primaryColor;
-                    color: $whiteColor;
-                    border: 1px solid $primaryColor;
-                    transition: 0.4s ease-in-out;
-                    border-radius: 5px;
-                    box-shadow: 2px 2px 3px rgb(0 0 0 / 20%);
-                    &:hover {
-                        background-color: $whiteColor;
-                        color: $primaryColor;
+                .btnarea{
+                    width: 100%;
+                    margin-top: 1em;
+                    text-align: center;
+                    @include md {
+                        width: 25%;
+                        margin-top:0;
+                        text-align: inherit;
+                       }
+                    button {
+                        padding: 0.5em 1.65em;
+                        font-family: "OpenSans", sans-serif;
+                        font-size: 1em;
+                        font-weight: 700;
+                        background-color: $primaryColor;
+                        color: $whiteColor;
+                        border: 1px solid $primaryColor;
+                        transition: 0.4s ease-in-out;
+                        border-radius: 5px;
+                        box-shadow: 2px 2px 3px rgb(0 0 0 / 20%);
+                        &:hover {
+                            background-color: $whiteColor;
+                            color: $primaryColor;
+                        }
                     }
                 }
             }
