@@ -128,7 +128,12 @@ export class HeaderComponent implements OnInit {
   }
   megaMenuClick(type) {
     this.showMenu = type == 'desktop' ? 'in' : 'out';
-    this.mobileshowMenu = type == 'desktop' ? 'out' : 'in';
+    if(type == 'mobileclick') {
+      this.mobileshowMenu = this.mobileshowMenu == 'in' ? 'out' : 'in';
+      this.l2 = [];
+      this.l3 = [];
+    }
+    // this.mobileshowMenu = type == 'desktop' ? 'out' : 'in';
     this.registerMenu = 'out';
     this.assessmentsList = this.showMenu === 'in' ? true : false;
     this.coursesList = false;
@@ -158,6 +163,7 @@ export class HeaderComponent implements OnInit {
     this.l2 = [];
     this.l3 = [];
     this.l4 = [];
+    console.log()
   }
 
   getAssesment(){

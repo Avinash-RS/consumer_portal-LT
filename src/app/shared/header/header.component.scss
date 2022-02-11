@@ -43,8 +43,34 @@ header {
 .hambrg_ {
     color: $lightGrey;
     position: relative;
-    left: -2px;
+    left: 0;
     font-size: 1.5em;
+    > div {
+        width: 25px;
+        height: 15px;
+        position: relative;
+        margin: 0 auto;
+        div, &::before, &::after {
+            content: "";
+            background: $secondaryColor;
+            display: block;
+            height: 3px;
+            border-radius: 3px;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+        &.close {
+            &::before {
+                transform: translateY(6px) rotate(135deg);
+            }
+            &::after {
+                transform: translateY(-6px) rotate(-135deg)
+            }
+            div {
+                transform: scale(0);
+            }
+        }
+    }
 }
 .edutechLogo {
     cursor: pointer;
@@ -63,6 +89,9 @@ header {
     }
     @include xl {
         width: 13%;
+    }
+    @media only screen and (min-width: 1540px) {
+        width: 10%;
     }
     img {
         width: 100%;
@@ -727,6 +756,11 @@ header {
     overflow: auto;
     z-index: 99;
     padding: 0;
+    font-size: 14px;
+    @include md {
+        top: 4.7em;
+        font-size: 16px;
+    }
     &.mobilemenu {
         @include lg {
             display: none;
@@ -745,7 +779,8 @@ header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #F6F6F6;
+            background-color: $secondaryColor;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
             &.first {
                 .backArrow {
                     visibility: hidden;
@@ -754,7 +789,7 @@ header {
             .backArrow, .closeIcon {
                 line-height: normal;
                 em {
-                    color: $blackColor;
+                    color: $whiteColor;
                 }
             }
             .backArrow {
@@ -770,17 +805,17 @@ header {
             .headingStyle {
                 font-size: 1.3125em;
                 font-weight: 400;
-                color: $darkGrey;
+                color: $whiteColor;
                 line-height: normal;
             }
         }
         .topMenuMobile {
             padding: 0 1em 1em 1em;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
             a {
                 font-size: 1.25em;
                 font-weight: 400;
-                color: $darkGrey;
+                color: $whiteColor;
                 line-height: normal;
                 display: block;
                 padding: 0.75em 0 0.5em 0;
@@ -789,6 +824,49 @@ header {
         .commonSyle {
             padding: 0 1em;
             margin-top: 1.35em;
+            &.fisrtLevel {
+                .header-txt {
+                    color: #EDEDED;
+                }
+                ul {
+                    li {
+                        color: $whiteColor;
+                        a {
+                            display: flex;
+                            em {
+                                color: $whiteColor;
+                            }
+                            .icon {
+                                width: 10%;
+                                font-size: 1.65em;
+                                @include md {
+                                    width: 7%;
+                                    font-size: 2em;
+                                }
+                            }
+                            .content {
+                                width: 88%;
+                                position: relative;
+                                @include md {
+                                    width: 91%;
+                                }
+                                .arrow {
+                                    position: absolute;
+                                    right: 0;
+                                    top: 50%;
+                                    transform: translateY(-50%);
+                                }
+                                p {
+                                    margin: 0.5em 0 0 0;
+                                    color: #CCCCCC;
+                                    font-size: 0.6375em;
+                                    font-weight: 400;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
             ul {
                 list-style-type: none;
                 padding-top: 1em;
@@ -858,6 +936,73 @@ header {
                     width: 40%;
                     @include xl {
                         width: 30%;
+                    }
+                }
+            }
+        }
+        .firstLevelWrapper, .secondLevelWrapper, .thirdLevelWrapper {
+            height: 100%;
+        }
+        .firstLevelWrapper {
+            background-color: $secondaryColor;
+            position: relative;
+            &::before {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/menuBg.svg');
+                background-repeat: no-repeat;
+                background-size: contain;
+                width: 75%;
+                height: 170px;
+                @include md {
+                    width: 40%;
+                }
+            }
+        }
+        .secondLevelWrapper {
+            background-color: #F9F9F9;
+        }
+        .thirdLevelWrapper {
+            background-color: $whiteColor;
+            ul {
+                li {
+                    a {
+                        div {
+                            width: 100%;
+                            overflow: hidden;
+                            background-color: #f9f9f9;
+                            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+                            border-radius: 3px;
+                            padding: 0.75em;
+                            position: relative;
+                            display: flex;
+                            align-items: center;
+                            cursor: pointer;
+                            transition: 0.3s ease-in-out;
+                            &::before {
+                                content: '';
+                                position: absolute;
+                                background-color: #20B19A;
+                                height: 100%;
+                                width: 2px;
+                                left: 0;
+                                top: 0;
+                            }
+                            span {
+                                font-family: "OpenSans", sans-serif;
+                                font-size: 0.9375em;
+                                font-weight: 600;
+                                color: $darkGrey;
+                                line-height: normal;
+                                margin-left: 0.75em;
+                            }
+                            img {
+                                max-width: 7%;
+                            }
+                        }
                     }
                 }
             }
@@ -999,8 +1144,12 @@ header {
 
 ::ng-deep.profileMenu {
     &.mat-menu-panel {
-        min-width: 235px;
-        margin-top: 2em;
+        min-width: 300px;
+        margin-top: 1.15em;
+        @include lg {
+            min-width: 250px;
+            margin-top: 2em;
+        }
     }
     .mat-menu-content:not(:empty) {
         padding: 0;
