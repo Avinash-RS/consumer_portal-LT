@@ -1,83 +1,88 @@
-<section class="myAssesmentSection">
-    <div class="titleContainer">
-        <div class="container titelFlex">
-            <div class="txt-area"><h1>{{productType != 'course' ? 'My Assessment':'My Course'}}</h1></div>
-            <!-- <button mat-flat-button><em class="icon-Favorite"></em> &nbsp; Wishlist </button> -->
-            <div class="progress-area">
-                <span class="progress-txt">{{profilePercentage}}% of your profile is complete</span>
-                <mat-progress-bar class="progressbar" mode="determinate" bufferValue ="100" [value]="profilePercentage"></mat-progress-bar>
-            </div>
-        </div>
-    </div>
-    <div class="filterBg">
-        <div class="container filterSection">
-            <nav>
-                <ng-container *ngFor="let tab of tabList">
-                    <a [ngClass]="tab.isActive ? 'active': '' " (click)="getmyAssesments(tab)">{{tab.tabName}}</a>
-                </ng-container>
-            </nav>
-            <!-- <button class="filter"><em class="icon-Filter"></em><span>Filters</span></button> -->
-        </div>
-    </div>
-    <section *ngIf="assessmentList.length == 0" class="emptyCart">
-        <div class="imgContainer">
-            <figure>
-                <img src="https://lmsassetspremium.lntedutech.com/portalicons/empty-assessment.png" alt="" />
-                <div class="heading3">{{productType != 'course' ? 'Benchmark your skills, get your assessments!!!':'Build your competencies, get your courses!!!'}}</div>
-                <button (click)="toCatalogue()">Go to Catalog</button>
-            </figure>
-        </div>
-    </section>
-    <div class="container" *ngIf="assessmentList.length > 0">
-        <!-- <div class="toolbar">
-            <span class="list"><em class="icon-List"></em></span>
-            <span class="grid"><em class="icon-Grid"></em></span>
-            <button mat-stroked-button><em class="icon-Filter"></em> &nbsp; Filters </button>
-        </div> -->
-        <!-- <div class="notifyInfo" *ngIf="showInfoPop">
-            <div>
-                <p><em class="icon-Info"></em> A "Go to Test" link will be enabled on 15 minutes before your exam schedule.</p>
-            </div>
-            <div (click)="showInfoPop=false"><em class="icon-Close"></em></div>
-        </div> -->
-        <div class="assesmentList">
-            <div class="assesmentItem" *ngFor="let item of assessmentList">
-                <figure>
-                    <img [src]="item.assessmentDetails?.image?.url" alt="" />
-                </figure>
-                <div class="itemNames">
-                    <span [matTooltip]="item?.cart?.competencyName">{{item.cart.competencyName}}</span>
-                    <div class="heading4" [matTooltip]="item?.cart?.assessmentName">{{item.cart.assessmentName}}</div>
-                    <label *ngIf="item.assessmentDetails.productType !='course'">{{item.cart.levelName}}</label>
-                </div>
-                <div class="itemTypes">
-                    <div *ngFor="let testType of item.assessmentDetails.testTypes index as i">
-                        <ng-container *ngIf="item.assessmentDetails.productType !='course'">
-                        <span class="ellipse" [ngClass]="testType.teststatus==='Completed'?'green':''"></span>
-                        <div class="heading">{{testType.testName}}</div>
-                        <span class="assessmentHour">{{testType.sumtotalhour}}Min(s)<span>|</span> {{testType.totalQuestion}} Questions</span>
-                        <div class="gotoExamBtnInnerDiv" *ngIf="!testType.bookaslotstatus"><button (click)="bookSlot(item,i)">Book a slot</button></div>
-                        <!-- <span *ngIf="testType.bookaslotstatus&&testType.teststatus!=='Completed'" class="reschedulespan" (click)="bookSlot(item,i,1)">Reschedule</span> -->
-                        <div class="assessmentHourbold" *ngIf="testType.bookaslotstatus&& testType.teststatus!=='Completed'">{{testType.bookeddate|date : 'M/d/y'}} {{testType.bookeddate|date : 'hh:mm a'}}</div>
-                        <div class="assessmentHourbold" style="color:green" *ngIf="testType.bookaslotstatus&& testType.teststatus==='Completed'">Completed</div>
-                     </ng-container>
+<section class="myPurchase" *ngIf="assessmentList.length > 0 && isShow">
+     <!-- My Course -->
+    <ng-container *ngIf="productType == 'course'">
+        <div class="container">
+            <div class="commonHeadingStyle">{{'My Course'}}</div>
+            <div class="list">
+                <div class="card"  *ngFor="let item of assessmentList">
+                    <div class="left">
+                        <figure>
+                            <img [src]="item?.assessmentDetails?.image?.url" alt="">
+                        </figure>    
                     </div>
+                    <div class="right">
+                        <div class="heading" [ngStyle]="{'color' : productType == 'course' ? '#20B19A' :'#5B6ABA'}"><em class="icon-Right_Play"></em> <span >{{item.cart.competencyName}}</span></div>
+                        <div class="courseHeading">{{item?.cart?.assessmentName}}</div>
+                        <div class="contentWrapper">
+                            <p>{{item?.assessmentDetails?.shortDescription}}</p>
+                            <button (click)="goToCourse()">Go To course</button>
+                        </div>
+                        <div class="durationwrapper">
+                            <div class="durationTxt">Batch starts on</div>
+                            <div class="duration"><em class="icon-Time"></em> <span>{{item?.assessmentDetails?.courseContents?.batchStartDate | date :'dd MMM, yyyy'}}</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <!-- My Assessment -->
+    <ng-container *ngIf="productType != 'course'">
+        <div class="container">
+            <div class="commonHeadingStyle">{{'My Assessment'}}</div>
+            <div class="list">
+                <div class="card"  *ngFor="let item of assessmentList">
+                    <div class="left">
+                        <figure>
+                            <img [src]="item?.assessmentDetails?.image?.url" alt="">
+                        </figure>    
+                    </div>
+                    <div class="right">
+                        <div class="assessmentWrapper">
+                            <div>
+                                <div class="heading" [ngStyle]="{'color' : productType == 'course' ? '#20B19A' :'#5B6ABA'}"><em class="icon-Right_Play"></em> <span >{{item.cart.competencyName}}</span></div>
+                                <div class="levels">{{item.cart.levelName}}</div>
+                                <div class="subHeading">{{item.cart.assessmentName}}</div>
+                            </div>
+                            <div class="btnarea">
+                                <button *ngIf="item.assessmentDetails.assmentstatus != 'Completed'" (click)="uapRedirect(item.assessmentDetails.assessmentId)">Go To Test</button>
+                                <button *ngIf="item.assessmentDetails.assmentstatus == 'Completed'" (click)="viewReportRedirect(item)">View Port</button>
+                            </div>
+                        </div>
+                        <div class="levelAssessment">
+                            <div  *ngFor="let testType of item.assessmentDetails.testTypes index as i">
+                                <span class="heading">{{testType.testName}}</span>
+                                <span class="assessmentHour">
+                                    <span><em class="icon-Time"></em>{{testType.sumtotalhour}} Min(s)</span>
+                                    <span><em class="icon-Layers"></em> {{testType.totalQuestion}} Questions</span>
+                                </span>
+                                <div class="bookaSlot">
+                                    <button *ngIf="!testType.bookaslotstatus" (click)="bookSlot(item,i)">Book a slot</button>
+                                    <ng-container *ngIf="testType.bookaslotstatus&& testType.teststatus!=='Completed'">
+                                        <span style="color: #1B4E9B;">Booked</span>
+                                        <div class="date">{{testType.bookeddate|date : 'M/d/y'}} {{testType.bookeddate|date : 'hh:mm a'}}</div>
+                                    </ng-container>
+                                    <ng-container *ngIf="testType.bookaslotstatus&& testType.teststatus ==='Completed'">
+                                        <span style="color: #56B35A;">Completed</span>
+                                        <!-- <div class="date">{{testType.bookeddate|date : 'M/d/y'}} {{testType.bookeddate|date : 'hh:mm a'}}</div> -->
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</section>
 
-                    <div class="gotobtn-area" *ngIf="item.assessmentDetails.productType !='course'">
-                        <div class="gotoExamBtn">
-                            <button [ngClass]="item.assessmentDetails.showExamBtn?item.assessmentDetails.assmentstatus==='Completed'?'disable':'':'disable'"  (click)="item.assessmentDetails.showExamBtn?item.assessmentDetails.assmentstatus==='Completed'?'':uapRedirect(item.assessmentDetails.assessmentId):''">Go to Test</button>
-                        </div>
-                        <div class="gotoExamBtn view-btn" *ngIf="item.assessmentDetails.assmentstatus == 'Completed'">
-                            <button  (click)="viewReportRedirect(item)">View Report</button>
-                        </div>
-                    </div>
-                    <div class="gotobtn-area" *ngIf="item.assessmentDetails.productType =='course'">
-                        <div class="gotoExamBtn">
-                            <button  (click)="goToCourse()">Go to Course</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- No Card -->
+<section *ngIf="assessmentList.length == 0 && isShow" class="emptyCart">
+    <div class="imgContainer">
+        <figure>
+            <img src="https://lmsassetspremium.lntedutech.com/portalicons/empty-assessment.png" alt="" />
+            <div class="heading3">{{productType != 'course' ? 'Benchmark your skills, get your assessments!!!':'Build your competencies, get your courses!!!'}}</div>
+            <button (click)="toCatalogue()">Go to Catalog</button>
+        </figure>
     </div>
 </section>

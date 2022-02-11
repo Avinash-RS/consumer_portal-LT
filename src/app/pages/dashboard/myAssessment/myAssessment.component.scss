@@ -1,377 +1,272 @@
 @import "variables";
 
-.myAssesmentSection {
-    font-size: 10px;
+ .myPurchase {
+    padding: 3.75em 0;
+    background-color: #F8FBFF;
+    font-size: 13px;
     @include md {
-        font-size: 12px;
+     font-size: 13px;
     }
     @include lg {
-        font-size: 14px;
+      font-size: 14px;
     }
     @include xl {
-        font-size: 16px;
-    }
-}
-
-.d-flex {
-    display: flex;
-}
-.titleContainer {
-    background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/Account_pattern.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 3em 0;
-    position: relative;
-    &::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0.7;
-        background-image: linear-gradient(to right, #00b0ed, #00b5d9, #00b6af, #00b376, #53aa34);
-    }
-}
-.titelFlex {
-    display: flex;
-    color: #FFFFFF;
-    justify-content: space-between;
-    position: relative;
-    .txt-area{
-        width: 80%;
-        h1 {
-            font-weight: bolder !important;
-            font-size: 32px !important;
-            margin-bottom: 0px !important;
-        }
-    }
-    .progress-area{
-        width: 20%;
-        .progress-txt{
-            color: #ffffff;
-        }
-        .progressbar{
-            margin-top: 10px;
-            height: 12px;
-            border-radius: 10px;
-        }
-    }
-
-}
-.filterBg {
-    margin-top: -26px;
-  .filterSection {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    nav {
-      width: 90%;
-      a {
-        position: relative;
-        display: inline-block;
-        padding-bottom: 5px;
-        margin-right: 1em;
-        color: #FFFFFF;
-        font-size: 1.125em;
-        font-weight: 400;
-        &.active {
-          color: $darkGrey;
-          &::before {
-            width: 100%;
-            visibility: visible;
-          }
-        }
-        &::before {
-          content: "";
-          position: absolute;
-          width: 0;
-          height: 2px;
-          bottom: -1px;
-          left: 0;
-          background-color: $primaryColor;
-          visibility: hidden;
-          transition: all 0.3s ease-in-out;
-        }
-        &:hover {
-          color: $darkGrey;
-          &::before {
-            visibility: visible;
-            width: 100%;
-          }
-        }
-      }
-    }
-    .filter {
-      margin-top: 0.65em;
-      width: 8%;
-      color: $darkGrey;
-      font-size: 1em;
-      font-weight: 400;
-      line-height: 1.4;
-      border: none;
-      background-color: $whiteColor;
-      padding: 4px 0.75em;
-      border-radius: 4px;
-      box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.15);
-      -webkit-box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.15);
-      -moz-box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.15);
-      transition: color 0.3s linear;
-      &:hover {
-        color: $primaryColor;
-      }
-      span,
-      em {
-        display: inline-block;
-        vertical-align: middle;
-      }
-      span {
-        margin-left: 0.35em;
-      }
-      em {
-        font-size: 1.15em;
-      }
-    }
-  }
-}
-
-.toolbar {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 0.3em;
-    margin: 0.5em 0;
-    span {
-        display: inline-block;
-        em {
-            color: $lightGrey;
-            font-size: 1em;
-        }
+      font-size: 16px;
     }
     .list {
-        margin-right: 1em;
-        font-size: 1.55em;
-    }
-    .grid {
-        margin-right: 2em;
-        font-size: 1.25em;
-    }
-}
-.notifyInfo {
-    display: flex;
-    justify-content: space-between;
-    background-color: #cce5ff;
-    border: solid 1px #9fc2e2;
-    border-radius: 3px;
-    padding: 0.8em 1.25em;
-    p {
-        color: #004085;
-        font-size: 0.875em;
-        font-weight: 400;
-        display: inline-block;
-        vertical-align: middle;
-        margin: 0;
-        em {
-            margin: 0 0.5em 0 0;
-        }
-    }
-    .icon-Close {
-        display: inline-block;
-        vertical-align: middle;
-        color: $mediumGrey;
-        font-size: 0.65em;
-    }
-}
-.assesmentList {
-    margin: 0.7em 0;
-    .assesmentItem {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        padding: 0.75em;
-        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
-        border-radius: 4px;
-        margin: 0.9375em 0;
-        width: 100%;
-        box-sizing: border-box;
-        figure {
-            width: 38%;
-            display: flex;
-            // box-sizing: border-box;
-            @include md {
-                width: 13%;
-            }
-            img {
-                width: 100%;
-                object-fit: cover;
-            }
-        }
-        .itemNames {
-            // box-sizing: border-box;
-            width: 60%;
-            padding: 0.5em 0.75em;
-            @include md {
-                width: 40%;
-                border-bottom: 0;
-                border-right: 1px solid rgba(0, 0, 0, 0.1);
-            }
-            span {
-                font-size: 0.875em;
-                font-weight: 400;
-                color: $lightGrey;
-            }
-            .heading4 {
-                color: $darkGrey;
-                font-weight: 700;
-                line-height: 1;
-                width: 99%;
-                text-overflow: ellipsis;
-                overflow: hidden;
-                white-space: nowrap;
-            }
-            label {
-                display: inline-block;
-                background-color: #DDDDDD;
-                font-size: 0.68em;
-                font-weight: 400;
-                color: $blackColor;
-                padding: 0.35em 0.65em;
-                border-radius: 4px;
-                margin-top: 0.35em;
-                line-height: normal;
-            }
-        }
-        .itemTypes {
+        margin: 0.7em 0;
+        .card {
+            background-color: $whiteColor;
+            padding: 1em;
             display: flex;
             justify-content: space-between;
-            //align-items: center;
-            padding: 0.7em 0 0.7em 0.7em;
+            align-items: center;
+            border-radius: 4px;
+            margin: 0.9375em 0;
             width: 100%;
-            .gotobtn-area{
-                align-self: center;
+            box-sizing: border-box;
+            box-shadow: 0px 5px 15px rgb(0 0 0 / 25%);
+            .left {
+                width: 22%;
             }
-            @include md {
-                width: 47%;
+            .right {
+                width: 75%;
+                .assessmentWrapper{
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding-bottom: 1.5em;
+                    border-bottom: 1px solid #848484;
+                    .heading {
+                        font-size: 0.75em;
+                        font-weight: 400;
+                        em {
+                            margin-right: 0.3125em;
+                        }
+                    }
+                    .levels {
+                        color: $blueLabelColor;
+                        font-size: 0.75em;
+                        font-weight: 400;
+                        margin: 0.5em 0 1em 0;
+                    }
+                   .courseHeading,.subHeading {
+                        font-family: "OpenSans", sans-serif;
+                        color: $darkGrey;
+                        font-size: 1.25em;
+                        font-weight: 600;
+                    }
+                    .courseHeading {
+                        margin: 1em 0;
+                    }
+                    .contentWrapper {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        p {
+                            color: $darkMediumGrey;
+                            font-size: 0.75em;
+                            font-weight: 400;
+                            line-height: normal;
+                            margin: 0;
+                        }
+                        button {
+                            padding: 0.5em 1.65em;
+                            font-family: "OpenSans", sans-serif;
+                            font-size: 1em;
+                            font-weight: 700;
+                            background-color: $primaryColor;
+                            color: $whiteColor;
+                            border: 1px solid $primaryColor;
+                            transition: 0.4s ease-in-out;
+                            border-radius: 5px;
+                            box-shadow: 2px 2px 3px rgb(0 0 0 / 20%);
+                            &:hover {
+                                background-color: $whiteColor;
+                                color: $primaryColor;
+                            }
+                        }
+                    }
+                    .btnarea {
+                        button {
+                            padding: 0.5em 1.65em;
+                            font-family: "OpenSans", sans-serif;
+                            font-size: 1em;
+                            font-weight: 700;
+                            background-color: $primaryColor;
+                            color: $whiteColor;
+                            border: 1px solid $primaryColor;
+                            transition: 0.4s ease-in-out;
+                            border-radius: 5px;
+                            box-shadow: 2px 2px 3px rgb(0 0 0 / 20%);
+                            &:hover {
+                                background-color: $whiteColor;
+                                color: $primaryColor;
+                            }
+                        }
+                    }
+                }
+            .heading {
+                font-size: 0.75em;
+                font-weight: 400;
+                em {
+                    margin-right: 0.3125em;
+                }
             }
-            > div {
-                text-align: center;
-                margin: 0 0.2em;
-                .ellipse {
-                    border-radius: 50%;
-                    background-color: $greyColor;
-                    display: inline-block;
-                    width: 1em;
-                    height: 1em;
+           .courseHeading,.subHeading {
+                font-family: "OpenSans", sans-serif;
+                color: $darkGrey;
+                font-size: 1.25em;
+                font-weight: 600;
+            }
+            .courseHeading {
+                margin: 1em 0 0.5em 0;
+            }
+            .contentWrapper {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                p {
+                    color: $darkMediumGrey;
+                    font-size: 0.75em;
+                    font-weight: 400;
+                    line-height: normal;
+                    margin: 0;
                 }
-                .green{
-                    background-color: green;
+                button {
+                    padding: 0.5em 1.65em;
+                    font-family: "OpenSans", sans-serif;
+                    font-size: 1em;
+                    font-weight: 700;
+                    background-color: $primaryColor;
+                    color: $whiteColor;
+                    border: 1px solid $primaryColor;
+                    transition: 0.4s ease-in-out;
+                    border-radius: 5px;
+                    box-shadow: 2px 2px 3px rgb(0 0 0 / 20%);
+                    &:hover {
+                        background-color: $whiteColor;
+                        color: $primaryColor;
+                    }
                 }
-                .orange{
-                    background-color: orange;
+            }
+            .durationwrapper {
+                margin-top: 1em;
+                .durationTxt {
+                    color: $darkMediumGrey;
+                    font-family: "OpenSans", sans-serif;
+                    font-size:0.75em;
+                    font-weight: 400;
+                    margin-bottom: 0.5em;
+                }
+                .duration {
+                    display: flex;
+                    align-items: center;
+                    em {
+                        color: #EBC71A;
+                        margin-right: 0.3125em;
+                    }
+                    span {
+                        color: $darkGrey;
+                        font-weight: 700;
+                        font-size: 0.75em;
+                        line-height: normal;
+                    }
+                }
+            }
+            .levelAssessment {
+                margin-top: 1em;
+                display: flex;
+                align-items: flex-start;
+                flex-wrap: wrap;
+                width: 100%;
+                > div {
+                    width: 100%;
+                    margin: 0 0 1em 0;
+                    &:first-child {
+                        margin-left: 0;
+                    }
+                    @include sm {
+                        width: 45%;
+                        margin: 0 2% 0 0;
+                    }
+                    @include md {
+                        width: 33%;
+                        margin: 1em 0 0 1%;
+                    }
+                    @include lg {
+                        margin: 0 0 0 2%;
+                        width: 30%;
+                    }
+                    @include xl {
+                        width: 23%;
+                    }
                 }
                 .heading, .assessmentHour {
+                    text-align: center;
                     font-size: 0.75em;
                     display: block;
-                    line-height: normal;
+                    line-height: 1.2;
                 }
                 .heading {
-                    text-align: center;
+                    font-family: "OpenSans", sans-serif;
                     font-weight: 700;
-                    color: $darkGrey;
-                    margin-bottom: 0.15em;
-                    min-height: 30px;
+                    color: $mediumGrey;
+                    margin-bottom: 0.75em;
                 }
                 .assessmentHour {
-                    color: $lightGrey;
                     span {
-                        color: $primaryColor;
-                        display: inline-block;
-                        margin: 0 0.15em;
+                        color: $lightGrey;
+                        display: inline-flex;
+                        align-items: center;
+                        border-right: 2px solid #C02222;
+                        margin-right: 7px;
+                        padding-right: 7px;
+                        line-height: normal;
+                        &:last-child {
+                            margin-right: 0;
+                            padding-right: 0;
+                            border-right: none;
+                        }
+                        em {
+                            color: $secondaryColor;
+                            font-size: 1em;
+                            margin-right: 3px;
+                        }
+                    }
+                }
+                .bookaSlot {
+                    margin: 0.75em 0 0.5em 0;
+                    text-align: center;
+                    button {
+                        padding: 0.25em 1em;
+                        background-color: $secondaryColor;
+                        color: $whiteColor;
+                        border:1px solid $secondaryColor;
+                        border-radius: 5px;
+                        transition: 0.3s ease-in-out;
+                        font-size: 0.75em;
+                        margin-bottom:0.3em;
+                        &:hover {
+                            color: $secondaryColor;
+                            background-color: $whiteColor;
+                        }
+                    }
+                    span {
+                        font-family: "OpenSans", sans-serif;
+                        font-size: 0.75em;
+                        font-weight: 500;
+                    }
+                    .date{
+                        color: $lightGrey;
+                        font-family: "OpenSans", sans-serif;
+                        font-size: 0.635em;
+                        font-weight: 400;
                     }
                 }
             }
         }
-    }
-}
-.assessmentHourbold{
-    color: $lightGrey;
-    font-weight: bold;
-    font-size: 0.75em;
-    display: block;
-}
-.gotoExamBtn {
-    width: 100%;
-    //text-align: center;
-    align-self: center;
-    button {
-        @include buttonFilled;
-        font-size: 0.8em;
-        font-weight: 400;
-        padding-left: 1em;
-        padding-right: 1em;
-        min-width: 6.8em;
-    }
-    .disable{
-        background-color: grey !important;
-        cursor:default !important;
-    }
-}
-.view-btn{
-    margin-top: 10px;
-}
-
-.gotoExamBtnInnerDiv {
-    width: 100%;
-    text-align: center;
-    button {
-        @include buttonFilled;
-        font-size: .7em;
-        font-weight: 400;
-        margin-top: .6em;
-        padding-left: 1.5em;
-        padding-right: 1.5em;
-    }    
-}
-.reschedulespan {
-    font-size: 1.1em;
-        color: #C02222;
-        font-weight: 400;
-        line-height: 1.4;
-}
-
-.emptyCart {
-    text-align: center;
-    .imgContainer {
-        margin-top: 1.5em;
-    }
-    figure {
-        img {
-            width: 20%;
         }
     }
-    .heading3 {
-        //text-transform: uppercase;
-        font-weight: 700;
-        margin: 0.65em 0 0.25em 0;
-    }
-    p {
-        color: $mediumGrey;
-        font-size: 0.93em;
-        line-height: 1.4;
-    }
-    button {
-        @include buttonFilled;
-        font-size: 1.25em;
-        font-weight: 400;
-        padding-left: 3em;
-        padding-right: 3em;
-        line-height: 1.5;
-    }
-}
-::ng-deep .progress-area .mat-progress-bar-fill::after {
-    background-color: #1b4e9b;
-  }
-  
-  ::ng-deep .progress-area .mat-progress-bar-buffer {
-    background: #ededed;
+
   }
