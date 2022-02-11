@@ -33,6 +33,7 @@ export class MyAssessmentComponent implements OnInit {
   profilePercentage:any = 0;
   encryptionKey = 'unifiedReports';
   productType:string = 'assessment';
+  isShow:boolean = false;
 
   constructor(
     private commonServ: CommonService,
@@ -71,6 +72,7 @@ export class MyAssessmentComponent implements OnInit {
       });
       this.assessmentList = rdata.data;
       typeData.isActive = true;
+      this.isShow = true;
     })
   }
 
