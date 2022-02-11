@@ -98,16 +98,20 @@
 }
 
 .signUpContainer {
-    $fontsize: 11;
+    $fontsize: 14;
     font-size: #{$fontsize}px;
     position: unset;
     padding-bottom: 2.5em;
+    @include md {
+        $fontsize: 13;
+        font-size: #{$fontsize}px;
+    }
     @include lg {
-        $fontsize: 12;
+        $fontsize: 14;
         font-size: #{$fontsize}px;
     }
     @include xl {
-        $fontsize: 14;
+        $fontsize: 15;
         font-size: #{$fontsize}px;
     }
     .loginBG {

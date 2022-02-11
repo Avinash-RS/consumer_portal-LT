@@ -51,9 +51,6 @@ addToCart(params) {
   }
   encryptdata(request){
     let url = this.baseurl + 'ccavRequestHandler';
-    let data = {
-    request : request
-    }
     return this.http.post(url,request)
   }
   checkassessment(params) {
@@ -81,13 +78,7 @@ addToCart(params) {
     return this.http.post(this.baseurl +'rescheduleAssessment' , param);
   }
   userSyncUpLxp(param){
-    const reqoptions = {
-      headers: new HttpHeaders({
-        Authorization: 'Bearer aqSkKT6qguVyANMPtR6qqWaiCLUTRNpS7aki0COQm6WEg9WE8VWiopu9rF5oQank2AdWyM3UKr62WUu9l1R1BfaO9CzM16Vi89ecAX6ADPfhGBzpAEXze1do0SqtMkdQ5oGqFqtXphoc4DZL4hb6wRdg09RWzEJcnYJLtvska9HfvQiywtu1LZvDt1AD104ypzLaIRV6dGtKWHrhYgxVn7D3Q9mkTS3oejbVX8z81RwN3Ely6g59t5RRU88BVJiv',
-        requestId :'microsetportal'
-      })
-    };
-    return this.http.post(this.baseurl +'userSyncUpLxp' , param, reqoptions);
+    return this.http.post(this.baseurl +'userSyncUpLxp' , param);
   }
   stepCrsFrmMicrocert(param){
     return this.http.post(this.baseurl +'stepCrsFrmMicrocert' , param);
