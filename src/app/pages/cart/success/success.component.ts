@@ -158,7 +158,7 @@ export class SuccessComponent implements OnInit {
     }
     else{
       var ValueData = JSON.parse(this.appconfig.getLocalStorage('valueData'));
-      window.open(environment.lxp_url+"?queValue="+encodeURIComponent(ValueData.queValue)+'&rpValue='+encodeURIComponent(ValueData.rpValue)+'&dpValue=microsetportal', 'redirection');
+      window.open(environment.lxp_url+"?queValue="+encodeURIComponent(ValueData.queValue)+'&rpValue='+encodeURIComponent(ValueData.rpValue)+'&dpValue=microsetportal', '_self');
     }
   }
 
