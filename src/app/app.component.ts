@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,HostListener } from '@angular/core';
 import { delay } from 'rxjs/operators';
 import { LoadingService } from './services/loading.service';
 import { BnNgIdleService } from 'bn-ng-idle';
@@ -17,7 +17,21 @@ export class AppComponent {
   isMobile: boolean = false;
   platformTxt = navigator.platform;
   runnablePlatforms = ['MacIntel', 'Win32', 'Linux x86_64'];
-
+  @HostListener('contextmenu', ['$event'])
+  onRightClick(event) {
+  event.preventDefault();
+}
+@HostListener('document:keydown', ['$event'])
+handleKeyboardEvent(event: KeyboardEvent) {
+  if ( (event.which === 67 && event.ctrlKey && event.shiftKey) || (event.which === 123) ||
+   (event.which === 73 && event.ctrlKey && event.shiftKey) ) {
+    event.returnValue = false;
+    event.preventDefault();
+  }
+}
+@HostListener('copy', ['$event']) blockCopy(e: KeyboardEvent) {
+  e.preventDefault();
+}
   constructor(
     private _loading: LoadingService,
     private bnIdle: BnNgIdleService,

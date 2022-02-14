@@ -33,6 +33,7 @@ export class MyAssessmentComponent implements OnInit {
   profilePercentage:any = 0;
   encryptionKey = 'unifiedReports';
   productType:string = 'assessment';
+  isShow:boolean = false;
 
   constructor(
     private commonServ: CommonService,
@@ -53,7 +54,7 @@ export class MyAssessmentComponent implements OnInit {
 
   goToCourse(){
     var ValueData = JSON.parse(this.appconfig.getLocalStorage('valueData'));
-    window.open(environment.lxp_url+"?queValue="+encodeURIComponent(ValueData.queValue)+'&rpValue='+encodeURIComponent(ValueData.rpValue)+'&dpValue=microsetportal', 'redirection');
+    window.open(environment.lxp_url+"?queValue="+encodeURIComponent(ValueData.queValue)+'&rpValue='+encodeURIComponent(ValueData.rpValue)+'&dpValue=microsetportal', '_self');
   }
   getmyAssesments(typeData){
     let param = {"userId": this.userDetails.userId, "email": this.userDetails.email, 'type':typeData.tabName,'productType':this.productType}
@@ -71,6 +72,7 @@ export class MyAssessmentComponent implements OnInit {
       });
       this.assessmentList = rdata.data;
       typeData.isActive = true;
+      this.isShow = true;
     })
   }
 
