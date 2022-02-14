@@ -55,6 +55,10 @@
         @include lg {
             left: -25em;
         }
+        @media only screen and (min-width: 1540px) {
+            height: 45%;
+            bottom: 4em;
+        }
     }
     &::after {
         background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/industryLeater_bottomLeft.png');
@@ -79,6 +83,10 @@
             width: 57%;
             height: 40%;
             right: -15em;
+        }
+        @media only screen and (min-width: 1540px) {
+            width: 53%;
+            height: 52%;
         }
     }
     .container {
@@ -275,7 +283,8 @@
     margin: 2em 0 0 0;
     cursor: pointer;
     transition: all 0.3s;
-    float: left; 
+    float: left;
+    position: relative;
     @include sm {
         width: 48%;
         margin: 2em 0 0 2%;
@@ -366,7 +375,7 @@
         }
     }
     .listDescription {
-        padding: 0.5em 0.85em 0.7em 0.85em;
+        padding: 0.5em 0.85em 2.5em 0.85em;
         position: relative;
         .headings, .ratingSkills, .assessmentDuration {
             span {
@@ -491,7 +500,10 @@
         }
     }
     .previewRibbon {
-        position: relative;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
         z-index: 9;
         span {
             font-family: "OpenSans", sans-serif;
