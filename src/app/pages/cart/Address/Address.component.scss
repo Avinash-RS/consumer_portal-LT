@@ -6,27 +6,27 @@
     .address {
         padding: 1em;
         border-radius: 5px;
-        box-shadow: 0 0 5px rgba(0,0,0,0.25);
-        margin-top: 1em;
+        border: 1px solid rgba(112, 112, 112, 0.25);
+        box-shadow: 1px 3px 7px rgba(0,0,0,0.1);
         .name {
-            font-size: 0.9375em;
-            font-weight: 400;
-            span {
-                margin-left: 0.5em;
+            font-size: 1.125em;
+            font-weight: 700;
+            color: $blackColor;
+            .badge {
+                margin-left: 1.5em;
+                background-color: #F0F0F0;
+                border-radius: 5px;
+                padding: 0.25em 0.75em;
+                font-size: 0.75em;
+                font-weight: 400;
+                color: $lightGrey;
             }
         }
-        .name span {
-            @include buttonOutlined;
-            font-size: 0.625em;
-            font-weight: 400;
-            color: $blackColor;
-            padding-left: 1.5em;
-            padding-right: 1.5em;
-            border-color: #FFCB00;
-        }
         p, .mobile {
-            font-size: 0.875em;
+            font-size: 0.9375em;
             font-weight: 400;
+            color: $darkMediumGrey;
+            line-height: 1.7;
         }
         p {
             margin: 0.5em 0;
@@ -36,9 +36,29 @@
         .mobile {
             color: $mediumGrey;
             strong {
-                color: $darkGrey;
+                color: $blackColor;
                 margin-left: 0.2em;
                 display: inline-block;
+            }
+        }
+        .removeEdit {
+            display: flex;
+            justify-content: flex-end;
+            button {
+                background-color: #F0F0F0;
+                border: 1px solid rgba(27, 78, 155, 0.5);
+                border-radius: 5px;
+                padding: 0.5em 1.5em;
+                font-size: 0.75em;
+                font-weight: 400;
+                color: $darkMediumGrey;
+                display: flex;
+                align-items: center;
+                em {
+                    font-size: 1em;
+                    margin-right: 0.5em;
+                    color: $darkGrey;
+                }
             }
         }
         button {
@@ -52,16 +72,24 @@
         }
     }
     .addAddress {
-        border: 1px solid $lightGrey;
+        border: 1px solid rgba(112, 112, 112, 0.5);
         border-style: dashed;
-        padding: 1em;
-        margin-top: 1em;
+        padding: 1.5em 1em;
+        margin: 1em 0;
         cursor: pointer;
         span {
-            font-size: 1.063em;
-            font-weight: 400;
-            color: $primaryColor;
-            text-transform: uppercase;
+            font-family: "OpenSans", sans-serif;
+            font-size: 1em;
+            font-weight: 600;
+            color: $shadeBlueColor;
+            display: flex;
+            align-items: center;
+            strong {
+                font-size: 2.25em;
+                color: $mediumGrey;
+                font-weight: 400;
+                margin-right: 0.25em;
+            }
         }
     }
 }
@@ -74,20 +102,30 @@
         top: 1.5em;
         cursor: pointer;
     }
-    .heading3 {
-        border-bottom: 1px solid $greyColor;
+    .heading6 {
         margin: 0;
-        padding: 0.65em 1em;
+        padding: 0.85em 1em 0.5em 1em;
+        font-family: "OpenSans", sans-serif !important;
+        color: $shadeBlueColor;
+        font-weight: 600 !important;
+    }
+}
+.newAddress {
+    form {
+        @media only screen and (max-width: 576px) {
+            height: 550px;
+            overflow: auto;
+        }
     }
 }
 .removeContent {
-    padding: 1.5em;
+    padding: 0.5em 1.5em 1.5em 1.5em;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     em {
-        color: $primaryColor;
+        color: #c02222;
         font-size: 1.5em;
         border: 2px solid #c02222;
         border-radius: 50%;
@@ -98,28 +136,32 @@
         height: 2em;
         margin-bottom: 0.5em;
     }
-    .heading3 {
-        text-transform: uppercase;
+    .heading4 {
+        // text-transform: uppercase;
         border-bottom: 0;
         padding: 0;
         font-weight: 700;
-        margin-bottom: 0.35em;
     }
     p {
         font-size: 1em;
         font-weight: 400;
         color: $lightGrey;
         line-height: 1.3;
+        margin: 1em 0 1.5em 0;
     }
     button {
-        @include buttonFilled;
-        padding-left: 2em;
-        padding-right: 2em;
-        margin-bottom: 1em;
+        font-family: "OpenSans", sans-serif;
+        font-size: 1.125em;
+        font-weight: 600;
+        color: $whiteColor;
+        border-radius: 5px;
+        padding: 0.5em 2.5em;
+        background-color: $shadeBlueColor;
+        border: none;
     }
 }
 .addressContent {
-    padding: 1.5em;
+    padding: 0.5em 1.5em 1.5em 1.5em;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -131,21 +173,27 @@
             width: 48%;
         }
         &.addressDropSection {
-            width: 48%;
+            width: 100%;
+            @include sm {
+                width: 48%;
+            }
         }
         &.addressSection {
             width: 100%;
         }
-        
         &.addAddressBtn {
             width: 100%;
             text-align: center;
+            margin: 1.5em 0 0 0;
             button {
-                @include buttonFilled;
-                font-size: 1.25em;
-                font-weight: 300;
-                padding-left: 1.5em;
-                padding-right: 1.5em;
+                background: $shadeBlueColor !important;
+                border: none;
+                font-family: "OpenSans", sans-serif;
+                font-size: 1.125em;
+                font-weight: 600;
+                color: $whiteColor;
+                border-radius: 5px;
+                padding: 0.5em 2.5em;
             }
         }
     }
@@ -174,10 +222,11 @@
     span {
         display: block;
         &.addressTitle {
-            font-size: 1em;
+            font-size: 0.9375em;
             font-weight: 400;
-            color: $mediumGrey;
+            color: $darkMediumGrey;
             line-height: 1.3;
+            margin-bottom: 0.35em;
         }
     }
     .mandatory{
@@ -192,7 +241,15 @@
     width: 85% !important;
     cursor: default !important;
     @include lg {
-        width: 35% !important;
+        max-width: 600px !important;
+    }
+    .heading5 {
+        font-family: "OpenSans", sans-serif !important;
+        font-weight: 600 !important;
+        color: $shadeBlueColor;
+        padding: 1em 0;
+        margin: 0;
+        text-align: center;
     }
 }
 ::ng-deep.addNewAddressContainer {
@@ -202,17 +259,27 @@
     @include sm {
         height: 90% !important;
     }
+    @include md {
+        height: 48% !important;
+    }
     @include lg {
         width: 65% !important;
         height: auto !important;
     }
+    @media only screen and (min-width: 1540px) {
+        width: 50% !important;
+    }
     .mat-dialog-container {
         padding: 0;
+        border-radius: 10px;
     }
-    .addAddressBtn .disable{
-    background: grey !important;
-    cursor: not-allowed;
-    opacity: .5;
+    .addAddressBtn {
+        .disable {
+            background: $shadeBlueColor !important;
+            border: none;
+            cursor: not-allowed;
+            opacity: .5;
+        }
     }
 }
 ::ng-deep.addressContent {
@@ -225,7 +292,8 @@
     }
     .mat-form-field-wrapper {
         padding-bottom: 0;
-        border: 1px solid $greyColor;
+        border: 1px solid rgba(112, 112, 112, 0.5);
+        border-radius: 6px;
     }
     .mat-form-field-label-wrapper {
         top: 0;
@@ -271,5 +339,17 @@
     }
     .mat-radio-inner-circle {
         top: 2px;
+    }
+    .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+        border-color: $shadeBlueColor;
+    }
+    .mat-radio-label-content {
+        padding-left: 1em;
+    }
+    .mat-radio-button.mat-accent .mat-radio-inner-circle, 
+    .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), 
+    .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, 
+    .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+        background-color: $shadeBlueColor;
     }
 }

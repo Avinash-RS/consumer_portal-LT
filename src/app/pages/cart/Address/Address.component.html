@@ -1,23 +1,22 @@
 <div class="billingAddress">
-    <div class="heading4">Billing Address</div>
     <mat-radio-group aria-label="Select an option">
         <div class="address" *ngFor="let addressItem of addressList">
             <mat-radio-button [value]="addressItem" (click)="getCurrentAddress(addressItem)">
-                <span class="name">{{addressItem.name}}<span class="badge">{{addressItem.addressTag.addressTagName}}</span></span>
+                <span class="name">{{addressItem.name}} <span class="badge">{{addressItem.addressTag.addressTagName}}</span></span>
                 <p>{{addressItem.addressLine1}}{{addressItem.addressLine2}}<br />
                 {{addressItem.city.cityName}}, {{addressItem.state.stateName}}
                 </p>
                 <span class="mobile">Mobile: <strong>{{addressItem.mobile}}</strong></span>
             </mat-radio-button>
-            <div>
-                <button class="remove" (click)="removeAddress(deleteAddress,addressItem)">Remove</button>
-                <button class="Edit" (click)="addAddress(addNewAddress,true,addressItem)">Edit</button>
+            <div class="removeEdit">
+                <button class="remove" (click)="removeAddress(deleteAddress,addressItem)"><em class="icon-Delete"></em> Remove</button>
+                <button class="Edit" (click)="addAddress(addNewAddress,true,addressItem)"><em class="icon-Edit"></em> Edit</button>
             </div>
         </div>
        
     </mat-radio-group>
     <div class="addAddress" (click)="addAddress(addNewAddress,false)">
-        <span>+ Add New Address</span>
+        <span><strong>+</strong> Add New Address</span>
     </div>
 </div>
 
@@ -25,7 +24,7 @@
 <ng-template #addNewAddress>
     <div class="newAddress">
         <!-- <form [formGroup]="registerForm" autocomplete="new-password" (submit)="submitRegister()">  -->
-        <div class="heading3" mat-dialog-title>{{isEdit?'Update Address':'Add New Address'}}</div>
+        <div class="heading6" mat-dialog-title>{{isEdit?'Update Address':'Add New Address'}}</div>
         <span class="closeBtn" mat-dialog-close><em class="icon-Close"></em></span>
         <form [formGroup]="addressEntryForm" autocomplete="off" (submit)="addOrUpdateAddress(isEdit)">
         <div class="addressContent">
@@ -127,11 +126,11 @@
 <!-- Remove Address -->
 <ng-template #deleteAddress>
     <div class="removeAddress">
-        <div class="heading3" mat-dialog-title>Confirmation</div>
+        <div class="heading5" mat-dialog-title>Confirmation</div>
         <span class="closeBtn" mat-dialog-close><em class="icon-Close"></em></span>
         <div class="removeContent">
             <div><em class="icon-Close"></em></div>
-            <div class="heading3">ARE YOU SURE?</div>
+            <div class="heading4">Are You Sure?</div>
             <p>Do you want to remove Address? This process cannot be undone.</p>
             <button (click)="removeAddressAction()">Remove</button>
         </div>
