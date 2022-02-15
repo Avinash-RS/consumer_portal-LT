@@ -395,7 +395,7 @@
     </div>
 </section>
 
-<section *ngIf="!showAssesment" class="assessmentSection">
+<section *ngIf="!showAssesment && competencyList.length > 0" class="assessmentSection">
     <div class="container">
         <div class="commonHeadingStyle">Enhance employability using these {{'Assessments'}}</div>
         <!-- <p>Best for those who want a series of Assessment</p> -->
