@@ -129,7 +129,7 @@
                 </li>
             </ul>
             <ul class="menuText">
-                <li *ngFor="let level0 of catalogMenu">
+                <li *ngFor="let level0 of catalogMenu" [ngClass]="level0.active ? 'firstActive':''"(mouseenter)="firstLevelHover(catalogMenu,level0)">
                     <div class="firstLevel">
                         <span class="icon">
                             <em [class]="level0?.icon"></em>
@@ -142,7 +142,7 @@
                     </div>
                     <ul>
                         <ng-container *ngFor="let level1 of level0.data">
-                            <li>
+                            <li [ngClass]="level1?.active ? 'secondActive':''" (mouseenter)="secondLevelHover(level0.data,level1?.cid)">
                                 <div>
                                     <span (click)="catalogHome(level1.cid ,level0.type)">{{level1.name}}</span>
                                     <em class="icon-RightArrow"></em>
