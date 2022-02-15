@@ -73,7 +73,7 @@ export class AboutAssessmentComponent implements OnInit {
   blobToken: string = environment.blobKey;
   bannerImage;
   showAssesment = false;
-  competencyList;
+  competencyList = [];
   competencyData;
   totalAssessmentCount: any;
   productType:string =  "assessment";
