@@ -141,8 +141,8 @@ export class HeaderComponent implements OnInit {
         else {
           element.active = false;
         }
-        element.data.forEach((childelement,index)=>{
-          if(index == 0){
+        element.data.forEach((childelement, childIndex)=>{
+          if(childIndex == 0){
             childelement.active = true;
           }
           else {
@@ -397,7 +397,7 @@ export class HeaderComponent implements OnInit {
   }
   triggerLeave(){
     if(this.showMenu == 'in'){
-      this.closeMegaMenu();
+      // this.closeMegaMenu();
     } 
   }
   firstLevelHover(menu,item){
