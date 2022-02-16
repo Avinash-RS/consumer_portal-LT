@@ -456,7 +456,7 @@
     <div class="container">
         <div class="smalltext">{{aboutArea?.assessmentContents?.getStarted?.heading1}}</div>
         <div class="heading">{{aboutArea?.assessmentContents?.getStarted?.title}}</div>
-        <ul *ngIf = "howItWorks">
+        <ul>
             <li *ngFor="let contents of aboutArea?.assessmentContents?.getStarted?.innerArray">
                 <figure>
                     <img [src]="contents?.imageurl" alt="" />
