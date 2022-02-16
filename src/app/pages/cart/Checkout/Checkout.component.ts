@@ -71,50 +71,51 @@ export class CheckoutComponent implements OnInit {
   checkout() {
     let param: any = {}
     param.user_id = this.userDetails.userId;
-    param.order_amount = this.totalPrice;
+    param.email = this.userDetails.email;
+    // param.order_amount = this.totalPrice;
     param.cart = [];
     this.cartList.forEach(cartItem => {
-      let itemTotal_amount = cartItem.quantity * cartItem.assessmentDetails.is_free?0:cartItem.assessmentDetails.sellingPrice;
-      var producttype = cartItem?.productType == 'course' ? 'course' : 'assessment';
+      // let itemTotal_amount = cartItem.quantity * cartItem.assessmentDetails.is_free?0:cartItem.assessmentDetails.sellingPrice;
+      // var producttype = cartItem?.productType == 'course' ? 'course' : 'assessment';
       param.cart.push(
         {
           assessmentId: cartItem.assessmentId,
-          quantity: Number(cartItem.quantity),
-          amount_per_assessment: cartItem.assessmentDetails.is_free?0:cartItem.assessmentDetails.sellingPrice,
-          total_amount: itemTotal_amount,
-          competencyId: cartItem.competencyDetails.cid,
-	        levelId: cartItem.competencyDetails.levelId,
-          productType : producttype
+          // quantity: Number(cartItem.quantity),
+          // amount_per_assessment: cartItem.assessmentDetails.is_free?0:cartItem.assessmentDetails.sellingPrice,
+          // total_amount: itemTotal_amount,
+          // competencyId: cartItem.competencyDetails.cid,
+	        // levelId: cartItem.competencyDetails.levelId,
+          // productType : producttype
         }
       )
     });
     if (this.selectedAddress) {
+      param.addressId = this.selectedAddress.addressId
       this.catalogService.createOrder(param).subscribe((data: any) => {
         this._loading.setLoading(true, environment.API_BASE_URL+"createorder");
         if(this.totalPrice!==0){
-        //let redirect_url = 'http%3A%2F%2Flocalhost%3A3008%2Fhandleresponse';
-        let redirect_url = environment.PAYMENT+'/ccavResponseHandler'
-        let useremail = this.userDetails.emailId;
-        let request = `merchant_id=261628&order_id=${data.order_id}&currency=INR&amount=${this.totalPrice}&redirect_url=${redirect_url}&cancel_url=${redirect_url}&language=EN&billing_name=${this.selectedAddress.name}&billing_address=${this.selectedAddress.addressLine1}&billing_city=${this.selectedAddress.city.cityName}&billing_state=${this.selectedAddress.state.stateName}&billing_zip=${this.selectedAddress.pincode}&billing_country=India&billing_tel=${this.selectedAddress.mobile}&delivery_name=${this.selectedAddress.name}&delivery_address=${this.selectedAddress.addressLine1}&delivery_city=${this.selectedAddress.city.cityName}&delivery_state=${this.selectedAddress.state.stateName}&delivery_zip=${this.selectedAddress.pincode}&delivery_country=India&delivery_tel=${this.selectedAddress.mobile}&billing_email=${useremail}`
-        this.catalogService.encryptdata(request).subscribe(
-          data => {
-            // this.cartService.removeCartDetails({cartId:this.cartList[0].cartId}).subscribe((data:any)=>{
-            //   console.log("cart Cleard");
-            // });
             this.encRequestRes = data['message'];
             this.accessCode = data['accessCode'];
             setTimeout(() => {
               this.form.nativeElement.submit();
             }, 1000)
-          }, error => {
-            console.log(error);
-          }
-        );
+        // let redirect_url = environment.PAYMENT+'/ccavResponseHandler'
+        // let useremail = this.userDetails.emailId;
+        // let request = `merchant_id=261628&order_id=${data.order_id}&currency=INR&amount=${this.totalPrice}&redirect_url=${redirect_url}&cancel_url=${redirect_url}&language=EN&billing_name=${this.selectedAddress.name}&billing_address=${this.selectedAddress.addressLine1}&billing_city=${this.selectedAddress.city.cityName}&billing_state=${this.selectedAddress.state.stateName}&billing_zip=${this.selectedAddress.pincode}&billing_country=India&billing_tel=${this.selectedAddress.mobile}&delivery_name=${this.selectedAddress.name}&delivery_address=${this.selectedAddress.addressLine1}&delivery_city=${this.selectedAddress.city.cityName}&delivery_state=${this.selectedAddress.state.stateName}&delivery_zip=${this.selectedAddress.pincode}&delivery_country=India&delivery_tel=${this.selectedAddress.mobile}&billing_email=${useremail}`
+        // this.catalogService.encryptdata(request).subscribe(
+        //   data => {
+        //     this.encRequestRes = data['message'];
+        //     this.accessCode = data['accessCode'];
+        //     setTimeout(() => {
+        //       this.form.nativeElement.submit();
+        //     }, 1000)
+        //   }, error => {
+        //     console.log(error);
+        //   }
+        // );
         }else{
           this._loading.setLoading(false, environment.API_BASE_URL+"createorder");
           this.appconfig.routeNavigationWithQueryParam("cart/success",{ orderId: btoa(data.order_id) });
-          // cart/success?orderId=6313-311893-1133
-          // navigate to this section
         }
       })
     } else {
