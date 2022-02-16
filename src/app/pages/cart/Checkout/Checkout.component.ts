@@ -95,7 +95,7 @@ export class CheckoutComponent implements OnInit {
         this._loading.setLoading(true, environment.API_BASE_URL+"createorder");
         if(this.totalPrice!==0){
             this.encRequestRes = data['message'];
-            this.accessCode = data['accessCode'];
+            this.accessCode = data['accesscode'];
             setTimeout(() => {
               this.form.nativeElement.submit();
             }, 1000)
