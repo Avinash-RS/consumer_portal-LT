@@ -120,6 +120,7 @@ header {
         border: none;
         transition: all 0.3s ease-in-out;
         box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+        border: 1px solid $secondaryColor;
         &.catalogActive {
             background-color: $whiteColor !important;
             color: $primaryColor !important;
@@ -565,7 +566,7 @@ header {
                     }
                 }
             }
-            &:hover {
+            &.firstActive {
                 .firstLevel {
                     .icon, .content {
                         color: $whiteColor;
@@ -604,7 +605,7 @@ header {
                             padding-bottom: 0;
                         }
                     }
-                    &:hover {
+                    &.secondActive {
                         > div {
                             color: $secondaryColor;
                             font-weight: 700;
@@ -617,7 +618,7 @@ header {
                             > div {
                                 margin-bottom: 1.5em;
                                 overflow: hidden;
-                                background-color: #f9f9f9;
+                                background: #f9f9f9;
                                 box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
                                 border-radius: 3px;
                                 padding: 0.75em;
@@ -626,6 +627,9 @@ header {
                                 align-items: center;
                                 cursor: pointer;
                                 transition: 0.3s ease-in-out;
+                                &:hover {
+                                    background: $borderColor;
+                                }
                                 &::before {
                                     content: '';
                                     position: absolute;

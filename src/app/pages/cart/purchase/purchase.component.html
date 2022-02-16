@@ -1,4 +1,14 @@
 <section class="purchaseSection">
+    <div class="secure">
+        <div class="container">
+            <div class="wrapper">
+                <figure>
+                    <img src="https://lmsassetspremium.lntedutech.com/portalicons/secure.svg" alt="" />
+                </figure>
+                <span>100% Secure</span>
+            </div>
+        </div>
+    </div>
     <mat-horizontal-stepper #stepper>
         <mat-step [stepControl]="firstFormGroup">
             <ng-template matStepLabel>Cart</ng-template>
@@ -24,6 +34,9 @@
                                     </figure>
                                     <div class="cartContent">
                                         <div class="wrapper">
+                                            <span [ngStyle]="{'color':cart.productType !='course' ? '#27BBEE': '#20B19A'}" class="competencyName">
+                                                <em class="icon-Right_Play"></em> {{cart?.competencyDetails?.name}}
+                                            </span>
                                             <div class="headingPrice">
                                                 <div class="heading5">
                                                     {{cart.assessmentDetails.name}} 
@@ -40,7 +53,11 @@
                                                 <ng-container *ngFor="let test of cart.assessmentDetails.testTypes">
                                                     <div *ngIf="cart.productType !='course'">
                                                         <span class="heading">{{test.testName}}</span>
-                                                        <span class="assessmentHour">{{test.sumtotalhour}} Hour <span>|</span> {{test.totalQuestion}} Questions</span>
+                                                        <span class="assessmentHour">
+                                                            <span><em class="icon-Layers"></em> {{test.sumtotalhour}} Hour</span>
+                                                            <!-- <span>|</span> -->
+                                                            <span><em class="icon-Time"></em> {{test.totalQuestion}} Questions</span>
+                                                        </span>
                                                     </div>
                                                 </ng-container>
                                             </div>
@@ -78,11 +95,14 @@
             <ng-template matStepLabel>Address</ng-template>
             <!-- #enddocregion label -->
             <div class="cartSection">
-                <div class="leftContent">
-                    <app-Address></app-Address>
-                </div>
-                <div class="rightContent">
-                    <app-Checkout [tab]='1' [checkoutData]='cartList'></app-Checkout>
+                <div class="itemsHeading">Billing Address</div>
+                <div class="wrapper">
+                    <div class="leftContent">
+                        <app-Address></app-Address>
+                    </div>
+                    <div class="rightContent">
+                        <app-Checkout [tab]='1' [checkoutData]='cartList'></app-Checkout>
+                    </div>
                 </div>
             </div>
         </mat-step>

@@ -1,6 +1,7 @@
 @import "variables";
 
  .myPurchase {
+     height: 100%;
     padding: 3.75em 0;
     background-color: #F8FBFF;
     font-size: 14px;
@@ -13,14 +14,28 @@
     @include xl {
       font-size: 16px;
     }
+    .heading4 {
+        position: relative;
+        margin-bottom: 1.5em;
+        &::after {
+            content: '';
+            position: absolute;
+            background-image: linear-gradient(to right, #00bcef, #00c0db, #00c1b6, #00be83, #4eb749);
+            width: 3em;
+            height: 4px;
+            border-radius: 1.25em;
+            bottom: -0.4em;
+            left: 0;
+        }
+    }
     .list {
         margin: 0.7em 0;
         .card {
             background-color: $whiteColor;
-            padding: 1em;
+            padding: 1em 2em 1em 1em;
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
             border-radius: 4px;
             margin: 0.9375em 0;
             width: 100%;
@@ -30,8 +45,13 @@
             .left {
                 width: 100%;
                 figure {
+                    border-radius: 6px;
+                    overflow: hidden;
+                    display: flex;
                     img {
                         width: 100%;
+                        height: 185px;
+                        object-fit: cover;
                     }
                 }
                 @include md {
@@ -42,13 +62,13 @@
                 width: 100%;
                 @include md {
                     width: 75%;
-                   }
-                .assessmentWrapper{
+                }
+                .assessmentWrapper {
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
-                    padding-bottom: 1.5em;
-                    border-bottom: 1px solid #848484;
+                    padding-bottom: 0.85em;
+                    border-bottom: 1px solid $greyColor;
                     flex-wrap: wrap;
                     .contentarea {
                         width: 100%;
@@ -58,8 +78,11 @@
                         .heading {
                             font-size: 0.95em;
                             font-weight: 400;
+                            display: flex;
+                            align-items: center;
+                            margin: 0em 0 1em 0;
                             @include md {
-                              font-size: 0.75em;
+                              font-size: 0.835em;
                             }
                             em {
                                 margin-right: 0.3125em;
@@ -67,9 +90,18 @@
                         }
                         .levels {
                             color: $blueLabelColor;
-                            font-size: 0.75em;
+                            font-size: 0.875em;
                             font-weight: 400;
-                            margin: 0.5em 0 1em 0;
+                            position: relative;
+                            margin-left: 0.5em;
+                            padding-left: 0.85em;
+                            &::before {
+                                content: '/';
+                                position: absolute;
+                                left: 0;
+                                top: 0;
+                                color: #848484;
+                            }
                         }
                        .courseHeading,.subHeading {
                             font-family: "OpenSans", sans-serif;
@@ -95,15 +127,15 @@
                             font-family: "OpenSans", sans-serif;
                             font-size: 1em;
                             font-weight: 700;
-                            background-color: $primaryColor;
+                            background-color: $blueLabelColor;
                             color: $whiteColor;
-                            border: 1px solid $primaryColor;
+                            border: 1px solid $blueLabelColor;
                             transition: 0.4s ease-in-out;
                             border-radius: 5px;
                             box-shadow: 2px 2px 3px rgb(0 0 0 / 20%);
                             &:hover {
                                 background-color: $whiteColor;
-                                color: $primaryColor;
+                                color: $blueLabelColor;
                             }
                         }
                     }
@@ -112,7 +144,7 @@
                 font-size: 0.95em;
                 font-weight: 400;
                 @include md {
-                  font-size: 0.75em;
+                  font-size: 0.835em;
                 }
                 em {
                     margin-right: 0.3125em;
@@ -140,7 +172,7 @@
                     margin: 0;
                     width: 100%;
                     @include md {
-                        width: 78%;
+                        width: 75%;
                         font-size: 0.875em;
                        }
                 }
@@ -158,15 +190,15 @@
                         font-family: "OpenSans", sans-serif;
                         font-size: 1em;
                         font-weight: 700;
-                        background-color: $primaryColor;
+                        background-color: $blueLabelColor;
                         color: $whiteColor;
-                        border: 1px solid $primaryColor;
+                        border: 1px solid $blueLabelColor;
                         transition: 0.4s ease-in-out;
                         border-radius: 5px;
                         box-shadow: 2px 2px 3px rgb(0 0 0 / 20%);
                         &:hover {
                             background-color: $whiteColor;
-                            color: $primaryColor;
+                            color: $blueLabelColor;
                         }
                     }
                 }
@@ -227,21 +259,28 @@
                     }
                 }
                 .heading, .assessmentHour {
-                    text-align: center;
-                    font-size: 1em;
+                    text-align: left;
                     display: block;
                     line-height: 1.2;
-                    @include md {
-                        font-size: 0.75em; 
-                    }
                 }
                 .heading {
                     font-family: "OpenSans", sans-serif;
                     font-weight: 700;
                     color: $mediumGrey;
-                    margin-bottom: 0.75em;
+                    margin-bottom: 0.5em;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    font-size: 1em;
+                    @include md {
+                        font-size: 0.75em; 
+                    }
                 }
                 .assessmentHour {
+                    font-size: 1em;
+                    @include md {
+                        font-size: 0.6375em; 
+                    }
                     span {
                         color: $lightGrey;
                         display: inline-flex;
@@ -263,8 +302,8 @@
                     }
                 }
                 .bookaSlot {
-                    margin: 0.75em 0 0.5em 0;
-                    text-align: center;
+                    margin: 0.65em 0 0.5em 0;
+                    text-align: left;
                     button {
                         padding: 0.25em 1em;
                         background-color: $secondaryColor;
@@ -282,7 +321,7 @@
                     span {
                         font-family: "OpenSans", sans-serif;
                         font-size: 1em;
-                        font-weight: 500;
+                        font-weight: 600;
                         @include md  {
                             font-size: 0.75em;
                         }
@@ -290,10 +329,10 @@
                     .date{
                         color: $lightGrey;
                         font-family: "OpenSans", sans-serif;
-                        font-size: 0.835em;
+                        font-size: 0.875em;
                         font-weight: 400;
                         @include md  {
-                            font-size: 0.635em;
+                            font-size: 0.75em;
                         }
                     }
                 }

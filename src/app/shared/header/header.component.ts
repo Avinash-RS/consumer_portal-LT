@@ -127,13 +127,30 @@ export class HeaderComponent implements OnInit {
     this.registerMenu = this.registerMenu == 'out' ? 'in' : 'out';
   }
   megaMenuClick(type) {
-    this.showMenu = type == 'desktop' ? 'in' : 'out';
     if(type == 'mobileclick') {
       this.mobileshowMenu = this.mobileshowMenu == 'in' ? 'out' : 'in';
       this.l2 = [];
       this.l3 = [];
     }
-    // this.mobileshowMenu = type == 'desktop' ? 'out' : 'in';
+    else{
+      this.showMenu = type == 'desktop' ? 'in' : 'out';
+      this.catalogMenu.forEach((element,index)=>{
+        if(index == 0){
+          element.active = true;
+        }
+        else {
+          element.active = false;
+        }
+        element.data.forEach((childelement, childIndex)=>{
+          if(childIndex == 0){
+            childelement.active = true;
+          }
+          else {
+            childelement.active = false;
+          }
+        })
+      });
+    }
     this.registerMenu = 'out';
     this.assessmentsList = this.showMenu === 'in' ? true : false;
     this.coursesList = false;
@@ -151,7 +168,8 @@ export class HeaderComponent implements OnInit {
           "type":'course',
           "data" : response.data,
           "icon" :"icon-coursePlatform",
-          "desc" :"Scientifically designed courses for various levels"
+          "desc" :"Scientifically designed courses for various levels",
+          "active" : true
         }
         this.catalogMenu.push(courseobj);
         this.getAssesment();
@@ -163,7 +181,6 @@ export class HeaderComponent implements OnInit {
     this.l2 = [];
     this.l3 = [];
     this.l4 = [];
-    console.log()
   }
 
   getAssesment(){
@@ -175,7 +192,8 @@ export class HeaderComponent implements OnInit {
           "type":'assessment',
           "data" : response.data,
           "icon" :"icon-AssessmentPlatform",
-          "desc" :"Scientifically designed assessments for various levels"
+          "desc" :"Scientifically designed assessments for various levels",
+          "active" : false
         }
         this.catalogMenu.push(assobj)
       } else {
@@ -381,5 +399,25 @@ export class HeaderComponent implements OnInit {
     if(this.showMenu == 'in'){
       this.closeMegaMenu();
     } 
+  }
+  firstLevelHover(menu,item){
+    menu.forEach(element => {
+      if(element.label == item.label){
+        element.active = true;
+      }
+      else{
+        element.active = false;
+      }
+    });
+  }
+  secondLevelHover(l1Data,cid){
+    l1Data.forEach((element)=>{
+      if(element.cid == cid){
+        element.active = true;
+      }
+      else{
+        element.active = false;
+      }
+    })
   }
 }

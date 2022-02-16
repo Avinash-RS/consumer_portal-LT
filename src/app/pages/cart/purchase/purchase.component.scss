@@ -2,7 +2,7 @@
 
 .purchaseSection {
     background-color: #e8e8e8;
-    padding: 1.75em 0 0 0;
+    // padding: 1.75em 0 0 0;
     font-size: 13px;
     position: relative;
     @include lg {
@@ -147,6 +147,16 @@
         .soldby {
             margin-top: 0.5em;
         }
+        .competencyName {
+            font-size: 0.75em;
+            font-weight: 400;
+            line-height: normal;
+            margin-bottom: 1em;
+            em {
+                font-size: 0.75em;
+                margin-right: 0.25em;
+            }
+        }
         .headingPrice {
             align-items: flex-start;
             .heading5 {
@@ -183,44 +193,53 @@
             display: flex;
             width: 100%;
             @include lg {
-                width: 60%;
+                width: 80%;
             }
-            > div {
-                width: 50%;
-                @include sm {
-                    width: 40%;
-                }
-            }
+            // > div {
+            //     width: 50%;
+            //     @include sm {
+            //         width: 40%;
+            //     }
+            // }
             .heading, .assessmentHour {
                 font-size: 0.75em;
                 display: block;
                 line-height: normal;
             }
             .heading {
+                font-family: "OpenSans", sans-serif;
                 font-weight: 700;
                 color: $mediumGrey;
-                margin-bottom: 0.15em;
+                margin-bottom: 0.25em;
             }
             .assessmentHour {
-                color: $lightGrey;
                 span {
-                    color: $primaryColor;
+                    color: $lightGrey;
                     display: inline-block;
-                    margin: 0 0.15em;
+                    border-right: 1px solid #C02222;
+                    padding-right: 0.5em;
+                    margin-right: 0.5em;
+                    &:last-child {
+                        border-right: 0;
+                    }
+                    em {
+                        color: $secondaryColor;
+                        margin-right: 0.15em;
+                        font-size: 0.85em;
+                    }
                 }
             }
         }
         .deleteWishList {
             width: 100%;
             margin-top: 0.5em;
-            @include sm {}
             @include lg {
-                width: 36%;
+                width: 20%;
                 margin-top: 0;
                 text-align: right;
             }
             @include xl {
-                width: 33%;
+                // width: 33%;
             }
             button {
                 background-color: transparent;
@@ -350,6 +369,34 @@
     }
 }
 
+.secure {
+    position: absolute;
+    width: 100%;
+    right: 0;
+    top: 21px;
+    display: none;
+    @include md {
+        display: block;
+    }
+    > div {
+        .wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            figure {
+                margin-right: 0.5em;
+            }
+            span {
+                text-transform: uppercase;
+                color: $blackColor;
+                font-size: 1.125em;
+                font-weight: 400;
+                line-height: normal;
+            }
+        }
+    }
+}
+
 // //
 ::ng-deep.purchaseSection {
     // .mat-horizontal-stepper-header{
@@ -377,6 +424,7 @@
     }
     .mat-horizontal-stepper-header {
         height: 42px;
+        padding: 15px 24px 10px 24px;
         &[aria-selected="true"] {
             position: relative;
             &::before {
@@ -385,13 +433,23 @@
                 width: 100%;
                 bottom: 0;
                 left: 0;
-                height: 3px;
+                height: 2px;
                 background-image: linear-gradient(to right, #00bcef, #00c0db, #00c1b6, #00be83, #4eb749);
             }
             // border-bottom: 3px solid $primaryColor;
         }
         &[aria-selected="false"] {
-            border-bottom: 3px solid transparent;
+            position: relative;
+            &::before {
+                content: '';
+                position: absolute;
+                width: 100%;
+                bottom: 0;
+                left: 0;
+                height: 2px;
+                background-image: none;
+            }
+            // border-bottom: 2px solid transparent;
         }
         .mat-step-icon {
             display: none;
