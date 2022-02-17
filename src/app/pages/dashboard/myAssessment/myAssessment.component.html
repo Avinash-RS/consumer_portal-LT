@@ -2,9 +2,9 @@
      <!-- My Course -->
     <ng-container *ngIf="productType == 'course'">
         <div class="container">
-            <div class="commonHeadingStyle">{{'My Course'}}</div>
+            <div class="heading4">{{'My Course'}}</div>
             <div class="list">
-                <div class="card"  *ngFor="let item of assessmentList">
+                <div class="card" *ngFor="let item of assessmentList">
                     <div class="left">
                         <figure>
                             <img [src]="item?.assessmentDetails?.image?.url" alt="">
@@ -31,7 +31,7 @@
     <!-- My Assessment -->
     <ng-container *ngIf="productType != 'course'">
         <div class="container">
-            <div class="commonHeadingStyle">{{'My Assessment'}}</div>
+            <div class="heading4">{{'My Assessment'}}</div>
             <div class="list">
                 <div class="card"  *ngFor="let item of assessmentList">
                     <div class="left">
@@ -42,8 +42,11 @@
                     <div class="right">
                         <div class="assessmentWrapper">
                             <div class="contentarea">
-                                <div class="heading" [ngStyle]="{'color' : productType == 'course' ? '#20B19A' :'#5B6ABA'}"><em class="icon-Right_Play"></em> <span >{{item.cart.competencyName}}</span></div>
-                                <div class="levels">{{item.cart.levelName}}</div>
+                                <div class="heading" [ngStyle]="{'color' : productType == 'course' ? '#20B19A' :'#5B6ABA'}">
+                                    <em class="icon-Right_Play"></em> 
+                                    <span >{{item.cart.competencyName}}</span>
+                                    <div class="levels">{{item.cart.levelName}}</div>
+                                </div>
                                 <div class="subHeading">{{item.cart.assessmentName}}</div>
                             </div>
                             <div class="btnarea">
