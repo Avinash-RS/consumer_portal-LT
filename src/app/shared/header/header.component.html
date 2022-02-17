@@ -129,7 +129,7 @@
                 </li>
             </ul>
             <ul class="menuText">
-                <li *ngFor="let level0 of catalogMenu" [ngClass]="level0.active ? 'firstActive':''">
+                <li *ngFor="let level0 of catalogMenu;" [ngClass]="level0.active ? 'firstActive':''">
                     <div class="firstLevel" (mouseenter)="firstLevelHover(catalogMenu,level0)">
                         <span class="icon">
                             <em [class]="level0?.icon"></em>

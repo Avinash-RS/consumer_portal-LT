@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener } from "@angular/core";
-import { Router,NavigationEnd } from "@angular/router";
+import { Router } from "@angular/router";
 import { CommonService } from "src/app/services/common.service";
 import { UtilityService } from "src/app/services/utility.service";
 import { AppConfigService } from "src/app/utils/app-config.service";
@@ -109,6 +109,9 @@ export class HeaderComponent implements OnInit {
     });
     this.getUrl()
     this.getCatologmenu();
+    var activeMenu = localStorage.getItem('myPurchase');
+    this.isCourse = activeMenu && activeMenu == 'course';
+    this.isAssement = activeMenu && activeMenu == 'assessment';
   }
 
   getUrl(){
@@ -146,7 +149,7 @@ export class HeaderComponent implements OnInit {
     // this.isCourse = false;
     return false;
   }
-  setDefaultMenu(){
+  setDefaultMenu(){    
     this.megaMenuL1Data = [];
     this.megaMenuL2Data = [];
     this.catalogMenu.forEach((element,index)=>{
@@ -166,7 +169,6 @@ export class HeaderComponent implements OnInit {
       else {
         element.active = false;
       }
-
     });
   }
   getCatologmenu(){
@@ -261,6 +263,7 @@ export class HeaderComponent implements OnInit {
     this.isCertified = false;
     this.isAssement = productType == 'assessment' ? true:false;
     this.isCourse = productType == 'course' ? true:false;
+    localStorage.setItem('myPurchase',productType);
     this.isCredentials = false;
     this.showMenu = 'out';
     this.mobileshowMenu = 'out';
@@ -407,6 +410,7 @@ export class HeaderComponent implements OnInit {
   }
   firstLevelHover(menu,item){
     this.megaMenuL1Data = item.data;
+    this.megaMenuL2Data = this.megaMenuL1Data[0].children;
     menu.forEach(element => {
       if(element.label == item.label){
         element.active = true;
@@ -414,6 +418,11 @@ export class HeaderComponent implements OnInit {
       else{
         element.active = false;
       }
+    });
+    this.megaMenuL1Data.forEach((e1,i) => {
+      if(i!==0)
+      {e1.active = false;}
+      else{e1.active = true;}
     });
   }
   secondLevelHover(l1Data,item){
