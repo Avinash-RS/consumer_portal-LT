@@ -115,7 +115,7 @@ export class CheckoutComponent implements OnInit {
         // );
         }else{
           this._loading.setLoading(false, environment.API_BASE_URL+"createorder");
-          this.appconfig.routeNavigationWithQueryParam("cart/success",{ orderId: btoa(data.order_id) });
+          this.appconfig.routeNavigationWithQueryParam("cart/success",{ orderId: btoa(data.orderId) });
         }
       })
     } else {
