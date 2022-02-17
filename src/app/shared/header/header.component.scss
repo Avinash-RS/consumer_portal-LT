@@ -152,18 +152,18 @@ header {
             }
             &:last-child {
                 margin-right: 0;
-                cursor: pointer;
+                // cursor: pointer;
             }
             em {
                 font-size: .75em;
                 display: inline-block;
                 vertical-align: middle;
             }
-            &:hover {
-                a {
-                    color: $primaryColor;
-                }
-            }
+            // &:hover {
+            //     a {
+            //         color: $primaryColor;
+            //     }
+            // }
             a {
                 font-size: 1.25em;
                 font-weight: 400;
@@ -171,6 +171,9 @@ header {
                 transition: all 0.2s linear;
                 em {
                     margin-left: 10px;
+                }
+                &:hover {
+                    color: $primaryColor;
                 }
             }
         }
@@ -467,11 +470,16 @@ header {
         //     color: $primaryColor;
         //     transition: background 0.3s ease-in-out;
         // }
-        li:first-child > ul {
-            display: block;
-        }
-        li:hover > ul {
-            display: block;
+        // li:first-child > ul {
+        //     display: block;
+        // }
+        // li:hover > ul {
+        //     display: block;
+        // }
+        li {
+            > ul {
+                display: block;
+            }
         }
         div {
             display: block;

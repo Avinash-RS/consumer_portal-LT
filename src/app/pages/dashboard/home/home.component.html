@@ -34,9 +34,9 @@
                 <span>{{item?.title}}</span>
               </li>
             </ul>
-            <div>
+            <!-- <div>
               <button (click)="navigateCatalog()">Explore Catalog</button>
-            </div>
+            </div> -->
           </div>
           <div class="right">
             <figure>
@@ -46,75 +46,6 @@
         </div>
       </div>
     </section>
-
-    <!-- carrerpath -->
-    <section class="successfulCareer">
-      <div class="container">
-        <div class="heading2">{{'Successful Career Paths'}}</div>
-        <p>{{commonData?.landingPageContents?.careerPaths?.description}}</p>
-        <div class="wrapper">
-          <ul>
-            <li *ngFor="let career of commonData?.landingPageContents?.careerPaths?.innerArray" (mouseenter)="showPhase(commonData?.landingPageContents?.careerPaths?.innerArray,career)" [class.active]= "career.isActive">
-              <div class="content-container">
-                <figure>
-                  <img [src]="career?.imageurl" alt="">
-                  <span class="title">
-                    {{career?.title}}
-                  </span>
-                </figure>
-                <div class="content">
-                  <div class="heading">
-                    {{career?.title}}
-                  </div>
-                  <p>{{career?.description}}</p>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <!-- <div class="wrapper">
-          <ul class="sub_modules">
-            <li *ngFor="let career of commonData?.landingPageContents?.careerPaths?.innerArray" (click)="showPhase(commonData?.landingPageContents?.careerPaths?.innerArray,career)" [class.active]= "career.isActive">
-              <div>
-                <div class="section-title">
-                  <figure>
-                    <img [src]="career?.imageurl" alt="">
-                  </figure>
-                  <div class="heading">
-                    {{career?.title}}
-                  </div>
-                </div> 
-                <div class="section-content">
-                  <div class="heading">
-                    {{career?.title}}
-                  </div>
-                  <p>{{career?.description}}</p>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div> -->
-        <button>More Careers</button>
-      </div>
-    </section>
-
-    <!-- Successful Career paths -->
-    <!-- <section class="successfulCareer">
-      <div class="container">
-        <div class="wrapper">
-          <ul class="sub_modules">
-            <li *ngFor="let goals of commonData.acheiveData" (click)="showPhase(goals)" [class.active]= "activeButton === goals" class="active">
-              <div class="section-title">
-                <h2>{{goals?.name}}</h2>
-              </div>
-              <div class="section-content">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora totam delectus, eius nostrum aspernatur voluptas enim fugit ipsa magni voluptatem, odio sit accusamus vel id, commodi consequuntur possimus repellat necessitatibus!</p>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section> -->
 
     <!-- <app-domain-list class="app-Domain"></app-domain-list> -->
     <app-assessments-list class="app-Assessment"></app-assessments-list>
@@ -170,6 +101,34 @@
         </div>
       </div>
     </section>
+       <!-- carrerpath -->
+       <section class="successfulCareer">
+        <div class="container">
+          <div class="heading2">{{'Successful Career Paths'}}</div>
+          <p>{{commonData?.landingPageContents?.careerPaths?.description}}</p>
+          <div class="wrapper">
+            <ul>
+              <li *ngFor="let career of commonData?.landingPageContents?.careerPaths?.innerArray" (mouseenter)="showPhase(commonData?.landingPageContents?.careerPaths?.innerArray,career)" [class.active]= "career.isActive">
+                <div class="content-container">
+                  <figure>
+                    <img [src]="career?.imageurl" alt="">
+                    <span class="title">
+                      {{career?.title}}
+                    </span>
+                  </figure>
+                  <div class="content">
+                    <div class="heading">
+                      {{career?.title}}
+                    </div>
+                    <p>{{career?.description}}</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <button>More Careers</button>
+        </div>
+      </section>
     <app-goals class="app-Goals" [AchieveGoal]="commonData.acheiveData"></app-goals>
     <!-- <app-examination class="app-Examination" [Examination]="commonData.examinationData"></app-examination> -->
     <!-- feedback -->

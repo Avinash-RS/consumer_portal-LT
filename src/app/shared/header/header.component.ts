@@ -73,6 +73,8 @@ export class HeaderComponent implements OnInit {
   l3name ="";
   longdesc ="";
   l1image ="";
+  megaMenuL1Data:any =[];
+  megaMenuL2Data:any =[];
   constructor(
     private appConfig: AppConfigService,
     private catalogService: CatalogService,
@@ -134,30 +136,38 @@ export class HeaderComponent implements OnInit {
     }
     else{
       this.showMenu = type == 'desktop' ? 'in' : 'out';
-      this.catalogMenu.forEach((element,index)=>{
-        if(index == 0){
-          element.active = true;
-        }
-        else {
-          element.active = false;
-        }
+      this.setDefaultMenu();
+    }
+    this.registerMenu = 'out';
+    this.assessmentsList = this.showMenu === 'in' ? true : false;
+    // this.coursesList = false;
+    // this.isCertified = false;
+    // this.isAssement = false;
+    // this.isCourse = false;
+    return false;
+  }
+  setDefaultMenu(){
+    this.megaMenuL1Data = [];
+    this.megaMenuL2Data = [];
+    this.catalogMenu.forEach((element,index)=>{
+      if(index == 0){
+        this.megaMenuL1Data  = element.data;
+        element.active = true;
         element.data.forEach((childelement,index)=>{
           if(index == 0){
+            this.megaMenuL2Data = childelement.children;
             childelement.active = true;
           }
           else {
             childelement.active = false;
           }
-        })
-      });
-    }
-    this.registerMenu = 'out';
-    this.assessmentsList = this.showMenu === 'in' ? true : false;
-    this.coursesList = false;
-    this.isCertified = false;
-    this.isAssement = false;
-    this.isCourse = false;
-    return false;
+        });
+      }
+      else {
+        element.active = false;
+      }
+
+    });
   }
   getCatologmenu(){
     this.catalogMenu=[];
@@ -389,18 +399,14 @@ export class HeaderComponent implements OnInit {
     this.l2name=item.name;
     this.l1image = item.menuImage.url;
   }
-  thirdlevelclick(item){
-    this.l4 = item.children;
-    this.l3name=item.name;
-    this.l3item = item;
-    this.longdesc=item.longDescription;
-  }
+
   triggerLeave(){
     if(this.showMenu == 'in'){
       this.closeMegaMenu();
     } 
   }
   firstLevelHover(menu,item){
+    this.megaMenuL1Data = item.data;
     menu.forEach(element => {
       if(element.label == item.label){
         element.active = true;
@@ -410,9 +416,10 @@ export class HeaderComponent implements OnInit {
       }
     });
   }
-  secondLevelHover(l1Data,cid){
+  secondLevelHover(l1Data,item){
+    this.megaMenuL2Data = item.children;
     l1Data.forEach((element)=>{
-      if(element.cid == cid){
+      if(element.cid == item.cid){
         element.active = true;
       }
       else{
