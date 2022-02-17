@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener } from "@angular/core";
-import { Router,NavigationEnd } from "@angular/router";
+import { Router } from "@angular/router";
 import { CommonService } from "src/app/services/common.service";
 import { UtilityService } from "src/app/services/utility.service";
 import { AppConfigService } from "src/app/utils/app-config.service";
@@ -73,6 +73,8 @@ export class HeaderComponent implements OnInit {
   l3name ="";
   longdesc ="";
   l1image ="";
+  megaMenuL1Data:any =[];
+  megaMenuL2Data:any =[];
   constructor(
     private appConfig: AppConfigService,
     private catalogService: CatalogService,
@@ -107,6 +109,9 @@ export class HeaderComponent implements OnInit {
     });
     this.getUrl()
     this.getCatologmenu();
+    var activeMenu = localStorage.getItem('myPurchase');
+    this.isCourse = activeMenu && activeMenu == 'course';
+    this.isAssement = activeMenu && activeMenu == 'assessment';
   }
 
   getUrl(){
@@ -134,30 +139,37 @@ export class HeaderComponent implements OnInit {
     }
     else{
       this.showMenu = type == 'desktop' ? 'in' : 'out';
-      this.catalogMenu.forEach((element,index)=>{
-        if(index == 0){
-          element.active = true;
-        }
-        else {
-          element.active = false;
-        }
-        element.data.forEach((childelement, childIndex)=>{
-          if(childIndex == 0){
+      this.setDefaultMenu();
+    }
+    this.registerMenu = 'out';
+    this.assessmentsList = this.showMenu === 'in' ? true : false;
+    // this.coursesList = false;
+    // this.isCertified = false;
+    // this.isAssement = false;
+    // this.isCourse = false;
+    return false;
+  }
+  setDefaultMenu(){    
+    this.megaMenuL1Data = [];
+    this.megaMenuL2Data = [];
+    this.catalogMenu.forEach((element,index)=>{
+      if(index == 0){
+        this.megaMenuL1Data  = element.data;
+        element.active = true;
+        element.data.forEach((childelement,index)=>{
+          if(index == 0){
+            this.megaMenuL2Data = childelement.children;
             childelement.active = true;
           }
           else {
             childelement.active = false;
           }
-        })
-      });
-    }
-    this.registerMenu = 'out';
-    this.assessmentsList = this.showMenu === 'in' ? true : false;
-    this.coursesList = false;
-    this.isCertified = false;
-    this.isAssement = false;
-    this.isCourse = false;
-    return false;
+        });
+      }
+      else {
+        element.active = false;
+      }
+    });
   }
   getCatologmenu(){
     this.catalogMenu=[];
@@ -251,6 +263,7 @@ export class HeaderComponent implements OnInit {
     this.isCertified = false;
     this.isAssement = productType == 'assessment' ? true:false;
     this.isCourse = productType == 'course' ? true:false;
+    localStorage.setItem('myPurchase',productType);
     this.isCredentials = false;
     this.showMenu = 'out';
     this.mobileshowMenu = 'out';
@@ -389,18 +402,15 @@ export class HeaderComponent implements OnInit {
     this.l2name=item.name;
     this.l1image = item.menuImage.url;
   }
-  thirdlevelclick(item){
-    this.l4 = item.children;
-    this.l3name=item.name;
-    this.l3item = item;
-    this.longdesc=item.longDescription;
-  }
+
   triggerLeave(){
     if(this.showMenu == 'in'){
       this.closeMegaMenu();
     } 
   }
   firstLevelHover(menu,item){
+    this.megaMenuL1Data = item.data;
+    this.megaMenuL2Data = this.megaMenuL1Data[0].children;
     menu.forEach(element => {
       if(element.label == item.label){
         element.active = true;
@@ -409,10 +419,16 @@ export class HeaderComponent implements OnInit {
         element.active = false;
       }
     });
+    this.megaMenuL1Data.forEach((e1,i) => {
+      if(i!==0)
+      {e1.active = false;}
+      else{e1.active = true;}
+    });
   }
-  secondLevelHover(l1Data,cid){
+  secondLevelHover(l1Data,item){
+    this.megaMenuL2Data = item.children;
     l1Data.forEach((element)=>{
-      if(element.cid == cid){
+      if(element.cid == item.cid){
         element.active = true;
       }
       else{
