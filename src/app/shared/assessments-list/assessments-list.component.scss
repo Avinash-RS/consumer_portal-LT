@@ -264,10 +264,7 @@
         margin: 0 0 0 -3.5%;
     }
     @include lg {
-        // margin: 2em 0 0 0;
-    }
-    @include xl {
-        // margin: 0 0 0 -2%;
+        margin: 0 0 0 -5.5%;
     }
 }
 
@@ -277,7 +274,7 @@
 .list {
     background-color: $whiteColor;
     width: 100%;
-    border-radius: 0.25em;
+    border-radius: 5px;
     overflow: hidden;
     box-shadow: 0 0 10px rgba(32, 177, 154, 0.2);
     margin: 2em 0 0 0;
@@ -294,12 +291,8 @@
         margin: 2em 0 0 3.3%;
     }
     @include lg {
-        width: 30%;
-        margin: 2em 0 0 3.3%;
-    }
-    @include xl {
-        // margin: 2em 0 0 2%;
-        // width: 23%;
+        width: 28%;
+        margin: 2em 0 0 5.3%;
     }
     .figWrapper {
         position: relative;
@@ -309,8 +302,9 @@
             display: inline-flex;
             position: relative;
             overflow: hidden;
-            height: 150px;
+            height: 175px;
             position: relative;
+            border-radius: 5px;
             &::before {
                 content: '';
                 position: absolute;
@@ -375,11 +369,17 @@
         }
     }
     .listDescription {
-        padding: 0.5em 0.85em 2.5em 0.85em;
+        padding: 0.5em 0.85em 0.5em 0.85em;
         position: relative;
         .headings, .ratingSkills, .assessmentDuration {
             span {
                 display: block;
+            }
+        }
+        .headings {
+            .wrapper {
+                display: flex;
+                justify-content: space-between;
             }
         }
         .heading5 {
@@ -391,10 +391,8 @@
             margin-bottom: 0.75em;
         }
         .ratingSkills {
-            border-bottom: 1px solid #1B4E9B;
-            margin: 0.5em 0;
+            margin: 0.5em 0 0 0;
             padding: 0.4em 0 0.65em 0;
-            margin-top: 0.2em;
         }
         .heart {
             display: flex;
@@ -415,11 +413,18 @@
                 color: $mediumGrey;
             }
         }
-        .ratingSkills, 
-        .assessmentDuration {
+        .ratingSkills {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            &.flexStart {
+                justify-content: flex-start;
+                > div {
+                    width: 45%;
+                }
+            }
+            &.spaceBetween {
+                justify-content: space-between;
+            }
         }
         .domainName {
             color: $blueLabelColor;
@@ -500,21 +505,21 @@
         }
     }
     .previewRibbon {
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        z-index: 9;
+        position: relative;
+        text-align: center;
+        margin-bottom: 1em;
+        // width: 100%;
         span {
             font-family: "OpenSans", sans-serif;
-            font-size: 1em;
+            font-size: 0.75em;
             font-weight: 400;
             color: $whiteColor;
             background-color: $blueLabelColor;
-            padding: 0.35em 0.5em;
+            padding: 0.35em 1.5em;
             position: relative;
             display: inline-block;
-            width: 100%;
+            border-radius: 5px;
+            // width: 100%;
             text-align: center;
             z-index: 1;
             &.coursetag {

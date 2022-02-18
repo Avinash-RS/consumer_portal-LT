@@ -74,12 +74,12 @@ export class AssessmentsListComponent implements OnInit {
   }
   setSliceValue(){
     this.breakpointObserver
-      .observe(['(min-width: 500px)'])
+      .observe(['(max-width: 500px)'])
       .subscribe((state: BreakpointState) => {
         if (state.matches) {
-         this.sliceDigits = 6;
-        } else {
           this.sliceDigits = 3;
+        } else {
+          this.sliceDigits = 6;
         }
       });
   }
