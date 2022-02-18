@@ -154,6 +154,7 @@ export class HeaderComponent implements OnInit {
     this.megaMenuL2Data = [];
     this.catalogMenu.forEach((element,index)=>{
       if(index == 0){
+        this.productType = element.type;
         this.megaMenuL1Data  = element.data;
         element.active = true;
         element.data.forEach((childelement,index)=>{
@@ -330,7 +331,6 @@ export class HeaderComponent implements OnInit {
     this.inActiveTabs();
   }
   gotoArea(data,type) {
-    this.productType = type;
     this.showMenu = 'out';
     this.mobileshowMenu = 'out';
     this.assessmentsList= false;
@@ -411,6 +411,7 @@ export class HeaderComponent implements OnInit {
   firstLevelHover(menu,item){
     this.megaMenuL1Data = item.data;
     this.megaMenuL2Data = this.megaMenuL1Data[0].children;
+    this.productType = item.type;
     menu.forEach(element => {
       if(element.label == item.label){
         element.active = true;
