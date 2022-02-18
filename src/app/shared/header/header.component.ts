@@ -436,4 +436,7 @@ export class HeaderComponent implements OnInit {
       }
     })
   }
+  ngOnDestroy() {
+    localStorage.removeItem('myPurchase');
+  }
 }
