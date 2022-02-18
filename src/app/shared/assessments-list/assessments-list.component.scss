@@ -276,7 +276,7 @@
     width: 100%;
     border-radius: 5px;
     overflow: hidden;
-    box-shadow: 0 0 10px rgba(32, 177, 154, 0.2);
+    box-shadow: 0 0 10px rgba(112, 112, 112, 0.2);
     margin: 2em 0 0 0;
     cursor: pointer;
     transition: all 0.3s;
@@ -419,7 +419,13 @@
             &.flexStart {
                 justify-content: flex-start;
                 > div {
-                    width: 45%;
+                    width: 40%;
+                    @include sm {
+                        width: 45%;
+                    }
+                    @include xl {
+                        width: 40%;
+                    }
                 }
             }
             &.spaceBetween {
@@ -536,20 +542,20 @@
     text-align: center;
     margin-top: 3em;
     button {
-        background-color: $primaryColor;
+        background-color: $shadeBlueColor;
         font-family: "OpenSans", sans-serif;
         font-size: 1.125em;
         font-weight: 400;
         color: $whiteColor;
         padding: 0.5em 1.25em;
         transition: all 0.3s ease-in-out;
-        border: 1px solid $primaryColor;
+        border: 1px solid $shadeBlueColor;
         border-radius: 5px;
         em {
             font-size: 0.75em;
         }
         &:hover {
-            color: $primaryColor;
+            color: $shadeBlueColor;
             background-color: $whiteColor;
         }
     }
