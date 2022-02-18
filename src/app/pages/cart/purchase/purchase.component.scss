@@ -191,16 +191,20 @@
         .test {
             margin-top: 0.75em;
             display: flex;
+            justify-content: space-between;
             width: 100%;
             @include lg {
                 width: 80%;
             }
-            // > div {
-            //     width: 50%;
-            //     @include sm {
-            //         width: 40%;
-            //     }
-            // }
+            > div {
+                width: 50%;
+                @include sm {
+                    width: 40%;
+                }
+                @include xl {
+                    width: 30%;
+                }
+            }
             .heading, .assessmentHour {
                 font-size: 0.75em;
                 display: block;
@@ -211,6 +215,9 @@
                 font-weight: 700;
                 color: $mediumGrey;
                 margin-bottom: 0.25em;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
             }
             .assessmentHour {
                 span {
@@ -220,6 +227,8 @@
                     padding-right: 0.5em;
                     margin-right: 0.5em;
                     &:last-child {
+                        padding-right: 0;
+                        margin-right: 0;
                         border-right: 0;
                     }
                     em {
