@@ -97,18 +97,11 @@ export class CertifyAssessmentComponent implements OnInit {
       let freeTest:any = {}
       if(freeData)
       {freeTest.user_id = this.userDetails.userId;
-      freeTest.order_amount = 0;
       freeTest.cart = [];
       // this.cartList.forEach(cartItem => {
         freeTest.cart.push(
           {
              assessmentId: freeData.cid,
-            quantity: 1,
-            amount_per_assessment: 0,
-            total_amount: 0,
-            competencyId: this.competencyData.cid,
-            levelId: id1,
-            productType:productType
           }
         )}
 
@@ -134,7 +127,7 @@ export class CertifyAssessmentComponent implements OnInit {
               if(freeData){
                 freeTest.cartId = response?.data[0].cartId;
                 this.catalogService.createOrder(freeTest).subscribe((data: any) => {
-                  this.appconfig.routeNavigationWithQueryParam("cart/success",{ orderId: btoa(data.order_id) });
+                  this.appconfig.routeNavigationWithQueryParam("cart/success",{ orderId: btoa(data.orderId) });
                 })
               }else{
               if (from == 'buy') {

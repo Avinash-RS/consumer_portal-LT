@@ -350,22 +350,14 @@ setOffset(){
         let freeCart = [];
         freeCart.push({
           assessmentId: this.areaId,
-          quantity: 1,
-          amount_per_assessment: 0,
-          total_amount: 0,
-          competencyId: this.areaId,
-          levelId: this.abouCourseData?.levelId,
-          productType : this.productType
         });
         var orderParms ={
           user_id:this.userDetails.userId,
-          order_amount:0,
-          cart :freeCart,
           cartId:cartid,
         }
         this.catalogService.createOrder(orderParms).subscribe((data: any) => {
           this.toast.success("Course order created");
-          this.appconfig.routeNavigationWithQueryParam("cart/success",{ orderId: btoa(data.order_id) });
+          this.appconfig.routeNavigationWithQueryParam("cart/success",{ orderId: btoa(data.orderId) });
         });
       }
       scroll(ID) {
