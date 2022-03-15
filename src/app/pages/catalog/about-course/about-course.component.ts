@@ -18,7 +18,7 @@ import { GlobalValidatorsService } from 'src/app/validators/global-validators.se
   templateUrl: './about-course.component.html',
   styleUrls: ['./about-course.component.scss']
 })
-export class AboutCourseComponent implements OnInit,AfterViewChecked {
+export class AboutCourseComponent implements OnInit {
   selectedIndex = 0;
   TopicsOptions: OwlOptions = {
     loop: true,
@@ -215,28 +215,19 @@ export class AboutCourseComponent implements OnInit,AfterViewChecked {
     return this.queryForm.get('subject');
   }
 
-//   ngAfterViewInit(){
-//     setTimeout(()=>{
-//         this.setOffset();
-//     },3000)
-// }
 
-ngAfterViewChecked(){
-  setTimeout(()=>{
-    this.setOffset();
-},1000)
-}
 setOffset(){
-  this.firstOffset =  this.firstElement.nativeElement.offsetTop -200;
-  this.secondOffset =  this.secondElement.nativeElement.offsetTop - 200;
-  this.thirdOffset =  this.thirdElement.nativeElement.offsetTop -200;
-  this.fourthOffset =  this.fourthElement.nativeElement.offsetTop -200;
-  this.fifthOffset =  this.fifthElement.nativeElement.offsetTop -200;
-  this.sixthOffset =  this.sixthElement.nativeElement.offsetTop -200;
-  this.seventhOffset =  this.seventhElement.nativeElement.offsetTop -200;
-  this.eigthOffset =  this.eigthElement.nativeElement.offsetTop -200;
+  this.firstOffset =  this.firstElement?.nativeElement?.offsetTop? this.firstElement.nativeElement.offsetTop -210 : 491;
+  this.secondOffset = this.secondElement?.nativeElement?.offsetTop? this.secondElement.nativeElement.offsetTop - 210 :956;
+  this.thirdOffset =  this.thirdElement?.nativeElement?.offsetTop? this.thirdElement.nativeElement.offsetTop -210:3110;
+  this.fourthOffset = this.fourthElement?.nativeElement?.offsetTop? this.fourthElement.nativeElement.offsetTop -210:5945;
+  this.fifthOffset =  this.fifthElement?.nativeElement?.offsetTop? this.fifthElement.nativeElement.offsetTop -210:6672;
+  this.sixthOffset =  this.sixthElement?.nativeElement?.offsetTop? this.sixthElement.nativeElement.offsetTop -210:7404;
+  this.seventhOffset = this.seventhElement ?.nativeElement?.offsetTop? this.seventhElement.nativeElement.offsetTop -210:8255;
+  this.eigthOffset =  this.eigthElement?.nativeElement?.offsetTop? this.eigthElement.nativeElement.offsetTop -210 :8822;
 }
   checkOffsetTop() {
+    
     const windowOffSet = window.pageYOffset;
     if(windowOffSet >= this.firstOffset && windowOffSet < this.secondOffset && windowOffSet < this.thirdOffset && windowOffSet < this.fourthOffset && windowOffSet < this.fifthOffset && windowOffSet < this.sixthOffset  && windowOffSet < this.seventhOffset && windowOffSet < this.eigthOffset){
       this.activeSection = 1;
@@ -274,7 +265,9 @@ setOffset(){
           this.courseData = this.abouCourseData.assessmentData[0];
           this.defaultDiv = false;
           this.nocard = false;
-          this.setOffset();
+          setTimeout(() => {
+            this.setOffset();
+          }, 1000);
         }
         else{
           this.abouCourseData = [];
