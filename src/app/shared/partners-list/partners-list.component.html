@@ -37,15 +37,25 @@
         <section class="ourPartners">
             <div class="container">
                 <div class="partnersSection" *ngIf="OurPartners?.subHeading3?.dispalystatus">
-                    <div>{{OurPartners?.subHeading3.title}}</div>
-                    <figure *ngFor="let partner of OurPartners?.subHeading3?.innerArray">
-                        <img [src]="partner?.imageurl" alt="" />
-                    </figure>
+                    <div class="left">
+                        <div class="heading">{{OurPartners?.subHeading3.title}}</div>
+                        <figure *ngFor="let partner of OurPartners?.subHeading3?.innerArray">
+                            <img [src]="partner?.imageurl" alt="" />
+                        </figure>
+                    </div>
+                    <div class="right">
+                        <span class="heading">{{OurPartners?.subHeading4.title}}</span>
+                        <figure>
+                            <img [src]="OurPartners?.subHeading4?.imageurl" alt="" />
+                        </figure>
+                    </div>
                 </div>
-                <div class="grievanceSection"  *ngIf="OurPartners?.subHeading3?.dispalystatus">
+
+                <!-- <div class="grievanceSection"  *ngIf="OurPartners?.subHeading3?.dispalystatus">
                     <p><span>For any grievances</span> - {{OurPartners?.subHeading3?.description}}</p>
-                </div>
-                <div class="poweredSection" *ngIf="OurPartners?.subHeading4?.dispalystatus">
+                </div> -->
+
+                <!-- <div class="poweredSection" *ngIf="OurPartners?.subHeading4?.dispalystatus">
                     <div class="left">
                         <span class="heading">{{OurPartners?.subHeading4.title}}</span>
                         <figure>
@@ -55,6 +65,6 @@
                     <figure class="right">
                         <img [src]="OurPartners?.subHeading4?.Subimageurl" alt="" />
                     </figure>
-                </div>
+                </div> -->
             </div>
         </section>
