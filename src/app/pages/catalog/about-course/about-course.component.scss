@@ -3032,8 +3032,10 @@
 }
 
 .queryContainer{
-  padding: 1em;
   margin: 0 auto;
+  @include lg {
+    padding: 1em;
+  }
   .header{
     color: $blueLabelColor;
     font-size: 1.5em;
@@ -3051,6 +3053,9 @@
   .inputContainer{
     width: 50%;
     margin-right: 0.5em;
+    &:last-child {
+      margin-right: 0;
+    }
   }
   button {
     margin-top: 1em;
@@ -3084,6 +3089,16 @@
 
 ::ng-deep .queryFormContainer{
   position:  relative !important;
+  max-width: 100% !important;
+  width: 90% !important;
+  height: 76% !important;
+  @include md {
+    height: 53% !important;
+  }
+  @include lg {
+    height: 535px !important;
+    width: 775px !important;
+  }
 }
 
 ::ng-deep .cdk-global-scrollblock {
