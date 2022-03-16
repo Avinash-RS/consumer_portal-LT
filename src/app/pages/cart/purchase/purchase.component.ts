@@ -80,7 +80,7 @@ export class PurchaseComponent implements OnInit {
   }
 
   toCatalogue() {
-    this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.home, { fromPage: "viewAll", selectedTab: 'All' });
+    this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.home, { fromPage: btoa("viewAll"), selectedTab: btoa('All') });
   }
 
   removeAssessment(id) {

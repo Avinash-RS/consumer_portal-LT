@@ -157,8 +157,8 @@ export class HeaderComponent implements OnInit {
         this.productType = element.type;
         this.megaMenuL1Data  = element.data;
         element.active = true;
-        element.data.forEach((childelement,index)=>{
-          if(index == 0){
+        element.data.forEach((childelement,childindex)=>{
+          if(childindex == 0){
             this.megaMenuL2Data = childelement.children;
             childelement.active = true;
           }
