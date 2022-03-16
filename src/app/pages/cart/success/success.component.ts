@@ -54,8 +54,8 @@ export class SuccessComponent implements OnInit {
   orderId: any;
   lxpCheck:boolean = false;
   stepCheck:boolean = false;
-  courseId = [];
   stepCourseId  = [];
+  course_details = [];
   // activate: boolean = false;
   // activeDate: string;
   // activeTime: any;
@@ -78,14 +78,19 @@ export class SuccessComponent implements OnInit {
       if (params.orderId) {
         postData.order_id = atob(params.orderId);
         this.catalog.getOrder(postData).subscribe((data: any) => {
-          this.orderlist = data.data;
-          this.syncLxp();
+          if(data?.success){
+            this.orderlist = data.data;
+            this.syncLxp();
+          }
+          else{
+            this.toast.warning(data?.message ? data?.message :'Something Went Wrong')
+          }
         });
       }
     });
   }
   syncLxp(){
-    this.courseId = [];
+    this.course_details = [];
     this.stepCourseId = [];
     this.orderlist.forEach(element => {
       if(element?.productType == 'course' && element?.courseType == 'English'){
@@ -97,28 +102,30 @@ export class SuccessComponent implements OnInit {
       }
      else if(element?.productType == 'course' && element?.courseType != 'English'){
         this.lxpCheck = true;
-        if(element?.categoryIds.length == 1) {
-          this.courseId.push(element?.cid);
-        }
-        else{
-          this.courseId = this.courseId.concat(element?.categoryIds);
-        }
+          const courseData ={
+            courseIds: element?.courseType =='Track' ? element?.categoryIds : [element?.cid],
+            courseType: element?.courseType,
+            trackName:  element?.trackName ? element?.trackName : '',
+            trackId:  element?.trackId ? element?.trackId :''
+          }
+          this.course_details.push(courseData);
       }
     });
+
     if(this.lxpCheck){
       const apiParam = {
         username: this.userDetails.email,
-        courseId :this.courseId
+        course_details: this.course_details
         }
       this.catalog.userSyncUpLxp(apiParam).subscribe((result:any)=>{
       });
     }
     if(this.stepCheck){
-      const apiParam ={
+      const stepapiParam ={
         user_details:[{email:this.userDetails.email}],
         course_details:this.stepCourseId
       }
-      this.catalog.stepCrsFrmMicrocert(apiParam).subscribe((result:any)=>{
+      this.catalog.stepCrsFrmMicrocert(stepapiParam).subscribe((result:any)=>{
       });
     }
   }
