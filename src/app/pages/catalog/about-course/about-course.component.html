@@ -18,7 +18,8 @@
                             <div class="buttons">
                                 <span class="courseRate" *ngIf="courseData?.is_free">{{'Free'}}</span>
                                 <span class="courseRate" *ngIf="!courseData?.is_free"><em class="icon-Rupee"></em>{{courseData?.sellingPrice}}</span>
-                                <button class="buyNow" (click)="courseBuy()">Add to Cart</button>
+                                <!-- <button class="buyNow" (click)="courseBuy()">Add to Cart</button> -->
+                                <button class="buyNow" (click)="navigateBatch()">Add to Cart</button>
                             </div>
                         </div>
                     </div>

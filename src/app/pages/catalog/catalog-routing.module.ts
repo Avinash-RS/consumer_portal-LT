@@ -9,6 +9,7 @@ import { CertifyAssessmentComponent } from './certify-assessment/certify-assessm
 import { SearchComponent } from './search/search.component';
 import { APP_CONSTANTS } from 'src/app/utils/app-constants.service';
 import { AboutCourseComponent } from './about-course/about-course.component';
+import { BatchPurchaseComponent } from './batch-purchase/batch-purchase.component';
 
 const routes: Routes = [
   {path: '', component: ZcontentCatalogMainRouteComponent, children: [
@@ -20,6 +21,9 @@ const routes: Routes = [
     },
     {
       path: APP_CONSTANTS.ROUTES.catalog.aboutCourse, component: AboutCourseComponent ,
+    },
+    {
+      path: APP_CONSTANTS.ROUTES.catalog.batchPurchase, component: BatchPurchaseComponent ,
     },
     {
       path: APP_CONSTANTS.ROUTES.catalog.assessmentType, component: AssessmentTypeComponent,

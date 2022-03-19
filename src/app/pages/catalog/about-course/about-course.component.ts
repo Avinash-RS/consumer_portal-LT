@@ -155,7 +155,7 @@ export class AboutCourseComponent implements OnInit {
 
   constructor(private router: Router, private catalogService : CatalogService,private route:ActivatedRoute,private appconfig: AppConfigService,
     private commonService : CommonService,public toast: ToastrService ,private util: UtilityService,private dialog: MatDialog,
-    private fb: FormBuilder,
+    private fb: FormBuilder, 
     private gv: GlobalValidatorsService) {
       this.router.routeReuseStrategy.shouldReuseRoute = () => {
         return false;
@@ -293,6 +293,9 @@ setOffset(){
       panelClass: 'popupModalContainerForForms'
     });
     return false;
+  }
+  navigateBatch() {
+    this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.batchPurchase, {});
   }
   courseBuy(){
     //signin check 
