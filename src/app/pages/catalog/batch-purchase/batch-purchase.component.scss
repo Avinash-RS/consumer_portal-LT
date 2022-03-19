@@ -243,6 +243,46 @@
                             }
                         }
                     }
+                    .batchTimings {
+                        display: flex;
+                        align-items: flex-start;
+                        justify-content: space-between;
+                        .timer {
+                            width: 70%;
+                            display: flex;
+                            align-items: flex-start;
+                            > div {
+                                margin-right: 0.5em;
+                                padding-right: 0.5em;
+                                border-right: 1px solid $greyColor;
+                                &:last-child {
+                                    margin-right: 0;
+                                    padding-right: 0;
+                                    border-right: none;
+                                }
+                            }
+                            .time, .text {
+                                line-height: normal;
+                                display: block;
+                                margin: 0;
+                            }
+                            .time {
+                                color: $darkGrey;
+                                font-size: 0.875em;
+                                font-weight: 900;
+                            }
+                            .text {
+                                color: $lightGrey;
+                                font-size: 0.6em;
+                                font-weight: 400;
+                                margin-top: 0.25em;
+                            }
+                        }
+                        .batchPercentage {
+                            width: 28%;
+                            text-align: right;
+                        }
+                    }
                     .selectBatch {
                         position: absolute;
                         left: 0;
