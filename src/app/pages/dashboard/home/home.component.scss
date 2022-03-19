@@ -108,7 +108,7 @@
 
 //carrerpath
 .successfulCareer {
-  background-image: url("https://lmsassetspremium.lntedutech.com/portalicons/carrerpathbg.png");
+  background-image: url("https://lmsassetspremium.lntedutech.com/portalicons/carrerpathbg.webp ");
   background-repeat: no-repeat; 
   background-size: cover;
   font-size: 14px;
@@ -405,7 +405,7 @@
             &::before {
               content: '';
               position: absolute;
-              background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/pathbg.png');
+              background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/pathbg.webp');
               background-repeat: no-repeat;
               background-size: cover;
               background-position: bottom;
@@ -619,14 +619,14 @@
       }
     }
     &::before {
-        background-image: url("https://lmsassetspremium.lntedutech.com/portalicons/trail-left.svg");
+        background-image: url("https://lmsassetspremium.lntedutech.com/portalicons/trail-left.webp");
         left: -11em;
         @include md {
           left: -8em;
         }
     }
     &::after {
-        background-image: url("https://lmsassetspremium.lntedutech.com/portalicons/trail-right.svg");
+        background-image: url("https://lmsassetspremium.lntedutech.com/portalicons/trail-right.webp");
         right: -11em;
         @include md {
           right: -8em;
@@ -677,7 +677,7 @@
           left: 0;
           width: 100%;
           height :100%;
-          background-image: url("https://lmsassetspremium.lntedutech.com/portalicons/feedbackbg.svg");
+          background-image: url("https://lmsassetspremium.lntedutech.com/portalicons/feedbackbg.webp");
           background-size: cover;
           background-repeat: no-repeat;
           background-position: center;
@@ -871,7 +871,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/border.svg');
+            background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/border.webp');
             background-repeat: no-repeat;
             background-size: contain;
         }
@@ -998,7 +998,7 @@
   }
 }
 &::before {
-  background-image: url("https://lmsassetspremium.lntedutech.com/portalicons/curriculum_left.png");
+  background-image: url("https://lmsassetspremium.lntedutech.com/portalicons/curriculum_left.webp");
   left: -11em;
   @include md {
     left: -1em;
@@ -1011,7 +1011,7 @@
   background-color: #f9f9f9;
   padding: 0 0 3.75em 0;
   .banner {
-    background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/whatWeDo.png');
+    background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/whatWeDo.webp');
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;

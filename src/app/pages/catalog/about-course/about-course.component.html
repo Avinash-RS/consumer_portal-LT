@@ -254,7 +254,7 @@
                     </div>
                 </section>
                 <!-- Request Broucher -->
-                <!-- <section class="reqBroucher" [ngStyle]="{'background-image': 'url(https://lmsassetspremium.lntedutech.com/portalicons/reqbg.png)'}" *ngIf="item?.subHeading0?.dispalystatus"> -->
+                <!-- <section class="reqBroucher" [ngStyle]="{'background-image': 'url(https://lmsassetspremium.lntedutech.com/portalicons/reqbg.webp)'}" *ngIf="item?.subHeading0?.dispalystatus"> -->
                 <section class="reqBroucher" *ngIf="item?.subHeading0?.dispalystatus">
                     <div class="container">
                         <span class="heading">{{item?.subHeading0?.title}}</span>
@@ -318,7 +318,7 @@
             </ng-container>
             <!-- Expert Support System -->
             <ng-container *ngIf="item?.sectionId == 4 && item?.dispalystatus">
-                <section class="expertSupportTab" [id]="item.sectionId" #4 [ngStyle]="{'background-image': 'url(https://lmsassetspremium.lntedutech.com/portalicons/expertbg.png)'}">
+                <section class="expertSupportTab" [id]="item.sectionId" #4 [ngStyle]="{'background-image': 'url(https://lmsassetspremium.lntedutech.com/portalicons/expertbg.webp)'}">
                     <div class="container">
                         <div class="commonHeadingStyle">{{item?.title}}</div>
                         <mat-tab-group class="expertSupportSystem">
@@ -473,7 +473,7 @@
                                 <div class="headding">{{opportunitiesDetails?.title}}</div>
                                 <ul>
                                     <li *ngFor="let opportunitiesBenefits of opportunitiesDetails.benefits">
-                                        <img src="https://lmsassetspremium.lntedutech.com/portalicons/blue-tick.png" alt="" />
+                                        <img src="https://lmsassetspremium.lntedutech.com/portalicons/blue-tick.webp" alt="" />
                                     {{opportunitiesBenefits?.content}}</li>
                                 </ul>
                             </div>
@@ -557,7 +557,7 @@
 
     <div *ngIf="nocard && !defaultDiv" class="noDataFound">
         <figure>
-            <img src="https://lmsassetspremium.lntedutech.com/portalicons/no-categories.svg" alt="" />
+            <img src="https://lmsassetspremium.lntedutech.com/portalicons/no-categories.webp" alt="" />
         </figure>
         <div class="heading3">no courses found</div>
     </div>
