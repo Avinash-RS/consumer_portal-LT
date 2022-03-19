@@ -88,7 +88,7 @@
                                     </div>
                                     <span class="heading5">{{cards.name}}</span>
                                 </div>
-                                <div class="ratingSkills" [ngClass]="cards.productType == 'assessment' ? 'flexStart' : 'spaceBetween'">
+                                <div class="ratingSkills">
                                     <div>
                                         <span class="commonStyle">No. of {{cards.productType =='course' ? 'Modules' :'Assessments'}}</span>
                                         <span class="iconwithText"><em class="icon-Document"></em> {{cards.totalAssessment}}</span>
@@ -101,10 +101,10 @@
                                         <span class="commonStyle">Duration</span>
                                         <span class="iconwithText"><em class="icon-Booked"></em> {{cards?.courseContents?.duration}}</span>
                                     </div>
-                                    <div *ngIf="cards.productType == 'course'">
+                                    <!-- <div *ngIf="cards.productType == 'course'">
                                         <span class="commonStyle">Batch starts on</span>
                                         <span class="iconwithText"><em class="icon-Time"></em> {{cards?.courseContents?.batchStartDate | date :'dd MMM, yyyy'}}</span>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <div class="previewRibbon">
