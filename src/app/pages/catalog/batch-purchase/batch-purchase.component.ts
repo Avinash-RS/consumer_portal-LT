@@ -8,7 +8,7 @@ import { Component, OnInit } from "@angular/core";
 
 export class BatchPurchaseComponent implements OnInit {
   hiringPartners = {
-    "dispalystatus": true,
+    "dispalystatus": false,
     "title": "Hiring Partners",
     "imageurl": "https://lmsassetspremium.lntedutech.com/portalicons/hiringPartners_bg.png",
     "description": "L&T EduTech collaborates with 100+ recruiting partners, identify and understand the key talent expectations trending across the globe, design curriculum on right technologies, train learners with industry oriented practice eco-system to place them successfully.",

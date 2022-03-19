@@ -15,6 +15,7 @@ import { RatingStudentFeedbackComponent } from './rating-studentFeedback/rating-
 import { SearchComponent } from './search/search.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { AboutCourseComponent } from './about-course/about-course.component';
+import { BatchPurchaseComponent } from './batch-purchase/batch-purchase.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AboutCourseComponent } from './about-course/about-course.component';
     CertifyAssessmentComponent,
     RatingStudentFeedbackComponent,
     SearchComponent,
-    AboutCourseComponent
+    AboutCourseComponent, 
+    BatchPurchaseComponent
   ],
   imports: [
     CommonModule,

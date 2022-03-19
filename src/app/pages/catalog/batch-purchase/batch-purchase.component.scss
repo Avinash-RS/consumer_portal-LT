@@ -1,4 +1,116 @@
 @import "variables";
+.batchBanner {
+    background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 2em 0;
+    font-size: 14px;
+    position: relative;
+    @include md {
+        font-size: 13px;
+    }
+    @include lg {
+        font-size: 14px;
+    }
+    @include xl {
+        font-size: 16px;
+    }
+    .bannerDetails {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        @include lg {
+            flex-wrap: nowrap;
+        }
+        figure {
+            margin: 0;
+            display: flex;
+            width: 100%;
+            @include sm {
+                width: 30%;
+            }
+            @include lg {
+                width: 25%;
+            }
+        }
+        .details {
+            width: 100%;
+            margin: 1em 0 0 0;
+            @include sm {
+                width: 68%;
+                margin: 0 0 0 2%;
+            }
+            @include lg {
+                width: 51%;
+                margin: 0 2% 0 2%;
+            }
+        }
+        .addToCart {
+            width: 100%;
+            margin-top: 1.25em;
+            @include lg {
+                width: 20%;
+                text-align: center;
+                margin-top: 0;
+            }
+        }
+    }
+    .details {
+        .course {
+            display: flex;
+            align-items: center;
+            color: #20B19A;
+            font-size: 0.875em;
+            font-weight: 400;
+            line-height: normal;
+            em {
+                margin-right: 7px;
+                font-size: 0.75em;
+            }
+        }
+        .heading {
+            font-family: "OpenSans", sans-serif;
+            font-size: 1.875em;
+            font-weight: 700;
+            color: $whiteColor;
+            line-height: normal;
+            margin: 0.5em 0;
+            @include lg {
+                margin: 1em 0;
+            }
+        }
+        p {
+            font-size: 0.9375em;
+            font-weight: 400;
+            color: #FCFCFC;
+            line-height: 1.3;
+            margin: 0;
+        }
+    }
+    .addToCart {
+        button {
+            background-color: #848484;
+            border-radius: 5px;
+            border: none;
+            padding: 0.5em 2em;
+            font-family: "OpenSans", sans-serif;
+            font-size: 1.125em;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: normal;
+            cursor: not-allowed;
+        }
+        span {
+            display: block;
+            font-size: 0.9375em;
+            font-weight: 400;
+            color: #FCFCFC;
+            line-height: normal;
+            margin-top: 1em;
+        }
+    }
+}
 .batchContainer {
     padding: 3.75em 0 3.75em 0;
     font-size: 14px;
