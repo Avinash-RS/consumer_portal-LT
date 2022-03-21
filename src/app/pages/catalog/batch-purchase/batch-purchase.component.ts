@@ -16,7 +16,9 @@ export class BatchPurchaseComponent implements OnInit {
   productType;
   abouCourseData:any;
   courseData;
+  bannerContent;
   nocard:boolean = true;
+  selectedBatchId:string = '';
   hiringPartners = {
     "dispalystatus": false,
     "title": "Hiring Partners",
@@ -123,7 +125,7 @@ export class BatchPurchaseComponent implements OnInit {
     });
   }
 
-  getAbouCourse(){
+  getAbouCourse() {
     var params = {
       "competencyId":this.areaId,
       "productType":"course"
@@ -132,18 +134,49 @@ export class BatchPurchaseComponent implements OnInit {
       if (response.success) { 
         if(response.data && response.data.length > 0 && response.data[0].assessmentData && response.data[0].assessmentData.length){
           this.abouCourseData = response.data[0];
-          this.courseData = this.abouCourseData.assessmentData[0];
+          this.bannerContent = this.abouCourseData.assessmentData[0]
+          this.courseData = this.abouCourseData.assessmentData[0].batchDetails;
           this.nocard = false;
+          this.courseData.forEach((e) => {
+            this.getTimer(e);
+          });
         }
-        else{
+        else {
           this.abouCourseData = [];
           this.nocard = true;
         }
       }
-      else{
+      else {
         this.abouCourseData = [];
         this.nocard = true;
       }
     })
+  }
+
+  getTimer(filobject) {
+    var countDownDate = new Date(filobject.enrollmentClosesOn).getTime();
+
+    var x = setInterval(function() {
+
+      var now = new Date().getTime();
+        
+      var distance = countDownDate - now;
+      filobject.timer = {}
+      filobject.timer.days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      filobject.timer.hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      filobject.timer.mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      filobject.timer.secs = Math.floor((distance % (1000 * 60)) / 1000);
+      filobject.timer.isExpired = false;
+
+      if (distance < 0) {
+        clearInterval(x);    
+        filobject.timer = {}
+        filobject.timer.isExpired = true;
+      }
+    }, 1000);
+  }
+
+  getBatchId(ele) {
+    this.selectedBatchId = ele.batchId;
   }
 }
