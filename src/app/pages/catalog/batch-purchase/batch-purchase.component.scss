@@ -323,13 +323,15 @@
                         &.cursorAllow {
                             button {
                                 cursor: not-allowed;
-                                background-color: rgba(0, 0, 0, 0.4);
+                                background-color: rgba(0, 0, 0, 0.3);
+                                color: rgba(255, 255, 255, 0.8);
                             }
                         }
                         &.cursorNotAllow {
                             button {
                                 cursor: pointer;
                                 background-color: $blueLabelColor;
+                                color: $whiteColor;
                             }
                         }
                         button {
@@ -338,7 +340,6 @@
                             border: 0;
                             padding: 0.5em 1em;
                             text-align: center;
-                            color: $whiteColor;
                             text-transform: uppercase;
                             font-size: 1em;
                             font-weight: 600;
