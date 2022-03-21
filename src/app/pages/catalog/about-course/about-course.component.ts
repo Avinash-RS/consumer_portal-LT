@@ -347,13 +347,19 @@ setOffset(){
         freeCart.push({
           assessmentId: this.areaId,
         });
-        var orderParms ={
+        let orderParms  = {
           user_id:this.userDetails.userId,
           cartId:cartid,
-        }
+          cart:freeCart
+        };
         this.catalogService.createOrder(orderParms).subscribe((data: any) => {
-          this.toast.success("Course order created");
-          this.appconfig.routeNavigationWithQueryParam("cart/success",{ orderId: btoa(data.orderId) });
+          if(data?.success){
+            this.toast.success("Course order created");
+            this.appconfig.routeNavigationWithQueryParam("cart/success",{ orderId: btoa(data.orderId) });
+          }
+          else{
+            this.toast.warning(data?.message ? data?.message :'Some thing went wrong')
+          }
         });
       }
       scroll(ID) {
