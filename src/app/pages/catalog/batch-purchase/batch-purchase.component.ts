@@ -20,6 +20,7 @@ export class BatchPurchaseComponent implements OnInit {
   courseData;
   bannerContent;
   nocard: boolean = true;
+  defaultDiv:boolean = true;
   selectedBatchId: string = '';
   hiringPartners = {
     dispalystatus: false,
@@ -163,16 +164,19 @@ export class BatchPurchaseComponent implements OnInit {
           this.bannerContent = this.abouCourseData.assessmentData[0];
           this.courseData = this.abouCourseData.assessmentData[0].batchDetails;
           this.nocard = false;
+          this.defaultDiv = false;
           this.courseData.forEach((e) => {
             this.getTimer(e);
           });
         } else {
           this.abouCourseData = [];
           this.nocard = true;
+          this.defaultDiv = false;
         }
       } else {
         this.abouCourseData = [];
         this.nocard = true;
+        this.defaultDiv = false;
       }
     });
   }

@@ -1,4 +1,6 @@
-<ng-container *ngIf="!nocard">
+<div *ngIf="defaultDiv">
+</div>
+<ng-container *ngIf="!nocard && !defaultDiv">
     <section class="batchBanner">
         <div class="container">
             <div class="bannerDetails">
@@ -143,7 +145,7 @@
     </section>
 </ng-container>
 
-<div *ngIf="nocard" class="noDataFound">
+<div *ngIf="nocard && !defaultDiv" class="noDataFound">
     <figure>
         <img src="https://lmsassetspremium.lntedutech.com/portalicons/no-categories.webp" alt="" />
     </figure>
