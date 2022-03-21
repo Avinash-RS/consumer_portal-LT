@@ -12,7 +12,7 @@ import { CheckoutComponent } from './Checkout/Checkout.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { SuccessComponent } from './success/success.component';
 import { FailedComponent } from './failed/failed.component';
-
+import { PopoverModule } from "ngx-smart-popover";
 
 @NgModule({
   declarations: [
@@ -27,7 +27,8 @@ import { FailedComponent } from './failed/failed.component';
     CommonModule,
     CartRoutingModule,
     SharedModule,
-    CarouselModule
+    CarouselModule,
+    PopoverModule
   ],
   exports : [PurchaseComponent, AddressComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],

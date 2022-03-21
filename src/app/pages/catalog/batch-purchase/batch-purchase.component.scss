@@ -1,0 +1,396 @@
+@import "variables";
+.batchBanner {
+    background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 2em 0;
+    font-size: 14px;
+    position: relative;
+    @include md {
+        font-size: 13px;
+    }
+    @include lg {
+        font-size: 14px;
+    }
+    @include xl {
+        font-size: 16px;
+    }
+    .bannerDetails {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        @include lg {
+            flex-wrap: nowrap;
+        }
+        figure {
+            margin: 0;
+            display: flex;
+            width: 100%;
+            @include sm {
+                width: 30%;
+            }
+            @include lg {
+                width: 25%;
+            }
+        }
+        .details {
+            width: 100%;
+            margin: 1em 0 0 0;
+            @include sm {
+                width: 68%;
+                margin: 0 0 0 2%;
+            }
+            @include lg {
+                width: 51%;
+                margin: 0 2% 0 2%;
+            }
+        }
+        .addToCart {
+            width: 100%;
+            margin-top: 1.25em;
+            @include lg {
+                width: 20%;
+                text-align: center;
+                margin-top: 0;
+            }
+        }
+    }
+    .details {
+        .course {
+            display: flex;
+            align-items: center;
+            color: #20B19A;
+            font-size: 0.875em;
+            font-weight: 400;
+            line-height: normal;
+            em {
+                margin-right: 7px;
+                font-size: 0.75em;
+            }
+        }
+        .heading {
+            font-family: "OpenSans", sans-serif;
+            font-size: 1.875em;
+            font-weight: 700;
+            color: $whiteColor;
+            line-height: normal;
+            margin: 0.5em 0;
+            @include lg {
+                margin: 1em 0;
+            }
+        }
+        p {
+            font-size: 0.9375em;
+            font-weight: 400;
+            color: #FCFCFC;
+            line-height: 1.3;
+            margin: 0;
+        }
+    }
+    .addToCart {
+        button {
+            background-color: #848484;
+            border-radius: 5px;
+            border: none;
+            padding: 0.5em 2em;
+            font-family: "OpenSans", sans-serif;
+            font-size: 1.125em;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: normal;
+            cursor: not-allowed;
+        }
+        span {
+            display: block;
+            font-size: 0.9375em;
+            font-weight: 400;
+            color: #FCFCFC;
+            line-height: normal;
+            margin-top: 1em;
+        }
+    }
+}
+.batchContainer {
+    padding: 3.75em 0 3.75em 0;
+    font-size: 14px;
+    position: relative;
+    @include md {
+        font-size: 13px;
+    }
+    @include lg {
+        font-size: 14px;
+    }
+    @include xl {
+        font-size: 16px;
+    }
+    .batchWrapper {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        @include md {
+            flex-wrap: nowrap;
+        }
+        .chooseBatch, .programHighlights {
+            .heading4 {
+                font-family: "OpenSans", sans-serif;
+                color: $darkGrey;
+                font-weight: 600;
+                line-height: normal;
+            }
+            span {
+                display: block;
+                color: $lightGrey;
+                font-weight: 400;
+                font-size: 0.875em;
+                line-height: 1.3;
+                margin-top: 0.5em;
+            }
+        }
+        .chooseBatch {
+            width: 100%;
+            @include md {
+                width: 62%;
+            }
+            @include lg {
+                width: 70%;
+            }
+            .wrapper {
+                display: flex;
+                align-items: flex-start;
+                flex-wrap: wrap;
+                margin: 0 0 0 -3%;
+                > div {
+                    margin: 3em 0 0 3%;
+                    background-color: $whiteColor;
+                    border: 1px solid $greyListColor;
+                    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+                    border-radius: 5px;
+                    width: 100%;
+                    padding: 1em 0.75em 3em 0.75em;
+                    position: relative;
+                    @include sm {
+                        width: 47%;
+                    }
+                    @include lg {
+                        width: 30.3%;
+                    }
+                    .calendar {
+                        background-color: $secondaryColor;
+                        border-radius: 50%;
+                        width: 40px;
+                        height: 40px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        position: absolute;
+                        top: -28px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        em {
+                            color: $whiteColor;
+                            font-size: 1.25em;
+                        }
+                    }
+                    .heading6, p {
+                        color: $darkGrey;
+                        margin-top: 0.5em;
+                        text-align: center;
+                    }
+                    .heading6 {
+                        font-weight: 700;
+                        line-height: 1.2;
+                    }
+                    p {
+                        font-size: 0.9375em;
+                        font-weight: 400;
+                        line-height: 1.2;
+                        margin-bottom: 0;
+                    }
+                    .batchDetails {
+                        border-top: 1px solid rgba(0, 0, 0, 0.1);
+                        margin-top: 1em;
+                        padding-top: 1em;
+                        > div {
+                            display: flex;
+                            align-items: flex-end;
+                            margin-bottom: 1.25em;
+                            .icon {
+                                width: 11%;
+                                em {
+                                    font-size: 1.25em;
+                                    color: $darkGrey;
+                                }
+                            }
+                            .details {
+                                width: 87%;
+                                margin-left: 2%;
+                                span {
+                                    margin: 0;
+                                    display: block;
+                                    font-size: 0.6875em;
+                                    font-weight: 400;
+                                    color: $lightGrey;
+                                }
+                                p {
+                                    font-size: 0.875em;
+                                    font-weight: 700;
+                                    color: $secondaryColor;
+                                    line-height: normal;
+                                    margin: 0.35em 0 0 0;
+                                    text-align: left;
+                                }
+                            }
+                        }
+                    }
+                    .batchTimings {
+                        display: flex;
+                        align-items: flex-start;
+                        justify-content: space-between;
+                        .timer {
+                            width: 70%;
+                            display: flex;
+                            align-items: flex-start;
+                            > div {
+                                margin-right: 0.5em;
+                                padding-right: 0.5em;
+                                border-right: 1px solid $greyColor;
+                                &:last-child {
+                                    margin-right: 0;
+                                    padding-right: 0;
+                                    border-right: none;
+                                }
+                            }
+                            .time, .text {
+                                line-height: normal;
+                                display: block;
+                                margin: 0;
+                            }
+                            .time {
+                                color: $darkGrey;
+                                font-size: 0.875em;
+                                font-weight: 900;
+                            }
+                            .text {
+                                color: $lightGrey;
+                                font-size: 0.6em;
+                                font-weight: 400;
+                                margin-top: 0.25em;
+                            }
+                        }
+                        .batchPercentage {
+                            width: 28%;
+                            text-align: right;
+                        }
+                    }
+                    .selectBatch {
+                        position: absolute;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        button {
+                            width: 100%;
+                            background-color: $blueLabelColor;
+                            border-radius: 0 0 5px 5px;
+                            border: 0;
+                            padding: 0.5em 1em;
+                            text-align: center;
+                            color: $whiteColor;
+                            text-transform: uppercase;
+                            font-size: 1em;
+                            font-weight: 600;
+                            font-family: "OpenSans", sans-serif;
+                        }
+                    }
+                }
+            }
+        }
+        .programHighlights {
+            width: 100%;
+            margin: 2em 0 0 0;
+            @include md {
+                width: 35%;
+                margin: 0 0 0 3%;
+            }
+            @include lg {
+                width: 27%;
+            }
+            .wrapper {
+                margin-top: 2em;
+            }
+            .commonStyle {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-top: 1.25em;
+                figure {
+                    width: 10%;
+                    img {
+                        max-width: 100%;
+                    }
+                }
+                .right {
+                    width: 87%;
+                    .heading6 {
+                        color: $blueLabelColor;
+                        font-weight: 700;
+                        line-height: normal;
+                        font-family: "OpenSans", sans-serif;
+                    }
+                    p {
+                        margin: 0;
+                        color: $lightGrey;
+                        font-size: 0.75em;
+                        font-weight: 400;
+                        line-height: 1.2;
+                        margin-top: 0.5em;
+                    }
+                }
+            }
+            .contactUs {
+                background-color: $whiteColor;
+                border: 1px solid rgba(112, 112, 112, 0.25);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.07);
+                border-radius: 10px;
+                padding: 0.75em 1em;
+                margin-top: 3em;
+                display: flex;
+                align-items: center;
+                .contactIcon {
+                    width: 40px;
+                    height: 40px;
+                    background-image: linear-gradient(to right bottom, #00bcef, #00c0db, #00c1b6, #00be83, #4eb749);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 50%;
+                    margin: 0 5% 0 0;
+                    em {
+                        font-size: 1.5em;
+                        color: $whiteColor;
+                    }
+                }
+                > div {
+                    width: calc(100% - 40px);
+                    span {
+                        margin: 0;
+                        font-family: "OpenSans", sans-serif;
+                    }
+                    .heading {
+                        font-size: 1em;
+                        font-weight: 400;
+                        color: #757783;
+                        line-height: normal;
+                        margin-bottom: 0.5em;
+                    }
+                    .phone {
+                        font-size: 1.35em;
+                        font-weight: 600;
+                        color: $shadeBlueColor;
+                        line-height: normal;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -32,6 +32,7 @@ export const APP_CONSTANTS = {
       catalogHome: '/catalog/catalogHome',
       aboutAssessment: '/catalog/aboutAssessment',
       aboutCourse :'/catalog/aboutCourse',
+      batchPurchase :'/catalog/batchPurchase',
       assessmentType: '/catalog/assessmentType',
       certifyAssessment: '/catalog/certifyAssessment',
       search: '/catalog/search'
@@ -58,6 +59,7 @@ export const APP_CONSTANTS = {
       catalogHome: 'catalogHome',
       aboutAssessment: 'aboutAssessment',
       aboutCourse: 'aboutCourse',
+      batchPurchase: 'batchPurchase',
       assessmentType: 'assessmentType',
       certifyAssessment: 'certifyAssessment',
       search: 'search'

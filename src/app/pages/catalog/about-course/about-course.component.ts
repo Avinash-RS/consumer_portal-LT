@@ -155,7 +155,7 @@ export class AboutCourseComponent implements OnInit {
 
   constructor(private router: Router, private catalogService : CatalogService,private route:ActivatedRoute,private appconfig: AppConfigService,
     private commonService : CommonService,public toast: ToastrService ,private util: UtilityService,private dialog: MatDialog,
-    private fb: FormBuilder,
+    private fb: FormBuilder, 
     private gv: GlobalValidatorsService) {
       this.router.routeReuseStrategy.shouldReuseRoute = () => {
         return false;
@@ -294,6 +294,9 @@ setOffset(){
     });
     return false;
   }
+  navigateBatch() {
+    this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.batchPurchase, {});
+  }
   courseBuy(){
     //signin check 
     if (this.userDetails) {
@@ -344,13 +347,19 @@ setOffset(){
         freeCart.push({
           assessmentId: this.areaId,
         });
-        var orderParms ={
+        let orderParms  = {
           user_id:this.userDetails.userId,
           cartId:cartid,
-        }
+          cart:freeCart
+        };
         this.catalogService.createOrder(orderParms).subscribe((data: any) => {
-          this.toast.success("Course order created");
-          this.appconfig.routeNavigationWithQueryParam("cart/success",{ orderId: btoa(data.orderId) });
+          if(data?.success){
+            this.toast.success("Course order created");
+            this.appconfig.routeNavigationWithQueryParam("cart/success",{ orderId: btoa(data.orderId) });
+          }
+          else{
+            this.toast.warning(data?.message ? data?.message :'Some thing went wrong')
+          }
         });
       }
       scroll(ID) {

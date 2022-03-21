@@ -49,9 +49,42 @@
                                             </div>
                                         </div>
                                         <div class="levelAssessment">
-                                            <div class="test">
+                                            <ng-container *ngIf="cart.productType =='course'">
+                                                <!-- <popover-content #finalPopover placement="right" [animation]="true" popoverSize="large">
+                                                    <div class="popoverContainer">
+                                                        <div class="popTitle">JFSD-Batch 01</div>
+                                                        <div class="subpopTitle">Weekday batch / morning</div>
+                                                        <div class="popheading">Batch duration</div>
+                                                        <span class="desc">15 Feb, 2022</span>
+                                                        <div class="popheading">Instructor session timings</div>
+                                                        <span class="desc">11:00 am</span>
+                                                        <div class="popheading">Total duration</div>
+                                                        <span class="desc">4.5 Months</span>
+                                                    </div>
+                                                </popover-content> -->
+                                                <div class="ratingSkills">
+                                                    <div>
+                                                        <span class="commonStyle">No. of Modules</span>
+                                                        <span class="iconwithText"><em class="icon-Document"></em> {{'8+'}}</span>
+                                                    </div>
+                                                    <div>
+                                                        <span class="commonStyle">Batch details</span>
+                                                        <span class="iconwithText">{{'JFSD-BATCH 01'}}
+                                                             <button class="popoverInfoFinal" popoverPlacement="right" [popover]="finalPopover" [popoverOnHover]="false" [popoverCloseOnClickOutside]="true"
+                                                             [popoverCloseOnMouseOutside]="false"
+                                                             [popoverDisabled]="false">i</button>
+                                                        </span>
+                                                    </div>
+
+                                                   <div>
+                                                        <span class="commonStyle">Duration</span>
+                                                        <span class="iconwithText"><em class="icon-Booked"></em> {{'4.5 months'}}</span>
+                                                    </div>
+                                                </div>
+                                            </ng-container>
+                                            <div class="test" *ngIf="cart.productType !='course'">
                                                 <ng-container *ngFor="let test of cart.assessmentDetails.testTypes">
-                                                    <div *ngIf="cart.productType !='course'">
+                                                    <div>
                                                         <span class="heading">{{test.testName}}</span>
                                                         <span class="assessmentHour">
                                                             <span><em class="icon-Time"></em> {{test.sumtotalhour}} hr</span>
@@ -63,7 +96,6 @@
                                             </div>
                                             <div class="deleteWishList">
                                                 <button (click)="removeAssessment(cart.cartId)"><em class="icon-Delete"></em> Remove</button>
-                                                <!-- <button><em class="icon-Favorite"></em> Move to WishList</button> -->
                                             </div>
                                         </div>
                                     </div>
