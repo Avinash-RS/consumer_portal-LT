@@ -163,6 +163,7 @@ export class BookSlotComponent implements OnInit {
     let slotDateTime = new Date(dateVal + ' ' + testItem.testTypes.bookingData.selectedSlot.key);
     let utcformatted = moment(slotDateTime).utc(true).format('YYYY-MM-DDTHH:mm:ss.SSS[Z]');
     let testdetails = [];
+    let questionIds = [];
     const testobj = {
       name:testItem.testTypes.testName,
       duration:Number(testItem.testTypes.totalDuration),
@@ -183,7 +184,8 @@ export class BookSlotComponent implements OnInit {
     userId: userDetails.userId,
     status: testItem.testTypes.scheculeStatus ? 'reschedule' : 'schedule',
     assessmentname :testItem?.name,
-    testDetails : testdetails
+    testDetails : testdetails,
+    questionIds : typeof testItem.testTypes.questionIds != 'undefined' ? testItem.testTypes.questionIds : questionIds
   };
     if (testItem.testTypes?.bookingData?.selectedSlot) {
       this.checkSlotExpired(testItem.testTypes.bookingData.selectedSlot, testItem.testTypes.bookingData.selectedDate);
