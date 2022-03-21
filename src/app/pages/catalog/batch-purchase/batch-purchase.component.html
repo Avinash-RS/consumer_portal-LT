@@ -11,7 +11,7 @@
                     <p>{{bannerContent?.shortDescription}}</p>
                 </div>
                 <div [ngClass]="selectedBatchId == '' ? 'disableClass' : 'enableClass'" class="addToCart">
-                    <button [disabled]="selectedBatchId == ''">Add to Cart</button>
+                    <button (click)="courseBuy()" [disabled]="selectedBatchId == ''">Add to Cart</button>
                     <span>Select your convenient batch</span>
                 </div>
             </div>
