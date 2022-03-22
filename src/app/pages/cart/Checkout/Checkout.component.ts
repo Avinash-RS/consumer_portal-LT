@@ -80,6 +80,7 @@ export class CheckoutComponent implements OnInit {
       param.cart.push(
         {
           assessmentId: cartItem.assessmentId,
+          batchId:cartItem?.batchId ? cartItem.batchId :null
           // quantity: Number(cartItem.quantity),
           // amount_per_assessment: cartItem.assessmentDetails.is_free?0:cartItem.assessmentDetails.sellingPrice,
           // total_amount: itemTotal_amount,

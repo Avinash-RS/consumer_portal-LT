@@ -224,6 +224,7 @@ export class BatchPurchaseComponent implements OnInit {
         assessmentId: this.areaId,
         competencyId: this.areaId,
         productType: this.productType,
+        batchId:this.selectedBatchId
       };
       //Add to Cart
       this.catalogService.addToCart(cartParams).subscribe((response: any) => {
@@ -247,6 +248,7 @@ export class BatchPurchaseComponent implements OnInit {
         assessmentId: this.areaId,
         competencyId: this.areaId,
         productType: this.productType,
+        batchId:this.selectedBatchId
       };
       this.util.setValue(cartParams);
       this.appconfig.routeNavigationWithQueryParam(
@@ -259,6 +261,7 @@ export class BatchPurchaseComponent implements OnInit {
     let freeCart = [];
     freeCart.push({
       assessmentId: this.areaId,
+      batchId:this.selectedBatchId
     });
     let orderParms = {
       user_id: this.userDetails.userId,
