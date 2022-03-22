@@ -1,109 +1,281 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
+import { APP_CONSTANTS } from 'src/app/utils/app-constants.service';
+import { AppConfigService } from 'src/app/utils/app-config.service';
+import { ActivatedRoute } from '@angular/router';
+import { CatalogService } from 'src/app/services/catalog.service';
+import { UtilityService } from 'src/app/services/utility.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: "app-batch-purchase",
-  templateUrl: "./batch-purchase.component.html",
-  styleUrls: ["./batch-purchase.component.scss"]
+  selector: 'app-batch-purchase',
+  templateUrl: './batch-purchase.component.html',
+  styleUrls: ['./batch-purchase.component.scss'],
 })
-
 export class BatchPurchaseComponent implements OnInit {
+  userDetails;
+  domainId;
+  areaId;
+  productType;
+  abouCourseData: any;
+  courseData;
+  bannerContent;
+  nocard: boolean = true;
+  defaultDiv:boolean = true;
+  selectedBatchId: string = '';
   hiringPartners = {
-    "dispalystatus": false,
-    "title": "Hiring Partners",
-    "imageurl": "https://lmsassetspremium.lntedutech.com/portalicons/hiringPartners_bg.png",
-    "description": "L&T EduTech collaborates with 100+ recruiting partners, identify and understand the key talent expectations trending across the globe, design curriculum on right technologies, train learners with industry oriented practice eco-system to place them successfully.",
-    "innerArray": [
+    dispalystatus: false,
+    title: 'Hiring Partners',
+    imageurl:
+      'https://lmsassetspremium.lntedutech.com/portalicons/hiringpartners-bg.webp',
+    description:
+      'L&T EduTech collaborates with 100+ recruiting partners, identify and understand the key talent expectations trending across the globe, design curriculum on right technologies, train learners with industry oriented practice eco-system to place them successfully.',
+    innerArray: [
       {
-        "title": "L&T Construction",
-        "imageurl": "https://lmsassetspremium.lntedutech.com/portalicons/lntcc.png"
+        title: 'L&T Construction',
+        imageurl:
+          'https://lmsassetspremium.lntedutech.com/portalicons/lntcc.webp',
       },
       {
-        "title": "L&T NXT",
-        "imageurl": "https://lmsassetspremium.lntedutech.com/portalicons/nxt.png"
+        title: 'L&T NXT',
+        imageurl:
+          'https://lmsassetspremium.lntedutech.com/portalicons/nxt.webp',
       },
       {
-        "title": "L&T Technology",
-        "imageurl": "https://lmsassetspremium.lntedutech.com/portalicons/techservice.png"
+        title: 'L&T Technology',
+        imageurl:
+          'https://lmsassetspremium.lntedutech.com/portalicons/techservice.webp',
       },
       {
-        "title": "LTI",
-        "imageurl": "https://lmsassetspremium.lntedutech.com/portalicons/lti.png"
+        title: 'LTI',
+        imageurl:
+          'https://lmsassetspremium.lntedutech.com/portalicons/lti.webp',
       },
       {
-        "title": "Mind Tree Construction",
-        "imageurl": "https://lmsassetspremium.lntedutech.com/portalicons/mindtree.png"
-      }
+        title: 'Mind Tree Construction',
+        imageurl:
+          'https://lmsassetspremium.lntedutech.com/portalicons/mindtree.webp',
+      },
     ],
-    "subHeading1": {
-      "dispalystatus": true,
-      "title": "Programs",
-      "imageurl": "",
-      "description": "",
-      "innerArray": [
-        "Full Stack .NET Application Development Cyber Security",
-        "Python and Data Management",
-        "MEAN Application Development"
-      ]
+    subHeading1: {
+      dispalystatus: true,
+      title: 'Programs',
+      imageurl: '',
+      description: '',
+      innerArray: [
+        'Full Stack .NET Application Development Cyber Security',
+        'Python and Data Management',
+        'MEAN Application Development',
+      ],
     },
-    "subHeading2": {
-      "dispalystatus": true,
-      "title": "Courses",
-      "imageurl": "",
-      "description": "",
-      "innerArray": [
-        "Modern Web Design",
-        "Angular 7",
-        "Complete Node JS",
-        "MongoDB",
-        "Complete Java",
-        "MySQL",
-        "Modern Web Design",
-        "Spring Boot",
-        "Complete C#",
-        "ASP.NET",
-        "Data Science and Machine Learning with Python",
-        "Data Visualization with PowerBI",
-        "Restful Services with ASP.NET",
-        "Web Services with Java"
-      ]
+    subHeading2: {
+      dispalystatus: true,
+      title: 'Courses',
+      imageurl: '',
+      description: '',
+      innerArray: [
+        'Modern Web Design',
+        'Angular 7',
+        'Complete Node JS',
+        'MongoDB',
+        'Complete Java',
+        'MySQL',
+        'Modern Web Design',
+        'Spring Boot',
+        'Complete C#',
+        'ASP.NET',
+        'Data Science and Machine Learning with Python',
+        'Data Visualization with PowerBI',
+        'Restful Services with ASP.NET',
+        'Web Services with Java',
+      ],
     },
-    "subHeading3": {
-      "dispalystatus": true,
-      "title": "Our Partners :",
-      "imageurl": "",
-      "description": "students can reach us at – call: 000-000-0000 email: xyz@lntedutech.com",
-      "innerArray": [
+    subHeading3: {
+      dispalystatus: true,
+      title: 'Our Partners :',
+      imageurl: '',
+      description:
+        'students can reach us at – call: 000-000-0000 email: xyz@lntedutech.com',
+      innerArray: [
         {
-          "title": "Pack",
-          "imageurl": "https://lmsassetspremium.lntedutech.com/portalicons/packt.png"
+          title: 'Pack',
+          imageurl:
+            'https://lmsassetspremium.lntedutech.com/portalicons/packt.webp',
         },
         {
-          "title": "Pack",
-          "imageurl": "https://lmsassetspremium.lntedutech.com/portalicons/step.png"
+          title: 'Pack',
+          imageurl:
+            'https://lmsassetspremium.lntedutech.com/portalicons/step.webp',
         },
         {
-          "title": "Pack",
-          "imageurl": "https://lmsassetspremium.lntedutech.com/portalicons/wecp.png"
+          title: 'Pack',
+          imageurl:
+            'https://lmsassetspremium.lntedutech.com/portalicons/wecp.webp',
         },
         {
-          "title": "Pack",
-          "imageurl": "https://lmsassetspremium.lntedutech.com/portalicons/amphisoft.png"
-        }
-      ]
+          title: 'Pack',
+          imageurl:
+            'https://lmsassetspremium.lntedutech.com/portalicons/amphisoft.webp',
+        },
+      ],
     },
-    "subHeading4": {
-      "dispalystatus": true,
-      "title": "Payment Powered by :",
-      "imageurl": "https://lmsassetspremium.lntedutech.com/portalicons/cc.png",
-      "Subimageurl": "https://lmsassetspremium.lntedutech.com/portalicons/ccavenue.png",
-      "description": ""
-    }
-  }
-  constructor() { 
-
-  }
+    subHeading4: {
+      dispalystatus: true,
+      title: 'Payment Powered by :',
+      imageurl: 'https://lmsassetspremium.lntedutech.com/portalicons/cc.webp',
+      Subimageurl:
+        'https://lmsassetspremium.lntedutech.com/portalicons/ccavenue.webp',
+      description: '',
+    },
+  };
+  constructor(
+    private appconfig: AppConfigService,
+    private route: ActivatedRoute,
+    private catalogService: CatalogService,
+    private util: UtilityService,
+    public toast: ToastrService
+  ) {}
 
   ngOnInit() {
+    this.userDetails = JSON.parse(
+      this.appconfig.getSessionStorage('userDetails')
+    );
+    this.route.queryParams.subscribe((params) => {
+      this.domainId = atob(params.selectedTab);
+      this.areaId = atob(params.id);
+      this.productType = atob(params.productType);
+      this.getAbouCourse();
+    });
+  }
 
+  getAbouCourse() {
+    var params = {
+      competencyId: this.areaId,
+      productType: 'course',
+    };
+    this.catalogService.getAssesments(params).subscribe((response: any) => {
+      if (response.success) {
+        if (
+          response.data &&
+          response.data.length > 0 &&
+          response.data[0].assessmentData &&
+          response.data[0].assessmentData.length
+        ) {
+          this.abouCourseData = response.data[0];
+          this.bannerContent = this.abouCourseData.assessmentData[0];
+          this.courseData = this.abouCourseData.assessmentData[0].batchDetails;
+          this.nocard = false;
+          this.defaultDiv = false;
+          this.courseData.forEach((e) => {
+            this.getTimer(e);
+          });
+        } else {
+          this.abouCourseData = [];
+          this.nocard = true;
+          this.defaultDiv = false;
+        }
+      } else {
+        this.abouCourseData = [];
+        this.nocard = true;
+        this.defaultDiv = false;
+      }
+    });
+  }
+
+  getTimer(filobject) {
+    var countDownDate = new Date(filobject.enrollmentClosesOn).getTime();
+
+    var x = setInterval(function () {
+      var now = new Date().getTime();
+      var distance = countDownDate - now;
+      filobject.timer = {};
+      filobject.timer.days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      filobject.timer.hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      filobject.timer.mins = Math.floor(
+        (distance % (1000 * 60 * 60)) / (1000 * 60)
+      );
+      filobject.timer.secs = Math.floor((distance % (1000 * 60)) / 1000);
+      filobject.timer.isExpired = false;
+
+      if (distance < 0) {
+        clearInterval(x);
+        filobject.timer = {};
+        filobject.timer.isExpired = true;
+      }
+    }, 1000);
+  }
+
+  getBatchId(ele) {
+    this.selectedBatchId = ele.batchId;
+  }
+
+  courseBuy() {
+    //signin check
+    if (this.userDetails) {
+      const data = {
+        noofFields: '44',
+        email: this.userDetails.email ? this.userDetails.email : null,
+      };
+      var cartParams = {
+        isLevel: false,
+        levelId: this.abouCourseData?.levelId,
+        userId: this.userDetails.userId,
+        assessmentId: this.areaId,
+        competencyId: this.areaId,
+        productType: this.productType,
+      };
+      //Add to Cart
+      this.catalogService.addToCart(cartParams).subscribe((response: any) => {
+        if (response.success) {
+          //is Free check
+          if (this.abouCourseData?.is_free) {
+            this.freeOrderPlace(response?.data[0].cartId);
+          } else {
+            this.toast.success('Added to cart');
+            this.util.cartSubject.next(true);
+          }
+        } else {
+          this.toast.warning(response.message);
+        }
+      });
+    } else {
+      cartParams = {
+        isLevel: false,
+        levelId: this.abouCourseData?.levelId,
+        userId: '',
+        assessmentId: this.areaId,
+        competencyId: this.areaId,
+        productType: this.productType,
+      };
+      this.util.setValue(cartParams);
+      this.appconfig.routeNavigationWithQueryParam(
+        APP_CONSTANTS.ENDPOINTS.onBoard.login,
+        { fromPage: '0' }
+      );
+    }
+  }
+  freeOrderPlace(cartid) {
+    let freeCart = [];
+    freeCart.push({
+      assessmentId: this.areaId,
+    });
+    let orderParms = {
+      user_id: this.userDetails.userId,
+      cartId: cartid,
+      cart: freeCart,
+    };
+    this.catalogService.createOrder(orderParms).subscribe((data: any) => {
+      if (data?.success) {
+        this.toast.success('Course order created');
+        this.appconfig.routeNavigationWithQueryParam('cart/success', {
+          orderId: btoa(data.orderId),
+        });
+      } else {
+        this.toast.warning(
+          data?.message ? data?.message : 'Some thing went wrong'
+        );
+      }
+    });
   }
 }

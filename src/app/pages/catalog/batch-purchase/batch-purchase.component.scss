@@ -1,6 +1,6 @@
 @import "variables";
 .batchBanner {
-    background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/bg.png');
+    background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/bg.webp');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -75,9 +75,9 @@
             font-weight: 700;
             color: $whiteColor;
             line-height: normal;
-            margin: 0.5em 0;
+            margin: 0 0 0.5em 0;
             @include lg {
-                margin: 1em 0;
+                margin: 0 0 1em 0;
             }
         }
         p {
@@ -89,17 +89,28 @@
         }
     }
     .addToCart {
+        &.disableClass {
+            button {
+                background-color: #848484;
+                color: rgba(255, 255, 255, 0.5);
+                cursor: not-allowed;
+            }
+        }
+        &.enableClass {
+            button {
+                background-color: $blueLabelColor;
+                color: $whiteColor;
+                cursor: pointer;
+            }
+        }
         button {
-            background-color: #848484;
             border-radius: 5px;
             border: none;
             padding: 0.5em 2em;
             font-family: "OpenSans", sans-serif;
             font-size: 1.125em;
             font-weight: 700;
-            color: rgba(255, 255, 255, 0.5);
             line-height: normal;
-            cursor: not-allowed;
         }
         span {
             display: block;
@@ -175,8 +186,7 @@
                     @include lg {
                         width: 30.3%;
                     }
-                    .calendar {
-                        background-color: $secondaryColor;
+                    .iconBg {
                         border-radius: 50%;
                         width: 40px;
                         height: 40px;
@@ -189,7 +199,19 @@
                         transform: translateX(-50%);
                         em {
                             color: $whiteColor;
-                            font-size: 1.25em;
+                        }
+                        &.calendar {
+                            background-color: $secondaryColor;
+                            em {
+                                font-size: 1.25em;
+                            }
+                        }
+                        &.selected {
+                            background-color: $greenColor;
+                            em {
+                                font-size: 1.65em;
+                                line-height: 1.5;
+                            }
                         }
                     }
                     .heading6, p {
@@ -255,6 +277,7 @@
                                 margin-right: 0.5em;
                                 padding-right: 0.5em;
                                 border-right: 1px solid $greyColor;
+                                text-align: center;
                                 &:last-child {
                                     margin-right: 0;
                                     padding-right: 0;
@@ -278,6 +301,15 @@
                                 margin-top: 0.25em;
                             }
                         }
+                        .expired {
+                            p {
+                                font-family: "OpenSans", sans-serif;
+                                font-size: 0.875em;
+                                font-weight: 700;
+                                color: #C02222;
+                                line-height: normal;
+                            }
+                        }
                         .batchPercentage {
                             width: 28%;
                             text-align: right;
@@ -288,14 +320,26 @@
                         left: 0;
                         bottom: 0;
                         width: 100%;
+                        &.cursorAllow {
+                            button {
+                                cursor: not-allowed;
+                                background-color: rgba(0, 0, 0, 0.3);
+                                color: rgba(255, 255, 255, 0.8);
+                            }
+                        }
+                        &.cursorNotAllow {
+                            button {
+                                cursor: pointer;
+                                background-color: $blueLabelColor;
+                                color: $whiteColor;
+                            }
+                        }
                         button {
                             width: 100%;
-                            background-color: $blueLabelColor;
                             border-radius: 0 0 5px 5px;
                             border: 0;
                             padding: 0.5em 1em;
                             text-align: center;
-                            color: $whiteColor;
                             text-transform: uppercase;
                             font-size: 1em;
                             font-weight: 600;

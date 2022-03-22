@@ -1,416 +1,167 @@
-<section class="batchBanner">
-    <div class="container">
-        <div class="bannerDetails">
-            <figure>
-                <img src="https://lmsassetspremium.lntedutech.com/portalicons/bannerImg.png" alt="" />
-            </figure>
-            <div class="details">
-                <span class="course"><em class="icon-Right_Play"></em> Application Development</span>
-                <div class="heading">Java Full Stack Developer</div>
-                <p>An Industry-oriented, bootcamp program with high emphasis on practical knowledge with hands-on activities</p>
-            </div>
-            <div class="addToCart">
-                <button>Add to Cart</button>
-                <span>Select your convenient batch</span>
+<div *ngIf="defaultDiv">
+</div>
+<ng-container *ngIf="!nocard && !defaultDiv">
+    <section class="batchBanner">
+        <div class="container">
+            <div class="bannerDetails">
+                <figure>
+                    <img src="https://lmsassetspremium.lntedutech.com/portalicons/bannerimg.webp" alt="" />
+                </figure>
+                <div class="details">
+                    <!-- <span class="course"><em class="icon-Right_Play"></em> Application Development</span> -->
+                    <div class="heading">{{bannerContent?.name}}</div>
+                    <p>{{bannerContent?.shortDescription}}</p>
+                </div>
+                <div [ngClass]="selectedBatchId == '' ? 'disableClass' : 'enableClass'" class="addToCart">
+                    <button (click)="courseBuy()" [disabled]="selectedBatchId == ''">Add to Cart</button>
+                    <span>Select your convenient batch</span>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-<section class="batchContainer">
-    <div class="container">
-        <div class="batchWrapper">
-            <div class="chooseBatch">
-                <div class="heading4">Choose batch at your flexible timeline</div>
-                <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the</span>
-                <div class="wrapper">
-                    <div>
-                        <span class="calendar">
-                            <em class="icon-CalendarBatch"></em>
-                        </span>
-                        <div class="heading6">JFSD-Batch 01</div>
-                        <p>Weekday batch / morning</p>
-                        <div class="batchDetails">
-                            <div>
-                                <span class="icon">
-                                    <em class="icon-Time"></em>
-                                </span>
-                                <div class="details">
-                                    <span>Batch duration</span>
-                                    <p>15 Feb, 2022, 10 Jun, 2022</p>
+    </section>
+    <section class="batchContainer">
+        <div class="container">
+            <div class="batchWrapper">
+                <div class="chooseBatch">
+                    <div class="heading4">Choose batch at your flexible timeline</div>
+                    <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the</span>
+                    <div class="wrapper">
+                        <div *ngFor="let batchDetails of courseData">
+                            <div class="flipInner">
+                                <div class="front">
+                                    <span class="iconBg selected" *ngIf="batchDetails?.batchId == selectedBatchId">
+                                        <em class="icon-CheckMark"></em>
+                                    </span> 
+                                </div>
+                                <div class="back">
+                                    <span class="iconBg calendar" *ngIf="batchDetails?.batchId != selectedBatchId">
+                                        <em class="icon-CalendarBatch"></em>
+                                    </span>
                                 </div>
                             </div>
-                            <div>
-                                <span class="icon">
-                                    <em class="icon-Instructor"></em>
-                                </span>
-                                <div class="details">
-                                    <span>Instructor session timings</span>
-                                    <p>11:00 am - 01:00 pm</p>
+                            <!-- <span class="iconBg" [ngClass]="batchDetails?.batchId == selectedBatchId ? 'selected' : 'calendar'">
+                                <em [ngClass]="batchDetails?.batchId == selectedBatchId ? 'icon-CheckMark' : 'icon-CalendarBatch'"></em>
+                            </span> -->
+                            <div class="heading6">{{batchDetails?.batchName}}</div>
+                            <p>{{batchDetails?.batchDesc}}</p>
+                            <div class="batchDetails">
+                                <div>
+                                    <span class="icon">
+                                        <em class="icon-Time"></em>
+                                    </span>
+                                    <div class="details">
+                                        <span>Batch duration</span>
+                                        <p>{{batchDetails?.batchStartDate | date:'dd MMM, y'}} - {{batchDetails?.batchEndDate | date:'dd MMM, y'}}</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="icon">
+                                        <em class="icon-Instructor"></em>
+                                    </span>
+                                    <div class="details">
+                                        <span>Instructor session timings</span>
+                                        <p>{{batchDetails?.instructorSessionTiming}}</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="icon">
+                                        <em class="icon-Booked"></em>
+                                    </span>
+                                    <div class="details">
+                                        <span>Total duration</span>
+                                        <p>{{batchDetails?.duration}}</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="icon">
+                                        <em class="icon-StopWatch"></em>
+                                    </span>
+                                    <div class="details">
+                                        <span>Enrolment closes on</span>
+                                        <p>{{batchDetails?.enrollmentClosesOn | date:'dd MMM, y'}}</p>
+                                    </div>
                                 </div>
                             </div>
-                            <div>
-                                <span class="icon">
-                                    <em class="icon-Booked"></em>
-                                </span>
-                                <div class="details">
-                                    <span>Total duration</span>
-                                    <p>4.5 Months</p>
+                            <div class="batchTimings">
+                                <div class="timer" *ngIf="batchDetails?.timer?.isExpired === false">
+                                    <div class="days">
+                                        <span class="time">{{batchDetails?.timer.days}}</span>
+                                        <span class="text">Days</span>
+                                    </div>
+                                    <div class="hrs">
+                                        <span class="time">{{batchDetails?.timer.hours}}</span>
+                                        <span class="text">Hrs</span>
+                                    </div>
+                                    <div class="mins">
+                                        <span class="time">{{batchDetails?.timer.mins}}</span>
+                                        <span class="text">Mins</span>
+                                    </div>
+                                    <div class="secs">
+                                        <span class="time">{{batchDetails?.timer.secs}}</span>
+                                        <span class="text">Secs</span>
+                                    </div>
                                 </div>
+                                <div class="expired" *ngIf="batchDetails?.timer?.isExpired === true">
+                                    <p>Batch Time Expired</p>
+                                </div>
+                                <div class="batchPercentage"></div>
                             </div>
-                            <div>
-                                <span class="icon">
-                                    <em class="icon-StopWatch"></em>
-                                </span>
-                                <div class="details">
-                                    <span>Enrolment closes on</span>
-                                    <p>12 Feb, 2022</p>
-                                </div>
+                            <div (click)="getBatchId(batchDetails)" class="selectBatch" [ngClass]="batchDetails?.timer?.isExpired === true ? 'cursorAllow' : 'cursorNotAllow'">
+                                <button [disabled]="batchDetails?.timer?.isExpired === true">{{batchDetails?.batchId == selectedBatchId ? 'Selected' : 'Select'}}</button>
                             </div>
-                        </div>
-                        <div class="batchTimings">
-                            <div class="timer">
-                                <div class="days">
-                                    <span class="time">11</span>
-                                    <span class="text">Days</span>
-                                </div>
-                                <div class="hrs">
-                                    <span class="time">17</span>
-                                    <span class="text">Hrs</span>
-                                </div>
-                                <div class="mins">
-                                    <span class="time">45</span>
-                                    <span class="text">Mins</span>
-                                </div>
-                                <div class="secs">
-                                    <span class="time">36</span>
-                                    <span class="text">Secs</span>
-                                </div>
-                            </div>
-                            <div class="batchPercentage"></div>
-                        </div>
-                        <div class="selectBatch">
-                            <button>Select</button>
-                        </div>
-                    </div>
-                    <div>
-                        <span class="calendar">
-                            <em class="icon-CalendarBatch"></em>
-                        </span>
-                        <div class="heading6">JFSD-Batch 01</div>
-                        <p>Weekday batch / morning</p>
-                        <div class="batchDetails">
-                            <div>
-                                <span class="icon">
-                                    <em class="icon-Time"></em>
-                                </span>
-                                <div class="details">
-                                    <span>Batch duration</span>
-                                    <p>15 Feb, 2022, 10 Jun, 2022</p>
-                                </div>
-                            </div>
-                            <div>
-                                <span class="icon">
-                                    <em class="icon-Instructor"></em>
-                                </span>
-                                <div class="details">
-                                    <span>Instructor session timings</span>
-                                    <p>11:00 am - 01:00 pm</p>
-                                </div>
-                            </div>
-                            <div>
-                                <span class="icon">
-                                    <em class="icon-Booked"></em>
-                                </span>
-                                <div class="details">
-                                    <span>Total duration</span>
-                                    <p>4.5 Months</p>
-                                </div>
-                            </div>
-                            <div>
-                                <span class="icon">
-                                    <em class="icon-StopWatch"></em>
-                                </span>
-                                <div class="details">
-                                    <span>Enrolment closes on</span>
-                                    <p>12 Feb, 2022</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="batchTimings">
-                            <div class="timer">
-                                <div class="days">
-                                    <span class="time">11</span>
-                                    <span class="text">Days</span>
-                                </div>
-                                <div class="hrs">
-                                    <span class="time">17</span>
-                                    <span class="text">Hrs</span>
-                                </div>
-                                <div class="mins">
-                                    <span class="time">45</span>
-                                    <span class="text">Mins</span>
-                                </div>
-                                <div class="secs">
-                                    <span class="time">36</span>
-                                    <span class="text">Secs</span>
-                                </div>
-                            </div>
-                            <div class="batchPercentage"></div>
-                        </div>
-                        <div class="selectBatch">
-                            <button>Select</button>
-                        </div>
-                    </div>
-                    <div>
-                        <span class="calendar">
-                            <em class="icon-CalendarBatch"></em>
-                        </span>
-                        <div class="heading6">JFSD-Batch 01</div>
-                        <p>Weekday batch / morning</p>
-                        <div class="batchDetails">
-                            <div>
-                                <span class="icon">
-                                    <em class="icon-Time"></em>
-                                </span>
-                                <div class="details">
-                                    <span>Batch duration</span>
-                                    <p>15 Feb, 2022, 10 Jun, 2022</p>
-                                </div>
-                            </div>
-                            <div>
-                                <span class="icon">
-                                    <em class="icon-Instructor"></em>
-                                </span>
-                                <div class="details">
-                                    <span>Instructor session timings</span>
-                                    <p>11:00 am - 01:00 pm</p>
-                                </div>
-                            </div>
-                            <div>
-                                <span class="icon">
-                                    <em class="icon-Booked"></em>
-                                </span>
-                                <div class="details">
-                                    <span>Total duration</span>
-                                    <p>4.5 Months</p>
-                                </div>
-                            </div>
-                            <div>
-                                <span class="icon">
-                                    <em class="icon-StopWatch"></em>
-                                </span>
-                                <div class="details">
-                                    <span>Enrolment closes on</span>
-                                    <p>12 Feb, 2022</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="batchTimings">
-                            <div class="timer">
-                                <div class="days">
-                                    <span class="time">11</span>
-                                    <span class="text">Days</span>
-                                </div>
-                                <div class="hrs">
-                                    <span class="time">17</span>
-                                    <span class="text">Hrs</span>
-                                </div>
-                                <div class="mins">
-                                    <span class="time">45</span>
-                                    <span class="text">Mins</span>
-                                </div>
-                                <div class="secs">
-                                    <span class="time">36</span>
-                                    <span class="text">Secs</span>
-                                </div>
-                            </div>
-                            <div class="batchPercentage"></div>
-                        </div>
-                        <div class="selectBatch">
-                            <button>Select</button>
-                        </div>
-                    </div>
-                    <div>
-                        <span class="calendar">
-                            <em class="icon-CalendarBatch"></em>
-                        </span>
-                        <div class="heading6">JFSD-Batch 01</div>
-                        <p>Weekday batch / morning</p>
-                        <div class="batchDetails">
-                            <div>
-                                <span class="icon">
-                                    <em class="icon-Time"></em>
-                                </span>
-                                <div class="details">
-                                    <span>Batch duration</span>
-                                    <p>15 Feb, 2022, 10 Jun, 2022</p>
-                                </div>
-                            </div>
-                            <div>
-                                <span class="icon">
-                                    <em class="icon-Instructor"></em>
-                                </span>
-                                <div class="details">
-                                    <span>Instructor session timings</span>
-                                    <p>11:00 am - 01:00 pm</p>
-                                </div>
-                            </div>
-                            <div>
-                                <span class="icon">
-                                    <em class="icon-Booked"></em>
-                                </span>
-                                <div class="details">
-                                    <span>Total duration</span>
-                                    <p>4.5 Months</p>
-                                </div>
-                            </div>
-                            <div>
-                                <span class="icon">
-                                    <em class="icon-StopWatch"></em>
-                                </span>
-                                <div class="details">
-                                    <span>Enrolment closes on</span>
-                                    <p>12 Feb, 2022</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="batchTimings">
-                            <div class="timer">
-                                <div class="days">
-                                    <span class="time">11</span>
-                                    <span class="text">Days</span>
-                                </div>
-                                <div class="hrs">
-                                    <span class="time">17</span>
-                                    <span class="text">Hrs</span>
-                                </div>
-                                <div class="mins">
-                                    <span class="time">45</span>
-                                    <span class="text">Mins</span>
-                                </div>
-                                <div class="secs">
-                                    <span class="time">36</span>
-                                    <span class="text">Secs</span>
-                                </div>
-                            </div>
-                            <div class="batchPercentage"></div>
-                        </div>
-                        <div class="selectBatch">
-                            <button>Select</button>
-                        </div>
-                    </div>
-                    <div>
-                        <span class="calendar">
-                            <em class="icon-CalendarBatch"></em>
-                        </span>
-                        <div class="heading6">JFSD-Batch 01</div>
-                        <p>Weekday batch / morning</p>
-                        <div class="batchDetails">
-                            <div>
-                                <span class="icon">
-                                    <em class="icon-Time"></em>
-                                </span>
-                                <div class="details">
-                                    <span>Batch duration</span>
-                                    <p>15 Feb, 2022, 10 Jun, 2022</p>
-                                </div>
-                            </div>
-                            <div>
-                                <span class="icon">
-                                    <em class="icon-Instructor"></em>
-                                </span>
-                                <div class="details">
-                                    <span>Instructor session timings</span>
-                                    <p>11:00 am - 01:00 pm</p>
-                                </div>
-                            </div>
-                            <div>
-                                <span class="icon">
-                                    <em class="icon-Booked"></em>
-                                </span>
-                                <div class="details">
-                                    <span>Total duration</span>
-                                    <p>4.5 Months</p>
-                                </div>
-                            </div>
-                            <div>
-                                <span class="icon">
-                                    <em class="icon-StopWatch"></em>
-                                </span>
-                                <div class="details">
-                                    <span>Enrolment closes on</span>
-                                    <p>12 Feb, 2022</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="batchTimings">
-                            <div class="timer">
-                                <div class="days">
-                                    <span class="time">11</span>
-                                    <span class="text">Days</span>
-                                </div>
-                                <div class="hrs">
-                                    <span class="time">17</span>
-                                    <span class="text">Hrs</span>
-                                </div>
-                                <div class="mins">
-                                    <span class="time">45</span>
-                                    <span class="text">Mins</span>
-                                </div>
-                                <div class="secs">
-                                    <span class="time">36</span>
-                                    <span class="text">Secs</span>
-                                </div>
-                            </div>
-                            <div class="batchPercentage"></div>
-                        </div>
-                        <div class="selectBatch">
-                            <button>Select</button>
                         </div>
                     </div>
                 </div>
+                <aside class="programHighlights">
+                    <div class="heading4">Program highlights</div>
+                    <span>Our program emphasis on building skills and enable you to be productive in your job from day one.</span>
+                    <div class="wrapper">
+                        <div class="commonStyle">
+                            <figure>
+                                <img src="/assets/images/learningResource.svg" alt="" />
+                            </figure>
+                            <div class="right">
+                                <div class="heading6">Learning Resources</div>
+                                <p>Learn and acquire knowledge from High-Quality self-learning video materials available with us.</p>
+                            </div>
+                        </div>
+                        <div class="commonStyle">
+                            <figure>
+                                <img src="/assets/images/instructorLed.svg" alt="" />
+                            </figure>
+                            <div class="right">
+                                <div class="heading6">Instructor-led sessions</div>
+                                <p>Live classroom sessions on Real world problem scenarios with Live Demonstration by subject experts.</p>
+                            </div>
+                        </div>
+                        <div class="commonStyle">
+                            <figure>
+                                <img src="/assets/images/handsExercise.svg" alt="" />
+                            </figure>
+                            <div class="right">
+                                <div class="heading6">Hands on Exercises</div>
+                                <p>Analytical practice and problem solving activities with instructor support.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contactUs">
+                        <span class="contactIcon"><em class="icon-ContactUs"></em></span>
+                        <div>
+                            <span class="heading">Contact us</span>
+                            <span class="phone">044 - 2252 6000</span>
+                        </div>
+                    </div>
+                </aside>
             </div>
-            <aside class="programHighlights">
-                <div class="heading4">Program highlights</div>
-                <span>Our program emphasis on building skills and enable you to be productive in your job from day one.</span>
-                <div class="wrapper">
-                    <div class="commonStyle">
-                        <figure>
-                            <img src="/assets/images/learningResource.svg" alt="" />
-                        </figure>
-                        <div class="right">
-                            <div class="heading6">Learning Resources</div>
-                            <p>Learn and acquire knowledge from High-Quality self-learning video materials available with us.</p>
-                        </div>
-                    </div>
-                    <div class="commonStyle">
-                        <figure>
-                            <img src="/assets/images/instructorLed.svg" alt="" />
-                        </figure>
-                        <div class="right">
-                            <div class="heading6">Instructor-led sessions</div>
-                            <p>Live classroom sessions on Real world problem scenarios with Live Demonstration by subject experts.</p>
-                        </div>
-                    </div>
-                    <div class="commonStyle">
-                        <figure>
-                            <img src="/assets/images/handsExercise.svg" alt="" />
-                        </figure>
-                        <div class="right">
-                            <div class="heading6">Hands on Exercises</div>
-                            <p>Analytical practice and problem solving activities with instructor support.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="contactUs">
-                    <span class="contactIcon"><em class="icon-ContactUs"></em></span>
-                    <div>
-                        <span class="heading">Contact us</span>
-                        <span class="phone">044 - 2252 6000</span>
-                    </div>
-                </div>
-            </aside>
         </div>
-    </div>
-</section>
+    </section>
+</ng-container>
+
+<div *ngIf="nocard && !defaultDiv" class="noDataFound">
+    <figure>
+        <img src="https://lmsassetspremium.lntedutech.com/portalicons/no-categories.webp" alt="" />
+    </figure>
+    <div class="heading3">no courses found</div>
+</div>
+
 <app-partners-list class="app-Partners" [OurPartners]="hiringPartners"></app-partners-list>

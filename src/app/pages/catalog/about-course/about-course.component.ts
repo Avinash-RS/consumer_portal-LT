@@ -295,7 +295,7 @@ setOffset(){
     return false;
   }
   navigateBatch() {
-    this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.batchPurchase, {});
+    this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.batchPurchase, {id: btoa(this.areaId), selectedTab: btoa(this.domainId) ,productType : btoa(this.productType)});
   }
   courseBuy(){
     //signin check 
