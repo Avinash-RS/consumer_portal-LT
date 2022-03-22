@@ -1,4 +1,5 @@
 @import "variables";
+@import "keyframes";
 
 .purchaseSection {
     background-color: #e8e8e8;
@@ -277,27 +278,96 @@
                 margin-bottom: 0.2em;
             }
             .popoverInfoFinal {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                border: none;
-                background-color: #FF5722;
-                color: $whiteColor;
-                border-radius: 20px;
-                width: 17px;
-                height: 17px;
-                margin-left: 5px;
-                box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
-                font-style: italic; 
-                font-weight: 900;
-                font-family: 'icomoon';
-                font-size: 1.25em;
-                em {
-                  color: #626262;
-                  font-size: 13px;
-                  font-weight: 500;
+                position: relative;
+                .info {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border: none;
+                    background-color: #FF5722;
+                    color: $whiteColor;
+                    border-radius: 20px;
+                    width: 17px;
+                    height: 17px;
+                    font-style: italic; 
+                    font-weight: 900;
+                    font-family: 'icomoon';
+                    font-size: 1.25em;
+                    margin-left: 0.5em;
+                    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
                 }
-              } 
+                .popoverContainer {
+                    position: absolute;
+                    width: 150px;
+                    left: -62px;
+                    bottom: 25px;
+                    z-index: 2;
+                    background-color: #F9F9F9;
+                    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.26);
+                    border-radius: 10px;
+                    display: none;
+                    padding: 12px;
+                    font-size: 13px;
+                    @include lg {
+                        font-size: 14px;
+                    }
+                    @include xl {
+                        font-size: 16px;
+                    }
+                    &::before {
+                        content: '';
+                        border-top: 10px solid #F9F9F9;
+                        border-right: 10px solid transparent;
+                        border-left: 10px solid transparent;
+                        box-shadow: 0 3px 36px rgba(0, 0, 0, 0.26);
+                        bottom: -7px;
+                        display: block;
+                        left: 50%;
+                        margin-left: -7px;
+                        position: absolute;
+                    }
+                    .popTitle, .subpopTitle {
+                        line-height: normal;
+                        color: $blueColor;
+                    }
+                    .popTitle {
+                        font-size: 0.75em;
+                        font-weight: 700;
+                    }
+                    .subpopTitle {
+                        font-size: 0.6375em;
+                        font-weight: 400;
+                        margin-top: 0.35em;
+                    }
+                    .common {
+                        margin-top: 0.65em;
+                        .popheading {
+                            font-size: 0.6em;
+                            font-weight: 400;
+                            color: $lightGrey;
+                            line-height: normal;
+                        }
+                        .desc {
+                            font-size: 0.6375em;
+                            font-weight: 700;
+                            color: $secondaryColor;
+                            line-height: normal;
+                        }
+                    }
+                }
+                &:hover {
+                    .popoverContainer {
+                        display: block;
+                        -webkit-animation: fadeIn .3s linear 1, moveUp .3s linear 1;
+                        animation: fadeIn .3s linear 1, moveUp .3s linear 1;
+                    }
+                }
+                // em {
+                //   color: #626262;
+                //   font-size: 13px;
+                //   font-weight: 500;
+                // }
+            }
         }
         .deleteWishList {
             width: 100%;
