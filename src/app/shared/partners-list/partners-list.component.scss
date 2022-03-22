@@ -177,6 +177,7 @@
       img {
         height: 40px;
         object-fit: contain;
+        object-position: top;
         @include lg {
           height: 60px;
         }
