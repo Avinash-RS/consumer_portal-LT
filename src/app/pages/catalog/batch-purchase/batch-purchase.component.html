@@ -27,21 +27,23 @@
                     <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the</span>
                     <div class="wrapper">
                         <div *ngFor="let batchDetails of courseData">
-                            <div class="flipInner">
-                                <div class="front">
-                                    <span class="iconBg selected" *ngIf="batchDetails?.batchId == selectedBatchId">
-                                        <em class="icon-CheckMark"></em>
-                                    </span> 
+                            <!-- <div class="flip" [ngClass]="batchDetails?.batchId == selectedBatchId ? 'flipped' : ''">
+                                <div class="flipInner">
+                                    <div class="front" *ngIf="batchDetails?.batchId != selectedBatchId">
+                                        <span class="iconBg calendar">
+                                            <em class="icon-CalendarBatch"></em>
+                                        </span>
+                                    </div>
+                                    <div class="back" *ngIf="batchDetails?.batchId == selectedBatchId">
+                                        <span class="iconBg selected">
+                                            <em class="icon-CheckMark"></em>
+                                        </span> 
+                                    </div>
                                 </div>
-                                <div class="back">
-                                    <span class="iconBg calendar" *ngIf="batchDetails?.batchId != selectedBatchId">
-                                        <em class="icon-CalendarBatch"></em>
-                                    </span>
-                                </div>
-                            </div>
-                            <!-- <span class="iconBg" [ngClass]="batchDetails?.batchId == selectedBatchId ? 'selected' : 'calendar'">
+                            </div> -->
+                            <span class="iconBg" [ngClass]="batchDetails?.batchId == selectedBatchId ? 'selected' : 'calendar'">
                                 <em [ngClass]="batchDetails?.batchId == selectedBatchId ? 'icon-CheckMark' : 'icon-CalendarBatch'"></em>
-                            </span> -->
+                            </span>
                             <div class="heading6">{{batchDetails?.batchName}}</div>
                             <p>{{batchDetails?.batchDesc}}</p>
                             <div class="batchDetails">
