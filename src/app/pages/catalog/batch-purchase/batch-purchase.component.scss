@@ -186,6 +186,67 @@
                     @include lg {
                         width: 30.3%;
                     }
+
+                    // .flip {
+                    //     position: absolute;
+                    //     top: -25px;
+                    //     left: 50%;
+                    //     transform: translateX(-50%);
+                    //     border-radius: 50%;
+                    //     width: 40px;
+                    //     height: 40px;
+                    //     display: flex;
+                    //     justify-content: center;
+                    //     align-items: center;
+                    //     perspective: 1000px;
+                    //     &.flipped {
+                    //         .flipInner {
+                    //             transform: rotateY(180deg);
+                    //             animation-delay: 0.5s;
+                    //         }
+                    //     }
+                    //     .flipInner {
+                    //         transition: transform 0.6s;
+                    //         transform-style: preserve-3d;
+                    //         .front, .back {
+                    //             -webkit-backface-visibility: hidden;
+                    //             backface-visibility: hidden;
+                    //             width: 40px;
+                    //             height: 40px;
+                    //             border-radius: 50%;
+                    //             display: flex;
+                    //             align-items: center;
+                    //             justify-content: center;
+                    //             span {
+                    //                 margin: 0;
+                    //                 line-height: normal;
+                    //                 display: inline-block;
+                    //             }
+                    //         }
+                    //         .front {
+                    //             background-color: $secondaryColor;
+                    //             .calendar {
+                    //                 em {
+                    //                     color: $whiteColor;
+                    //                     font-size: 1.25em;
+                    //                 }
+                    //             }
+                    //         }
+                    //         .back {
+                    //             background-color: $greenColor;
+                    //             transform: rotateY(180deg);
+                    //             animation-delay: 0.5s;
+                    //             .selected {
+                    //                 em {
+                    //                     font-size: 1.65em;
+                    //                     line-height: 1.5;
+                    //                     color: $whiteColor;
+                    //                 }
+                    //             }
+                    //         }
+                    //     }
+                    // }
+
                     .iconBg {
                         border-radius: 50%;
                         width: 40px;
