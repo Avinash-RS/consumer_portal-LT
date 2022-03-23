@@ -67,27 +67,27 @@
                                                         <span class="commonStyle">No. of Modules</span>
                                                         <span class="iconwithText"><em class="icon-Document"></em> {{'8+'}}</span>
                                                     </div>
-                                                    <div>
+                                                    <div *ngIf="batchInfo">
                                                         <span class="commonStyle">Batch details</span>
-                                                        <span class="iconwithText">{{'JFSD-BATCH 01'}}
+                                                        <span class="iconwithText">{{batchInfo?.batchName}}
                                                              <div class="popoverInfoFinal">
                                                                 <span class="info">i</span>
                                                                 <div class="popoverContainer">
                                                                     <div>
-                                                                        <div class="popTitle">JFSD-Batch 01</div>
-                                                                        <div class="subpopTitle">Weekday batch / morning</div>
+                                                                        <div class="popTitle">{{batchInfo?.batchName}}</div>
+                                                                        <div class="subpopTitle">{{batchInfo?.batchDesc}}</div>
                                                                     </div>
                                                                     <div class="common">
                                                                         <div class="popheading">Batch duration</div>
-                                                                        <div class="desc">15 Feb, 2022</div>
+                                                                        <div class="desc">{{batchInfo?.batchStartDate | date:'dd MMM, y'}} - {{batchInfo?.batchStartDate | date:'dd MMM, y'}}</div>
                                                                     </div>
                                                                     <div class="common">
                                                                         <div class="popheading">Instructor session timings</div>
-                                                                        <div class="desc">11:00 am</div>
+                                                                        <div class="desc">{{batchInfo?.instructorSessionTiming}}</div>
                                                                     </div>
                                                                     <div class="common">
                                                                         <div class="popheading">Total duration</div>
-                                                                        <div class="desc">4.5 Months</div>
+                                                                        <div class="desc">{{batchInfo?.duration}}</div>
                                                                     </div>
                                                                 </div>
                                                             </div>

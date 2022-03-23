@@ -34,6 +34,7 @@ export class PurchaseComponent implements OnInit {
   isReadMore = true;
   userDetails;
   cartList = [];
+  batchInfo;
   totalPrice = 0;
   constructor(
     private _formBuilder: FormBuilder,
@@ -63,6 +64,8 @@ export class PurchaseComponent implements OnInit {
       if (response.data.length > 0) {
         this.cartList = response.data
         this.cartList.forEach((list) => {
+          this.batchInfo = list?.assessmentDetails?.batchDetails;
+          console.log(this.batchInfo, 'afadsfasdf')
           list.assessmentDetails.sellingPrice = parseInt(list.assessmentDetails.sellingPrice)
           this.totalPrice += list.assessmentDetails.sellingPrice
         })
