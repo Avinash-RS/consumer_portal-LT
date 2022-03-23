@@ -106,7 +106,8 @@ export class SuccessComponent implements OnInit {
             courseIds: element?.courseType =='Track' ? element?.categoryIds : [element?.cid],
             courseType: element?.courseType,
             trackName:  element?.trackName ? element?.trackName : '',
-            trackId:  element?.trackId ? element?.trackId :''
+            trackId:  element?.trackId ? element?.trackId :'',
+            batchId : element?.batchId ? element?.batchId:''
           }
           this.course_details.push(courseData);
       }
