@@ -18,6 +18,7 @@ export class BatchPurchaseComponent implements OnInit {
   productType;
   abouCourseData: any;
   courseData;
+  programDetails;
   bannerContent;
   nocard: boolean = true;
   defaultDiv:boolean = true;
@@ -163,6 +164,7 @@ export class BatchPurchaseComponent implements OnInit {
           this.abouCourseData = response.data[0];
           this.bannerContent = this.abouCourseData.assessmentData[0];
           this.courseData = this.abouCourseData.assessmentData[0].batchDetails;
+          this.programDetails = this.abouCourseData.assessmentData[0].programDetails;
           this.nocard = false;
           this.defaultDiv = false;
           this.courseData.forEach((e) => {

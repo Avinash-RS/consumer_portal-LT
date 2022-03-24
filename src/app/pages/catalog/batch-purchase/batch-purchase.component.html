@@ -115,24 +115,24 @@
                     </div>
                 </div>
                 <aside class="programHighlights">
-                    <div class="heading4">Program highlights</div>
-                    <span>Our program emphasis on building skills and enable you to be productive in your job from day one.</span>
+                    <div class="heading4">{{this.bannerContent?.programTitle?.key}}</div>
+                    <span>{{this.bannerContent?.programTitle?.value}}</span>
                     <div class="wrapper">
-                        <div class="commonStyle">
+                        <div class="commonStyle" *ngFor="let pDetails of programDetails">
                             <figure>
                                 <img src="/assets/images/learningResource.svg" alt="" />
                             </figure>
                             <div class="right">
-                                <div class="heading6">Learning Resources</div>
-                                <p>Learn and acquire knowledge from High-Quality self-learning video materials available with us.</p>
+                                <div class="heading6">{{pDetails?.key}}</div>
+                                <p>{{pDetails?.value}}</p>
                             </div>
                         </div>
-                        <div class="commonStyle">
+                        <!-- <div class="commonStyle">
                             <figure>
                                 <img src="/assets/images/instructorLed.svg" alt="" />
                             </figure>
                             <div class="right">
-                                <div class="heading6">Instructor-led sessions</div>
+                                <div class="heading6">{{pDetails?.key}}</div>
                                 <p>Live classroom sessions on Real world problem scenarios with Live Demonstration by subject experts.</p>
                             </div>
                         </div>
@@ -141,10 +141,10 @@
                                 <img src="/assets/images/handsExercise.svg" alt="" />
                             </figure>
                             <div class="right">
-                                <div class="heading6">Hands on Exercises</div>
+                                <div class="heading6">{{pDetails?.key}}</div>
                                 <p>Analytical practice and problem solving activities with instructor support.</p>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="contactUs">
                         <span class="contactIcon"><em class="icon-ContactUs"></em></span>
