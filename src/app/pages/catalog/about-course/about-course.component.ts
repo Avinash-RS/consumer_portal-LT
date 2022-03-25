@@ -109,6 +109,7 @@ export class AboutCourseComponent implements OnInit {
   productType:string =  "assessment";
   abouCourseData:any;
   courseData:any;
+  courseType:string  = '';
   userDetails;
   nocard:boolean = true;
   defaultDiv:boolean = true;
@@ -263,6 +264,7 @@ setOffset(){
         if(response.data && response.data.length > 0 && response.data[0].assessmentData && response.data[0].assessmentData.length){
           this.abouCourseData = response.data[0];
           this.courseData = this.abouCourseData.assessmentData[0];
+          this.courseType = this.courseData?.courseType ? this.courseData?.courseType :'';
           this.defaultDiv = false;
           this.nocard = false;
           setTimeout(() => {
@@ -295,7 +297,12 @@ setOffset(){
     return false;
   }
   navigateBatch() {
-    this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.batchPurchase, {id: btoa(this.areaId), selectedTab: btoa(this.domainId) ,productType : btoa(this.productType)});
+    if(this.courseType == 'Track' || this.courseType == 'course'){
+      this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.batchPurchase, {id: btoa(this.areaId), selectedTab: btoa(this.domainId) ,productType : btoa(this.productType)});
+    }
+    else {
+      this.courseBuy();
+    }
   }
   courseBuy(){
     //signin check 

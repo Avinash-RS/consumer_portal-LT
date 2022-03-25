@@ -19,7 +19,9 @@
                                 <span class="courseRate" *ngIf="courseData?.is_free">{{'Free'}}</span>
                                 <span class="courseRate" *ngIf="!courseData?.is_free"><em class="icon-Rupee"></em>{{courseData?.sellingPrice}}</span>
                                 <!-- <button class="buyNow" (click)="courseBuy()">Add to Cart</button> -->
-                                <button class="buyNow" (click)="navigateBatch()">Enroll Now</button>
+                                <button class="buyNow" (click)="navigateBatch()">
+                                    {{(this.courseType == 'Track' || this.courseType == 'course') ? 'Enroll Now' :'Add To Cart'}}
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -60,7 +62,9 @@
                             <a (click)="scroll(item?.sectionId)" [ngClass]="item?.sectionId == activeSection ? 'active':''">{{item.title}}</a>
                         </li>
                     </ul>
-                    <button class="buyNow" (click)="courseBuy()">Add to Cart</button>
+                    <button class="buyNow" (click)="courseBuy()">
+                        {{(this.courseType == 'Track' || this.courseType == 'course') ? 'Enroll Now' :'Add To Cart'}}
+                    </button>
                 </div>
             </div>
         </section>
