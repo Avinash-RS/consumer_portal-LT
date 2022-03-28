@@ -14,6 +14,7 @@ import { CertifyAssessmentComponent } from './certify-assessment/certify-assessm
 import { RatingStudentFeedbackComponent } from './rating-studentFeedback/rating-studentFeedback.component';
 import { SearchComponent } from './search/search.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 import { AboutCourseComponent } from './about-course/about-course.component';
 import { BatchPurchaseComponent } from './batch-purchase/batch-purchase.component';
 
@@ -34,7 +35,9 @@ import { BatchPurchaseComponent } from './batch-purchase/batch-purchase.componen
     CatalogRoutingModule,
     SharedModule,
     CarouselModule,
-    NgxSkeletonLoaderModule
+    NgxSkeletonLoaderModule,
+    NgCircleProgressModule.forRoot({}),
+    NgCircleProgressModule,
   ],
   exports : [CatalogHomeComponent,AboutAssessmentComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
