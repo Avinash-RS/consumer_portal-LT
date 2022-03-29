@@ -175,6 +175,7 @@ export class AboutAssessmentComponent implements OnInit {
             }
           }
         });
+        areaDetails.sort((a, b) => a.sequenceOrder > b.sequenceOrder ? 1 : -1);
         if (this.aboutArea) {
           this.bannerImage = this.aboutArea.image.url;
         }
