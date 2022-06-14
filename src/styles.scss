@@ -109,7 +109,9 @@ $custom-typography: mat-typography-config($font-family: '"Lato", sans-serif !imp
     visibility: hidden;
 }
 .body_area {
-    min-height: 100vh;
+    height: 100%;
+    min-height: 100%;
+    // min-height: 100vh;
     display: flex;
     flex-direction: column;
 }

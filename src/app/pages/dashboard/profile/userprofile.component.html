@@ -11,7 +11,7 @@
     <div class="container">
         <div class="userSection">
             <div class="userHeading">
-                <ul class="user" *ngFor="let value of selectionTypes" [ngClass]="{'active': value.Active}"  (click)="selection = value.tabname; selectTypes(value);">
+                <ul class="user" *ngFor="let value of selectionTypes" [ngClass]="{'active': value.Active}" (click)="selection = value.tabname; selectTypes(value);">
                     <li *ngIf="value.tabname !='KYC'" (click)="openKYCPannel= false">{{value.title}}</li>
 
                     <li *ngIf="value.tabname =='KYC'" (click)="selection = value.tabname">
@@ -322,6 +322,17 @@
                 <div *ngSwitchCase="'payment'">
                     <div class="heading3">Payment Method</div>
                     <p class="desc">Your saved payment methods.</p>
+                </div>
+                <div *ngSwitchCase="'certificate'">
+                    <div class="heading3">Download Certificate</div>
+                    <p class="desc">Download Completed Course Certificate</p>
+                    <div class="downloadCertificate">
+                        <ul>
+                            <li>
+                                
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <div *ngSwitchCase="'close'">
                     <div class="heading3">Close Account</div>
