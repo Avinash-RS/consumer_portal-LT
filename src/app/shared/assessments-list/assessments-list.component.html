@@ -11,71 +11,15 @@
         </nav> -->
         <div class="assessmentArea">
             <div class="filterSection">
-                <!-- <ng-container *ngFor="let tab of tabValues">
-                    <a [ngClass]="tab.isSelected ? 'active': '' " (click)="getArea(tab.cid)">{{tab.name}}</a>
-                </ng-container> -->
-                <!-- <nav> -->
-                    <!-- <div class="fieldHeader"> -->
-                        <owl-carousel-o [options]="CategoriesOptions" (translated)="getPassedData($event)">
-                            <ng-template carouselSlide>
-                                <div class="fieldTabs">
-                                    <em class="icon-Civil"></em>
-                                    <div class="fieldName">Civil Engineering</div>
-                                    <div class="coursesCount">6 Courses</div>
-                                </div>
-                            </ng-template>
-                            <ng-template carouselSlide>
-                                <div class="fieldTabs">
-                                    <em class="icon-Mechanical"></em>
-                                    <div class="fieldName">Mechanical Engineering</div>
-                                    <div class="coursesCount">4 Courses</div>
-                                </div>
-                            </ng-template>
-                            <ng-template carouselSlide>
-                                <div class="fieldTabs active">
-                                    <em class="icon-Chip"></em>
-                                    <div class="fieldName">Electrical & Electronics</div>
-                                    <div class="coursesCount">6 Courses</div>
-                                </div>
-                            </ng-template>
-                            <ng-template carouselSlide>
-                                <div class="fieldTabs">
-                                    <em class="icon-Mechanical"></em>
-                                    <div class="fieldName">Electronics & Communication</div>
-                                    <div class="coursesCount">7 Courses</div>
-                                </div>
-                            </ng-template>
-                            <ng-template carouselSlide>
-                                <div class="fieldTabs">
-                                    <em class="icon-Circuit"></em>
-                                    <div class="fieldName">All Branches</div>
-                                    <div class="coursesCount">6 Courses</div>
-                                </div>
-                            </ng-template>
-                            <ng-template carouselSlide>
-                                <div class="fieldTabs">
-                                    <em class="icon-RemoteProctoring"></em>
-                                    <div class="fieldName">Computer Science/ IT</div>
-                                    <div class="coursesCount">6 Courses</div>
-                                </div>
-                            </ng-template>  
-                            <ng-template carouselSlide>
-                                <div class="fieldTabs">
-                                    <em class="icon-Chip"></em>
-                                    <div class="fieldName">Electrical & Electronics</div>
-                                    <div class="coursesCount">7 Courses</div>
-                                </div>
-                            </ng-template>
-                            <ng-template carouselSlide>
-                                <div class="fieldTabs">
-                                    <em class="icon-Mechanical"></em>
-                                    <div class="fieldName">Electronics & Communication</div>
-                                    <div class="coursesCount">6 Courses</div>
-                                </div>
-                            </ng-template>                             
-                        </owl-carousel-o>
-                    <!-- </div> -->
-                <!-- </nav> -->
+                <owl-carousel-o [options]="CategoriesOptions" (translated)="getPassedData($event)">
+                    <ng-template carouselSlide *ngFor="let tab of tabValues">
+                        <div class="fieldTabs" [ngClass]="tab.isSelected ? 'active': '' " (click)="getArea(tab.cid)">
+                            <em class="icon-Civil"></em>
+                            <div class="fieldName">{{tab.name}}</div>
+                            <div class="coursesCount">6 Courses</div>
+                        </div>
+                    </ng-template>                           
+                </owl-carousel-o>
             </div>
                 <!-- <div class="btn-group"> -->
                     <!-- <button class="product-btn" (click)="getDomain('all');fromTab='All'" [ngClass]="productType == 'all' ? 'active' :''">All</button>
