@@ -21,6 +21,7 @@ import { CaptchaDirective } from '../directives/captcha.directive';
 
 // import third-party module
 import { AnimateOnScrollModule } from 'ng2-animate-on-scroll';
+import { DragScrollModule } from 'ngx-drag-scroll';
 
 // Skeleton Loader
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
@@ -58,6 +59,7 @@ import { FeaturedCoursesComponent } from './featured-courses/featured-courses.co
     FormsModule,
     ReactiveFormsModule,
     LayoutModule,
+    DragScrollModule,
     AnimateOnScrollModule.forRoot(),
     NgxSkeletonLoaderModule.forRoot()
   ],
