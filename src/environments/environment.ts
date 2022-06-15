@@ -16,6 +16,7 @@ export const environment = {
   unifiedReport_URL :'https://unifiedreport-dev.lntedutech.com/',
   lxp_url:'https://lmsdev.lntiggnite.com/redirection',
   captachaSiteKey: '6Lf-qfEcAAAAAH2zsrdDz1K6DmUOHjgHzGmH3PN7',
+  userOrigin:'learner'
 };
 
 /*
