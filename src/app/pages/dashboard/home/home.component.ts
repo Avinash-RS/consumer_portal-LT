@@ -11,6 +11,8 @@ import { APP_CONSTANTS } from 'src/app/utils/app-constants.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from "@angular/material/dialog";
 import { OwlOptions } from "ngx-owl-carousel-o";
+import * as CryptoJS from 'crypto-js';
+import { environment } from '@env/environment';
 @Component({
   selector: "app-home",
   templateUrl: "./home.component.html",
@@ -26,6 +28,7 @@ export class HomeComponent implements OnInit {
     1,2,3,4
   ];
 activeButton = '';
+secretKey = "(!@#Passcode!@#)";
 testimonialOptions: OwlOptions = {
   loop: true,
   mouseDrag: false,
@@ -115,7 +118,7 @@ testimonialOptions: OwlOptions = {
   }
 
   getStaticHomeData() {
-    this.commonService.getStaticDataHome().subscribe((response: any) => {
+    this.commonService.getStaticDataHome({userOrigin:CryptoJS.AES.encrypt(environment.userOrigin, this.secretKey.trim()).toString()}).subscribe((response: any) => {
       if (response.success) {
         this.commonData = response.data;
       }
