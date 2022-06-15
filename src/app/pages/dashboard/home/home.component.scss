@@ -826,13 +826,14 @@
 // aboutProgram
 .aboutProgram {
   position: relative;
-  padding: 3.75em 0;
+  padding: 1.75em 0;
   background-color: $aliceBlueColor;
+  font-size: 13px;
   @include md {
-    font-size: 13px;
+    font-size: 14px;
   }
   @include lg {
-    font-size: 14px;
+    font-size: 15px;
   }
   @include xl {
     font-size: 16px;
@@ -933,13 +934,12 @@
 .capabilities{
   position: relative;
   padding: 3.75em 0;
-  @include sm {
-  }
+  font-size: 13px;
   @include md {
-    font-size: 13px;
+    font-size: 14px;
   }
   @include lg {
-    font-size: 14px;
+    font-size: 15px;
   }
   @include xl {
     font-size: 16px;
@@ -1115,7 +1115,7 @@
 //aboutGTU
 .aboutGTU {
   position: relative;
-  padding: 3.75em 0;
+  padding: 1.75em 0;
   // background-color: $veryLightGray;
   @include md {
     font-size: 13px;
@@ -1195,7 +1195,7 @@
         width: 100%;
         order: 1;
         @include md {
-          width: 45%;
+          width: 50%;
           order: 2;
         }
         .heading2 {
@@ -1230,13 +1230,14 @@
 //aboutL&TEduTech
 .aboutLTE {
   position: relative;
-  padding: 3.75em 0;
+  padding: 1.75em 0;
+  font-size: 13px;
   // background-color: $veryLightGray;
   @include md {
-    font-size: 13px;
+    font-size: 14px;
   }
   @include lg {
-    font-size: 14px;
+    font-size: 15px;
   }
   @include xl {
     font-size: 16px;
@@ -1281,8 +1282,7 @@
         width: 100%;
         // order: 2;
         @include md {
-          width: 45%;
-          margin-left: 2em;
+          width: 50%;
           order: 1;
         }
         .heading2 {
