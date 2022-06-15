@@ -68,13 +68,13 @@ export class CommonService {
   }
 
   //Static Page - Home
-  getStaticDataHome() {
-    return this.http.get(this.baseurl + 'getdynamicPage1');
+  getStaticDataHome(params) {
+    return this.http.post(this.baseurl + 'getdynamicPage1',params);
   }
 
   //footer
-  getFooter() {
-    return this.http.get(this.baseurl + 'getdynamicPageFooter');
+  getFooter(params) {
+    return this.http.post(this.baseurl + 'getdynamicPageFooter',params);
   }
 
   // certification details
