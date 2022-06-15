@@ -82,10 +82,16 @@ export class UserprofileComponent implements OnInit {
       'Active': false
     },
     {
+      'title': 'Certificate',
+      "tabname": 'certificate',
+      'Active': false
+    },
+    {
       'title': 'Close Account',
       "tabname": 'close',
       'Active': false
     },
+    
   ]
   userDetails: any;
   purchaseList = [];
@@ -144,7 +150,9 @@ export class UserprofileComponent implements OnInit {
           else if(this.selection == 'payment'){
             this.selectTypes({title:'Payment Methods'});
           }
-          
+          else if(this.selection == 'certificate'){
+            this.selectTypes({title:'Certificate'});
+          }
         }
       })
   }
