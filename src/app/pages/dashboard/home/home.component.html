@@ -101,6 +101,101 @@
         </div>
       </div>
     </section>
+    <section class="whylntedu">
+      <div class="container">
+        <div class="heading2">{{commonData?.landingPageContents?.whyLNT?.title}}</div>
+        <ul>
+          <li *ngFor="let item of commonData?.landingPageContents?.whyLNT?.innerArray">
+            <figure>
+              <img src="/assets/images\resume-and-cv.png " alt="">
+            </figure>
+            <!-- <img [src]="commonData?.landingPageContents?.whyLNT?.imageurl" alt=""> -->
+            <p>{{item?.title}}</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+<section class="learnanywhere">
+  <div class="container">
+    <div class="heading2"><h1>{{commonData?.landingPageContents?.learnAnytime?.title}}</h1></div>
+      <div class="heading1"><p>{{commonData?.landingPageContents?.learnAnytime?.description}}</p></div>
+         <div class="contentcenter">
+          <div class="group">
+            <figure class="grpimg">
+              <img src="/assets/images/Group 23758.png" alt="group">
+            </figure>
+          </div>
+          <div class="scanner">
+            <P>Scan this QR code on your camera app to download the app </P>
+            <figure>
+              <img src="/assets/images/download qr.png" alt="scanner">
+            </figure>
+            <p>or</p>
+            <div class="apps">
+              <figure class="store">
+                <img src="/assets/images/download app.png" alt="">
+              </figure>
+              <figure class="appstore">
+                <img src="/assets/images/images 2.png" alt="">
+              </figure>
+            </div>
+          </div>
+         </div>
+  </div>
+</section>
+
+<section class="feedback" *ngIf="commonData?.landingPageContents?.studentAboutUs?.displaystatus">
+  <div class="container">
+    <div class="heading2">{{commonData?.landingPageContents?.studentAboutUs?.title}}</div>
+    <div class="owlCarouselWrapper">
+      <owl-carousel-o [options]="testimonialOptions">
+        <ng-container *ngFor="let item of commonData?.landingPageContents?.studentAboutUs?.innerArray">
+          <ng-template carouselSlide>
+              <div class="card">
+                  <p class="title">{{item?.title}}</p>
+                  <p class="desc">{{item?.description}}</p>
+              <div class="imagearea">
+                  <div class="greencircle">
+                    <em class="icon-MetroQuote"></em>
+                  </div>
+                <figure>
+                  <img [src]="item?.imageurl" alt="">
+                </figure>
+              </div>
+              </div>
+              <div class="footer">
+                <p>{{item?.name}}</p>
+                <span>{{item?.designation}}</span>
+              </div>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+    </div>
+  </div>
+</section>
+
+<section class="ourPartners">
+  <div class="container">
+    <div class="partnersSection">
+      <div class="left">
+        <div class="heading">For any Support :</div>
+        <div class="contacts"> <span class="icon-Email"><p>contact@lntedutech.com</p></span>
+          <span class="contactIcon"><em class="icon-ContactUs"></em><p>09876543210</p></span>
+          <!-- <span class="icon-phone"><p>09876543210</p></span> -->
+        </div>
+      </div>
+      <div class="right">
+        <div class="policy">
+          <span class="heading">Terms of Use</span>
+          <span class="heading">Privacy Policy</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
        <!-- carrerpath -->
        <section class="successfulCareer">
         <div class="container">

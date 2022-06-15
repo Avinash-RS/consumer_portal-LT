@@ -225,5 +225,8 @@
       }
     }
   },
-  "defaultProject": "MicroCertification"
+  "defaultProject": "MicroCertification",
+  "cli": {
+    "analytics": "6040da47-eec6-4e90-af53-54b7a2fce281"
+  }
 }

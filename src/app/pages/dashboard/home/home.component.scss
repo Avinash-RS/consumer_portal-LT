@@ -1233,3 +1233,192 @@
     }
   }
 }
+.whylntedu {
+  font-size: 14px;
+  background-image: url("https://lmsassetspremium.lntedutech.com/portalicons/carrerpathbg.webp ");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 3.75em 0 ;
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -1em;
+    li {
+      width: 45%;
+      padding: 1.6250em;
+      text-align: center;
+      letter-spacing: 0px;
+      box-shadow: 0px 3px 6px #00000029;
+      opacity: 1;
+      color: #1B4E9B;
+      margin-left: 1em;
+      margin-bottom: 1em;
+      p {
+        font-size: 	1.125em;
+        margin-top: 1em;
+        font-weight: 400;
+        line-height: 2;
+      }
+      &:nth-child(odd) {
+        background-color: #FFFFFF;
+      }
+      &:nth-child(even) {
+        background-color: #F9F9F9;
+      }
+      @include sm {
+        width: 30.5%;
+      }
+      @include lg {
+        width: 23.8%;
+      }
+    }
+  }
+}
+
+.learnanywhere {
+ padding: 3.75em 0 ;
+ 
+  .heading1 {
+    font-size: 16px;
+    color: #848484;
+    text-align: center;
+  }
+
+  .contentcenter {
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
+    align-items: center;
+    @include sm {
+      width: 100%;
+    }
+    .group {
+      width: 75%;
+     
+    }
+
+    .scanner {
+      width: 30%;
+      figure {
+        text-align: center;
+        width: 100%;
+      }
+      p {
+        text-align: center;
+      }
+      .apps {
+        display: flex;
+        .store{
+          width: 50%;
+        }
+        .appstore{
+          width: 50%;
+        }
+        
+      }
+    }
+  }
+
+}
+.ourPartners {
+  width: 100%;
+  padding: 3.75em 0;
+  position: relative;
+  background:#192428;
+  font-size: 12px;
+  @include md {
+  }
+  @include lg {
+    font-size: 14px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
+
+ 
+  .partnersSection {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .heading {
+      font-family: "OpenSans", sans-serif;
+      font-size: 1em;
+      font-weight: 400;
+      color: #27BBEE;
+      margin-right: 1em;
+      margin-bottom: 1em;
+    }
+    // margin-bottom: 2em;
+    .left {
+      width: 100%;
+      display: flex;
+      flex-direction:column;
+      @include md {
+        width: 65%;
+      }
+      .contacts{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        font-size: 18px;
+        font-weight: 400;
+    
+        span{
+          color: #56B35A;
+          margin-right: 3px;
+          display: flex;
+          p{
+            color: #FFFFFF;
+          }
+        }
+      }
+      // figure {
+      //   // height: 50px;
+      //   width: 14%;
+      //   margin-right: 1em;
+      //   @include md {
+      //     width: 12%;
+      //     margin-right: 1em;
+      //   }
+      //   &:last-child {
+      //     margin-right: 0;
+      //   }
+      //   img {
+      //     // object-fit: contain;
+      //     width: auto;
+      //     max-height: 25px;
+      //     max-width: 100%;
+      //   }
+      // }
+    }
+    .right {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      @include md {
+        width: 35%;
+        justify-content: flex-end;
+      }
+      .policy {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        span {
+          margin-top: 10px;
+        }
+      }
+      
+      // figure {
+      //   display: flex;
+      // }
+      // img {
+      //   object-fit: contain;
+      //   height: 30px;
+      //   width: 100%;
+      // }
+    }
+  }
+}

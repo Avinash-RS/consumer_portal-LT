@@ -173,6 +173,30 @@
                     </div>
                 </section>
             </ng-container>
+            <ng-container >
+                <section class="">
+                    <div class="container">
+                        <div class="commonHeadingStyle">Course Coverage</div>
+                        <p>Curated by industry experts and leading academicians, the syllabus 
+                            comprises of videos, practice labs, projects, assignments and live training sessions.</p>
+                            <div class="">
+                                <div class="left">
+                                    <div class="accordionPanel">
+                                        <mat-accordion>
+                                                <mat-expansion-panel>
+                                                    <mat-expansion-panel-header>
+                                                        <mat-panel-title>
+                                                            <div class="heading5">{{curriculamTopics?.title}}</div>
+                                                        </mat-panel-title>
+                                                    </mat-expansion-panel-header>
+                                                </mat-expansion-panel>
+                                        </mat-accordion>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </section>
+            </ng-container>
             <!-- Curriculam -->
             <ng-container *ngIf="item?.sectionId == 3 && item?.dispalystatus">
                 <section class="curriculam" [id]="item.sectionId" #3>
@@ -321,6 +345,7 @@
                     </div>
                 </section>
             </ng-container>
+    
             <!-- Expert Support System -->
             <ng-container *ngIf="item?.sectionId == 4 && item?.dispalystatus">
                 <section class="expertSupportTab" [id]="item.sectionId" #4 [ngStyle]="{'background-image': 'url(https://lmsassetspremium.lntedutech.com/portalicons/expertbg.webp)'}">
