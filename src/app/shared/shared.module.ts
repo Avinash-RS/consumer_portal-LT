@@ -30,6 +30,7 @@ import { KycMandateComponent } from './kyc-mandate/kyc-mandate.component';
 import { TestimonialComponent } from './testimonial/testimonial.component';
 import { RelateditemsComponent } from './relateditems/relateditems.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { FeaturedCoursesComponent } from './featured-courses/featured-courses.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { LayoutModule } from '@angular/cdk/layout';
     RecruiterComponent,
     KycMandateComponent,
     TestimonialComponent,
-    RelateditemsComponent
+    RelateditemsComponent,
+    FeaturedCoursesComponent
   ],
   imports: [
     CommonModule,
@@ -78,7 +80,8 @@ import { LayoutModule } from '@angular/cdk/layout';
     KycMandateComponent,
     TestimonialComponent,
     RelateditemsComponent,
-    LayoutModule
+    LayoutModule,
+    FeaturedCoursesComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 

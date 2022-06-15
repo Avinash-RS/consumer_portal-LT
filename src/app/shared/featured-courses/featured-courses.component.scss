@@ -1,0 +1,68 @@
+@import "variables";
+
+.featuredCoursesSection {
+    background-color: #F9F9F9;
+    padding: 3.75em 0;
+    position: relative;
+    font-size: 14px;
+    @include md {
+        font-size: 13px;
+    }
+    @include lg {
+        font-size: 14px;
+    }
+    @include xl {
+        font-size: 16px;
+    }
+    .obstacles {
+        position: absolute;
+        background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/industryleater-topleft.webp');
+        background-repeat: no-repeat;
+        background-size: contain;
+        z-index: 1;
+        width: 25%;
+        height: 15%;
+        left: -3.5em;
+        top: 5em;
+        @include sm {
+            left: -6.5em;
+        }
+        @include md {
+            left: -7.5em;
+        }
+    }
+    &::after {
+        content: '';
+        position: absolute;
+        background-repeat: no-repeat;
+        background-size: cover;
+        z-index: 1;
+        background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/industryleater-bottomleft.webp');
+        width: 57%;
+        height: 40%;
+        right: 0;
+        bottom: 6em;
+        @include sm {
+            width: 50%;
+            height: 20%;
+        }
+        @include md {
+            width: 70%;
+            height: 40%;
+            right: -10em;
+        }
+        @include lg {
+            right: -20em;
+        
+        }
+        @include xl {
+            width: 57%;
+            height: 40%;
+            right: -15em;
+        }
+        @media only screen and (min-width: 1540px) {
+            width: 53%;
+            height: 52%;
+        }
+    }
+}
