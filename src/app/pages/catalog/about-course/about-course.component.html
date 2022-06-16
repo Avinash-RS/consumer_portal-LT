@@ -102,12 +102,13 @@
                         </div>
                     </div>
                 </section>
-                <section class="projectThink" *ngIf="item?.subHeading0?.dispalystatus" [ngStyle]="{'background-image': 'url(' + item?.subHeading0?.bgurl + ')'}">
+                <section class="projectThink" *ngIf="item?.subHeading0?.dispalystatus" Style="background-image: url(/assets/images/Bg.png)">
                     <div class="container">
-                        <div class="thinkSection">
+                        <div class="thinkSection" >
                             <div class="left">
                                 <figure>
-                                    <img [src]="item?.subHeading0?.imageurl" alt="" />
+                                    <!-- <img [src]="item?.subHeading0?.imageurl" alt="" /> -->
+                                    <img src="/assets/images/Group 20186.png" alt="">
                                 </figure>
                             </div>
                             <div class="right">
@@ -171,30 +172,6 @@
                             </figure>
                         </div>
                     </div>
-                </section>
-            </ng-container>
-            <ng-container >
-                <section class="">
-                    <div class="container">
-                        <div class="commonHeadingStyle">Course Coverage</div>
-                        <p>Curated by industry experts and leading academicians, the syllabus 
-                            comprises of videos, practice labs, projects, assignments and live training sessions.</p>
-                            <div class="">
-                                <div class="left">
-                                    <div class="accordionPanel">
-                                        <mat-accordion>
-                                                <mat-expansion-panel>
-                                                    <mat-expansion-panel-header>
-                                                        <mat-panel-title>
-                                                            <div class="heading5">{{curriculamTopics?.title}}</div>
-                                                        </mat-panel-title>
-                                                    </mat-expansion-panel-header>
-                                                </mat-expansion-panel>
-                                        </mat-accordion>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                 </section>
             </ng-container>
             <!-- Curriculam -->
@@ -319,33 +296,42 @@
                     </div>
                 </section>
                 <!-- morehelp -->
-                <section class="morehelp" *ngIf="item?.subHeading3?.dispalystatus" [ngStyle]="{'background-image': 'url(' + item?.subHeading3?.bgurl + ')'}">
+                <!-- <section class="morehelp">
                     <div class="container">
                         <div class="left">
-                            <div class="heading4">{{item?.subHeading3?.title}}</div>
-                            <div class="heading6">{{item?.subHeading3?.description}}</div>
-                            <div class="contact">
-                                <div class="contact-content" *ngFor="let contact of item?.subHeading3?.innerArray">
-                                    <div class="icon">
-                                        <img [src]="contact?.imageurl" alt="" />
-                                    </div>
-                                    <div class="rightSec">
-                                        <div class="contact-label">{{contact?.title}}</div>
-                                        <div class="contact-desc">{{contact?.description}}</div>
-                                    </div>
-                                </div>
+                            <div class="commonHeadingStyle">Certificate</div>
+                            <div class="listpoints">
+                                <ul>
+                                    <li>
+                                        <figure>
+                                            <img src="/assets/images/Group 23843.png" alt="" />
+                                        </figure>
+                                        <span>Job Ready Skills</span>
+                                    </li>
+                                    <li>
+                                        <figure>
+                                            <img src="/assets/images/Group 23843.png" alt="" />
+                                        </figure>
+                                        <span>Professional Certificate From L&T</span>
+                                    </li>
+                                    <li>
+                                        <figure>
+                                            <img src="/assets/images/Group 23843.png" alt="" />
+                                        </figure>
+                                        <span>Get Career Credential By Sharing in Professional network</span>
+                                    </li>
+                                </ul>
                             </div>
-                            <button class="reqCallBack" (click)="openRequest()">Request Call Back</button>
                         </div>
                         <div class="right">
                             <figure>
-                                <img [src]="item?.subHeading3?.imageurl" alt="">
+                                <img src="/assets/images/Certificate.png" alt="">
                             </figure>
                         </div>
                     </div>
-                </section>
-            </ng-container>
-    
+                </section> -->
+            </ng-container> 
+
             <!-- Expert Support System -->
             <ng-container *ngIf="item?.sectionId == 4 && item?.dispalystatus">
                 <section class="expertSupportTab" [id]="item.sectionId" #4 [ngStyle]="{'background-image': 'url(https://lmsassetspremium.lntedutech.com/portalicons/expertbg.webp)'}">
@@ -660,3 +646,121 @@
     </div>
 </div>
 </ng-template>
+
+<!-- <section class="Proficiency">
+    <figure>
+        <img src="/assets/images/Bg.png" alt="">
+    </figure>
+    <div class="container">
+       <div class="inside">
+            <div class="left">
+                <figure>
+                    <img src="/assets/images/Group 20186.png" alt="">
+                </figure>
+            </div>
+            <div class="right">
+                <div>Proficiency comes with practice</div>
+                <p>We put you through an agile, dynamic practice
+                    environment close to real world.</p>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+
+<section class="courseage">
+    <div class="container">
+        <div class="commonHeadingStyle">Course Coverage</div>
+        <p>Curated by industry experts and leading academicians, the syllabus comprises of videos,
+            practice labs, projects, assignments and live training sessions.</p>
+            <div class="leftExpansion">
+                <ul>
+                    <li>
+                        <span class="icon-menu_book">
+                            <p>1. Introduction and Basics of Formwork</p>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="icon-menu_book">
+                            <p>2. Codes and Standards</p>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="icon-menu_book">
+                            <p>3. Types of Formwork</p>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="icon-menu_book">
+                            <p>4. Formwork Planning and Monitoring</p>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="icon-menu_book">
+                            <p>5. Analysis, Design Concepts and Detailing of Formwork</p>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="icon-menu_book">
+                            <p>6. Formwork Design, Drawing & Detailing of Formwork Drawing</p>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="icon-menu_book">
+                            <p>7. Formwork Quantity take off and Cost Estimation</p>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="icon-menu_book">
+                            <p>8. Modular Formwork</p>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            <!-- <div class="rightSideImg">
+                <figure>
+                    <img src="/assets/images/Group 18010.png" alt="">
+                </figure>
+            </div>     -->
+    </div>
+</section>
+
+
+<section class="Certificate">
+    <div class="container">
+        <!-- <figure>
+                <img src="/assets/images/Group 20190.png" alt="">
+        </figure>        -->
+        <div class="left">
+            <div class="commonHeadingStyle">Certificate</div>
+            <div class="listpoints">
+                <ul>
+                    <li>
+                        <figure>
+                            <img src="/assets/images/Group 23843.png" alt="" />
+                        </figure>
+                        <span>Job Ready Skills</span>
+                    </li>
+                    <li>
+                        <figure>
+                            <img src="/assets/images/Group 23843.png" alt="" />
+                        </figure>
+                        <span>Professional Certificate From L&T</span>
+                    </li>
+                    <li>
+                        <figure>
+                            <img src="/assets/images/Group 23843.png" alt="" />
+                        </figure>
+                        <span>Get Career Credential By Sharing in Professional network</span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="right">
+            <figure class="certify">
+                <img src="/assets/images/Certificate.png" alt="">
+            </figure>
+        </div>
+    </div>
+</section>

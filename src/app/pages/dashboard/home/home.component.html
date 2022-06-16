@@ -101,7 +101,8 @@
         </div>
       </div>
     </section>
-    <section class="whylntedu">
+    
+    <!-- <section class="whylntedu">
       <div class="container">
         <div class="heading2">{{commonData?.landingPageContents?.whyLNT?.title}}</div>
         <ul>
@@ -109,17 +110,35 @@
             <figure>
               <img src="/assets/images\resume-and-cv.png " alt="">
             </figure>
-            <!-- <img [src]="commonData?.landingPageContents?.whyLNT?.imageurl" alt=""> -->
             <p>{{item?.title}}</p>
           </li>
         </ul>
+      </div>
+    </section> -->
+    <section class="whyLNT">
+        <!-- <figure>
+          <img src="/assets/images/Group 23712.png">
+        </figure> -->
+      <div class="container">
+        <div class="heading2">{{commonData?.landingPageContents?.whyLNT?.title}}</div>
+      
+        <div  class="content">
+          <ul>
+            <li *ngFor="let item of commonData?.landingPageContents?.whyLNT?.innerArray">
+              <figure>
+                <img src="/assets/images\resume-and-cv.png " alt="">
+              </figure>
+              <p>{{item?.title}}</p>
+            </li>
+          </ul>
+        </div>
       </div>
     </section>
 
 <section class="learnanywhere">
   <div class="container">
     <div class="heading2"><h1>{{commonData?.landingPageContents?.learnAnytime?.title}}</h1></div>
-      <div class="heading1"><p>{{commonData?.landingPageContents?.learnAnytime?.description}}</p></div>
+    <p>{{commonData?.landingPageContents?.learnAnytime?.description}}</p>
          <div class="contentcenter">
           <div class="group">
             <figure class="grpimg">
@@ -127,17 +146,17 @@
             </figure>
           </div>
           <div class="scanner">
-            <P>Scan this QR code on your camera app to download the app </P>
+            <span>Scan this QR code on your camera app to download the app </span>
             <figure>
-              <img src="/assets/images/download qr.png" alt="scanner">
+              <img src="/assets/images/YLy3V.png" alt="scanner">
             </figure>
             <p>or</p>
             <div class="apps">
               <figure class="store">
-                <img src="/assets/images/download app.png" alt="">
+                <img src="/assets/images/Mask Group 14588.png" alt="">
               </figure>
               <figure class="appstore">
-                <img src="/assets/images/images 2.png" alt="">
+                <img src="/assets/images/Mask Group 14589.png" alt="">
               </figure>
             </div>
           </div>
@@ -182,7 +201,6 @@
         <div class="heading">For any Support :</div>
         <div class="contacts"> <span class="icon-Email"><p>contact@lntedutech.com</p></span>
           <span class="contactIcon"><em class="icon-ContactUs"></em><p>09876543210</p></span>
-          <!-- <span class="icon-phone"><p>09876543210</p></span> -->
         </div>
       </div>
       <div class="right">
