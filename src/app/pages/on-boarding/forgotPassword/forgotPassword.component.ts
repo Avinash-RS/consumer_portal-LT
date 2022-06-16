@@ -18,6 +18,7 @@ import * as CryptoJS from 'crypto-js';
 
 export class ForgotPasswordComponent implements OnInit {
   hide = true;
+  hide1 = true;
   secretKey = "(!@#Passcode!@#)";
   forgetPwdForm: FormGroup;
   resetPwdForm: FormGroup;
