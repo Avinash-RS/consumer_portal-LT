@@ -4,9 +4,10 @@
         <div class="heading2">Featured Courses</div>
         <span class="subHeading">Build your proficiency in the hottest industry of the 21st century.</span>
         <div class="featuredCourses">
-            <drag-scroll (reachesLeftBound)="leftBoundStat($event)" (reachesRightBound)="rightBoundStat($event)" [scrollbar-hidden] = true [drag-scroll-y-disabled] = true>
-                <!-- <div class="wholeWrapper"> -->
-                    <div class="scrollItem" drag-scroll-item>
+            <div class="bg" [ngClass]="rightNavDisabled ? 'disableShadow' : 'showShadow'"></div>
+            <drag-scroll #featuredCourses snap-duration="500" (reachesLeftBound)="leftBoundStat($event)" (reachesRightBound)="rightBoundStat($event)" [scrollbar-hidden] = true [drag-scroll-y-disabled] = true>
+                <div class="scrollItem" drag-scroll-item>
+                    <div class="modules">
                         <figure>
                             <img src="https://lmsassetspremium.lntedutech.com/portalicons/heavylifting.webp" alt="" />
                         </figure>
@@ -26,7 +27,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="scrollItem" drag-scroll-item>
+                </div>
+                <div class="scrollItem" drag-scroll-item>
+                    <div class="modules">
                         <figure>
                             <img src="https://lmsassetspremium.lntedutech.com/portalicons/heavylifting.webp" alt="" />
                         </figure>
@@ -46,7 +49,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="scrollItem" drag-scroll-item>
+                </div>
+                <div class="scrollItem" drag-scroll-item>
+                    <div class="modules">
                         <figure>
                             <img src="https://lmsassetspremium.lntedutech.com/portalicons/heavylifting.webp" alt="" />
                         </figure>
@@ -66,7 +71,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="scrollItem" drag-scroll-item>
+                </div>
+                <div class="scrollItem" drag-scroll-item>
+                    <div class="modules">
                         <figure>
                             <img src="https://lmsassetspremium.lntedutech.com/portalicons/heavylifting.webp" alt="" />
                         </figure>
@@ -86,7 +93,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="scrollItem" drag-scroll-item>
+                </div>
+                <div class="scrollItem" drag-scroll-item>
+                    <div class="modules">
                         <figure>
                             <img src="https://lmsassetspremium.lntedutech.com/portalicons/heavylifting.webp" alt="" />
                         </figure>
@@ -106,14 +115,36 @@
                             </div>
                         </div>
                     </div>
-                <!-- </div> -->
+                </div>
+                <div class="scrollItem" drag-scroll-item>
+                    <div class="modules">
+                        <figure>
+                            <img src="https://lmsassetspremium.lntedutech.com/portalicons/heavylifting.webp" alt="" />
+                        </figure>
+                        <div class="wrapper">
+                            <span class="domainName"><em class="icon-Right_Play"></em> Civil Engineering</span>
+                            <span class="heading6">Certification in Reinforced Concrete Buildings Design</span>
+                            <p>Design of reinforced concrete structures is an introductory design course in civil engineering...</p>
+                            <div class="licenseDuration">
+                                <div class="commonStyle">
+                                    <span>License Period</span>
+                                    <span><em class="icon-Document"></em> 8 weeks</span>
+                                </div>
+                                <div class="commonStyle">
+                                    <span>Duration</span>
+                                    <span><em class="icon-Time"></em> 40 hours</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </drag-scroll>
             <div class="draggable-button-container">
                 <div class="leftArrow">
-                    <button [disabled]="leftNavDisabled" [ngClass]="leftNavDisabled ? 'disableArrow' : 'showArrow'" mat-raised-button (click)="moveLeft()" class="draggable-button float-left"> <mat-icon> chevron_left </mat-icon> </button>
+                    <button [disabled]="leftNavDisabled" [ngClass]="leftNavDisabled ? 'disableArrow' : 'showArrow'" (click)="moveLeft()" class="draggable-button float-left"> <em class="icon-LeftArrow"></em> </button>
                 </div>
                 <div class="rightArrow">
-                    <button [disabled]="rightNavDisabled" [ngClass]="rightNavDisabled ? 'disableArrow' : 'showArrow'" mat-raised-button (click)="moveRight()" class="draggable-button float-right"> <mat-icon> chevron_right </mat-icon> </button>
+                    <button [disabled]="rightNavDisabled" [ngClass]="rightNavDisabled ? 'disableArrow' : 'showArrow'" (click)="moveRight()" class="draggable-button float-right"> <em class="icon-RightArrow"></em> </button>
                 </div>
             </div>
         </div>

@@ -8,7 +8,8 @@ import { DragScrollComponent } from 'ngx-drag-scroll';
 })
 export class FeaturedCoursesComponent implements OnInit {
 
-  @ViewChild(DragScrollComponent, { static: true }) ds: DragScrollComponent;
+  // @ViewChild(DragScrollComponent, { static: true }) ds: DragScrollComponent;
+  @ViewChild('featuredCourses', { read: DragScrollComponent }) ds: DragScrollComponent;
   
   leftNavDisabled = false;
   rightNavDisabled = false;
