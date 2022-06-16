@@ -174,7 +174,11 @@ export class HeaderComponent implements OnInit {
   }
   getCatologmenu(){
     this.catalogMenu=[];
-    this.catalogService.getCatalog('course').subscribe((response: any) => {
+    const apiParms = {
+      productType:'course',
+      courseOrigin:environment.userOrigin
+  }
+    this.catalogService.getCatalog(apiParms).subscribe((response: any) => {
       if (response.success && response.data.length > 0) {
         var courseobj = {
           "label":'Courses',
@@ -185,7 +189,7 @@ export class HeaderComponent implements OnInit {
           "active" : true
         }
         this.catalogMenu.push(courseobj);
-        this.getAssesment();
+        // this.getAssesment();
       } else {
         this.catalogMenu = []
       }
