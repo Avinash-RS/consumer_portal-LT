@@ -113,8 +113,11 @@ export class AssessmentsListComponent implements OnInit {
       });
   }
   getDomain(type) {
-    this.productType = type;
-    this.catalogService.getCatalog(type).subscribe((response: any) => {
+    const apiParms = {
+      productType:this.productType,
+      courseOrigin:environment.userOrigin
+  }
+    this.catalogService.getCatalog(apiParms).subscribe((response: any) => {
       if (response.data.length > 0) {
         this.tabValues = response.data;
         this.tabValues.splice(0, 0, this.firstTabValue)
@@ -139,7 +142,8 @@ export class AssessmentsListComponent implements OnInit {
     var params = {
       "domainId": id,
       "pagenumber": this.pageNumber,
-      "productType" :this.productType
+      "productType" :this.productType,
+      "courseOrigin":environment.userOrigin
     }
     this.catalogService.getAreaByDomain(params).subscribe((response: any) => {
       this.noDataSkeleton = false;
