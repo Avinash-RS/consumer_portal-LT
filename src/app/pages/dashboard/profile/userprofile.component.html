@@ -361,7 +361,12 @@
                         <div    >
                             <label>Password</label>
                             <mat-form-field appearance="fill">
-                                <input type="password" matInput placeholder="" formControlName="endPassword">
+                                <!-- <input type="password" matInput placeholder="" formControlName="endPassword">
+                                 -->
+                                 <input [type]="conpasshide ? 'password' : 'text'" matInput autocomplete="Off" placeholder="" formControlName="endPassword">
+                                 <div mat-icon-button matSuffix (click)="conpasshide = !conpasshide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="conpasshide">
+                                     <em class="{{conpasshide ? 'icon-Hide' : 'icon-View'}}"></em>
+                                     </div>
                             </mat-form-field>
                             <ng-container *ngIf="endPassword.invalid && endPassword.touched">
                                 <mat-error *ngIf="endPassword.errors?.required" class="error">{{'Password is required'}}</mat-error>
