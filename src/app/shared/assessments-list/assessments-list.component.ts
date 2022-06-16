@@ -36,7 +36,7 @@ export class AssessmentsListComponent implements OnInit {
   blobToken: string = environment.blobKey;
   public destroyed = new Subject<any>();
   subscriberdata: any;
-  productType:string = 'all';
+  productType:string = 'course';
   filteredTab:string = 'all';
   filterTabs = [
     {label:"All",value:"all"},
@@ -82,7 +82,7 @@ export class AssessmentsListComponent implements OnInit {
     this.setSliceValue();
     if (this.route.snapshot.queryParams.selectedTab) {
       this.fromTab = atob(this.route.snapshot.queryParams.selectedTab);
-      this.productType = this.route.snapshot.queryParams.productType ? atob(this.route.snapshot.queryParams.productType) : 'all';
+      // this.productType = this.route.snapshot.queryParams.productType ? atob(this.route.snapshot.queryParams.productType) : 'all';
       this.isNavigated = true;
     }
     this.getDomain(this.productType);
