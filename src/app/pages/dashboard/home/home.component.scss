@@ -838,6 +838,41 @@
   @include xl {
     font-size: 16px;
   }
+  &::before{
+    content: "";
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 93%;
+    width: 70%;
+    opacity: 0.2;
+    @include sm {
+      opacity: 1;
+      width: 45%;
+    }
+    @include md {
+      width: 29%;
+    }
+    @include lg {
+      width: 25%;
+    }
+    @include xl {
+      width: 20%;
+    }
+    @media only screen and (min-width: 1540px) {
+      width: 14%;
+    }
+  }
+  &::before {
+    background-image: url("https://lmsassetspremium.lntedutech.com/portalicons/curriculum-left.webp");
+    left: -11em;
+    @include md {
+      left: -5em;
+    }
+  }
   .container {
     position: relative;
     z-index: 9;
@@ -851,7 +886,7 @@
       width: 100%;
       order: 2;
       @include md {
-        width: 40%;
+        width: 45%;
         order: 1;
       }
       figure {
@@ -891,41 +926,6 @@
           margin: 1em 0em;
         }
       }
-    }
-  }
-  &::after{
-    content: "";
-    position: absolute;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: top;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 93%;
-    width: 70%;
-    opacity: 0.2;
-    @include sm {
-      opacity: 1;
-      width: 45%;
-    }
-    @include md {
-      width: 29%;
-    }
-    @include lg {
-      width: 25%;
-    }
-    @include xl {
-      width: 20%;
-    }
-    @media only screen and (min-width: 1540px) {
-      width: 14%;
-    }
-  }
-  &::after {
-    background-image: url("https://lmsassetspremium.lntedutech.com/portalicons/curriculum-right.webp");
-    right: -11em;
-    @include md {
-      right: -5em;
     }
   }
 }
@@ -1112,8 +1112,8 @@
 }
 }
 
-//aboutGTU
-.aboutGTU {
+//aboutLTE
+.aboutLTE {
   position: relative;
   padding: 1.75em 0;
   // background-color: $veryLightGray;
@@ -1138,7 +1138,7 @@
       width: 57%;
       height: 40%;
       right: 0;
-      bottom: 6em;
+      bottom: -2em;
       @include sm {
           width: 50%;
           height: 20%;
@@ -1165,7 +1165,7 @@
   .wrapper {
     background-image: linear-gradient(to right, #f5f5f5, #f7f7f7, #fafafa, #fcfcfc, #ffffff);
     .container {
-      border-radius: 0 50px 50px 0;
+      border-radius: 0 100px 100px 0;
       background-color: $whiteSmoke;
       position: relative;
       z-index: 9;
@@ -1227,8 +1227,8 @@
   }
 }
 
-//aboutL&TEduTech
-.aboutLTE {
+//aboutGTU
+.aboutGTU {
   position: relative;
   padding: 1.75em 0;
   font-size: 13px;
@@ -1250,29 +1250,34 @@
     z-index: 1;
   }
   &::before {
-      background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/industryleater-bottomrgiht.webp');
+      background-image: url('../../../../assets/images/leftCircle.png');
       width: 45%;
-      height: 35%;
+      height: 40%;
       left: -15em;
-      bottom: 8em;
-      @include lg {
-          left: -25em;
+      bottom: 0;
+      @include md  {
+        left: -25em;
+        bottom: 0;
       }
-      @media only screen and (min-width: 1540px) {
-          height: 45%;
-          bottom: 4em;
+      @include lg {
+        left: -25em;
+        bottom: 0;
+      }
+      @include xl {
+        height: 45%;
+        bottom: 0;
       }
   }
   .wrapper {
     background-image: linear-gradient(to left, #f5f5f5, #f7f7f7, #fafafa, #fcfcfc, #ffffff);
     .container {
-      border-radius: 50px 0 0 50px;;
+      border-radius: 100px 0 0 100px;;
       background-color: $whiteSmoke;
       position: relative;
       z-index: 9;
       display: flex;
       flex-wrap: wrap;
-      padding: 1.25em 0 1.25em 1.25em; 
+      padding: 3.25em 0 3.25em 1.25em; 
       @include md {
         justify-content: space-between;
         flex-wrap: nowrap;
