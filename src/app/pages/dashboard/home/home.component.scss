@@ -1236,8 +1236,16 @@
 .whyLNT {
   padding: 3.75em 0 ;
   position: relative;
-  .heading2 {
-    margin-bottom: 3em;
+  background-color: $backGroundColor;
+  font-size: 13px;
+  @include md {
+    font-size: 14px;
+  }
+  @include lg {
+    font-size: 15px;
+  }
+  @include xl {
+    font-size: 16px;
   }
   .content {
     display: flex;
@@ -1248,31 +1256,34 @@
     }
     ul {
       display: flex;
-      flex-wrap: wrap;    
+      flex-wrap: wrap; 
       li {
-        width: 100%;
         display: flex; 
-        margin-bottom: 3em;
-        line-height: 2;
+        margin-top: 2em;
         justify-content: space-between;
         align-items: center;
+        width: 50%;
+        @include sm {
+          margin-top: 2.5em;
+        }
         @include md {
-          width: 50%;
+          margin-top: 3em;
         }
         @include lg {
           width: 33%;
         }
         p {
-            font-size: 1.125em;
-            color: #666666;
-            margin-top: 1em;
-            font-weight: 400;
-            line-height: 2;
-            width: 88%;
-          }
+          font-size: 1.125em;
+          color: $lightGrey;
+          font-weight: 400;
+          width: 88%;
+          margin: 0;
+          padding-right: 0.875em;
+          line-height: 1.2;
+        }
         figure {
           width: 12%;
-          margin-right: 20px;
+          margin-right: 1.25em;
           display: flex;
         }
       }
@@ -1281,34 +1292,55 @@
 }
 
 .learnanywhere {
- padding: 3.75em 0 ;
- 
+  padding: 3.75em 0;
+  font-size: 13px;
+  @include md {
+    font-size: 14px;
+  }
+  @include lg {
+    font-size: 15px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
   p {
     font-size: 1em;
+    font-weight: 400;
     color: #848484;
     text-align: center;
+    line-height: normal;
   }
-
   .contentcenter {
     display: flex;
-    margin-top: 4em;
+    margin-top: 2em;
     flex-wrap: wrap;
     @include md {
+      margin-top: 4em;
       justify-content: space-between;
       flex-wrap: nowrap;
+      align-items: center;
     }
     .group {
       width: 100%;
       @include md {
         width: 75%;
       }
+      figure {
+        img {
+          width: 100%;
+          @include md {
+            width: 90%;
+          }
+        }
+      }
     }
     .scanner {
-      width: 100%;
+      width: 70%;
       text-align: center;
-      margin: 2em 0 0 0;
+      margin: 2em auto 0 auto;
       @include md {
         width: 25%;
+        margin: 0;
       }
       figure {
         text-align: center;
@@ -1318,13 +1350,14 @@
         }
       }
       span {
-        margin-top: 2em;
-        @include md {
+        display: block;
+        font-size: 0.875em;
+        font-weight: 400;
+        color: #848484;
+        line-height: 1.3;;
+        @include xl {
           width: 70%;
           margin: 0 auto;
-          // text-align: center;
-          font-size: 1em;
-          font-weight: 400;
         }
       }
       p {
@@ -1340,28 +1373,30 @@
         .appstore{
           width: 50%;
         }
-        
+        figure {
+          img {
+            width: 75%;
+          }
+        }
       }
     }
   }
 
 }
 .ourPartners {
-  width: 100%;
-  padding: 1.25em;
   position: relative;
-  background:#192428;
-  font-size: 12px;
+  background-color:$blackBgColor;
+  padding: 2.5em 0;
+  font-size: 13px;
   @include md {
+    font-size: 14px;
   }
   @include lg {
-    font-size: 14px;
+    font-size: 15px;
   }
   @include xl {
     font-size: 16px;
   }
-
- 
   .partnersSection {
     display: flex;
     align-items: center;
@@ -1372,10 +1407,10 @@
     }
     .heading {
       font-family: "OpenSans";
-      font-size: 1em;
+      font-size: 0.9375em;
       font-weight: 400;
-      color: #27BBEE;
-      margin-right: 1em;
+      font-style: italic;
+      color: $blueLabelColor;
       margin-bottom: 1em;
       text-align: center;
       @include md {
@@ -1388,24 +1423,37 @@
         display: flex;
         align-items: center;
         flex-wrap: wrap;
-        flex-direction: row;
-        font-size: 18px;
-        font-weight: 400;
         justify-content: center;
+        flex-direction: column;
         @include md {
+          flex-direction: row;
           flex-wrap: nowrap;
           justify-content: flex-start;
         }
-    
-        span{
-          color: #56B35A;
-          margin-right: 20px;
+        span {
           display: flex;
-          p{
+          align-items: center;
+          line-height: 2;
+          &:last-child {
+            margin-right: 0;
+          }
+          @include md {
+            margin-right: 2em;
+          }
+          figure {
+            color: $greenColor;
+            margin-right: 8px;
+            font-size: 1.25em;
+            img {
+              width: 20px;
+            }
+          }
+          p {
             font-family: "OpenSans";
+            font-size: 1.125em;
+            font-weight: 400;
             color: #FFFFFF;
-            margin-top: -3px;
-            padding: 0px 0px 0px 14px;
+            margin: 0;
           }
         }
       }
@@ -1415,7 +1463,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      margin-top: 1.5em;
       @include md {
+        margin-top: 0;
         width: 35%;
         justify-content: flex-end;
       }
@@ -1424,8 +1474,16 @@
         align-items: center;
         flex-direction: column;
         span {
-          margin-top: 10px;
+          font-family: "OpenSans";
+          font-size: 1.125em;
+          font-weight: 400;
+          color: $whiteColor;
           text-align: center;
+          line-height: normal;
+          margin-bottom: 1em;
+          &:last-child {
+            margin-bottom: 0;
+          }
           @include md {
             text-align: left;
           }
