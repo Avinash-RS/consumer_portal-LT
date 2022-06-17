@@ -109,6 +109,7 @@ export class AboutCourseComponent implements OnInit {
   productType:string =  "assessment";
   abouCourseData:any;
   courseData:any;
+  gtuContent:any;
   courseType:string  = '';
   userDetails;
   nocard:boolean = true;
@@ -138,21 +139,21 @@ export class AboutCourseComponent implements OnInit {
   sixthOffset: Number = null;
   seventhOffset: Number = null;
   eigthOffset: Number = null;
-  @HostListener('window:scroll', ['$event'])
-    handleScroll(){
-        const windowScroll = window.pageYOffset;
-        if(windowScroll >= this.menuPosition){
-            this.sticky = true;
-        } else {
-            this.sticky = false;
-        }
-       this.checkOffsetTop();
-        setTimeout(()=>{
-            if(window.pageYOffset < this.menuPosition){
-              this.activeSection = null;
-            }
-              },500);
-    }
+  // @HostListener('window:scroll', ['$event'])
+  //   handleScroll(){
+  //       const windowScroll = window.pageYOffset;
+  //       if(windowScroll >= this.menuPosition){
+  //           this.sticky = true;
+  //       } else {
+  //           this.sticky = false;
+  //       }
+  //      this.checkOffsetTop();
+  //       setTimeout(()=>{
+  //           if(window.pageYOffset < this.menuPosition){
+  //             this.activeSection = null;
+  //           }
+  //             },500);
+  //   }
 
   constructor(private router: Router, private catalogService : CatalogService,private route:ActivatedRoute,private appconfig: AppConfigService,
     private commonService : CommonService,public toast: ToastrService ,private util: UtilityService,private dialog: MatDialog,
@@ -264,12 +265,13 @@ setOffset(){
         if(response.data && response.data.length > 0 && response.data[0].assessmentData && response.data[0].assessmentData.length){
           this.abouCourseData = response.data[0];
           this.courseData = this.abouCourseData.assessmentData[0];
+          this.gtuContent = this.courseData.courseContents.gtuContent;
           this.courseType = this.courseData?.courseType ? this.courseData?.courseType :'';
           this.defaultDiv = false;
           this.nocard = false;
-          setTimeout(() => {
-            this.setOffset();
-          }, 1000);
+          // setTimeout(() => {
+          //   this.setOffset();
+          // }, 1000);
         }
         else{
           this.abouCourseData = [];
