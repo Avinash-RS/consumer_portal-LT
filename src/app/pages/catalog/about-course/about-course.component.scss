@@ -1768,27 +1768,12 @@
   width: 100%;
   padding: 3.75em 0;
   font-size: 13px;
-  // z-index: -1;
-  &::before {  
-    content: '';  
-    position: absolute;
-    top: 0;
-    left: 0;  
-    width: 110%;  
-    height: 100%;  
-    opacity: 0.065;  
-    background-image: url("../../../../assets/images/Group 20190.png");  
-    background-repeat: no-repeat;  
-    background-size: cover;  
-    background-position: center;
-  }
   @include md {
     background-position: top;
     font-size: 14px;
   }
   @include lg {
     font-size: 15px;
-    background-position: center;
   }
   @include xl {
     font-size: 16px;
