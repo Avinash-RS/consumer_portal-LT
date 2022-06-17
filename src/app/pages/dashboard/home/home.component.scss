@@ -1623,6 +1623,7 @@
 }
 
 .learnanywhere {
+  position: relative;
   padding: 3.75em 0;
   font-size: 13px;
   @include md {
@@ -1633,6 +1634,39 @@
   }
   @include xl {
     font-size: 16px;
+  }
+  .container {
+    position: relative;
+  }
+  .leftTopAsset, .rightTopAsset, .leftBottomAsset {
+    position: absolute;
+    figure {
+      display: flex;
+      width: 25%;
+      @include lg {
+        width: 35%;
+      }
+      @include xl {
+        width: 55%;
+      }
+    }
+  }
+  .leftTopAsset {
+    left: 0;
+    top: 0;
+  }
+  .rightTopAsset {
+    right: 0;
+    top: 0;
+    text-align: right;
+    figure {
+      margin-left: auto;
+    }
+  }
+  .leftBottomAsset {
+    left: 0;
+    bottom: 0;
+    
   }
   p {
     font-size: 1em;
