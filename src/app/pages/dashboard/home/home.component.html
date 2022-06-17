@@ -171,6 +171,21 @@
     </section>
 
 <section class="learnanywhere" *ngIf="commonData?.landingPageContents?.learnAnytime?.displayStatus">
+  <span class="leftTopAsset">
+    <figure>
+      <img [src]="commonData?.landingPageContents?.learnAnytime?.bgUrl?.lefttop" alt="" />
+    </figure>
+  </span>
+  <span class="rightTopAsset">
+    <figure>
+      <img [src]="commonData?.landingPageContents?.learnAnytime?.bgUrl?.righttop" alt="" />
+    </figure>
+  </span>
+  <span class="leftBottomAsset">
+    <figure>
+      <img [src]="commonData?.landingPageContents?.learnAnytime?.bgUrl?.leftbottom" alt="" />
+    </figure>
+  </span>
   <div class="container">
     <div class="heading2"><h1>{{commonData?.landingPageContents?.learnAnytime?.title}}</h1></div>
     <p>{{commonData?.landingPageContents?.learnAnytime?.description}}</p>
@@ -181,17 +196,14 @@
             </figure>
           </div>
           <div class="scanner">
-            <span>Scan this QR code on your camera app to download the app </span>
+            <span>{{commonData?.landingPageContents?.learnAnytime?.QRtext}}</span>
             <figure>
-              <img src="/assets/images/YLy3V.png" alt="scanner">
+              <img [src]="commonData?.landingPageContents?.learnAnytime?.QR" alt="scanner">
             </figure>
             <p>or</p>
             <div class="apps">
-              <figure class="store">
-                <img src="/assets/images/Mask Group 14588.png" alt="">
-              </figure>
-              <figure class="appstore">
-                <img src="/assets/images/Mask Group 14589.png" alt="">
+              <figure class="store" *ngFor="let item of commonData?.landingPageContents?.learnAnytime?.playStore">
+                <img [src]="item" alt="">
               </figure>
             </div>
           </div>
