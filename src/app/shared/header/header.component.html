@@ -17,24 +17,24 @@
         <div class="megaMenu">
             <button (mouseenter)="megaMenuClick('desktop')"  [class.catalogActive]="showMenu == 'in'">
                 <img [src]="showMenu == 'in' ? 'https://lmsassetspremium.lntedutech.com/portalicons/cataloghover.webp' : 'https://lmsassetspremium.lntedutech.com/portalicons/catalogicon.webp'" alt="">
-                <span>Catalog</span>
+                <span>Courses</span>
                 <em [ngClass]="showMenu == 'out' ? 'icon-DownArrow' : 'icon-UpArrow'" ></em>
             </button>
         </div>
         <nav (mouseenter)="triggerLeave()" [ngClass]="(header_width.offsetWidth > '992') ?  'topMenu' : 'hide_'" [class.topMenu_lap]="menu_tab" *ngIf="showAvatar">
             <ul>
-                <li><a [ngClass]="isCourse ? 'activeTab' : ''" (click)="onlineAssessment('course')">My Course</a></li>
-                <li><a [ngClass]="isAssement ? 'activeTab' : ''" (click)="onlineAssessment('assessment')">My Assessment</a></li>
+                <li><a [ngClass]="isCourse ? 'activeTab' : ''" (click)="onlineAssessment('course')">My Courses</a></li>
+                <!-- <li><a [ngClass]="isAssement ? 'activeTab' : ''" (click)="onlineAssessment('assessment')">My Assessment</a></li> -->
             </ul>
         </nav>
     </div>
 
     <div class="rightWrapper">
         <div class="signInRegister">
-            <div *ngIf="!showAvatar" class="recruiter">
+            <!-- <div *ngIf="!showAvatar" class="recruiter">
                 <a href="https://unifiedreport.lntedutech.com/login" target="recruiterLogin"><em class="icon-Recruiter"></em> <span>Recruiter? Login here</span></a>
-            </div>
-            <span class="cart">
+            </div> -->
+            <span class="cart" *ngIf="showAvatar">
                 <a (click)="openCart(); closeMegaMenu_()">
                 <em *ngIf="cartCount == 0" class="icon-Cart"></em>
                 <em *ngIf="cartCount != 0" matBadge="{{cartCount}}" matBadgeColor="warn" class="icon-Cart"></em>
@@ -74,9 +74,14 @@
                 </div>
             </ng-container>
             <ng-container *ngIf="!showAvatar">
-                <span class="signIn"><a  (click)="openOnBoard('0'); closeMegaMenu_()">Sign In</a></span>
+                <button class="login" (click)="openOnBoard('0'); closeMegaMenu_()">Sign In</button>
                 <button class="register" (click)="openOnBoard('1'); closeMegaMenu_()">Register</button>
             </ng-container>
+            <div class="aictelogo">
+                <figure>
+                    <img src="https://lmsassetspremium.lntedutech.com/portalicons/gtulogo.webp" alt="">
+                </figure>
+            </div>
         </div>
     
         <div *ngIf="!showAvatar" class="mobileLogin">

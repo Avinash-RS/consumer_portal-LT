@@ -21,7 +21,7 @@ import { GlobalValidatorsService } from 'src/app/validators/global-validators.se
 export class AboutCourseComponent implements OnInit {
   selectedIndex = 0;
   TopicsOptions: OwlOptions = {
-    loop: true,
+    loop: false,
     mouseDrag: false,
     touchDrag: false,
     pullDrag: false,
@@ -35,13 +35,13 @@ export class AboutCourseComponent implements OnInit {
         items: 1
       },
       600: {
-        items: 2
+        items: 1
       },
       992: {
-        items: 2
+        items: 1
       }
     }
-  }
+  };
   expertOptions: OwlOptions = {
     loop: true,
     mouseDrag: false,

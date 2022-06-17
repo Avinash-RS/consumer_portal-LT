@@ -21,6 +21,7 @@ import { CaptchaDirective } from '../directives/captcha.directive';
 
 // import third-party module
 import { AnimateOnScrollModule } from 'ng2-animate-on-scroll';
+import { DragScrollModule } from 'ngx-drag-scroll';
 
 // Skeleton Loader
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
@@ -30,6 +31,7 @@ import { KycMandateComponent } from './kyc-mandate/kyc-mandate.component';
 import { TestimonialComponent } from './testimonial/testimonial.component';
 import { RelateditemsComponent } from './relateditems/relateditems.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { FeaturedCoursesComponent } from './featured-courses/featured-courses.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,8 @@ import { LayoutModule } from '@angular/cdk/layout';
     RecruiterComponent,
     KycMandateComponent,
     TestimonialComponent,
-    RelateditemsComponent
+    RelateditemsComponent,
+    FeaturedCoursesComponent
   ],
   imports: [
     CommonModule,
@@ -56,6 +59,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     FormsModule,
     ReactiveFormsModule,
     LayoutModule,
+    DragScrollModule,
     AnimateOnScrollModule.forRoot(),
     NgxSkeletonLoaderModule.forRoot()
   ],
@@ -78,7 +82,8 @@ import { LayoutModule } from '@angular/cdk/layout';
     KycMandateComponent,
     TestimonialComponent,
     RelateditemsComponent,
-    LayoutModule
+    LayoutModule,
+    FeaturedCoursesComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 
