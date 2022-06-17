@@ -823,17 +823,123 @@
   }
 }
 
+// aboutProgram
+.aboutProgram {
+  position: relative;
+  padding: 1.75em 0;
+  background-color: $aliceBlueColor;
+  font-size: 13px;
+  @include md {
+    font-size: 14px;
+  }
+  @include lg {
+    font-size: 15px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
+  &::before{
+    content: "";
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 93%;
+    width: 70%;
+    opacity: 0.2;
+    @include sm {
+      opacity: 1;
+      width: 45%;
+    }
+    @include md {
+      width: 29%;
+    }
+    @include lg {
+      width: 25%;
+    }
+    @include xl {
+      width: 20%;
+    }
+    @media only screen and (min-width: 1540px) {
+      width: 14%;
+    }
+  }
+  &::before {
+    background-image: url("https://lmsassetspremium.lntedutech.com/portalicons/curriculum-left.webp");
+    left: -11em;
+    @include md {
+      left: -5em;
+    }
+  }
+  .container {
+    position: relative;
+    z-index: 9;
+    display: flex;
+    flex-wrap: wrap;
+    @include md {
+      justify-content: space-between;
+      flex-wrap: nowrap;
+    }
+    .leftSideImage {
+      width: 100%;
+      order: 2;
+      @include md {
+        width: 45%;
+        order: 1;
+      }
+      figure {
+        img {
+          width: 100%;
+        }
+      }
+    }
+    .rightSideDetails {
+      width: 100%;
+      order: 1;
+      @include md {
+        width: 50%;
+        order: 2;
+      }
+      .heading2 {
+        text-align: left;
+        line-height: 1.3;
+        position: relative;
+        margin-left: 0.2em;
+        color: $secondaryColor;
+        &::after {
+          left: 0;
+          transform: translateX(0);
+        }
+      }
+      p {
+        color: $darkMediumGrey;
+        font-size: 1em;
+        line-height: 2em;
+        padding-bottom: 1em;
+        margin: 0;
+        text-align: justify;
+        @include md {
+          font-size: 1.1em;
+          line-height: 1.5em;
+          margin: 1em 0em;
+        }
+      }
+    }
+  }
+}
+
 // capabilities
 .capabilities{
   position: relative;
   padding: 3.75em 0;
-  @include sm {
-  }
+  font-size: 13px;
   @include md {
-    font-size: 13px;
+    font-size: 14px;
   }
   @include lg {
-    font-size: 14px;
+    font-size: 15px;
   }
   @include xl {
     font-size: 16px;
@@ -1005,6 +1111,228 @@
   }
 }
 }
+
+//aboutLTE
+.aboutLTE {
+  position: relative;
+  padding: 1.75em 0;
+  // background-color: $veryLightGray;
+  @include md {
+    font-size: 13px;
+  }
+  @include lg {
+    font-size: 14px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+  }
+  &::after {
+      background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/industryleater-bottomleft.webp');
+      width: 57%;
+      height: 40%;
+      right: 0;
+      bottom: -2em;
+      @include sm {
+          width: 50%;
+          height: 20%;
+      }
+      @include md {
+          width: 70%;
+          height: 40%;
+          right: -10em;
+      }
+      @include lg {
+          right: -20em;
+      
+      }
+      @include xl {
+          width: 57%;
+          height: 40%;
+          right: -15em;
+      }
+      @media only screen and (min-width: 1540px) {
+          width: 53%;
+          height: 52%;
+      }
+  }
+  .wrapper {
+    background-image: linear-gradient(to right, #f5f5f5, #f7f7f7, #fafafa, #fcfcfc, #ffffff);
+    .container {
+      border-radius: 0 100px 100px 0;
+      background-color: $whiteSmoke;
+      position: relative;
+      z-index: 9;
+      display: flex;
+      flex-wrap: wrap; 
+      padding: 1.25em 1.25em 1.25em 0;
+      @include md {
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        padding: 2.25em 2.25em 2.25em 0;
+      }
+      .leftSideImg {
+        width: 100%;
+        order: 2;
+        @include md {
+          width: 45%;
+          order: 1;
+        }
+        figure {
+          img {
+            width: 100%;
+            border-radius: 10%;
+          }
+        }
+      }
+      .rightSideContent {
+        width: 100%;
+        order: 1;
+        @include md {
+          width: 50%;
+          order: 2;
+        }
+        .heading2 {
+          text-align: left;
+          line-height: 1.3;
+          position: relative;
+          margin-left: 0.2em;
+          color: $secondaryColor;
+          &::after {
+            left: 0;
+            transform: translateX(0);
+          }
+        }
+        p {
+          color: $darkMediumGrey;
+          font-size: 1em;
+          line-height: 2em;
+          padding-bottom: 1em;
+          margin: 0;
+          text-align: justify;
+          @include md {
+            font-size: 1.1em;
+            line-height: 1.5em;
+            margin: 1em 0em;
+          }
+        }
+      }
+    }
+  }
+}
+
+//aboutGTU
+.aboutGTU {
+  position: relative;
+  padding: 1.75em 0;
+  font-size: 13px;
+  // background-color: $veryLightGray;
+  @include md {
+    font-size: 14px;
+  }
+  @include lg {
+    font-size: 15px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+  }
+  &::before {
+      background-image: url('../../../../assets/images/leftCircle.png');
+      width: 45%;
+      height: 40%;
+      left: -15em;
+      bottom: 0;
+      @include md  {
+        left: -25em;
+        bottom: 0;
+      }
+      @include lg {
+        left: -25em;
+        bottom: 0;
+      }
+      @include xl {
+        height: 45%;
+        bottom: 0;
+      }
+  }
+  .wrapper {
+    background-image: linear-gradient(to left, #f5f5f5, #f7f7f7, #fafafa, #fcfcfc, #ffffff);
+    .container {
+      border-radius: 100px 0 0 100px;;
+      background-color: $whiteSmoke;
+      position: relative;
+      z-index: 9;
+      display: flex;
+      flex-wrap: wrap;
+      padding: 3.25em 0 3.25em 1.25em; 
+      @include md {
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        padding: 2.25em 0 2.25em 2.25em;
+      }
+      .leftCon {
+        width: 100%;
+        // order: 2;
+        @include md {
+          width: 50%;
+          order: 1;
+        }
+        .heading2 {
+          text-align: left;
+          line-height: 1.3;
+          position: relative;
+          margin-left: 0.2em;
+          color: $secondaryColor;
+          &::after {
+            left: 0;
+            transform: translateX(0);
+          }
+        }
+        p {
+          color: $darkMediumGrey;
+          font-size: 1em;
+          line-height: 2em;
+          padding-bottom: 1em;
+          margin: 0;
+          text-align: justify;
+          @include md {
+            font-size: 1.1em;
+            line-height: 1.5em;
+            margin: 1em 0em;
+          }
+        }
+      }
+      .rightImgCont {
+        width: 100%;
+        // order: 1;
+        @include md {
+          width: 45%;
+          order: 2;
+        }
+        figure {
+          img {
+            width: 100%;
+            border-radius: 10%;
+          }
+        }
+      }
+    }
+  }
+}
+
 
 //What We Do
 .whatWeDo {

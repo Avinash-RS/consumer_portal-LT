@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NavigationEnd, Router, RouterEvent } from "@angular/router"
 import { ActivatedRoute } from '@angular/router';
 import { AppConfigService } from 'src/app/utils/app-config.service';
@@ -13,6 +13,7 @@ import {
   BreakpointObserver,
   BreakpointState
 } from '@angular/cdk/layout';
+import { OwlOptions, SlidesOutputData } from 'ngx-owl-carousel-o';
 @Component({
   selector: 'app-assessments-list',
   templateUrl: './assessments-list.component.html',
@@ -44,6 +45,31 @@ export class AssessmentsListComponent implements OnInit {
   ];
   isNavigated:boolean = false;
   sliceDigits:number = 6;
+  CategoriesOptions: OwlOptions = {
+    loop: false,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    autoplay: false,
+    margin: 20,
+    dots: false,
+    navSpeed: 700,
+    navText: ['<em class="icon-LeftArrow prev"></em>', '<em class="icon-RightArrow next"></em>'],
+    responsive: {
+      0: {
+        items: 2
+      },
+      480: {
+        items: 4
+      },
+      768: {
+        items: 6
+      }
+    },
+    nav: true
+  };
+  activeSlides: SlidesOutputData;
+  slidesStore: any[];
   constructor(private _loading: LoadingService,
               private router: Router,
               private catalogService: CatalogService,
@@ -152,4 +178,10 @@ export class AssessmentsListComponent implements OnInit {
     this.fromTab='All';
     this.getDomain(this.filteredTab);
   }
+
+  getPassedData(data: SlidesOutputData) {
+    this.activeSlides = data;
+    console.log(this.activeSlides);
+  }
+
 }
