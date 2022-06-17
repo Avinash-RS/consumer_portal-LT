@@ -1,6 +1,6 @@
 <footer *ngIf="footerData">
-    <div class="container">
-        <!-- <div class="containerWrapper">
+    <!-- <div class="container">
+        <div class="containerWrapper">
             <section class="eduTech">
                 <div class="heading4">L&T EduTech</div>
                 <ul>
@@ -32,18 +32,37 @@
                     <div><a class="{{app}}"></a></div>
                 </ng-container>
             </section>
-        </div> -->
+        </div>
         <div class="copyrightsTerms">
             <p>&copy; {{footerData.copyRights}}</p>
-            <!-- <ul>
+            <ul>
                 <ng-container *ngFor="let content of footerData.settings">
                     <li><a>{{content}}</a></li>
                 </ng-container>
-            </ul> -->
+            </ul>
             <ul>
                 <li><a href="https://lntedutech.com/support-form/" target="singlewindow"><em class="icon-suport"></em>Technical support</a></li>
                 <li><a href="https://lntedutech.com/feedback-form/" target="singlewindow"><em class="icon-feedback"></em>Feedback</a></li>
             </ul>
         </div>
-    </div>
+    </div> -->
+    <section class="ourPartners">
+        <div class="container">
+          <div class="partnersSection">
+            <div class="left">
+              <div class="heading">For any Support :</div>
+              <div class="contacts"> 
+                <span class="eduEmail"><figure><img src="/assets/images/Path 29626.png" alt=""></figure><p>contact@lntedutech.com</p></span>
+                <span class="contactIcon"><figure><img src="/assets/images/Group 20273.png" alt=""></figure><p>09876543210</p></span>
+              </div>
+            </div>
+            <div class="right">
+              <div class="policy">
+                <span>Terms of Use</span>
+                <span>Privacy Policy</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 </footer>
