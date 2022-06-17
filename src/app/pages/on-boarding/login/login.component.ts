@@ -15,6 +15,7 @@ import { MatDialog } from '@angular/material/dialog';
 import * as CryptoJS from 'crypto-js';
 import { environment } from '@env/environment';
 import { RecaptchaErrorParameters } from "ng-recaptcha";
+import { CartService } from 'src/app/services/cart.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -32,6 +33,7 @@ export class LoginComponent implements OnInit {
   secretKey = "(!@#Passcode!@#)";
   recaptchaStr = '';
   siteKey: any = environment.captachaSiteKey;
+  collegeData: any = [];
 
   @ViewChild('kycmandate', { static: false }) matDialogRef: TemplateRef<any>;
   @ViewChild('captchaRef',{ static: false }) captchaRef;
@@ -46,7 +48,8 @@ export class LoginComponent implements OnInit {
     private util: UtilityService,
     private catalogService : CatalogService,
     private cookieService: CookieService ,
-    private router:Router
+    private router:Router, 
+    private cartsevice: CartService
   ) {
     this.route.queryParams.subscribe(params => {
       if (params.fromPage == '0') {
@@ -59,6 +62,7 @@ export class LoginComponent implements OnInit {
       } else {
         this.entryIndex = 1;
         this.registerFormInitialize();
+        this.getCollegeMaster();
         if(params.activation == '1'){
           this.toast.error('Activation link expired, please register again');
         }
@@ -101,7 +105,6 @@ export class LoginComponent implements OnInit {
         disableClose: true,
         panelClass: 'popupModalContainerForForms'
       });
-
   }
 
   tabChange(e) {
@@ -116,7 +119,10 @@ export class LoginComponent implements OnInit {
       this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: e.index });
       this.loginFormInitialize();
     }
-    this.recaptchaStr = ''; 
+    this.recaptchaStr = '';
+    setTimeout(()=>{
+      this.captchaRef.reset();
+    },1000);
   }
 
   submitRegister() {
@@ -127,6 +133,8 @@ export class LoginComponent implements OnInit {
       const signupData = {
         firstname: this.registerForm.value.firstName,
         lastname: this.registerForm.value.lastName,
+        userOrigin:CryptoJS.AES.encrypt(environment.userOrigin, this.secretKey.trim()).toString(),
+        collegeId:this.registerForm.value.college,
         password: encryptedpassword,
         openPassword:this.registerForm.value.password,
         email: encryptedname,
@@ -253,11 +261,20 @@ resolvedSignIn(captchaSignInResponse: string){
     });
   }
 
+  getCollegeMaster(){
+    this.cartsevice.getCollegeDetails().subscribe((result:any)=>{
+      if(result?.success && result?.data.length > 0){
+        this.collegeData = result?.data;
+      }
+    })
+  }
+
   registerFormInitialize() {
     this.registerForm = this.fb.group({
       firstName: ['', [Validators.required, this.gv.alphaNum30()]],
       lastName: ['', [Validators.required, this.gv.alphaNum30()]],
       email: ['', [Validators.required, this.gv.email()]],
+      college: ['', [Validators.required]],
       password: ['', [Validators.required, this.gv.passwordRegex(), Validators.minLength(8), Validators.maxLength(32)]],
       password2: ['', [Validators.required]],
       termsandConditions: [null, [Validators.requiredTrue]],
@@ -296,6 +313,10 @@ resolvedSignIn(captchaSignInResponse: string){
     return this.registerForm.get('email');
   }
 
+  get collegeR() {
+    return this.registerForm.get('college');
+  }
+ 
   get passwordR() {
     return this.registerForm.get('password');
   }

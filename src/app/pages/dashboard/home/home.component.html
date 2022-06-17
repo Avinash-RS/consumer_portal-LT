@@ -65,6 +65,7 @@
 
     <!-- <app-domain-list class="app-Domain"></app-domain-list> -->
     <app-assessments-list class="app-Assessment"></app-assessments-list>
+    <app-featured-courses></app-featured-courses>
 
     <!--aboutL&TEduTech-->
     <section class="aboutLTE" *ngIf="commonData?.landingPageContents?.aboutLNT?.displayStatus">
@@ -150,7 +151,129 @@
           </div>
         </div>
       </div>
-    </section> -->
+    </section>
+     -->
+    <section class="whyLNT">
+      <div class="container">
+        <div class="heading2">{{commonData?.landingPageContents?.whyLNT?.title}}</div>
+      
+        <div  class="content">
+          <ul>
+            <li>
+              <figure>
+                <img src="/assets/images\resume-and-cv.png " alt="">
+              </figure>
+              <p>Industry led curriculum</p>
+            </li>
+            <li>
+              <figure>
+                <img src="/assets/images/transferring (1).png " alt="">
+              </figure>
+              <p>Job facilitation though Skills Exchange</p>
+            </li>
+            <li>
+              <figure>
+                <img src="/assets/images/webinar (1).png " alt="">
+              </figure>
+              <p>Exclusive webinars</p>
+            </li>
+            <li>
+              <figure>
+                <img src="/assets/images/light-bulb.png" alt="">
+              </figure>
+              <p>Robust Platform</p>
+            </li>
+            <li>
+              <figure>
+                <img src="/assets/images/solution (1).png" alt="">
+              </figure>
+              <p>End Capstone project</p>
+            </li>
+            <li>
+              <figure>
+                <img src="/assets/images/winner.png" alt="">
+              </figure>
+              <p>L&T EduTech Certification</p>
+            </li>
+            <li>
+              <figure>
+                <img src="/assets/images/light-bulb.png" alt="">
+              </figure>
+              <p>Real world projects</p>
+            </li>
+            <li>
+              <figure>
+                <img src="/assets/images/file-case (1).png" alt="">
+              </figure>
+              <p>Real time case studies</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+<section class="learnanywhere">
+  <div class="container">
+    <div class="heading2"><h1>{{commonData?.landingPageContents?.learnAnytime?.title}}</h1></div>
+    <p>{{commonData?.landingPageContents?.learnAnytime?.description}}</p>
+         <div class="contentcenter">
+          <div class="group">
+            <figure class="grpimg">
+              <img src="/assets/images/Group 23758.png" alt="group">
+            </figure>
+          </div>
+          <div class="scanner">
+            <span>Scan this QR code on your camera app to download the app </span>
+            <figure>
+              <img src="/assets/images/YLy3V.png" alt="scanner">
+            </figure>
+            <p>or</p>
+            <div class="apps">
+              <figure class="store">
+                <img src="/assets/images/Mask Group 14588.png" alt="">
+              </figure>
+              <figure class="appstore">
+                <img src="/assets/images/Mask Group 14589.png" alt="">
+              </figure>
+            </div>
+          </div>
+         </div>
+  </div>
+</section>
+
+<!-- <section class="feedback" *ngIf="commonData?.landingPageContents?.studentAboutUs?.displaystatus">
+  <div class="container">
+    <div class="heading2">{{commonData?.landingPageContents?.studentAboutUs?.title}}</div>
+    <div class="owlCarouselWrapper">
+      <owl-carousel-o [options]="testimonialOptions">
+        <ng-container *ngFor="let item of commonData?.landingPageContents?.studentAboutUs?.innerArray">
+          <ng-template carouselSlide>
+              <div class="card">
+                  <p class="title">{{item?.title}}</p>
+                  <p class="desc">{{item?.description}}</p>
+              <div class="imagearea">
+                  <div class="greencircle">
+                    <em class="icon-MetroQuote"></em>
+                  </div>
+                <figure>
+                  <img [src]="item?.imageurl" alt="">
+                </figure>
+              </div>
+              </div>
+              <div class="footer">
+                <p>{{item?.name}}</p>
+                <span>{{item?.designation}}</span>
+              </div>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+    </div>
+  </div>
+</section> -->
+
+
+
+
        <!-- carrerpath -->
        <!-- <section class="successfulCareer">
         <div class="container">
@@ -224,6 +347,6 @@
       <app-partners-list class="app-Partners" [OurPartners]="commonData?.landingPageContents?.hiringPartners"></app-partners-list>
     </ng-container> -->
 </ng-container>
-<ng-template #kycmandate >
+<!-- <ng-template #kycmandate >
   <app-kyc-mandate></app-kyc-mandate>
-</ng-template>
+</ng-template> -->

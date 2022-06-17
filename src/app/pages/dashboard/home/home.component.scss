@@ -1564,3 +1564,153 @@
     }
   }
 }
+.whyLNT {
+  padding: 3.75em 0 ;
+  position: relative;
+  background-color: $backGroundColor;
+  font-size: 13px;
+  @include md {
+    font-size: 14px;
+  }
+  @include lg {
+    font-size: 15px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    @include md {
+      justify-content: space-between;
+      flex-wrap: nowrap;
+    }
+    ul {
+      display: flex;
+      flex-wrap: wrap; 
+      li {
+        display: flex; 
+        margin-top: 2em;
+        justify-content: space-between;
+        align-items: center;
+        width: 50%;
+        @include sm {
+          margin-top: 2.5em;
+        }
+        @include md {
+          margin-top: 3em;
+        }
+        @include lg {
+          width: 33%;
+        }
+        p {
+          font-size: 1.125em;
+          color: $lightGrey;
+          font-weight: 400;
+          width: 88%;
+          margin: 0;
+          padding-right: 0.875em;
+          line-height: 1.2;
+        }
+        figure {
+          width: 12%;
+          margin-right: 1.25em;
+          display: flex;
+        }
+      }
+    }
+  }
+}
+
+.learnanywhere {
+  padding: 3.75em 0;
+  font-size: 13px;
+  @include md {
+    font-size: 14px;
+  }
+  @include lg {
+    font-size: 15px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
+  p {
+    font-size: 1em;
+    font-weight: 400;
+    color: #848484;
+    text-align: center;
+    line-height: normal;
+  }
+  .contentcenter {
+    display: flex;
+    margin-top: 2em;
+    flex-wrap: wrap;
+    @include md {
+      margin-top: 4em;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      align-items: center;
+    }
+    .group {
+      width: 100%;
+      @include md {
+        width: 75%;
+      }
+      figure {
+        img {
+          width: 100%;
+          @include md {
+            width: 90%;
+          }
+        }
+      }
+    }
+    .scanner {
+      width: 70%;
+      text-align: center;
+      margin: 2em auto 0 auto;
+      @include md {
+        width: 25%;
+        margin: 0;
+      }
+      figure {
+        text-align: center;
+        width: 100%;
+        img {
+          width: 60%;
+        }
+      }
+      span {
+        display: block;
+        font-size: 0.875em;
+        font-weight: 400;
+        color: #848484;
+        line-height: 1.3;;
+        @include xl {
+          width: 70%;
+          margin: 0 auto;
+        }
+      }
+      p {
+        text-align: center;
+        font-size: 1em;
+        font-weight: 400;
+      }
+      .apps {
+        display: flex;
+        .store{
+          width: 50%;
+        }
+        .appstore{
+          width: 50%;
+        }
+        figure {
+          img {
+            width: 75%;
+          }
+        }
+      }
+    }
+  }
+
+}

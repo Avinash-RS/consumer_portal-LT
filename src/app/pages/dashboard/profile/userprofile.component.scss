@@ -737,6 +737,119 @@
 }
 //Purchasing History Ends
 
+//Download Certificate
+.downloadCertificate {
+    font-size: 13px;
+    @include md {
+        font-size: 14px;
+    }
+    @include lg {
+        font-size: 15px;
+    }
+    @include xl {
+        font-size: 16px;
+    }
+    ul {
+        margin-top: 2em;
+        li {
+            background-color: $whiteColor;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.25);
+            padding: 0.85em;
+            margin-bottom: 1em;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            @include md {
+                align-items: center;
+                flex-wrap: nowrap;
+            }
+            &:last-child {
+                margin-bottom: 0;
+            }
+            figure {
+                display: flex;
+                width: 12%;
+                @include md {
+                    width: 6%;
+                }
+                @include lg {
+                    width: 6%;
+                }
+                img {
+                    max-width: 100%;
+                }
+            }
+            .courseName {
+                width: 85%;
+                @include md {
+                    width: 49%;
+                }
+                @include lg {
+                    width: 52%;
+                }
+            }
+            .common {
+                span {
+                    display: block;
+                    line-height: normal;
+                    font-weight: 400;
+                }
+                .course {
+                    font-size: 0.75em;
+                    color: $lightGrey;
+                    margin-bottom: 3px;
+                }
+                .courseTitle {
+                    font-family: 'OpenSans';
+                    font-size: 0.9375em;
+                    color: $darkGrey;
+                }
+            }
+            .completedOn {
+                width: 70%;
+                margin-top: 2em;
+                @include md {
+                    margin-top: 0;
+                    width: 20%;
+                }
+                @include lg {
+                    width: 23%;
+                }
+            }
+            .download {
+                width: 30%;
+                text-align: right;
+                @include md {
+                    width: 20%;
+                }
+                @include lg {
+                    width: 14%;
+                }
+                button {
+                    background-color: $shadeBlueColor;
+                    border: 1px solid $secondaryColor;
+                    border-radius: 5px;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 0.5em;
+                    font-size: 0.875em;
+                    color: $whiteColor;
+                    width: 100%;
+                    line-height: 1.2;
+                    @include md {
+                        line-height: normal;
+                    }
+                    em {
+                        font-size: 1em;
+                        margin-right: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
 
 //Close Account
 .warning {
