@@ -153,73 +153,31 @@
       </div>
     </section>
      -->
-    <section class="whyLNT">
+    <section class="whyLNT" *ngIf="commonData?.landingPageContents?.whyLNT?.displayStatus">
       <div class="container">
         <div class="heading2">{{commonData?.landingPageContents?.whyLNT?.title}}</div>
       
         <div  class="content">
           <ul>
-            <li>
+            <li *ngFor="let item of commonData?.landingPageContents?.whyLNT?.innerArray">
               <figure>
-                <img src="/assets/images\resume-and-cv.png " alt="">
+                <img [src]="item?.imageurl" alt="">
               </figure>
-              <p>Industry led curriculum</p>
-            </li>
-            <li>
-              <figure>
-                <img src="/assets/images/transferring (1).png " alt="">
-              </figure>
-              <p>Job facilitation though Skills Exchange</p>
-            </li>
-            <li>
-              <figure>
-                <img src="/assets/images/webinar (1).png " alt="">
-              </figure>
-              <p>Exclusive webinars</p>
-            </li>
-            <li>
-              <figure>
-                <img src="/assets/images/light-bulb.png" alt="">
-              </figure>
-              <p>Robust Platform</p>
-            </li>
-            <li>
-              <figure>
-                <img src="/assets/images/solution (1).png" alt="">
-              </figure>
-              <p>End Capstone project</p>
-            </li>
-            <li>
-              <figure>
-                <img src="/assets/images/winner.png" alt="">
-              </figure>
-              <p>L&T EduTech Certification</p>
-            </li>
-            <li>
-              <figure>
-                <img src="/assets/images/light-bulb.png" alt="">
-              </figure>
-              <p>Real world projects</p>
-            </li>
-            <li>
-              <figure>
-                <img src="/assets/images/file-case (1).png" alt="">
-              </figure>
-              <p>Real time case studies</p>
+              <p>{{item?.title}}</p>
             </li>
           </ul>
         </div>
       </div>
     </section>
 
-<section class="learnanywhere">
+<section class="learnanywhere" *ngIf="commonData?.landingPageContents?.learnAnytime?.displayStatus">
   <div class="container">
     <div class="heading2"><h1>{{commonData?.landingPageContents?.learnAnytime?.title}}</h1></div>
     <p>{{commonData?.landingPageContents?.learnAnytime?.description}}</p>
          <div class="contentcenter">
           <div class="group">
             <figure class="grpimg">
-              <img src="/assets/images/Group 23758.png" alt="group">
+              <img [src]="commonData?.landingPageContents?.learnAnytime?.imageurl" alt="group">
             </figure>
           </div>
           <div class="scanner">
