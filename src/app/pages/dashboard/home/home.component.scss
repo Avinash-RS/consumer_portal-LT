@@ -881,6 +881,7 @@
     @include md {
       justify-content: space-between;
       flex-wrap: nowrap;
+      align-items: center;
     }
     .leftSideImage {
       width: 100%;
@@ -1174,6 +1175,7 @@
       padding: 1.25em 1.25em 1.25em 0;
       @include md {
         justify-content: space-between;
+        align-items: center;
         flex-wrap: nowrap;
         padding: 2.25em 2.25em 2.25em 0;
       }
@@ -1281,6 +1283,7 @@
       @include md {
         justify-content: space-between;
         flex-wrap: nowrap;
+        align-items: center;
         padding: 2.25em 0 2.25em 2.25em;
       }
       .leftCon {
