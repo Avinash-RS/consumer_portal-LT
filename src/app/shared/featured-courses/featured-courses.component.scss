@@ -1,0 +1,236 @@
+@import "variables";
+
+.featuredCoursesSection {
+    background-color: $whiteColor;
+    padding: 3.75em 0;
+    position: relative;
+    font-size: 14px;
+    @include md {
+        font-size: 13px;
+    }
+    @include lg {
+        font-size: 14px;
+    }
+    @include xl {
+        font-size: 16px;
+    }
+    // .obstacles {
+    //     position: absolute;
+    //     left: 0;
+    //     bottom: 0;
+    //     z-index: 1;
+    //     background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/industryleater-topleft.webp');
+    //     background-repeat: no-repeat;
+    //     background-size: cover;
+    //     width: 11em;
+    //     height: 11em;
+    // }
+    // &::after {
+    //     content: '';
+    //     position: absolute;
+    //     background-repeat: no-repeat;
+    //     background-size: cover;
+    //     z-index: 1;
+    //     background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/industryleater-bottomleft.webp');
+    //     width: 57%;
+    //     height: 40%;
+    //     right: 0;
+    //     bottom: 6em;
+    //     @include sm {
+    //         width: 50%;
+    //         height: 20%;
+    //     }
+    //     @include md {
+    //         width: 70%;
+    //         height: 40%;
+    //         right: -10em;
+    //     }
+    //     @include lg {
+    //         right: -20em;
+        
+    //     }
+    //     @include xl {
+    //         width: 57%;
+    //         height: 40%;
+    //         right: -15em;
+    //     }
+    //     @media only screen and (min-width: 1540px) {
+    //         width: 53%;
+    //         height: 52%;
+    //     }
+    // }
+    .subHeading {
+        font-size: 1em;
+        font-weight: 400;
+        color: $darkMediumGrey;
+        line-height: normal;
+        margin: 0 0 3.25em 0;
+        text-align: center;
+        display: block;
+        @include sm {
+            margin: 0 0 2.25em 0;
+        }
+        @include md {
+            margin: 0 0 1.25em 0;
+        }
+    }
+    .featuredCourses {
+        z-index: 9;
+        position: relative;
+        .draggable-button-container {
+            position: absolute;
+            width: 100%;
+            right: 0;
+            top: -40px;
+            .leftArrow, .rightArrow {
+                position: absolute;
+                button {
+                    background-color: $whiteColor;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border: none;
+                    width: 1.5em;
+                    height: 1.5em;
+                    box-shadow: 0 3px 6px rgba(0,0,0,0.25) !important;
+                    &.disableArrow {
+                        opacity: 0.5;
+                        cursor: not-allowed;
+                    }
+                    em {
+                        font-size: 0.875em;
+                        color: $blueColor;
+                    }
+                }
+            }
+            .leftArrow {
+                right: 2em;
+            }
+            .rightArrow {
+                right: 0;
+            }
+        }
+        .bg {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 84%;
+            width: 20%;
+            z-index: 9;
+            background: #FFFFFF00;
+            background: -webkit-linear-gradient(left, #FFFFFF00, #FFFFFF);
+            background: -moz-linear-gradient(left, #FFFFFF00, #FFFFFF);
+            background: linear-gradient(to right, #FFFFFF00, #FFFFFF);
+            &.disableShadow {
+                background: none;
+            }
+        }
+        .scrollItem {
+            width: 90%;
+            border-radius: 5px;
+            @include sm {
+                width: 40%;
+            }
+            @include md {
+                width: 39.5%;
+            }
+            @include lg {
+                width: 30%;
+            }
+            @include xl {
+                width: 28%;
+            }
+            &:last-child {
+                margin-right: 0;
+                .modules {
+                    margin-right: 5px;
+                }
+            }
+            .modules {
+                margin-right: 30px;
+            }
+        }
+        figure {
+            display: flex;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .wrapper {
+            background-color: $whiteColor;
+            padding: 0.75em;
+            box-shadow: 0 0 10px rgba(0,0,0,0.25);
+            width: 100%;
+            white-space: initial;
+            border-bottom-right-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+        .domainName {
+            display: block;
+            color: $blueLabelColor;
+            font-size: 0.75em;
+            font-weight: 400;
+            line-height: 1.3;
+            em {
+                font-size: 0.75em;
+                margin-right: 5px;
+            }
+        }
+        .heading6 {
+            display: block;
+            color: $darkGrey;
+            font-family: 'OpenSans';
+            font-weight: 500;
+            margin: 0.65em 0;
+            // min-height: 45px;
+        }
+        p {
+            font-size: 0.875em;
+            font-weight: 400;
+            color: $mediumGrey;
+            line-height: 1.2;
+        }
+        .licenseDuration {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-top: 2em;
+            .commonStyle {
+                span {
+                    display: block;
+                    font-size: 0.75em;
+                    line-height: normal;
+                    font-weight: 400;
+                    &:first-child {
+                        font-family: 'OpenSans';
+                        color: $darkGrayColor;
+                    }
+                    &:last-child {
+                        color: $mediumGrey;
+                        margin-top: 0.5em;
+                        em {
+                            color: $darkGrayColor;
+                            margin-right: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+::ng-deep.featuredCourses {
+    .drag-scroll-wrapper {
+        &.drag-scroll-container {
+            height: auto !important;
+        }
+    }
+    .drag-scroll-content {
+        position: relative;
+        padding: 0 0 10px 10px;
+        &::after {
+            content: '';
+            
+        }
+    }
+}
