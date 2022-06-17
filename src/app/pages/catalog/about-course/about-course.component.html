@@ -68,6 +68,60 @@
                 </div>
             </div>
         </section>
+        <!-- Learning Outcomes -->
+        <section class="Outcomes">
+            <div class="container">
+                <div class="learningOutcomes">
+                    <div class="commonHeadingStyle">Learning Outcomes</div>
+                    <p>Learners are expected to understand</p>
+                    <div class="outcomesContainer">
+                        <div class="points">
+                            <ul>
+                                <li>
+                                    <figure>
+                                        <img src="https://lmsassetspremium.lntedutech.com/portalicons/task.webp" alt="">
+                                    </figure>
+                                    <span>The basic concepts andtypes of formwork</span>
+                                </li>
+                                <li>
+                                    <figure>
+                                        <img src="https://lmsassetspremium.lntedutech.com/portalicons/task.webp" alt="">
+                                    </figure>
+                                    <span>Various engineering applications of formwork</span>
+                                </li>
+                                <li>
+                                    <figure>
+                                        <img src="https://lmsassetspremium.lntedutech.com/portalicons/task.webp" alt="">
+                                    </figure>
+                                    <span>Parameters to be considered in selecting the right formwork system</span>
+                                </li>
+                                <li>
+                                    <figure>
+                                        <img src="https://lmsassetspremium.lntedutech.com/portalicons/task.webp" alt="">
+                                    </figure>
+                                    <span>Design principles of formwork</span>
+                                </li>
+                                <li>
+                                    <figure>
+                                        <img src="https://lmsassetspremium.lntedutech.com/portalicons/task.webp" alt="">
+                                    </figure>
+                                    <span>How the formwork is planned for various structures</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="achievementImg">
+                            <figure>
+                                <img src="https://lmsassetspremium.lntedutech.com/portalicons/achieve.webp" alt="">
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ocean">
+                <div class="wave" [ngStyle]="{'background-image': 'url(' + item?.imageurl + ')'}"></div>
+                <div class="wave" [ngStyle]="{'background-image': 'url(' + item?.imageurl2 + ')'}"></div>
+            </div>
+        </section>
         <ng-container *ngFor="let item of this.courseData?.courseContents?.Headings">
           <!-- Why Full Stack -->
            <!-- <ng-container *ngIf="item?.sectionId == 1 && item?.dispalystatus">
@@ -419,36 +473,50 @@
                   </div>
                 </div>
               </section>
-            <!-- Expert Support System -->
-            <!-- <ng-container *ngIf="item?.sectionId == 4 && item?.dispalystatus">
-                <section class="expertSupportTab" [id]="item.sectionId" #4 [ngStyle]="{'background-image': 'url(https://lmsassetspremium.lntedutech.com/portalicons/expertbg.webp)'}">
+            <!-- Course Mentor -->
+            <ng-container *ngIf="item?.sectionId == 4 && item?.dispalystatus">
+                <section class="courseMentorTab" [id]="item.sectionId" #4 [ngStyle]="{'background-image': 'url(https://lmsassetspremium.lntedutech.com/portalicons/expertbg.webp)'}">
                     <div class="container">
-                        <div class="commonHeadingStyle">{{item?.title}}</div>
-                        <mat-tab-group class="expertSupportSystem">
-                            <mat-tab *ngFor="let childItem of item?.innerArray">
-                                <ng-template mat-tab-label>{{childItem?.title}}</ng-template>
-                                <ng-template matTabContent>
-                                    <ng-container *ngIf="childItem?.subSectionID == 1">
+                        <div class="commonHeadingStyle">Course Mentor</div>
+                        <!-- <mat-tab-group class="expertSupportSystem"> -->
+                            <!-- <mat-tab *ngFor="let childItem of item?.innerArray"> -->
+                                <!-- <ng-template mat-tab-label>{{childItem?.title}}</ng-template> -->
+                                <!-- <ng-template> -->
+                                    <ng-container>
                                         <div class="instructorsTab content">
                                             <owl-carousel-o [options]="TopicsOptions">
-                                                <ng-template *ngFor="let instructorsArray of childItem?.innersubArray" carouselSlide>
+                                                <ng-template carouselSlide>
                                                         <div class="profile">
                                                             <div class="image">
                                                                 <figure>
-                                                                    <img [src]="instructorsArray.imageurl" alt="" />
+                                                                    <img src="../../../../assets/images/Mr. Ataullah.webp" alt="" />
                                                                 </figure>
                                                             </div>
                                                             <div class="imageContent">
-                                                                <span class="heading5">{{instructorsArray?.name}}</span>
-                                                                <span class="desc">{{instructorsArray?.designation}}</span>
-                                                                <p>{{instructorsArray?.description}}</p>
+                                                                <span class="heading5">Mr. Ataullah</span>
+                                                                <span class="desc">Training Specialist, L&T EduTech.</span>
+                                                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At veroamet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.</p>
                                                             </div>
                                                         </div>
                                                 </ng-template>
+                                                <!-- <ng-template carouselSlide>
+                                                    <div class="profile">
+                                                        <div class="image">
+                                                            <figure>
+                                                                <img src="../../../../assets/images/Mr. Ataullah.webp" alt="" />
+                                                            </figure>
+                                                        </div>
+                                                        <div class="imageContent">
+                                                            <span class="heading5">Mr. Ataullah</span>
+                                                            <span class="desc">Training Specialist, L&T EduTech.</span>
+                                                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At veroamet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.</p>
+                                                        </div>
+                                                    </div>
+                                            </ng-template> -->
                                             </owl-carousel-o>
                                         </div>
                                     </ng-container>
-                                    <ng-container *ngIf="childItem?.subSectionID == 2">
+                                    <!-- <ng-container *ngIf="childItem?.subSectionID == 2">
                                         <div class="expertTab content">
                                             <owl-carousel-o [options]="expertOptions" class="expertList">
                                                 <ng-container *ngFor="let expertTab of childItem?.innersubArray">
@@ -518,14 +586,13 @@
                                                 </figure>
                                             </div>
                                         </div>
-                                    </ng-container>
-                                </ng-template>
-                            
-                            </mat-tab>
-                        </mat-tab-group>
+                                    </ng-container> -->
+                                <!-- </ng-template>                             -->
+                            <!-- </mat-tab> -->
+                        <!-- </mat-tab-group> -->
                     </div>
                 </section>
-            </ng-container>           -->
+            </ng-container>       
             <!-- Carrer Path -->
             <!-- <ng-container *ngIf="item?.sectionId == 5 && item?.dispalystatus">
                 <section class="careerPath" [id]="item.sectionId" #5>
@@ -648,7 +715,7 @@
             </ng-container> -->
             
             <!-- Related items -->
-            <ng-container *ngIf="item?.sectionId == 10 && item?.dispalystatus">
+            <ng-container *ngIf="item?.sectionId == 10">
                 <app-relateditems [relateditem]="item"></app-relateditems>
             </ng-container>
             <!-- hiringPartnres -->

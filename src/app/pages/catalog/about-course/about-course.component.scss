@@ -1290,6 +1290,160 @@
   }
 }
 
+//LearningOutcomes
+.Outcomes {
+  background-color: $whiteColor;
+  padding: 1em 0 2.5em 0;
+  font-size: 13px;
+  position: relative;
+  overflow: hidden;
+  @include md {
+    font-size: 14px;
+  }
+  @include lg {
+    font-size: 15px;
+    padding: 0 0 3em 0;
+  }
+  @include xl {
+    font-size: 16px;
+  }
+  // &::after {
+  //   content: '';
+  //   position: absolute;
+  //   bottom: 0;
+  //   left: 0;
+  //   width: 110%;
+  //   height: 100%;
+  //   opacity: 0.065;
+  //   background-image: url("https://lmsassetspremium.lntedutech.com/portalicons/programhighlights.webp");
+  //   background-repeat: no-repeat;
+  //   background-size: cover;
+  //   background-position: bottom;
+  // }
+  .container {
+    position: relative;
+    z-index: 9;
+    .learningOutcomes {
+      margin-top: 1.25em;
+      display: inline-block;
+      width: 100%;
+      .commonHeadingStyle {
+        font-family: "OpenSans", sans-serif;
+        font-size: 1.875em;
+        font-weight: 600;
+        color: $darkGrey;
+        line-height: 1.1;
+        position: relative;
+      }
+      p {
+        font-size: 1em;
+        font-weight: 400;
+        color: $mediumGrey;
+        display: block;
+        line-height: 1.4;
+        // padding: 1em 0 2em 0;
+        margin: 2.5em 0;
+      }
+      .outcomesContainer {
+        display: flex;
+        flex-wrap: wrap;
+        // max-width: 1070px;
+        // width: 97%;
+        margin: 1em auto 0 auto;
+        @include md {
+          justify-content: space-between;
+          flex-wrap: nowrap;
+        }
+        .points {
+          width: 100%;
+          @include md {
+            width: 47%;
+          }
+          position: relative;
+          &:last-child {
+            margin-top: 2em;
+            @include md {
+              margin-top: 0;
+            }
+            &::after {
+              content: none;
+            }
+          }
+          ul {
+            width: 85%;
+            li {
+              display: flex;
+              align-items: center;
+              margin-bottom: 1.5em;
+              @include md {
+                margin-bottom: 2em;
+              }
+              figure {
+                margin-right: 2.5%;
+                width: 6%;
+                line-height: normal;
+                // background: transparent linear-gradient(90deg, #85C48D 0%, #6DC09C 31%, #2FB6C3 95%, #2BB6C7 100%) 0% 0% no-repeat padding-box;
+                img {
+                  width: 100%;
+                }
+              }
+              span {
+                // font-family: "lato", sans-serif;
+                width: 94%;
+                font-size: 1em;
+                font-weight: 500;
+                color: $mediumGrey;
+                line-height: normal;
+                &:last-child {
+                  margin-bottom: 0;
+                }
+              }
+            }
+          }
+        }
+        .achievementImg {
+          width: 100%;
+          @include md {
+            width: 53%;
+          }
+          figure {
+            width: 65%;
+            margin: 0 auto;
+            img {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+  .ocean {
+    height: 5%;
+    width: 100%;
+    position: absolute;
+    bottom: -25px;
+    left: 0;
+    background: rgba(183, 210, 234, 0.25);
+    .wave {
+      background-repeat: repeat-x;
+      opacity: 1;
+      position: absolute;
+      top: -238px;
+      width: 6400px;
+      height: 198px;
+      animation: wave 15s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+      transform: translate3d(0, 0, 0);
+    }
+    .wave:nth-of-type(2) {
+      background-repeat: repeat-x;
+      opacity: 1;
+      top: -175px;
+      animation: wave 15s cubic-bezier(0.36, 0.45, 0.63, 0.53) -0.125s infinite, swell 7s ease -1.25s infinite;
+    }
+  }
+}
+
+
 // Expert Accordion
 ::ng-deep.accordionPanel {
   .mat-expansion-panel {
@@ -1818,7 +1972,7 @@
 //   }
 // }
 
-.expertSupportTab {
+.courseMentorTab {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -1841,64 +1995,98 @@
     color: $whiteColor;
   }
   .instructorsTab {
+    border: 0;
+    font-family: "OpenSans", sans-serif !important;
+    font-size: 0.875em;
+    font-weight: 600;
+    line-height: normal;
+    color: $darkMediumGrey;
+    // text-transform: uppercase;
+    background: $whiteSmoke;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
+    opacity: 1;
+    border-radius: 5px;
+    margin-right: 4px;
+    width: 100%;
+    height: auto;
+    padding: 1.25em 1em;
+    background-image: url("../../../../assets/images/MentorBgDots.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     .profile {
+      width: 100%;
       display: flex;
-      align-items: flex-start;
-      height: 12.58em;
-      width: 97%;
-      background-color: $whiteColor;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+      flex-wrap: wrap;
+      align-items: center;
       padding: 1.5em 1em;
-      margin-top: 1em;
       position: relative;
       transition: all 0.2s;
-      &::after,
-      &::before {
-        content: "";
-        position: absolute;
-        box-sizing: inherit;
-        border: 1px solid transparent;
-        width: 0;
-        height: 0;
+      @include md {
+        justify-content: center;
+        flex-wrap: nowrap;
+        max-width: 1050px;
+        margin: 0 auto;
       }
-      &::before {
-        top: 0;
-        left: 0;
-      }
-      &::after {
-        bottom: 0;
-        right: 0;
-      }
-      &:hover {
-        &::after,
-        &::before {
-          width: 100%;
-          height: 100%;
-        }
-        &::before {
-          border-top-color: #00bcef;
-          border-right-color: #00bcef;
-          transition: width 0.25s ease-out, height 0.25s ease-out 0.25s;
-        }
-        &::after {
-          border-bottom-color: #00bcef;
-          border-left-color: #00bcef;
-          transition: border-color 0s ease-out 0.5s, width 0.25s ease-out 0.5s,
-            height 0.25s ease-out 0.75s;
-        }
-      }
+      // height: 12.58em;
+      // background-color: $whiteColor;
+      // box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+      // margin-top: 1em;
+      // &::after,
+      // &::before {
+      //   content: "";
+      //   position: absolute;
+      //   box-sizing: inherit;
+      //   border: 1px solid transparent;
+      //   width: 0;
+      //   height: 0;
+      // }
+      // &::before {
+      //   top: 0;
+      //   left: 0;
+      // }
+      // &::after {
+      //   bottom: 0;
+      //   right: 0;
+      // }
+      // &:hover {
+      //   &::after,
+      //   &::before {
+      //     width: 100%;
+      //     height: 100%;
+      //   }
+      //   &::before {
+      //     border-top-color: #00bcef;
+      //     border-right-color: #00bcef;
+      //     transition: width 0.25s ease-out, height 0.25s ease-out 0.25s;
+      //   }
+      //   &::after {
+      //     border-bottom-color: #00bcef;
+      //     border-left-color: #00bcef;
+      //     transition: border-color 0s ease-out 0.5s, width 0.25s ease-out 0.5s,
+      //       height 0.25s ease-out 0.75s;
+      //   }
+      // }
       .image {
-        width: 29%;
+        width: 100%;
+        order: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include md {
+          width: 30%;
+          order: 1;
+        }
         figure {
           border-radius: 50%;
-          border: 1px solid rgba(73, 174, 49, 0.5);
-          width: 7em;
-          height: 7em;
+          // border: 1px solid rgba(73, 174, 49, 0.5);
+          width: 9em;
+          height: 9em;
           overflow: hidden;
-          box-shadow: 3px 5px 6px rgba(0, 0, 0, 0.16);
-          @include xl {
-            width: 8em;
-            height: 8em;
+          // box-shadow: 3px 5px 6px rgba(0, 0, 0, 0.16);
+          @include md {
+            width: 13em;
+            height: 13em;
           }
           // display: flex;
           // overflow: hidden;
@@ -1911,6 +2099,8 @@
           // -moz-transform: skew(20deg);
           // -o-transform: skew(20deg);
           img {
+            width: 100%;
+            box-shadow: 3px 5px 6px rgba(0, 0, 0, 0.16);
             // position: absolute;
             // top: 0;
             // left: 30px;
@@ -1926,39 +2116,54 @@
         }
       }
       .imageContent {
-        width: 66%;
-        margin-left: 5%;
+        width: 100%;
+        margin-top: 5%;
+        order: 2;
+        @include md {
+          width: 65%;
+          margin: 0 0 0 5%;
+          order: 2;
+        }
         span {
           display: block;
           &.heading5 {
+            font-family: "Open Sans", sans-serif;
             color: $blackColor;
-            font-weight: 700;
+            font-weight: 600;
             // text-transform: uppercase;
             margin: 0 0 0.5em 0;
+            text-align: center;
+            @include md {
+              text-align: left;
+            }
           }
           &.desc {
-            color: #5dadec;
+            color: $lightGrey;
             font-size: 0.9375em;
             font-weight: 400;
             line-height: normal;
+            text-align: center;
+            @include md {
+              text-align: left;
+            }
           }
         }
         p {
           font-size: 0.9375em;
-          color: #5e5e5e;
+          color: $mediumGrey;
           font-weight: 400;
+          text-align: justify;
           margin: 1.5em 0 0 0;
-          text-align: left;
         }
       }
     }
     .owl-theme .owl-dots .owl-dot span {
       margin: 5px;
       background: transparent;
-      border: 1px solid #29abe2;
+      border: 1px solid $lightGrey;
     }
     .owl-theme .owl-dots .owl-dot.active span {
-      background: #29abe2;
+      background: $shadeBlueColor;
     }
   }
   .expertTab {
@@ -2133,7 +2338,7 @@
     }
   }
 }
-::ng-deep .expertSupportTab {
+::ng-deep .courseMentorTab {
   .mat-tab-group.mat-primary .mat-ink-bar,
   .mat-tab-nav-bar.mat-primary .mat-ink-bar {
     background-color: transparent;

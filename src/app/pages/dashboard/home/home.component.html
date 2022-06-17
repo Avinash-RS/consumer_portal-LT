@@ -16,6 +16,22 @@
           </ul>
       </div>
     </section> -->
+
+    <!--aboutProgram-->
+    <section class="aboutProgram" *ngIf="commonData?.landingPageContents?.aboutProgram?.displayStatus">
+      <div class="container">
+        <div class="leftSideImage">
+          <figure>
+            <img src="../../../../assets/images/aboutProgram.png" alt="aboutProgram">
+          </figure>
+        </div>
+        <div class="rightSideDetails">
+            <div class="heading2">{{commonData?.landingPageContents?.aboutProgram?.title}}</div>
+            <p>{{commonData?.landingPageContents?.aboutProgram?.description}}</p>
+        </div>
+      </div>
+    </section>
+
     <!-- capabilities -->
     <!-- <section class="capabilities" *ngIf="commonData?.landingPageContents?.capabilities?.displaystatus">
       <span class="obstacles"></span>
@@ -34,6 +50,9 @@
                 <span>{{item?.title}}</span>
               </li>
             </ul>
+            <div>
+              <button (click)="navigateCatalog()">Explore Catalog</button>
+            </div>
           </div>
           <div class="right">
             <figure>
@@ -46,6 +65,40 @@
 
     <!-- <app-domain-list class="app-Domain"></app-domain-list> -->
     <app-assessments-list class="app-Assessment"></app-assessments-list>
+
+    <!--aboutL&TEduTech-->
+    <section class="aboutLTE" *ngIf="commonData?.landingPageContents?.aboutLNT?.displayStatus">
+      <div class="wrapper">
+        <div class="container">
+          <div class="leftSideImg">
+            <figure>
+              <img [src]="commonData?.landingPageContents?.aboutLNT?.imageurl" alt="aboutL&TEduTech">
+            </figure>
+          </div>
+          <div class="rightSideContent">
+            <div class="heading2">{{commonData?.landingPageContents?.aboutLNT?.title}}</div>
+            <p>{{commonData?.landingPageContents?.aboutLNT?.description}}</p>
+          </div>
+        </div>
+    </div>
+    </section>
+
+    <!--aboutGTU-->
+    <section class="aboutGTU" *ngIf="commonData?.landingPageContents?.aboutGTU?.displayStatus">
+      <div class="wrapper">
+        <div class="container">
+          <div class="leftCon">
+            <div class="heading2">{{commonData?.landingPageContents?.aboutGTU?.title}}</div>
+            <p>{{commonData?.landingPageContents?.aboutGTU?.description}}</p>
+          </div>
+          <div class="rightImgCont">
+            <figure>
+              <img [src]="commonData?.landingPageContents?.aboutGTU?.imageurl" alt="aboutGTU">
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- What we Do -->
     <!-- <section class="whatWeDo" *ngIf="commonData?.landingPageContents?.weDo?.displaystatus">

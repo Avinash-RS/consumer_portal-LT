@@ -269,23 +269,50 @@ header {
             display: inline-flex;
         }
     }
-    .register {
-        padding: 0.375em 1.5em;
-        background-color: $whiteColor;
-        color: $secondaryColor;
-        font-size: 1.15em;
+    .register,.login {
+        font-size: 1em;
+        padding: 0.35em 1em;
+        @include md {
+            font-size: 1.15em;
+            padding: 0.375em 1.5em;
+        }
         font-weight: 400;
         border-radius: 5px;
-        border: 1px solid $primaryColor;
         box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
         transition: all 0.3s ease-in-out;
-        display: none;
+    }
+    .login {
+        background-color: $whiteColor;
+        color: $secondaryColor;
+        border: 1px solid $primaryColor;
+        margin-right: 0;
+        @include md {
+            margin-right: 1em;
+        }
         &:hover {
             color: $whiteColor;
             background-color: $primaryColor;
         }
+    }
+    .register {
+        display: none;
         @include lg {
             display: inline-flex;
+        }
+        background-color: $secondaryColor;
+        color: $whiteColor;
+        border: 1px solid $secondaryColor;
+        &:hover {
+            background-color: $hoversecondaryColor;
+            border: 1px solid $hoversecondaryColor;
+        }
+    }
+    .aictelogo {
+        text-align: center;
+        figure {
+            img {
+                width: 50%;
+            }
         }
     }
 }
@@ -1117,12 +1144,12 @@ header {
         display: inline-flex;
         justify-content: center;
         align-items: center;
-        background-color: #FFCB00;
+        background-color: $primaryColor;
         border-radius: 50%;
-        width: 2.5em;
-        height: 2.5em;
+        width: 3em;
+        height: 3em;
         em {
-            color: $blackColor;
+            color: $whiteColor;
             font-size: 1.25em;
         }
     }
