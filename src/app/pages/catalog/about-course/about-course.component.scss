@@ -414,6 +414,159 @@
       }
     }
   }
+
+// assessmentOverview
+.aboutTheCourse {
+  background-color: $paleBlue;
+  padding: 3.75em 0 0 0;
+  font-size: 13px;
+  @include md {
+    font-size: 14px;
+  }
+  @include lg {
+    font-size: 15px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
+  .container {
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      background-repeat: no-repeat;
+      background-size: cover;
+      z-index: 1;
+    }
+    &::before {
+        background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/leftCircle.webp');
+        width: 45%;
+        height: 40%;
+        left: -15em;
+        bottom: 0;
+        @include md  {
+          left: -25em;
+          bottom: 0;
+        }
+        @include lg {
+          left: -25em;
+          bottom: 0;
+        }
+        @include xl {
+          height: 45%;
+          bottom: 0;
+        }
+    }
+    .wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      @include md {
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: nowrap;
+      }
+      .left {
+        width: 100%;
+        position: relative;
+        z-index: 2;
+        @include sm {
+          width: 75%;
+        }
+        @include md {
+          width: 80%;
+        }
+        p {
+          color: $darkMediumGrey;
+          font-size: 1em;
+          font-weight: 400;
+          line-height: 2;
+          margin-bottom: 3.75em;
+        }
+        .coursePoints {
+          max-width: 1070px;
+          width: 92%;
+          margin: 1em auto 0 auto;
+          ul {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            margin: 2em 0;
+            @include md {
+              flex-wrap: nowrap;
+              justify-content: flex-start;
+            }
+            li {
+              width: 100%;
+              margin-bottom: 1em;
+              @include md {
+                width: 50%;
+              }
+              .headline {
+                font-size: 1.3750em;
+                font-weight: 600;
+                color: $mediumGrey;
+                margin-bottom: 0.95em;
+                @include md {
+                  margin-bottom: 0.75em;
+                }
+              }
+              .pointContent {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                figure {
+                  width: 10%;
+                  img {
+                    width: 100%;
+                  }
+                }
+                span {
+                  width: 90%;
+                  font-size: 1em;
+                  font-weight: 400;
+                  color: $mediumGrey;
+                }
+              }
+            }
+          }
+        }
+      }
+      .right {
+        @include sm {
+          width: 100%;
+          // opacity: 1;
+        }
+        @include md {
+          width: 19%;
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          width: 50%;
+          z-index: 1;
+          // opacity: 0.2;
+        }
+        @include lg {
+          width: 15%;
+        }
+        @include xl {
+          width: 15%;
+        }
+        figure {
+          display: flex;
+          width: 50%;
+          margin: 0 auto;
+          @include  md {
+            width: 100%;
+          }
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
   // Why Full Stack
   .whyFullStack {
     background-color: #f8fbff;
