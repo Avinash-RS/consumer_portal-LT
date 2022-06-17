@@ -68,7 +68,34 @@
                 </div>
             </div>
         </section>
-
+        <section class="aboutTheCourse" *ngIf="gtuContent?.aboutCourse?.dispalystatus">
+            <div class="container">
+                <div class="commonHeadingStyle">{{gtuContent?.aboutCourse?.title}}</div>
+                <div class="wrapper">
+                    <div class="left">
+                        <p>{{gtuContent?.aboutCourse?.description}}</p>
+                        <div class="coursePoints">
+                            <ul>
+                                <li *ngFor="let item of gtuContent?.aboutCourse?.innerArray">
+                                    <div class="headline">{{item?.title}}</div>
+                                    <div class="pointContent">
+                                        <figure>
+                                            <img [src]="item?.imageurl" alt="">
+                                        </figure>
+                                        <span>{{item?.description}}</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <figure>
+                            <img [src]="gtuContent?.aboutCourse?.imageurl" alt="">
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section class="projectThink" Style="background-image: url(/assets/images/Bg.png)" *ngIf="gtuContent?.profiency?.dispalystatus">
             <div class="container">
                 <div class="thinkSection" >
