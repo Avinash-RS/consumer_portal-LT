@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NavigationEnd, Router, RouterEvent } from "@angular/router"
 import { ActivatedRoute } from '@angular/router';
 import { AppConfigService } from 'src/app/utils/app-config.service';
@@ -13,6 +13,7 @@ import {
   BreakpointObserver,
   BreakpointState
 } from '@angular/cdk/layout';
+import { OwlOptions, SlidesOutputData } from 'ngx-owl-carousel-o';
 @Component({
   selector: 'app-assessments-list',
   templateUrl: './assessments-list.component.html',
@@ -35,7 +36,7 @@ export class AssessmentsListComponent implements OnInit {
   blobToken: string = environment.blobKey;
   public destroyed = new Subject<any>();
   subscriberdata: any;
-  productType:string = 'all';
+  productType:string = 'course';
   filteredTab:string = 'all';
   filterTabs = [
     {label:"All",value:"all"},
@@ -44,6 +45,31 @@ export class AssessmentsListComponent implements OnInit {
   ];
   isNavigated:boolean = false;
   sliceDigits:number = 6;
+  CategoriesOptions: OwlOptions = {
+    loop: false,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    autoplay: false,
+    margin: 20,
+    dots: false,
+    navSpeed: 700,
+    navText: ['<em class="icon-LeftArrow prev"></em>', '<em class="icon-RightArrow next"></em>'],
+    responsive: {
+      0: {
+        items: 2
+      },
+      480: {
+        items: 4
+      },
+      768: {
+        items: 6
+      }
+    },
+    nav: true
+  };
+  activeSlides: SlidesOutputData;
+  slidesStore: any[];
   constructor(private _loading: LoadingService,
               private router: Router,
               private catalogService: CatalogService,
@@ -56,7 +82,7 @@ export class AssessmentsListComponent implements OnInit {
     this.setSliceValue();
     if (this.route.snapshot.queryParams.selectedTab) {
       this.fromTab = atob(this.route.snapshot.queryParams.selectedTab);
-      this.productType = this.route.snapshot.queryParams.productType ? atob(this.route.snapshot.queryParams.productType) : 'all';
+      // this.productType = this.route.snapshot.queryParams.productType ? atob(this.route.snapshot.queryParams.productType) : 'all';
       this.isNavigated = true;
     }
     this.getDomain(this.productType);
@@ -87,8 +113,11 @@ export class AssessmentsListComponent implements OnInit {
       });
   }
   getDomain(type) {
-    this.productType = type;
-    this.catalogService.getCatalog(type).subscribe((response: any) => {
+    const apiParms = {
+      productType:this.productType,
+      courseOrigin:environment.userOrigin
+  }
+    this.catalogService.getCatalog(apiParms).subscribe((response: any) => {
       if (response.data.length > 0) {
         this.tabValues = response.data;
         this.tabValues.splice(0, 0, this.firstTabValue)
@@ -113,7 +142,8 @@ export class AssessmentsListComponent implements OnInit {
     var params = {
       "domainId": id,
       "pagenumber": this.pageNumber,
-      "productType" :this.productType
+      "productType" :this.productType,
+      "courseOrigin":environment.userOrigin
     }
     this.catalogService.getAreaByDomain(params).subscribe((response: any) => {
       this.noDataSkeleton = false;
@@ -148,4 +178,10 @@ export class AssessmentsListComponent implements OnInit {
     this.fromTab='All';
     this.getDomain(this.filteredTab);
   }
+
+  getPassedData(data: SlidesOutputData) {
+    this.activeSlides = data;
+    console.log(this.activeSlides);
+  }
+
 }

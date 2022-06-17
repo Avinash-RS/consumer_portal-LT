@@ -43,9 +43,9 @@ export class HeaderImageComponent implements OnInit {
 
   ngOnInit() {
     this.rxjsHeaderAvatarUpdate();
-    this.getSliderContent()
-    this.getProfilePercentage();
-    this.showKycProgress();
+    // this.getSliderContent()
+    // this.getProfilePercentage();
+    // this.showKycProgress();
   }
 
   navigateCatalog() {

@@ -1,7 +1,7 @@
 <ng-container *ngIf="commonData">
     <app-header-image class="app-Header" [HomeBannerImage]="commonData.ImageData"></app-header-image>
     <!-- bannercount -->
-    <section class="bannercount">
+    <!-- <section class="bannercount">
       <div class="container">
           <ul>
             <li *ngFor="let item of commonData?.landingPageContents?.bannerFooter">
@@ -15,9 +15,25 @@
             </li>
           </ul>
       </div>
+    </section> -->
+
+    <!--aboutProgram-->
+    <section class="aboutProgram" *ngIf="commonData?.landingPageContents?.aboutProgram?.displayStatus">
+      <div class="container">
+        <div class="leftSideImage">
+          <figure>
+            <img src="https://lmsassetspremium.lntedutech.com/portalicons/aboutProgram-landscape.webp" alt="aboutProgram">
+          </figure>
+        </div>
+        <div class="rightSideDetails">
+            <div class="heading2">{{commonData?.landingPageContents?.aboutProgram?.title}}</div>
+            <p>{{commonData?.landingPageContents?.aboutProgram?.description}}</p>
+        </div>
+      </div>
     </section>
+
     <!-- capabilities -->
-    <section class="capabilities" *ngIf="commonData?.landingPageContents?.capabilities?.displaystatus">
+    <!-- <section class="capabilities" *ngIf="commonData?.landingPageContents?.capabilities?.displaystatus">
       <span class="obstacles"></span>
       <div class="container">
         <div class="heading2">{{commonData?.landingPageContents?.capabilities?.title}}
@@ -34,9 +50,9 @@
                 <span>{{item?.title}}</span>
               </li>
             </ul>
-            <!-- <div>
+            <div>
               <button (click)="navigateCatalog()">Explore Catalog</button>
-            </div> -->
+            </div>
           </div>
           <div class="right">
             <figure>
@@ -45,14 +61,48 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- <app-domain-list class="app-Domain"></app-domain-list> -->
     <app-assessments-list class="app-Assessment"></app-assessments-list>
     <app-featured-courses></app-featured-courses>
 
+    <!--aboutL&TEduTech-->
+    <section class="aboutLTE" *ngIf="commonData?.landingPageContents?.aboutLNT?.displayStatus">
+      <div class="wrapper">
+        <div class="container">
+          <div class="leftSideImg">
+            <figure>
+              <img [src]="commonData?.landingPageContents?.aboutLNT?.imageurl" alt="aboutL&TEduTech">
+            </figure>
+          </div>
+          <div class="rightSideContent">
+            <div class="heading2">{{commonData?.landingPageContents?.aboutLNT?.title}}</div>
+            <p>{{commonData?.landingPageContents?.aboutLNT?.description}}</p>
+          </div>
+        </div>
+    </div>
+    </section>
+
+    <!--aboutGTU-->
+    <section class="aboutGTU" *ngIf="commonData?.landingPageContents?.aboutGTU?.displayStatus">
+      <div class="wrapper">
+        <div class="container">
+          <div class="leftCon">
+            <div class="heading2">{{commonData?.landingPageContents?.aboutGTU?.title}}</div>
+            <p>{{commonData?.landingPageContents?.aboutGTU?.description}}</p>
+          </div>
+          <div class="rightImgCont">
+            <figure>
+              <img [src]="commonData?.landingPageContents?.aboutGTU?.imageurl" alt="aboutGTU">
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- What we Do -->
-    <section class="whatWeDo" *ngIf="commonData?.landingPageContents?.weDo?.displaystatus">
+    <!-- <section class="whatWeDo" *ngIf="commonData?.landingPageContents?.weDo?.displaystatus">
       <div class="banner">
         <div class="headingContent">
           <div class="heading2">{{commonData?.landingPageContents?.weDo?.title}}</div>
@@ -72,10 +122,10 @@
           </ul>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- chooseus -->
-    <section class="chooseus" *ngIf="commonData?.landingPageContents?.chooseUs?.displaystatus">
+    <!-- <section class="chooseus" *ngIf="commonData?.landingPageContents?.chooseUs?.displaystatus">
       <div class="heading2">{{commonData?.landingPageContents?.chooseUs?.title}}</div>
       <div class="container">
         <div class="contentwrapper">
@@ -102,8 +152,152 @@
         </div>
       </div>
     </section>
+     -->
+    <section class="whyLNT">
+      <div class="container">
+        <div class="heading2">{{commonData?.landingPageContents?.whyLNT?.title}}</div>
+      
+        <div  class="content">
+          <ul>
+            <li>
+              <figure>
+                <img src="/assets/images\resume-and-cv.png " alt="">
+              </figure>
+              <p>Industry led curriculum</p>
+            </li>
+            <li>
+              <figure>
+                <img src="/assets/images/transferring (1).png " alt="">
+              </figure>
+              <p>Job facilitation though Skills Exchange</p>
+            </li>
+            <li>
+              <figure>
+                <img src="/assets/images/webinar (1).png " alt="">
+              </figure>
+              <p>Exclusive webinars</p>
+            </li>
+            <li>
+              <figure>
+                <img src="/assets/images/light-bulb.png" alt="">
+              </figure>
+              <p>Robust Platform</p>
+            </li>
+            <li>
+              <figure>
+                <img src="/assets/images/solution (1).png" alt="">
+              </figure>
+              <p>End Capstone project</p>
+            </li>
+            <li>
+              <figure>
+                <img src="/assets/images/winner.png" alt="">
+              </figure>
+              <p>L&T EduTech Certification</p>
+            </li>
+            <li>
+              <figure>
+                <img src="/assets/images/light-bulb.png" alt="">
+              </figure>
+              <p>Real world projects</p>
+            </li>
+            <li>
+              <figure>
+                <img src="/assets/images/file-case (1).png" alt="">
+              </figure>
+              <p>Real time case studies</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+<section class="learnanywhere">
+  <div class="container">
+    <div class="heading2"><h1>{{commonData?.landingPageContents?.learnAnytime?.title}}</h1></div>
+    <p>{{commonData?.landingPageContents?.learnAnytime?.description}}</p>
+         <div class="contentcenter">
+          <div class="group">
+            <figure class="grpimg">
+              <img src="/assets/images/Group 23758.png" alt="group">
+            </figure>
+          </div>
+          <div class="scanner">
+            <span>Scan this QR code on your camera app to download the app </span>
+            <figure>
+              <img src="/assets/images/YLy3V.png" alt="scanner">
+            </figure>
+            <p>or</p>
+            <div class="apps">
+              <figure class="store">
+                <img src="/assets/images/Mask Group 14588.png" alt="">
+              </figure>
+              <figure class="appstore">
+                <img src="/assets/images/Mask Group 14589.png" alt="">
+              </figure>
+            </div>
+          </div>
+         </div>
+  </div>
+</section>
+
+
+<section class="ourPartners">
+  <div class="container">
+    <div class="partnersSection">
+      <div class="left">
+        <div class="heading">For any Support :</div>
+        <div class="contacts"> 
+          <span class="eduEmail"><figure><img src="/assets/images/Path 29626.png" alt=""></figure><p>contact@lntedutech.com</p></span>
+          <span class="contactIcon"><figure><img src="/assets/images/Group 20273.png" alt=""></figure><p>09876543210</p></span>
+        </div>
+      </div>
+      <div class="right">
+        <div class="policy">
+          <span>Terms of Use</span>
+          <span>Privacy Policy</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- <section class="feedback" *ngIf="commonData?.landingPageContents?.studentAboutUs?.displaystatus">
+  <div class="container">
+    <div class="heading2">{{commonData?.landingPageContents?.studentAboutUs?.title}}</div>
+    <div class="owlCarouselWrapper">
+      <owl-carousel-o [options]="testimonialOptions">
+        <ng-container *ngFor="let item of commonData?.landingPageContents?.studentAboutUs?.innerArray">
+          <ng-template carouselSlide>
+              <div class="card">
+                  <p class="title">{{item?.title}}</p>
+                  <p class="desc">{{item?.description}}</p>
+              <div class="imagearea">
+                  <div class="greencircle">
+                    <em class="icon-MetroQuote"></em>
+                  </div>
+                <figure>
+                  <img [src]="item?.imageurl" alt="">
+                </figure>
+              </div>
+              </div>
+              <div class="footer">
+                <p>{{item?.name}}</p>
+                <span>{{item?.designation}}</span>
+              </div>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+    </div>
+  </div>
+</section> -->
+
+
+
+
        <!-- carrerpath -->
-       <section class="successfulCareer">
+       <!-- <section class="successfulCareer">
         <div class="container">
           <div class="heading2">{{'Successful Career Paths'}}</div>
           <p>{{commonData?.landingPageContents?.careerPaths?.description}}</p>
@@ -129,8 +323,8 @@
           </div>
           <button>More Careers</button>
         </div>
-      </section>
-    <app-goals class="app-Goals" [AchieveGoal]="commonData.acheiveData"></app-goals>
+      </section> -->
+    <!-- <app-goals class="app-Goals" [AchieveGoal]="commonData.acheiveData"></app-goals> -->
     <!-- <app-examination class="app-Examination" [Examination]="commonData.examinationData"></app-examination> -->
     <!-- feedback -->
     <section class="feedback" *ngIf="commonData?.landingPageContents?.studentAboutUs?.displaystatus">
@@ -163,18 +357,18 @@
       </div>
     </section>
     <!-- trail -->
-    <section class="trail" *ngIf="commonData?.landingPageContents?.trail?.displaystatus">
+    <!-- <section class="trail" *ngIf="commonData?.landingPageContents?.trail?.displaystatus">
       <div class="container">
         <p>{{commonData?.landingPageContents?.trail?.title}}</p>
         <div class="desc">{{commonData?.landingPageContents?.trail?.description}}</div>
         <button>Get Started</button>
       </div>
-    </section>
+    </section> -->
     <!-- Hiring Partners -->
-    <ng-container *ngIf="commonData?.landingPageContents?.hiringPartners?.dispalystatus">
+    <!-- <ng-container *ngIf="commonData?.landingPageContents?.hiringPartners?.dispalystatus">
       <app-partners-list class="app-Partners" [OurPartners]="commonData?.landingPageContents?.hiringPartners"></app-partners-list>
-    </ng-container>
+    </ng-container> -->
 </ng-container>
-<ng-template #kycmandate >
+<!-- <ng-template #kycmandate >
   <app-kyc-mandate></app-kyc-mandate>
-</ng-template>
+</ng-template> -->
