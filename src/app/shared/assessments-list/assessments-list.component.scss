@@ -174,8 +174,8 @@
         &.active {
             border-radius: 10px;
             overflow: hidden;
-            background: rgba(249, 249, 249, 1) 0% 0% no-repeat padding-box;
-            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+            background: $veryLightGray 0% 0% no-repeat padding-box;
+            box-shadow: 0px 3px 6px $secondaryBlackShadow;
             // margin: 2em 0 0 0;
             cursor: pointer;
             float: left;
@@ -257,6 +257,12 @@
             // transform: rotate(90deg);
             font-size: 1.15em;
         }
+    }
+}
+
+::ng-deep.filterSection {
+    .owl-carousel .owl-stage-outer {
+        overflow: visible !important;
     }
 }
 .assessmentList {
