@@ -68,50 +68,124 @@
                 </div>
             </div>
         </section>
+        <section class="aboutTheCourse" *ngIf="gtuContent?.aboutCourse?.dispalystatus">
+            <div class="container">
+                <div class="commonHeadingStyle">{{gtuContent?.aboutCourse?.title}}</div>
+                <div class="wrapper">
+                    <div class="left">
+                        <p>{{gtuContent?.aboutCourse?.description}}</p>
+                        <div class="coursePoints">
+                            <ul>
+                                <li *ngFor="let item of gtuContent?.aboutCourse?.innerArray">
+                                    <div class="headline">{{item?.title}}</div>
+                                    <div class="pointContent">
+                                        <figure>
+                                            <img [src]="item?.imageurl" alt="">
+                                        </figure>
+                                        <span>{{item?.description}}</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <figure>
+                            <img [src]="gtuContent?.aboutCourse?.imageurl" alt="">
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="projectThink" [ngStyle]="{'background-image': 'url(' + gtuContent?.profiency?.bgurl + ')'}" *ngIf="gtuContent?.profiency?.dispalystatus">
+            <div class="container">
+                <div class="thinkSection" >
+                    <div class="left">
+                        <figure>
+                            <!-- <img [src]="item?.subHeading0?.imageurl" alt="" /> -->
+                            <img [src]="gtuContent?.profiency?.imageurl" alt="">
+                        </figure>
+                    </div>
+                    <div class="right">
+                        <div>{{gtuContent?.profiency?.title}}</div>
+                        <p>{{gtuContent?.profiency?.description}}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="progHighlightsBg" *ngIf="gtuContent?.courseAdvantage?.dispalystatus">
+            <div class="container">
+                <div class="programmeHighlights">
+                    <div class="heading4">{{gtuContent?.courseAdvantage?.title}}</div>
+                    <p>{{gtuContent?.courseAdvantage?.description}}</p>
+                    <div class="keySkillsCovered">
+                        <div class="keyFeatures" *ngFor="let highlightChild of gtuContent?.courseAdvantage?.innerArray">
+                            <div class="heading4">{{highlightChild?.title}}</div>
+                            <ul>
+                                <li *ngFor="let subChild of highlightChild?.innersubArray">
+                                    <figure>
+                                        <img [src]="highlightChild?.imageurl" alt="" />
+                                    </figure>
+                                    <span>{{subChild}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="projectFace" *ngIf="gtuContent?.face?.dispalystatus" [ngStyle]="{'background-image': 'url(' + gtuContent?.face?.bgurl + ')'}">
+            <div class="container">
+                <div class="left">
+                    <div class="heading4">{{gtuContent?.face?.title}}</div>
+                    <p>{{gtuContent?.face?.description}}</p>
+                </div>
+                <div class="right">
+                    <figure>
+                        <img [src]="gtuContent?.face?.imageurl" alt="" />
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section class="courseage" *ngIf="gtuContent?.courseCoverage?.dispalystatus">
+            <div class="container">
+                <div class="commonHeadingStyle">{{gtuContent?.courseCoverage?.title}}</div>
+                <p>{{gtuContent?.courseCoverage?.description}}</p>
+                    <div class="leftExpansion">
+                        <ul>
+                            <li *ngFor="let item of gtuContent?.courseCoverage?.innerArray">
+                                <figure>
+                                    <img src="https://lmsassetspremium.lntedutech.com/portalicons/curriculumbook.webp" alt="" />
+                                </figure>
+                                <p>{{item}}</p>
+                            </li>
+                        </ul>
+                    </div>
+            </div>
+        </section>
+
         <!-- Learning Outcomes -->
-        <section class="Outcomes">
+        <section class="Outcomes" *ngIf="gtuContent?.learningOutcome?.dispalystatus">
             <div class="container">
                 <div class="learningOutcomes">
-                    <div class="commonHeadingStyle">Learning Outcomes</div>
-                    <p>Learners are expected to understand</p>
+                    <div class="commonHeadingStyle">{{gtuContent?.learningOutcome?.title}}</div>
+                    <p>{{gtuContent?.learningOutcome?.description}}</p>
                     <div class="outcomesContainer">
                         <div class="points">
                             <ul>
-                                <li>
+                                <li *ngFor="let item of gtuContent?.learningOutcome?.innerArray">
                                     <figure>
                                         <img src="https://lmsassetspremium.lntedutech.com/portalicons/task.webp" alt="">
                                     </figure>
-                                    <span>The basic concepts andtypes of formwork</span>
-                                </li>
-                                <li>
-                                    <figure>
-                                        <img src="https://lmsassetspremium.lntedutech.com/portalicons/task.webp" alt="">
-                                    </figure>
-                                    <span>Various engineering applications of formwork</span>
-                                </li>
-                                <li>
-                                    <figure>
-                                        <img src="https://lmsassetspremium.lntedutech.com/portalicons/task.webp" alt="">
-                                    </figure>
-                                    <span>Parameters to be considered in selecting the right formwork system</span>
-                                </li>
-                                <li>
-                                    <figure>
-                                        <img src="https://lmsassetspremium.lntedutech.com/portalicons/task.webp" alt="">
-                                    </figure>
-                                    <span>Design principles of formwork</span>
-                                </li>
-                                <li>
-                                    <figure>
-                                        <img src="https://lmsassetspremium.lntedutech.com/portalicons/task.webp" alt="">
-                                    </figure>
-                                    <span>How the formwork is planned for various structures</span>
+                                    <span>{{item}}</span>
                                 </li>
                             </ul>
                         </div>
                         <div class="achievementImg">
                             <figure>
-                                <img src="https://lmsassetspremium.lntedutech.com/portalicons/achieve.webp" alt="">
+                                <img [src]="gtuContent?.learningOutcome?.imageurl" alt="">
                             </figure>
                         </div>
                     </div>
@@ -122,9 +196,101 @@
                 <div class="wave" Style="background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/wave1.webp')"></div>
             </div>
         </section>
-        <ng-container *ngFor="let item of this.courseData?.courseContents?.Headings">
-          <!-- Why Full Stack -->
-           <!-- <ng-container *ngIf="item?.sectionId == 1 && item?.dispalystatus">
+
+        <section class="courseMentorTab" *ngIf="gtuContent?.mentor?.dispalystatus"  [ngStyle]="{'background-image': 'url('+gtuContent?.mentor?.bgurl +')'}">
+            <div class="container">
+                <div class="commonHeadingStyle">{{gtuContent?.mentor?.title}}</div>
+                            <ng-container>
+                                <div class="instructorsTab content">
+                                    <owl-carousel-o [options]="TopicsOptions">
+                                        <ng-template carouselSlide>
+                                                <div class="profile">
+                                                    <div class="image">
+                                                        <figure>
+                                                            <img [src]="gtuContent?.mentor?.imageurl" alt="" />
+                                                        </figure>
+                                                    </div>
+                                                    <div class="imageContent">
+                                                        <span class="heading5">{{gtuContent?.mentor?.name}}</span>
+                                                        <span class="desc">{{gtuContent?.mentor?.designation}}</span>
+                                                        <p>{{gtuContent?.mentor?.description}}</p>
+                                                    </div>
+                                                </div>
+                                        </ng-template>
+                                    </owl-carousel-o>
+                                </div>
+                            </ng-container>
+            </div>
+        </section>
+
+        <section class="morehelp" *ngIf="gtuContent?.Certificate?.dispalystatus" [ngStyle]="{'background-image': 'url(' +  gtuContent?.Certificate?.bgurl + ')'}">
+            <div class="container">
+                <div class="left">
+                    <div class="commonHeadingStyle">{{gtuContent?.Certificate?.title}}</div>
+                    <div class="listpoints">
+                        <ul>
+                            <li *ngFor="let item of gtuContent?.Certificate?.innerArray">
+                                <figure>
+                                    <img src="https://lmsassetspremium.lntedutech.com/portalicons/tick.webp" alt="" />
+                                </figure>
+                                <span>{{item}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="bgImg"></div>
+                    <figure>
+                        <img [src]="gtuContent?.Certificate?.imageurl" alt="">
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq" *ngIf="gtuContent?.faq?.dispalystatus" [ngStyle]="{'background-image': 'url(' + gtuContent?.faq?.imageurl + ')'}">
+            <div class="container">
+                <div class="commonHeadingStyle">{{gtuContent?.faq?.title}}</div>
+                <div class="faqAccordionPanel">
+                    <mat-accordion [multi]="false">
+                        <ng-container *ngFor="let faqTopics of gtuContent?.faq?.innerArray">
+                        <mat-expansion-panel [expanded]="false">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    <div class="heading5">{{faqTopics?.question}}</div>
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <div class="expansionContent">
+                                <p>{{faqTopics?.answer}}</p>
+                            </div>
+                        </mat-expansion-panel>                                 
+                    </ng-container>
+                    </mat-accordion>
+                </div>
+            </div>
+        </section>
+
+        <section class="industryStep" *ngIf="gtuContent?.industry?.dispalystatus">
+            <div class="bg"></div>
+            <div class="wrapper">
+                <div class="container">
+                    <div class="left">
+                        <div class="heading4">{{gtuContent?.industry?.title}}</div>
+                        <p>{{gtuContent?.industry?.description}}</p>
+                    </div>
+                    <figure>
+                        <img [src]="gtuContent?.industry?.imageurl" alt="" />
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <ng-container *ngIf="gtuContent?.relatedItems?.dispalystatus">
+            <app-relateditems [relateditem]="gtuContent?.relatedItems"></app-relateditems>
+        </ng-container>
+
+        <!-- <ng-container *ngFor="let item of this.courseData?.courseContents?.Headings">
+          Why Full Stack
+           <ng-container *ngIf="item?.sectionId == 1 && item?.dispalystatus">
             <section class="whyFullStack" [id]="item.sectionId" #1>
                 
                 <div class="container fullStack">
@@ -140,10 +306,10 @@
                     </ul>
                 </div>
             </section>
-           </ng-container> -->
-             <!-- Program Overivew -->
+           </ng-container>
+             Program Overivew
             <ng-container *ngIf="item?.sectionId == 2 && item?.dispalystatus">
-                <!-- <section class="programOverview" [id]="item.sectionId" #2>
+                <section class="programOverview" [id]="item.sectionId" #2>
                     <div class="container">
                         <div class="commonHeadingStyle">{{item?.title}}</div>
                         <div class="programming">
@@ -155,24 +321,9 @@
                             </figure>
                         </div>
                     </div>
-                </section> -->
-                <section class="projectThink" *ngIf="item?.subHeading0?.dispalystatus" Style="background-image: url(/assets/images/Bg.png)">
-                    <div class="container">
-                        <div class="thinkSection" >
-                            <div class="left">
-                                <figure>
-                                    <!-- <img [src]="item?.subHeading0?.imageurl" alt="" /> -->
-                                    <img src="/assets/images/Group 20186.png" alt="">
-                                </figure>
-                            </div>
-                            <div class="right">
-                                <div>{{item?.subHeading0?.title}}</div>
-                                <p>{{item?.subHeading0?.description}}</p>
-                            </div>
-                        </div>
-                    </div>
                 </section>
-                <!-- <section class="progHighlightsBg" *ngIf="item?.subHeading1?.dispalystatus">
+
+                <section class="progHighlightsBg" *ngIf="item?.subHeading1?.dispalystatus">
                     <div class="container">
                         <div class="programmeHighlights" *ngIf="item?.subHeading2?.dispalystatus">
                             <div class="heading4">{{item?.subHeading2?.title}}</div>
@@ -192,8 +343,8 @@
                             </div>
                         </div>
                     </div>
-                </section> -->
-                <!-- <section class="projectYou" *ngIf="item?.subHeading2?.dispalystatus">
+                </section>
+                <section class="projectYou" *ngIf="item?.subHeading2?.dispalystatus">
                     <div class="container">
                         <div class="projectsCreate" *ngIf="item?.subHeading1?.dispalystatus">
                             <div class="heading4">{{item?.subHeading1?.title}}</div>
@@ -213,8 +364,8 @@
                             </ul>
                         </div>
                     </div>
-                </section> -->
-                <!-- <section class="projectFace" *ngIf="item?.subHeading3?.dispalystatus" [ngStyle]="{'background-image': 'url(' + item?.subHeading3?.bgurl + ')'}">
+                </section>
+                <section class="projectFace" *ngIf="item?.subHeading3?.dispalystatus" [ngStyle]="{'background-image': 'url(' + item?.subHeading3?.bgurl + ')'}">
                     <div class="container">
                         <div class="left">
                             <div class="heading4">{{item?.subHeading3?.title}}</div>
@@ -226,11 +377,11 @@
                             </figure>
                         </div>
                     </div>
-                </section> -->
+                </section>
             </ng-container>
-            <!-- Curriculam -->
+            Curriculam
             <ng-container *ngIf="item?.sectionId == 3 && item?.dispalystatus">
-                <!-- <section class="curriculam" [id]="item.sectionId" #3>
+                <section class="curriculam" [id]="item.sectionId" #3>
                     <div class="container">
                         <div class="commonHeadingStyle">{{item?.title}}</div>
                         <div class="curriculamWrapper">
@@ -311,9 +462,9 @@
                             </div>
                         </div>
                     </div>
-                </section> -->
-                <!-- Request Broucher -->
-                <!-- <section class="reqBroucher" [ngStyle]="{'background-image': 'url(https://lmsassetspremium.lntedutech.com/portalicons/reqbg.webp)'}" *ngIf="item?.subHeading0?.dispalystatus"> -->
+                </section>
+                Request Broucher
+                
                 <section class="reqBroucher" *ngIf="item?.subHeading0?.dispalystatus">
                     <div class="container">
                         <span class="heading">{{item?.subHeading0?.title}}</span>
@@ -321,8 +472,8 @@
                         <button (click)="openRequest()"><img [src]="item?.subHeading0?.broucherurl" alt="" /> Request Brochure</button>
                     </div>
                 </section>
-                <!-- Real Time Projects -->
-                <!-- <section class="realTimeProjects" *ngIf="item?.subHeading1?.dispalystatus">
+                Real Time Projects
+                <section class="realTimeProjects" *ngIf="item?.subHeading1?.dispalystatus">
                     <div class="container">
                         <div class="heading4">{{item?.subHeading1?.title}}</div>
                         <div class="heading6">{{item?.subHeading1?.description}}</div>
@@ -336,9 +487,9 @@
                             </div>
                         </div>
                     </div>
-                </section> -->
-                <!-- duration -->
-                <!-- <section class="duration" *ngIf="item?.subHeading2?.dispalystatus" [ngStyle]="{'background-image': 'url(' + item?.subHeading2?.imageurl + ')'}">
+                </section>
+                duration
+                <section class="duration" *ngIf="item?.subHeading2?.dispalystatus" [ngStyle]="{'background-image': 'url(' + item?.subHeading2?.imageurl + ')'}">
                     <div class="container">
                         <ul>
                             <li *ngFor="let duration of item?.subHeading2?.innerArray">
@@ -347,254 +498,17 @@
                             </li>
                         </ul>
                     </div>
-                </section> -->
+                </section>
 
-                <!-- morehelp -->
-                <ng-container>
-                    <section class="morehelp" *ngIf="item?.subHeading3?.dispalystatus" [ngStyle]="{'background-image': 'url(' + item?.subHeading3?.bgurl + ')'}">
-                        <div class="container">
-                            <div class="left">
-                                <div class="commonHeadingStyle">Certificate</div>
-                                <div class="listpoints">
-                                    <ul>
-                                        <li>
-                                            <figure>
-                                                <img src="/assets/images/Group 23843.png" alt="" />
-                                            </figure>
-                                            <span>Job Ready Skills</span>
-                                        </li>
-                                        <li>
-                                            <figure>
-                                                <img src="/assets/images/Group 23843.png" alt="" />
-                                            </figure>
-                                            <span>Professional Certificate From L&T</span>
-                                        </li>
-                                        <li>
-                                            <figure>
-                                                <img src="/assets/images/Group 23843.png" alt="" />
-                                            </figure>
-                                            <span>Get Career Credential By Sharing in Professional network</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="right">
-                                <div class="bgImg"></div>
-                                <figure>
-                                    <img src="/assets/images/Certificate.png" alt="">
-                                </figure>
-                            </div>
-                        </div>
-                    </section>
-            </ng-container>
             <ng-container>
-                <section class="courseage">
-                    <div class="container">
-                        <div class="commonHeadingStyle">Course Coverage</div>
-                        <p>Curated by industry experts and leading academicians, the syllabus comprises of videos,
-                            practice labs, projects, assignments and live training sessions.</p>
-                            <div class="leftExpansion">
-                                <ul>
-                                    <li>
-                                        <figure>
-                                            <img src="https://lmsassetspremium.lntedutech.com/portalicons/curriculumbook.webp" alt="" />
-                                        </figure>
-                                        <p>1. Introduction and Basics of Formwork</p>
-                                    </li>
-                                    <li>
-                                        <figure>
-                                            <img src="https://lmsassetspremium.lntedutech.com/portalicons/curriculumbook.webp" alt="" />
-                                        </figure>
-                                            <p>2. Codes and Standards</p>
-                                        
-                                    </li>
-                                    <li>
-                                        <figure>
-                                            <img src="https://lmsassetspremium.lntedutech.com/portalicons/curriculumbook.webp" alt="" />
-                                        </figure>
-                                            <p>3. Types of Formwork</p>
-                                        
-                                    </li>
-                                    <li>
-                                        <figure>
-                                            <img src="https://lmsassetspremium.lntedutech.com/portalicons/curriculumbook.webp" alt="" />
-                                        </figure>
-                                            <p>4. Formwork Planning and Monitoring</p>
-                                        
-                                    </li>
-                                    <li>
-                                        <figure>
-                                            <img src="https://lmsassetspremium.lntedutech.com/portalicons/curriculumbook.webp" alt="" />
-                                        </figure>
-                                            <p>5. Analysis, Design Concepts and Detailing of Formwork</p>
-                                        
-                                    </li>
-                                    <li>
-                                        <figure>
-                                            <img src="https://lmsassetspremium.lntedutech.com/portalicons/curriculumbook.webp" alt="" />
-                                        </figure>
-                                            <p>6. Formwork Design, Drawing & Detailing of Formwork Drawing</p>
-                                        
-                                    </li>
-                                    <li>
-                                        <figure>
-                                            <img src="https://lmsassetspremium.lntedutech.com/portalicons/curriculumbook.webp" alt="" />
-                                        </figure>
-                                            <p>7. Formwork Quantity take off and Cost Estimation</p>
-                                        
-                                    </li>
-                                    <li>
-                                        <figure>
-                                            <img src="https://lmsassetspremium.lntedutech.com/portalicons/curriculumbook.webp" alt="" />
-                                        </figure>
-                                        <p>8. Modular Formwork</p>
-                                    </li>
-                                </ul>
-                            </div>
-                    </div>
-                </section>
+
             </ng-container>
-            <section class="ourPartners">
-                <div class="container">
-                  <div class="partnersSection">
-                    <div class="left">
-                      <div class="heading">For any Support :</div>
-                      <div class="contacts"> 
-                        <span class="eduEmail"><em class="icon-Email"></em><p>contact@lntedutech.com</p></span>
-                        <span class="contactIcon"><em class="icon-ContactUs"></em><p>09876543210</p></span>
-                      </div>
-                    </div>
-                    <div class="right">
-                      <div class="policy">
-                        <span>Terms of Use</span>
-                        <span>Privacy Policy</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-            <!-- Course Mentor -->
+            Course Mentor
             <ng-container *ngIf="item?.sectionId == 4 && item?.dispalystatus">
-                <section class="courseMentorTab" [id]="item.sectionId" #4 [ngStyle]="{'background-image': 'url(https://lmsassetspremium.lntedutech.com/portalicons/expertbg.webp)'}">
-                    <div class="container">
-                        <div class="commonHeadingStyle">Course Mentor</div>
-                        <!-- <mat-tab-group class="expertSupportSystem"> -->
-                            <!-- <mat-tab *ngFor="let childItem of item?.innerArray"> -->
-                                <!-- <ng-template mat-tab-label>{{childItem?.title}}</ng-template> -->
-                                <!-- <ng-template> -->
-                                    <ng-container>
-                                        <div class="instructorsTab content">
-                                            <owl-carousel-o [options]="TopicsOptions">
-                                                <ng-template carouselSlide>
-                                                        <div class="profile">
-                                                            <div class="image">
-                                                                <figure>
-                                                                    <img src="https://lmsassetspremium.lntedutech.com/portalicons/Mr.%20Ataullah.webp" alt="" />
-                                                                </figure>
-                                                            </div>
-                                                            <div class="imageContent">
-                                                                <span class="heading5">Mr. Ataullah</span>
-                                                                <span class="desc">Training Specialist, L&T EduTech.</span>
-                                                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At veroamet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.</p>
-                                                            </div>
-                                                        </div>
-                                                </ng-template>
-                                                <!-- <ng-template carouselSlide>
-                                                    <div class="profile">
-                                                        <div class="image">
-                                                            <figure>
-                                                                <img src="../../../../assets/images/Mr. Ataullah.webp" alt="" />
-                                                            </figure>
-                                                        </div>
-                                                        <div class="imageContent">
-                                                            <span class="heading5">Mr. Ataullah</span>
-                                                            <span class="desc">Training Specialist, L&T EduTech.</span>
-                                                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At veroamet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.</p>
-                                                        </div>
-                                                    </div>
-                                            </ng-template> -->
-                                            </owl-carousel-o>
-                                        </div>
-                                    </ng-container>
-                                    <!-- <ng-container *ngIf="childItem?.subSectionID == 2">
-                                        <div class="expertTab content">
-                                            <owl-carousel-o [options]="expertOptions" class="expertList">
-                                                <ng-container *ngFor="let expertTab of childItem?.innersubArray">
-                                                    <ng-template carouselSlide>
-                                                        <figure>
-                                                            <img [src]="expertTab?.imageurl" alt="" />
-                                                        </figure>
-                                                        <div class="expert">
-                                                            <div>
-                                                                <span class="heading5">{{expertTab?.name}}</span>
-                                                                <span class="designation">{{expertTab?.designation}}</span>
-                                                                <p>{{expertTab?.description}}</p>
-                                                            </div>
-                                                        </div>
-                                                    </ng-template>
-                                                </ng-container>
-                                            </owl-carousel-o>
-                                        </div>
-                                    </ng-container>
-                                    <ng-container *ngIf="childItem?.subSectionID == 3">
-                                        <div class="careerSupport content">
-                                            <div class="left">
-                                                <div class="heading6">
-                                                    {{childItem?.description}}
-                                                </div>
-                                                <ul>
-                                                    <li *ngFor="let careerSupport of childItem?.innersubArray"><em class="icon-CheckMark"></em> {{careerSupport}}</li>
-                                                </ul>
-                                            </div>
-                                            <div class="right">
-                                                <figure>
-                                                    <img [src]="childItem?.imageurl" alt="" />
-                                                </figure>
-                                            </div>
-                                        </div>
-                                    </ng-container>
-                                    <ng-container *ngIf="childItem?.subSectionID == 4">
-                                        <div class="studentSuccess content">
-                                            <div class="left">
-                                                <figure>
-                                                    <img [src]="childItem?.imageurl" alt="" />
-                                                </figure>
-                                            </div>
-                                            <div class="right">
-                                                <div class="heading6">
-                                                    {{childItem?.description}}
-                                                </div>
-                                                <ul>
-                                                    <li *ngFor="let studentSuccess of childItem?.innersubArray"><em class="icon-CheckMark"></em> {{studentSuccess}}</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </ng-container>
-                                    <ng-container *ngIf="childItem?.subSectionID == 5">
-                                        <div class="careerSupport content">
-                                            <div class="left">
-                                                <div class="heading6">
-                                                    {{childItem?.description}}
-                                                </div>
-                                                <ul>
-                                                    <li *ngFor="let careerSupport of childItem?.innersubArray"><em class="icon-CheckMark"></em> {{careerSupport}}</li>
-                                                </ul>
-                                            </div>
-                                            <div class="right">
-                                                <figure>
-                                                    <img [src]="childItem?.imageurl" alt="" />
-                                                </figure>
-                                            </div>
-                                        </div>
-                                    </ng-container> -->
-                                <!-- </ng-template>                             -->
-                            <!-- </mat-tab> -->
-                        <!-- </mat-tab-group> -->
-                    </div>
-                </section>
+
             </ng-container>       
-            <!-- Carrer Path -->
-            <!-- <ng-container *ngIf="item?.sectionId == 5 && item?.dispalystatus">
+            Carrer Path
+            <ng-container *ngIf="item?.sectionId == 5 && item?.dispalystatus">
                 <section class="careerPath" [id]="item.sectionId" #5>
                     <div class="container">
                         <div class="commonHeadingStyle">{{item?.title}}</div>
@@ -615,27 +529,14 @@
                         <div class="wave" [ngStyle]="{'background-image': 'url(' + item?.imageurl2 + ')'}"></div>
                     </div>
                 </section>
-                <section class="industryStep" *ngIf="item?.subHeading1?.dispalystatus">
-                    <div class="bg"></div>
-                    <div class="wrapper">
-                        <div class="container">
-                            <div class="left">
-                                <div class="heading4">{{item?.subHeading1?.title}}</div>
-                                <p>{{item?.subHeading1?.description}}</p>
-                            </div>
-                            <figure>
-                                <img [src]="item?.subHeading1?.imageurl" alt="" />
-                            </figure>
-                        </div>
-                    </div>
-                </section>
-            </ng-container> -->
-            <!-- Programming Language -->
+
+            </ng-container>
+            Programming Language
             <ng-container *ngIf="item?.sectionId == 6 && item?.dispalystatus">
                 <section class="programmingLanguages" [id]="item.sectionId" #6>
                     <div class="container">
                         <div class="commonHeadingStyle">{{item?.title}}</div>
-                        <!-- <div class="subjectsOpportunities">
+                        <div class="subjectsOpportunities">
                             <div class="topSubjects commonStyle" *ngFor="let opportunitiesDetails of courseData?.courseContents?.topsubjects_opportunities">
                                 <figure>
                                     <img [src]="opportunitiesDetails.image" alt="" />
@@ -647,7 +548,7 @@
                                     {{opportunitiesBenefits?.content}}</li>
                                 </ul>
                             </div>
-                        </div> -->
+                        </div>
                         <div class="toolsCovered">
                             <div class="tools">
                                 <figure *ngFor="let prgmLangNdToolsCoveredDetails of item?.innerArray">
@@ -659,9 +560,8 @@
                     </div>
                 </section>
             </ng-container>
-            <!-- enrollNow -->
+            enrollNow
             <ng-container *ngIf="item?.sectionId == 9 && item?.dispalystatus">
-                <!-- <section class="enrollNow" [ngStyle]="{'background-image': 'url(' + item?.bgurl + ')'}"> -->
                 <section class="enrollNow">
                     <div class="container">
                         <div class="enrollNowWrapper">
@@ -682,58 +582,36 @@
                     </div>
                 </section>
             </ng-container>
-            <!-- testimonial -->
-            <!-- <ng-container *ngIf="item?.sectionId == 7 && item?.dispalystatus">
+            testimonial
+            <ng-container *ngIf="item?.sectionId == 7 && item?.dispalystatus">
                <div [id]="item?.sectionId" #7>
                     <app-testimonial [testimonal]="item"></app-testimonial>
                </div>
-            </ng-container> -->
-
-            <!-- FAQ -->
-            <!-- <ng-container *ngIf="item?.sectionId == 8 && item?.dispalystatus">
-                <section class="faq" [id]="item.sectionId" #8 [ngStyle]="{'background-image': 'url(' + item?.imageurl + ')'}">
-                    <div class="container">
-                        <div class="commonHeadingStyle">{{item?.title}}</div>
-                        <div class="faqAccordionPanel">
-                            <mat-accordion [multi]="false">
-                                <ng-container *ngFor="let faqTopics of item?.innerArray">
-                                <mat-expansion-panel [expanded]="false">
-                                    <mat-expansion-panel-header>
-                                        <mat-panel-title>
-                                            <div class="heading5">{{faqTopics?.question}}</div>
-                                        </mat-panel-title>
-                                    </mat-expansion-panel-header>
-                                    <div class="expansionContent">
-                                        <p>{{faqTopics?.answer}}</p>
-                                    </div>
-                                </mat-expansion-panel>                                 
-                            </ng-container>
-                            </mat-accordion>
-                        </div>
-                    </div>
-                </section>
-            </ng-container> -->
-            
-            <!-- Related items -->
-            <ng-container *ngIf="item?.sectionId == 10">
-                <app-relateditems [relateditem]="item"></app-relateditems>
             </ng-container>
-            <!-- hiringPartnres -->
+
+            FAQ
+            <ng-container *ngIf="item?.sectionId == 8 && item?.dispalystatus">
+
+            </ng-container>
+            
+            Related items
+           
+            hiringPartnres
             <ng-container *ngIf="item?.sectionId == 11 && item.dispalystatus">
                 <app-partners-list class="app-Partners" [OurPartners]="item"></app-partners-list>
             </ng-container>
-        </ng-container>
- 
+          </ng-container>
+ </ng-container> -->
 
-    <!-- <div *ngIf="nocard && !defaultDiv" class="noDataFound">
+    <div *ngIf="nocard && !defaultDiv" class="noDataFound">
         <figure>
             <img src="https://lmsassetspremium.lntedutech.com/portalicons/no-categories.webp" alt="" />
         </figure>
         <div class="heading3">no courses found</div>
-    </div> -->
+    </div>
     
-    <!-- <div *ngIf="defaultDiv">
-    </div> -->
+     <div *ngIf="defaultDiv">
+    </div>
 
 
 <ng-template #kycmandate >

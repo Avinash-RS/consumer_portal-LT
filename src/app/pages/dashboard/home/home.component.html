@@ -153,115 +153,63 @@
       </div>
     </section>
      -->
-    <section class="whyLNT">
+    <section class="whyLNT" *ngIf="commonData?.landingPageContents?.whyLNT?.displayStatus">
       <div class="container">
         <div class="heading2">{{commonData?.landingPageContents?.whyLNT?.title}}</div>
       
         <div  class="content">
           <ul>
-            <li>
+            <li *ngFor="let item of commonData?.landingPageContents?.whyLNT?.innerArray">
               <figure>
-                <img src="/assets/images\resume-and-cv.png " alt="">
+                <img [src]="item?.imageurl" alt="">
               </figure>
-              <p>Industry led curriculum</p>
-            </li>
-            <li>
-              <figure>
-                <img src="/assets/images/transferring (1).png " alt="">
-              </figure>
-              <p>Job facilitation though Skills Exchange</p>
-            </li>
-            <li>
-              <figure>
-                <img src="/assets/images/webinar (1).png " alt="">
-              </figure>
-              <p>Exclusive webinars</p>
-            </li>
-            <li>
-              <figure>
-                <img src="/assets/images/light-bulb.png" alt="">
-              </figure>
-              <p>Robust Platform</p>
-            </li>
-            <li>
-              <figure>
-                <img src="/assets/images/solution (1).png" alt="">
-              </figure>
-              <p>End Capstone project</p>
-            </li>
-            <li>
-              <figure>
-                <img src="/assets/images/winner.png" alt="">
-              </figure>
-              <p>L&T EduTech Certification</p>
-            </li>
-            <li>
-              <figure>
-                <img src="/assets/images/light-bulb.png" alt="">
-              </figure>
-              <p>Real world projects</p>
-            </li>
-            <li>
-              <figure>
-                <img src="/assets/images/file-case (1).png" alt="">
-              </figure>
-              <p>Real time case studies</p>
+              <p>{{item?.title}}</p>
             </li>
           </ul>
         </div>
       </div>
     </section>
 
-<section class="learnanywhere">
+<section class="learnanywhere" *ngIf="commonData?.landingPageContents?.learnAnytime?.displayStatus">
+  <span class="leftTopAsset">
+    <figure>
+      <img [src]="commonData?.landingPageContents?.learnAnytime?.bgUrl?.lefttop" alt="" />
+    </figure>
+  </span>
+  <span class="rightTopAsset">
+    <figure>
+      <img [src]="commonData?.landingPageContents?.learnAnytime?.bgUrl?.righttop" alt="" />
+    </figure>
+  </span>
+  <span class="leftBottomAsset">
+    <figure>
+      <img [src]="commonData?.landingPageContents?.learnAnytime?.bgUrl?.leftbottom" alt="" />
+    </figure>
+  </span>
   <div class="container">
     <div class="heading2"><h1>{{commonData?.landingPageContents?.learnAnytime?.title}}</h1></div>
     <p>{{commonData?.landingPageContents?.learnAnytime?.description}}</p>
          <div class="contentcenter">
           <div class="group">
             <figure class="grpimg">
-              <img src="/assets/images/Group 23758.png" alt="group">
+              <img [src]="commonData?.landingPageContents?.learnAnytime?.imageurl" alt="group">
             </figure>
           </div>
           <div class="scanner">
-            <span>Scan this QR code on your camera app to download the app </span>
+            <span>{{commonData?.landingPageContents?.learnAnytime?.QRtext}}</span>
             <figure>
-              <img src="/assets/images/YLy3V.png" alt="scanner">
+              <img [src]="commonData?.landingPageContents?.learnAnytime?.QR" alt="scanner">
             </figure>
             <p>or</p>
             <div class="apps">
-              <figure class="store">
-                <img src="/assets/images/Mask Group 14588.png" alt="">
-              </figure>
-              <figure class="appstore">
-                <img src="/assets/images/Mask Group 14589.png" alt="">
+              <figure class="store" *ngFor="let item of commonData?.landingPageContents?.learnAnytime?.playStore">
+                <img [src]="item" alt="">
               </figure>
             </div>
           </div>
          </div>
   </div>
 </section>
-
-
-<section class="ourPartners">
-  <div class="container">
-    <div class="partnersSection">
-      <div class="left">
-        <div class="heading">For any Support :</div>
-        <div class="contacts"> 
-          <span class="eduEmail"><figure><img src="/assets/images/Path 29626.png" alt=""></figure><p>contact@lntedutech.com</p></span>
-          <span class="contactIcon"><figure><img src="/assets/images/Group 20273.png" alt=""></figure><p>09876543210</p></span>
-        </div>
-      </div>
-      <div class="right">
-        <div class="policy">
-          <span>Terms of Use</span>
-          <span>Privacy Policy</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 
 <!-- <section class="feedback" *ngIf="commonData?.landingPageContents?.studentAboutUs?.displaystatus">
   <div class="container">
