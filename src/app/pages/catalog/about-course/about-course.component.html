@@ -96,13 +96,13 @@
                 </div>
             </div>
         </section>
-        <section class="projectThink" Style="background-image: url(/assets/images/Bg.png)" *ngIf="gtuContent?.profiency?.dispalystatus">
+        <section class="projectThink" [ngStyle]="{'background-image': 'url(' + gtuContent?.profiency?.bgurl + ')'}" *ngIf="gtuContent?.profiency?.dispalystatus">
             <div class="container">
                 <div class="thinkSection" >
                     <div class="left">
                         <figure>
                             <!-- <img [src]="item?.subHeading0?.imageurl" alt="" /> -->
-                            <img src="/assets/images/Group 20186.png" alt="">
+                            <img [src]="gtuContent?.profiency?.imageurl" alt="">
                         </figure>
                     </div>
                     <div class="right">
@@ -231,7 +231,7 @@
                         <ul>
                             <li *ngFor="let item of gtuContent?.Certificate?.innerArray">
                                 <figure>
-                                    <img src="/assets/images/Group 23843.png" alt="" />
+                                    <img src="https://lmsassetspremium.lntedutech.com/portalicons/tick.webp" alt="" />
                                 </figure>
                                 <span>{{item}}</span>
                             </li>
@@ -241,7 +241,7 @@
                 <div class="right">
                     <div class="bgImg"></div>
                     <figure>
-                        <img src="/assets/images/Certificate.png" alt="">
+                        <img [src]="gtuContent?.Certificate?.imageurl" alt="">
                     </figure>
                 </div>
             </div>
