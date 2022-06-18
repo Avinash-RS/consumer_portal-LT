@@ -47,13 +47,13 @@
         </div>
     </div> -->
     <section class="ourPartners">
-        <div class="container">
+        <div class="container" >
           <div class="partnersSection">
             <div class="left">
-              <div class="heading">For any Support :</div>
+              <div class="heading" >{{footerData?.heading}}</div>
               <div class="contacts"> 
-                <span class="eduEmail"><figure><img src="/assets/images/Path 29626.png" alt=""></figure><p>contact@lntedutech.com</p></span>
-                <span class="contactIcon"><figure><img src="/assets/images/Group 20273.png" alt=""></figure><p>09876543210</p></span>
+                <span class="eduEmail"><figure><img [src]="footerData?.contact?.email?.imgUrl" alt=""></figure><p>{{footerData?.contact?.email?.txt}}</p></span>
+                <span class="contactIcon"><figure><img [src]="footerData?.contact?.phone?.imgUrl" alt=""></figure><p>{{footerData?.contact?.phone?.txt}}</p></span>
               </div>
             </div>
             <div class="right">
