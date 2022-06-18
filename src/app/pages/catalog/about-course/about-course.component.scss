@@ -537,16 +537,16 @@
           // opacity: 1;
         }
         @include md {
-          width: 19%;
           position: absolute;
           right: 0;
           bottom: 0;
-          width: 50%;
+          width: 30%;
           z-index: 1;
           // opacity: 0.2;
         }
         @include lg {
           width: 15%;
+          // opacity: 1;
         }
         @include xl {
           width: 15%;
@@ -3709,7 +3709,7 @@
           position: absolute;
           right: 0;
           bottom: 0;
-          width: 50%;
+          width: 30%;
           z-index: 1;
         }
         @include lg {
