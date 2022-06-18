@@ -122,10 +122,10 @@
                                     <mat-label>Mobile</mat-label>
                                     <input autocomplete="off" matInput id="signup_mobile" name="mobile" formControlName="mobile" placeholder="Mobile">
                                 </mat-form-field>
-                                <!-- <ng-container *ngIf="lastName.invalid && lastName.touched">
-                                    <mat-error *ngIf="lastName.errors?.required" class="error">{{'Last name is required'}}</mat-error>
-                                    <mat-error *ngIf="lastName.errors?.alphaNum30" class="error">{{'Alpha numeric with maximum of 30 characters only allowed'}}</mat-error>
-                                </ng-container> -->
+                                <ng-container *ngIf="mobileNo.invalid && mobileNo.touched">
+                                    <mat-error *ngIf="mobileNo.errors?.required" class="error">{{'Mobile number is required'}}</mat-error>
+                                    <mat-error *ngIf="mobileNo.errors?.mobileRegex" class="error">{{'Please enter valid mobile number'}}</mat-error>
+                                </ng-container>
                             </div>
                             <div class="inputContainer">
                                 <mat-form-field appearance="outline">
@@ -142,11 +142,11 @@
                                 <mat-form-field appearance="outline">
                                     <mat-label>Department</mat-label>
                                     <mat-select formControlName="department">
-                                        <mat-option [value]="item?.collegeId" *ngFor="let item of collegeData">{{item?.collegename}}</mat-option>
+                                        <mat-option [value]="item?.departmentId" *ngFor="let item of departmentData">{{item?.departmentName}}</mat-option>
                                     </mat-select>
                                 </mat-form-field>
-                                <ng-container *ngIf="collegeR.invalid && collegeR.touched">
-                                    <mat-error *ngIf="collegeR.errors?.required" class="error">{{'College / University is required'}}</mat-error>
+                                <ng-container *ngIf="dept.invalid && dept.touched">
+                                    <mat-error *ngIf="dept.errors?.required" class="error">{{'Department is required'}}</mat-error>
                                 </ng-container>
                             </div>
                             <div class="inputContainer">
@@ -154,20 +154,19 @@
                                     <mat-label>University enrollment Number</mat-label>
                                     <input autocomplete="off" matInput id="signup_mobile" name="enrollNumber" formControlName="enrollNumber" placeholder="University enrollment Number">
                                 </mat-form-field>
-                                <!-- <ng-container *ngIf="lastName.invalid && lastName.touched">
-                                    <mat-error *ngIf="lastName.errors?.required" class="error">{{'Last name is required'}}</mat-error>
-                                    <mat-error *ngIf="lastName.errors?.alphaNum30" class="error">{{'Alpha numeric with maximum of 30 characters only allowed'}}</mat-error>
-                                </ng-container> -->
+                                <ng-container *ngIf="rollNumber.invalid && rollNumber.touched">
+                                    <mat-error *ngIf="rollNumber.errors?.required" class="error">{{'Enrollment number is required'}}</mat-error>
+                                </ng-container>
                             </div>
                             <div class="inputContainer">
                                 <mat-form-field appearance="outline">
                                     <mat-label>Year of Graduation</mat-label>
                                     <mat-select formControlName="graduation">
-                                        <mat-option [value]="item?.collegeId" *ngFor="let item of collegeData">{{item?.collegename}}</mat-option>
+                                        <mat-option [value]="item" *ngFor="let item of yearData">{{item}}</mat-option>
                                     </mat-select>
                                 </mat-form-field>
-                                <ng-container *ngIf="collegeR.invalid && collegeR.touched">
-                                    <mat-error *ngIf="collegeR.errors?.required" class="error">{{'College / University is required'}}</mat-error>
+                                <ng-container *ngIf="year.invalid && year.touched">
+                                    <mat-error *ngIf="year.errors?.required" class="error">{{'Year of graduation is required'}}</mat-error>
                                 </ng-container>
                             </div>
                             <div class="inputContainer">
