@@ -14,6 +14,7 @@ import {
   BreakpointState
 } from '@angular/cdk/layout';
 import { OwlOptions, SlidesOutputData } from 'ngx-owl-carousel-o';
+import { DragScrollComponent } from 'ngx-drag-scroll';
 @Component({
   selector: 'app-assessments-list',
   templateUrl: './assessments-list.component.html',
@@ -21,6 +22,10 @@ import { OwlOptions, SlidesOutputData } from 'ngx-owl-carousel-o';
   animations: SlideIn
 })
 export class AssessmentsListComponent implements OnInit {
+
+  @ViewChild('allCourses', { read: DragScrollComponent }) ds: DragScrollComponent;
+  leftNavDisabled = false;
+  rightNavDisabled = false;
   isActiveAll = true;
   mainTabSelected = 0;
   tabValues;
@@ -97,6 +102,19 @@ export class AssessmentsListComponent implements OnInit {
   }
   ngOnDestroy(){
     this.subscriberdata.unsubscribe();
+  }
+  moveLeft() {
+    this.ds.moveLeft();
+  }
+  moveRight() {
+    this.ds.moveRight();
+  }
+  leftBoundStat(reachesLeftBound: boolean) {
+    this.leftNavDisabled = reachesLeftBound;
+  }
+
+  rightBoundStat(reachesRightBound: boolean) {
+    this.rightNavDisabled = reachesRightBound;
   }
   setSliceValue(){
     this.breakpointObserver
