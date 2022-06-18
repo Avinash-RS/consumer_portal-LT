@@ -43,4 +43,7 @@ export class CartService {
   getCollegeDetails(){
     return this.http.post(this.baseurl + 'getCollegeDetails', {});
   }
+  getDepartmentDetails(){
+    return this.http.post(this.baseurl + 'getDepartmentDetails', {});
+  }
 }

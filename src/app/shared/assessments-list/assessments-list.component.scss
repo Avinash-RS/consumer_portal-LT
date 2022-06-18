@@ -140,8 +140,12 @@
     position: relative;
     width: 90%;
     margin: 0 auto;
+    .fieldItems {
+        vertical-align: top;
+        margin-right: 30px;
+    }
     .fieldTabs {
-        padding: 0.75em 0;
+        padding: 0.75em 1.25em;
         text-align: center;
         cursor: pointer;
         width: 100%;
@@ -153,9 +157,10 @@
         }
         .fieldName {
             position: relative;
+            font-family: 'OpenSans';
             color: $darkGrey;
-            font-size: 0.75em;
-            font-weight: 400;
+            font-size: 0.85em;
+            font-weight: 700;
             line-height: 1.2;
         }
         .coursesCount {
@@ -709,5 +714,22 @@
         color: $shadeBlueColor;
         font-size: 12px;
       }
+    }
+}
+
+
+::ng-deep.filterSection {
+    .drag-scroll-wrapper {
+        &.drag-scroll-container {
+            height: auto !important;
+        }
+    }
+    .drag-scroll-content {
+        position: relative;
+        padding: 0 0 10px 10px;
+        &::after {
+            content: '';
+            
+        }
     }
 }

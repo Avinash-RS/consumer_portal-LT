@@ -34,7 +34,8 @@ export class LoginComponent implements OnInit {
   recaptchaStr = '';
   siteKey: any = environment.captachaSiteKey;
   collegeData: any = [];
-
+  departmentData: any = [];
+  yearData = ['2010','2011','2012','2013','2014','2015','2016','2017','2018','2019','2020','2021','2022']
   @ViewChild('kycmandate', { static: false }) matDialogRef: TemplateRef<any>;
   @ViewChild('captchaRef',{ static: false }) captchaRef;
   constructor(public route: ActivatedRoute,
@@ -63,6 +64,7 @@ export class LoginComponent implements OnInit {
         this.entryIndex = 1;
         this.registerFormInitialize();
         this.getCollegeMaster();
+        this.getDepartmentMaster();
         if(params.activation == '1'){
           this.toast.error('Activation link expired, please register again');
         }
@@ -140,7 +142,11 @@ export class LoginComponent implements OnInit {
         email: encryptedname,
         termsandConditions: this.registerForm.value.termsandConditions,
         isAdmin: false,
-        badgeRequest:this.recaptchaStr
+        badgeRequest:this.recaptchaStr,
+        universityEnrollNo: this.registerForm.value.enrollNumber,
+        graduationYear: this.registerForm.value.graduation,
+        departmentId: this.registerForm.value.departmentId,
+        mobile: this.registerForm.value.enrollNumber,
       };
       this.commonService.signup(signupData).subscribe((data: any) => {
         if (data.success) {
@@ -269,12 +275,24 @@ resolvedSignIn(captchaSignInResponse: string){
     })
   }
 
+  getDepartmentMaster(){
+    this.cartsevice.getDepartmentDetails().subscribe((result:any)=>{
+      if(result?.success && result?.data.length > 0){
+        this.departmentData = result?.data;
+      }
+    })
+  }
+
   registerFormInitialize() {
     this.registerForm = this.fb.group({
       firstName: ['', [Validators.required, this.gv.alphaNum30()]],
       lastName: ['', [Validators.required, this.gv.alphaNum30()]],
       email: ['', [Validators.required, this.gv.email()]],
+      mobile: ['', [Validators.required, this.gv.mobile(), this.gv.mobileRegex()]],
       college: ['', [Validators.required]],
+      department: ['', [Validators.required]],
+      enrollNumber: ['', [Validators.required]],
+      graduation: ['', [Validators.required]],
       password: ['', [Validators.required, this.gv.passwordRegex(), Validators.minLength(8), Validators.maxLength(32)]],
       password2: ['', [Validators.required]],
       termsandConditions: [null, [Validators.requiredTrue]],
@@ -326,6 +344,20 @@ resolvedSignIn(captchaSignInResponse: string){
 
   get termsandConditions() {
     return this.registerForm.get('termsandConditions');
+  }
+  get dept() {
+    return this.registerForm.get('department');
+  }
+ 
+  get rollNumber() {
+    return this.registerForm.get('enrollNumber');
+  }
+  get year() {
+    return this.registerForm.get('graduation');
+  }
+
+  get mobileNo() {
+    return this.registerForm.get('mobile');
   }
 
   get captcha() {

@@ -11,15 +11,17 @@
         </nav> -->
         <div class="assessmentArea">
             <div class="filterSection">
-                <owl-carousel-o [options]="CategoriesOptions" (translated)="getPassedData($event)">
-                    <ng-template carouselSlide *ngFor="let tab of tabValues">
-                        <div class="fieldTabs" [ngClass]="tab.isSelected ? 'active': '' " (click)="getArea(tab.cid)">
-                            <em class="icon-Civil"></em>
-                            <div class="fieldName">{{tab.name}}</div>
-                            <div class="coursesCount">1 Course</div>
+                <drag-scroll #allCourses snap-duration="500" (reachesLeftBound)="leftBoundStat($event)" (reachesRightBound)="rightBoundStat($event)" [scrollbar-hidden] = true [drag-scroll-y-disabled] = true (translated)="getPassedData($event)">
+                        <div class="fieldItems" drag-scroll-item *ngFor="let tab of tabValues">
+                            <div class="fieldTabs" [ngClass]="tab.isSelected ? 'active': '' " (click)="getArea(tab.cid)">
+                                <em class="icon-Civil"></em>
+                                <div class="fieldName">{{tab.name}}</div>
+                                <div class="coursesCount">1 Course</div>
+                            </div>
                         </div>
-                    </ng-template>                           
-                </owl-carousel-o>
+                </drag-scroll>
+                <!-- <owl-carousel-o [options]="CategoriesOptions" >
+                </owl-carousel-o> -->
             </div>
                 <!-- <div class="btn-group"> -->
                     <!-- <button class="product-btn" (click)="getDomain('all');fromTab='All'" [ngClass]="productType == 'all' ? 'active' :''">All</button>

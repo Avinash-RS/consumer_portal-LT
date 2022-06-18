@@ -71,6 +71,10 @@ export class GlobalValidatorsService {
       // const alphaNumericwithCommonSpecialCharactersMaxLength30: RegExp = /^\+[1-9]{1}[0-9]{3,14}$/;
       return this.regexValidator(alphaNumericwithCommonSpecialCharactersMaxLength30, {alphaNum30: true});
     }
+    mobileRegex() {
+      const mobileRegex: RegExp = /^[6-9][0-9]{9}$/;
+      return this.regexValidator(mobileRegex, {mobileRegex: true});
+    }
     // Email pattern regex
     email() {
       const emailregex: RegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
