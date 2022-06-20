@@ -129,6 +129,7 @@
         .scrollItem {
             width: 90%;
             border-radius: 5px;
+            cursor: pointer;
             @include sm {
                 width: 40%;
             }
