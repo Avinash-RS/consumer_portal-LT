@@ -8,10 +8,15 @@
             <drag-scroll #featuredCourses snap-duration="500" (reachesLeftBound)="leftBoundStat($event)" (reachesRightBound)="rightBoundStat($event)" [scrollbar-hidden] = true [drag-scroll-y-disabled] = true>
                 <div class="scrollItem" drag-scroll-item *ngFor="let item of catalogData" (click)="aboutCourse(item.cid)">
                     <div class="modules">
-                        <figure>
-                            <img [src]="item?.image?.url" alt="" />
-                        </figure>
-                        <div class="wrapper">
+                        <div class="courseImg">
+                            <figure>
+                                <img [src]="item?.image?.url" alt="" />
+                            </figure>
+                            <div class="hours">
+                                <p>28h 23m</p>
+                            </div>
+                        </div>
+                      <div class="wrapper">
                             <span class="domainName"><em class="icon-Right_Play"></em>{{item?.domainName}}</span>
                             <span class="heading6">{{item?.name}}</span>
                             <p>{{item?.longDescription}}</p>

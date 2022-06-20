@@ -150,12 +150,22 @@
             }
             .modules {
                 margin-right: 30px;
+                &:hover {
+                    figure {
+                      img {
+                        transform: scale(1.1);
+                      }
+                    }
+                  }
             }
         }
         figure {
             display: flex;
             border-radius: 5px;
             overflow: hidden;
+            img {
+                transition: all 0.5s;
+            }
         }
         .wrapper {
             background-color: $whiteColor;
@@ -177,11 +187,30 @@
                 margin-right: 5px;
             }
         }
+        .courseImg{
+            position: relative;
+            .hours {
+                p {
+                    position: absolute;
+                    right: 0%;
+                    bottom: 0%;
+                    background-color: #00000080;
+                    color: $whiteColor; 
+                    letter-spacing: 0px;
+                    opacity: 1;
+                    padding: 3px 5px;
+                    margin: 0px;
+                    font-weight: 500;
+                    font-size: 	0.7500em ;
+                    font-family: "OpenSans";
+                }
+            }
+        }
         .heading6 {
             display: block;
             color: $darkGrey;
             font-family: 'OpenSans';
-            font-weight: 500;
+            font-weight: 700;
             margin: 0.65em 0;
             // min-height: 45px;
         }
@@ -201,7 +230,7 @@
                     display: block;
                     font-size: 0.75em;
                     line-height: normal;
-                    font-weight: 400;
+                    font-weight: 600;
                     &:first-child {
                         font-family: 'OpenSans';
                         color: $darkGrayColor;
