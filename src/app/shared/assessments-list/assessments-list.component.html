@@ -1,4 +1,4 @@
-<ng-container *ngIf="viewMore">
+<ng-container *ngIf="isNavigated">
     <section class="assessmentSection">
         <!-- <span class="obstacles"></span> -->
         <div class="headingSection">
@@ -141,7 +141,7 @@
         </div>
     </section>
 </ng-container>
-<ng-container *ngIf="areaCards.length && !viewMore">
+<ng-container *ngIf="areaCards.length && !isNavigated">
     <app-featured-courses [catalogData]="areaCards"></app-featured-courses>
     <div *ngIf="viewMore" class="viewMore">
         <button   (click)="catalogHome()">View More <em class="icon-RightArrow"></em></button>
