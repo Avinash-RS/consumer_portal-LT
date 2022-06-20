@@ -389,14 +389,14 @@
             }
             .estimateTime {
                 position: absolute;
-                bottom: 3%;
-                right: 1%;
+                bottom: 0;
+                right: 0;
                 color: $whiteColor;
                 font-size: 0.75em;
                 font-weight: 600;
                 border: none;
                 padding: 0.35em 1em;
-                border-radius: 0.25em;
+                border-radius: 0;
                 background-color: #00000080;
                 z-index: 9;
             }
