@@ -83,7 +83,7 @@
                                 <div class="figWrapper">
                                     <figure>
                                         <img [src] = "cards.image.url" alt="" />
-                                        <div class="estimateTime">28h 23m</div>
+                                        <div class="estimateTime">{{cards?.videoDuration}}</div>
                                         <!-- <button class="topRated">Top Rated</button> Dont Delete this line -->
                                     </figure>
                                     <!-- <div class="figEffect"></div> -->
@@ -112,7 +112,7 @@
                                     <div class="courseDuration">
                                         <div>
                                             <span class="commonStyle">Licence Period</span>
-                                            <span class="iconwithText"><em class="icon-Document"></em>8 weeks</span>
+                                            <span class="iconwithText"><em class="icon-Document"></em>{{cards?.licencePeriod}}</span>
                                                 <!-- {{cards.productType =='course' ? 'Modules' :'Assessments'}}</span> -->
                                                 <!-- {{cards.totalAssessment}}</span> -->
                                         </div>
@@ -122,7 +122,7 @@
                                         </div> -->
                                         <div>
                                             <span class="commonStyle">Duration</span>
-                                            <span class="iconwithText"><em class="icon-Time"></em>40 Hours</span>
+                                            <span class="iconwithText"><em class="icon-Time"></em>{{cards?.contentDuration}}</span>
                                                 <!-- {{cards?.courseContents?.duration}}</span> -->
                                         </div>
                                         <!-- <div *ngIf="cards.productType == 'course'">
