@@ -138,11 +138,55 @@
 // }
 .filterSection {
     position: relative;
-    width: 90%;
+    width: 96%;
     margin: 0 auto;
-    .fieldItems {
+    .parentContainer {
         vertical-align: top;
-        margin-right: 30px;
+        &:last-child {
+            margin-right: 0 !important;
+            .fieldItems {
+                margin-right: 0;
+            }
+        }
+    }
+    .fieldItems {
+        margin: 0 15px;
+        width: 154px;
+    }
+    .draggable-button-container {
+        position: absolute;
+        width: 100%;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        .leftArrow, .rightArrow {
+            position: absolute;
+            button {
+                background-color: $whiteColor;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: none;
+                width: 1.5em;
+                height: 1.5em;
+                box-shadow: 0 3px 6px rgba(0,0,0,0.25) !important;
+                &.disableArrow {
+                    opacity: 0.5;
+                    cursor: not-allowed;
+                }
+                em {
+                    font-size: 0.875em;
+                    color: $blueColor;
+                }
+            }
+        }
+        .leftArrow {
+            left: -2em;
+        }
+        .rightArrow {
+            right: -2em;
+        }
     }
     .fieldTabs {
         padding: 0.75em 1.25em;
@@ -726,7 +770,7 @@
     }
     .drag-scroll-content {
         position: relative;
-        padding: 0 0 10px 10px;
+        padding: 10px;
         &::after {
             content: '';
             
