@@ -1,4 +1,4 @@
-<ng-container *ngIf="viewMore">
+<ng-container *ngIf="isNavigated">
     <section class="assessmentSection">
         <!-- <span class="obstacles"></span> -->
         <div class="headingSection">
@@ -141,8 +141,14 @@
         </div>
     </section>
 </ng-container>
-<ng-container *ngIf="areaCards.length && !viewMore">
-    <app-featured-courses [catalogData]="areaCards"></app-featured-courses>
+<ng-container *ngIf="!isNavigated">
+    <app-featured-courses *ngIf="areaCards.length" [catalogData]="areaCards"></app-featured-courses>
+    <div *ngIf="noDataFound" class="noDataFound">
+        <figure>
+            <img src="https://lmsassetspremium.lntedutech.com/portalicons/path.webp" alt="" />
+        </figure>
+        <div class="heading3">no categories found</div>
+    </div>
     <div *ngIf="viewMore" class="viewMore">
         <button   (click)="catalogHome()">View More <em class="icon-RightArrow"></em></button>
     </div>
