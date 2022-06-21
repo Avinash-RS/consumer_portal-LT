@@ -18,7 +18,7 @@ export class CartCanLoadGuard implements CanActivate, CanLoad {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (this.appconfig.getSessionStorage('token')) {
+    if (this.appconfig.getLocalStorage('token')) {
       return true;
     } else {
       this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, {fromPage: 0});
@@ -28,7 +28,7 @@ export class CartCanLoadGuard implements CanActivate, CanLoad {
   canLoad(
     route: Route,
     segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if (this.appconfig.getSessionStorage('token')) {
+      if (this.appconfig.getLocalStorage('token')) {
         return true;
       } else {
         this.toast.warning('Please login to access the cart section');

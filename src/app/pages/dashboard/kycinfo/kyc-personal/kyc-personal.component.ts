@@ -191,7 +191,7 @@ export class KycPersonalComponent implements OnInit,AfterViewInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.userDetails =  JSON.parse(sessionStorage.getItem('userDetails'));
+    this.userDetails =  JSON.parse(localStorage.getItem('userDetails'));
     this.formInitialize();
     this.getCountry();
     //this.getStateAPI('5bd0597eb339b81c30d3e7f2');

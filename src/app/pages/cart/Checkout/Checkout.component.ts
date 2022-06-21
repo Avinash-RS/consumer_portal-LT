@@ -40,7 +40,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userDetails = JSON.parse(this.appconfig.getSessionStorage('userDetails'));
+    this.userDetails = JSON.parse(this.appconfig.getLocalStorage('userDetails'));
     this.totalCalculator();
   }
   ngOnChanges(data: any) {

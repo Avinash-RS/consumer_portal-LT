@@ -84,7 +84,7 @@ export class HeaderComponent implements OnInit {
     private location: Location,
     private _loading: LoadingService,
     ) {
-      this.profImage = this.appConfig.getSessionStorage('profileImage');
+      this.profImage = this.appConfig.getLocalStorage('profileImage');
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -220,14 +220,14 @@ export class HeaderComponent implements OnInit {
   }
 
   rxjsHeaderAvatarUpdate() {
-    if (this.appConfig.getSessionStorage('token')) {
+    if (this.appConfig.getLocalStorage('token')) {
       this.showAvatar = true;
-      this.userDetails = JSON.parse(this.appConfig.getSessionStorage('userDetails'));
+      this.userDetails = JSON.parse(this.appConfig.getLocalStorage('userDetails'));
     }
     this.util.headerSubject.subscribe((data: any) => {
       this.showAvatar = data;
-      this.userDetails = JSON.parse(this.appConfig.getSessionStorage('userDetails'));
-      this.profImage = this.appConfig.getSessionStorage('profileImage');
+      this.userDetails = JSON.parse(this.appConfig.getLocalStorage('userDetails'));
+      this.profImage = this.appConfig.getLocalStorage('profileImage');
     });
   }
 

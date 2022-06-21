@@ -158,7 +158,7 @@ export class UserprofileComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userDetails = JSON.parse(this.appconfig.getSessionStorage('userDetails'));
+    this.userDetails = JSON.parse(this.appconfig.getLocalStorage('userDetails'));
     this.getProfile();
     this.profileFormInitialize();
     this.accountSettingsFormInitialize();
@@ -279,13 +279,13 @@ export class UserprofileComponent implements OnInit {
         if (data.success) {
           this.userDetails.firstname = this.addressEntryForm.value.firstname;
           this.userDetails.lastname = this.addressEntryForm.value.lastname;
-          this.appconfig.setSessionStorage('userDetails', JSON.stringify(this.userDetails));
+          this.appconfig.setLocalStorage('userDetails', JSON.stringify(this.userDetails));
           //this.toast.success(data.message);
           this.toast.success("Profile saved successfully");
           this.getProfilePercentage();
           this.selection = 'KYC';
           if (this.imageURL) {
-            this.appconfig.setSessionStorage('profileImage', this.imageURL);
+            this.appconfig.setLocalStorage('profileImage', this.imageURL);
             this.util.headerSubject.next(true);
           }
         }

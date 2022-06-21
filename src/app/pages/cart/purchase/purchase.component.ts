@@ -46,7 +46,7 @@ export class PurchaseComponent implements OnInit {
 
   ngOnInit(): void {
     this.accessCode = 'AVFQ92HF95BT32QFTB';
-    this.userDetails = JSON.parse(this.appconfig.getSessionStorage('userDetails'));
+    this.userDetails = JSON.parse(this.appconfig.getLocalStorage('userDetails'));
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
     });

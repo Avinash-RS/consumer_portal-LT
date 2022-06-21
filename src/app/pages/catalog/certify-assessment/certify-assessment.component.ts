@@ -28,7 +28,7 @@ export class CertifyAssessmentComponent implements OnInit {
               ) { }
 
   ngOnInit(): void {
-    this.userDetails = JSON.parse(this.appconfig.getSessionStorage('userDetails'));
+    this.userDetails = JSON.parse(this.appconfig.getLocalStorage('userDetails'));
 
     this.getAssesments();
   }
