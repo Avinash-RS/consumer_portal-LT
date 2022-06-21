@@ -165,7 +165,7 @@ export class AboutCourseComponent implements OnInit {
      }
 
   ngOnInit(): void {
-    this.userDetails = JSON.parse(this.appconfig.getSessionStorage('userDetails'));
+    this.userDetails = JSON.parse(this.appconfig.getLocalStorage('userDetails'));
     this.route.queryParams
     .subscribe(params => {
       this.domainId = atob(params.selectedTab);

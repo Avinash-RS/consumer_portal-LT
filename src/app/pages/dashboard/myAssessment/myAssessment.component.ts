@@ -41,7 +41,7 @@ export class MyAssessmentComponent implements OnInit {
     private dialog: MatDialog,
     private route:ActivatedRoute
   ) { 
-    this.userDetails = JSON.parse(this.appconfig.getSessionStorage('userDetails'));
+    this.userDetails = JSON.parse(this.appconfig.getLocalStorage('userDetails'));
   }
 
   ngOnInit() {
@@ -81,7 +81,7 @@ export class MyAssessmentComponent implements OnInit {
   }
 
   uapRedirect(assessmentId){
-    this.userDetails=JSON.parse(this.appconfig.getSessionStorage('userDetails'))
+    this.userDetails=JSON.parse(this.appconfig.getLocalStorage('userDetails'))
     // var jsonData={
     //   "assessmentName":assessmentId,
     //   "email":this.userDetails.email
