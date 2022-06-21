@@ -52,7 +52,7 @@ handleKeyboardEvent(event: KeyboardEvent) {
     this.bnIdle.startWatching(600).subscribe((isTimedOut: boolean) => {
       if (isTimedOut) {
         var userDetails = JSON.parse(
-          this.appConfig.getSessionStorage('userDetails')
+          this.appConfig.getLocalStorage('userDetails')
         );
         if (userDetails) {
           this.commonservice.logout();

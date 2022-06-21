@@ -124,7 +124,7 @@ export class KycQuestionComponent implements OnInit,AfterViewInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.userDetails =  JSON.parse(sessionStorage.getItem('userDetails'));
+    this.userDetails =  JSON.parse(localStorage.getItem('userDetails'));
     this.formInitialize();
     this.getWorkApiDetails();
   }

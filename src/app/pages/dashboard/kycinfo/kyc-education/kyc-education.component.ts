@@ -165,7 +165,7 @@ userDetails:any;
   }
 
   ngOnInit() {
-    this.userDetails =  JSON.parse(sessionStorage.getItem('userDetails'));
+    this.userDetails =  JSON.parse(localStorage.getItem('userDetails'));
     this.getSelectedPost();
     this.formInitialize();
     this.getEducationDetails();

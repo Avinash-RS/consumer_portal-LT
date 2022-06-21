@@ -61,13 +61,13 @@ export class HeaderImageComponent implements OnInit {
   }
 
   rxjsHeaderAvatarUpdate() {
-    if (this.appConfig.getSessionStorage('token')) {
+    if (this.appConfig.getLocalStorage('token')) {
       this.showAvatar = true;
-      this.userDetails = JSON.parse(this.appConfig.getSessionStorage('userDetails'));
+      this.userDetails = JSON.parse(this.appConfig.getLocalStorage('userDetails'));
     }
     this.util.headerSubject.subscribe((data: any) => {
       this.showAvatar = data;
-      this.userDetails = JSON.parse(this.appConfig.getSessionStorage('userDetails'));
+      this.userDetails = JSON.parse(this.appConfig.getLocalStorage('userDetails'));
     });
   }
 
@@ -84,7 +84,7 @@ export class HeaderImageComponent implements OnInit {
     })
   }
   getProfilePercentage(){
-    if(this.appConfig.getSessionStorage('token')){
+    if(this.appConfig.getLocalStorage('token')){
       this.showProgress = true;
       const data = {
         "noofFields":"44",

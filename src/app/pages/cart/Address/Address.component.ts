@@ -40,7 +40,7 @@ export class AddressComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userDetails = JSON.parse(this.appconfig.getSessionStorage('userDetails'));
+    this.userDetails = JSON.parse(this.appconfig.getLocalStorage('userDetails'));
     // console.log(this.userDetails.userId)
     this.addressFormInitialize();
     this.getAddress();
