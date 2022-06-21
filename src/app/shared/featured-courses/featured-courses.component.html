@@ -13,7 +13,7 @@
                                 <img [src]="item?.image?.url" alt="" />
                             </figure>
                             <div class="hours">
-                                <p>28h 23m</p>
+                                <p>{{item?.contentDuration}}</p>
                             </div>
                         </div>
                       <div class="wrapper">
@@ -23,11 +23,11 @@
                             <div class="licenseDuration">
                                 <div class="commonStyle">
                                     <span>License Period</span>
-                                    <span><em class="icon-Document"></em> 8 weeks</span>
+                                    <span><em class="icon-Document"></em>{{item?.licencePeriod}}</span>
                                 </div>
                                 <div class="commonStyle">
                                     <span>Duration</span>
-                                    <span><em class="icon-Time"></em> 40 hours</span>
+                                    <span><em class="icon-Time"></em>{{item?.videoDuration}}</span>
                                 </div>
                             </div>
                         </div>

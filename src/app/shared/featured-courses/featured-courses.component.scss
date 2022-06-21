@@ -230,12 +230,13 @@
                     display: block;
                     font-size: 0.75em;
                     line-height: normal;
-                    font-weight: 600;
                     &:first-child {
                         font-family: 'OpenSans';
                         color: $darkGrayColor;
+                        font-weight: 400;
                     }
                     &:last-child {
+                        font-weight: 600;
                         color: $mediumGrey;
                         margin-top: 0.5em;
                         em {

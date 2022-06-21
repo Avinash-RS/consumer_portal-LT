@@ -16,7 +16,7 @@
                         <div class="parentContainer" drag-scroll-item *ngFor="let tab of tabValues">
                             <div class="fieldItems">
                                 <div class="fieldTabs" [ngClass]="tab.isSelected ? 'active': '' " (click)="getArea(tab.cid)">
-                                    <em [ngClass]="tab.cid == 'All' ? 'icon-Grade' : tab?.image?.filename " class=""></em>
+                                    <em [ngClass]="tab.cid == 'All' ? 'icon-allCourses' : tab?.image?.filename " class=""></em>
                                     <div class="fieldName">{{tab.name}}</div>
                                     <div class="coursesCount">1 Course</div>
                                 </div>
