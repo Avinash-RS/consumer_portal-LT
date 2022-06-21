@@ -13,14 +13,24 @@
             <div class="assessmentArea">
                 <div class="filterSection">
                     <drag-scroll #allCourses snap-duration="500" (reachesLeftBound)="leftBoundStat($event)" (reachesRightBound)="rightBoundStat($event)" [scrollbar-hidden] = true [drag-scroll-y-disabled] = true (translated)="getPassedData($event)">
-                            <div class="fieldItems" drag-scroll-item *ngFor="let tab of tabValues">
+                        <div class="parentContainer" drag-scroll-item *ngFor="let tab of tabValues">
+                            <div class="fieldItems">
                                 <div class="fieldTabs" [ngClass]="tab.isSelected ? 'active': '' " (click)="getArea(tab.cid)">
-                                    <em class="icon-Civil"></em>
+                                    <em [ngClass]="tab.cid == 'All' ? 'icon-Grade' : tab?.image?.filename " class=""></em>
                                     <div class="fieldName">{{tab.name}}</div>
                                     <div class="coursesCount">1 Course</div>
                                 </div>
                             </div>
+                        </div>
                     </drag-scroll>
+                    <div class="draggable-button-container">
+                        <div class="leftArrow">
+                            <button [disabled]="leftNavDisabled" [ngClass]="leftNavDisabled ? 'disableArrow' : 'showArrow'" (click)="moveLeft()" class="draggable-button float-left"> <em class="icon-LeftArrow"></em> </button>
+                        </div>
+                        <div class="rightArrow">
+                            <button [disabled]="rightNavDisabled" [ngClass]="rightNavDisabled ? 'disableArrow' : 'showArrow'" (click)="moveRight()" class="draggable-button float-right"> <em class="icon-RightArrow"></em> </button>
+                        </div>
+                    </div>
                     <!-- <owl-carousel-o [options]="CategoriesOptions" >
                     </owl-carousel-o> -->
                 </div>
@@ -73,7 +83,7 @@
                                 <div class="figWrapper">
                                     <figure>
                                         <img [src] = "cards.image.url" alt="" />
-                                        <div class="estimateTime">28h 23m</div>
+                                        <div class="estimateTime">{{cards?.videoDuration}}</div>
                                         <!-- <button class="topRated">Top Rated</button> Dont Delete this line -->
                                     </figure>
                                     <!-- <div class="figEffect"></div> -->
@@ -102,7 +112,7 @@
                                     <div class="courseDuration">
                                         <div>
                                             <span class="commonStyle">Licence Period</span>
-                                            <span class="iconwithText"><em class="icon-Document"></em>8 weeks</span>
+                                            <span class="iconwithText"><em class="icon-Document"></em>{{cards?.licencePeriod}}</span>
                                                 <!-- {{cards.productType =='course' ? 'Modules' :'Assessments'}}</span> -->
                                                 <!-- {{cards.totalAssessment}}</span> -->
                                         </div>
@@ -112,7 +122,7 @@
                                         </div> -->
                                         <div>
                                             <span class="commonStyle">Duration</span>
-                                            <span class="iconwithText"><em class="icon-Time"></em>40 Hours</span>
+                                            <span class="iconwithText"><em class="icon-Time"></em>{{cards?.contentDuration}}</span>
                                                 <!-- {{cards?.courseContents?.duration}}</span> -->
                                         </div>
                                         <!-- <div *ngIf="cards.productType == 'course'">
