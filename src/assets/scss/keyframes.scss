@@ -133,3 +133,20 @@
     bottom: 25px;
   }
 }
+
+@keyframes rotate_wheel { 
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotate_wheel1 { 
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}

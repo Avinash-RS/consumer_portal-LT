@@ -151,19 +151,30 @@
         </section>
 
         <section [id]="gtuContent?.courseCoverage?.sectionId" class="courseage" *ngIf="gtuContent?.courseCoverage?.dispalystatus">
+            <div class="wheels">
+                <figure class="wheel1">
+                    <img src="https://lmsassetspremium.lntedutech.com/portalicons/bigwheel.webp" alt="" />
+                </figure>
+                <figure class="wheel2">
+                    <img src="https://lmsassetspremium.lntedutech.com/portalicons/smallwheel.webp" alt="" />
+                </figure>
+                <figure class="wheel3">
+                    <img src="https://lmsassetspremium.lntedutech.com/portalicons/bigwheel.webp" alt="" />
+                </figure>
+            </div>
             <div class="container">
                 <div class="commonHeadingStyle">{{gtuContent?.courseCoverage?.title}}</div>
                 <p>{{gtuContent?.courseCoverage?.description}}</p>
-                    <div class="leftExpansion">
-                        <ul>
-                            <li *ngFor="let item of gtuContent?.courseCoverage?.innerArray">
-                                <figure>
-                                    <img src="https://lmsassetspremium.lntedutech.com/portalicons/curriculumbook.webp" alt="" />
-                                </figure>
-                                <p>{{item}}</p>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="leftExpansion">
+                    <ul>
+                        <li *ngFor="let item of gtuContent?.courseCoverage?.innerArray">
+                            <figure>
+                                <img src="https://lmsassetspremium.lntedutech.com/portalicons/curriculumbook.webp" alt="" />
+                            </figure>
+                            <p>{{item}}</p>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </section>
         <div [id]="gtuContent?.learningOutcome?.sectionId">
