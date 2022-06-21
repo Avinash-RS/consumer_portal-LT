@@ -268,7 +268,10 @@ resolvedSignIn(captchaSignInResponse: string){
   }
 
   getCollegeMaster(){
-    this.cartsevice.getCollegeDetails().subscribe((result:any)=>{
+    const apiParm = {
+      userOrigin:CryptoJS.AES.encrypt(environment.userOrigin, this.secretKey.trim()).toString(),
+    };
+    this.cartsevice.getCollegeDetails(apiParm).subscribe((result:any)=>{
       if(result?.success && result?.data.length > 0){
         this.collegeData = result?.data;
       }
