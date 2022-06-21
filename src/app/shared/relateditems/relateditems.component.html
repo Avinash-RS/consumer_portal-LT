@@ -13,7 +13,20 @@
                                 <figure>
                                     <img [src]="relatedchild?.imageurl" alt="" />
                                 </figure>
-                                <div class="contentWrapper">
+                                <div class="title">
+                                    <span class="domainName"><em class="icon-Right_Play"></em>{{relatedchild?.domain}}</span>
+                                    <div class="licenseDuration">
+                                        <div class="commonStyle">
+                                            <span>License Period</span>
+                                            <span><em class="icon-Document"></em>{{relatedchild?.licencePeriod}}</span>
+                                        </div>
+                                        <div class="commonStyle">
+                                            <span>Duration</span>
+                                            <span><em class="icon-Time"></em>{{relatedchild?.duration}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="contentWrapper">
                                     <span class="batchStarts"><em class="icon-Time"></em> Batch starts on : {{relatedchild?.date}}</span>
                                     <div class="mnthStarts">
                                         <span class="months"><em class="icon-Booked"></em> {{relatedchild?.duration}}</span>
@@ -21,7 +34,7 @@
                                             <em class="icon-Star" *ngFor="let rate of relatedchild?.rating"></em>
                                         </span>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </ng-template>
                     </ng-container>
@@ -46,7 +59,20 @@
                                 <figure>
                                     <img [src]="relatedcourse?.imageurl" alt="" />
                                 </figure>
-                                <div class="contentWrapper">
+                                <div class="title">
+                                    <span class="domainName"><em class="icon-Right_Play"></em>{{relatedcourse?.domain}}</span>
+                                    <div class="licenseDuration">
+                                        <div class="commonStyle">
+                                            <span>License Period</span>
+                                            <span><em class="icon-Document"></em>{{relatedcourse?.licencePeriod}}</span>
+                                        </div>
+                                        <div class="commonStyle">
+                                            <span>Duration</span>
+                                            <span><em class="icon-Time"></em>{{relatedcourse?.duration}}</span>
+                                        </div>
+                                    </div>
+                                </div>                   
+                                <!-- <div class="contentWrapper">
                                     <div class="mnthStarts">
                                         <span class="stars">
                                             <em class="icon-Star" *ngFor="let rate of relatedcourse?.rating"></em>
@@ -62,7 +88,7 @@
                                             <span><em class="icon-Document"></em> {{relatedcourse?.NoOfAssessment}}</span>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </ng-template>
                     </ng-container>

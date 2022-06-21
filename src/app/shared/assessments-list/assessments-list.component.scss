@@ -138,11 +138,55 @@
 // }
 .filterSection {
     position: relative;
-    width: 90%;
+    width: 96%;
     margin: 0 auto;
-    .fieldItems {
+    .parentContainer {
         vertical-align: top;
-        margin-right: 30px;
+        &:last-child {
+            margin-right: 0 !important;
+            .fieldItems {
+                margin-right: 0;
+            }
+        }
+    }
+    .fieldItems {
+        margin: 0 15px;
+        width: 154px;
+    }
+    .draggable-button-container {
+        position: absolute;
+        width: 100%;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        .leftArrow, .rightArrow {
+            position: absolute;
+            button {
+                background-color: $whiteColor;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: none;
+                width: 1.5em;
+                height: 1.5em;
+                box-shadow: 0 3px 6px rgba(0,0,0,0.25) !important;
+                &.disableArrow {
+                    opacity: 0.5;
+                    cursor: not-allowed;
+                }
+                em {
+                    font-size: 0.875em;
+                    color: $blueColor;
+                }
+            }
+        }
+        .leftArrow {
+            left: -2em;
+        }
+        .rightArrow {
+            right: -2em;
+        }
     }
     .fieldTabs {
         padding: 0.75em 1.25em;
@@ -153,7 +197,7 @@
         em {
             line-height: 1.4;
             color: $mostlyDarkBlue;
-            font-size: 68px;
+            font-size: 4.25em;
         }
         .fieldName {
             position: relative;
@@ -345,14 +389,14 @@
             }
             .estimateTime {
                 position: absolute;
-                bottom: 3%;
-                right: 1%;
+                bottom: 0;
+                right: 0;
                 color: $whiteColor;
                 font-size: 0.75em;
                 font-weight: 600;
                 border: none;
                 padding: 0.35em 1em;
-                border-radius: 0.25em;
+                border-radius: 0;
                 background-color: #00000080;
                 z-index: 9;
             }
@@ -411,21 +455,22 @@
         .headings {
             .courseDesc {
                 color: $mediumGrey;
-                font-size: 0.75em;
+                font-size: 0.875em;
                 font-weight: 400;
+                line-height: normal;
             }
         }
         .heading5 {
             font-family: "OpenSans", sans-serif;
             color: $darkGrey;
-            font-size: 0.75em;
-            font-weight: 600;
+            font-size: 1.125em;
+            font-weight: 700;
             line-height: 1.25;
             min-height: 40px;
-            // margin-bottom: 0.75em;
+            margin-bottom: 0.75em;
         }
         .courseDuration {
-            margin: 0.5em 0 0 0;
+            margin: 2em 0 0 0;
             padding: 0.4em 0 0.65em 0;
         }
         .heart {
@@ -726,7 +771,7 @@
     }
     .drag-scroll-content {
         position: relative;
-        padding: 0 0 10px 10px;
+        padding: 10px;
         &::after {
             content: '';
             

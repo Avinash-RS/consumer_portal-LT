@@ -144,14 +144,14 @@ testimonialOptions: OwlOptions = {
         // console.log(data, 'karthik Data')
         if (data.success) {
 
-          this.appConfig.setSessionStorage('userDetails', JSON.stringify(data.data));
-          this.appConfig.setSessionStorage('token', data.token);
-          this.appConfig.setSessionStorage('profileImage', data.data.profileImage);
+          this.appConfig.setLocalStorage('userDetails', JSON.stringify(data.data));
+          this.appConfig.setLocalStorage('token', data.token);
+          this.appConfig.setLocalStorage('profileImage', data.data.profileImage);
           this.util.headerSubject.next(true);
           this.util.cartSubject.next(true);
           this.util.getValue().subscribe((response) => {
             if (response) {
-              this.userDetails = JSON.parse(this.appConfig.getSessionStorage('userDetails'));
+              this.userDetails = JSON.parse(this.appConfig.getLocalStorage('userDetails'));
               if (this.userDetails) {
 
               const data = {

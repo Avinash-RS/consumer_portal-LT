@@ -69,7 +69,7 @@ export class SuccessComponent implements OnInit {
     private appconfig: AppConfigService,
 
   ) {
-    this.userDetails = JSON.parse(this.appConfig.getSessionStorage('userDetails'));
+    this.userDetails = JSON.parse(this.appConfig.getLocalStorage('userDetails'));
   }
   ngOnInit() {
     this.util.cartSubject.next(true);

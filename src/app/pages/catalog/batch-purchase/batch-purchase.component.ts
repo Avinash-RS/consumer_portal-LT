@@ -35,7 +35,7 @@ export class BatchPurchaseComponent implements OnInit {
 
   ngOnInit() {
     this.userDetails = JSON.parse(
-      this.appconfig.getSessionStorage('userDetails')
+      this.appconfig.getLocalStorage('userDetails')
     );
     this.route.queryParams.subscribe((params) => {
       this.domainId = atob(params.selectedTab);

@@ -59,7 +59,7 @@ export class BookSlotComponent implements OnInit {
     private util: UtilityService,
     private catalog: CatalogService,
     public toast: ToastrService
-  ) { this.userDetails = JSON.parse(this.appConfig.getSessionStorage('userDetails')); }
+  ) { this.userDetails = JSON.parse(this.appConfig.getLocalStorage('userDetails')); }
 
   ngOnInit() {
     this.data.selectedindex = this.data.selectedindex ? this.data.selectedindex : 0;
@@ -158,7 +158,7 @@ export class BookSlotComponent implements OnInit {
     }
   }
   submitSelectedSlot(testItem) {
-    let userDetails: any = JSON.parse(this.appConfig.getSessionStorage('userDetails'));
+    let userDetails: any = JSON.parse(this.appConfig.getLocalStorage('userDetails'));
     let dateVal = moment(testItem.testTypes.bookingData.selectedDate).format('YYYY-MM-DD');
     let slotDateTime = new Date(dateVal + ' ' + testItem.testTypes.bookingData.selectedSlot.key);
     let utcformatted = moment(slotDateTime).utc(true).format('YYYY-MM-DDTHH:mm:ss.SSS[Z]');

@@ -189,7 +189,7 @@ footer {
 .ourPartners {
     position: relative;
     background-color:$blackBgColor;
-    padding: 2.5em 0;
+    padding: 1.5em 0;
     font-size: 13px;
     @include md {
       font-size: 14px;
@@ -202,7 +202,7 @@ footer {
     }
     .partnersSection {
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       flex-wrap: wrap;
       @include md {
         justify-content: space-between;
@@ -236,7 +236,7 @@ footer {
           span {
             display: flex;
             align-items: center;
-            line-height: 2;
+            line-height: 1;
             &:last-child {
               margin-right: 0;
             }
@@ -253,7 +253,7 @@ footer {
             }
             p {
               font-family: "OpenSans";
-              font-size: 1.125em;
+              font-size: 1em;
               font-weight: 400;
               color: #FFFFFF;
               margin: 0;
@@ -273,19 +273,19 @@ footer {
           justify-content: flex-end;
         }
         .policy {
-          display: flex;
-          align-items: center;
-          flex-direction: column;
           span {
             font-family: "OpenSans";
-            font-size: 1.125em;
+            font-size: 1em;
             font-weight: 400;
             color: $whiteColor;
             text-align: center;
             line-height: normal;
             margin-bottom: 1em;
+            padding: 0 10px;
+            border-right: 1px solid rgba(255,255,255,0.5);
             &:last-child {
               margin-bottom: 0;
+              border-right: none;
             }
             @include md {
               text-align: left;

@@ -200,9 +200,9 @@ resolvedSignIn(captchaSignInResponse: string){
           data.data['emailId'] = data.data.email
           data.data.email = CryptoJS.AES.encrypt(data.data.email.toLowerCase(), this.secretKey.trim()).toString();
           data.data.userId = CryptoJS.AES.encrypt(data.data.userId.toLowerCase(), this.secretKey.trim()).toString();
-          this.appconfig.setSessionStorage('userDetails', JSON.stringify(data.data));
-          this.appconfig.setSessionStorage('token', data.token);
-          this.appconfig.setSessionStorage('profileImage', data.data.profileImage);
+          this.appconfig.setLocalStorage('userDetails', JSON.stringify(data.data));
+          this.appconfig.setLocalStorage('token', data.token);
+          this.appconfig.setLocalStorage('profileImage', data.data.profileImage);
           this.loginForm.reset();
           var portalData = {
             'queValue':encryptedname,
@@ -213,7 +213,7 @@ resolvedSignIn(captchaSignInResponse: string){
           this.util.cartSubject.next(true);
           this.util.getValue().subscribe((response) => {
             if (response) {
-              this.userDetails = JSON.parse(this.appconfig.getSessionStorage('userDetails'));
+              this.userDetails = JSON.parse(this.appconfig.getLocalStorage('userDetails'));
               if (this.userDetails) {
 
               const data = {
@@ -268,7 +268,10 @@ resolvedSignIn(captchaSignInResponse: string){
   }
 
   getCollegeMaster(){
-    this.cartsevice.getCollegeDetails().subscribe((result:any)=>{
+    const apiParm = {
+      userOrigin:CryptoJS.AES.encrypt(environment.userOrigin, this.secretKey.trim()).toString(),
+    };
+    this.cartsevice.getCollegeDetails(apiParm).subscribe((result:any)=>{
       if(result?.success && result?.data.length > 0){
         this.collegeData = result?.data;
       }
@@ -379,14 +382,14 @@ resolvedSignIn(captchaSignInResponse: string){
       // console.log(data, 'karthik Data')
       if (data.success) {
 
-        this.appconfig.setSessionStorage('userDetails', JSON.stringify(data.data));
-        this.appconfig.setSessionStorage('token', data.token);
-        this.appconfig.setSessionStorage('profileImage', data.data.profileImage);
+        this.appconfig.setLocalStorage('userDetails', JSON.stringify(data.data));
+        this.appconfig.setLocalStorage('token', data.token);
+        this.appconfig.setLocalStorage('profileImage', data.data.profileImage);
         this.util.headerSubject.next(true);
         this.util.cartSubject.next(true);
         this.util.getValue().subscribe((response) => {
           if (response) {
-            var userDetails = JSON.parse(this.appconfig.getSessionStorage('userDetails'));
+            var userDetails = JSON.parse(this.appconfig.getLocalStorage('userDetails'));
             if(userDetails) {
            //   this.cookieService.set('isLoggedIn','true')
             response.userId = userDetails.userId

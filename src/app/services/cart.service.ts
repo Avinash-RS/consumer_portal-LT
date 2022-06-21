@@ -40,8 +40,8 @@ export class CartService {
   removeCartDetails(params){
     return this.http.post(this.baseurl + 'removeCartDetails', params);
   }
-  getCollegeDetails(){
-    return this.http.post(this.baseurl + 'getCollegeDetails', {});
+  getCollegeDetails(param){
+    return this.http.post(this.baseurl + 'getCollegeDetails', param);
   }
   getDepartmentDetails(){
     return this.http.post(this.baseurl + 'getDepartmentDetails', {});
