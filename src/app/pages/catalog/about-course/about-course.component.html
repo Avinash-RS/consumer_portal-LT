@@ -6,9 +6,10 @@
             <div class="bannerContent">
                 <div class="container">
                     <div class="left">
+                        <span class="domainName"><em class="icon-Right_Play"></em>Civil & Architecture</span>
                         <div class="heading1">{{courseData?.name}}</div>
                         <p>{{courseData?.shortDescription}}</p>
-                        <span>{{courseData?.skillLevel}}</span>
+                        <!-- <span>{{courseData?.skillLevel}}</span> -->
                         <div class="courseContent">
                             <span class="ratingStar">
                                 <em class="icon-Star" *ngFor="let rate of courseData?.courseContents?.ratings"></em>
@@ -22,6 +23,7 @@
                                 <button class="buyNow" (click)="navigateBatch()">
                                     {{(this.courseType == 'Track' || this.courseType == 'course') ? 'Enroll Now' :'Add To Cart'}}
                                 </button>
+                                <p>Batch Starts on 01 Aug 2022</p>
                             </div>
                         </div>
                     </div>
@@ -117,7 +119,7 @@
             <section  class="progHighlightsBg" *ngIf="gtuContent?.courseAdvantage?.dispalystatus">
                 <div class="container">
                     <div class="programmeHighlights">
-                        <div class="heading4">{{gtuContent?.courseAdvantage?.title}}</div>
+                        <div class="commonHeadingStyle">{{gtuContent?.courseAdvantage?.title}}</div>
                         <p>{{gtuContent?.courseAdvantage?.description}}</p>
                         <div class="keySkillsCovered">
                             <div class="keyFeatures" *ngFor="let highlightChild of gtuContent?.courseAdvantage?.innerArray">

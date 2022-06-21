@@ -8,21 +8,26 @@
             <drag-scroll #featuredCourses snap-duration="500" (reachesLeftBound)="leftBoundStat($event)" (reachesRightBound)="rightBoundStat($event)" [scrollbar-hidden] = true [drag-scroll-y-disabled] = true>
                 <div class="scrollItem" drag-scroll-item *ngFor="let item of catalogData" (click)="aboutCourse(item.cid)">
                     <div class="modules">
-                        <figure>
-                            <img [src]="item?.image?.url" alt="" />
-                        </figure>
-                        <div class="wrapper">
+                        <div class="courseImg">
+                            <figure>
+                                <img [src]="item?.image?.url" alt="" />
+                            </figure>
+                            <div class="hours">
+                                <p>{{item?.contentDuration}}</p>
+                            </div>
+                        </div>
+                      <div class="wrapper">
                             <span class="domainName"><em class="icon-Right_Play"></em>{{item?.domainName}}</span>
                             <span class="heading6">{{item?.name}}</span>
                             <p>{{item?.longDescription}}</p>
                             <div class="licenseDuration">
                                 <div class="commonStyle">
                                     <span>License Period</span>
-                                    <span><em class="icon-Document"></em> 8 weeks</span>
+                                    <span><em class="icon-Document"></em>{{item?.licencePeriod}}</span>
                                 </div>
                                 <div class="commonStyle">
                                     <span>Duration</span>
-                                    <span><em class="icon-Time"></em> 40 hours</span>
+                                    <span><em class="icon-Time"></em>{{item?.videoDuration}}</span>
                                 </div>
                             </div>
                         </div>

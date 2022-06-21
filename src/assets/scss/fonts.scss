@@ -195,6 +195,9 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+.icon-allCourses:before {
+  content: "\e981";
+}
 .icon-CalendarBatch:before {
   content: "\e97e";
 }

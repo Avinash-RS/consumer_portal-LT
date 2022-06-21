@@ -826,7 +826,7 @@
 // aboutProgram
 .aboutProgram {
   position: relative;
-  padding: 1.75em 0;
+  padding:  3.75em 0;
   background-color: $aliceBlueColor;
   font-size: 13px;
   @include md {
@@ -922,8 +922,8 @@
         margin: 0;
         text-align: justify;
         @include md {
-          font-size: 1.1em;
-          line-height: 1.5em;
+          // font-size: 1.1em;
+          // line-height: 1.5em;
           margin: 1em 0em;
         }
       }
@@ -1219,8 +1219,8 @@
           margin: 0;
           text-align: justify;
           @include md {
-            font-size: 1.1em;
-            line-height: 1.5em;
+            // font-size: 1.1em;
+            // line-height: 1.5em;
             margin: 1em 0em;
           }
         }
@@ -1312,8 +1312,8 @@
           margin: 0;
           text-align: justify;
           @include md {
-            font-size: 1.1em;
-            line-height: 1.5em;
+            // font-size: 1.1em;
+            // line-height: 1.5em;
             margin: 1em 0em;
           }
         }
