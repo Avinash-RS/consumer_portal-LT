@@ -60,6 +60,9 @@
         .left {
           width: 100%;
           @include sm {
+            width: 60%;
+          }
+          @include md {
             width: 50%;
           }
         }
@@ -68,6 +71,7 @@
           display: flex;
           justify-content: flex-end;
           margin: 1.5em 0;
+          padding: 0 1em;
           figure {
             width: 100%;
             opacity: 1;
@@ -101,6 +105,10 @@
             }
           }
           @include sm {
+            width: 37%;
+            padding: 0;
+          }
+          @include md {
             width: 42%;
           }
         }
@@ -152,7 +160,9 @@
         justify-content: flex-start;
         align-items: center;
         span {
-          margin: 0;
+          @include lg {
+            margin: 0;
+          }
         }
         .ratingStar {
           em {
@@ -181,12 +191,18 @@
           font-size: 0.85em;
           font-weight: 300;
           color: #e6e6e6;
-          margin-right: 3em;
+          margin-right: 2em;
+          @include sm {
+            margin-right: 3em;
+          }
         }
         .buttons {
           position: relative;
-          margin-left: 2em;
-          @include sm {
+          margin-left: 0;
+          @include lg {
+            margin-left: 4em;
+          }
+          @include xl {
             margin-left: 6em;
           }
           .buyNow {
