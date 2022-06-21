@@ -139,6 +139,10 @@ export class AboutCourseComponent implements OnInit {
   sixthOffset: Number = null;
   seventhOffset: Number = null;
   eigthOffset: Number = null;
+  @HostListener('window:scroll', ['$event']) 
+  scrollHandler(event) {
+    this.sticky = window.pageYOffset >= this.menuPosition ? true : false;
+  }
   // @HostListener('window:scroll', ['$event'])
   //   handleScroll(){
   //       const windowScroll = window.pageYOffset;
@@ -162,19 +166,19 @@ export class AboutCourseComponent implements OnInit {
       this.router.routeReuseStrategy.shouldReuseRoute = () => {
         return false;
       };
+      this.userDetails = JSON.parse(this.appconfig.getLocalStorage('userDetails'));
+      this.route.queryParams
+      .subscribe(params => {
+        this.domainId = atob(params.selectedTab);
+        this.areaId = atob(params.id);
+        this.productType = atob(params.productType);
+        this.getAbouCourse();
+      });
      }
 
   ngOnInit(): void {
-    this.userDetails = JSON.parse(this.appconfig.getLocalStorage('userDetails'));
-    this.route.queryParams
-    .subscribe(params => {
-      this.domainId = atob(params.selectedTab);
-      this.areaId = atob(params.id);
-      this.productType = atob(params.productType);
-      this.getAbouCourse();
-    });
-    this.contactFormInitilize();
-    this.queryFormInitilize();
+    // this.contactFormInitilize();
+    // this.queryFormInitilize();
   }
   contactFormInitilize(){
     this.contactForm = this.fb.group({
@@ -372,18 +376,18 @@ setOffset(){
         });
       }
       scroll(ID) {
-        // document.getElementById(ID).scrollIntoView({behavior: "smooth"});
         this.activeSection = ID;
-        var yOffset;
-        if(this.sticky){
-          yOffset = -140;
-        }
-        else{
-          yOffset = -170;
-        }
-        const element = document.getElementById(ID);
-        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-        window.scrollTo({top: y, behavior: 'smooth'});
+        document.getElementById(ID).scrollIntoView({behavior: "smooth"});
+        // var yOffset;
+        // if(this.sticky){
+        //   yOffset = -140;
+        // }
+        // else{
+        //   yOffset = -170;
+        // }
+        // const element = document.getElementById(ID);
+        // const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        // window.scrollTo({top: y, behavior: 'smooth'});
     
     }
     openRequest(){
