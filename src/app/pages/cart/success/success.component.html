@@ -1,7 +1,7 @@
 <section class="thankyouMessage">
     <div class="container">
         <figure>
-            <img src="https://lmsassetspremium.lntedutech.com/portalicons/successfully.webp" alt="" />
+            <img src="https://lmsassetspremium.lntedutech.com/portalicons/purchase-tick.webp" alt="" />
         </figure>
         <div class="heading3">THANK YOU FOR YOUR PURCHASE!</div>
         <!-- <div class="heading5">Token number has been sent to your registered email.</div> -->
@@ -18,49 +18,60 @@
         </div> -->
 
         <div class="orderDetails">
-            <div class="positionChange">
+            <!-- <div class="positionChange">
                 <span class="heading5">Order Details</span>
+            </div> -->
+            <div class="orderCourseImage">
+                <figure>
+                    <img src="https://lmsassetspremium.lntedutech.com/portalicons/concrete-technology-img.webp" alt="">
+                </figure>
             </div>
             <div class="orders">
-                <div class="orderHeading">
-                    <div class="assessmentDate commonClass">
-                        <span>Name:</span>
-                    </div>
-                    <div class="orderDate commonClass">
-                        <span>Order Date:</span>
-                    </div>
-                    <div class="orderNum commonClass">
-                        <span>Order #</span>
-                    </div>
-                    <div class="PaymentType commonClass">
-                        <span>Payment Type</span>
-                    </div>
-                    <div class="DeliveryOptions commonClass">
-                        <span>Delivery Options</span>
-                    </div>
-                    <div class="DeliveryOptions commonClass">
-                        <span>Product Type</span>
-                    </div>
-                    <div class="DeliveryOptions commonClass">
-                        <span>Action</span>
-                    </div>
+                <div class="courseHeading" *ngFor="let item of orderlist">
+                    <span class="domainName"><em class="icon-Right_Play"></em>Civil Engineering</span>
+                    <span class="heading6">{{item.assessmentName}}</span>
                 </div>
-                <div class="orderContent">
-                    <div class="" *ngFor="let item of orderlist">
-                        <span class="heading5">{{item.assessmentName}}<br></span>
-                        <span class="heading5">{{item.orderDate}}<br></span>
-                        <span class="heading5">{{item.orderNo}}</span>
-                        <span class="heading5">{{item.payment?item.payment:"N/A"}}</span>
-                        <span class="heading5">Online</span>
-                        <span class="heading5">{{item?.productType == 'course' ? 'Course' : 'Assessment'}}</span>
-                        <span class="heading5">
-                            <div *ngIf="item?.productType == 'course'">
-                                <button  class="slotBooking" (click)="goToCourse(item)">Go to Course</button>
-                            </div>
-                            <div *ngIf="item?.productType !== 'course'">
-                                <button (click)="openDialog(bookSlot,orderlist[0])" class="slotBooking">Book a Slot</button>
-                            </div>
-                        </span>
+                <div class="orderHistory">
+                    <div class="orderHeading">
+                        <!-- <div class="assessmentDate commonClass">
+                            <span>Name:</span>
+                        </div> -->
+                        <div class="orderDate commonClass">
+                            <span>Order Date:</span>
+                        </div>
+                        <div class="orderNum commonClass">
+                            <span>Order ID:</span>
+                        </div>
+                        <div class="PaymentType commonClass">
+                            <span>Payment Type:</span>
+                        </div>
+                        <div class="DeliveryOptions commonClass">
+                            <span>Delivery Option</span>
+                        </div>
+                        <!-- <div class="DeliveryOptions commonClass">
+                            <span>Product Type</span>
+                        </div> -->
+                        <div class="DeliveryOptions commonClass">
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="orderContent">
+                        <div class="" *ngFor="let item of orderlist">
+                            <!-- <span class="heading5">{{item.assessmentName}}<br></span> -->
+                            <span class="heading5">{{item.orderDate}}<br></span>
+                            <span class="heading5">{{item.orderNo}}</span>
+                            <span class="heading5">{{item.payment?item.payment:"N/A"}}</span>
+                            <span class="heading5">Online</span>
+                            <!-- <span class="heading5">{{item?.productType == 'course' ? 'Course' : 'Assessment'}}</span> -->
+                            <span class="heading5">
+                                <div *ngIf="item?.productType == 'course'">
+                                    <button  class="backToCourse" (click)="goToCourse(item)">Go to Course</button>
+                                </div>
+                                <div *ngIf="item?.productType !== 'course'">
+                                    <button (click)="openDialog(bookSlot,orderlist[0])" class="slotBooking">Book a Slot</button>
+                                </div>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
