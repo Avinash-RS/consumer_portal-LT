@@ -121,19 +121,41 @@
         <ng-container *ngIf ="catalogMenu.length > 0">
             <ul class="headtxt_">
                 <li>
-                    <div class="catalog">Catalog</div>
+                    <div class="catalog">Categories</div>
                     <ul>
                         <li>
-                            <div class="domain">DOMAIN</div>
-                            <ul>
-                                <li>
-                                    <div class="stream">STREAM</div></li>
-                            </ul>
+                            <div class="domain">Courses</div>
                         </li>
                     </ul>
                 </li>
             </ul>
             <ul class="menuText">
+                <li [ngClass]="level0?.active ? 'secondActive':''" *ngFor="let level0 of catalogMenu[0].data;">
+                    <div (mouseenter)="secondLevelHover(megaMenuL1Data,level0)">
+                        <span>{{level0.name}}</span>
+                        <em class="icon-RightArrow"></em>
+                    </div>
+                    <ul>
+                        <ng-container *ngFor="let level1 of megaMenuL2Data">
+                            <li>
+                                <div (click)="gotoArea(level1, 'course')">
+                                    <img src="/assets/images/civil.png" alt="" />
+                                    <span>{{level1.name}}</span>
+                                </div>
+                            </li>
+                        </ng-container>
+                        <ng-container *ngIf="megaMenuL2Data.length == 0">
+                            <div class="noCategories">
+                                <figure>
+                                    <img src="https://lmsassetspremium.lntedutech.com/portalicons/path.webp" alt="" />
+                                </figure>
+                                <p>No Categories Found</p>
+                            </div>
+                        </ng-container>
+                    </ul>
+                </li>
+            </ul>
+            <!-- <ul class="menuText">
                 <li *ngFor="let level0 of catalogMenu;" [ngClass]="level0.active ? 'firstActive':''">
                     <div class="firstLevel" (mouseenter)="firstLevelHover(catalogMenu,level0)">
                         <span class="icon">
@@ -149,7 +171,7 @@
                         <ng-container *ngFor="let level1 of megaMenuL1Data">
                             <li [ngClass]="level1?.active ? 'secondActive':''">
                                 <div (mouseenter)="secondLevelHover(megaMenuL1Data,level1)">
-                                    <span (click)="catalogHome(level1.cid ,level0.type)">{{level1.name}}</span>
+                                    <span (click)="catalogHome(level1.cid,level0.type)">{{level1.name}}</span>
                                     <em class="icon-RightArrow"></em>
                                 </div>
                                 <ul>
@@ -166,7 +188,7 @@
                         </ng-container>
                     </ul>
                 </li>
-            </ul>
+            </ul> -->
         </ng-container>
     </nav>
 </header>
@@ -195,7 +217,7 @@
 
 <nav class="mobileMegamenu mobilemenu" [@mobileslideInOut]="mobileshowMenu">
     <ng-container *ngIf ="catalogMenu.length > 0">
-        <ng-container *ngIf="l1.length > 0 && l2.length <= 0 && l3.length <= 0 && l4.length <= 0">
+        <!-- <ng-container *ngIf="l1.length > 0 && l2.length <= 0 && l3.length <= 0 && l4.length <= 0">
             <div class="firstLevelWrapper">
                 <div class="mobilemenuHeader first">
                     <div class="backArrow"><em class="icon-Back"></em></div>
@@ -221,22 +243,25 @@
                                         <em class="icon-RightArrow"></em>
                                     </span>
                                 </span>
-                                <!-- <span>{{item.label}}</span> -->
                             </a>
                         </li>
                     </ul>
                 </div>
             </div>
-        </ng-container>
+        </ng-container> -->
         <ng-container *ngIf="l1.length > 0 && l2.length > 0 && l3.length <= 0 && l4.length <= 0">
             <div class="secondLevelWrapper">
                 <div class="mobilemenuHeader">
-                    <div class="backArrow"><em (click)="l2 = []" class="icon-Back"></em></div>
-                    <div class="headingStyle">{{l1name}}</div>
+                    <div class="backArrow"><em class="icon-Back"></em></div>
+                    <span class="headingStyle">Menu</span>
+                    <!-- <div class="headingStyle">{{l1name}}</div> -->
                     <div class="closeIcon"><em class="icon-Close" (click)="closeMegaMenu_()"></em></div>
                 </div>
+                <nav class="topMenuMobile" *ngIf="showAvatar">
+                    <a [ngClass]="isCourse ? 'activeTab' : ''" (click)="onlineAssessment('course')">My Courses</a>
+                </nav>
                 <div class="secondLevel commonSyle">
-                    <span class="header-txt">Domain</span>
+                    <span class="header-txt">Categories</span>
                     <ul>
                         <li *ngFor="let item of l2">
                             <a>
@@ -256,12 +281,12 @@
                     <div class="closeIcon"><em class="icon-Close" (click)="closeMegaMenu_()"></em></div>
                 </div>
                 <div class="thirdlevel commonSyle">
-                    <span class="header-txt">Stream</span>
+                    <span class="header-txt">Courses</span>
                     <ul>
                         <li *ngFor="let item of l3">
                             <a>
                                 <div (click)="gotoArea(item,productType)">
-                                    <img [src]="item?.areaicon" alt="" />
+                                    <img src="/assets/images/civil.png" alt="" />
                                     <span>{{item.name}}</span>
                                 </div>
                             </a>
