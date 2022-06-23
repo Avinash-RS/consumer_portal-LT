@@ -420,9 +420,9 @@ export class HeaderComponent implements OnInit {
   }
 
   triggerLeave(){
-    // if(this.showMenu == 'in'){
-    //   this.closeMegaMenu();
-    // }
+    if(this.showMenu == 'in'){
+      this.closeMegaMenu();
+    }
   }
   firstLevelHover(menu,item){
     this.megaMenuL1Data = item.data;
