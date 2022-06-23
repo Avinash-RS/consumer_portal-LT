@@ -74,7 +74,7 @@
                 </div>
             </ng-container>
             <ng-container *ngIf="!showAvatar">
-                <button class="login" (click)="openOnBoard('0'); closeMegaMenu_()">Sign In</button>
+                <button class="login desktop" (click)="openOnBoard('0'); closeMegaMenu_()">Sign In</button>
                 <button class="register" (click)="openOnBoard('1'); closeMegaMenu_()">Register</button>
             </ng-container>
             <div class="aictelogo">
@@ -200,12 +200,12 @@
             <span class="signIn"><a  (click)="openOnBoard('0'); closeMegaMenu_()">Sign In</a></span>
             <span class="register" (click)="openOnBoard('1'); closeMegaMenu_()">Register</span>
         </ng-container>
-        <div *ngIf="!showAvatar" class="recruiter">
+        <!-- <div *ngIf="!showAvatar" class="recruiter">
             <a href="https://unifiedreport.lntedutech.com/login" target="recruiterLogin">
                 <em class="icon-Recruiter"></em> 
                 <span>Recruiter? Login here</span>
             </a>
-        </div>
+        </div> -->
     </div>
 </div>
 
