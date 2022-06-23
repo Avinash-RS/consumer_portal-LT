@@ -14,7 +14,7 @@ export const environment = {
   PAYMENT:'https://devpayment.lntedutech.com',
   uap:'https://uap-dev.lntiggnite.com',
   unifiedReport_URL :'https://unifiedreport-dev.lntedutech.com/',
-  lxp_url:'https://lmsdev.lntiggnite.com/redirection',
+  lxp_url:'https://lmsdev.lntedutech.com/redirection',
   captachaSiteKey: '6Lf-qfEcAAAAAH2zsrdDz1K6DmUOHjgHzGmH3PN7',
   userOrigin:'learner'
 };

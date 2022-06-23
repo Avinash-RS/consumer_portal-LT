@@ -21,12 +21,13 @@
                 <em [ngClass]="showMenu == 'out' ? 'icon-DownArrow' : 'icon-UpArrow'" ></em>
             </button>
         </div>
-        <nav (mouseenter)="triggerLeave()" [ngClass]="(header_width.offsetWidth > '992') ?  'topMenu' : 'hide_'" [class.topMenu_lap]="menu_tab" *ngIf="showAvatar">
+        <!-- <nav (mouseenter)="triggerLeave()" [ngClass]="(header_width.offsetWidth > '992') ?  'topMenu' : 'hide_'" [class.topMenu_lap]="menu_tab" *ngIf="showAvatar">
             <ul>
                 <li><a [ngClass]="isCourse ? 'activeTab' : ''" (click)="onlineAssessment('course')">My Courses</a></li>
-                <!-- <li><a [ngClass]="isAssement ? 'activeTab' : ''" (click)="onlineAssessment('assessment')">My Assessment</a></li> -->
+                <li><a [ngClass]="isAssement ? 'activeTab' : ''" (click)="onlineAssessment('assessment')">My Assessment</a></li>
             </ul>
-        </nav>
+        </nav> -->
+        <button class="coursebtn" (click)="gotoCourse()" *ngIf="showAvatar && ispurchased">Go to my courses</button>
     </div>
 
     <div class="rightWrapper">
