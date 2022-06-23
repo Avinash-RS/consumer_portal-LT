@@ -76,6 +76,7 @@ export class HeaderComponent implements OnInit {
   megaMenuL1Data:any =[];
   megaMenuL2Data:any =[];
   noData: any;
+  ispurchased:boolean = false;
   constructor(
     private appConfig: AppConfigService,
     private catalogService: CatalogService,
@@ -111,10 +112,17 @@ export class HeaderComponent implements OnInit {
     this.getUrl()
     this.getCatologmenu();
     var activeMenu = localStorage.getItem('myPurchase');
-    this.isCourse = activeMenu && activeMenu == 'course';
-    this.isAssement = activeMenu && activeMenu == 'assessment';
+    // this.isCourse = activeMenu && activeMenu == 'course';
+    // this.isAssement = activeMenu && activeMenu == 'assessment';
   }
-
+  getPurchasedCourse(){
+    let param = {"userId": this.userDetails.userId, "email": this.userDetails.email, type:'All',productType:'course'};
+    this.commonservice.getmyAssesments(param).subscribe((rdata:any)=>{
+      if(rdata?.success && rdata?.data.length > 0) {
+        this.ispurchased = true;
+      }
+    });
+  }
   getUrl(){
       var url = this.location.path()
       if(url == '/certificationDetails') {
@@ -225,6 +233,7 @@ export class HeaderComponent implements OnInit {
     if (this.appConfig.getLocalStorage('token')) {
       this.showAvatar = true;
       this.userDetails = JSON.parse(this.appConfig.getLocalStorage('userDetails'));
+      this.getPurchasedCourse();
     }
     this.util.headerSubject.subscribe((data: any) => {
       this.showAvatar = data;
@@ -446,5 +455,9 @@ export class HeaderComponent implements OnInit {
   }
   ngOnDestroy() {
     localStorage.removeItem('myPurchase');
+  }
+  gotoCourse(){
+    var ValueData = JSON.parse(this.appConfig.getLocalStorage('valueData'));
+      window.open(environment.lxp_url+"?queValue="+encodeURIComponent(ValueData.queValue)+'&rpValue='+encodeURIComponent(ValueData.rpValue)+'&dpValue=microsetportal', '_self');
   }
 }
