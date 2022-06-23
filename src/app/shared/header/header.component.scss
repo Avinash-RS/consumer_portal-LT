@@ -211,7 +211,7 @@ header {
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 10px;
+    // margin-top: 10px;
     @include md {
         margin-top: 0;
         justify-content: flex-end;
@@ -311,8 +311,13 @@ header {
     .aictelogo {
         text-align: center;
         figure {
+            display: flex;
+            justify-content: flex-end;
             img {
-                width: 50%;
+                width: 60%;
+                @include sm {
+                    width: 50%;
+                }
             }
         }
     }
@@ -390,7 +395,7 @@ header {
     position: absolute;
     left: 0;
     bottom: 0;
-    right: 0;
+    right: auto;
     top: 4em;
     background-color: $whiteColor;
     //border-top: 1px solid #cdcdcd;
@@ -400,6 +405,7 @@ header {
     overflow: hidden;
     z-index: 999;
     font-size: 14px;
+    max-width: 950px;
     width: 100%;
     margin: 0 auto;
     @include sm {
@@ -411,13 +417,15 @@ header {
     @include lg {
         width: 90%;
         top: 5.3em;
+        left: 3em;
     }
     @include xl {
-        width: 85%;
+        left: 10em;
+        width: 50%;
     }
-    @media only screen and (min-width: 1540px) {
-        width: 80%;
-    }
+    // @media only screen and (min-width: 1540px) {
+    //     width: 80%;
+    // }
     &.show {
         opacity: 1;
         display: block;
@@ -429,10 +437,22 @@ header {
         height: auto;
         padding: 0;
         margin: 0;
-        background-color: $secondaryColor;
+        // background-color: $secondaryColor;
+        background-color: #f9f9f9;
         & > li {
+            & > div {
+                &::before {
+                    content: '';
+                    position: absolute;
+                    width: 100%;
+                    height: 1px;
+                    background-color: #999999;
+                    left: 0;
+                    bottom: 0;
+                }
+            }
             & > ul {
-                background-color: #f9f9f9;
+                background-color: $whiteColor;
                 & > li {
                     & > div {
                         &::before {
@@ -482,10 +502,10 @@ header {
         //     // color: transparent;
         // }
         .catalog {
-            color: #EDEDED;
+            color: $darkGrayColor;
         }
         .domain, .stream {
-            color: #999999;
+            color: $darkGrayColor;
         }
     }
     ul {
@@ -517,7 +537,8 @@ header {
     }
     > ul {
         position: relative;
-        width: 33.3%;
+        // width: 33.3%;
+        width: 50%;
         ul {
             display: none;
             position: absolute;
@@ -526,25 +547,288 @@ header {
             width: 100%;
         }
     }
+    // & > ul.menuText {
+    //     background-color: $secondaryColor;
+    //     &::after {
+    //         content: '';
+    //         background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/menubg.webp');
+    //         background-repeat: no-repeat;
+    //         background-size: contain;
+    //         width: 100%;
+    //         height: 230px;
+    //         position: absolute;
+    //         right: 0;
+    //         bottom: 0;
+    //         @include xl {
+    //             width: 88%;
+    //         }
+    //         @media only screen and (min-width: 1540px) {
+    //             width: 62%;
+    //         }
+    //     }
+    //     & > li {
+    //         .firstLevel {
+    //             width: 100%;
+    //             display: inline-flex;
+    //             align-items: center;
+    //             padding: 0 2em;
+    //             margin: 1.5em 0;
+    //             position: relative;
+    //             cursor: pointer;
+    //             &:before, &::after {
+    //                 content: '';
+    //                 position: absolute;
+    //                 z-index: 1;
+    //                 transition: 0.2s all ease-in-out;
+    //             }
+    //             &:before {
+    //                 width: 0;
+    //                 height: 100%;
+    //                 left: 0;
+    //                 top: 0;
+    //                 background-color: $blueLabelColor;
+    //             }
+    //             &::after {
+    //                 right: 0;
+    //                 top: 50%;
+    //                 transform: translate3D(0, -50%, 0);
+    //                 width: 0; 
+    //                 height: 0; 
+    //                 border-top: 15px solid transparent;
+    //                 border-bottom: 15px solid transparent;
+    //                 border-left: 15px solid $secondaryColor;
+    //             }
+    //             .icon {
+    //                 width: 10%;
+    //                 color: #CCCCCC;
+    //                 em {
+    //                     font-size: 2em;
+    //                 }
+    //             }
+    //             .content {
+    //                 color: #CCCCCC;
+    //                 width: 86%;
+    //                 margin-left: 4%;
+    //                 span {
+    //                     font-family: "OpenSans", sans-serif;
+    //                     font-size: 1.125em;
+    //                     font-weight: 600;
+    //                     line-height: normal;
+    //                 }
+    //                 p {
+    //                     font-size: 0.75em;
+    //                     font-weight: 400;
+    //                     line-height: normal;
+    //                     margin: 0.75em 0 0 0;
+    //                 }
+    //             }
+    //         }
+    //         &.firstActive {
+    //             .firstLevel {
+    //                 .icon, .content {
+    //                     color: $whiteColor;
+    //                 }
+    //                 &::before {
+    //                     width: 3px;
+    //                 }
+    //                 &::after {
+    //                     transform: translate3D(15px, -50%, 0);
+    //                 }
+    //             }
+    //         }
+    //         & > ul {
+    //             background-color: #f9f9f9;
+    //             padding: 0.25em 0 1.5em 0;
+    //             & > li {
+    //                 > div {
+    //                     padding: 1em 2.5em 0.75em 2.5em;
+    //                     line-height: 1.4;
+    //                     font-family: "OpenSans", sans-serif;
+    //                     font-size: 0.9375em;
+    //                     font-weight: 400;
+    //                     color: $darkGrey;
+    //                     position: relative;
+    //                     cursor: pointer;
+    //                     transition: all 0.2s linear;
+    //                     em {
+    //                         position: absolute;
+    //                         right: 2.5em;
+    //                         top: 50%;
+    //                         transform: translateY(-50%);
+    //                         color: $secondaryColor;
+    //                         font-size: 1em;
+    //                     }
+    //                     &:last-child {
+    //                         padding-bottom: 0;
+    //                     }
+    //                 }
+    //                 &.secondActive {
+    //                     > div {
+    //                         color: $secondaryColor;
+    //                         font-weight: 700;
+    //                     }
+    //                 }
+    //                 & > ul {
+    //                     background-color: $whiteColor;
+    //                     padding: 1.5em 2.5em;
+    //                     & > li {
+    //                         > div {
+    //                             margin-bottom: 1.5em;
+    //                             overflow: hidden;
+    //                             background: #f9f9f9;
+    //                             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    //                             border-radius: 3px;
+    //                             padding: 0.75em;
+    //                             position: relative;
+    //                             display: flex;
+    //                             align-items: center;
+    //                             cursor: pointer;
+    //                             transition: 0.3s ease-in-out;
+    //                             &:hover {
+    //                                 background: $borderColor;
+    //                             }
+    //                             &::before {
+    //                                 content: '';
+    //                                 position: absolute;
+    //                                 background-color: #20B19A;
+    //                                 height: 100%;
+    //                                 width: 2px;
+    //                                 left: 0;
+    //                                 top: 0;
+    //                             }
+    //                             span {
+    //                                 font-family: "OpenSans", sans-serif;
+    //                                 font-size: 0.9375em;
+    //                                 font-weight: 600;
+    //                                 color: $darkGrey;
+    //                                 line-height: normal;
+    //                                 margin-left: 0.75em;
+    //                             }
+    //                             img {
+    //                                 max-width: 7%;
+    //                             }
+    //                         }
+    //                         &:hover {
+    //                             > div {
+
+    //                             }
+    //                         }
+    //                         &:last-child {
+    //                             > div {
+    //                                 margin-bottom: 0;
+    //                             }
+    //                         }
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
     & > ul.menuText {
-        background-color: $secondaryColor;
-        &::after {
-            content: '';
-            background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/menubg.webp');
-            background-repeat: no-repeat;
-            background-size: contain;
-            width: 100%;
-            height: 230px;
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            @include xl {
-                width: 88%;
+        // & > ul {
+            background-color: #f9f9f9;
+            padding: 0.25em 0 1.5em 0;
+            & > li {
+                > div {
+                    padding: 1em 2.5em 0.75em 2.5em;
+                    line-height: 1.4;
+                    font-family: "OpenSans", sans-serif;
+                    font-size: 0.9375em;
+                    font-weight: 400;
+                    color: $darkGrey;
+                    position: relative;
+                    cursor: pointer;
+                    transition: all 0.2s linear;
+                    em {
+                        position: absolute;
+                        right: 2.5em;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        color: $secondaryColor;
+                        font-size: 1em;
+                    }
+                    &:last-child {
+                        padding-bottom: 0;
+                    }
+                }
+                &.secondActive {
+                    > div {
+                        color: $secondaryColor;
+                        font-weight: 700;
+                    }
+                }
+                & > ul {
+                    background-color: $whiteColor;
+                    padding: 1.5em 2.5em;
+                    & > li {
+                        > div {
+                            margin-bottom: 1.5em;
+                            overflow: hidden;
+                            background: #f9f9f9;
+                            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+                            border-radius: 3px;
+                            padding: 0.75em;
+                            position: relative;
+                            display: flex;
+                            align-items: center;
+                            cursor: pointer;
+                            transition: 0.3s ease-in-out;
+                            &:hover {
+                                background: $borderColor;
+                            }
+                            &::before {
+                                content: '';
+                                position: absolute;
+                                background-color: #20B19A;
+                                height: 100%;
+                                width: 3px;
+                                left: 0;
+                                top: 0;
+                            }
+                            span {
+                                font-family: "OpenSans", sans-serif;
+                                font-size: 0.9375em;
+                                font-weight: 600;
+                                color: $darkGrey;
+                                line-height: normal;
+                                margin-left: 0.75em;
+                            }
+                            img {
+                                max-width: 7%;
+                            }
+                        }
+                        &:hover {
+                            > div {
+
+                            }
+                        }
+                        &:last-child {
+                            > div {
+                                margin-bottom: 0;
+                            }
+                        }
+                    }
+                }
             }
-            @media only screen and (min-width: 1540px) {
-                width: 62%;
-            }
-        }
+        // }
+        // background-color: $secondaryColor;
+        // &::after {
+        //     content: '';
+        //     background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/menubg.webp');
+        //     background-repeat: no-repeat;
+        //     background-size: contain;
+        //     width: 100%;
+        //     height: 230px;
+        //     position: absolute;
+        //     right: 0;
+        //     bottom: 0;
+        //     @include xl {
+        //         width: 88%;
+        //     }
+        //     @media only screen and (min-width: 1540px) {
+        //         width: 62%;
+        //     }
+        // }
         & > li {
             .firstLevel {
                 width: 100%;
@@ -612,103 +896,6 @@ header {
                     }
                     &::after {
                         transform: translate3D(15px, -50%, 0);
-                    }
-                }
-            }
-            & > ul {
-                background-color: #f9f9f9;
-                padding: 0.25em 0 1.5em 0;
-                & > li {
-                    > div {
-                        padding: 1em 2.5em 0.75em 2.5em;
-                        line-height: 1.4;
-                        font-family: "OpenSans", sans-serif;
-                        font-size: 0.9375em;
-                        font-weight: 400;
-                        color: $darkGrey;
-                        position: relative;
-                        cursor: pointer;
-                        transition: all 0.2s linear;
-                        em {
-                            position: absolute;
-                            right: 2.5em;
-                            top: 50%;
-                            transform: translateY(-50%);
-                            color: $secondaryColor;
-                            font-size: 1em;
-                        }
-                        &:last-child {
-                            padding-bottom: 0;
-                        }
-                    }
-                    &.secondActive {
-                        > div {
-                            color: $secondaryColor;
-                            font-weight: 700;
-                        }
-                    }
-                    & > ul {
-                        background-color: $whiteColor;
-                        padding: 1.5em 2.5em;
-                        & > li {
-                            > div {
-                                margin-bottom: 1.5em;
-                                overflow: hidden;
-                                background: #f9f9f9;
-                                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-                                border-radius: 3px;
-                                padding: 0.75em;
-                                position: relative;
-                                display: flex;
-                                align-items: center;
-                                cursor: pointer;
-                                transition: 0.3s ease-in-out;
-                                &:hover {
-                                    background: $borderColor;
-                                }
-                                &::before {
-                                    content: '';
-                                    position: absolute;
-                                    background-color: #20B19A;
-                                    height: 100%;
-                                    width: 2px;
-                                    left: 0;
-                                    top: 0;
-                                }
-                                span {
-                                    font-family: "OpenSans", sans-serif;
-                                    font-size: 0.9375em;
-                                    font-weight: 600;
-                                    color: $darkGrey;
-                                    line-height: normal;
-                                    margin-left: 0.75em;
-                                }
-                                img {
-                                    max-width: 7%;
-                                }
-                            }
-                            &:hover {
-                                > div {
-
-                                }
-                            }
-                            &:last-child {
-                                > div {
-                                    margin-bottom: 0;
-                                }
-                            }
-                        }
-                        // ul {
-                        //     background-color: #f3f3f3;
-                        //     width: 200%;
-                        //     border-left: 1px solid #f3f3f3;
-                        //     top: -2.3em;
-                        //     height: calc(100% + 2.2em);
-                        //     transition: background 0.3s ease-in-out;
-                        //     li {
-                        //         padding: 1em 2em 0 2em;
-                        //     }
-                        // }
                     }
                 }
             }
@@ -850,7 +1037,8 @@ header {
             }
         }
         .topMenuMobile {
-            padding: 0 1em 1em 1em;
+            background-color: rgba(0,0,0,0.25);
+            padding: 0.5em 1em 0.5em 1em;
             border-bottom: 1px solid rgba(255, 255, 255, 0.3);
             a {
                 font-size: 1.25em;
@@ -1315,4 +1503,20 @@ header {
 }
 .featureChild{
     cursor: default;
+}
+
+.noCategories {
+    figure {
+        width: 50%;
+        img {
+            width: 100%;
+        }
+    }
+    p {
+        font-family: 'OpenSans';
+        font-size: 1.125em;
+        font-weight: 600;
+        color: $lightGrey;
+        line-height: normal;
+    }
 }

@@ -19,10 +19,10 @@
                             <div class="buttons">
                                 <span class="courseRate" *ngIf="courseData?.is_free">{{'Free'}}</span>
                                 <span class="courseRate" *ngIf="!courseData?.is_free"><em class="icon-Rupee"></em>{{courseData?.sellingPrice}}</span>
-                                <!-- <button class="buyNow" (click)="courseBuy()">Add to Cart</button> -->
-                                <button class="buyNow" (click)="navigateBatch()">
+                                <button class="buyNow" (click)="courseBuy()">Add To Cart</button>
+                                <!-- <button class="buyNow" (click)="navigateBatch()">
                                     {{(this.courseType == 'Track' || this.courseType == 'course') ? 'Enroll Now' :'Add To Cart'}}
-                                </button>
+                                </button> -->
                                 <p>Batch Starts on 01 Aug 2022</p>
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                         </li>
                     </ul>
                     <button class="buyNow" (click)="courseBuy()">
-                        {{(this.courseType == 'Track' || this.courseType == 'course') ? 'Enroll Now' :'Add To Cart'}}
+                        Add To Cart
                     </button>
                 </div>
             </div>

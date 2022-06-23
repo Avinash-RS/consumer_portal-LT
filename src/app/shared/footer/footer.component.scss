@@ -222,6 +222,9 @@ footer {
       }
       .left {
         width: 100%;
+        @include md {
+            width: 65%;
+        }
         .contacts{
           display: flex;
           align-items: center;

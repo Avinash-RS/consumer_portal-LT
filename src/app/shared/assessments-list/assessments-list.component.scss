@@ -142,6 +142,7 @@
     margin: 0 auto;
     .parentContainer {
         vertical-align: top;
+        white-space: initial;
         &:last-child {
             margin-right: 0 !important;
             .fieldItems {
@@ -151,7 +152,16 @@
     }
     .fieldItems {
         margin: 0 15px;
-        width: 154px;
+        width: 130px;
+        @include sm {
+            width: 154px;
+        }
+        @include md {
+            width: 140px;
+        }
+        @include xl {
+            width: 154px;
+        }
     }
     .draggable-button-container {
         position: absolute;
@@ -182,10 +192,16 @@
             }
         }
         .leftArrow {
-            left: -2em;
+            left: -1em;
+            @include md {
+                left: -2em;
+            }
         }
         .rightArrow {
-            right: -2em;
+            right: -1em;
+            @include md {
+                right: -2em;
+            }
         }
     }
     .fieldTabs {
@@ -194,6 +210,7 @@
         cursor: pointer;
         width: 100%;
         transition: all 0.3s;
+        height: 180px;
         em {
             line-height: 1.4;
             color: $mostlyDarkBlue;
@@ -206,6 +223,8 @@
             font-size: 0.85em;
             font-weight: 700;
             line-height: 1.2;
+            text-align: center;
+            min-height: 33px;
         }
         .coursesCount {
             font-size: 0.75em;

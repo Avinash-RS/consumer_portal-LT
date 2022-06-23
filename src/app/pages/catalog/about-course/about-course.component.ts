@@ -313,17 +313,14 @@ setOffset(){
   courseBuy(){
     //signin check 
     if (this.userDetails) {
-      const data = {
-        "noofFields": "44",
-        "email": this.userDetails.email ? this.userDetails.email : null
-      }
       var cartParams = {
           "isLevel":false,
           "levelId":this.abouCourseData?.levelId,
           "userId":this.userDetails.userId,
           "assessmentId":this.areaId,
           "competencyId":this.areaId,
-          "productType" :this.productType
+          "productType" :this.productType,
+          "batchId":this.abouCourseData.assessmentData[0].batchDetails[0].batchId
       }
         //Add to Cart
         this.catalogService.addToCart(cartParams).subscribe((response:any) =>{
@@ -349,7 +346,8 @@ setOffset(){
           "userId":'',
           "assessmentId":this.areaId,
           "competencyId":this.areaId,
-          "productType" :this.productType
+          "productType" :this.productType,
+          "batchId":this.abouCourseData.assessmentData[0].batchDetails[0].batchId
       }
       this.util.setValue(cartParams);
       this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, {fromPage: '0'});

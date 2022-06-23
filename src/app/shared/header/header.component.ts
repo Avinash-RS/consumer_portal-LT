@@ -75,6 +75,7 @@ export class HeaderComponent implements OnInit {
   l1image ="";
   megaMenuL1Data:any =[];
   megaMenuL2Data:any =[];
+  noData: any;
   constructor(
     private appConfig: AppConfigService,
     private catalogService: CatalogService,
@@ -134,7 +135,7 @@ export class HeaderComponent implements OnInit {
   megaMenuClick(type) {
     if(type == 'mobileclick') {
       this.mobileshowMenu = this.mobileshowMenu == 'in' ? 'out' : 'in';
-      this.l2 = [];
+      this.l2 = this.l1[0].data;
       this.l3 = [];
     }
     else{
@@ -198,6 +199,7 @@ export class HeaderComponent implements OnInit {
     this.l2 = [];
     this.l3 = [];
     this.l4 = [];
+    console.log(this.catalogMenu, 'catalogMenu');
   }
 
   getAssesment(){
@@ -400,6 +402,7 @@ export class HeaderComponent implements OnInit {
     this.l1name=item.label;
     this.l2 = item.data;
     this.productType = item.type;
+    console.log(this.l2, 'level 2')
   }
   secondlevelclick(item){
     this.l3 = item.children;
@@ -410,7 +413,7 @@ export class HeaderComponent implements OnInit {
   triggerLeave(){
     if(this.showMenu == 'in'){
       this.closeMegaMenu();
-    } 
+    }
   }
   firstLevelHover(menu,item){
     this.megaMenuL1Data = item.data;
@@ -431,7 +434,7 @@ export class HeaderComponent implements OnInit {
     });
   }
   secondLevelHover(l1Data,item){
-    this.megaMenuL2Data = item.children;
+    this.megaMenuL2Data = item?.children ? item?.children : [];
     l1Data.forEach((element)=>{
       if(element.cid == item.cid){
         element.active = true;
