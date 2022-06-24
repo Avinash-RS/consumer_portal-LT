@@ -18,7 +18,9 @@
                                 <div class="fieldTabs" [ngClass]="tab.isSelected ? 'active': '' " (click)="getArea(tab.cid)">
                                     <em [ngClass]="tab.cid == 'All' ? 'icon-allCourses' : tab?.image?.filename " class=""></em>
                                     <div class="fieldName">{{tab.name}}</div>
-                                    <div class="coursesCount">1 Course</div>
+                                    <div class="coursesCount">
+                                       {{tab.cid == 'All' ? this.allArealength : tab?.children ? tab?.children.length : 0 }} Course
+                                    </div>
                                 </div>
                             </div>
                         </div>
