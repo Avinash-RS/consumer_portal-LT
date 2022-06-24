@@ -75,6 +75,7 @@ export class AssessmentsListComponent implements OnInit {
   };
   activeSlides: SlidesOutputData;
   slidesStore: any[];
+  allArealength:number = 0;
   constructor(private _loading: LoadingService,
               private router: Router,
               private catalogService: CatalogService,
@@ -160,7 +161,7 @@ export class AssessmentsListComponent implements OnInit {
     var params = {
       "domainId": id,
       "pagenumber": this.pageNumber,
-      "productType" :this.productType,
+      "productType" :'course',
       "courseOrigin":environment.userOrigin
     }
     this.catalogService.getAreaByDomain(params).subscribe((response: any) => {
@@ -171,6 +172,9 @@ export class AssessmentsListComponent implements OnInit {
         this.noDataFound = false;
         this.viewMore = (!this.isNavigated && this.areaCards?.length > 6) ? true : false;
         this.sliceDigits =  !this.viewMore ? this.areaCards?.length + 1 : 6;
+        if(id == 'All'){
+          this.allArealength = this.areaCards.length;
+        }
       } else {
         this.viewMore = false;
         this.areaCards = [];
@@ -184,13 +188,7 @@ export class AssessmentsListComponent implements OnInit {
   }
 
   aboutAssessment(cid,productType) {
-    if(productType == 'course'){
-      this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutCourse, { id: btoa(cid), selectedTab: btoa(this.selectedTab) ,productType : btoa(productType)});
-    }
-    else{
-      this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutAssessment, { id: btoa(cid), selectedTab: btoa(this.selectedTab) ,productType : btoa(productType)});
-    }
-   
+      this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutCourse, { id: btoa(cid), selectedTab: btoa('All') ,productType : btoa('course')});
   }
   filterTab(e){
     this.fromTab='All';
