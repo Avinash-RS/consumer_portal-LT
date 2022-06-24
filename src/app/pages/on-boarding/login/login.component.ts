@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
   collagename: any;
   collageId: any;
   isloadData;
-  collegeflag;
   hide = true;
   hide1 = true;
   entryIndex;
