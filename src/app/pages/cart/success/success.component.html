@@ -62,14 +62,12 @@
                         </ul>
                     </div>
                     <div class="navigateToLxp">
-                        <span class="heading5">
-                            <div *ngIf="item?.productType == 'course'">
-                                <button  class="backToCourse" (click)="goToCourse(item)">Go to Course</button>
-                            </div>
-                            <div *ngIf="item?.productType !== 'course'">
-                                <button (click)="openDialog(bookSlot,orderlist[0])" class="slotBooking">Book a Slot</button>
-                            </div>
-                        </span>
+                        <div *ngIf="item?.productType == 'course'">
+                            <button class="backToCourse" (click)="goToCourse(item)">Go to Course</button>
+                        </div>
+                        <div *ngIf="item?.productType !== 'course'">
+                            <button (click)="openDialog(bookSlot,orderlist[0])" class="slotBooking">Book a Slot</button>
+                        </div>
                     </div>
                 </div>
             </div>
