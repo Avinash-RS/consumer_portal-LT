@@ -217,17 +217,17 @@
                             <ng-container>
                                 <div class="instructorsTab content">
                                     <owl-carousel-o [options]="TopicsOptions">
-                                        <ng-template carouselSlide>
+                                        <ng-template carouselSlide *ngFor="let item of gtuContent?.mentor?.innerArray">
                                                 <div class="profile">
                                                     <div class="image">
                                                         <figure>
-                                                            <img [src]="gtuContent?.mentor?.imageurl" alt="" />
+                                                            <img [src]="item?.imageurl" alt="" />
                                                         </figure>
                                                     </div>
                                                     <div class="imageContent">
-                                                        <span class="heading5">{{gtuContent?.mentor?.name}}</span>
-                                                        <span class="desc">{{gtuContent?.mentor?.designation}}</span>
-                                                        <p>{{gtuContent?.mentor?.description}}</p>
+                                                        <span class="heading5">{{item?.name}}</span>
+                                                        <span class="desc">{{item?.designation}}</span>
+                                                        <p>{{item?.description}}</p>
                                                     </div>
                                                 </div>
                                         </ng-template>
