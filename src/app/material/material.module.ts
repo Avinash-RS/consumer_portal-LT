@@ -92,7 +92,8 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     MatBadgeModule,
     MatChipsModule,
     MatSidenavModule,
-    MatMomentDateModule
+    MatMomentDateModule,
+    MatAutocompleteModule
 ],
   exports: [
     MatMenuModule,
@@ -117,7 +118,8 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     MatBadgeModule,
     MatChipsModule,
     MatSidenavModule,
-    MatMomentDateModule
+    MatMomentDateModule,
+    MatAutocompleteModule
   ]
 })
 export class MaterialModule { }

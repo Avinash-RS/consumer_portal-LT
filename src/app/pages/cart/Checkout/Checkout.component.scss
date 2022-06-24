@@ -24,7 +24,7 @@
     .tag, .priceDetails > div, .totalAmount > div {
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-start;
     }
     .tag {
         border-bottom: 1px solid $lightGrey;
@@ -89,6 +89,13 @@
                     font-size: 0.75em;
                 }
             }
+        }
+        p {
+            font-family: "Lato";
+            font-size:	0.7500em ;
+            font-weight:400 ;
+            color: $darkGrayColor;
+            opacity: 1;
         }
         .heading6 {
             text-transform: capitalize;
