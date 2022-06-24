@@ -610,51 +610,66 @@
 
 //Purchasing History
 .purchasingHistory {
-    width: 100%;
     display: flex;
-    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: $whiteColor;
+    padding: 0.75em;
+    box-shadow: 0px 0px 5px $secondaryBlackShadow;
+    border-radius: 4px;
+    margin: 0.9375em 0;
+    font-size: 13px;
+    @include md {
+        flex-wrap: nowrap;
+        font-size: 14px;
+    }
+    @include lg {
+        font-size: 15px;
+    }
     @include xl {
         margin-top: 1em;
+        font-size: 16px;
     }
-    > div {
-        background-color: $whiteColor;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        padding: 0.75em;
-        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
-        border-radius: 4px;
-        margin: 0.9375em 0;
+    .purchaseCourseImage {
         width: 100%;
+        overflow: hidden;
+        // height: 120px;
+        @include md {
+            width: 20%;
+        }
         figure {
-            width: 38%;
-            display: flex;
-            border-radius: 4px;
-            overflow: hidden;
-            height: 120px;
-            @include md {
-                width: 20%;
-            }
-            @include lg {
-                width: 20%;
-            }
-            @include xl {
-                width: 20%;
-            }
+            margin: 0;
             img {
                 width: 100%;
                 object-fit: cover;
+                border-radius: 5px;
             }
         }
+    }
+    .purchaseHistory {
+        width: 100%;
+        // padding: 0.5em 0;
+        @include md {
+            width: 80%;
+        }
         .itemNames {
-            width: 60%;
-            padding: 0.5em 0.75em;
-            @include md {
-                width: 39%;
-            }
-            @include xl {
-                width: 35%;
+            text-align: left;
+            padding: 0 0.75em;
+            .domainName {
+                display: block;
+                color: $primaryColor;
+                font-size: 0.75em;
+                font-weight: 400;
+                line-height: 1.3;
+                margin: 0.65em 0;
+                @include md {
+                    margin: 0;                           
+                }
+                em {
+                    font-size: 0.75em;
+                    margin-right: 5px;
+                }
             }
             .title {
                 font-size: 0.875em;
@@ -663,12 +678,15 @@
             }
             .heading4 {
                 color: $darkGrey;
+                font-size: 1.125em;
+                font-family:'OpenSans';
                 font-weight: 700;
                 line-height: 1;
-                width: 99%;
-                text-overflow: ellipsis;
-                overflow: hidden;
-                white-space: nowrap;
+                // width: 99%;
+                padding: 0.5em 0 0 0;
+                // text-overflow: ellipsis;
+                // overflow: hidden;
+                // white-space: nowrap;
             }
             .label {
                 display: inline-block;
@@ -686,33 +704,35 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.7em;
+            flex-wrap: wrap;
+            padding: 0 0.7em;
             width: 100%;
             @include md {
-                width: 37%;
+                flex-wrap: nowrap;
             }
-            @include xl {
-                width: 27%;
+            > div {
+                margin: 0.5em 0;
+                width: 35%;
+                @include md {
+                    width: 100%;
+                }
             }
-            .order {
-                > div {
-                    margin: 0.5em 0;
-                }
-                span {
-                    display: block;
-                }
-                .orderHeading {
-                    color: $lightGrey;
-                    font-size: 0.75em;
-                    font-weight: 400;
-                    line-height: 1.3;
-                }
-                .orderDesc {
-                    color: $darkGrey;
-                    font-size: 0.875em;
-                    font-weight: 700;
-                    line-height: 1.4;
-                }
+            span {
+                display: block;
+            }
+            .orderHeading {
+                color: $darkGrayColor;
+                font-size: 0.75em;
+                font-family: 'Lato';
+                font-weight: 400;
+                line-height: 1.3;
+            }
+            .orderDesc {
+                color: $mediumGrey;
+                font-size: 0.875em;
+                font-family: 'OpenSans';
+                font-weight: 600;
+                line-height: 1.4;
             }
         }
         .reciept {

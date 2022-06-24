@@ -195,6 +195,21 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+.icon-mechanical:before {
+  content: "\e982";
+}
+.icon-allBranches:before {
+  content: "\e983";
+}
+.icon-csIt:before {
+  content: "\e984";
+}
+.icon-electrical:before {
+  content: "\e985";
+}
+.icon-electronics:before {
+  content: "\e986";
+}  
 .icon-allCourses:before {
   content: "\e981";
 }
