@@ -22,7 +22,11 @@
     </div>
     <div class="totalAmount">
         <div>
-            <span class="heading6">Total Amount</span>
+            <div>
+                <span class="heading6">Total Amount</span>
+                <p>(Incl. of all taxes)</p>
+            </div>
+          
             <span><em class="icon-Rupee"></em>{{totalPrice}}</span>
         </div>
         <button (click)="currentTab.selectedIndex==0?totalPrice==0?checkout():continueClick():checkout()" class="checkout">{{currentTab.selectedIndex===0?'Continue':'Checkout'}}</button>

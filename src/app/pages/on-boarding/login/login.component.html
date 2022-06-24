@@ -130,10 +130,14 @@
                             <div class="inputContainer">
                                 <mat-form-field appearance="outline">
                                     <mat-label>College / University</mat-label>
-                                    <mat-select formControlName="college">
-                                        <mat-option [value]="item?.collegeId" *ngFor="let item of collegeData">{{item?.collegename}}</mat-option>
-                                    </mat-select>
-                                </mat-form-field>
+                                    <input formControlName="college" [(ngModel)]="collegeFilter.collegename" (keyup)="checkBatchRec();collegeflag = false"  [matAutocomplete]="auto" matInput>
+                                     <em matSuffix class="icon-arrow_drop_down"></em>
+                                    <mat-autocomplete #auto="matAutocomplete">
+                                      <mat-option #OptionData (click)="collegeflag = true;" *ngFor="let item of collegeData | filterBy:collegeFilter" [value]="item.collegename">
+                                        {{item.collegename}}
+                                      </mat-option>                                  
+                                    </mat-autocomplete>
+                                  </mat-form-field>
                                 <ng-container *ngIf="collegeR.invalid && collegeR.touched">
                                     <mat-error *ngIf="collegeR.errors?.required" class="error">{{'College / University is required'}}</mat-error>
                                 </ng-container>
