@@ -26,12 +26,12 @@
                     <img src="https://lmsassetspremium.lntedutech.com/portalicons/concrete-technology-img.webp" alt="">
                 </figure>
             </div>
-            <div class="orders">
-                <div class="courseHeading" *ngFor="let item of orderlist">
-                    <!-- <span class="domainName"><em class="icon-Right_Play"></em>Civil Engineering</span> -->
+            <div class="orders" *ngFor="let item of orderlist">
+                <div class="courseHeading">
+                    <span class="domainName"><em class="icon-Right_Play"></em>Civil Engineering</span>
                     <span class="heading6">{{item.assessmentName}}</span>
                 </div>
-                <div class="orderHistory"  *ngFor="let item of orderlist">
+                <div class="orderHistory">
                     <div class="orderHeading">
                         <ul>
                             <!-- <div class="commonClass"> 
@@ -51,6 +51,10 @@
                                 <span class="orderContent">{{item.payment?item.payment:"N/A"}}</span>
                             </div>
                             <div class="commonClass">
+                                <li>Total price:</li>
+                                <span class="orderContent">₹ 1</span>
+                            </div>
+                            <div class="commonClass">
                                 <li>Delivery Option</li>
                                 <span class="orderContent">Online</span>
                             </div>
@@ -62,9 +66,9 @@
                         </ul>
                     </div>
                     <div class="navigateToLxp">
-                        <div *ngIf="item?.productType == 'course'">
+                        <!-- <div *ngIf="item?.productType == 'course'">
                             <button class="backToCourse" (click)="goToCourse(item)">Go to Course</button>
-                        </div>
+                        </div> -->
                         <div *ngIf="item?.productType !== 'course'">
                             <button (click)="openDialog(bookSlot,orderlist[0])" class="slotBooking">Book a Slot</button>
                         </div>
