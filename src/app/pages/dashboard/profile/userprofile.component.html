@@ -281,41 +281,44 @@
                 <div *ngSwitchCase="'history'"  (click)="getpurchasehistory()">
                     <div class="heading3">Purchase History</div>
                     <p class="desc">Showing all your purchase history here.</p>
-                    <div class="purchasingHistory">
-                        <div  *ngFor="let item of purchaseList">
+                    <div class="purchasingHistory" *ngFor="let item of purchaseList">
+                        <div class="purchaseCourseImage">
                             <figure>
                                 <img [src]="item.assessmentDetails?.image?.url" alt="" />
                             </figure>
+                        </div>
+                        <div class="purchaseHistory">
                             <div class="itemNames">
+                                <span class="domainName"><em class="icon-Right_Play"></em>Civil Engineering</span>
                                 <span class="title">{{item.cart.competencyName}}</span>
                                 <div class="heading4">{{item.cart.assessmentName}}</div>
                                 <span class="label">{{item.cart.levelName}}</span>
                             </div>
                             <div class="orderDetails">
-                                <div class="order">
-                                    <div>
-                                        <span class="orderHeading">Order Date</span>
-                                        <span class="orderDesc">{{item.createdOn|date : 'MMM d, y'}}</span>
-                                    </div>
-                                    <div>
-                                        <span class="orderHeading">Total price</span>
-                                        <span class="orderDesc">₹ {{item.cart.total_amount}}</span>
-                                    </div>
+                                <div>
+                                    <span class="orderHeading">Order Date:</span>
+                                    <span class="orderDesc">{{item.createdOn|date : 'MMM d, y'}}</span>
                                 </div>
-                                <div class="order">
-                                    <div>
-                                        <span class="orderHeading">Order #</span>
-                                        <span class="orderDesc">{{item.order_id}}</span>
-                                    </div>
-                                    <div>
-                                        <span class="orderHeading">Payment type</span>
-                                        <span class="orderDesc">Visa **********0000</span>
-                                    </div>
+                                <div>
+                                    <span class="orderHeading">Order ID:</span>
+                                    <span class="orderDesc">{{item.order_id}}</span>
+                                </div>
+                                <div>
+                                    <span class="orderHeading">Payment type:</span>
+                                    <span class="orderDesc">Visa ******0000</span>
+                                </div>
+                                <div>
+                                    <span class="orderHeading">Total price:</span>
+                                    <span class="orderDesc">₹ {{item.cart.total_amount}}</span>
+                                </div>
+                                <div>
+                                    <span class="orderHeading">Delivery Option</span>
+                                    <span class="orderDesc">Online</span>
                                 </div>
                             </div>
-                            <div class="reciept">
+                            <!-- <div class="reciept">
                                 <button>Receipt</button>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
