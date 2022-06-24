@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonService } from 'src/app/services/common.service';
 import * as bcrypt from 'bcryptjs';
@@ -23,6 +23,12 @@ import { CartService } from 'src/app/services/cart.service';
 })
 
 export class LoginComponent implements OnInit {
+  @ViewChild('OptionData') searchedcollageData: ElementRef;
+  collegeFilter: any = { collegename: '' };
+  collagename: any;
+  collageId: any;
+  isloadData;
+  collegeflag;
   hide = true;
   hide1 = true;
   entryIndex;
@@ -35,6 +41,7 @@ export class LoginComponent implements OnInit {
   siteKey: any = environment.captachaSiteKey;
   collegeData: any = [];
   departmentData: any = [];
+  collegeflag = false;
   yearData = ['2010','2011','2012','2013','2014','2015','2016','2017','2018','2019','2020','2021','2022']
   @ViewChild('kycmandate', { static: false }) matDialogRef: TemplateRef<any>;
   @ViewChild('captchaRef',{ static: false }) captchaRef;
@@ -129,6 +136,10 @@ export class LoginComponent implements OnInit {
 
   submitRegister() {
     if (this.registerForm.valid) {
+      if (!this.collegeflag){
+        this.toast.warning('Please select valid college name');
+        return false;
+      }
       var encryptedname = CryptoJS.AES.encrypt(this.registerForm.value.email.toLowerCase(), this.secretKey.trim()).toString();
       var encryptedpassword = CryptoJS.AES.encrypt(this.registerForm.value.password, this.secretKey.trim()).toString();
 
@@ -264,6 +275,18 @@ resolvedSignIn(captchaSignInResponse: string){
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, this.gv.email()]],
       password: ['', [Validators.required]],
+    });
+  }
+
+  checkBatchRec() {
+    this.collagename = [];
+    this.collageId = '';
+    setTimeout(() => {
+      if (this.searchedcollageData) {
+        this.isloadData = false;
+      } else {
+        this.isloadData = true;
+      }
     });
   }
 
