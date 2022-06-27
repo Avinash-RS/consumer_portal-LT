@@ -32,7 +32,7 @@
     //     }
     // }
     .headingSection {
-        padding: 3.75em 0 2.75em 0;
+        padding: 2.75em 0;
         background-color: $whiteSmoke;
         p {
             font-size: 1em;
@@ -96,6 +96,51 @@
     .container {
         position: relative;
         z-index: 2;
+        .search {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 1em;
+            position: relative;
+            input {
+                font-size: 0.825em;
+                max-width: 350px;
+                width: 100%;
+                padding: 0.65em 2em 0.75em 0.75em;
+                border: 1px solid $borderColor;
+                border-radius: 5px;
+                box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+                &::-webkit-input-placeholder {
+                    color: $thumbHoverColor;
+                }
+                &::-moz-placeholder {
+                    color: $thumbHoverColor;
+                }
+                &::-ms-input-placeholder {
+                    color: $thumbHoverColor;
+                }
+                &::-moz-placeholder {
+                    color: $thumbHoverColor;
+                }
+                &:hover,&:focus,&:active{
+                    border: 1px solid $secondaryColor;
+                }
+                @include lg {
+                    padding: 0.35em 2em 0.35em 0.5em;
+                }
+            }
+            .searchKey {
+                position: absolute;
+                right: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                line-height: normal;
+                em {
+                    font-size: 14px;
+                    color: $secondaryColor;
+                    font-weight: bold;
+                }
+            }
+        }
     }
 }
 // .mainTab {
@@ -350,7 +395,7 @@
 }
 
 .assessmentArea {
-    margin-top: 3em;
+    margin-top: 1em;
     // background-color: $whiteColor;
 }
 .list {

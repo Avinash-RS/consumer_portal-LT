@@ -34,6 +34,7 @@ export class UtilityService {
   //For hiding progessbar in dashboard
   showkycProgress = new Subject();
   
+  isEnrolled = new Subject();
   // move to cart directly from login
   private cartValue: BehaviorSubject<any> = new BehaviorSubject<any>(null); 
   public setValue(value: any): void {

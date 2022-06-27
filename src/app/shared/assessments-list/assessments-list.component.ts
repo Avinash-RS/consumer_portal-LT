@@ -15,6 +15,9 @@ import {
 } from '@angular/cdk/layout';
 import { OwlOptions, SlidesOutputData } from 'ngx-owl-carousel-o';
 import { DragScrollComponent } from 'ngx-drag-scroll';
+import { ToastrService } from 'ngx-toastr';
+import * as CryptoJS from 'crypto-js';
+import { UtilityService } from 'src/app/services/utility.service';
 @Component({
   selector: 'app-assessments-list',
   templateUrl: './assessments-list.component.html',
@@ -76,15 +79,23 @@ export class AssessmentsListComponent implements OnInit {
   activeSlides: SlidesOutputData;
   slidesStore: any[];
   allArealength:number = 0;
+  catlogData: any = [];
+  searchKey;
+  userDetails;
+  enroledCourse:any = [];
+  secretKey = "(!@#Passcode!@#)";
   constructor(private _loading: LoadingService,
               private router: Router,
               private catalogService: CatalogService,
               private route: ActivatedRoute,
               private appConfig: AppConfigService,
-              public breakpointObserver: BreakpointObserver
+              public breakpointObserver: BreakpointObserver,
+              public toast: ToastrService,
+              private util: UtilityService,
   ) { }
 
   ngOnInit() {
+    this.userDetails = JSON.parse(this.appConfig.getLocalStorage('userDetails'));
     this.setSliceValue();
     if (this.route.snapshot.queryParams.selectedTab) {
       this.fromTab = atob(this.route.snapshot.queryParams.selectedTab);
@@ -100,6 +111,15 @@ export class AssessmentsListComponent implements OnInit {
       this.getDomain(this.productType);
     })
 
+  }
+  getenrolledCourse(){
+    this.catalogService.getEnrolledCourse({email:this.userDetails?.email}).subscribe((result:any)=>{
+      if(result?.success && result?.data?.enrolledcourseIds.length > 0){
+        this.enroledCourse = result?.data?.enrolledcourseIds;
+         this.util.isEnrolled.next(true);
+      }
+      this.getDomain(this.productType);
+    });
   }
   ngOnDestroy(){
     this.subscriberdata.unsubscribe();
@@ -150,6 +170,7 @@ export class AssessmentsListComponent implements OnInit {
   getArea(id) {
     this.noDataSkeleton = true;
     this.noDataFound = false;
+    this.searchKey = "";
     this.selectedTab = id
     this.tabValues.forEach(element => {
       element.isSelected = false;
@@ -172,12 +193,14 @@ export class AssessmentsListComponent implements OnInit {
         this.noDataFound = false;
         this.viewMore = (!this.isNavigated && this.areaCards?.length > 6) ? true : false;
         this.sliceDigits =  !this.viewMore ? this.areaCards?.length + 1 : 6;
+        this.catlogData = this.areaCards;
         if(id == 'All'){
           this.allArealength = this.areaCards.length;
         }
       } else {
         this.viewMore = false;
         this.areaCards = [];
+        this.catlogData = [];
         this.noDataFound = true;
       }
     })
@@ -200,4 +223,54 @@ export class AssessmentsListComponent implements OnInit {
     console.log(this.activeSlides);
   }
 
+  catalogSearch(){
+    this.catlogData = this.areaCards.filter((e: any) => {
+      return e.name.toLowerCase().includes(this.searchKey.toLowerCase());
+    });
+    this.noDataFound = this.catlogData.length == 0 ? true : false;
+  }
+  enroll(e) {
+    if (this.userDetails) { 
+      const apiParam = 
+        {
+          "enrolledCourse": e?.enrolledCourse,
+          "is_free": e?.is_free,
+          "username": this.userDetails?.email,
+          "course_id": CryptoJS.AES.encrypt(e?.cid, this.secretKey.trim()).toString(),
+          "courseName":CryptoJS.AES.encrypt(e?.name, this.secretKey.trim()).toString(),
+          "firstName": CryptoJS.AES.encrypt(this.userDetails?.firstname, this.secretKey.trim()).toString(),
+          "userId":this.userDetails?.userId
+      }
+      this.catalogService.userSyncUpLxp(apiParam).subscribe((result:any)=>{
+        if(result?.success){
+          this.toast.success("You have been enrolled to the course successfully!");
+          this.catalogService.getEnrolledCourse({email:this.userDetails?.email}).subscribe((result:any)=>{
+            if(result?.success && result?.data?.enrolledcourseIds.length > 0){
+              this.enroledCourse = result?.data?.enrolledcourseIds;
+               this.util.isEnrolled.next(true);
+               this.setEnrolledFlag();
+            }
+          });
+        }
+        else {
+          this.toast.warning(result?.message ? result?.message : "Something Went Wrong!!")
+        }
+      });
+    }
+    else {
+      this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, {fromPage: '0'});
+    }
+  }
+  setEnrolledFlag(){
+    this.areaCards.forEach((element:any)=>{
+      var enrolFlag = this.enroledCourse.filter(e => e == element.cid);
+      if(enrolFlag.length > 0){
+        element.isEnrolled = true;
+      }
+      else {
+        element.isEnrolled = false;
+      }
+    });
+  this.catlogData = this.areaCards;
+  }
 }
