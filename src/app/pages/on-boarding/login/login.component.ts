@@ -233,9 +233,10 @@ resolvedSignIn(captchaSignInResponse: string){
               this.commonService.getProfilePercentage(data).subscribe((result: any) => {
                 if (result?.success) {
                   //let profilePercentage = result.data[0].profilePercentage;
-                  let KYCFlag = result.data[0].KYCMandFlag ? result.data[0].KYCMandFlag : 0;
+                  //let KYCFlag = result.data[0].KYCMandFlag ? result.data[0].KYCMandFlag : 0;
+                  let KYCFlag = 1;
                   if (KYCFlag == 0) {
-                    this.dialogSetup();
+                   this.dialogSetup();
                     this.appconfig.routeNavigation(APP_CONSTANTS.ENDPOINTS.home);
                   }else{
                     response.userId = this.userDetails.userId
