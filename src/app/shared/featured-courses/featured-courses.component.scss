@@ -163,7 +163,10 @@
             display: flex;
             border-radius: 5px;
             overflow: hidden;
+            height: 195px;
             img {
+                width: 100%;
+                object-fit: cover;
                 transition: all 0.5s;
             }
         }
