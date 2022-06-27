@@ -6,6 +6,10 @@
             <p>Build your proficiency in the hottest industry of the 21st century.</p>
         </div>
         <div class="container">
+            <div class="search">
+                <input type="text" placeholder="Search Courses.." [(ngModel)]="searchKey" (keyup)="catalogSearch()">
+                <span class="searchKey"><em class="icon-Search"></em></span>
+            </div>
             <!-- <nav class="mainTab">
                 <a (click)="getDomain('assessment')" [ngClass]="productType == 'assessment' ? 'active' :''">Assessments</a>
                 <a (click)="getDomain('course')" [ngClass]="productType == 'course' ? 'active' :''">Courses</a>
@@ -50,8 +54,8 @@
                             </mat-form-field> -->
                     <!-- </div> -->
                     <!-- <button class="filter"><em class="icon-Filter"></em><span>Filters</span></button> Dont Delete this line -->
-                <div class="assessmentList" [@listAnimation]="areaCards.length">
-                    <!-- <ng-container *ngIf ="noDataSkeleton">
+                <div class="assessmentList">
+                    <ng-container *ngIf ="noDataSkeleton">
                         <div class="skeletonWrapper">
                             <div class="items">
                                 <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '50px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
@@ -78,9 +82,9 @@
                                 <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
                             </div>
                         </div>
-                    </ng-container> -->
-                    <ng-container *ngIf ="areaCards?.length > 0">
-                        <ng-container *ngFor="let cards of areaCards | slice : 0:sliceDigits">
+                    </ng-container>
+                    <ng-container *ngIf ="!noDataSkeleton && catlogData?.length > 0">
+                        <ng-container *ngFor="let cards of catlogData | slice : 0:sliceDigits">
                             <div class="list" (click)="aboutAssessment(cards.cid ,cards.productType)">
                                 <div class="figWrapper">
                                     <figure>
@@ -141,7 +145,7 @@
                             </div>
                         </ng-container>
                     </ng-container>
-                    <div *ngIf="noDataFound" class="noDataFound">
+                    <div *ngIf="!noDataSkeleton && noDataFound" class="noDataFound">
                         <figure>
                             <img src="https://lmsassetspremium.lntedutech.com/portalicons/path.webp" alt="" />
                         </figure>
