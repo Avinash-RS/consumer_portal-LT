@@ -89,4 +89,7 @@ addToCart(params) {
   registerQuery(param){
     return this.http.post(this.baseurl +'portalForms' , param);
   }
+  getEnrolledCourse(param){
+    return this.http.post(this.baseurl +'enrolledCourse' , param);
+  }
 }
