@@ -34,8 +34,9 @@ export class PurchaseComponent implements OnInit {
   isReadMore = true;
   userDetails;
   cartList = [];
-  batchInfo;
+  batchInfo = false;
   totalPrice = 0;
+  isOptional = false;
   constructor(
     private _formBuilder: FormBuilder,
     private dialog: MatDialog,
@@ -64,13 +65,14 @@ export class PurchaseComponent implements OnInit {
       if (response.data.length > 0) {
         this.cartList = response.data
         this.cartList.forEach((list) => {
-          this.batchInfo = list?.assessmentDetails?.batchDetails;
-          console.log(this.batchInfo, 'afadsfasdf')
+          //this.batchInfo = list?.assessmentDetails?.batchDetails;
           list.assessmentDetails.sellingPrice = parseInt(list.assessmentDetails.sellingPrice)
           this.totalPrice += list.assessmentDetails.sellingPrice
         })
+        this.isOptional = true;
       } else {
         this.cartList = [];
+        this.isOptional = false;
       }
     })
   }
