@@ -133,7 +133,7 @@
                                     <input formControlName="college" [(ngModel)]="collegeFilter.collegename" (keyup)="checkBatchRec();collegeflag = false"  [matAutocomplete]="auto" matInput>
                                      <em matSuffix class="icon-arrow_drop_down"></em>
                                     <mat-autocomplete #auto="matAutocomplete">
-                                      <mat-option #OptionData (click)="collegeflag = true;" *ngFor="let item of collegeData | filterBy:collegeFilter" [value]="item.collegename">
+                                      <mat-option #OptionData (click)="collegeflag = true;" *ngFor="let item of collegeData | filterBy:collegeFilter" [value]="item.collegename" [matTooltip]="item.collegename">
                                         {{item.collegename}}
                                       </mat-option>                                  
                                     </mat-autocomplete>
