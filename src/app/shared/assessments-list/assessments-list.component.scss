@@ -210,7 +210,9 @@
         cursor: pointer;
         width: 100%;
         transition: all 0.3s;
-        height: 180px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
         em {
             line-height: 1.4;
             color: $mostlyDarkBlue;
@@ -224,7 +226,8 @@
             font-weight: 700;
             line-height: 1.2;
             text-align: center;
-            min-height: 33px;
+            flex-grow: 1;
+            min-height: 65px;
         }
         .coursesCount {
             font-size: 0.75em;
@@ -244,9 +247,7 @@
             overflow: hidden;
             background: $veryLightGray 0% 0% no-repeat padding-box;
             box-shadow: 0px 3px 6px $secondaryBlackShadow;
-            // margin: 2em 0 0 0;
             cursor: pointer;
-            float: left;
             position: relative;
             em, .fieldName {
                 color: $shadeBlueColor;
@@ -383,7 +384,7 @@
             display: inline-flex;
             position: relative;
             overflow: hidden;
-            height: 175px;
+            height: 195px;
             position: relative;
             border-radius: 5px;
             &::before {
