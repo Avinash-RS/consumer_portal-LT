@@ -21,14 +21,14 @@
             <!-- <div class="positionChange">
                 <span class="heading5">Order Details</span>
             </div> -->
-            <div class="orderCourseImage">
-                <figure>
-                    <img src="https://lmsassetspremium.lntedutech.com/portalicons/concrete-technology-img.webp" alt="">
-                </figure>
-            </div>
             <div class="orders" *ngFor="let item of orderlist">
+                <div class="orderCourseImage">
+                    <figure>
+                        <img [src]="item?.courseImage" alt="">
+                    </figure>
+                </div>
                 <div class="courseHeading">
-                    <span class="domainName"><em class="icon-Right_Play"></em>Civil Engineering</span>
+                    <span class="domainName"><em class="icon-Right_Play"></em>{{item?.domainName ? item.domainName : 'NA'}}</span>
                     <span class="heading6">{{item.assessmentName}}</span>
                 </div>
                 <div class="orderHistory">
@@ -52,11 +52,11 @@
                             </div>
                             <div class="commonClass">
                                 <li>Total price:</li>
-                                <span class="orderContent">₹ 1</span>
+                                <span class="orderContent">₹ {{item?.totalPrice}}</span>
                             </div>
                             <div class="commonClass">
                                 <li>Delivery Option</li>
-                                <span class="orderContent">Online</span>
+                                <span class="orderContent">{{item?.deliveryOption}}</span>
                             </div>
                             <!-- <div class="commonClass">
                                 <li>Product Type</li>
