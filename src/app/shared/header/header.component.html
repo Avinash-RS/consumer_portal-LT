@@ -31,6 +31,9 @@
     </div>
 
     <div class="rightWrapper">
+        <div *ngIf="!showAvatar" class="mobileLogin">
+            <button (click)="mobileclick()"> <span>Login</span> <em class="icon-DownArrow"></em></button>
+        </div>
         <div class="signInRegister">
             <!-- <div *ngIf="!showAvatar" class="recruiter">
                 <a href="https://unifiedreport.lntedutech.com/login" target="recruiterLogin"><em class="icon-Recruiter"></em> <span>Recruiter? Login here</span></a>
@@ -78,15 +81,11 @@
                 <button class="login desktop" (click)="openOnBoard('0'); closeMegaMenu_()">Sign In</button>
                 <button class="register" (click)="openOnBoard('1'); closeMegaMenu_()">Register</button>
             </ng-container>
-            <div class="aictelogo">
+            <div class="aictelogo" [ngClass]="showAvatar ? 'decrease' : 'increase'">
                 <figure>
                     <img src="https://lmsassetspremium.lntedutech.com/portalicons/gtulogo.webp" alt="">
                 </figure>
             </div>
-        </div>
-    
-        <div *ngIf="!showAvatar" class="mobileLogin">
-            <button (click)="mobileclick()"> <span>Login</span> <em class="icon-DownArrow"></em></button>
         </div>
     </div>
     <nav class="menuLevel1 desktopMenu" [@slideInOut]="showMenu" (mouseleave)="triggerLeave()">
@@ -252,7 +251,7 @@
         </ng-container> -->
         <ng-container *ngIf="l1.length > 0 && l2.length > 0 && l3.length <= 0 && l4.length <= 0">
             <div class="secondLevelWrapper">
-                <div class="mobilemenuHeader">
+                <div class="mobilemenuHeader first">
                     <div class="backArrow"><em class="icon-Back"></em></div>
                     <span class="headingStyle">Menu</span>
                     <!-- <div class="headingStyle">{{l1name}}</div> -->

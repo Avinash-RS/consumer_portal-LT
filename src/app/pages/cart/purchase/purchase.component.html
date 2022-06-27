@@ -141,7 +141,7 @@
             </section>
         </mat-step>
         <!-- #docregion label -->
-        <mat-step [stepControl]="secondFormGroup">
+        <mat-step [stepControl]="secondFormGroup" [optional]="isOptional">
             <ng-template matStepLabel>Address</ng-template>
             <!-- #enddocregion label -->
             <div class="cartSection">

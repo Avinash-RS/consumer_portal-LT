@@ -344,9 +344,19 @@ header {
             display: flex;
             justify-content: flex-end;
             img {
-                width: 60%;
+                width: 75%;
                 @include sm {
                     width: 50%;
+                }
+            }
+        }
+        &.increase {
+            figure {
+                img {
+                    width: 87%;
+                    @include sm {
+                        width: 50%;
+                    }
                 }
             }
         }
@@ -355,7 +365,7 @@ header {
 .mobileLogin {
     display: inline-flex;
     align-items: center;
-    margin-left: 10px;
+    margin-right: 10px;
     @include lg {
         display: none;
     }
