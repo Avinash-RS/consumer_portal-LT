@@ -202,13 +202,15 @@
                                 </ng-container>
                             </div>
                             <div class="termsContainer">
-                                <mat-checkbox formControlName="termsandConditions"></mat-checkbox>
-                                <!-- <div class="termsContent">I agree with the <a (click)="terms()" class="termsColor">Terms and Conditions</a> and <a (click)="privacy()" class="termsColor">Privacy Policy</a></div> -->
-                                <div class="termsContent">I agree with the <a (click)="privacy()" class="termsColor">Privacy Policy</a></div>
+                                <div class="wrapper">
+                                    <mat-checkbox formControlName="termsandConditions"></mat-checkbox>
+                                    <!-- <div class="termsContent">I agree with the <a (click)="terms()" class="termsColor">Terms and Conditions</a> and <a (click)="privacy()" class="termsColor">Privacy Policy</a></div> -->
+                                    <div class="termsContent">I agree with the <a (click)="privacy()" class="termsColor">Privacy Policy</a></div>
+                                </div>
+                                <ng-container *ngIf="termsandConditions.invalid && termsandConditions.touched">
+                                    <mat-error *ngIf="termsandConditions.errors?.required" class="error">{{'Check privacy policy checkbox'}}</mat-error>
+                                </ng-container>
                             </div>
-                            <ng-container *ngIf="termsandConditions.invalid && termsandConditions.touched">
-                                <mat-error *ngIf="termsandConditions.errors?.required" class="error">{{'Check privacy policy checkbox'}}</mat-error>
-                            </ng-container>
                             <!-- <div nbRecaptcha formControlName="captcha"></div>
                             <ng-container *ngIf="captcha.invalid && captcha.touched">
                                 <mat-error *ngIf="captcha.errors?.required" class="error">{{'Please fill in Captcha'}}</mat-error>
