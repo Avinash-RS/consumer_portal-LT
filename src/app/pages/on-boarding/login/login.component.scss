@@ -208,10 +208,12 @@
             line-height: 1.6;
         }
         .termsContainer {
-            display: flex;
             margin-bottom: 0.65em;
             width: 100%;
-            .termsColor{
+            .wrapper {
+                display: flex;
+            }
+            .termsColor {
                 color: $primary-red;
                 &:hover {
                     text-decoration: underline;
