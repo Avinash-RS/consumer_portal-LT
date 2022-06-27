@@ -52,14 +52,14 @@
             <div class="left">
               <div class="heading" >{{footerData?.heading}}</div>
               <div class="contacts"> 
-                <span class="eduEmail"><figure><img [src]="footerData?.contact?.email?.imgUrl" alt=""></figure><p>{{footerData?.contact?.email?.txt}}</p></span>
+                <span class="eduEmail"><figure><img [src]="footerData?.contact?.email?.imgUrl" alt=""></figure><p><a href="noMailForYou@spambot.com" rel="nofollow" onclick="this.href='mailto:' + 'contact' + '@' + 'lntedutech.com'">{{footerData?.contact?.email?.txt}}</a></p></span>
                 <span class="contactIcon"><figure><img [src]="footerData?.contact?.phone?.imgUrl" alt=""></figure><p>{{footerData?.contact?.phone?.txt}}</p></span>
               </div>
             </div>
             <div class="right">
               <div class="policy">
-                <span>Terms of Use</span>
-                <span>Privacy Policy</span>
+                <!-- <span>Terms of Use</span> -->
+                <span><a class="privacyPolicy" href="https://lntedutech.com/privacy-policy-2/" target="privacyPolicy">Privacy policies</a></span>
               </div>
             </div>
           </div>

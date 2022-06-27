@@ -191,6 +191,11 @@ footer {
     background-color:$blackBgColor;
     padding: 1.5em 0;
     font-size: 13px;
+    a {
+        &:hover {
+            text-decoration: underline;
+        }
+    }
     @include md {
       font-size: 14px;
     }
