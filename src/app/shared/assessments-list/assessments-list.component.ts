@@ -76,6 +76,8 @@ export class AssessmentsListComponent implements OnInit {
   activeSlides: SlidesOutputData;
   slidesStore: any[];
   allArealength:number = 0;
+  catlogData: any = [];
+  searchKey;
   constructor(private _loading: LoadingService,
               private router: Router,
               private catalogService: CatalogService,
@@ -150,6 +152,7 @@ export class AssessmentsListComponent implements OnInit {
   getArea(id) {
     this.noDataSkeleton = true;
     this.noDataFound = false;
+    this.searchKey = "";
     this.selectedTab = id
     this.tabValues.forEach(element => {
       element.isSelected = false;
@@ -172,12 +175,14 @@ export class AssessmentsListComponent implements OnInit {
         this.noDataFound = false;
         this.viewMore = (!this.isNavigated && this.areaCards?.length > 6) ? true : false;
         this.sliceDigits =  !this.viewMore ? this.areaCards?.length + 1 : 6;
+        this.catlogData = this.areaCards;
         if(id == 'All'){
           this.allArealength = this.areaCards.length;
         }
       } else {
         this.viewMore = false;
         this.areaCards = [];
+        this.catlogData = [];
         this.noDataFound = true;
       }
     })
@@ -198,6 +203,13 @@ export class AssessmentsListComponent implements OnInit {
   getPassedData(data: SlidesOutputData) {
     this.activeSlides = data;
     console.log(this.activeSlides);
+  }
+
+  catalogSearch(){
+    this.catlogData = this.areaCards.filter((e: any) => {
+      return e.name.toLowerCase().includes(this.searchKey.toLowerCase());
+    });
+    this.noDataFound = this.catlogData.length == 0 ? true : false;
   }
 
 }
