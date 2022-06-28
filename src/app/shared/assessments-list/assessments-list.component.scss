@@ -250,7 +250,7 @@
         }
     }
     .fieldTabs {
-        padding: 0.75em 1.25em;
+        padding: 0.75em;
         text-align: center;
         cursor: pointer;
         width: 100%;
@@ -272,7 +272,7 @@
             line-height: 1.2;
             text-align: center;
             flex-grow: 1;
-            min-height: 65px;
+            min-height: 45px;
         }
         .coursesCount {
             font-size: 0.75em;
@@ -683,7 +683,7 @@
 }
 .viewMore {
     text-align: center;
-    margin-top: 3em;
+    margin:1.75em 0 3.75em 0;
     button {
         background-color: $shadeBlueColor;
         font-family: "OpenSans", sans-serif;
