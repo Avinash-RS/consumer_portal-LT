@@ -69,6 +69,10 @@ export class CheckoutComponent implements OnInit {
     this.currentTab.next();
   }
   checkout() {
+    if (this.cartList?.length == 0){
+      this.toast.warning('Add items in cart to checkout');
+      return false;
+    }
     let param: any = {}
     param.user_id = this.userDetails.userId;
     param.email = this.userDetails.email;

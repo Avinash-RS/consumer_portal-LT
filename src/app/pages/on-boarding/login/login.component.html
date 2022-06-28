@@ -133,7 +133,7 @@
                                     <input formControlName="college" [(ngModel)]="collegeFilter.collegename" (keyup)="checkBatchRec();collegeflag = false"  [matAutocomplete]="auto" matInput>
                                      <em matSuffix class="icon-arrow_drop_down"></em>
                                     <mat-autocomplete #auto="matAutocomplete">
-                                      <mat-option #OptionData (click)="collegeflag = true;" *ngFor="let item of collegeData | filterBy:collegeFilter" [value]="item.collegename">
+                                      <mat-option #OptionData (click)="collegeflag = true;" *ngFor="let item of collegeData | filterBy:collegeFilter" [value]="item.collegename" [matTooltip]="item.collegename">
                                         {{item.collegename}}
                                       </mat-option>                                  
                                     </mat-autocomplete>
@@ -185,7 +185,7 @@
                                     <mat-error *ngIf="passwordR.errors?.required" class="error">{{'Password is required'}}</mat-error>
                                     <mat-error *ngIf="passwordR.errors?.minlength" class="error">{{'Minimum 8 characters required'}}</mat-error>
                                     <mat-error *ngIf="passwordR.errors?.maxlength" class="error">{{'Maximum 32 characters only allowed'}}</mat-error>
-                                    <mat-error *ngIf="passwordR.errors?.password" class="error">{{'The password should consist of 1 uppercase, 1 lowercase,1 number and 1 special character [*.!@#$%^&(){}[]:;<>,.?/~_+-=|\].'}}</mat-error>
+                                    <mat-error *ngIf="passwordR.errors?.password" class="error">{{'The password should consist of minimum 1 uppercase, 1 lowercase, 1 numeric and 1 special character'}}</mat-error>
                                 </ng-container>
                             </div>
                             <div class="inputContainer">
@@ -208,7 +208,7 @@
                                     <div class="termsContent">I agree with the <a (click)="privacy()" class="termsColor">Privacy Policy</a></div>
                                 </div>
                                 <ng-container *ngIf="termsandConditions.invalid && termsandConditions.touched">
-                                    <mat-error *ngIf="termsandConditions.errors?.required" class="error">{{'Check terms and conditions checkbox'}}</mat-error>
+                                    <mat-error *ngIf="termsandConditions.errors?.required" class="error">{{'Check privacy policy checkbox'}}</mat-error>
                                 </ng-container>
                             </div>
                             <!-- <div nbRecaptcha formControlName="captcha"></div>

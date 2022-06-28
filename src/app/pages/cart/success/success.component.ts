@@ -119,6 +119,9 @@ export class SuccessComponent implements OnInit {
         course_details: this.course_details
         }
       this.catalog.userSyncUpLxp(apiParam).subscribe((result:any)=>{
+        if(result?.success){
+          this.util.isEnrolled.next(true);
+        }
       });
     }
     if(this.stepCheck){

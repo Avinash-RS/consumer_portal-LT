@@ -289,10 +289,10 @@
                         </div>
                         <div class="purchaseHistory">
                             <div class="itemNames">
-                                <span class="domainName"><em class="icon-Right_Play"></em>Civil Engineering</span>
-                                <span class="title">{{item.cart.competencyName}}</span>
+                                <span class="domainName"><em class="icon-Right_Play"></em>{{item?.assessmentDetails?.domainName}}</span>
+                                <!-- <span class="title">{{item.cart.competencyName}}</span> -->
                                 <div class="heading4">{{item.cart.assessmentName}}</div>
-                                <span class="label">{{item.cart.levelName}}</span>
+                                <!-- <span class="label">{{item.cart.levelName}}</span> -->
                             </div>
                             <div class="orderDetails">
                                 <div>
@@ -305,7 +305,7 @@
                                 </div>
                                 <div>
                                     <span class="orderHeading">Payment type:</span>
-                                    <span class="orderDesc">Visa ******0000</span>
+                                    <span class="orderDesc">{{item?.payment_mode}}</span>
                                 </div>
                                 <div>
                                     <span class="orderHeading">Total price:</span>
@@ -313,7 +313,7 @@
                                 </div>
                                 <div>
                                     <span class="orderHeading">Delivery Option</span>
-                                    <span class="orderDesc">Online</span>
+                                    <span class="orderDesc">{{item?.deliveryOption}}</span>
                                 </div>
                             </div>
                             <!-- <div class="reciept">
