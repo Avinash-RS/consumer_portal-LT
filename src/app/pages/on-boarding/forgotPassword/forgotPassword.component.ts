@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild, HostListener } from "@angular/core";
 import { CommonService } from "src/app/services/common.service";
 import { ToastrService } from 'ngx-toastr';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router, NavigationStart } from "@angular/router";
 import * as bcrypt from 'bcryptjs';
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { AppConfigService } from "src/app/utils/app-config.service";
@@ -10,6 +10,8 @@ import { APP_CONSTANTS } from "src/app/utils/app-constants.service";
 import { environment } from "@env/environment";
 import { RecaptchaErrorParameters } from "ng-recaptcha";
 import * as CryptoJS from 'crypto-js';
+import { Subscription } from 'rxjs'
+export let browserRefresh = false;
 @Component({
   selector: "app-forgotPassword",
   templateUrl: "./forgotPassword.component.html",
@@ -41,8 +43,13 @@ export class ForgotPasswordComponent implements OnInit {
   pwdSecretKey: void;
   recaptchaStr = '';
   siteKey: any = environment.captachaSiteKey;
+  subscription: Subscription;
+  browserRefresh;
   @ViewChild('captchaRef',{ static: false }) captchaRef;
-  
+  @HostListener('window:beforeunload') goToPage() {
+    if(this.viewObj.pwdSuccess){
+    }
+  }
   constructor(
     public commonService: CommonService,
     public toast: ToastrService,
@@ -50,7 +57,13 @@ export class ForgotPasswordComponent implements OnInit {
     private appconfig: AppConfigService,
     public gv: GlobalValidatorsService,
     public route: ActivatedRoute,
+    public router: Router,
+
     ) { 
+      var set = this.appconfig.getSessionStorage('onsucess')
+      if(set){
+        this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: '0' });
+      }
       this.route.queryParams.subscribe(params => {
         if (params.setPwd && params.email) {
           this.userEmail = params.email;
@@ -92,6 +105,8 @@ export class ForgotPasswordComponent implements OnInit {
       case "pwdSuccess":
         this.viewObj.reset()
         this.viewObj.pwdSuccess = true;
+        this.appconfig.setSessionStorage('onsucess',true)
+
         break;
       case "linkExp":
         this.viewObj.reset()
