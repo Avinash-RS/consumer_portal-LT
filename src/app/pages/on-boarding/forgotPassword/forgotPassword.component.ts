@@ -41,7 +41,6 @@ export class ForgotPasswordComponent implements OnInit {
   pwdSecretKey: void;
   recaptchaStr = '';
   siteKey: any = environment.captachaSiteKey;
-  subscription: Subscription;
   browserRefresh;
   @ViewChild('captchaRef',{ static: false }) captchaRef;
   constructor(

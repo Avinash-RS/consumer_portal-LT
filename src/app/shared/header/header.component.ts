@@ -114,6 +114,11 @@ export class HeaderComponent implements OnInit {
     var activeMenu = localStorage.getItem('myPurchase');
     // this.isCourse = activeMenu && activeMenu == 'course';
     // this.isAssement = activeMenu && activeMenu == 'assessment';
+    this.util.isEnrolled.subscribe((result:any)=>{
+      if(result && this.appConfig.getLocalStorage('token')){
+        this.getPurchasedCourse();
+      }
+    });
   }
   getPurchasedCourse(){
     let param = {"userId": this.userDetails.userId, "email": this.userDetails.email, type:'All',productType:'course'};
