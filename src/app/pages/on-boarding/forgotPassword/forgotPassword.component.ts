@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild, HostListener } from "@angular/core";
+import { Component, OnInit, ViewChild} from "@angular/core";
 import { CommonService } from "src/app/services/common.service";
 import { ToastrService } from 'ngx-toastr';
-import { ActivatedRoute, Router, NavigationStart } from "@angular/router";
+import { ActivatedRoute, Router} from "@angular/router";
 import * as bcrypt from 'bcryptjs';
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { AppConfigService } from "src/app/utils/app-config.service";
@@ -10,8 +10,6 @@ import { APP_CONSTANTS } from "src/app/utils/app-constants.service";
 import { environment } from "@env/environment";
 import { RecaptchaErrorParameters } from "ng-recaptcha";
 import * as CryptoJS from 'crypto-js';
-import { Subscription } from 'rxjs'
-export let browserRefresh = false;
 @Component({
   selector: "app-forgotPassword",
   templateUrl: "./forgotPassword.component.html",
@@ -46,10 +44,6 @@ export class ForgotPasswordComponent implements OnInit {
   subscription: Subscription;
   browserRefresh;
   @ViewChild('captchaRef',{ static: false }) captchaRef;
-  @HostListener('window:beforeunload') goToPage() {
-    if(this.viewObj.pwdSuccess){
-    }
-  }
   constructor(
     public commonService: CommonService,
     public toast: ToastrService,
