@@ -58,6 +58,7 @@ export class LoginComponent implements OnInit {
     private router:Router, 
     private cartsevice: CartService
   ) {
+    this.appconfig.clearSessionStorage();
     this.route.queryParams.subscribe(params => {
       if (params.fromPage == '0') {
         this.entryIndex = 0;
