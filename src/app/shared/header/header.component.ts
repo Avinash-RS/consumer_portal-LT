@@ -459,4 +459,9 @@ export class HeaderComponent implements OnInit {
     var ValueData = JSON.parse(this.appConfig.getLocalStorage('valueData'));
       window.open(environment.lxp_url+"?queValue="+encodeURIComponent(ValueData.queValue)+'&rpValue='+encodeURIComponent(ValueData.rpValue)+'&dpValue=microsetportal', '_self');
   }
+  menuViewMore() {
+    this.showMenu = 'out';
+    this.mobileshowMenu = 'out';
+    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.home, { fromPage: btoa("viewAll"), selectedTab: btoa(this.selectedTab) });
+  }
 }

@@ -76,13 +76,24 @@
             width: 100%;
             opacity: 1;
             position: relative;
-            &::before, &::after {
+            &::before {
               content: '';
               position: absolute;
               width: 100%;
               height: 100%;
-              background-color: #4F7383;
-              border: 1px solid rgba(255, 255, 255, 0.2);
+              background-color: $frameBg;
+              border: 1px solid $primaryColor;
+              box-shadow: -20px -20px 10px -21px $primaryColor;
+              border-radius: 10px;
+            }
+            &::after {
+              content: '';
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              background-color: $frameBg;
+              border: 1px solid $darkLimeGreen;
+              box-shadow: 22px 22px 10px -24px $darkLimeGreen;
               border-radius: 10px;
             }
             &::after {
