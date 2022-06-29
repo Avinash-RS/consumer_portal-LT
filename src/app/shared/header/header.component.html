@@ -131,7 +131,7 @@
             </ul>
             <ul class="menuText">
                 <li [ngClass]="level0?.active ? 'secondActive':''" *ngFor="let level0 of catalogMenu[0].data;">
-                    <div (mouseenter)="secondLevelHover(megaMenuL1Data,level0)">
+                    <div (mouseenter)="secondLevelHover(megaMenuL1Data,level0)" (click)="catalogHome(level0.cid)">
                         <span>{{level0.name}}</span>
                         <em class="icon-RightArrow"></em>
                     </div>
@@ -145,7 +145,7 @@
                             </li>
                         </ng-container>
                         <div class="viewAllBtn" *ngIf="megaMenuL2Data.length > 5">
-                            <button (click)="menuViewMore()">View all</button>
+                            <button (click)="catalogHome('All')">View all</button>
                         </div>
                         <ng-container *ngIf="megaMenuL2Data.length == 0">
                             <div class="noCategories">
@@ -268,7 +268,7 @@
                     <ul>
                         <li *ngFor="let item of l2">
                             <a>
-                                <span (click)="catalogHome(item.cid,productType)">{{item.name}}</span>
+                                <span (click)="catalogHome(item.cid)">{{item.name}}</span>
                                 <em class="icon-RightArrow" (click)="secondlevelclick(item)"></em>
                             </a>
                         </li>
