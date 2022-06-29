@@ -136,7 +136,7 @@
                         <em class="icon-RightArrow"></em>
                     </div>
                     <ul>
-                        <ng-container *ngFor="let level1 of megaMenuL2Data">
+                        <ng-container *ngFor="let level1 of megaMenuL2Data | slice:0:5">
                             <li>
                                 <div (click)="gotoArea(level1, 'course')">
                                     <img src="/assets/images/civil.png" alt="" />
@@ -144,6 +144,9 @@
                                 </div>
                             </li>
                         </ng-container>
+                        <div class="viewAllBtn" *ngIf="megaMenuL2Data.length > 5">
+                            <button (click)="menuViewMore()">View all</button>
+                        </div>
                         <ng-container *ngIf="megaMenuL2Data.length == 0">
                             <div class="noCategories">
                                 <figure>
