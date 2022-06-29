@@ -446,7 +446,6 @@ header {
     overflow: hidden;
     z-index: 999;
     font-size: 14px;
-    max-width: 950px;
     width: 100%;
     margin: 0 auto;
     @include sm {
@@ -462,7 +461,7 @@ header {
     }
     @include xl {
         left: 10em;
-        width: 50%;
+        width: 950px;
     }
     // @media only screen and (min-width: 1540px) {
     //     width: 80%;
@@ -1559,5 +1558,26 @@ header {
         font-weight: 600;
         color: $lightGrey;
         line-height: normal;
+    }
+}
+.viewAllBtn {
+    text-align: right;
+    button {
+        font-family: "OpenSans", sans-serif;
+        font-size: 1em;
+        font-weight: 400;
+        color: $shadeBlueColor;
+        background-color: $whiteColor;
+        padding: 0.35em 1.25em;
+        transition: all 0.3s ease-in-out;
+        border: 1px solid $shadeBlueColor;
+        border-radius: 5px;
+        em {
+            font-size: 0.75em;
+        }
+        &:hover {
+            color: $whiteColor;
+            background-color: $shadeBlueColor;
+        }
     }
 }
