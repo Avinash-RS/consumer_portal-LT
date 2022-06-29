@@ -438,11 +438,10 @@
           padding-bottom: 1.6em;
           &:hover {
             color: #27bbee;
-            border-bottom: 3px solid #1b4e9b;
           }
           &.active {
             color: #27bbee;
-            border-bottom: 3px solid #1b4e9b;
+            border-bottom: 3px solid $secondaryColor;
           }
         }
       }

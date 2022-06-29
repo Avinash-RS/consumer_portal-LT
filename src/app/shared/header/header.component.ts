@@ -341,26 +341,20 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  catalogHome(value,type) {
-    this.productType = type;
+  catalogHome(value) {
     this.showMenu = 'out';
     this.mobileshowMenu = 'out';
     this.assessmentsList= false;
     this.coursesList = false;
-    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.home, { fromPage: btoa("viewAll"), selectedTab: btoa(value) ,productType : btoa(this.productType)});
+    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.home, { fromPage: btoa("viewAll"), selectedTab: btoa(value) ,productType : btoa('course')});
     this.inActiveTabs();
   }
-  gotoArea(data,type) {
+  gotoArea(data) {
     this.showMenu = 'out';
     this.mobileshowMenu = 'out';
     this.assessmentsList= false;
     this.coursesList = false;
-    if(this.productType == 'course'){
-      this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutCourse,{id : btoa(data.cid), selectedTab : btoa(data.parentId) ,productType : btoa(this.productType)});
-    }
-    else{
-      this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutAssessment,{id : btoa(data.cid), selectedTab : btoa(data.parentId) ,productType : btoa(this.productType)});
-    }
+    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutCourse,{id : btoa(data?.levelIds[0]?.LevelId ? data.levelIds[0].LevelId : ''), selectedTab : btoa(data.parentId) ,productType : btoa('course')});
     this.inActiveTabs();
   }
 

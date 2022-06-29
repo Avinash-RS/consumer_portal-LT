@@ -131,7 +131,7 @@
             </ul>
             <ul class="menuText">
                 <li [ngClass]="level0?.active ? 'secondActive':''" *ngFor="let level0 of catalogMenu[0].data;">
-                    <div (mouseenter)="secondLevelHover(megaMenuL1Data,level0)">
+                    <div (mouseenter)="secondLevelHover(megaMenuL1Data,level0)" (click)="catalogHome(level0.cid)">
                         <span>{{level0.name}}</span>
                         <em class="icon-RightArrow"></em>
                     </div>
