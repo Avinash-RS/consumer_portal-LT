@@ -400,7 +400,7 @@
                 }
                 em {
                     margin-right: 0.25em;
-                    color: $shadeBlueColor;
+                    color: $mostlyDarkBlue;
                 }
             }
         }
@@ -415,7 +415,7 @@
         width: 27%;
     }
     .rightContentWrapper {
-        background-color: #F0F0F0;
+        background-color: $backGroundColor;
         padding: 1em;
         box-sizing: border-box;
         border-radius: 5px;
