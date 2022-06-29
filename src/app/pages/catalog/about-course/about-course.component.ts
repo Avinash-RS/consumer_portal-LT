@@ -216,7 +216,6 @@ export class AboutCourseComponent implements OnInit {
           this.defaultDiv = false;
           this.nocard = false;
           setTimeout(() => {
-            // this.setOffset();
             this.sections = document.querySelectorAll("section[id]");
           }, 1000);
         }
@@ -317,7 +316,6 @@ export class AboutCourseComponent implements OnInit {
         });
       }
       scroll(ID) {
-        this.activeSection = ID;
         document.getElementById(ID).scrollIntoView({behavior: "smooth"});
     }
     openRequest(){
