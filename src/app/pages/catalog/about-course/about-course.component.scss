@@ -201,7 +201,7 @@
         .learners {
           font-size: 0.85em;
           font-weight: 300;
-          color: #e6e6e6;
+          color: $whiteColor;
           margin-right: 2em;
           @include sm {
             margin-right: 3em;
@@ -3126,11 +3126,11 @@
       }
       .heading5 {
         font-weight: 600;
-        color: $blackColor;
+        color: $darkGrey;
       }
       .expansionContent {
         font-weight: 400;
-        color: $darkGrey;
+        color: $darkMediumGrey;
         line-height: 1.5;
         margin: 0;
       }
