@@ -191,10 +191,15 @@
         .forgotPassword {
             margin-bottom: 1em;
             span {
-                color: $primaryColor !important;
+                color: $primaryColor;
                 cursor: pointer;
                 font-size: 0.85em;
                 padding: 1em 0;
+                transition: all 0.3s ease-in-out;
+                &:hover {
+                    color: $hoversecondaryColor;
+                    text-decoration: underline;
+                }
             }
         }
         .onEntry {
@@ -214,8 +219,10 @@
                 display: flex;
             }
             .termsColor {
-                color: $primary-red;
+                color: $blueLabelColor;
+                transition: all 0.3s ease-in-out;
                 &:hover {
+                    color: $hoversecondaryColor;
                     text-decoration: underline;
                 }
             }
