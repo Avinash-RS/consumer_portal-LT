@@ -6,10 +6,6 @@
             <p>Build your proficiency in the hottest industry of the 21st century.</p>
         </div>
         <div class="container">
-            <div class="search">
-                <input type="text" placeholder="Search Courses.." [(ngModel)]="searchKey" (keyup)="catalogSearch()">
-                <span class="searchKey"><em class="icon-Search"></em></span>
-            </div>
             <!-- <nav class="mainTab">
                 <a (click)="getDomain('assessment')" [ngClass]="productType == 'assessment' ? 'active' :''">Assessments</a>
                 <a (click)="getDomain('course')" [ngClass]="productType == 'course' ? 'active' :''">Courses</a>
@@ -21,7 +17,7 @@
                             <div class="fieldItems">
                                 <div class="fieldTabs" [ngClass]="tab.isSelected ? 'active': '' " (click)="getArea(tab.cid)">
                                     <em [ngClass]="tab.cid == 'All' ? 'icon-allCourses' : tab?.image?.filename " class=""></em>
-                                    <div class="fieldName">{{tab.name}}</div>
+                                    <div class="fieldName">{{tab.cid == 'All' ? 'All Courses' : tab.name}}</div>
                                     <div class="coursesCount">
                                        {{tab.cid == 'All' ? this.allArealength : tab?.children ? tab?.children.length : 0 }} Course
                                     </div>
@@ -54,6 +50,11 @@
                             </mat-form-field> -->
                     <!-- </div> -->
                     <!-- <button class="filter"><em class="icon-Filter"></em><span>Filters</span></button> Dont Delete this line -->
+                    
+                <div class="search">
+                    <input type="text" placeholder="Search Courses.." [(ngModel)]="searchKey" (keyup)="catalogSearch()">
+                    <span class="searchKey"><em class="icon-Search"></em></span>
+                </div>
                 <div class="assessmentList">
                     <ng-container *ngIf ="noDataSkeleton">
                         <div class="skeletonWrapper">

@@ -17,7 +17,7 @@
         font-weight: 400;
         color: $darkMediumGrey;
         line-height: 1.3;
-        margin: 1em;
+        margin: 1em 1em 1em 0;
     }
 }
 .cartSection {
@@ -113,15 +113,24 @@
             @include sm {
                 width: 24%;
             }
+            @include md {
+                width: 30%;
+            }
+            @include lg {
+                width: 24%;
+            }
             img {
                 object-fit: cover;
                 height: 150px;
                 width: 100%;
-                @include md {
-                    height: 130px;
+                @include sm {
+                    height: 160px;
+                }
+                @include lg {
+                    height: 145px;
                 }
                 @include xl {
-                    height: 150px;
+                    height: 160px;
                 }
             }
         }
@@ -132,6 +141,12 @@
             justify-content: space-between;
             // border-bottom: 1px solid $greyColor;
             @include sm {
+                width: 74%;
+            }
+            @include md {
+                width: 68%;
+            }
+            @include lg {
                 width: 74%;
             }
             .wrapper {
@@ -153,6 +168,7 @@
             font-weight: 400;
             line-height: normal;
             margin-bottom: 1em;
+            color: $blueLabelColor;
             em {
                 font-size: 0.75em;
                 margin-right: 0.25em;
@@ -264,7 +280,7 @@
                 display: flex;
                 align-items: center;
                 em {
-                    color: #EBC71A;
+                    color: $mostlyDarkBlue;
                     margin-right: 2px;
                 }
                 &.assessmentIcon {
@@ -275,7 +291,7 @@
             }
             .commonStyle {
                 display: block;
-                margin-bottom: 0.2em;
+                margin-bottom: 7px;
             }
             .popoverInfoFinal {
                 position: relative;
