@@ -159,6 +159,9 @@ export class AssessmentsListComponent implements OnInit {
     this.catalogService.getCatalog(apiParms).subscribe((response: any) => {
       if (response.data.length > 0) {
         this.tabValues = response.data;
+        this.tabValues.forEach((element:any) => {
+          this.allArealength = this.allArealength + (element?.children ? element.children.length : 0)
+        });
         this.tabValues.splice(0, 0, this.firstTabValue)
         this.getArea(this.fromTab);
       } else {
@@ -194,9 +197,6 @@ export class AssessmentsListComponent implements OnInit {
         this.viewMore = (!this.isNavigated && this.areaCards?.length > 6) ? true : false;
         this.sliceDigits =  !this.viewMore ? this.areaCards?.length + 1 : 6;
         this.catlogData = this.areaCards;
-        if(id == 'All'){
-          this.allArealength = this.areaCards.length;
-        }
       } else {
         this.viewMore = false;
         this.areaCards = [];

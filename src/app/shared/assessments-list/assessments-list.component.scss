@@ -37,7 +37,7 @@
         p {
             font-size: 1em;
             font-weight: 400;
-            color: $darkMediumGrey;
+            color: $mediumGrey;
             line-height: normal;
             margin: 0;
             text-align: center;
@@ -276,7 +276,7 @@
         }
         .coursesCount {
             font-size: 0.75em;
-            color: $darkGrayColor;
+            color: $mediumGrey;
             margin: 0.75em 0 0 0;
         }
         &:hover {
@@ -605,7 +605,7 @@
             font-size: 0.75em;
             line-height: normal;
             em {
-                color: $lightGrey;
+                color: $mostlyDarkBlue;
                 margin-right: 2px;
             }
             &.assessmentIcon {
