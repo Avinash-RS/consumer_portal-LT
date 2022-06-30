@@ -77,6 +77,7 @@ export class HeaderComponent implements OnInit {
   megaMenuL2Data:any =[];
   noData: any;
   ispurchased:boolean = false;
+  domainId: any;
   constructor(
     private appConfig: AppConfigService,
     private catalogService: CatalogService,
@@ -442,6 +443,7 @@ export class HeaderComponent implements OnInit {
     });
   }
   secondLevelHover(l1Data,item){
+    this.domainId = item.cid;
     this.megaMenuL2Data = item?.children ? item?.children : [];
     l1Data.forEach((element)=>{
       if(element.cid == item.cid){
