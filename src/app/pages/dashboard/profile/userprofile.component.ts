@@ -48,19 +48,19 @@ export class UserprofileComponent implements OnInit {
       "tabname": 'profile',
       'Active': true
     },
-    {
-      'title': 'KYC Information',
-      "tabname": 'KYC',
-      'Active': false,
-      'child':[
-        {'title':'Personal Details','tab':'Personal','Active':true},
-        {'title':'Contact Details','tab':'Contact','Active':false},
-        {'title':'Passport & Other Identity Proof','tab':'Passport','Active':false},
-        {'title':'Education Details','tab':'Education','Active':false},
-        // {'title':'Questionnaire','tab':'Questionnaire','Active':false},
-        {'title':'Preview','tab':'Preview','Active':false},
-      ]
-    },
+    // {
+    //   'title': 'KYC Information',
+    //   "tabname": 'KYC',
+    //   'Active': false,
+    //   'child':[
+    //     {'title':'Personal Details','tab':'Personal','Active':true},
+    //     {'title':'Contact Details','tab':'Contact','Active':false},
+    //     {'title':'Passport & Other Identity Proof','tab':'Passport','Active':false},
+    //     {'title':'Education Details','tab':'Education','Active':false},
+    //     // {'title':'Questionnaire','tab':'Questionnaire','Active':false},
+    //     {'title':'Preview','tab':'Preview','Active':false},
+    //   ]
+    // },
     // {
     //   'title': 'My Skill Zone',
     //   "tabname": 'skill',
@@ -76,21 +76,21 @@ export class UserprofileComponent implements OnInit {
       "tabname": 'history',
       'Active': false
     },
-    {
-      'title': 'Payment Methods',
-      "tabname": 'payment',
-      'Active': false
-    },
+    // {
+    //   'title': 'Payment Methods',
+    //   "tabname": 'payment',
+    //   'Active': false
+    // },
     {
       'title': 'Certificate',
       "tabname": 'certificate',
       'Active': false
     },
-    {
-      'title': 'Close Account',
-      "tabname": 'close',
-      'Active': false
-    },
+    // {
+    //   'title': 'Close Account',
+    //   "tabname": 'close',
+    //   'Active': false
+    // },
     
   ]
   userDetails: any;
@@ -166,7 +166,7 @@ export class UserprofileComponent implements OnInit {
     this.getpurchasehistory();
     this.getSkillChartData();
     this.selectedKycTab = "Personal";
-    this.tabchanged();
+    // this.tabchanged();
     this.getProfilePercentage();
     this.triggerProfilepercentage();
     this.navigateParentTab();
@@ -487,21 +487,21 @@ getProfilePercentage(){
   isMultiple(): boolean {
     return this.multiple
   }
-  ChangeKycTabs(selectedTab){
-    this.selectionTypes[1].child.forEach(element=>{
-      if(element.tab == selectedTab){
-        element.Active = true;
-      }
-      else{
-        element.Active = false;
-      }
-    });
-    this.selectedKycTab = selectedTab;
-  }
+  // ChangeKycTabs(selectedTab){
+  //   this.selectionTypes[1].child.forEach(element=>{
+  //     if(element.tab == selectedTab){
+  //       element.Active = true;
+  //     }
+  //     else{
+  //       element.Active = false;
+  //     }
+  //   });
+  //   this.selectedKycTab = selectedTab;
+  // }
 
-  tabchanged(){
-    this.util.kyctabSubject.subscribe((data:string)=>{
-      this.ChangeKycTabs(data);
-    })
-  }
+  // tabchanged(){
+  //   this.util.kyctabSubject.subscribe((data:string)=>{
+  //     this.ChangeKycTabs(data);
+  //   })
+  // }
 }

@@ -23,7 +23,13 @@
                                     <em [ngClass]="tab.cid == 'All' ? 'icon-allCourses' : tab?.image?.filename " class=""></em>
                                     <div class="fieldName">{{tab.name}}</div>
                                     <div class="coursesCount">
-                                       {{tab.cid == 'All' ? this.allArealength : tab?.children ? tab?.children.length : 0 }} Course
+                                       {{tab.cid == 'All' ? this.allArealength : tab?.children ? tab?.children.length : 0 }} Courses
+                                        <!-- <ng-container *ngIf="tab.cid == 'All'">
+                                            {{this.allArealength}} {{this.allArealength > 0 ? 'Courses' : 'Course'}}
+                                        </ng-container>
+                                        <ng-container *ngIf="tab.cid != 'All'">
+                                            {{tab?.children ? tab?.children.length }} 
+                                        </ng-container> -->
                                     </div>
                                 </div>
                             </div>
