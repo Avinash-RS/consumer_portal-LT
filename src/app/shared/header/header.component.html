@@ -131,7 +131,7 @@
             </ul>
             <ul class="menuText">
                 <li [ngClass]="level0?.active ? 'secondActive':''" *ngFor="let level0 of catalogMenu[0].data;">
-                    <div (mouseenter)="secondLevelHover(megaMenuL1Data,level0)">
+                    <div (mouseenter)="secondLevelHover(megaMenuL1Data,level0)" (click)="catalogHome(level0.cid)">
                         <span>{{level0.name}}</span>
                         <em class="icon-RightArrow"></em>
                     </div>
@@ -139,13 +139,13 @@
                         <ng-container *ngFor="let level1 of megaMenuL2Data | slice:0:5">
                             <li>
                                 <div (click)="gotoArea(level1, 'course')">
-                                    <img src="/assets/images/civil.png" alt="" />
+                                    <img [src]="level1?.image?.menuIcon" alt="" />
                                     <span>{{level1.name}}</span>
                                 </div>
                             </li>
                         </ng-container>
                         <div class="viewAllBtn" *ngIf="megaMenuL2Data.length > 5">
-                            <button (click)="menuViewMore()">View all</button>
+                            <button (click)="catalogHome(domainId)">View all</button>
                         </div>
                         <ng-container *ngIf="megaMenuL2Data.length == 0">
                             <div class="noCategories">
@@ -268,7 +268,7 @@
                     <ul>
                         <li *ngFor="let item of l2">
                             <a>
-                                <span (click)="catalogHome(item.cid,productType)">{{item.name}}</span>
+                                <span (click)="catalogHome(item.cid)">{{item.name}}</span>
                                 <em class="icon-RightArrow" (click)="secondlevelclick(item)"></em>
                             </a>
                         </li>
@@ -289,7 +289,7 @@
                         <li *ngFor="let item of l3">
                             <a>
                                 <div (click)="gotoArea(item,productType)">
-                                    <img src="/assets/images/civil.png" alt="" />
+                                    <img [src]="item?.image?.menuIcon" alt="" />
                                     <span>{{item.name}}</span>
                                 </div>
                             </a>

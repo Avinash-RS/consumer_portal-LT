@@ -41,7 +41,12 @@ export class LoginComponent implements OnInit {
   collegeData: any = [];
   departmentData: any = [];
   collegeflag = false;
-  yearData = ['2010','2011','2012','2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025']
+  yearData = ['2010','2011','2012','2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025'];
+  otherData = {
+    collegeId: "0",
+    collegename: "Others",
+    collegeshortcode: ""
+  }
   @ViewChild('kycmandate', { static: false }) matDialogRef: TemplateRef<any>;
   @ViewChild('captchaRef',{ static: false }) captchaRef;
   constructor(public route: ActivatedRoute,
@@ -298,6 +303,7 @@ resolvedSignIn(captchaSignInResponse: string){
     this.cartsevice.getCollegeDetails(apiParm).subscribe((result:any)=>{
       if(result?.success && result?.data.length > 0){
         this.collegeData = result?.data;
+         this.collegeData.unshift(this.otherData)
       }
     })
   }

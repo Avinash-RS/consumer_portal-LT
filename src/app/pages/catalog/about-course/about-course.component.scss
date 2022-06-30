@@ -76,13 +76,24 @@
             width: 100%;
             opacity: 1;
             position: relative;
-            &::before, &::after {
+            &::before {
               content: '';
               position: absolute;
               width: 100%;
               height: 100%;
-              background-color: #4F7383;
-              border: 1px solid rgba(255, 255, 255, 0.2);
+              background-color: $frameBg;
+              border: 1px solid $primaryColor;
+              box-shadow: -20px -20px 10px -21px $primaryColor;
+              border-radius: 10px;
+            }
+            &::after {
+              content: '';
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              background-color: $frameBg;
+              border: 1px solid $darkLimeGreen;
+              box-shadow: 22px 22px 10px -24px $darkLimeGreen;
               border-radius: 10px;
             }
             &::after {
@@ -190,7 +201,7 @@
         .learners {
           font-size: 0.85em;
           font-weight: 300;
-          color: #e6e6e6;
+          color: $whiteColor;
           margin-right: 2em;
           @include sm {
             margin-right: 3em;
@@ -368,7 +379,7 @@
         }
       }
       .content {
-        color: #222222;
+        color: $darkGrey;
         font-size: 1em;
         font-weight: 400;
         line-height: 1;
@@ -378,7 +389,7 @@
   
   //Overall tabs
   .topTab {
-    background-color: #f8fbff;
+    background-color: $paleBlue;
     padding: 1em 0 0 0;
     position: relative;
     font-size: 12px;
@@ -394,14 +405,17 @@
   }
   .tabssection {
     background-color: $whiteColor;
-    padding: 1.5em 0;
+    padding: 0;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
     position: relative;
     display: none;
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
     @include lg {
       display: flex;
     }
     &.sticky {
+      padding: 1.5em 0;
       width: 100%;
       position: fixed;
       top: 74px;
@@ -409,6 +423,7 @@
       z-index: 10;
       background-color: $whiteColor;
       padding: 1.5em 0;
+      opacity: 1;
       box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
       .buyNow {
         opacity: 1;
@@ -434,12 +449,11 @@
         a {
           padding-bottom: 1.6em;
           &:hover {
-            color: #27bbee;
-            border-bottom: 3px solid #1b4e9b;
+            color: $primaryColor;
           }
           &.active {
-            color: #27bbee;
-            border-bottom: 3px solid #1b4e9b;
+            color: $primaryColor;
+            border-bottom: 3px solid $secondaryColor;
           }
         }
       }
@@ -622,7 +636,7 @@
 
   // Why Full Stack
   .whyFullStack {
-    background-color: #f8fbff;
+    background-color: $paleBlue;
     padding: 3.75em 0;
     font-size: 13px;
     @include md {
@@ -686,7 +700,7 @@
                 transform: scale(1);
                 // box-shadow: 0 0 30px 0 rgb(0 0 0 / 18%);
                 // transform: translate(0px, -10px);
-                // background-color: #f8fbff;
+                // background-color: $paleBlue;
               }
             }
           }
@@ -1230,7 +1244,7 @@
 
 //Curriculam
 .curriculam {
-  background-color: #f8fbff;
+  background-color: $paleBlue;
   padding: 3.75em 0;
   font-size: 12px;
   position: relative;
@@ -1433,7 +1447,7 @@
             font-weight: 700;
             line-height: 3;
             color: $whiteColor;
-            background: #27BBEE;
+            background: $primaryColor;
             text-transform: uppercase;
             border: none;
           }
@@ -1452,7 +1466,7 @@
           border-radius: 50%;
           background-image: linear-gradient(
             to right bottom,
-            #27bbee,
+            $primaryColor,
             #00beda,
             #00bdb0,
             #00b876,
@@ -1739,7 +1753,7 @@
 ::ng-deep.faqAccordionPanel {
   .mat-expansion-panel {
     border-radius: 5px !important;
-    background: #F8FBFF;
+    background: $paleBlue;
     box-shadow: none;
     margin-bottom: 20px;
     &.mat-expanded {
@@ -1753,21 +1767,21 @@
   .mat-expansion-panel:not(.mat-expanded)
     .mat-expansion-panel-header:hover:not([aria-disabled="true"]),
   .mat-expansion-panel-header.mat-expanded:hover {
-    background-color: #F8FBFF;
+    background-color: $paleBlue;
   }
   .mat-expanded {
     .mat-expansion-panel-header {
-      background-color: #F8FBFF;
+      background-color: $paleBlue;
       border-radius: 5px 5px 0 0;
     }
   }
   .mat-expansion-panel-header.mat-expanded:focus,
   .mat-expansion-panel-header.mat-expanded:hover {
-    background-color: #F8FBFF;
+    background-color: $paleBlue;
   }
   .mat-expansion-panel-header {
     height: 64px;
-    background-color: #F8FBFF;
+    background-color: $paleBlue;
     border-radius: 5px;
     position: relative;
     z-index: 9;
@@ -3112,11 +3126,11 @@
       }
       .heading5 {
         font-weight: 600;
-        color: $blackColor;
+        color: $darkGrey;
       }
       .expansionContent {
         font-weight: 400;
-        color: $darkGrey;
+        color: $darkMediumGrey;
         line-height: 1.5;
         margin: 0;
       }
@@ -3489,7 +3503,7 @@
 	overflow: hidden !important;
 }
 .courseage {
-  background-color: #F8FBFF;
+  background-color: $paleBlue;
   position: relative;
   padding: 3.75em 0;
   font-size: 13px;
@@ -3712,7 +3726,7 @@
 .aboutTheCourse {
   position: relative;
   background-color: $paleBlue;
-  padding: 3.75em 0 0 0;
+  padding: 1.5em 0 0 0;
   font-size: 13px;
   @include md {
     font-size: 14px;
@@ -3868,9 +3882,12 @@
     }
   }
 }
-#section1,#section3,#section4,#section5,#section6,#section7 {
+#section3,#section4,#section5,#section6,#section7 {
   scroll-margin: 90px;
 }
-#section2 {
+#section2{
   scroll-margin: 120px;
+}
+#section1{
+  scroll-margin: 130px;
 }

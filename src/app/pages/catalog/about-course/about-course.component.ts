@@ -119,45 +119,26 @@ export class AboutCourseComponent implements OnInit {
   backgroundImageUrl: any;
   contactForm: FormGroup;
   queryForm: FormGroup;
-  @ViewChild('stickyMenu') menuElement: ElementRef;
+
   sticky: boolean = false;
   menuPosition: any = 472;
   activeSection:any;
-  @ViewChild('1') firstElement: ElementRef;
-  @ViewChild('2') secondElement: ElementRef;
-  @ViewChild('3') thirdElement: ElementRef;
-  @ViewChild('4') fourthElement: ElementRef;
-  @ViewChild('5') fifthElement: ElementRef;
-  @ViewChild('6') sixthElement: ElementRef;
-  @ViewChild('7') seventhElement: ElementRef;
-  @ViewChild('8') eigthElement: ElementRef;
-  firstOffset: Number = null;
-  secondOffset: Number = null;
-  thirdOffset: Number = null;
-  fourthOffset: Number = null;
-  fifthOffset: Number = null;
-  sixthOffset: Number = null;
-  seventhOffset: Number = null;
-  eigthOffset: Number = null;
+  sections:any;
   @HostListener('window:scroll', ['$event']) 
   scrollHandler(event) {
     this.sticky = window.pageYOffset >= this.menuPosition ? true : false;
+    let scrollY = window.pageYOffset;
+    let sectionId;
+    this.sections.forEach(current => {
+      const sectionHeight = current.offsetHeight;
+      const sectionTop = current.offsetTop - 220;
+      sectionId = current.getAttribute("id");
+      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
+        this.activeSection = this.sticky ? sectionId : '';
+      }
+    });
   }
-  // @HostListener('window:scroll', ['$event'])
-  //   handleScroll(){
-  //       const windowScroll = window.pageYOffset;
-  //       if(windowScroll >= this.menuPosition){
-  //           this.sticky = true;
-  //       } else {
-  //           this.sticky = false;
-  //       }
-  //      this.checkOffsetTop();
-  //       setTimeout(()=>{
-  //           if(window.pageYOffset < this.menuPosition){
-  //             this.activeSection = null;
-  //           }
-  //             },500);
-  //   }
+
 
   constructor(private router: Router, private catalogService : CatalogService,private route:ActivatedRoute,private appconfig: AppConfigService,
     private commonService : CommonService,public toast: ToastrService ,private util: UtilityService,private dialog: MatDialog,
@@ -220,45 +201,6 @@ export class AboutCourseComponent implements OnInit {
   get querysubject() {
     return this.queryForm.get('subject');
   }
-
-
-setOffset(){
-  this.firstOffset =  this.firstElement?.nativeElement?.offsetTop? this.firstElement.nativeElement.offsetTop -210 : 491;
-  this.secondOffset = this.secondElement?.nativeElement?.offsetTop? this.secondElement.nativeElement.offsetTop - 210 :956;
-  this.thirdOffset =  this.thirdElement?.nativeElement?.offsetTop? this.thirdElement.nativeElement.offsetTop -210:3110;
-  this.fourthOffset = this.fourthElement?.nativeElement?.offsetTop? this.fourthElement.nativeElement.offsetTop -210:5945;
-  this.fifthOffset =  this.fifthElement?.nativeElement?.offsetTop? this.fifthElement.nativeElement.offsetTop -210:6672;
-  this.sixthOffset =  this.sixthElement?.nativeElement?.offsetTop? this.sixthElement.nativeElement.offsetTop -210:7404;
-  this.seventhOffset = this.seventhElement ?.nativeElement?.offsetTop? this.seventhElement.nativeElement.offsetTop -210:8255;
-  this.eigthOffset =  this.eigthElement?.nativeElement?.offsetTop? this.eigthElement.nativeElement.offsetTop -210 :8822;
-}
-  checkOffsetTop() {
-    
-    const windowOffSet = window.pageYOffset;
-    if(windowOffSet >= this.firstOffset && windowOffSet < this.secondOffset && windowOffSet < this.thirdOffset && windowOffSet < this.fourthOffset && windowOffSet < this.fifthOffset && windowOffSet < this.sixthOffset  && windowOffSet < this.seventhOffset && windowOffSet < this.eigthOffset){
-      this.activeSection = 1;
-    }
-    else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet < this.thirdOffset && windowOffSet < this.fourthOffset && windowOffSet < this.fifthOffset && windowOffSet < this.sixthOffset  && windowOffSet < this.seventhOffset && windowOffSet < this.eigthOffset){
-      this.activeSection = 2;
-    }
-    else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet < this.fourthOffset && windowOffSet < this.fifthOffset && windowOffSet < this.sixthOffset  && windowOffSet < this.seventhOffset && windowOffSet < this.eigthOffset){
-      this.activeSection = 3;
-    }
-    else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet >= this.fourthOffset && windowOffSet < this.fifthOffset && windowOffSet < this.sixthOffset  && windowOffSet < this.seventhOffset && windowOffSet < this.eigthOffset){
-      this.activeSection = 4;
-    }
-    else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet >= this.fourthOffset && windowOffSet >= this.fifthOffset && windowOffSet < this.sixthOffset  && windowOffSet < this.seventhOffset && windowOffSet < this.eigthOffset){
-      this.activeSection = 5;
-    }
-    else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet >= this.fourthOffset && windowOffSet >= this.fifthOffset && windowOffSet >= this.sixthOffset  && windowOffSet < this.seventhOffset && windowOffSet < this.eigthOffset){
-      this.activeSection = 6;
-    }
-    else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet >= this.fourthOffset && windowOffSet >= this.fifthOffset && windowOffSet >= this.sixthOffset  && windowOffSet >= this.seventhOffset && windowOffSet < this.eigthOffset){
-      this.activeSection = 7;
-    }  else if(windowOffSet >= this.firstOffset && windowOffSet >= this.secondOffset && windowOffSet >= this.thirdOffset && windowOffSet >= this.fourthOffset && windowOffSet >= this.fifthOffset && windowOffSet >= this.sixthOffset  && windowOffSet >= this.seventhOffset && windowOffSet >= this.eigthOffset){
-      this.activeSection = 8;
-    }
-  }
   getAbouCourse(){
     var params = {
       "competencyId":this.areaId,
@@ -273,9 +215,9 @@ setOffset(){
           this.courseType = this.courseData?.courseType ? this.courseData?.courseType :'';
           this.defaultDiv = false;
           this.nocard = false;
-          // setTimeout(() => {
-          //   this.setOffset();
-          // }, 1000);
+          setTimeout(() => {
+            this.sections = document.querySelectorAll("section[id]");
+          }, 1000);
         }
         else{
           this.abouCourseData = [];
@@ -374,19 +316,7 @@ setOffset(){
         });
       }
       scroll(ID) {
-        this.activeSection = ID;
         document.getElementById(ID).scrollIntoView({behavior: "smooth"});
-        // var yOffset;
-        // if(this.sticky){
-        //   yOffset = -140;
-        // }
-        // else{
-        //   yOffset = -170;
-        // }
-        // const element = document.getElementById(ID);
-        // const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-        // window.scrollTo({top: y, behavior: 'smooth'});
-    
     }
     openRequest(){
       const query = this.dialog.open(this.enrollRequest, {

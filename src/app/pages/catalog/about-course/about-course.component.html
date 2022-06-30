@@ -57,7 +57,7 @@
                 </div>
             </div>
             <!-- Overall tabs -->
-            <div class="tabssection" #stickyMenu [class.sticky] = "sticky">
+            <div class="tabssection" [class.sticky] ="sticky">
                 <div class="container">
                     <ul>
                         <li *ngFor="let item of this.courseData?.courseContents?.tabs">
@@ -115,7 +115,7 @@
                 </div>
             </div>
         </section>
-        <div [id]="gtuContent?.courseAdvantage?.sectionId">
+        <section [id]="gtuContent?.courseAdvantage?.sectionId">
             <section  class="progHighlightsBg" *ngIf="gtuContent?.courseAdvantage?.dispalystatus">
                 <div class="container">
                     <div class="programmeHighlights">
@@ -137,7 +137,7 @@
                     </div>
                 </div>
             </section>
-        </div>
+        </section>
         <section class="projectFace" *ngIf="gtuContent?.face?.dispalystatus" [ngStyle]="{'background-image': 'url(' + gtuContent?.face?.bgurl + ')'}">
             <div class="container">
                 <div class="left">
@@ -179,7 +179,7 @@
                 </div>
             </div>
         </section>
-        <div [id]="gtuContent?.learningOutcome?.sectionId">
+        <section [id]="gtuContent?.learningOutcome?.sectionId">
         <!-- Learning Outcomes -->
             <section  class="Outcomes" *ngIf="gtuContent?.learningOutcome?.dispalystatus">
                 <div class="container">
@@ -210,7 +210,7 @@
                     <div class="wave" Style="background-image: url('https://lmsassetspremium.lntedutech.com/portalicons/wave1.webp')"></div>
                 </div>
             </section>
-         </div>
+         </section>
         <section [id]="gtuContent?.mentor?.sectionId" class="courseMentorTab" *ngIf="gtuContent?.mentor?.dispalystatus"  [ngStyle]="{'background-image': 'url('+gtuContent?.mentor?.bgurl +')'}">
             <div class="container">
                 <div class="commonHeadingStyle">{{gtuContent?.mentor?.title}}</div>
@@ -283,7 +283,7 @@
             </div>
         </section>
 
-        <section class="industryStep" *ngIf="gtuContent?.industry?.dispalystatus">
+        <section [id]="'section9'" class="industryStep" *ngIf="gtuContent?.industry?.dispalystatus">
             <div class="bg"></div>
             <div class="wrapper">
                 <div class="container">
@@ -299,7 +299,9 @@
         </section>
 
         <ng-container *ngIf="gtuContent?.relatedItems?.dispalystatus">
-            <app-relateditems [relateditem]="gtuContent?.relatedItems"></app-relateditems>
+            <section [id]="'section10'">
+                <app-relateditems  [relateditem]="gtuContent?.relatedItems"></app-relateditems>
+            </section>
         </ng-container>
 
         <!-- <ng-container *ngFor="let item of this.courseData?.courseContents?.Headings">

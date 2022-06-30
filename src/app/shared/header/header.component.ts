@@ -77,6 +77,7 @@ export class HeaderComponent implements OnInit {
   megaMenuL2Data:any =[];
   noData: any;
   ispurchased:boolean = false;
+  domainId: any;
   constructor(
     private appConfig: AppConfigService,
     private catalogService: CatalogService,
@@ -341,26 +342,20 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  catalogHome(value,type) {
-    this.productType = type;
+  catalogHome(value) {
     this.showMenu = 'out';
     this.mobileshowMenu = 'out';
     this.assessmentsList= false;
     this.coursesList = false;
-    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.home, { fromPage: btoa("viewAll"), selectedTab: btoa(value) ,productType : btoa(this.productType)});
+    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.home, { fromPage: btoa("viewAll"), selectedTab: btoa(value) ,productType : btoa('course')});
     this.inActiveTabs();
   }
-  gotoArea(data,type) {
+  gotoArea(data) {
     this.showMenu = 'out';
     this.mobileshowMenu = 'out';
     this.assessmentsList= false;
     this.coursesList = false;
-    if(this.productType == 'course'){
-      this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutCourse,{id : btoa(data.cid), selectedTab : btoa(data.parentId) ,productType : btoa(this.productType)});
-    }
-    else{
-      this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutAssessment,{id : btoa(data.cid), selectedTab : btoa(data.parentId) ,productType : btoa(this.productType)});
-    }
+    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutCourse,{id : btoa(data?.levelIds[0]?.LevelId ? data.levelIds[0].LevelId : ''), selectedTab : btoa(data.parentId) ,productType : btoa('course')});
     this.inActiveTabs();
   }
 
@@ -448,6 +443,7 @@ export class HeaderComponent implements OnInit {
     });
   }
   secondLevelHover(l1Data,item){
+    this.domainId = item.cid;
     this.megaMenuL2Data = item?.children ? item?.children : [];
     l1Data.forEach((element)=>{
       if(element.cid == item.cid){
@@ -464,10 +460,5 @@ export class HeaderComponent implements OnInit {
   gotoCourse(){
     var ValueData = JSON.parse(this.appConfig.getLocalStorage('valueData'));
       window.open(environment.lxp_url+"?queValue="+encodeURIComponent(ValueData.queValue)+'&rpValue='+encodeURIComponent(ValueData.rpValue)+'&dpValue=microsetportal', '_self');
-  }
-  menuViewMore() {
-    this.showMenu = 'out';
-    this.mobileshowMenu = 'out';
-    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.home, { fromPage: btoa("viewAll"), selectedTab: btoa(this.selectedTab) });
   }
 }

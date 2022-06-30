@@ -36,7 +36,6 @@ export class PurchaseComponent implements OnInit {
   cartList = [];
   batchInfo = false;
   totalPrice = 0;
-  isOptional = false;
   constructor(
     private _formBuilder: FormBuilder,
     private dialog: MatDialog,
@@ -69,10 +68,8 @@ export class PurchaseComponent implements OnInit {
           list.assessmentDetails.sellingPrice = parseInt(list.assessmentDetails.sellingPrice)
           this.totalPrice += list.assessmentDetails.sellingPrice
         })
-        this.isOptional = true;
       } else {
         this.cartList = [];
-        this.isOptional = false;
       }
     })
   }
