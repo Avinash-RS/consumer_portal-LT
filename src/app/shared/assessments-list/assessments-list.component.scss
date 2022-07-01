@@ -268,7 +268,7 @@
             font-family: 'OpenSans';
             color: $darkGrey;
             font-size: 0.85em;
-            font-weight: 700;
+            font-weight: 500;
             line-height: 1.2;
             text-align: center;
             flex-grow: 1;
@@ -296,6 +296,9 @@
             position: relative;
             em, .fieldName {
                 color: $shadeBlueColor;
+            }
+            .fieldName {
+                font-weight: 700;
             }
             .coursesCount {
                 color: $blueLabelColor;

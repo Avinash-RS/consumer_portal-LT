@@ -19,6 +19,7 @@ export class AddressComponent implements OnInit {
   addressList: any;
   isEdit: any;
   SelectedIndex: any;
+  radioChecked: number = 0;
   addressItemData: any = {};
   addressEntryForm: FormGroup
   districtList: any = [];
@@ -76,7 +77,8 @@ export class AddressComponent implements OnInit {
   getAddress() {
     let getparams = { userId: this.userDetails.userId }
     this.cartService.getAddressByUserid(getparams).subscribe((data: any) => {
-      this.addressList = data.data
+      this.addressList = data.data;
+      // this.addressList[0].checked = true;
       this.util.addressSubject.next(null);
     });
   }
@@ -224,9 +226,10 @@ export class AddressComponent implements OnInit {
       }
     });
   }
-  getCurrentAddress(selection) {
+  getCurrentAddress(selection, index) {
     console.log(selection,"-->DATA SENT TO CHECKOUT COMPONENT")
     this.SelectedIndex = selection;
+    this.radioChecked = index;
     this.util.addressSubject.next(this.SelectedIndex);
   }
 

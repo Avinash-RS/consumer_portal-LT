@@ -115,7 +115,7 @@
             transition: all 0.3s ease-in-out;
             &:hover {
                 color: $blueLabelColor;
-                background-color: transparent;
+                background-color: $whiteColor;
             }
         }
     }

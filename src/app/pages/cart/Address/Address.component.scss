@@ -8,6 +8,10 @@
         border-radius: 5px;
         border: 1px solid rgba(112, 112, 112, 0.25);
         box-shadow: 1px 3px 7px rgba(0,0,0,0.1);
+        margin-bottom: 1em;
+        &.active {
+            background-color: rgba(255, 183, 77, 0.05);
+        }
         .name {
             font-size: 1.125em;
             font-weight: 700;
@@ -54,6 +58,15 @@
                 color: $darkMediumGrey;
                 display: flex;
                 align-items: center;
+                transition: all 0.3s ease-in-out;
+                &:hover {
+                    border: 1px solid rgba(27, 78, 155, 0.5);
+                    color: $whiteColor;
+                    background-color: rgba(27, 78, 155, 1);
+                    em {
+                        color: $whiteColor;
+                    }
+                }
                 em {
                     font-size: 1em;
                     margin-right: 0.5em;
