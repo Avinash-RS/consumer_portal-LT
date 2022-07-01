@@ -11,15 +11,15 @@
                         <p>{{courseData?.shortDescription}}</p>
                         <!-- <span>{{courseData?.skillLevel}}</span> -->
                         <div class="courseContent">
-                            <span class="ratingStar">
+                            <!-- <span class="ratingStar">
                                 <em class="icon-Star" *ngFor="let rate of courseData?.courseContents?.ratings"></em>
-                            </span>
-                            <span class="ratings">{{courseData?.courseContents?.ratingsCount}}</span>
-                            <span class="learners">{{courseData?.courseContents?.learners}}</span>
+                            </span> -->
+                            <!-- <span class="ratings">{{courseData?.courseContents?.ratingsCount}}</span>
+                            <span class="learners">{{courseData?.courseContents?.learners}}</span> -->
                             <div class="buttons">
                                 <span class="courseRate" *ngIf="courseData?.is_free">{{'Free'}}</span>
                                 <span class="courseRate" *ngIf="!courseData?.is_free"><em class="icon-Rupee"></em>{{courseData?.sellingPrice}}</span>
-                                <button class="buyNow" (click)="courseBuy()">Add To Cart</button>
+                                <button class="buyNow" (click)="courseBuy()">Buy Now</button>
                                 <!-- <button class="buyNow" (click)="navigateBatch()">
                                     {{(this.courseType == 'Track' || this.courseType == 'course') ? 'Enroll Now' :'Add To Cart'}}
                                 </button> -->
@@ -65,7 +65,7 @@
                         </li>
                     </ul>
                     <button class="buyNow" (click)="courseBuy()">
-                        Add To Cart
+                        Buy Now
                     </button>
                 </div>
             </div>
