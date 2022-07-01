@@ -53,6 +53,7 @@ export class CommonService {
     this.util.headerSubject.next(false);
     this.util.cartSubject.next(false);
     this.util.showkycProgress.next(false);
+    this.util.isEnrolled.next(false);
     //this.toast.success("You've successfully logged out");
   }
   // Validate captcha token

@@ -17,7 +17,6 @@ export class PurchaseComponent implements OnInit {
   @ViewChild('form') form: ElementRef;
   @ViewChild('stepper') private myStepper: MatStepper;
 
-  accessCode: any;
   encRequestRes: any;
   order_no: any = 'qaz234567';
   testAmount: any = '10';
@@ -35,7 +34,7 @@ export class PurchaseComponent implements OnInit {
   userDetails;
   cartList = [];
   batchInfo = false;
-  totalPrice = 0;
+  totalAmount = 0;
   constructor(
     private _formBuilder: FormBuilder,
     private dialog: MatDialog,
@@ -45,7 +44,6 @@ export class PurchaseComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.accessCode = 'AVFQ92HF95BT32QFTB';
     this.userDetails = JSON.parse(this.appconfig.getLocalStorage('userDetails'));
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
@@ -60,14 +58,9 @@ export class PurchaseComponent implements OnInit {
       "userId": this.userDetails.userId
     }
     this.catalogService.getCart(params).subscribe((response: any) => {
-      this.totalPrice = 0
-      if (response.data.length > 0) {
-        this.cartList = response.data
-        this.cartList.forEach((list) => {
-          //this.batchInfo = list?.assessmentDetails?.batchDetails;
-          list.assessmentDetails.sellingPrice = parseInt(list.assessmentDetails.sellingPrice)
-          this.totalPrice += list.assessmentDetails.sellingPrice
-        })
+      if (response.data.length > 0 && response.success) {
+        this.cartList = response.data;
+        this.totalAmount = response.totalPrice
       } else {
         this.cartList = [];
       }
