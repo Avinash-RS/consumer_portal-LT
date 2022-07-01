@@ -15,60 +15,31 @@
     </div>
 </section> -->
 
-<section class="bannerSection">
-    <div class="progression" *ngIf="showProgress">
+<section class="bannerCarousel">
+    <!-- <div class="progression" *ngIf="showProgress">
         <span>{{profilePercentage}}% of your profile is complete</span>
         <mat-progress-bar class="progressbar" mode="determinate" [value]="profilePercentage" bufferValue ="100"></mat-progress-bar>
     </div>
     <div class="container">
         <div class="bannerWrapper">
             <div class="bannerContent">
-                <!-- <div class="heading">
-                    Build your competencies <strong>Get Competitive Advantage</strong>
-                    <p>{{ dynamicData?.sliderContent }}</p>
-                </div>
-                <p>80K+ Learners from 200+ Institutions collaborate with us</p> -->
                 <button (click)="navigateCatalog()"><span>Explore Courses</span></button>
             </div>
-            <!-- <div class="owlCarouselWrapper">
-                <owl-carousel-o [options]="owlCarouselOptions">
-                    <ng-container>
-                        <ng-template class="imageWrapper" carouselSlide>
-                            <figure>
-                                <img src="/assets/images/banner_hero1.png" alt="" />
-                            </figure>
-                        </ng-template>
-                        <ng-template class="imageWrapper" carouselSlide>
-                            <figure>
-                                <img src="/assets/images/banner_hero2.png" alt="" />
-                            </figure>
-                        </ng-template>
-                        <ng-template class="imageWrapper" carouselSlide>
-                            <figure>
-                                <img src="/assets/images/banner_hero3.png" alt="" />
-                            </figure>
-                        </ng-template>
-                    </ng-container>
-                </owl-carousel-o>
-                <div class="skillOmeter">
-                    <div class="acceleratePath">
-                        <div class="heading6">Review your Jobs-Skills</div>
-                        <button class="job" (click)="gotoSkillOmeter()">
-                            <em class="icon-Job"></em>
-                            <span>job</span>
-                        </button>
-                        <button class="role">
-                            <em class="icon-Role"></em>
-                            <span>role</span>
-                        </button>
-                        <button class="skills">
-                            <em class="icon-Benchmark"></em>
-                            <span>skills</span>
-                        </button>
+        </div>
+    </div> -->
+    <owl-carousel-o [options]="owlCarouselOptions">
+        <ng-container *ngFor="let item of HomeBannerImage">
+            <ng-template carouselSlide>
+                <div class="bannerSection" [ngStyle]="{'background-image': 'url(' + item?.image + ')'}">
+                    <div class="container">
+                        <div class="bannerWrapper">
+                            <div class="bannerContent">
+                                <button (click)="navigateCatalog()"><span>Explore Courses</span></button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div> -->
-            
-        </div>
-    </div>
+            </ng-template>
+        </ng-container>
+    </owl-carousel-o>
 </section>
