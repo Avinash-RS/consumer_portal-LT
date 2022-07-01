@@ -17,7 +17,7 @@
         <div class="megaMenu">
             <button (mouseenter)="megaMenuClick('desktop')"  [class.catalogActive]="showMenu == 'in'">
                 <img [src]="showMenu == 'in' ? 'https://lmsassetspremium.lntedutech.com/portalicons/cataloghover.webp' : 'https://lmsassetspremium.lntedutech.com/portalicons/catalogicon.webp'" alt="">
-                <span>Courses</span>
+                <span>Catalouge</span>
                 <em [ngClass]="showMenu == 'out' ? 'icon-DownArrow' : 'icon-UpArrow'" ></em>
             </button>
         </div>
@@ -27,7 +27,7 @@
                 <li><a [ngClass]="isAssement ? 'activeTab' : ''" (click)="onlineAssessment('assessment')">My Assessment</a></li>
             </ul>
         </nav> -->
-        <button class="coursebtn" (click)="gotoCourse()" *ngIf="showAvatar && ispurchased">Go to my courses</button>
+        <button class="coursebtn" (click)="gotoCourse()" *ngIf="showAvatar && ispurchased">My Course</button>
     </div>
 
     <div class="rightWrapper">
@@ -68,10 +68,10 @@
                             <!-- <span class="heading">Account</span> -->
                             <div><a   (click)="navigateProfile('account')">Account settings</a></div>
                             <div><a (click)="navigateProfile('history')">Purchase history</a></div>
-                            <div><a  (click)="navigateProfile('payment')">Payment methods</a></div>
+                            <!-- <div><a  (click)="navigateProfile('payment')">Payment methods</a></div> -->
                         </div>
                         <div class="signout">
-                            <a>Help</a>
+                            <!-- <a>Help</a> -->
                             <a class="signOut" (click)="logout()">Sign out</a>
                         </div>
                     </mat-menu>
