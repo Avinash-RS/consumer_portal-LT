@@ -19,6 +19,7 @@ export class CheckoutComponent implements OnInit {
   // cartList:any=[];
   @Input('tab') currentTab: any;
   @Input('checkoutData') cartList: any;
+  @Input('cartTotal') cartAmount: any;
   encRequestRes: any;
   //accessCode = 'AVFQ92HF95BT32QFTB'; Sufin accessCode
   accessCode:any;//Lntiggnite accessCode
@@ -44,8 +45,9 @@ export class CheckoutComponent implements OnInit {
     this.totalCalculator();
   }
   ngOnChanges(data: any) {
-    console.log("change detected", data);
     this.cartList = data.cartList.currentValue;
+    this.totalPrice = data.cartAmount.currentValue
+    
     this.totalCalculator()
   }
 
@@ -54,16 +56,17 @@ export class CheckoutComponent implements OnInit {
   }
 
   totalCalculator() {
-    this.totalPrice = 0
     this.cartList = this.cartList ? this.cartList : [];
-    console.log(this.cartList)
-    this.cartList.forEach((list) => {
-      list.assessmentDetails.sellingPrice = parseInt(list.assessmentDetails.sellingPrice)
-      if(!list.assessmentDetails.is_free){
-      this.totalPrice += list.assessmentDetails.sellingPrice
-      }
-    })
-    console.log(this.totalPrice)
+    this.totalPrice = this.totalPrice;
+    //console.log(this.cartList);
+    //console.log(this.cartAmount,this,this.totalPrice,'price')
+    // console.log(this.cartList)
+    // this.cartList.forEach((list) => {
+    //   list.assessmentDetails.sellingPrice = parseInt(list.assessmentDetails.sellingPrice)
+    //   if(!list.assessmentDetails.is_free){
+    //   this.totalPrice += list.assessmentDetails.sellingPrice
+    //   }
+    // })
   }
   continueClick() {
     this.currentTab.next();
