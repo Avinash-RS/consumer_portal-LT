@@ -179,7 +179,7 @@ export class UserprofileComponent implements OnInit {
       this.openKYCPannel = false;
       this.selectTypes(obj);
       this.selectedKycTab = "Personal";
-      this.ChangeKycTabs("Personal");
+      // this.ChangeKycTabs("Personal");
     })
   }
   selectTypes(value) {

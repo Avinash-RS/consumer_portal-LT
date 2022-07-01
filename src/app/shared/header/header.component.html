@@ -17,7 +17,7 @@
         <div class="megaMenu">
             <button (mouseenter)="megaMenuClick('desktop')"  [class.catalogActive]="showMenu == 'in'">
                 <img [src]="showMenu == 'in' ? 'https://lmsassetspremium.lntedutech.com/portalicons/cataloghover.webp' : 'https://lmsassetspremium.lntedutech.com/portalicons/catalogicon.webp'" alt="">
-                <span>Catalog</span>
+                <span>Catalouge</span>
                 <em [ngClass]="showMenu == 'out' ? 'icon-DownArrow' : 'icon-UpArrow'" ></em>
             </button>
         </div>
@@ -68,7 +68,7 @@
                             <!-- <span class="heading">Account</span> -->
                             <div><a   (click)="navigateProfile('account')">Account settings</a></div>
                             <div><a (click)="navigateProfile('history')">Purchase history</a></div>
-                            <div><a  (click)="navigateProfile('payment')">Payment methods</a></div>
+                            <!-- <div><a  (click)="navigateProfile('payment')">Payment methods</a></div> -->
                         </div>
                         <div class="signout">
                             <!-- <a>Help</a> -->
