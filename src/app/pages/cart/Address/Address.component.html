@@ -1,7 +1,7 @@
 <div class="billingAddress">
     <mat-radio-group aria-label="Select an option">
-        <div class="address" *ngFor="let addressItem of addressList">
-            <mat-radio-button [value]="addressItem" (click)="getCurrentAddress(addressItem)">
+        <div class="address" *ngFor="let addressItem of addressList; let i = index;" [class.active]="i == radioChecked">
+            <mat-radio-button [value]="addressItem" [checked]="i == radioChecked" (click)="getCurrentAddress(addressItem, i)">
                 <span class="name">{{addressItem.name}} <span class="badge">{{addressItem.addressTag.addressTagName}}</span></span>
                 <p>{{addressItem.addressLine1}}{{addressItem.addressLine2}}<br />
                 {{addressItem.city.cityName}}, {{addressItem.state.stateName}}
@@ -13,7 +13,6 @@
                 <button class="Edit" (click)="addAddress(addNewAddress,true,addressItem)"><em class="icon-Edit"></em> Edit</button>
             </div>
         </div>
-       
     </mat-radio-group>
     <div class="addAddress" (click)="addAddress(addNewAddress,false)">
         <span><strong>+</strong> Add New Address</span>
