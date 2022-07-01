@@ -134,7 +134,7 @@
                 display: block;
                 font-size: 1.5em;
                 font-weight: 700;
-                color: #27B8EE;
+                color: $shadeblue1;
                 margin-top: 0.25em;
                 letter-spacing: initial;
             }
@@ -145,7 +145,7 @@
             margin: 1em 0 1.5em 0;
         }
         button {
-            background: #27BBEE;
+            background: $shadeblue1;
             border: 0;
             border-radius: 5px;
             font-size: 1.25em;
@@ -154,7 +154,7 @@
             padding: 0.5em 1em;
             transition: background 0.3s ease-in-out;
             &:hover {
-                background: #08558c;
+                background: $lightblue;
             }
         }
     }
@@ -172,7 +172,7 @@
         }
         button {
             border-radius: 0.5em;
-            border: 1px solid #b3b3b3;
+            border: 1px solid $bordergrey;
             min-width: 45px;
             width: 55px;
             padding: 0.358em 0;
@@ -195,8 +195,8 @@
             }
             &:hover {
 
-                background-color: #6d1c1ca6;
-                border: 1px solid #ebebeb;
+                background-color: $colordark;
+                border: 1px solid $white1 ;
             }
         }
     }
@@ -218,7 +218,7 @@
 
         .skillOmeter {
             position: relative;
-            background-color: #911a1c;
+            background-color: $redshade;
             padding: 1em;
             border-radius: 1em;
             top: -1em;
@@ -335,9 +335,9 @@
 //     }
 // }
 ::ng-deep .progression .mat-progress-bar-fill::after {
-    background-color: #2ED775;
+    background-color: $lightgreen;
   }
 
   ::ng-deep .progression .mat-progress-bar-buffer {
-    background: #E4E8EB;
+    background: $shadedwhite;
   }

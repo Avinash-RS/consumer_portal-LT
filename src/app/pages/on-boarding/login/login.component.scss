@@ -6,7 +6,7 @@
     }
     .mat-tab-header {
         padding-top: 1em;
-        background: #f5f2f2 0% 0% no-repeat padding-box;
+        background: $white2 0% 0% no-repeat padding-box;
     }
     .mat-tab-label-active {
         font-size: 1.063em;
@@ -44,7 +44,7 @@
       .mat-form-field-label {
         color: $mediumGrey !important;
             mat-label {
-                background-color: #fff;
+                background-color: $white;
                 padding-right: 0.4em;
             }
         }
@@ -60,7 +60,7 @@
     .mat-radio-button {
         margin-right: 15px;
         label.mat-radio-label {
-            border: 1px solid #cacaca;
+            border: 1px solid $white3;
             border-radius: 3px;
             padding: 3px;
             text-align: center;
@@ -79,7 +79,7 @@
         }
         &.mat-radio-checked .mat-radio-label {
             background-color: #c02222;
-            color: #fff;
+            color: $white;
             border: none;
             &:before {
                 content: ' ';
@@ -309,13 +309,13 @@
    }
    .kyc-sub-txt{
        margin-top: 15px;
-       color: #3C3B37;
+       color: $grey5;
        font-size: 18px;
    }
    .kyc-redirect{
      margin-top: 30px;
      .kyc-redirect-txt{
-         color: #808080;
+         color: $lightgrey2;
          font-size: 14px;
      }
      .kyc-btn {
