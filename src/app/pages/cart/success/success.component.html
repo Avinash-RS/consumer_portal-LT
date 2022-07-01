@@ -17,11 +17,11 @@
             </div>
         </div> -->
 
-        <div class="orderDetails">
+        <div class="orderDetails" *ngFor="let item of orderlist">
             <!-- <div class="positionChange">
                 <span class="heading5">Order Details</span>
             </div> -->
-            <div class="orders" *ngFor="let item of orderlist">
+            <div class="orders">
                 <div class="orderCourseImage">
                     <figure>
                         <img [src]="item?.courseImage" alt="">
