@@ -80,7 +80,7 @@ export class SuccessComponent implements OnInit {
         this.catalog.getOrder(postData).subscribe((data: any) => {
           if(data?.success){
             this.orderlist = data.data;
-            this.syncLxp();
+            // this.syncLxp();
           }
           else{
             this.toast.warning(data?.message ? data?.message :'Something Went Wrong')
