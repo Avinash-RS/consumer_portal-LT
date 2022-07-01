@@ -3,7 +3,7 @@
  .myPurchase {
      height: 100%;
     padding: 3.75em 0;
-    background-color: #F8FBFF;
+    background-color: $paleBlue;
     font-size: 14px;
     @include md {
      font-size: 13px;
@@ -100,7 +100,7 @@
                                 position: absolute;
                                 left: 0;
                                 top: 0;
-                                color: #848484;
+                                color: $darkGrayColor;
                             }
                         }
                        .courseHeading,.subHeading {
@@ -285,7 +285,7 @@
                         color: $lightGrey;
                         display: inline-flex;
                         align-items: center;
-                        border-right: 2px solid #C02222;
+                        border-right: 2px solid $primary-red;
                         margin-right: 7px;
                         padding-right: 7px;
                         line-height: normal;

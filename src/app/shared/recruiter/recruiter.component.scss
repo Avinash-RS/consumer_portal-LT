@@ -1,7 +1,7 @@
 @import "variables";
 
 .userRecu {
-    background-color: #F9F9F9;
+    background-color: $veryLightGray;
     position: relative;
     z-index: 1; 
   .banner {
@@ -25,7 +25,7 @@
     .listview {
         position: absolute;
         bottom: 0;
-        color: #666;
+        color: $lightgrey1;
         span {
             padding: 0 5px;
             padding-bottom: 4px;
@@ -37,8 +37,8 @@
                 margin-left: 0;
             }
             &.selected {
-                color: #000;
-                border-bottom-color:#c02222 ;
+                color: $blackcolor1;
+                border-bottom-color:$primary-red ;
                 font-weight: 600;
                 -webkit-transition: all 1000ms ease-in-out; 
                  transition: all 1000ms ease-in-out;
@@ -78,7 +78,7 @@
         }
         .primarybtn { 
             height: 37px;
-            background-color: #c02222;
+            background-color: $primary-red;
             color: $whiteColor;
             border: 1px solid #d4d4d4;
             padding: 5px 25px;
@@ -118,7 +118,7 @@
             }
         }
         .clearfilter {
-            color: #c02222;
+            color: $primary-red;
             font-size: 12px;
             margin-left: 10px;
             cursor: pointer;
@@ -174,7 +174,7 @@
                 text-align: center; 
             }
             a, a:hover {
-                color: #c02222;
+                color: $primary-red;
                 cursor: pointer;
                 text-decoration: none;
             }
@@ -242,7 +242,7 @@
     display: none;
 }
 ::ng-deep.mat-checkbox-checked.mat-accent .mat-checkbox-background {
-    background-color: #c02222 !important;
+    background-color: $primary-red !important;
 }
 mat-drawer{
     margin-top: 15%;
@@ -309,7 +309,7 @@ mat-drawer{
         padding-left: 1.5em;
         background-color: #fcfcfc;
         height: 100%;
-        color: #666;
+        color: $lightgrey1;
         > div {
             cursor: pointer;
             padding: 1em;
@@ -318,7 +318,7 @@ mat-drawer{
             flex-direction: row;
             align-items: center;
             &.active {
-                color: #c02222;
+                color: $primary-red;
 
                 em { 
                     visibility: visible;
@@ -371,7 +371,7 @@ mat-drawer{
         display: none;
     }
     .mat-form-field-label {
-        color: #666 !important; 
+        color: $lightgrey1 !important; 
         left: 10px;
     }
     .mat-form-field-appearance-legacy .mat-form-field-infix {
@@ -386,7 +386,7 @@ mat-drawer{
             position: absolute;
     margin-left: -15px;
     margin-top: -5px;
-    color: #666;
+    color: $lightgrey1;
         }
     }
     .mat-form-field-label-wrapper {

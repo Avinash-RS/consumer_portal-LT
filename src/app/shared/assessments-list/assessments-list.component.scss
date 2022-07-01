@@ -462,7 +462,7 @@
                 border: none;
                 padding: 0.35em 1em;
                 border-radius: 0;
-                background-color: #00000080;
+                background-color: $Shadeblack;
                 z-index: 9;
             }
             button {
@@ -478,7 +478,7 @@
                 padding-right: 1em;
                 border-radius: 0.25em;
                 &.topRated {
-                    background-color: #92278E;
+                    background-color: $pinkcolor;
                 }
                 &.new {
                     background-color: $primaryColor;
@@ -588,7 +588,7 @@
                 color: $secondaryColor;
             }
             &.english {
-                color: #20B19A;
+                color: $darkCyan;
             }
         }
         .domainName, .commonStyle {
@@ -675,7 +675,7 @@
                 background-color: $secondaryColor;
             }
             &.stepTag {
-                background-color: #20B19A;
+                background-color: $darkCyan;
             }
         }
        
