@@ -2,10 +2,10 @@
     <div class="banner">
         <div class="container title-container">
             <div class="heading3">User Profile</div>
-            <div class="progress-area">
+            <!-- <div class="progress-area">
                 <span class="progress-txt">{{profilePercentage}}% of your profile is complete</span>
                 <mat-progress-bar class="progressbar" mode="determinate" [value]="profilePercentage" bufferValue ="100"></mat-progress-bar>
-            </div>
+            </div> -->
         </div>
     </div>
     <div class="container">
@@ -278,7 +278,7 @@
                     </div>
                 </form>
                 </div>
-                <div *ngSwitchCase="'history'"  (click)="getpurchasehistory()">
+                <div *ngSwitchCase="'history'">
                     <div class="heading3">Purchase History</div>
                     <p class="desc">Showing all your purchase history here.</p>
                     <div class="purchasingHistory" *ngFor="let item of purchaseList">
@@ -330,7 +330,7 @@
                     <div class="heading3">Download Certificate</div>
                     <p class="desc">Download Completed Course Certificate</p>
                     <div class="downloadCertificate">
-                        <ul>
+                        <ul *ngIf="false">
                             <li>
                                 <figure>
                                     <img src="https://lmsassetspremium.lntedutech.com/portalicons/download-certificate.webp" alt="" />
@@ -364,6 +364,12 @@
                                 </div>
                             </li>
                         </ul>
+                        <div class="certificatenocard">
+                            <figure>
+                                <img src="https://lmsassetspremium.lntedutech.com/portalicons/certificatenocard.webp" alt="">
+                            </figure>
+                            <p>There is no certificate found.</p>
+                        </div>
                     </div>
                 </div>
                 <div *ngSwitchCase="'close'">
