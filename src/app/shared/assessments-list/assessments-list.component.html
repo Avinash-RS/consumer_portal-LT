@@ -20,10 +20,10 @@
                                     <div class="fieldName">{{tab.cid == 'All' ? 'All Courses' : tab.name}}</div>
                                     <div class="coursesCount">
                                         <ng-container *ngIf="tab.cid == 'All'">
-                                            {{this.allArealength}} {{this.allArealength > 0 ? 'Courses' : 'Course'}}
+                                            {{this.allArealength}} {{this.allArealength > 1 ? 'Courses' : 'Course'}}
                                         </ng-container>
                                         <ng-container *ngIf="tab.cid != 'All'">
-                                            {{tab?.children.length}} {{tab?.children.length > 0 ? 'Courses' : 'Course'}}
+                                            {{tab?.children.length}} {{tab?.children.length > 1 ? 'Courses' : 'Course'}}
                                         </ng-container>
                                     </div>
                                 </div>
