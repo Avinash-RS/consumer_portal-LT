@@ -34,7 +34,8 @@
                                     </figure>
                                     <div class="cartContent">
                                         <div class="wrapper">
-                                            <span [ngStyle]="{'color':cart.productType !='course' ? '#27BBEE': '#20B19A'}" class="competencyName">
+                                            <!-- <span [ngStyle]="{'color':cart.productType !='course' ? '#27BBEE': '#20B19A'}" class="competencyName"> -->
+                                            <span class="competencyName">
                                                 <em class="icon-Right_Play"></em> {{cart?.competencyDetails?.name}}
                                             </span>
                                             <div class="headingPrice">
@@ -141,7 +142,7 @@
             </section>
         </mat-step>
         <!-- #docregion label -->
-        <mat-step [stepControl]="secondFormGroup" [optional]="isOptional">
+        <mat-step [stepControl]="secondFormGroup">
             <ng-template matStepLabel>Address</ng-template>
             <!-- #enddocregion label -->
             <div class="cartSection">

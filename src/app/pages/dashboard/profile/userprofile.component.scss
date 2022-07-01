@@ -1,7 +1,7 @@
 @import "variables";
 
 .userProfile {
-    background-color: #F9F9F9;
+    background-color: $veryLightGray;
     height: 100%;
     position: relative;
     z-index: 1;
@@ -38,7 +38,7 @@
         .progress-area{
             width: 20%;
             .progress-txt{
-                color: #ffffff;
+                color: $whiteColor;
             }
             .progressbar{
                 margin-top: 10px;
@@ -175,7 +175,7 @@
     .disable {
         cursor: not-allowed;
         @include buttonFilled;
-        background-color: grey !important;
+        background-color: #808080 !important;
         padding-left: 2.5em;
         padding-right: 2.5em;
         line-height: 1.3;

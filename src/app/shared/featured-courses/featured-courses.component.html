@@ -18,7 +18,10 @@
                         </div>
                       <div class="wrapper">
                             <span class="domainName"><em class="icon-Right_Play"></em>{{item?.domainName}}</span>
-                            <span class="heading6">{{item?.name}}</span>
+                            <span class="heading6" [matTooltip]="item?.name">
+                                {{item?.name}}
+                                <!-- <span class="tooltiptext">{{item?.name}}</span> -->
+                            </span>
                             <p>{{item?.longDescription}}</p>
                             <div class="licenseDuration">
                                 <div class="commonStyle">

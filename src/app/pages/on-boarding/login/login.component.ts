@@ -303,7 +303,7 @@ resolvedSignIn(captchaSignInResponse: string){
     this.cartsevice.getCollegeDetails(apiParm).subscribe((result:any)=>{
       if(result?.success && result?.data.length > 0){
         this.collegeData = result?.data;
-         this.collegeData.unshift(this.otherData)
+         this.collegeData.push(this.otherData)
       }
     })
   }
