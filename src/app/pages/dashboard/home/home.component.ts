@@ -37,6 +37,8 @@ testimonialOptions: OwlOptions = {
   dots: true,
   navSpeed: 700,
   margin: 30,
+  autoplay: true,
+  autoplayTimeout: 4000,
   center: true,
   navText: ["<i class='icon-Back'></i>", "<i class='icon-right-next'></i>"],
   nav: true,

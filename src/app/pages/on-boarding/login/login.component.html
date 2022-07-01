@@ -129,6 +129,26 @@
                             </div>
                             <div class="inputContainer">
                                 <mat-form-field appearance="outline">
+                                    <mat-label>University enrollment Number</mat-label>
+                                    <input autocomplete="off" matInput id="signup_mobile" name="enrollNumber" formControlName="enrollNumber" placeholder="University enrollment Number">
+                                </mat-form-field>
+                                <ng-container *ngIf="rollNumber.invalid && rollNumber.touched">
+                                    <mat-error *ngIf="rollNumber.errors?.required" class="error">{{'Enrollment number is required'}}</mat-error>
+                                </ng-container>
+                            </div>
+                            <div class="inputContainer">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Year of Graduation</mat-label>
+                                    <mat-select formControlName="graduation">
+                                        <mat-option [value]="item" *ngFor="let item of yearData">{{item}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <ng-container *ngIf="year.invalid && year.touched">
+                                    <mat-error *ngIf="year.errors?.required" class="error">{{'Year of graduation is required'}}</mat-error>
+                                </ng-container>
+                            </div>
+                            <div class="inputContainer">
+                                <mat-form-field appearance="outline">
                                     <mat-label>College / University</mat-label>
                                     <input formControlName="college" [(ngModel)]="collegeFilter.collegename" (keyup)="checkBatchRec();collegeflag = false"  [matAutocomplete]="auto" matInput>
                                      <em matSuffix class="icon-arrow_drop_down"></em>
@@ -151,26 +171,6 @@
                                 </mat-form-field>
                                 <ng-container *ngIf="dept.invalid && dept.touched">
                                     <mat-error *ngIf="dept.errors?.required" class="error">{{'Department is required'}}</mat-error>
-                                </ng-container>
-                            </div>
-                            <div class="inputContainer">
-                                <mat-form-field appearance="outline">
-                                    <mat-label>University enrollment Number</mat-label>
-                                    <input autocomplete="off" matInput id="signup_mobile" name="enrollNumber" formControlName="enrollNumber" placeholder="University enrollment Number">
-                                </mat-form-field>
-                                <ng-container *ngIf="rollNumber.invalid && rollNumber.touched">
-                                    <mat-error *ngIf="rollNumber.errors?.required" class="error">{{'Enrollment number is required'}}</mat-error>
-                                </ng-container>
-                            </div>
-                            <div class="inputContainer">
-                                <mat-form-field appearance="outline">
-                                    <mat-label>Year of Graduation</mat-label>
-                                    <mat-select formControlName="graduation">
-                                        <mat-option [value]="item" *ngFor="let item of yearData">{{item}}</mat-option>
-                                    </mat-select>
-                                </mat-form-field>
-                                <ng-container *ngIf="year.invalid && year.touched">
-                                    <mat-error *ngIf="year.errors?.required" class="error">{{'Year of graduation is required'}}</mat-error>
                                 </ng-container>
                             </div>
                             <div class="inputContainer">
