@@ -1,6 +1,6 @@
 @import "variables";
 .microLearnCertification {
-    background-image: url("../../../../assets/images/certificatebg.png");
+    // background-image: url("../../../../assets/images/certificatebg.png");
     position: relative;
     background-repeat: no-repeat;
     background-size: cover;
@@ -46,21 +46,21 @@
                         max-width: 40%;
                     }
                 }
-            // display: flex;
-            // justify-content: space-between;
-            // align-items: center;
-            // .logo {
-            //     width: 50%;
-            //     img {
-            //         max-width: 30%;
-            //     }
-            // }
-            // .qrCode {
-            //     text-align: right;
-            //     img {
-            //         max-width: 50%;
-            //     }
-            // }
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .logo {
+                width: 50%;
+                img {
+                    max-width: 30%;
+                }
+            }
+            .qrCode {
+                text-align: right;
+                img {
+                    max-width: 50%;
+                }
+            }
         }
         .certificateHeading {
             font-family: 'Certificate';
@@ -204,7 +204,7 @@
         }
     }
 }
-::ng-deep.certificationContainer {
-    width: 960px !important;
-    height: 78% !important;
-}
+// ::ng-deep.certificationContainer {
+//     width: 960px !important;
+//     height: 78% !important;
+// }
