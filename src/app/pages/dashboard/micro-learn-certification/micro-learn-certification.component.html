@@ -1,62 +1,72 @@
-<!-- <section class="microLearnWrapper" >
+<section class="microLearnWrapper" >
     <div>
         <div class="microLearnCertification" id="content" #content>
-            <figure class="leftTop">
-                <img src="assets/images/leftAsset.svg" alt="" />
+            <!-- <figure class="leftTop">
+                <img src="https://lmsassetspremium.lntedutech.com/portalicons/leftasset.webp" alt="" />
             </figure>
             <figure class="rightTop">
-                <img src="assets/images/topRightAsset.svg" alt="" />
+                <img src="https://lmsassetspremium.lntedutech.com/portalicons/topRightAsset.webp" alt="" />
             </figure>
             <figure class="rightBottom">
-                <img src="assets/images/bottomRightAsset.svg" alt="" />
-            </figure>
+                <img src="https://lmsassetspremium.lntedutech.com/portalicons/bottomRightAsset.webp" alt="" />
+            </figure> -->
             <div class="innerBorder">
                 <div class="content">
-                    <figure class="innerAsset">
-                        <img src="assets/images/rightInnerAsset.svg" alt="" />
-                    </figure>
+                    <!-- <figure class="innerAsset">
+                        <img src="https://lmsassetspremium.lntedutech.com/portalicons/rightInnerAsset.webp" alt="" />
+                    </figure> -->
                     <header>
                         <figure class="logo">
-                            <img src="https://lmsassetspremium.lntedutech.com/portalicons/microlntlogo.webp"  alt="L&T Logo | MicroLearning">
+                            <img src="https://assets.lntedutech.com/edutech_logo.svg" alt="Logo" />
                         </figure>
-                        <figure class="qrCode">
-                            <img [src]="certificateData?.uploadCertificate?.qrCode" alt="" />
-                        </figure>
+                        <div class="">
+                            <figure class="qrCode">
+                                <img src="https://lmsassetspremium.lntedutech.com/portalicons/qrcode.webp" alt="" />
+                            </figure>
+                            <div class="date">
+                                <span class="">Date of issue :</span>
+                                <span class="">DD/MM/YYYY</span>
+                            </div>
+                        </div>
                     </header>
                     <div class="bodyContent">
-                        <div class="certificateHeading">
-                            <span>Certificate of Completion</span>
-                        </div>
-                        <div class="certificationDetails">
-                            <span class="desc">This is to certify that</span>
-                            <span class="nameTopic" id="userID">{{certificateData.firstName}}&nbsp;{{certificateData.lastName}}</span>
-                            <span class="desc">has successfully completed the Micro Learning Courses on </span>
-                            <span class="nameTopic" id="courseID">{{certificateData.courseName}}</span>
-                            <span class="desc">offered by  the L&T EduTech Micro Learning initiative.</span>
-                        </div>
-                        <div class="badge">
-                            <figure class="badgeImg">
-                                <img src="/assets/images/badge.svg" alt="Badge" />
-                            </figure>
+                        <div class="details">
+                            <div class="certificateHeading">
+                                <span>Certificate </span> <p class="headcolor">of Completion</p>
+                            </div>
+                            <div class="certificationDetails">
+                                <span class="desc">This is to certify that </span>
+                                <div class="dottedline">
+                                    <span class="dot1"></span>
+                                    <span class="dotof">of</span>
+                                    <span class="dot1"></span>
+                                </div>
+                                <span class="desc">has successfully completed the course</span>
+                                <div class="dotline"></div>
+                                <span class="desc">offered by CollegeConnect Programme of L&T EduTech. </span>
+                                <span class="word">of L&T EduTech. </span>
+                                <div class="dotline"></div>
+                            </div>
                         </div>
                     </div>
                     <footer>
-                        <div class="">
-                            <span>Date of Completion</span>
-                            <span>DD/MM/YYYY</span>
-                        </div>
-                        <figure class="qrCode">
-                            <img [src]="certificateData?.uploadCertificate?.qrCode" alt="" />
-                        </figure>
                         <div class="ccHead commonStyle">
                             <span class="fooWrapper">
+                                <figure class="signature">
+                                    <img src="https://lmsassetspremium.lntedutech.com/portalicons/signature.webp" alt="Signature" />
+                                </figure>
                                 <span class="heading">Febin M F<span class="position">Head - College Connect</span></span>
                             </span>
+                        </div>
+                        <div class="badgelogo">
+                            <figure>
+                                <img src="../../../../assets/images/Group 1.png" alt="">
+                            </figure>
                         </div>
                         <div class="CEO commonStyle">
                             <span class="fooWrapper">
                                 <figure class="signature">
-                                    <img src="/assets/images/signature.png" alt="Signature" />
+                                    <img src="https://lmsassetspremium.lntedutech.com/portalicons/signature.webp" alt="Signature" />
                                 </figure>
                                 <span class="heading">Sabyasachi Das<span class="position">Chief Executive Officer, L&T EduTech</span></span>
                             </span>
@@ -64,61 +74,6 @@
                     </footer>
                 </div>
             </div>
-        </div>
-    </div>
-</section> -->
-<section class="microLearnWrapper">
-    <div class="microLearnCertification" id="content" #content>
-        <div class="content">
-            <div class="header">
-                <figure class="logo">
-                    <img src="../../../../assets/images/edutech_logo.png.png">
-                </figure>
-                <div class="qrcode">
-                    <figure class="qr">
-                        <img src="../../../../assets/images/Layer 5.png">
-
-                    </figure>
-                    <div class="date">
-                        <span>Date of issue :</span>
-                        <span>xx/yy/zz</span>
-                    </div>
-                </div>
-            </div>
-            <div class="bodyContent">
-                <div class="certificateHeading">
-                    <span>Certificate of Completion</span>
-                </div>
-                <div class="certificationDetails">
-                    <span class="desc">This is to certify that</span>
-                    <span class="nameTopic"
-                        id="userID">{{certificateData.firstName}}&nbsp;{{certificateData.lastName}}</span>
-                    <span class="desc">has successfully completed the Micro Learning Courses on </span>
-                    <span class="nameTopic" id="courseID">{{certificateData.courseName}}</span>
-                    <span class="desc">offered by the L&T EduTech Micro Learning initiative.</span>
-                </div>
-            </div>
-            <footer>
-                <div class="ccHead commonStyle">
-                    <span class="fooWrapper">
-                        <span class="heading">Febin M F<span class="position">Head - College Connect</span></span>
-                    </span>
-                </div>
-                <div class="badge">
-                    <figure class="edutech">
-                        <img src="../../../../assets/images/Group 1.png">
-                    </figure>
-                </div>
-                <div class="CEO commonStyle">
-                    <span class="fooWrapper">
-                        <figure class="signature">
-                            <img src="/assets/images/signature.png" alt="Signature" />
-                        </figure>
-                        <span class="heading">Sabyasachi Das<span class="position">Chief Executive Officer, L&T
-                                EduTech</span></span>
-                    </span>
-                </div>
-            </footer>
         </div>
     </div>
 </section>

@@ -504,7 +504,7 @@ getProfilePercentage(){
   viewCertificate(value){
     this.certificateValue = value;
     const valdat = this.dialog.open(this.certificateLayout, {
-      width: '80%',
+      width: '1150px',
       height: '85%',
       autoFocus: true,
       closeOnNavigation: true,

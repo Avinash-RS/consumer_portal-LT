@@ -1,9 +1,9 @@
 @import "variables";
+
 .microLearnCertification {
-    // background-image: url("../../../../assets/images/certificatebg.png");
+    background-image: linear-gradient(to bottom, #26c1f6, #00c3df, #00c1ba, #00bc8b, #56b35a);
+    padding: 3em;
     position: relative;
-    background-repeat: no-repeat;
-    background-size: cover;
     .leftTop, .rightTop, .rightBottom {
         position: absolute;
     }
@@ -19,10 +19,12 @@
         right: -40px;
         bottom: 0;
     }
-    // .innerBorder {
-    //     border: 2px solid #ffffff;
-    // }
+    .innerBorder {
+        border: 2px solid #ffffff;
+    }
     .content {
+        background-color: #ffffff;
+        margin: 2em;
         padding: 30px;
         display: flex;
         flex-direction: column;
@@ -39,13 +41,6 @@
             }
         }
         header {
-            text-align: center;
-            .logo {
-                margin-top: 10px;
-                    img {
-                        max-width: 40%;
-                    }
-                }
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -56,50 +51,44 @@
                 }
             }
             .qrCode {
-                text-align: right;
+                text-align: center;
                 img {
                     max-width: 50%;
+                }
+                
+            }
+            .date {
+                span {
+                    font-family: "myriadPro";
+                    font-weight: 500;
+                    color :#1C1C1C;
+                    opacity: 1;
                 }
             }
         }
         .certificateHeading {
             font-family: 'Certificate';
             font-size: 45px;
-            font-weight: bold;
+            display: flex;
+            justify-content: center;
             line-height: normal;
-            color: #222222;
-            margin: 50px 0 60px 0;
-            text-align: center;
-            // span {
-            //     position: relative;
-            //     &::before {
-            //         content: '';
-            //         position: absolute;
-            //         left: 50%;
-            //         bottom: -13px;
-            //         transform: translateX(-50%);
-            //         width: 75%;
-            //         height: 5px;
-            //         background-image: linear-gradient(to right, #26c1f6, #00bc8b, #56b35a);
-            //     }
-            // }
-        }
-      
-        .border {
-            width: 40%;
-            height: 5px;
-            text-align: center;
-            margin: 7px auto 0px auto;
-            background-image: linear-gradient(to right, #26c1f6, #00bc8b, #56b35a);
+            margin: 50px 0 30px 0;
+            span {
+                color : #808081;
+                font-weight: 600;
+                margin-right: 10px;
+                position: relative;
+                text-transform: uppercase;
+               p {
+                    color : #808081;
+                    font-weight: 400;
+                }
+            }
         }
         .bodyContent {
-            // display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            margin: 16px 0;
-            @include md {
-                margin: 0;
-            }
+            display: flex;
+            justify-content: center;
+            // margin: 10.5px 0;
             .badge {
                 .badgeImg {
                     img {
@@ -108,7 +97,36 @@
                 }
             }
             .certificationDetails {
-                text-align: center;
+                display: flex;
+                flex-direction: column;
+                .dottedline{
+                    display: flex;
+                    align-items: flex-end;
+                    .dot1 {
+                        border-bottom: 2px dotted black;
+                        display: inline-block;
+                        width: 47%;
+                    }
+                    .dotof {
+                        width: 6%;
+                        text-align: center;
+                        font-size: 20px;
+                        line-height: 20px;
+                    }
+                   
+                }
+                .word {
+                    margin : -16px 0 40px 0;
+                    color: #444444;
+                    font-family: 'OpenSans';
+                    font-size: 18px;
+                    font-weight: 400;
+                    line-height: normal;
+                    text-align: center;
+                }
+                .dotline {
+                    border-bottom: 2px dotted black;
+                }
                 .nameTopic {
                     color: #0099AD;
                     font-size: 32px;
@@ -116,15 +134,6 @@
                     line-height: normal;
                     margin: 15px 0;
                     display: block;
-                    span {
-                        display: inline-block;
-                        color: #000;
-                        font-weight: 400;
-                        font-size: 20px;
-                    }
-                    p {
-                        color: #000;
-                    }
                 }
                 .desc {
                     color: #444444;
@@ -132,6 +141,8 @@
                     font-size: 18px;
                     font-weight: 400;
                     line-height: normal;
+                    text-align: center;
+                    margin: 25px 0 25px 0;
                 }
             }
         }
@@ -140,94 +151,49 @@
             width: 100%;
             display: flex;
             justify-content: space-between;
-            .dateDetails {
+            align-items: center;
+            .badgelogo {
+                width: 15%;
+            }
+            .commonStyle {
+                // width: 50%;
                 display: flex;
-                flex-direction: column;
-                justify-content: center;
-                .date {
-                    color: #444444;
-                    font-family: 'OpenSans';
-                    font-size: 16px;
-                    font-weight: 400;
-                    line-height: normal;
+                align-items: flex-end;
+                .fooWrapper {
+                    display: inline-block;
                     text-align: center;
-                    margin-left: 5px;
                 }
-                .certificate {
-                    color: #444444;
-                    font-family: 'OpenSans';
-                    font-size: 16px;
-                    font-weight: 400;
-                    line-height: normal;
-                    text-align: center;
-                    margin-left: 5px;
-                }
-            }
-            .badge{
-                .edutech{
-                    width: 30%;
-                }
-            }
-            .qrCode {
-                    text-align: right;
+                .signature {
+                    display: flex;
+                    justify-content: center;
                     img {
-                        max-width: 50%;
+                        max-width: 40%;
                     }
                 }
-            // .commonStyle {
-            //     width: 50%;
-            //     display: flex;
-            //     align-items: flex-end;
-            //     .fooWrapper {
-            //         display: inline-block;
-            //         text-align: center;
-            //     }
-            //     .signature {
-            //         display: flex;
-            //         justify-content: center;
-            //         img {
-            //             max-width: 40%;
-            //         }
-            //     }
-            //     .heading {
-            //         color: #222222;
-            //         font-size: 18px;
-            //         font-weight: 700;
-            //         line-height: normal;
-            //         margin: 0;
-            //         font-family: 'OpenSans';
-            //     }
-            //     .position {
-            //         color: #333333;
-            //         font-size: 13px;
-            //         font-weight: 500;
-            //         line-height: normal;
-            //         margin: 0;
-            //         display: block;
-            //     }
-            // }
+                .heading {
+                    color: #222222;
+                    font-size: 18px;
+                    font-weight: 700;
+                    line-height: normal;
+                    margin: 0;
+                    font-family: 'OpenSans';
+                }
+                .position {
+                    color: #333333;
+                    font-size: 13px;
+                    font-weight: 500;
+                    line-height: normal;
+                    margin: 0;
+                    display: block;
+                }
+               
+            }
         }
     }
+    
 }
+
 // ::ng-deep.certificationContainer {
 //     width: 960px !important;
 //     height: 78% !important;
 // }
-.microLearnCertification {
-    .header {
-        display: flex;
-        justify-content: space-between;
-        .logo {
-            width: 30%;
-        }
-        .qrcode {
-            .qr {
-                width: 50%;
-            }
-            .date {
-                display: flex;
-            }
-        }
-    }
-}
-
