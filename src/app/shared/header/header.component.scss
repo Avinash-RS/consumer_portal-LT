@@ -113,10 +113,10 @@ header {
         margin-left: 2em;
     }
     @include md {
-        margin-right: 2em;
+        margin-right: 3em;
     }
     @include lg {
-        width: 45%;
+        width: 43%;
         margin-left: 0;
     }
     @include xl {
@@ -1017,7 +1017,8 @@ header {
     }
 }
 .mobileMegamenu {
-    position: absolute;
+    // position: absolute;
+    position: fixed;
     left: 0;
     bottom: 0;
     right: 0;
