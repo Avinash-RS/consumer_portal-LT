@@ -34,13 +34,12 @@ import Swal from 'sweetalert2';
 })
 
 export class UserprofileComponent implements OnInit {
-
+  @ViewChild('certificateTemplate', { static: false }) certificateLayout: TemplateRef<any>;
   blobToken: string = environment.blobKey;
   paramvalue={};
   isCertificate;
   DataofCertificate;
   certificateValue;
-  certificateLayout;
   selection;
   skillList:any;
   skillNames=[]
