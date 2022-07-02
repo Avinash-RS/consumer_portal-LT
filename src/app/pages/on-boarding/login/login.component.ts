@@ -412,7 +412,6 @@ resolvedSignIn(captchaSignInResponse: string){
     this.commonService.login(loginData).subscribe((data: any) => {
       // console.log(data, 'karthik Data')
       if (data.success) {
-        debugger;
         this.appconfig.setLocalStorage('userDetails', JSON.stringify(data.data));
         this.appconfig.setLocalStorage('token', data.token);
         this.appconfig.setLocalStorage('profileImage', data.data.profileImage);
