@@ -163,6 +163,11 @@
                     margin-left: 5px;
                 }
             }
+            .badge{
+                .edutech{
+                    width: 30%;
+                }
+            }
             .qrCode {
                     text-align: right;
                     img {
@@ -208,3 +213,21 @@
 //     width: 960px !important;
 //     height: 78% !important;
 // }
+.microLearnCertification {
+    .header {
+        display: flex;
+        justify-content: space-between;
+        .logo {
+            width: 30%;
+        }
+        .qrcode {
+            .qr {
+                width: 50%;
+            }
+            .date {
+                display: flex;
+            }
+        }
+    }
+}
+
