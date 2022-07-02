@@ -131,7 +131,7 @@ export class ForgotPasswordComponent implements OnInit {
   // this sends mail to user
   sendLinkToMail(){
     if (this.forgetPwdForm.valid){
-      var encryptedname = CryptoJS.AES.encrypt(this.forgetPwdForm.value.email.toLowerCase(), this.secretKey.trim()).toString();
+      var encryptedname = CryptoJS.AES.encrypt(this.forgetPwdForm.value.email.toLowerCase().trim(), this.secretKey.trim()).toString();
       let data = {
         "email" : encryptedname,
         "badgeRequest" : this.recaptchaStr
@@ -156,8 +156,8 @@ export class ForgotPasswordComponent implements OnInit {
     if (this.resetPwdForm.valid){
         // const salt = bcrypt.genSaltSync(10);
         // const pass = bcrypt.hashSync(this.resetPwdForm.value.password, salt);
-        var encryptedname = CryptoJS.AES.encrypt(this.userEmail.toLowerCase(), this.secretKey.trim()).toString();
-        var encryptedpassword = CryptoJS.AES.encrypt(this.resetPwdForm.value.password, this.secretKey.trim()).toString();
+        var encryptedname = CryptoJS.AES.encrypt(this.userEmail.toLowerCase().trim(), this.secretKey.trim()).toString();
+        var encryptedpassword = CryptoJS.AES.encrypt(this.resetPwdForm.value.password.trim(), this.secretKey.trim()).toString();
         let data = {"email" : encryptedname, "password" : encryptedpassword, "userSecretkey":this.pwdSecretKey , "badgeRequest" : this.recaptchaStr}
         this.commonService.resetPassword(data).subscribe((resp: any) => {
           if (resp.success){

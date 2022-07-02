@@ -145,24 +145,24 @@ export class LoginComponent implements OnInit {
         this.toast.warning('Please select valid college name');
         return false;
       }
-      var encryptedname = CryptoJS.AES.encrypt(this.registerForm.value.email.toLowerCase(), this.secretKey.trim()).toString();
-      var encryptedpassword = CryptoJS.AES.encrypt(this.registerForm.value.password, this.secretKey.trim()).toString();
+      var encryptedname = CryptoJS.AES.encrypt(this.registerForm.value.email.toLowerCase().trim(), this.secretKey.trim()).toString();
+      var encryptedpassword = CryptoJS.AES.encrypt(this.registerForm.value.password.trim(), this.secretKey.trim()).toString();
 
       const signupData = {
-        firstname: this.registerForm.value.firstName,
-        lastname: this.registerForm.value.lastName,
+        firstname: this.registerForm.value.firstName.trim(),
+        lastname: this.registerForm.value.lastName.trim(),
         userOrigin:CryptoJS.AES.encrypt(environment.userOrigin, this.secretKey.trim()).toString(),
-        collegeId:this.registerForm.value.college,
+        collegeId:this.registerForm.value.college.trim(),
         password: encryptedpassword,
-        openPassword:this.registerForm.value.password,
+        openPassword:this.registerForm.value.password.trim(),
         email: encryptedname,
         termsandConditions: this.registerForm.value.termsandConditions,
         isAdmin: false,
         badgeRequest:this.recaptchaStr,
-        universityEnrollNo: this.registerForm.value.enrollNumber,
-        graduationYear: this.registerForm.value.graduation,
-        departmentId: this.registerForm.value.departmentId,
-        mobile: this.registerForm.value.enrollNumber,
+        universityEnrollNo: this.registerForm.value.enrollNumber.trim(),
+        graduationYear: this.registerForm.value.graduation.trim(),
+        departmentId: this.registerForm.value.departmentId.trim(),
+        mobile: this.registerForm.value.enrollNumber.trim(),
       };
       this.commonService.signup(signupData).subscribe((data: any) => {
         if (data.success) {
@@ -202,8 +202,8 @@ resolvedSignIn(captchaSignInResponse: string){
   onSubmit() {
     //this.cookieService.set('isLoggedIn','true')
     if (this.loginForm.valid) {
-      var encryptedname = CryptoJS.AES.encrypt(this.loginForm.value.email.toLowerCase(), this.secretKey.trim()).toString();
-      var encryptedpassword = CryptoJS.AES.encrypt(this.loginForm.value.password, this.secretKey.trim()).toString();
+      var encryptedname = CryptoJS.AES.encrypt(this.loginForm.value.email.toLowerCase().trim(), this.secretKey.trim()).toString();
+      var encryptedpassword = CryptoJS.AES.encrypt(this.loginForm.value.password.trim(), this.secretKey.trim()).toString();
       let loginData = {
         email: encryptedname,
         password: encryptedpassword,
@@ -227,40 +227,41 @@ resolvedSignIn(captchaSignInResponse: string){
           this.appconfig.setLocalStorage('valueData', JSON.stringify(portalData));
           this.util.headerSubject.next(true);
           this.util.cartSubject.next(true);
+          this.util.isEnrolled.next(true);
           this.util.getValue().subscribe((response) => {
             if (response) {
               this.userDetails = JSON.parse(this.appconfig.getLocalStorage('userDetails'));
               if (this.userDetails) {
 
-              const data = {
-                "noofFields": "44",
-                "email": this.userDetails.email ? this.userDetails.email : null
-              }
-              this.commonService.getProfilePercentage(data).subscribe((result: any) => {
-                if (result?.success) {
-                  //let profilePercentage = result.data[0].profilePercentage;
-                  //let KYCFlag = result.data[0].KYCMandFlag ? result.data[0].KYCMandFlag : 0;
-                  let KYCFlag = 1;
-                  if (KYCFlag == 0) {
-                   this.dialogSetup();
-                    this.appconfig.routeNavigation(APP_CONSTANTS.ENDPOINTS.home);
-                  }else{
-                    response.userId = this.userDetails.userId
-                  this.catalogService.addToCart(response).subscribe((cart: any) => {
-                    if (cart.success) {
-                      this.util.cartSubject.next(true);
-                      this.appconfig.routeNavigation('cart/purchase');
-                    } else {
-                      this.appconfig.routeNavigation(APP_CONSTANTS.ENDPOINTS.home)
-                      this.toast.warning(cart.message)
-                    }
-                  })
-                  }
-                }
-                else {
-                  return false
-                }
-              });
+              // const data = {
+              //   "noofFields": "44",
+              //   "email": this.userDetails.email ? this.userDetails.email : null
+              // }
+              // this.commonService.getProfilePercentage(data).subscribe((result: any) => {
+              //   if (result?.success) {
+              //     //let profilePercentage = result.data[0].profilePercentage;
+              //     //let KYCFlag = result.data[0].KYCMandFlag ? result.data[0].KYCMandFlag : 0;
+              //     let KYCFlag = 1;
+              //     if (KYCFlag == 0) {
+              //      this.dialogSetup();
+              //       this.appconfig.routeNavigation(APP_CONSTANTS.ENDPOINTS.home);
+              //     }else{
+              //       response.userId = this.userDetails.userId
+              //     this.catalogService.addToCart(response).subscribe((cart: any) => {
+              //       if (cart.success) {
+              //         this.util.cartSubject.next(true);
+              //         this.appconfig.routeNavigation('cart/purchase');
+              //       } else {
+              //         this.appconfig.routeNavigation(APP_CONSTANTS.ENDPOINTS.home)
+              //         this.toast.warning(cart.message)
+              //       }
+              //     })
+              //     }
+              //   }
+              //   else {
+              //     return false
+              //   }
+              // });
                 //   this.cookieService.set('isLoggedIn','true')
               }
             } else {
@@ -411,12 +412,11 @@ resolvedSignIn(captchaSignInResponse: string){
     this.commonService.login(loginData).subscribe((data: any) => {
       // console.log(data, 'karthik Data')
       if (data.success) {
-
+        debugger;
         this.appconfig.setLocalStorage('userDetails', JSON.stringify(data.data));
         this.appconfig.setLocalStorage('token', data.token);
         this.appconfig.setLocalStorage('profileImage', data.data.profileImage);
         this.util.headerSubject.next(true);
-        this.util.isEnrolled.next(true);
         this.util.cartSubject.next(true);
         this.util.getValue().subscribe((response) => {
           if (response) {
