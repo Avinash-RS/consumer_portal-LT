@@ -40,9 +40,11 @@
             </div> -->
             <span class="cart" *ngIf="showAvatar">
                 <a (click)="openCart(); closeMegaMenu_()">
-                <em *ngIf="cartCount == 0" class="icon-Cart"></em>
-                <em *ngIf="cartCount != 0" matBadge="{{cartCount}}" matBadgeColor="warn" class="icon-Cart"></em>
-            </a></span>
+                    <em class="icon-Cart"></em>
+                    <!-- <em *ngIf="cartCount != 0" matBadge="{{cartCount}}" matBadgeColor="warn" class="icon-Cart"></em> -->
+                    <span class="cartCount" *ngIf="cartCount != 0">{{cartCount}}</span>
+                </a>
+            </span>
             <ng-container *ngIf="showAvatar">
                 <!-- <span class="cart"><a><em class="icon-Bell"></em></a></span> -->
                 <div [matMenuTriggerFor]="menu" [matTooltipPosition]="'left'" [matTooltip]="userDetails?.firstname + ' ' + userDetails?.lastname" class="avatar">
