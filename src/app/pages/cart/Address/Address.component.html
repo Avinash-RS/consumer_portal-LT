@@ -44,7 +44,7 @@
                     <input type="number" matInput placeholder="Enter Mobile No" formControlName="mobile">
                 </mat-form-field>
                 <ng-container *ngIf="mobile.invalid && mobile.touched">
-                    <mat-error *ngIf="mobile.errors?.required" class="error">{{'mobile number is required'}}</mat-error>
+                    <mat-error *ngIf="mobile.errors?.required" class="error">{{'Mobile number is required'}}</mat-error>
                     <mat-error *ngIf="mobile?.errors?.mobileRegex" class="error">Please enter a valid 10 digit mobile number</mat-error>
                 </ng-container>
             </div>
@@ -82,10 +82,10 @@
                 </mat-select>
               </mat-form-field>
               <ng-container *ngIf="city.touched && (state.untouched && state.invalid)">
-                <mat-error *ngIf="city.errors?.required" class="error">{{' select a state first'}}</mat-error>
+                <mat-error *ngIf="city.errors?.required" class="error">{{'Select a state first'}}</mat-error>
               </ng-container>
               <ng-container *ngIf="city.invalid && city.touched">
-                <mat-error *ngIf="city.errors?.required" class="error">{{' city is required'}}</mat-error>
+                <mat-error *ngIf="city.errors?.required" class="error">{{'City is required'}}</mat-error>
             </ng-container>
             </div>
 
@@ -97,7 +97,7 @@
                 </mat-form-field>
                 <ng-container *ngIf="pincode.invalid && pincode.touched">
                     <mat-error *ngIf="pincode.errors?.required" class="error">{{' Pincode is required'}}</mat-error>
-                    <mat-error *ngIf="pincode.errors?.zipOnly" class="error">{{'Should be numeric only and should be exact 6 digits'}}</mat-error>
+                    <mat-error *ngIf="pincode.errors?.zipOnly" class="error">{{'Pincode should be numeric only and should be exact 6 digits'}}</mat-error>
                 </ng-container>
             </div>
             <div class="addressDropSection">
