@@ -225,7 +225,7 @@
                             <mat-form-field appearance="fill">
                                 <input type="email" matInput placeholder="{{userDetails.emailId}}" readonly>
                             </mat-form-field>
-                            <span class="security">For your security, if you change your email address your saved data information will be deleted.</span>
+                            <span class="security">For your security, if you change your email address your saved data/information will be deleted.</span>
 
                         </div>
                         <div>
@@ -260,7 +260,7 @@
                             </ng-container>
                         </div>
                         <div>
-                            <label>Confirm password</label>
+                            <label>Confirm Password</label>
                             <mat-form-field appearance="fill">
                                 <input [type]="conpasshide ? 'password' : 'text'" matInput autocomplete="Off" placeholder="" formControlName="password2">
                                 <div mat-icon-button matSuffix (click)="conpasshide = !conpasshide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="conpasshide">
