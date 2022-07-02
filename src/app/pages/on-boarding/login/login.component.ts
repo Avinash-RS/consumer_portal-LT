@@ -303,7 +303,7 @@ resolvedSignIn(captchaSignInResponse: string){
     this.cartsevice.getCollegeDetails(apiParm).subscribe((result:any)=>{
       if(result?.success && result?.data.length > 0){
         this.collegeData = result?.data;
-         this.collegeData.push(this.otherData)
+         this.collegeData.unshift(this.otherData)
       }
     })
   }
@@ -416,6 +416,7 @@ resolvedSignIn(captchaSignInResponse: string){
         this.appconfig.setLocalStorage('token', data.token);
         this.appconfig.setLocalStorage('profileImage', data.data.profileImage);
         this.util.headerSubject.next(true);
+        this.util.isEnrolled.next(true);
         this.util.cartSubject.next(true);
         this.util.getValue().subscribe((response) => {
           if (response) {

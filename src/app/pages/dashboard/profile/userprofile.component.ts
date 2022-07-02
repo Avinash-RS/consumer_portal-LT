@@ -282,8 +282,8 @@ export class UserprofileComponent implements OnInit {
           this.appconfig.setLocalStorage('userDetails', JSON.stringify(this.userDetails));
           //this.toast.success(data.message);
           this.toast.success("Profile saved successfully");
-          this.getProfilePercentage();
-          this.selection = 'KYC';
+          // this.getProfilePercentage();
+          // this.selection = 'KYC';
           if (this.imageURL) {
             this.appconfig.setLocalStorage('profileImage', this.imageURL);
             this.util.headerSubject.next(true);

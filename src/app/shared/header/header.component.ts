@@ -119,6 +119,9 @@ export class HeaderComponent implements OnInit {
       if(result && this.appConfig.getLocalStorage('token')){
         this.getPurchasedCourse();
       }
+      else {
+        this.ispurchased = false;
+      }
     });
   }
   getPurchasedCourse(){

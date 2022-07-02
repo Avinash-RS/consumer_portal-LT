@@ -273,6 +273,7 @@ export class AboutCourseComponent implements OnInit {
             }
             else{
               this.toast.success("Added to cart");
+              this.appconfig.routeNavigation('cart/purchase');
               this.util.cartSubject.next(true);
             }
           }

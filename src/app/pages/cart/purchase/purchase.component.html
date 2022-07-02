@@ -124,7 +124,7 @@
                     </div>
                     <div class="rightContent">
                         <div class="rightContentWrapper">
-                            <app-Checkout [tab]='stepper' [checkoutData]='cartList'></app-Checkout>
+                            <app-Checkout [tab]='stepper' [checkoutData]='cartList' [cartTotal]="totalAmount"></app-Checkout>
                         </div>
                     </div>
                 </div>
@@ -152,7 +152,7 @@
                         <app-Address></app-Address>
                     </div>
                     <div class="rightContent">
-                        <app-Checkout [tab]='1' [checkoutData]='cartList'></app-Checkout>
+                        <app-Checkout [tab]='1' [checkoutData]='cartList' [cartTotal]="totalAmount"></app-Checkout>
                     </div>
                 </div>
             </div>
