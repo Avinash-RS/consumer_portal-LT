@@ -176,9 +176,9 @@
         @include md {
           font-size: 0.9375em;
         }
-        @include xl {
-          margin: 3em 0;
-        }
+        // @include xl {
+        //   margin: 3em 0;
+        // }
       }
       span {
         font-size:	0.9375em;
@@ -197,6 +197,7 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
+        margin-top: 4em;
         span {
           @include lg {
             margin: 0;
@@ -234,15 +235,18 @@
             margin-right: 3em;
           }
         }
+        p {
+          margin: 0 0 0 1.125em;
+        }
         .buttons {
           position: relative;
           margin-left: 0;
-          @include lg {
-            margin-left: 4em;
-          }
-          @include xl {
-            margin-left: 6em;
-          }
+          // @include lg {
+          //   margin-left: 4em;
+          // }
+          // @include xl {
+          //   margin-left: 6em;
+          // }
           .buyNow {
             font-family: "OpenSans", sans-serif;
             font-size: 0.9375em;
@@ -274,11 +278,11 @@
             }
           }
           p {
-            font-size: 	0.7500em ;
-            font-weight:400 ;
-            color:$whiteshade;
+            font-size: 	0.75em;
+            font-weight: 400;
+            color: $whiteshade;
             opacity: 1;
-            margin: 4px 0 0 0;
+            margin: 4px 0 0 20px;
           }
         }
       }

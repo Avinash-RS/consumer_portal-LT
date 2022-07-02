@@ -281,6 +281,24 @@ header {
         @include xl {
             margin-right: 1.75em;
         }
+        a {
+            position: relative;
+            .cartCount {
+                position: absolute;
+                right: -10px;
+                top: -15px;
+                background-color: $primary-red;
+                border-radius: 50%;
+                width: 20px;
+                height: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: $whiteColor;
+                font-size: 0.875em;
+                font-weight: 400;
+            }
+        }
         em {
             font-size: 1.5em;
             color: $mediumGrey;
