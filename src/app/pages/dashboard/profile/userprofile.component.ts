@@ -37,8 +37,8 @@ export class UserprofileComponent implements OnInit {
   @ViewChild('certificateTemplate', { static: false }) certificateLayout: TemplateRef<any>;
   blobToken: string = environment.blobKey;
   paramvalue={};
-  isCertificate;
   DataofCertificate;
+  isCertificate = true;
   certificateValue;
   selection;
   skillList:any;

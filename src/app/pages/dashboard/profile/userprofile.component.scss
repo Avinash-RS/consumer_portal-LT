@@ -900,6 +900,45 @@
     }
 }
 
+.certificateHeader{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1em;
+    align-items: center;
+    .download {
+        width: 30%;
+        text-align: right;
+        margin-right: 2em;
+        @include md {
+            width: 20%;
+        }
+        @include lg {
+            width: 15%;
+        }
+        button {
+            background-color: $shadeBlueColor;
+            border: 1px solid $secondaryColor;
+            border-radius: 5px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5em;
+            font-size: 0.875em;
+            color: $whiteColor;
+            width: 100%;
+            margin-right: 2em;
+            line-height: 1.2;
+            em {
+                font-size: 1em;
+                margin-right: 10px;
+            }
+        }
+    }
+    span{
+        cursor: pointer;
+        font-size: 1.2em;
+    }
+}
 //Close Account
 .warning {
     display: flex;
