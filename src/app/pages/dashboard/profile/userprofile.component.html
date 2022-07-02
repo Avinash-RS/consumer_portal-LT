@@ -330,7 +330,7 @@
                     <div class="heading3">Download Certificate</div>
                     <p class="desc">Download Completed Course Certificate</p>
                     <div class="downloadCertificate">
-                        <ul *ngIf="false">
+                        <ul>
                             <li>
                                 <figure>
                                     <img src="https://lmsassetspremium.lntedutech.com/portalicons/download-certificate.webp" alt="" />
@@ -344,32 +344,21 @@
                                     <span class="courseTitle">April 2022</span>
                                 </div>
                                 <div class="download">
-                                    <button><em class="icon-Download"></em> Download</button>
-                                </div>
-                            </li>
-                            <li>
-                                <figure>
-                                    <img src="https://lmsassetspremium.lntedutech.com/portalicons/download-certificate.webp" alt="" />
-                                </figure>
-                                <div class="courseName common">
-                                    <span class="course">Course</span>
-                                    <span class="courseTitle">Certificate in Formwork Engineering</span>
-                                </div>
-                                <div class="completedOn common">
-                                    <span class="course">Course</span>
-                                    <span class="courseTitle">April 2022</span>
-                                </div>
-                                <div class="download">
-                                    <button><em class="icon-Download"></em> Download</button>
+                                    <button class="view" (click)="viewCertificate(data)">View</button>
+                                    <!-- <button class="load" (click)="downloadCertificate(data)">Download</button> -->
+                                    <!-- <button><em class="icon-Download"></em> Download</button> -->
                                 </div>
                             </li>
                         </ul>
-                        <div class="certificatenocard">
+                        <div class="certificatenocard" *ngIf="!isCertificate">
                             <figure>
                                 <img src="https://lmsassetspremium.lntedutech.com/portalicons/certificatenocard.webp" alt="">
                             </figure>
                             <p>There is no certificate found.</p>
                         </div>
+                        <!-- <div class="certificateContent">
+                            <app-micro-learn-certification [courseItems]="certificateValue"></app-micro-learn-certification>
+                        </div> -->
                     </div>
                 </div>
                 <div *ngSwitchCase="'close'">
@@ -420,6 +409,15 @@
         </div>
     </div>
 </section>
+<ng-template #certificateTemplate>
+    <div class="certificateHeader">
+        <div class="download">
+            <button (click)="downloadCertificate()"><em class="icon-Download"></em>download</button>
+        </div>
+        <span class="closeBtn" mat-dialog-close><em class="icon-Close"></em></span>
+    </div>
+    <app-micro-learn-certification [courseItems]="certificateValue"></app-micro-learn-certification>
+</ng-template>
 <ng-template #addNewBadge>
     <div class="addNewBadge">
         <div class="heading3" mat-dialog-title>

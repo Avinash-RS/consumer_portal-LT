@@ -36,7 +36,11 @@ import Swal from 'sweetalert2';
 export class UserprofileComponent implements OnInit {
 
   blobToken: string = environment.blobKey;
-  paramvalue={}
+  paramvalue={};
+  isCertificate;
+  DataofCertificate;
+  certificateValue;
+  certificateLayout;
   selection;
   skillList:any;
   skillNames=[]
@@ -111,7 +115,7 @@ export class UserprofileComponent implements OnInit {
   @Input()
   files: File[] = []
   @Input()
-  multiple
+  multiple;
   openKYCPannel = false;
   selectedKycTab:string ="Personal";
   profilePercentage:any = 0;
@@ -480,12 +484,64 @@ getProfilePercentage(){
     return true;
   }
 
-  clearInputElement() {
-    this.fileUpload.nativeElement.value = ''
-  } 
+  // tslint:disable-next-line:typedef
+//   getCertificates() {
+//     this.commonService.getProfileCertificate(this.userDetails.userId).subscribe((result: any) => {
+//       if (result.success) {
+//         this.isCertificate = true;
+//         this.DataofCertificate = result.data;
+//         if (this.DataofCertificate?.length == 0) {
+//           this.isCertificate = false;
+//         }
+//       } else {
+//         this.isCertificate = false;
+//       }
+//     },
+//     err => {
+//       this.isCertificate = false;
+//     });
+//   }
 
-  isMultiple(): boolean {
-    return this.multiple
+  viewCertificate(value){
+    this.certificateValue = value;
+    const valdat = this.dialog.open(this.certificateLayout, {
+      width: '80%',
+      height: '85%',
+      autoFocus: true,
+      closeOnNavigation: true,
+      panelClass: 'certificationContainer',
+      data: value,
+    });
+    return false;
+  }
+
+//   // tslint:disable-next-line:typedef
+//   downloadCertificate(data){
+//     if (data){
+//       var content = data;
+//     } else {
+//       content = this.certificateValue;
+//     }
+//     var element = document.getElementById('content');
+//     (document.getElementById('userID') as HTMLInputElement).innerHTML = content.firstName+'&nbsp'+content.lastName;
+//     (document.getElementById('courseID') as HTMLInputElement).innerHTML = content.courseName;
+//     var opt = {
+//       filename: 'myfile.pdf',
+//       jsPDF:{unit: 'in', format: 'letter', orientation: 'landscape' }
+//     };
+//     pdf().from(element).set(opt).toPdf().get('pdf').then(function (pdf) {
+//       }, (err) => {
+//       }).save();
+//   }
+// }
+
+
+clearInputElement() {
+    this.fileUpload.nativeElement.value = '';
+  }
+
+isMultiple(): boolean {
+    return this.multiple;
   }
   // ChangeKycTabs(selectedTab){
   //   this.selectionTypes[1].child.forEach(element=>{
