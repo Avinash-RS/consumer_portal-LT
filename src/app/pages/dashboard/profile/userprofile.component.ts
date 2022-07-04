@@ -118,8 +118,8 @@ export class UserprofileComponent implements OnInit {
   openKYCPannel = false;
   selectedKycTab:string ="Personal";
   profilePercentage:any = 0;
-  maxDOBDate:Date = new Date();
-  minDateValue = new Date(1900, 1, 1);
+  maxDOBDate = new Date();
+  minDateValue = new Date();
   secretKey = "(!@#Passcode!@#)";
   minDate: Date;
   maxDate: number;
@@ -173,6 +173,13 @@ export class UserprofileComponent implements OnInit {
     this.getProfilePercentage();
     this.triggerProfilepercentage();
     this.navigateParentTab();
+    this.setdob();
+  }
+
+  setdob() {
+    const currentDate = new Date();
+    this.minDateValue = new Date(currentDate.getFullYear() - 72, currentDate.getMonth() , currentDate.getDate());
+    this.maxDOBDate = new Date(currentDate.getFullYear()  - 18, currentDate.getMonth(), currentDate.getDate());
   }
 
   navigateParentTab(){

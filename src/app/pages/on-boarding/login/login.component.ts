@@ -161,7 +161,7 @@ export class LoginComponent implements OnInit {
         badgeRequest:this.recaptchaStr,
         universityEnrollNo: this.registerForm.value.enrollNumber.trim(),
         graduationYear: this.registerForm.value.graduation.trim(),
-        departmentId: this.registerForm.value.departmentId.trim(),
+        departmentId: this.registerForm.value.department.trim(),
         mobile: this.registerForm.value.enrollNumber.trim(),
       };
       this.commonService.signup(signupData).subscribe((data: any) => {

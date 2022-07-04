@@ -30,14 +30,15 @@
     <owl-carousel-o [options]="owlCarouselOptions">
         <ng-container *ngFor="let item of HomeBannerImage">
             <ng-template carouselSlide>
-                <div class="bannerSection" [ngStyle]="{'background-image': 'url(' + item?.image + ')'}">
-                    <div class="container">
-                        <div class="bannerWrapper">
-                            <div class="bannerContent">
-                                <button (click)="navigateCatalog()"><span>Explore Courses</span></button>
-                            </div>
-                        </div>
-                    </div>
+                <!-- <div class="bannerSection" [ngStyle]="{'background-image': 'url(' + item?.image + ')'}"> -->
+                <div class="bannerSection">
+                    <picture>
+                        <source media="(min-width: 700px)" srcset="{{item?.image}}">
+                        <img [src]="item?.mobileImage" alt="">
+                    </picture>
+                    <!-- <div class="bannerContent">
+                        <button (click)="navigateCatalog()"><span>Explore Courses</span></button>
+                    </div> -->
                 </div>
             </ng-template>
         </ng-container>
