@@ -193,6 +193,9 @@ export class AssessmentsListComponent implements OnInit {
       if (response.data?.length > 0) {
         this.areaCards = response.data;
         this.areaCards.sort((a, b) => a.sequenceOrder > b.sequenceOrder ? 1 : -1);
+        if(!this.isNavigated){
+          this.areaCards = this.areaCards.filter(e => e?.isFeatured)
+        }
         this.noDataFound = false;
         this.viewMore = (!this.isNavigated && this.areaCards?.length > 6) ? true : false;
         this.sliceDigits =  !this.viewMore ? this.areaCards?.length + 1 : 6;
