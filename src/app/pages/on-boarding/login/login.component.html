@@ -94,7 +94,8 @@
                                 </mat-form-field>
                                 <ng-container *ngIf="firstName.invalid && firstName.touched">
                                     <mat-error *ngIf="firstName.errors?.required" class="error">{{'First name is required'}}</mat-error>
-                                    <mat-error *ngIf="firstName.errors?.alphaNum30" class="error">{{'Alpha numeric with maximum of 30 characters only allowed'}}</mat-error>
+                                    <!-- <mat-error *ngIf="firstName.errors?.alphaNum30" class="error">{{'Alpha numeric with maximum of 30 characters only allowed'}}</mat-error> -->
+                                    <mat-error *ngIf="firstName.errors?.alpha30" class="error">{{'First name should be alphabets and maximum of 30 characters only allowed'}}</mat-error>
                                 </ng-container>
                             </div>
                             <div class="inputContainer">
@@ -104,7 +105,8 @@
                                 </mat-form-field>
                                 <ng-container *ngIf="lastName.invalid && lastName.touched">
                                     <mat-error *ngIf="lastName.errors?.required" class="error">{{'Last name is required'}}</mat-error>
-                                    <mat-error *ngIf="lastName.errors?.alphaNum30" class="error">{{'Alpha numeric with maximum of 30 characters only allowed'}}</mat-error>
+                                    <!-- <mat-error *ngIf="lastName.errors?.alphaNum30" class="error">{{'Alpha numeric with maximum of 30 characters only allowed'}}</mat-error> -->
+                                    <mat-error *ngIf="lastName.errors?.alpha30" class="error">{{'Last name should be alphabets and maximum of 30 characters only allowed'}}</mat-error>
                                 </ng-container>
                             </div>
                             <div class="inputContainer">
@@ -130,10 +132,11 @@
                             <div class="inputContainer">
                                 <mat-form-field appearance="outline">
                                     <mat-label>University Enrollment Number</mat-label>
-                                    <input autocomplete="off" matInput id="signup_mobile" name="enrollNumber" formControlName="enrollNumber" placeholder="University enrollment Number">
+                                    <input autocomplete="off" matInput id="signup_uen" name="enrollNumber" formControlName="enrollNumber" placeholder="University enrollment Number">
                                 </mat-form-field>
                                 <ng-container *ngIf="rollNumber.invalid && rollNumber.touched">
                                     <mat-error *ngIf="rollNumber.errors?.required" class="error">{{'Enrollment number is required'}}</mat-error>
+                                    <mat-error *ngIf="rollNumber.errors?.enrollno" class="error">{{'Please enter valid Enrollment number'}}</mat-error>
                                 </ng-container>
                             </div>
                             <div class="inputContainer">
@@ -165,9 +168,14 @@
                             <div class="inputContainer">
                                 <mat-form-field appearance="outline">
                                     <mat-label>Department</mat-label>
-                                    <mat-select formControlName="department">
-                                        <mat-option [value]="item?.departmentId" *ngFor="let item of departmentData">{{item?.departmentName}}</mat-option>
-                                    </mat-select>
+                                    <input  matInput id="signup_department" [(ngModel)]="departmentFilter.departmentName" formControlName="department" [matAutocomplete]="deptauto" (keyup)="checkDeptList();departmentflag = false">
+                                    <!-- <em matSuffix class="icon-arrow_drop_down"></em> -->
+                                    <mat-autocomplete #deptauto="matAutocomplete">
+                                        <mat-option #DeptData (click)="departmentflag = true" [value]="item.departmentName"
+                                            *ngFor="let item of departmentData | filterBy:departmentFilter" [matTooltip]="item.departmentName">
+                                            {{item?.departmentName}}
+                                        </mat-option>
+                                    </mat-autocomplete>
                                 </mat-form-field>
                                 <ng-container *ngIf="dept.invalid && dept.touched">
                                     <mat-error *ngIf="dept.errors?.required" class="error">{{'Department is required'}}</mat-error>
@@ -193,7 +201,7 @@
                                     <mat-label>Confirm Password</mat-label>
                                     <input autocomplete="off" name="password2" id="signup_pwd2" formControlName="password2" matInput [type]="hide1 ? 'password' : 'text'">
                                     <div mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1">
-                                    <em class="{{hide ? 'icon-Hide' : 'icon-View'}}"></em>
+                                    <em class="{{hide1 ? 'icon-Hide' : 'icon-View'}}"></em>
                                     </div>
                                 </mat-form-field>
                                 <ng-container *ngIf="password2.invalid && password2.touched || (registerForm.errors?.notMatch && (registerForm.touched || registerForm.dirty))">

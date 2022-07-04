@@ -25,9 +25,14 @@ import { GoogleAnalyticsService } from 'src/app/services/google-analytics.servic
 
 export class LoginComponent implements OnInit {
   @ViewChild('OptionData') searchedcollageData: ElementRef;
+  @ViewChild('DeptData') searchedDeptData: ElementRef;
   collegeFilter: any = { collegename: '' };
+  departmentFilter: any = { departmentName: '' };
   collagename: any;
   collageId: any;
+  departmentshortcode: any;
+  departmentName: any;
+  departmentId: any;
   isloadData;
   hide = true;
   hide1 = true;
@@ -42,6 +47,7 @@ export class LoginComponent implements OnInit {
   collegeData: any = [];
   departmentData: any = [];
   collegeflag = false;
+  departmentflag = false;
   yearData = ['2010','2011','2012','2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025'];
   otherData = {
     collegeId: "0",
@@ -152,6 +158,10 @@ export class LoginComponent implements OnInit {
       if (!this.collegeflag){
         this.toast.warning('Please select valid college name');
         return false;
+      } 
+      if (!this.departmentflag) {
+        this.toast.warning('Please select valid department name');
+        return false;
       }
       var encryptedname = CryptoJS.AES.encrypt(this.registerForm.value.email.toLowerCase().trim(), this.secretKey.trim()).toString();
       var encryptedpassword = CryptoJS.AES.encrypt(this.registerForm.value.password.trim(), this.secretKey.trim()).toString();
@@ -169,7 +179,7 @@ export class LoginComponent implements OnInit {
         badgeRequest:this.recaptchaStr,
         universityEnrollNo: this.registerForm.value.enrollNumber.trim(),
         graduationYear: this.registerForm.value.graduation.trim(),
-        departmentId: this.registerForm.value.departmentId.trim(),
+        departmentId: this.registerForm.value.department.trim(),
         mobile: this.registerForm.value.enrollNumber.trim(),
       };
       this.commonService.signup(signupData).subscribe((data: any) => {
@@ -314,6 +324,19 @@ resolvedSignIn(captchaSignInResponse: string){
     });
   }
 
+  checkDeptList() {
+    this.departmentName = [];
+    this.departmentId = '';
+    this.departmentshortcode = '';
+    setTimeout(() => {
+      if (this.searchedDeptData) {
+        this.isloadData = false;
+      } else {
+        this.isloadData = true;
+      }
+    });
+  }
+
   getCollegeMaster(){
     const apiParm = {
       userOrigin:CryptoJS.AES.encrypt(environment.userOrigin, this.secretKey.trim()).toString(),
@@ -336,13 +359,13 @@ resolvedSignIn(captchaSignInResponse: string){
 
   registerFormInitialize() {
     this.registerForm = this.fb.group({
-      firstName: ['', [Validators.required, this.gv.alphaNum30()]],
-      lastName: ['', [Validators.required, this.gv.alphaNum30()]],
+      firstName: ['', [Validators.required, this.gv.alpha30()]],
+      lastName: ['', [Validators.required, this.gv.alpha30()]],
       email: ['', [Validators.required, this.gv.email()]],
       mobile: ['', [Validators.required, this.gv.mobile(), this.gv.mobileRegex()]],
       college: ['', [Validators.required]],
       department: ['', [Validators.required]],
-      enrollNumber: ['', [Validators.required]],
+      enrollNumber: ['', [Validators.required,this.gv.enrollno()]],
       graduation: ['', [Validators.required]],
       password: ['', [Validators.required, this.gv.passwordRegex(), Validators.minLength(8), Validators.maxLength(32)]],
       password2: ['', [Validators.required]],

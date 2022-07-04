@@ -64,6 +64,10 @@ export class GlobalValidatorsService {
       const alphaNumericwithCommonSpecialCharactersMaxLength30: RegExp = /^([a-zA-Z0-9_ \-,.\r\n]){0,30}$/;
       return this.regexValidator(alphaNumericwithCommonSpecialCharactersMaxLength30, {alphaNum30: true});
     }
+    enrollno() {
+      const NumericwithCommonSpecialCharactersMaxLength12: RegExp = /^([0-9]){12}$/;
+      return this.regexValidator(NumericwithCommonSpecialCharactersMaxLength12, {enrollno: true});
+    }
      // Alpha numberic with ',' '.' are allowed, Maximum lenth allowed is 30 characters
     mobile() {
       // const alphaNumericwithCommonSpecialCharactersMaxLength30: RegExp = /^([0-9_ \-,.\r\n]){0,10}$/;
@@ -83,5 +87,11 @@ export class GlobalValidatorsService {
     passwordRegex(){
       const passwordHard: RegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*\.\(\)\{\}\[\]\:\;\<\>\,\?\/\\\~\_\+\-\=\|])(?=.{0,})/gm;
       return this.regexValidator(passwordHard, {password: true});
+    }
+
+    //First Name and Last name Validators
+    alpha30() {
+      const alpha: RegExp = /^([a-zA-Z]){0,30}$/;
+      return this.regexValidator(alpha, {alpha30: true});
     }
 }

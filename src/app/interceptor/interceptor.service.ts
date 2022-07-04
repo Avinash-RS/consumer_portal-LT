@@ -82,7 +82,7 @@ export class InterceptorService implements HttpInterceptor {
       //   retry(3),
       catchError((error: HttpErrorResponse) => {
         this._loading.setLoading(false, request.url);
-        if(error?.error?.message == 'jwt expired'){
+        if(error?.error?.message == 'jwt expired' || error?.error?.message == 'jwt malformed'){
           this.toast.warning('Session Expired!!');
           this.commonservice.logout();
         }
