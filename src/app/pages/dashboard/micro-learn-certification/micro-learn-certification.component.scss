@@ -60,7 +60,7 @@
             .date {
                 span {
                     font-family: "myriadPro";
-                    font-weight: 500;
+                    font-weight: 700;
                     color :#1C1C1C;
                     opacity: 1;
                 }
@@ -75,14 +75,15 @@
             margin: 50px 0 30px 0;
             span {
                 color : #808081;
-                font-weight: 600;
+                font-weight: 700;
                 margin-right: 10px;
                 position: relative;
                 text-transform: uppercase;
-               p {
-                    color : #808081;
-                    font-weight: 400;
-                }
+            }
+            p {
+                color : #808081;
+                font-weight: 400;
+                text-transform: uppercase;
             }
         }
         .bodyContent {

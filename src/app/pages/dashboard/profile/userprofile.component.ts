@@ -483,23 +483,22 @@ getProfilePercentage(){
     return true;
   }
 
-  // tslint:disable-next-line:typedef
-//   getCertificates() {
-//     this.commonService.getProfileCertificate(this.userDetails.userId).subscribe((result: any) => {
-//       if (result.success) {
-//         this.isCertificate = true;
-//         this.DataofCertificate = result.data;
-//         if (this.DataofCertificate?.length == 0) {
-//           this.isCertificate = false;
-//         }
-//       } else {
-//         this.isCertificate = false;
-//       }
-//     },
-//     err => {
-//       this.isCertificate = false;
-//     });
-//   }
+  getCertificates() {
+    this.commonService.getProfileCertificate(this.userDetails.userId).subscribe((result: any) => {
+      if (result.success) {
+        this.isCertificate = true;
+        this.DataofCertificate = result.data;
+        if (this.DataofCertificate?.length == 0) {
+          this.isCertificate = false;
+        }
+      } else {
+        this.isCertificate = false;
+      }
+    },
+    err => {
+      this.isCertificate = false;
+    });
+  }
 
   viewCertificate(value){
     this.certificateValue = value;
@@ -515,33 +514,34 @@ getProfilePercentage(){
   }
 
 //   // tslint:disable-next-line:typedef
-//   downloadCertificate(data){
-//     if (data){
-//       var content = data;
-//     } else {
-//       content = this.certificateValue;
-//     }
-//     var element = document.getElementById('content');
-//     (document.getElementById('userID') as HTMLInputElement).innerHTML = content.firstName+'&nbsp'+content.lastName;
-//     (document.getElementById('courseID') as HTMLInputElement).innerHTML = content.courseName;
-//     var opt = {
-//       filename: 'myfile.pdf',
-//       jsPDF:{unit: 'in', format: 'letter', orientation: 'landscape' }
-//     };
-//     pdf().from(element).set(opt).toPdf().get('pdf').then(function (pdf) {
-//       }, (err) => {
-//       }).save();
-//   }
-// }
-
-
-clearInputElement() {
-    this.fileUpload.nativeElement.value = '';
+  downloadCertificate(data) {
+    if (data) {
+      var content = data;
+    } else {
+      content = this.certificateValue;
+    }
+    var element = document.getElementById('content');
+    (document.getElementById('userID') as HTMLInputElement).innerHTML = content.firstName + '&nbsp' + content.lastName;
+    (document.getElementById('courseID') as HTMLInputElement).innerHTML = content.courseName;
+    var opt = {
+      filename: 'myfile.pdf',
+      jsPDF: { unit: 'in', format: 'letter', orientation: 'landscape' }
+    };
+    pdf().from(element).set(opt).toPdf().get('pdf').then(function (pdf) {
+    }, (err) => {
+    }).save();
   }
+  
+  clearInputElement() {
+      this.fileUpload.nativeElement.value = '';
+    }
+  
+  isMultiple(): boolean {
+      return this.multiple;
+    }
+}
 
-isMultiple(): boolean {
-    return this.multiple;
-  }
+
   // ChangeKycTabs(selectedTab){
   //   this.selectionTypes[1].child.forEach(element=>{
   //     if(element.tab == selectedTab){
@@ -559,4 +559,3 @@ isMultiple(): boolean {
   //     this.ChangeKycTabs(data);
   //   })
   // }
-}
