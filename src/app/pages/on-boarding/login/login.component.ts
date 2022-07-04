@@ -325,7 +325,7 @@ resolvedSignIn(captchaSignInResponse: string){
       mobile: ['', [Validators.required, this.gv.mobile(), this.gv.mobileRegex()]],
       college: ['', [Validators.required]],
       department: ['', [Validators.required]],
-      enrollNumber: ['', [Validators.required]],
+      enrollNumber: ['', [Validators.required,this.gv.enrollno()]],
       graduation: ['', [Validators.required]],
       password: ['', [Validators.required, this.gv.passwordRegex(), Validators.minLength(8), Validators.maxLength(32)]],
       password2: ['', [Validators.required]],

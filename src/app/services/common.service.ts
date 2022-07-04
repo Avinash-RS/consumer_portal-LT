@@ -43,17 +43,12 @@ export class CommonService {
     this.cookieService.delete('isLoggedInFunc')
     this.appconfig.clearSessionStorage();
     this.appconfig.clearLocalStorage();
-    this.http.post(this.baseurl + 'logout', {});
-    if(!value){
-      this.appconfig.routeNavigation(APP_CONSTANTS.ENDPOINTS.home);
-    } else {
-      this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: '0' });
-    }
-    
+    this.http.post(this.baseurl + 'logout', {});    
     this.util.headerSubject.next(false);
     this.util.cartSubject.next(false);
     this.util.showkycProgress.next(false);
     this.util.isEnrolled.next(false);
+    this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: '0' });
     //this.toast.success("You've successfully logged out");
   }
   // Validate captcha token
