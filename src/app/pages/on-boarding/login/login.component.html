@@ -134,6 +134,7 @@
                                 </mat-form-field>
                                 <ng-container *ngIf="rollNumber.invalid && rollNumber.touched">
                                     <mat-error *ngIf="rollNumber.errors?.required" class="error">{{'Enrollment number is required'}}</mat-error>
+                                    <mat-error *ngIf="rollNumber.errors?.enrollno" class="error">{{'Please enter valid Enrollment number'}}</mat-error>
                                 </ng-container>
                             </div>
                             <div class="inputContainer">
@@ -165,9 +166,14 @@
                             <div class="inputContainer">
                                 <mat-form-field appearance="outline">
                                     <mat-label>Department</mat-label>
-                                    <mat-select formControlName="department">
-                                        <mat-option [value]="item?.departmentId" *ngFor="let item of departmentData">{{item?.departmentName}}</mat-option>
-                                    </mat-select>
+                                    <input  matInput [(ngModel)]="departmentFilter.departmentName" formControlName="department" [matAutocomplete]="deptauto" (keyup)="checkDeptList();departmentflag = false">
+                                    <!-- <em matSuffix class="icon-arrow_drop_down"></em> -->
+                                    <mat-autocomplete #deptauto="matAutocomplete">
+                                        <mat-option #DeptData (click)="departmentflag = true" [value]="item.departmentName"
+                                            *ngFor="let item of departmentData | filterBy:departmentFilter" [matTooltip]="item.departmentName">
+                                            {{item?.departmentName}}
+                                        </mat-option>
+                                    </mat-autocomplete>
                                 </mat-form-field>
                                 <ng-container *ngIf="dept.invalid && dept.touched">
                                     <mat-error *ngIf="dept.errors?.required" class="error">{{'Department is required'}}</mat-error>

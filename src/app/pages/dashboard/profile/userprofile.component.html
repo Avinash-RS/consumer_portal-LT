@@ -50,7 +50,7 @@
                     </div>
                     <form [formGroup]="addressEntryForm" autocomplete="off" (submit)="profileSubmit()">
                         <div class="formFields">
-                            <div>
+                            <div class="editable">
                                 <label>First Name <span class="mandatory">*</span></label>
                                 <mat-form-field appearance="fill">
                                     <input type="text" matInput placeholder="First Name" formControlName="firstname">
@@ -60,7 +60,7 @@
                                     <mat-error *ngIf="firstname.errors?.alphaNum30" class="error">{{'Alpha numeric with maximum of 30 characters only allowed'}}</mat-error>
                                 </ng-container>
                             </div>
-                            <div>
+                            <div class="editable">
                                 <label>Last Name <span class="mandatory">*</span></label>
                                 <mat-form-field appearance="fill">
                                     <input type="text" matInput placeholder="Last Name" formControlName="lastname">
@@ -70,7 +70,7 @@
                                     <mat-error *ngIf="lastname.errors?.alphaNum30" class="error">{{'Alpha numeric with maximum of 30 characters only allowed'}}</mat-error>
                                 </ng-container>
                             </div>
-                            <div>
+                            <div class="editable">
                                 <label>Email Address <span class="mandatory">*</span></label>
                                 <mat-form-field appearance="fill">
                                     <input type="email" matInput placeholder="Email Address" formControlName="email" readonly>
