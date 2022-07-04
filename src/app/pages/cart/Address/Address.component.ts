@@ -196,6 +196,8 @@ export class AddressComponent implements OnInit {
       closeOnNavigation: true,
       disableClose: true,
       panelClass: 'addNewAddressContainer'
+    }).afterClosed().subscribe((res) => {
+      this.districtList = [];
     });
     this.addressFormInitialize();
 

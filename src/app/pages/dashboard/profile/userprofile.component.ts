@@ -197,6 +197,9 @@ export class UserprofileComponent implements OnInit {
         data.Active = true;
       }
     })
+    if(value.tabname != "account"){
+      this.accountSettingsForm.reset();
+    }
   }
   getSkillChartData(){
     // this.userDetails.email
