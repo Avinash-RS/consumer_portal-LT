@@ -78,7 +78,9 @@ export class AddressComponent implements OnInit {
     let getparams = { userId: this.userDetails.userId }
     this.cartService.getAddressByUserid(getparams).subscribe((data: any) => {
       this.addressList = data.data;
-      this.SelectedIndex = this.addressList[0];
+      if(this.addressList){
+        this.SelectedIndex = this.addressList[0];
+      }
       this.util.addressSubject.next(this.SelectedIndex);
     });
   }
