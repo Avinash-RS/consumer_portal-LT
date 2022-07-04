@@ -134,6 +134,7 @@
                                 </mat-form-field>
                                 <ng-container *ngIf="rollNumber.invalid && rollNumber.touched">
                                     <mat-error *ngIf="rollNumber.errors?.required" class="error">{{'Enrollment number is required'}}</mat-error>
+                                    <mat-error *ngIf="rollNumber.errors?.enrollno" class="error">{{'Please enter valid Enrollment number'}}</mat-error>
                                 </ng-container>
                             </div>
                             <div class="inputContainer">
