@@ -18,6 +18,7 @@ import { DragScrollComponent } from 'ngx-drag-scroll';
 import { ToastrService } from 'ngx-toastr';
 import * as CryptoJS from 'crypto-js';
 import { UtilityService } from 'src/app/services/utility.service';
+import { GoogleAnalyticsService } from 'src/app/services/google-analytics.service';
 @Component({
   selector: 'app-assessments-list',
   templateUrl: './assessments-list.component.html',
@@ -92,11 +93,13 @@ export class AssessmentsListComponent implements OnInit {
               public breakpointObserver: BreakpointObserver,
               public toast: ToastrService,
               private util: UtilityService,
+              private ga_service: GoogleAnalyticsService,
   ) { }
 
   ngOnInit() {
     this.userDetails = JSON.parse(this.appConfig.getLocalStorage('userDetails'));
     this.setSliceValue();
+    this.ga_service.gaSetPage("View all courses")
     if (this.route.snapshot.queryParams.selectedTab) {
       this.fromTab = atob(this.route.snapshot.queryParams.selectedTab);
       // this.productType = this.route.snapshot.queryParams.productType ? atob(this.route.snapshot.queryParams.productType) : 'all';
@@ -148,7 +151,7 @@ export class AssessmentsListComponent implements OnInit {
             this.sliceDigits = 6;
           }
         }
-       
+
       });
   }
   getDomain(type) {
@@ -210,8 +213,19 @@ export class AssessmentsListComponent implements OnInit {
     this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.home, { fromPage: btoa("viewAll"), selectedTab: btoa(this.selectedTab) });
   }
 
-  aboutAssessment(cid,productType) {
+  aboutAssessment(cid,name) {
       this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutCourse, { id: btoa(cid), selectedTab: btoa('All') ,productType : btoa('course')});
+      let ga_params = {
+        currency: 'INR',
+        value: 0.00,
+        items: [
+          {
+            item_id: cid,
+            item_name: name,
+          },
+        ],
+      };
+      this.ga_service.gaEventTrgr("view_item", "User viewing course details", "click", ga_params)
   }
   filterTab(e){
     this.fromTab='All';
@@ -230,8 +244,8 @@ export class AssessmentsListComponent implements OnInit {
     this.noDataFound = this.catlogData.length == 0 ? true : false;
   }
   enroll(e) {
-    if (this.userDetails) { 
-      const apiParam = 
+    if (this.userDetails) {
+      const apiParam =
         {
           "enrolledCourse": e?.enrolledCourse,
           "is_free": e?.is_free,

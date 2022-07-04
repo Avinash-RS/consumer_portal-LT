@@ -13,6 +13,7 @@ import { LoadingService } from 'src/app/services/loading.service';
 import { trigger, state, style, transition,
   animate, group
 } from '@angular/animations';
+import { GoogleAnalyticsService } from "src/app/services/google-analytics.service";
 @Component({
   selector: "app-header",
   templateUrl: "./header.component.html",
@@ -20,10 +21,10 @@ import { trigger, state, style, transition,
   animations: [SlideInOutAnimation,
     trigger('mobileslideInOut', [
       state('in', style({
-          'height': 'calc(100vh - 74px)' 
+          'height': 'calc(100vh - 74px)'
       })),
       state('out', style({
-          'height': '0px' 
+          'height': '0px'
       })),
       transition('in => out', [group([
           animate('600ms ease-in-out', style({
@@ -31,7 +32,7 @@ import { trigger, state, style, transition,
           })),
       ]
       )]),
-      transition('out => in', [group([          
+      transition('out => in', [group([
           animate('600ms ease-in-out', style({
               'height': 'calc(100vh - 74px)'
           }))
@@ -86,6 +87,7 @@ export class HeaderComponent implements OnInit {
     public router: Router,
     private location: Location,
     private _loading: LoadingService,
+    private ga_service: GoogleAnalyticsService,
     ) {
       this.profImage = this.appConfig.getLocalStorage('profileImage');
   }
@@ -141,7 +143,7 @@ export class HeaderComponent implements OnInit {
       } else if (url == '/myAssessment'){
         this.isAssement = true;
       }
-    
+
   }
 
   mobileclick() {
@@ -167,7 +169,7 @@ export class HeaderComponent implements OnInit {
     // this.isCourse = false;
     return false;
   }
-  setDefaultMenu(){    
+  setDefaultMenu(){
     this.megaMenuL1Data = [];
     this.megaMenuL2Data = [];
     this.catalogMenu.forEach((element,index)=>{
@@ -271,7 +273,7 @@ export class HeaderComponent implements OnInit {
     this.assessmentsList= false;
     this.coursesList = false;
   }
-  
+
   editProfile(){
     this.appConfig.routeNavigation(APP_CONSTANTS.ENDPOINTS.userprofile);
     this.inActiveTabs();
@@ -302,7 +304,7 @@ export class HeaderComponent implements OnInit {
       this.isCourse = false;
       this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: '0' });
     }
-    
+
   }
 
   showCredenitals() {
@@ -317,7 +319,7 @@ export class HeaderComponent implements OnInit {
     } else {
       this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: '0' });
     }
-    
+
     this.inActiveTabs();
   }
 
@@ -360,6 +362,17 @@ export class HeaderComponent implements OnInit {
     this.coursesList = false;
     this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutCourse,{id : btoa(data?.levelIds[0]?.LevelId ? data.levelIds[0].LevelId : ''), selectedTab : btoa(data.parentId) ,productType : btoa('course')});
     this.inActiveTabs();
+    let ga_params = {
+      currency: 'INR',
+      value: 0.00,
+      items: [
+        {
+          item_id: data.cid,
+          item_name: data.name,
+        },
+      ],
+    };
+    this.ga_service.gaEventTrgr("view_item", "User viewing course details", "click", ga_params)
   }
 
   aboutAssessment(cid) {
@@ -376,7 +389,7 @@ export class HeaderComponent implements OnInit {
     this.assessmentsList= false;
     this.coursesList = false;
   }
-  closeMegaMenu_() { 
+  closeMegaMenu_() {
     this.showMenu = 'out';
     this.mobileshowMenu = 'out';
     this.registerMenu = 'out';

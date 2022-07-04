@@ -8,6 +8,7 @@ import { UtilityService } from "src/app/services/utility.service";
 import { AppConfigService } from "src/app/utils/app-config.service";
 import { GlobalValidatorsService } from "src/app/validators/global-validators.service";
 import { GlobalValidatorService } from 'src/app/services/global-validator.service';
+import { GoogleAnalyticsService } from "src/app/services/google-analytics.service";
 @Component({
   selector: "app-Address",
   templateUrl: "./Address.component.html",
@@ -36,6 +37,7 @@ export class AddressComponent implements OnInit {
      private util: UtilityService,public toast: ToastrService,
     private appconfig: AppConfigService, private appConfig: AppConfigService,
     private glovbal_validators: GlobalValidatorService,
+    private ga_service: GoogleAnalyticsService,
   ) {
 
   }
@@ -47,6 +49,7 @@ export class AddressComponent implements OnInit {
     this.getAddress();
     this.getState()
     this.getaddressTags()
+    this.ga_service.gaSetPage("Address Selection",{})//Google Analytics
   }
 
   addressFormInitialize() {

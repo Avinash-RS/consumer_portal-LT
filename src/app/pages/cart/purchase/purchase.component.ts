@@ -8,6 +8,7 @@ import { APP_CONSTANTS } from "src/app/utils/app-constants.service";
 import { UtilityService } from 'src/app/services/utility.service';
 import { MatStepper } from '@angular/material/stepper';
 import Swal from 'sweetalert2';
+import { GoogleAnalyticsService } from 'src/app/services/google-analytics.service';
 @Component({
   selector: 'app-purchase',
   templateUrl: './purchase.component.html',
@@ -40,7 +41,8 @@ export class PurchaseComponent implements OnInit {
     private dialog: MatDialog,
     private catalogService: CatalogService, public toast: ToastrService,
     private appconfig: AppConfigService, private appConfig: AppConfigService,
-    private util: UtilityService
+    private util: UtilityService,
+    private ga_service: GoogleAnalyticsService,
   ) { }
 
   ngOnInit(): void {
@@ -52,6 +54,7 @@ export class PurchaseComponent implements OnInit {
       secondCtrl: ['', Validators.required]
     });
     this.getCart()
+    this.ga_service.gaSetPage("Cart",{})//Google Analytics
   }
   getCart() {
     var params = {
@@ -101,6 +104,17 @@ export class PurchaseComponent implements OnInit {
             this.toast.success(response.message);
             this.util.cartSubject.next(true);
             this.getCart();
+            //analytics event START
+          let ga_params:any = {
+            currency: "INR",
+            items: [
+              {
+                item_id: id,
+              }
+            ]
+          }
+          this.ga_service.gaEventTrgr("remove_from_cart", "remove_from_cart", "Click", ga_params);
+          //analytics event END
           } else {
             this.toast.warning('Something went wrong')
           }

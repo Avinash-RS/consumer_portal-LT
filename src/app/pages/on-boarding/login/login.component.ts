@@ -16,6 +16,7 @@ import * as CryptoJS from 'crypto-js';
 import { environment } from '@env/environment';
 import { RecaptchaErrorParameters } from "ng-recaptcha";
 import { CartService } from 'src/app/services/cart.service';
+import { GoogleAnalyticsService } from 'src/app/services/google-analytics.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -60,16 +61,19 @@ export class LoginComponent implements OnInit {
     private util: UtilityService,
     private catalogService : CatalogService,
     private cookieService: CookieService ,
-    private router:Router, 
-    private cartsevice: CartService
+    private router:Router,
+    private cartsevice: CartService,
+    private ga_service: GoogleAnalyticsService,
   ) {
     this.appconfig.clearSessionStorage();
     this.route.queryParams.subscribe(params => {
       if (params.fromPage == '0') {
         this.entryIndex = 0;
         this.loginFormInitialize();
+        this.ga_service.gaSetPage("Login",{userID:null})//Google Analytics
         if(params.activation == '1'){
           this.toast.success('Account activated successfully');
+          this.ga_service.gaSetUserProps({acc_activation:true})
           // this.showKyc = true
         }
       } else {
@@ -77,8 +81,10 @@ export class LoginComponent implements OnInit {
         this.registerFormInitialize();
         this.getCollegeMaster();
         this.getDepartmentMaster();
+        this.ga_service.gaSetPage("Registration",{userID:null})
         if(params.activation == '1'){
           this.toast.error('Activation link expired, please register again');
+          this.ga_service.gaSetUserProps({reg_link:"Expired"})
         }
       }
     });
@@ -127,11 +133,13 @@ export class LoginComponent implements OnInit {
       this.showKyc=false
       this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: e.index });
       this.registerFormInitialize();
+      this.ga_service.gaSetPage("Registration",{userID:null})
     } else {
       this.entryIndex = 0;
       this.showKyc=false
       this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: e.index });
       this.loginFormInitialize();
+      this.ga_service.gaSetPage("Login",{userID:null})
     }
     this.recaptchaStr = '';
     setTimeout(()=>{
@@ -178,7 +186,7 @@ export class LoginComponent implements OnInit {
       this.gv.validateAllFields(this.registerForm);
     }
   }
- 
+
   onError(errorDetails: RecaptchaErrorParameters): void {
   }
 //register
@@ -213,6 +221,15 @@ resolvedSignIn(captchaSignInResponse: string){
       this.commonService.login(loginData).subscribe((data: any) => {
         // console.log(data, 'karthik Data')
         if (data.success) {
+
+          //analytics event START
+          let ga_params:any = {
+            method:"Direct",
+            userID:data.data.userId
+          }
+          this.ga_service.gaEventTrgr("login", "Login_Success", "Click", ga_params);
+          //analytics event END
+
           data.data['emailId'] = data.data.email
           data.data.email = CryptoJS.AES.encrypt(data.data.email.toLowerCase(), this.secretKey.trim()).toString();
           data.data.userId = CryptoJS.AES.encrypt(data.data.userId.toLowerCase(), this.secretKey.trim()).toString();
@@ -368,7 +385,7 @@ resolvedSignIn(captchaSignInResponse: string){
   get collegeR() {
     return this.registerForm.get('college');
   }
- 
+
   get passwordR() {
     return this.registerForm.get('password');
   }
@@ -382,7 +399,7 @@ resolvedSignIn(captchaSignInResponse: string){
   get dept() {
     return this.registerForm.get('department');
   }
- 
+
   get rollNumber() {
     return this.registerForm.get('enrollNumber');
   }

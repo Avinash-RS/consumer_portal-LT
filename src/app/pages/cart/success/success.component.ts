@@ -10,6 +10,7 @@ import * as moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
 import { BookSlotComponent } from '../../bookSlot/bookSlot.component';
 import { environment } from '@env/environment';
+import { GoogleAnalyticsService } from 'src/app/services/google-analytics.service';
 
 @Component({
   selector: 'app-success',
@@ -67,6 +68,7 @@ export class SuccessComponent implements OnInit {
     private catalog: CatalogService,
     public toast: ToastrService,
     private appconfig: AppConfigService,
+    private ga_service: GoogleAnalyticsService,
 
   ) {
     this.userDetails = JSON.parse(this.appConfig.getLocalStorage('userDetails'));
@@ -79,6 +81,7 @@ export class SuccessComponent implements OnInit {
         postData.order_id = atob(params.orderId);
         this.catalog.getOrder(postData).subscribe((data: any) => {
           if(data?.success){
+            this.ga_service.gaEventTrgr("purchase",  "a user has completed a purchase.", "checkout", {transaction_id:params.orderId})
             this.orderlist = data.data;
             this.syncLxp();
           }
@@ -176,6 +179,6 @@ export class SuccessComponent implements OnInit {
   // reschedule(item){
 
   // }
- 
+
 
 }
