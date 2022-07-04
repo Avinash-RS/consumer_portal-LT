@@ -163,7 +163,7 @@ export class CommonService {
   getProfileCertificate(value){
     var data = {
       'userId': value
-    }
+    };
     return this.http.post(this.baseurl + 'getUserCertificate',data);
   }
 }

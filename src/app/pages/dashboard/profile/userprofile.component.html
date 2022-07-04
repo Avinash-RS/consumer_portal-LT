@@ -331,22 +331,21 @@
                     <p class="desc">Download Completed Course Certificate</p>
                     <div class="downloadCertificate">
                         <ul *ngIf="isCertificate">
-                            <li>
+                            <li *ngFor="let data of DataofCertificate">
                                 <figure>
                                     <img src="https://lmsassetspremium.lntedutech.com/portalicons/download-certificate.webp" alt="" />
                                 </figure>
                                 <div class="courseName common">
                                     <span class="course">Course</span>
-                                    <span class="courseTitle">Certificate in Formwork Engineering</span>
+                                    <span class="courseTitle">{{data.courseName}}</span>
                                 </div>
                                 <div class="completedOn common">
                                     <span class="course">Course</span>
-                                    <span class="courseTitle">April 2022</span>
+                                    <span class="courseTitle">{{data?.uploadCertificate?.uploadDate |date : 'MMM yyyy'}}</span>
                                 </div>
                                 <div class="download">
                                     <button class="view" (click)="viewCertificate(data)">View</button>
-                                    <!-- <button class="load" (click)="downloadCertificate(data)">Download</button> -->
-                                    <!-- <button><em class="icon-Download"></em> Download</button> -->
+                                    <button class="load" (click)="downloadCertificate(data)">Download</button>
                                 </div>
                             </li>
                         </ul>
