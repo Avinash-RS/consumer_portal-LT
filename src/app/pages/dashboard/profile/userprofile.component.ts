@@ -503,6 +503,7 @@ getProfilePercentage(){
     return true;
   }
 
+  // tslint:disable-next-line:typedef
   getCertificates() {
     this.commonService.getProfileCertificate(this.userDetails.userId).subscribe((result: any) => {
       if (result.success) {
