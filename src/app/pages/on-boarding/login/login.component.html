@@ -193,7 +193,7 @@
                                     <mat-label>Confirm Password</mat-label>
                                     <input autocomplete="off" name="password2" id="signup_pwd2" formControlName="password2" matInput [type]="hide1 ? 'password' : 'text'">
                                     <div mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1">
-                                    <em class="{{hide ? 'icon-Hide' : 'icon-View'}}"></em>
+                                    <em class="{{hide1 ? 'icon-Hide' : 'icon-View'}}"></em>
                                     </div>
                                 </mat-form-field>
                                 <ng-container *ngIf="password2.invalid && password2.touched || (registerForm.errors?.notMatch && (registerForm.touched || registerForm.dirty))">
