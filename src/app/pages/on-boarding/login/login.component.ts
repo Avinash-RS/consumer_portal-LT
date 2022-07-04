@@ -24,9 +24,14 @@ import { CartService } from 'src/app/services/cart.service';
 
 export class LoginComponent implements OnInit {
   @ViewChild('OptionData') searchedcollageData: ElementRef;
+  @ViewChild('DeptData') searchedDeptData: ElementRef;
   collegeFilter: any = { collegename: '' };
+  departmentFilter: any = { departmentName: '' };
   collagename: any;
   collageId: any;
+  departmentshortcode: any;
+  departmentName: any;
+  departmentId: any;
   isloadData;
   hide = true;
   hide1 = true;
@@ -41,6 +46,7 @@ export class LoginComponent implements OnInit {
   collegeData: any = [];
   departmentData: any = [];
   collegeflag = false;
+  departmentflag = false;
   yearData = ['2010','2011','2012','2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025'];
   otherData = {
     collegeId: "0",
@@ -143,6 +149,10 @@ export class LoginComponent implements OnInit {
     if (this.registerForm.valid) {
       if (!this.collegeflag){
         this.toast.warning('Please select valid college name');
+        return false;
+      } 
+      if (!this.departmentflag) {
+        this.toast.warning('Please select valid department name');
         return false;
       }
       var encryptedname = CryptoJS.AES.encrypt(this.registerForm.value.email.toLowerCase().trim(), this.secretKey.trim()).toString();
@@ -290,6 +300,19 @@ resolvedSignIn(captchaSignInResponse: string){
     this.collageId = '';
     setTimeout(() => {
       if (this.searchedcollageData) {
+        this.isloadData = false;
+      } else {
+        this.isloadData = true;
+      }
+    });
+  }
+
+  checkDeptList() {
+    this.departmentName = [];
+    this.departmentId = '';
+    this.departmentshortcode = '';
+    setTimeout(() => {
+      if (this.searchedDeptData) {
         this.isloadData = false;
       } else {
         this.isloadData = true;
