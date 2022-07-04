@@ -123,6 +123,7 @@ export class UserprofileComponent implements OnInit {
   currpasshide = true;
   newpasshide = true;
   conpasshide = true;
+  hasChange: boolean = false;
   constructor(public commonService: CommonService,
     public route: ActivatedRoute,
     private router:Router,
@@ -167,8 +168,8 @@ export class UserprofileComponent implements OnInit {
     this.getSkillChartData();
     this.selectedKycTab = "Personal";
     // this.tabchanged();
-    this.getProfilePercentage();
-    this.triggerProfilepercentage();
+    // this.getProfilePercentage();
+    // this.triggerProfilepercentage();
     this.navigateParentTab();
     this.setdob();
   }
@@ -231,7 +232,10 @@ export class UserprofileComponent implements OnInit {
         this.commonService.getprofileImgUpdate(formData).subscribe((data: any) => {
           if (data.data.path) {
             this.imageURL = data.data.url;
-            this.toast.success(data.message);
+            if (this.imageURL) {
+              this.addressEntryForm.controls.image.patchValue(this.imageURL);
+              this.toast.success(data.message);
+            }
           }
           else {
             this.toast.warning('Something went wrong');
@@ -274,36 +278,39 @@ export class UserprofileComponent implements OnInit {
   }
 
   profileSubmit() {
-    this.addressEntryForm.controls.userId.patchValue(this.userDetails.userId);
-    if (this.imageURL) {
-      this.addressEntryForm.controls.image.patchValue(this.imageURL);
-    }
-    // console.log(this.addressEntryForm);
-    // return;
-    if (this.addressEntryForm.valid) {
-      this.addressEntryForm.value.email = this.userDetails.email;
-      this.commonService.profileUpdate(this.addressEntryForm.value).subscribe((data: any) => {
-        if (data.success) {
-          this.userDetails.firstname = this.addressEntryForm.value.firstname;
-          this.userDetails.lastname = this.addressEntryForm.value.lastname;
-          this.appconfig.setLocalStorage('userDetails', JSON.stringify(this.userDetails));
-          //this.toast.success(data.message);
-          this.toast.success("Profile saved successfully");
-          // this.getProfilePercentage();
-          // this.selection = 'KYC';
-          if (this.imageURL) {
-            this.appconfig.setLocalStorage('profileImage', this.imageURL);
-            this.util.headerSubject.next(true);
-          }
-        }
-        else {
-          this.toast.warning('Something went Wrong');
-        }
-      });
+    if(this.hasChange) {
+      this.addressEntryForm.controls.userId.patchValue(this.userDetails.userId);
+      // console.log(this.addressEntryForm);
+       // return;
+       if (this.addressEntryForm.valid) {
+         this.addressEntryForm.value.email = this.userDetails.email;
+         this.commonService.profileUpdate(this.addressEntryForm.value).subscribe((data: any) => {
+           if (data.success) {
+             this.userDetails.firstname = this.addressEntryForm.value.firstname;
+             this.userDetails.lastname = this.addressEntryForm.value.lastname;
+             this.appconfig.setLocalStorage('userDetails', JSON.stringify(this.userDetails));
+             //this.toast.success(data.message);
+             this.toast.success("Profile saved successfully");
+             // this.getProfilePercentage();
+             // this.selection = 'KYC';
+             if (this.imageURL) {
+               this.appconfig.setLocalStorage('profileImage', this.imageURL);
+               this.util.headerSubject.next(true);
+             }
+           }
+           else {
+             this.toast.warning('Something went Wrong');
+           }
+         });
+       }
+       else {
+         this.toast.error('Please fill in all required fields');
+       }
     }
     else {
-      this.toast.error('Please fill in all required fields');
+      this.toast.warning("No changes to save");
     }
+    
   }
   triggerProfilepercentage(){
     this.util.percentageSubject.subscribe((result:any)=>{
@@ -340,11 +347,17 @@ getProfilePercentage(){
           image: this.profileData?.profile?.profileImage,
         });
         this.imageURL = this.profileData?.profile?.profileImage;
+        this.checkFormChanges();
       }
     })
     // password: ['', [Validators.required, this.gv.passwordRegex(), Validators.minLength(8), Validators.maxLength(32)]],
   }
-
+  checkFormChanges() {
+    const initialValue = this.addressEntryForm.value;
+    this.addressEntryForm.valueChanges.subscribe(value =>{
+      this.hasChange = Object.keys(initialValue).some(key => this.addressEntryForm.value[key] != initialValue[key]);
+    });
+  }
   get firstname() {
     return this.addressEntryForm.get('firstname');
   }
