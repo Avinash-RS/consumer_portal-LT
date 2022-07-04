@@ -27,10 +27,10 @@
                 <li><a [ngClass]="isAssement ? 'activeTab' : ''" (click)="onlineAssessment('assessment')">My Assessment</a></li>
             </ul>
         </nav> -->
-        <button class="coursebtn" (click)="gotoCourse()" *ngIf="showAvatar && ispurchased">My Course</button>
     </div>
 
     <div class="rightWrapper">
+        <button class="coursebtn" (click)="gotoCourse()" *ngIf="showAvatar && ispurchased">My Courses</button>
         <div *ngIf="!showAvatar" class="mobileLogin">
             <button (click)="mobileclick()"> <span>Login</span> <em class="icon-DownArrow"></em></button>
         </div>
@@ -263,7 +263,8 @@
                     <div class="closeIcon"><em class="icon-Close" (click)="closeMegaMenu_()"></em></div>
                 </div>
                 <nav class="topMenuMobile" *ngIf="showAvatar">
-                    <a [ngClass]="isCourse ? 'activeTab' : ''" (click)="onlineAssessment('course')">My Courses</a>
+                    <!-- <a [ngClass]="isCourse ? 'activeTab' : ''" (click)="onlineAssessment('course')">My Courses</a> -->
+                    <a [ngClass]="isCourse ? 'activeTab' : ''" (click)="gotoCourse()">My Courses</a>
                 </nav>
                 <div class="secondLevel commonSyle">
                     <span class="header-txt">Categories</span>

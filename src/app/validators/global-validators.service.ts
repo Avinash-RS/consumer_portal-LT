@@ -88,4 +88,10 @@ export class GlobalValidatorsService {
       const passwordHard: RegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*\.\(\)\{\}\[\]\:\;\<\>\,\?\/\\\~\_\+\-\=\|])(?=.{0,})/gm;
       return this.regexValidator(passwordHard, {password: true});
     }
+
+    //First Name and Last name Validators
+    alpha30() {
+      const alpha: RegExp = /^([a-zA-Z]){0,30}$/;
+      return this.regexValidator(alpha, {alpha30: true});
+    }
 }
