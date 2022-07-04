@@ -167,7 +167,7 @@
                                 <mat-form-field appearance="outline">
                                     <mat-label>Department</mat-label>
                                     <input  matInput [(ngModel)]="departmentFilter.departmentName" formControlName="department" [matAutocomplete]="deptauto" (keyup)="checkDeptList();departmentflag = false">
-                                    <em matSuffix class="icon-arrow_drop_down"></em>
+                                    <!-- <em matSuffix class="icon-arrow_drop_down"></em> -->
                                     <mat-autocomplete #deptauto="matAutocomplete">
                                         <mat-option #DeptData (click)="departmentflag = true" [value]="item.departmentName"
                                             *ngFor="let item of departmentData | filterBy:departmentFilter" [matTooltip]="item.departmentName">
