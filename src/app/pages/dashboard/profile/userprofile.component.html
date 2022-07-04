@@ -57,7 +57,8 @@
                                 </mat-form-field>
                                 <ng-container *ngIf="firstname.invalid && firstname.touched">
                                     <mat-error *ngIf="firstname.errors?.required" class="error">{{'First name is required'}}</mat-error>
-                                    <mat-error *ngIf="firstname.errors?.alphaNum30" class="error">{{'Alpha numeric with maximum of 30 characters only allowed'}}</mat-error>
+                                    <!-- <mat-error *ngIf="firstname.errors?.alphaNum30" class="error">{{'Alpha numeric with maximum of 30 characters only allowed'}}</mat-error> -->
+                                    <mat-error *ngIf="firstname.errors?.alpha30" class="error">{{'First name should be alphabets and maximum of 30 characters only allowed'}}</mat-error>
                                 </ng-container>
                             </div>
                             <div>
@@ -67,7 +68,8 @@
                                 </mat-form-field>
                                 <ng-container *ngIf="lastname.invalid && lastname.touched">
                                     <mat-error *ngIf="lastname.errors?.required" class="error">{{'Last name is required'}}</mat-error>
-                                    <mat-error *ngIf="lastname.errors?.alphaNum30" class="error">{{'Alpha numeric with maximum of 30 characters only allowed'}}</mat-error>
+                                    <!-- <mat-error *ngIf="lastname.errors?.alphaNum30" class="error">{{'Alpha numeric with maximum of 30 characters only allowed'}}</mat-error> -->
+                                    <mat-error *ngIf="lastname.errors?.alpha30" class="error">{{'Last name should be alphabets and maximum of 30 characters only allowed'}}</mat-error>
                                 </ng-container>
                             </div>
                             <div>
