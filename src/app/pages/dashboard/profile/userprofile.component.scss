@@ -977,6 +977,11 @@
 //Close Account Ends
 
 ::ng-deep.userDescription {
+    .editable{
+        .mat-form-field{
+            color: grey;
+        }
+    }
     .mat-radio-button {
         margin-left: 10px;
     }

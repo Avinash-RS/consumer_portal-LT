@@ -38,6 +38,32 @@ header {
         @include sm {
             width: 40%;
         }
+        .coursebtn {
+            font-family: 'OpenSans';
+            padding: 0.375em 1.25em;
+            color: $blackColor;
+            font-weight: 600;
+            margin-right: 1em;
+            background-color: $whiteColor;
+            border: 1px solid $primaryColor;
+            margin-right: 0;
+            font-size: 1.125em;
+            font-weight: 600;
+            border-radius: 5px;
+            box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease-in-out;
+            display: none;
+            @include md {
+                margin-right: 2em;
+            }
+            @include lg {
+                display: inline-block;
+            }
+            &:hover {
+                color: $whiteColor;
+                background-color: $primaryColor;
+            }
+        }
     }
     .leftWrapper {
         width: 65%;
@@ -46,27 +72,6 @@ header {
         align-items: center;
         @include sm {
             width: 60%;
-        }
-        .coursebtn {
-            padding: 0.375em 2.25em;
-            color: $blackColor;
-            font-weight: 600;
-            margin-right: 4em;
-            background-color: $whiteColor;
-            border: 1px solid $primaryColor;
-            margin-right: 0;
-            font-size: 1em;
-            font-weight: 400;
-            border-radius: 5px;
-            box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease-in-out;
-            @include md {
-                margin-right: 1em;
-            }
-            &:hover {
-                color: $whiteColor;
-                background-color: $primaryColor;
-            }
         }
     }
 }

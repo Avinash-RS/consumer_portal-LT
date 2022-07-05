@@ -302,4 +302,42 @@ footer {
         }
       }
     }
-  }
+}
+.footerRights {
+    position: relative;
+    background-color: $whiteSmoke;
+    padding: 1em 0;
+    font-size: 13px;
+    @include md {
+      font-size: 14px;
+    }
+    @include lg {
+      font-size: 15px;
+    }
+    @include xl {
+      font-size: 16px;
+    }
+    .copyrights {
+        // padding: 0.75em 0;
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        @include sm {
+            flex-direction: row;
+            align-items: center;
+        }
+        @include md {
+            text-align: left;
+            // padding: 1.25em 0;
+        }
+        p {
+            margin: 0;
+            font-family: 'Lato';
+            font-size: 0.9375em;
+            font-weight: 400;
+            color: $mediumGrey;
+        }
+    }
+}
