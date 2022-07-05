@@ -81,6 +81,8 @@ export class AddressComponent implements OnInit {
       this.addressList = data.data;
       if(this.addressList){
         this.SelectedIndex = this.addressList[0];
+      } else {
+        this.SelectedIndex = null;
       }
       this.util.addressSubject.next(this.SelectedIndex);
     });

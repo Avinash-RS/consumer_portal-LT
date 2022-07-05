@@ -21,13 +21,16 @@ export class CheckoutComponent implements OnInit {
   @Input('tab') currentTab: any;
   @Input('checkoutData') cartList: any;
   @Input('cartTotal') cartAmount: any;
+  @Input('amountGst') amountGst: any;
   encRequestRes: any;
   //accessCode = 'AVFQ92HF95BT32QFTB'; Sufin accessCode
   accessCode:any;//Lntiggnite accessCode
   selectedAddress: any;
   totalPrice = 0;
+  totalCartPrice = 0;
   userDetails: any;
   subsContent: any;
+  gstAmount = 0;
   constructor(
     private catalogService: CatalogService,
     private cartService: CartService,
@@ -45,15 +48,42 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit() {
     this.userDetails = JSON.parse(this.appconfig.getLocalStorage('userDetails'));
-    this.totalCalculator();
+    this.getCart();
+    //this.totalCalculator();
   }
-  ngOnChanges(data: any) {
-    this.cartList = data.cartList.currentValue;
-    this.totalPrice = data.cartAmount.currentValue
-
-    this.totalCalculator()
+  // ngOnChanges(data: any) {
+  //   this.cartList = data.cartList.currentValue;
+  //   this.totalPrice = data.cartAmount.currentValue;
+  //   this.gstAmount = this.amountGst;
+  //   this.totalCalculator()
+  // }
+  ngOnChanges(){
+    this.getCart();
   }
-
+  getCart() {
+    var params = {
+      "userId": this.userDetails.userId
+    }
+    this.catalogService.getCart(params).subscribe((response: any) => {
+      if (response.data.length > 0 && response.success) {
+        this.cartList = response.data;
+        this.totalPrice = response.totalPrice;
+        this.gstAmount = response.gstPrice;
+        this.totalCartPrice = 0;
+        this.cartList.forEach((list) => {
+          list.assessmentDetails.sellingPrice = parseInt(list.assessmentDetails.sellingPrice)
+          if(!list.assessmentDetails.is_free){
+          this.totalCartPrice += list.assessmentDetails.sellingPrice
+          }
+        })
+      } else {
+        this.cartList = [];
+        this.totalCartPrice = 0;
+        this.totalPrice = 0;
+        this.gstAmount = 0;
+      }
+    })
+  }
   ngOnDestroy() {
     this.subsContent.unsubscribe();
   }
@@ -61,15 +91,13 @@ export class CheckoutComponent implements OnInit {
   totalCalculator() {
     this.cartList = this.cartList ? this.cartList : [];
     this.totalPrice = this.totalPrice;
-    //console.log(this.cartList);
-    //console.log(this.cartAmount,this,this.totalPrice,'price')
-    // console.log(this.cartList)
-    // this.cartList.forEach((list) => {
-    //   list.assessmentDetails.sellingPrice = parseInt(list.assessmentDetails.sellingPrice)
-    //   if(!list.assessmentDetails.is_free){
-    //   this.totalPrice += list.assessmentDetails.sellingPrice
-    //   }
-    // })
+    this.gstAmount = this.amountGst;
+      this.cartList.forEach((list) => {
+      list.assessmentDetails.sellingPrice = parseInt(list.assessmentDetails.sellingPrice)
+      if(!list.assessmentDetails.is_free){
+      this.totalCartPrice += list.assessmentDetails.sellingPrice
+      }
+    })
   }
   continueClick() {
     this.currentTab.next();

@@ -53,7 +53,7 @@
               <div class="heading" >{{footerData?.heading}}</div>
               <div class="contacts"> 
                 <span class="eduEmail"><figure><img [src]="footerData?.contact?.email?.imgUrl" alt=""></figure><p><a href="noMailForYou@spambot.com" rel="nofollow" onclick="this.href='mailto:' + 'contact' + '@' + 'lntedutech.com'">{{footerData?.contact?.email?.txt}}</a></p></span>
-                <span class="contactIcon"><figure><img [src]="footerData?.contact?.phone?.imgUrl" alt=""></figure><p>{{footerData?.contact?.phone?.txt}}</p></span>
+                <!-- <span class="contactIcon"><figure><img [src]="footerData?.contact?.phone?.imgUrl" alt=""></figure><p>{{footerData?.contact?.phone?.txt}}</p></span> -->
               </div>
             </div>
             <div class="right">
@@ -64,5 +64,13 @@
             </div>
           </div>
         </div>
-      </section>
+    </section>
+    
+    <section class="footerRights">
+        <div class="container" >
+            <div class="copyrights">
+            <p>&copy; {{footerData.copyRights}}</p>
+            </div>
+        </div>
+    </section>
 </footer>

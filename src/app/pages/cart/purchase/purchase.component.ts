@@ -36,6 +36,7 @@ export class PurchaseComponent implements OnInit {
   cartList = [];
   batchInfo = false;
   totalAmount = 0;
+  gstAmount = 0;
   constructor(
     private _formBuilder: FormBuilder,
     private dialog: MatDialog,
@@ -63,7 +64,8 @@ export class PurchaseComponent implements OnInit {
     this.catalogService.getCart(params).subscribe((response: any) => {
       if (response.data.length > 0 && response.success) {
         this.cartList = response.data;
-        this.totalAmount = response.totalPrice
+        this.totalAmount = response.totalPrice;
+        this.gstAmount = response.gstPrice;
       } else {
         this.cartList = [];
       }
