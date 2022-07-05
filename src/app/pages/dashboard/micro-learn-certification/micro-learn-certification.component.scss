@@ -5,19 +5,16 @@
     padding: 3em;
     position: relative;
     overflow: hidden;
-
     .leftTop,
     .rightTop,
     .rightBottom {
         position: absolute;
     }
-
     .leftTop {
         left: -12em;
         top: 5em;
         width: 30%;
     }
-
     .rightTop {
         right: -15em;
         top: -3em;
@@ -27,7 +24,6 @@
             opacity: .5;
         }
     }
-
     .rightBottom {
         right: -7em;
         width: 30%;
@@ -68,22 +64,21 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-
             .logo {
                 width: 70%;
-
                 img {
                     max-width: 30%;
                 }
             }
-
-            .qrCode {
-                text-align: center;
-
-                img {
-                    max-width: 40%;
+            .code {
+                width: 30%;
+                .qrCode {
+                    text-align: center;
+                    img {
+                        max-width: 40%;
+                    }
+    
                 }
-
             }
 
             .date {
@@ -99,41 +94,30 @@
             }
         }
 
-        // .certificateHeading {
-        //     font-size: 45px;
-        //     display: flex;
-        //     justify-content: center;
-        //     line-height: normal;
-        //     margin: 50px 0 0 0;
-
-        //     span {
-        //         font-family: 'Montserrat';
-        //         color: #808081;
-        //         font-weight: 700;
-        //         margin-right: 10px;
-        //         position: relative;
-        //         text-transform: uppercase;
-        //     }
-
-        //     p {
-        //         font-family: 'CenturyGothic';
-        //         color: #808081;
-        //         font-weight: 400;
-        //         text-transform: uppercase;
-        //     }
-        // }
-
-        .bodyContent {
+        .certificateHeading {
+            font-size: 40px;
             display: flex;
             justify-content: center;
-            .badge {
-                .badgeImg {
-                    img {
-                        max-width: 100%;
-                    }
-                }
+            line-height: normal;
+            margin: 30px 0 0 0;
+
+            span {
+                font-family: 'Montserrat';
+                color: #808081;
+                font-weight: 700;
+                margin-right: 10px;
+                position: relative;
+                text-transform: uppercase;
             }
 
+            p {
+                font-family: 'CenturyGothic';
+                color: #808081;
+                font-weight: 400;
+                text-transform: uppercase;
+            }
+        }
+        .bodyContent {
             .certificationDetails {
                 display: flex;
                 flex-direction: column;
@@ -163,7 +147,7 @@
 
                 }
                 .word {
-                    margin: -16px 0 30px 0;
+                    margin: -7px 0 15px 0;
                     color: #1C1C1C;
                     font-family: 'OpenSans';
                     font-size: 18px;
@@ -193,36 +177,13 @@
                     font-weight: 400;
                     line-height: normal;
                     text-align: center;
-                    margin: 15px 0;
+                    margin: 9px 0;
                 }
-            }
-        }
-        .certificateHeading {
-            font-size: 45px;
-            display: flex;
-            justify-content: center;
-            line-height: normal;
-            margin: 50px 0 0 0;
-
-            span {
-                font-family: 'Montserrat';
-                color: #808081;
-                font-weight: 700;
-                margin-right: 10px;
-                position: relative;
-                text-transform: uppercase;
-            }
-
-            p {
-                font-family: 'CenturyGothic';
-                color: #808081;
-                font-weight: 400;
-                text-transform: uppercase;
             }
         }
 
         footer {
-            margin: 35px 0 0 0;
+            margin: 10px 0 0 0;
             width: 100%;
             display: flex;
             justify-content: space-between;
@@ -272,5 +233,4 @@
             }
         }
     }
-
 }
