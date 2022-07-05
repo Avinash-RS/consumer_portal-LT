@@ -342,8 +342,8 @@ resolvedSignIn(captchaSignInResponse: string){
 
   registerFormInitialize() {
     this.registerForm = this.fb.group({
-      firstName: ['', [Validators.required, this.gv.alphaNum30()]],
-      lastName: ['', [Validators.required, this.gv.alphaNum30()]],
+      firstName: ['', [Validators.required, this.gv.alpha30()]],
+      lastName: ['', [Validators.required, this.gv.alpha30()]],
       email: ['', [Validators.required, this.gv.email()]],
       mobile: ['', [Validators.required, this.gv.mobile(), this.gv.mobileRegex()]],
       college: ['', [Validators.required]],

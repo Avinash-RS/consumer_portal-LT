@@ -50,24 +50,26 @@
                     </div>
                     <form [formGroup]="addressEntryForm" autocomplete="off" (submit)="profileSubmit()">
                         <div class="formFields">
-                            <div class="editable">
+                            <div>
                                 <label>First Name <span class="mandatory">*</span></label>
                                 <mat-form-field appearance="fill">
                                     <input type="text" matInput placeholder="First Name" formControlName="firstname">
                                 </mat-form-field>
                                 <ng-container *ngIf="firstname.invalid && firstname.touched">
                                     <mat-error *ngIf="firstname.errors?.required" class="error">{{'First name is required'}}</mat-error>
-                                    <mat-error *ngIf="firstname.errors?.alphaNum30" class="error">{{'Alpha numeric with maximum of 30 characters only allowed'}}</mat-error>
+                                    <!-- <mat-error *ngIf="firstname.errors?.alphaNum30" class="error">{{'Alpha numeric with maximum of 30 characters only allowed'}}</mat-error> -->
+                                    <mat-error *ngIf="firstname.errors?.alpha30" class="error">{{'First name should be alphabets and maximum of 30 characters only allowed'}}</mat-error>
                                 </ng-container>
                             </div>
-                            <div class="editable">
+                            <div>
                                 <label>Last Name <span class="mandatory">*</span></label>
                                 <mat-form-field appearance="fill">
                                     <input type="text" matInput placeholder="Last Name" formControlName="lastname">
                                 </mat-form-field>
                                 <ng-container *ngIf="lastname.invalid && lastname.touched">
                                     <mat-error *ngIf="lastname.errors?.required" class="error">{{'Last name is required'}}</mat-error>
-                                    <mat-error *ngIf="lastname.errors?.alphaNum30" class="error">{{'Alpha numeric with maximum of 30 characters only allowed'}}</mat-error>
+                                    <!-- <mat-error *ngIf="lastname.errors?.alphaNum30" class="error">{{'Alpha numeric with maximum of 30 characters only allowed'}}</mat-error> -->
+                                    <mat-error *ngIf="lastname.errors?.alpha30" class="error">{{'Last name should be alphabets and maximum of 30 characters only allowed'}}</mat-error>
                                 </ng-container>
                             </div>
                             <div class="editable">

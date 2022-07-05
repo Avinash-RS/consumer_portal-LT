@@ -197,6 +197,9 @@ export class UserprofileComponent implements OnInit {
         data.Active = true;
       }
     })
+    if(value.tabname != "account"){
+      this.accountSettingsForm.reset();
+    }
   }
   getSkillChartData(){
     // this.userDetails.email
@@ -265,8 +268,8 @@ export class UserprofileComponent implements OnInit {
   profileFormInitialize() {
     this.addressEntryForm = this.fb.group({
       userId: ['', [Validators.required]],
-      firstname: ['', [Validators.required, this.gv.alphaNum30()]],
-      lastname: ['', [Validators.required, this.gv.alphaNum30()]],
+      firstname: ['', [Validators.required, this.gv.alpha30()]],
+      lastname: ['', [Validators.required, this.gv.alpha30()]],
       email: ['', [Validators.required, this.gv.email()]],
       mobile: ['', [Validators.required, this.gv.mobileRegex()]],
       // location: ['', [Validators.required]],
