@@ -369,4 +369,20 @@ export class AboutCourseComponent implements OnInit {
         }
       });
     }
+    getRelatedItems() {
+      const apiParms = {
+        "domainId": 'All',
+        "pagenumber": 0,
+        "productType" :'course',
+        "courseOrigin":environment.userOrigin
+      }
+      this.catalogService.getAreaByDomain(apiParms).subscribe((response: any) => { 
+        if (response.data?.length > 0) { 
+          var trendingCourses = [];
+          var relatedCourses = [];
+          trendingCourses = response.data.filter(e => e?.isFeatured);
+          // relatedCourses = response.data.filter(
+        }
+      });
+    }
 }
