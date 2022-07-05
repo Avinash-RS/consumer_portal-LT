@@ -354,6 +354,10 @@ export class HeaderComponent implements OnInit {
     this.inActiveTabs();
   }
   gotoArea(data) {
+    if(data.cid == "GTA1018"){
+      this.toast.warning('Coming Soon');
+      return false;
+    }
     this.showMenu = 'out';
     this.mobileshowMenu = 'out';
     this.assessmentsList= false;

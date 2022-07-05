@@ -211,6 +211,10 @@ export class AssessmentsListComponent implements OnInit {
   }
 
   aboutAssessment(cid,productType) {
+    if(cid == "GTC1018"){
+      this.toast.warning('Coming Soon');
+      return false;
+    }
       this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutCourse, { id: btoa(cid), selectedTab: btoa('All') ,productType : btoa('course')});
   }
   filterTab(e){
