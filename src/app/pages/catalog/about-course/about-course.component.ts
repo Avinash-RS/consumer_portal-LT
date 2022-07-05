@@ -216,19 +216,25 @@ export class AboutCourseComponent implements OnInit {
           this.courseType = this.courseData?.courseType ? this.courseData?.courseType :'';
           this.defaultDiv = false;
           this.nocard = false;
-          console.log(this.courseData)
           setTimeout(() => {
             this.sections = document.querySelectorAll("section[id]");
           }, 1000);
+          // ##Google Analytics##
           let ga_params = {
-            currency: 'INR',
-            value: this.courseData.sellingPrice,
-
-                item_id: this.courseData.cid,
-                item_name: this.courseData.name,
-
+                currency: "INR",
+                value: this.courseData.sellingPrice,
+                items: [
+                  {
+                    item_id: this.courseData.cid,
+                    item_name:  this.courseData.name,
+                    currency: "INR",
+                    price: this.courseData.sellingPrice,
+                    quantity: 1
+                  }
+                ]
           };
-          this.ga_service.gaSetPage("View Course Details",ga_params)
+          this.ga_service.gaSetPage("View Course Details",{})
+          this.ga_service.gaEventTrgr("view_item", "User viewing course details", "click", ga_params)
         }
         else{
           this.abouCourseData = [];
@@ -278,6 +284,20 @@ export class AboutCourseComponent implements OnInit {
         //Add to Cart
         this.catalogService.addToCart(cartParams).subscribe((response:any) =>{
           if(response.success) {
+            let ga_params = {
+              currency: this.courseData.currency,
+              value: parseFloat(this.courseData.sellingPrice),
+              items: [
+                {
+                  item_id: this.courseData.cid,
+                  item_name: this.courseData.name,
+                  currency: this.courseData.currency,
+                  price: parseFloat(this.courseData.sellingPrice),
+                  quantity: 1,
+                },
+              ],
+            };
+            this.ga_service.gaEventTrgr("add_to_cart","User added an item to cart", "Click", ga_params)
             //is Free check
             if(this.abouCourseData?.is_free){
               this.freeOrderPlace(response?.data[0].cartId);

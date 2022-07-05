@@ -81,9 +81,34 @@ export class SuccessComponent implements OnInit {
         postData.order_id = atob(params.orderId);
         this.catalog.getOrder(postData).subscribe((data: any) => {
           if(data?.success){
-            this.ga_service.gaEventTrgr("purchase",  "a user has completed a purchase.", "checkout", {transaction_id:params.orderId})
             this.orderlist = data.data;
             this.syncLxp();
+
+            // ###Google Analytics###
+            let ga_items = []
+            let grandTotal = 0
+            this.orderlist.forEach(item => {
+              ga_items.push(
+              {
+                item_id: item.cid,
+                item_name: item.assessmentName,
+                price: item.totalPrice,
+                quantity: 1,
+                currency: "INR",
+              }
+            )
+            grandTotal = item.totalPrice + grandTotal;
+            });
+
+            let ga_params = {
+              transaction_id:params.orderId,
+              value: grandTotal,
+              tax:0,
+              currency: "INR",
+              items:ga_items
+            }
+            this.ga_service.gaEventTrgr("purchase",  "a user has completed a purchase.", "checkout", ga_params)
+            // ###Google Analytics###
           }
           else{
             this.toast.warning(data?.message ? data?.message :'Something Went Wrong')

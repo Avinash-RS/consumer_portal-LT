@@ -158,7 +158,7 @@ export class LoginComponent implements OnInit {
       if (!this.collegeflag){
         this.toast.warning('Please select valid college name');
         return false;
-      } 
+      }
       if (!this.departmentflag) {
         this.toast.warning('Please select valid department name');
         return false;
@@ -188,6 +188,10 @@ export class LoginComponent implements OnInit {
           this.registerForm.markAsUntouched();
           // this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: 0 });
           this.toast.success(data.message);
+          let ga_params={
+            method:"direct"
+          }
+          this.ga_service.gaEventTrgr("sign_up", "New user registered", "Click", ga_params)
         } else {
           this.toast.error(data.message);
         }

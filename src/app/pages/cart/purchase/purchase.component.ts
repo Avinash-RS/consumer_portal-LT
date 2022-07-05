@@ -67,6 +67,26 @@ export class PurchaseComponent implements OnInit {
       } else {
         this.cartList = [];
       }
+
+      let ga_items = []
+      this.cartList.forEach(item => {
+        ga_items.push({
+            item_id: item.assessmentDetails.cid,
+            item_name: item.assessmentDetails.name,
+            currency: "INR",
+            price: item.assessmentDetails.sellingPrice,
+            quantity: 1
+          })
+      });
+
+    let ga_params = {
+      currency: "INR",
+      value: this.totalAmount,
+      items: ga_items
+    }
+
+      // ### Google Analytics for View_Cart ###
+      this.ga_service.gaEventTrgr("view_cart", "Get user's cart items", "View", ga_params)
     })
   }
 
@@ -81,7 +101,7 @@ export class PurchaseComponent implements OnInit {
     this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.home, { fromPage: btoa("viewAll"), selectedTab: btoa('All') });
   }
 
-  removeAssessment(id) {
+  removeAssessment(item) {
 
     Swal.fire({
       customClass: {
@@ -97,7 +117,7 @@ export class PurchaseComponent implements OnInit {
       if(result.isConfirmed){
         var params = {
           "userId": this.userDetails.userId,
-          "cartId": id
+          "cartId": item.cartId
         }
         this.catalogService.removeFromCart(params).subscribe((response: any) => {
           if (response.success) {
@@ -107,9 +127,14 @@ export class PurchaseComponent implements OnInit {
             //analytics event START
           let ga_params:any = {
             currency: "INR",
+            value: item.assessmentDetails.sellingPrice,
             items: [
               {
-                item_id: id,
+                item_id: item.assessmentDetails.cid,
+                item_name: item.assessmentDetails.name,
+                price: item.assessmentDetails.sellingPrice,
+                quantity: 1,
+                currency: "INR",
               }
             ]
           }
@@ -122,5 +147,13 @@ export class PurchaseComponent implements OnInit {
       }
     });
   }
-
+//page view for address selection
+ga_pageview(event){
+  if(event.selectedIndex==0)
+  {
+    this.ga_service.gaSetPage("Cart",{})//Google Analytics
+  }else{
+    this.ga_service.gaSetPage("Address Selection",{})//Google Analytics
+  }
+}
 }

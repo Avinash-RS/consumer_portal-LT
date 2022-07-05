@@ -37,7 +37,6 @@ export class AddressComponent implements OnInit {
      private util: UtilityService,public toast: ToastrService,
     private appconfig: AppConfigService, private appConfig: AppConfigService,
     private glovbal_validators: GlobalValidatorService,
-    private ga_service: GoogleAnalyticsService,
   ) {
 
   }
@@ -49,7 +48,6 @@ export class AddressComponent implements OnInit {
     this.getAddress();
     this.getState()
     this.getaddressTags()
-    this.ga_service.gaSetPage("Address Selection",{})//Google Analytics
   }
 
   addressFormInitialize() {

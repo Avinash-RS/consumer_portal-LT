@@ -39,16 +39,6 @@ export class FeaturedCoursesComponent implements OnInit {
   }
 aboutCourse(cid,name){
   this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutCourse, { id: btoa(cid), selectedTab: btoa('All') ,productType : btoa('course')});
-  let ga_params = {
-    currency: 'INR',
-    value: 0.00,
-    items: [
-      {
-        item_id: cid,
-        item_name: name,
-      },
-    ],
-  };
-  this.ga_service.gaEventTrgr("view_item", "User viewing course details", "click", ga_params)
+
 }
 }
