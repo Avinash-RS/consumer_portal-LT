@@ -37,7 +37,7 @@ testimonialOptions: OwlOptions = {
   dots: true,
   navSpeed: 700,
   margin: 30,
-  autoplay: true,
+  autoplay: false,
   autoplayTimeout: 4000,
   autoplayHoverPause: true,
   center: true,
