@@ -49,7 +49,7 @@ handleKeyboardEvent(event: KeyboardEvent) {
   }
 
   ngOnInit() {
-    this.bnIdle.startWatching(600).subscribe((isTimedOut: boolean) => {
+    this.bnIdle.startWatching(1200).subscribe((isTimedOut: boolean) => {
       if (isTimedOut) {
         var userDetails = JSON.parse(
           this.appConfig.getLocalStorage('userDetails')
