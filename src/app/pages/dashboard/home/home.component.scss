@@ -1622,6 +1622,91 @@
   }
 }
 
+.industryExposure {
+  position: relative;
+  padding: 3.75em 0;
+  font-size: 13px;
+  @include md {
+    font-size: 14px;
+  }
+  @include lg {
+    font-size: 15px;
+  }
+  @include xl {
+    font-size: 16px;
+  }
+  p {
+    font-size: 1em;
+    font-weight: 400;
+    color: $mediumGrey;
+    text-align: center;
+    line-height: normal;
+  }
+  .industryContent {
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      li {
+        width: 100%;
+        margin: 2em 0.75em;
+        position: relative;
+        @include sm {
+          width: 46.5%;
+        }
+        @include md {
+          width: 30.3%;
+        }
+        @include lg {
+          width: 30.9%;
+        }
+        @include xl {
+          width: 31.2%;
+        }
+        figure {
+          display: flex;
+          overflow: hidden;
+          border-radius: 10px;
+          position: relative;
+          img {
+            width: 100%;
+            height: 225px;
+            object-fit: cover;
+            @include md {
+              height: 175px;
+            }
+            @include lg {
+              height: 225px;
+            }
+          }
+        }
+        span {
+          position: absolute;
+          bottom: -1.5em;
+          left: 50%;
+          width: 90%;
+          transform: translateX(-50%);
+          background-color: $veryLightGray;
+          padding: 0.5em;
+          font-size: 1.25em;
+          font-weight: 700;
+          color: $secondaryColor;
+          line-height: normal;
+          text-align: center;
+          border-radius: 6px;
+          min-height: 46px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          @include md {
+            min-height: 66px;
+          }
+        }
+      }
+    }
+  }
+}
+
 .learnanywhere {
   position: relative;
   padding: 3.75em 0;
