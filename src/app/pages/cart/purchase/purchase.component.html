@@ -46,7 +46,7 @@
                                                 <div class="value"><em class="icon-Rupee"></em>{{cart.assessmentDetails.is_free?"Free":cart.assessmentDetails.sellingPrice}}</div>
                                             </div>
                                             <div class="soldby">
-                                                <p>Sold by : L&T Edutech</p>
+                                                <p>By : L&T Edutech</p>
                                             </div>
                                         </div>
                                         <div class="levelAssessment">
@@ -124,7 +124,7 @@
                     </div>
                     <div class="rightContent">
                         <div class="rightContentWrapper">
-                            <app-Checkout [tab]='stepper' [checkoutData]='cartList' [cartTotal]="totalAmount"></app-Checkout>
+                            <app-Checkout [tab]='stepper' [checkoutData]='cartList' [cartTotal]="totalAmount" [amountGst]="gstAmount"></app-Checkout>
                         </div>
                     </div>
                 </div>
