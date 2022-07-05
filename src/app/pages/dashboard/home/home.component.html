@@ -169,6 +169,23 @@
       </div>
     </section>
 
+<section class="industryExposure"  *ngIf="commonData?.landingPageContents?.industryExposure?.displayStatus">
+  <div class="container">
+    <div class="heading2">{{commonData?.landingPageContents?.industryExposure?.title}}</div>
+    <p>{{commonData?.landingPageContents?.industryExposure?.description}}</p>
+    <div class="industryContent">
+      <ul>
+        <li *ngFor="let item of commonData?.landingPageContents?.industryExposure?.innerArray">
+          <figure>
+            <img [src]="item?.imageurl" alt="" />
+          </figure>
+          <span>{{item?.title}}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <section class="learnanywhere" *ngIf="commonData?.landingPageContents?.learnAnytime?.displayStatus">
   <span class="leftTopAsset">
     <figure>
@@ -186,7 +203,7 @@
     </figure>
   </span>
   <div class="container">
-    <div class="heading2"><h1>{{commonData?.landingPageContents?.learnAnytime?.title}}</h1></div>
+    <div class="heading2">{{commonData?.landingPageContents?.learnAnytime?.title}}</div>
     <p>{{commonData?.landingPageContents?.learnAnytime?.description}}</p>
          <div class="contentcenter">
           <div class="group">
