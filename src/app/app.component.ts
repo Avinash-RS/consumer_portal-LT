@@ -75,11 +75,11 @@ handleKeyboardEvent(event: KeyboardEvent) {
       function gtag() { dataLayer.push(arguments); }
       gtag('js', new Date());
       gtag('set', 'user_properties', { 'userID' : '${user_id}' });
-      gtag('config', '${environment.gaMeasureId}',{ 'send_page_view': false });
+      gtag('config', '${environment.gaMeasureId}',{ 'send_page_view': false, 'userID' : '${user_id}' });
       `;
     document.head.appendChild(gaScript);
   // }
-
+  this.gtag.set({ userID : user_id });
   }
 
   ngOnInit() {

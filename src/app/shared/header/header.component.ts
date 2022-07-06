@@ -362,17 +362,6 @@ export class HeaderComponent implements OnInit {
     this.coursesList = false;
     this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutCourse,{id : btoa(data?.levelIds[0]?.LevelId ? data.levelIds[0].LevelId : ''), selectedTab : btoa(data.parentId) ,productType : btoa('course')});
     this.inActiveTabs();
-    let ga_params = {
-      currency: 'INR',
-      value: 0.00,
-      items: [
-        {
-          item_id: data.cid,
-          item_name: data.name,
-        },
-      ],
-    };
-    this.ga_service.gaEventTrgr("view_item", "User viewing course details", "click", ga_params)
   }
 
   aboutAssessment(cid) {
