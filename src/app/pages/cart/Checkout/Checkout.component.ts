@@ -20,13 +20,16 @@ export class CheckoutComponent implements OnInit {
   @Input('tab') currentTab: any;
   @Input('checkoutData') cartList: any;
   @Input('cartTotal') cartAmount: any;
+  @Input('amountGst') amountGst: any;
   encRequestRes: any;
   //accessCode = 'AVFQ92HF95BT32QFTB'; Sufin accessCode
   accessCode:any;//Lntiggnite accessCode
   selectedAddress: any;
   totalPrice = 0;
+  totalCartPrice = 0;
   userDetails: any;
   subsContent: any;
+  gstAmount = 0;
   constructor(
     private catalogService: CatalogService,
     private cartService: CartService,
@@ -42,15 +45,42 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit() {
     this.userDetails = JSON.parse(this.appconfig.getLocalStorage('userDetails'));
-    this.totalCalculator();
+    this.getCart();
+    //this.totalCalculator();
   }
-  ngOnChanges(data: any) {
-    this.cartList = data.cartList.currentValue;
-    this.totalPrice = data.cartAmount.currentValue
-    
-    this.totalCalculator()
+  // ngOnChanges(data: any) {
+  //   this.cartList = data.cartList.currentValue;
+  //   this.totalPrice = data.cartAmount.currentValue;
+  //   this.gstAmount = this.amountGst;
+  //   this.totalCalculator()
+  // }
+  ngOnChanges(){
+    this.getCart();
   }
-
+  getCart() {
+    var params = {
+      "userId": this.userDetails.userId
+    }
+    this.catalogService.getCart(params).subscribe((response: any) => {
+      if (response.data.length > 0 && response.success) {
+        this.cartList = response.data;
+        this.totalPrice = response.totalPrice;
+        this.gstAmount = response.gstPrice;
+        this.totalCartPrice = 0;
+        this.cartList.forEach((list) => {
+          list.assessmentDetails.sellingPrice = parseInt(list.assessmentDetails.sellingPrice)
+          if(!list.assessmentDetails.is_free){
+          this.totalCartPrice += list.assessmentDetails.sellingPrice
+          }
+        })
+      } else {
+        this.cartList = [];
+        this.totalCartPrice = 0;
+        this.totalPrice = 0;
+        this.gstAmount = 0;
+      }
+    })
+  }
   ngOnDestroy() {
     this.subsContent.unsubscribe();
   }
@@ -58,15 +88,13 @@ export class CheckoutComponent implements OnInit {
   totalCalculator() {
     this.cartList = this.cartList ? this.cartList : [];
     this.totalPrice = this.totalPrice;
-    //console.log(this.cartList);
-    //console.log(this.cartAmount,this,this.totalPrice,'price')
-    // console.log(this.cartList)
-    // this.cartList.forEach((list) => {
-    //   list.assessmentDetails.sellingPrice = parseInt(list.assessmentDetails.sellingPrice)
-    //   if(!list.assessmentDetails.is_free){
-    //   this.totalPrice += list.assessmentDetails.sellingPrice
-    //   }
-    // })
+    this.gstAmount = this.amountGst;
+      this.cartList.forEach((list) => {
+      list.assessmentDetails.sellingPrice = parseInt(list.assessmentDetails.sellingPrice)
+      if(!list.assessmentDetails.is_free){
+      this.totalCartPrice += list.assessmentDetails.sellingPrice
+      }
+    })
   }
   continueClick() {
     this.currentTab.next();
@@ -79,21 +107,12 @@ export class CheckoutComponent implements OnInit {
     let param: any = {}
     param.user_id = this.userDetails.userId;
     param.email = this.userDetails.email;
-    // param.order_amount = this.totalPrice;
     param.cart = [];
     this.cartList.forEach(cartItem => {
-      // let itemTotal_amount = cartItem.quantity * cartItem.assessmentDetails.is_free?0:cartItem.assessmentDetails.sellingPrice;
-      // var producttype = cartItem?.productType == 'course' ? 'course' : 'assessment';
       param.cart.push(
         {
           assessmentId: cartItem.assessmentId,
           batchId:cartItem?.batchId ? cartItem.batchId :null
-          // quantity: Number(cartItem.quantity),
-          // amount_per_assessment: cartItem.assessmentDetails.is_free?0:cartItem.assessmentDetails.sellingPrice,
-          // total_amount: itemTotal_amount,
-          // competencyId: cartItem.competencyDetails.cid,
-	        // levelId: cartItem.competencyDetails.levelId,
-          // productType : producttype
         }
       )
     });
@@ -107,27 +126,13 @@ export class CheckoutComponent implements OnInit {
             setTimeout(() => {
               this.form.nativeElement.submit();
             }, 1000)
-        // let redirect_url = environment.PAYMENT+'/ccavResponseHandler'
-        // let useremail = this.userDetails.emailId;
-        // let request = `merchant_id=261628&order_id=${data.order_id}&currency=INR&amount=${this.totalPrice}&redirect_url=${redirect_url}&cancel_url=${redirect_url}&language=EN&billing_name=${this.selectedAddress.name}&billing_address=${this.selectedAddress.addressLine1}&billing_city=${this.selectedAddress.city.cityName}&billing_state=${this.selectedAddress.state.stateName}&billing_zip=${this.selectedAddress.pincode}&billing_country=India&billing_tel=${this.selectedAddress.mobile}&delivery_name=${this.selectedAddress.name}&delivery_address=${this.selectedAddress.addressLine1}&delivery_city=${this.selectedAddress.city.cityName}&delivery_state=${this.selectedAddress.state.stateName}&delivery_zip=${this.selectedAddress.pincode}&delivery_country=India&delivery_tel=${this.selectedAddress.mobile}&billing_email=${useremail}`
-        // this.catalogService.encryptdata(request).subscribe(
-        //   data => {
-        //     this.encRequestRes = data['message'];
-        //     this.accessCode = data['accessCode'];
-        //     setTimeout(() => {
-        //       this.form.nativeElement.submit();
-        //     }, 1000)
-        //   }, error => {
-        //     console.log(error);
-        //   }
-        // );
         }else{
           this._loading.setLoading(false, environment.API_BASE_URL+"createorder");
           this.appconfig.routeNavigationWithQueryParam("cart/success",{ orderId: btoa(data.orderId) });
         }
       })
     } else {
-      this.toast.error('Select an address to continue')
+      this.toast.error('Add an address to continue');
     }
 
   }

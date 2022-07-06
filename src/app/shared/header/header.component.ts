@@ -335,12 +335,12 @@ export class HeaderComponent implements OnInit {
     }).then((result) => {
       if(result.isConfirmed){
         this.commonservice.logout();
-        this.util.showkycProgress.next(false);
-        this.util.cartSubject.next(false);
+        //this.util.showkycProgress.next(false);
+       //this.util.cartSubject.next(false);
         this.cartCount = 0;
         this.inActiveTabs();
         // this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: '0' });
-        this.appConfig.routeNavigation(APP_CONSTANTS.ENDPOINTS.home);
+        //this.appConfig.routeNavigation(APP_CONSTANTS.ENDPOINTS.home);
       }
     });
   }
