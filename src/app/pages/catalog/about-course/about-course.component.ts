@@ -12,6 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { GlobalValidatorsService } from 'src/app/validators/global-validators.service';
+import { GoogleAnalyticsService } from 'src/app/services/google-analytics.service';
 
 @Component({
   selector: 'app-about-course',
@@ -124,7 +125,7 @@ export class AboutCourseComponent implements OnInit {
   menuPosition: any = 472;
   activeSection:any;
   sections:any;
-  @HostListener('window:scroll', ['$event']) 
+  @HostListener('window:scroll', ['$event'])
   scrollHandler(event) {
     this.sticky = window.pageYOffset >= this.menuPosition ? true : false;
     let scrollY = window.pageYOffset;
@@ -142,7 +143,7 @@ export class AboutCourseComponent implements OnInit {
 
   constructor(private router: Router, private catalogService : CatalogService,private route:ActivatedRoute,private appconfig: AppConfigService,
     private commonService : CommonService,public toast: ToastrService ,private util: UtilityService,private dialog: MatDialog,
-    private fb: FormBuilder, 
+    private fb: FormBuilder,    private ga_service: GoogleAnalyticsService,
     private gv: GlobalValidatorsService) {
       this.router.routeReuseStrategy.shouldReuseRoute = () => {
         return false;
@@ -177,7 +178,7 @@ export class AboutCourseComponent implements OnInit {
       phone: ['', [Validators.required]],
       subject:['', [Validators.required]],
       message:['']
-      
+
     });
   }
   get name() {
@@ -188,7 +189,7 @@ export class AboutCourseComponent implements OnInit {
   }
   get phone() {
     return this.contactForm.get('phone');
-  } 
+  }
   get queryname() {
     return this.queryForm.get('name');
   }
@@ -207,7 +208,7 @@ export class AboutCourseComponent implements OnInit {
       "productType":"course"
   }
     this.catalogService.getAssesments(params).subscribe((response:any)=>{
-      if (response.success) { 
+      if (response.success) {
         if(response.data && response.data.length > 0 && response.data[0].assessmentData && response.data[0].assessmentData.length){
           this.abouCourseData = response.data[0];
           this.courseData = this.abouCourseData.assessmentData[0];
@@ -218,6 +219,22 @@ export class AboutCourseComponent implements OnInit {
           setTimeout(() => {
             this.sections = document.querySelectorAll("section[id]");
           }, 1000);
+          // ##Google Analytics##
+          let ga_params = {
+                currency: "INR",
+                value: this.courseData.sellingPrice,
+                items: [
+                  {
+                    item_id: this.courseData.cid,
+                    item_name:  this.courseData.name,
+                    currency: "INR",
+                    price: this.courseData.sellingPrice,
+                    quantity: 1
+                  }
+                ]
+          };
+          this.ga_service.gaSetPage("View Course Details",{})
+          this.ga_service.gaEventTrgr("view_item", "User viewing course details", "click", ga_params)
         }
         else{
           this.abouCourseData = [];
@@ -253,7 +270,7 @@ export class AboutCourseComponent implements OnInit {
     }
   }
   courseBuy(){
-    //signin check 
+    //signin check
     if (this.userDetails) {
       var cartParams = {
           "isLevel":false,
@@ -267,6 +284,20 @@ export class AboutCourseComponent implements OnInit {
         //Add to Cart
         this.catalogService.addToCart(cartParams).subscribe((response:any) =>{
           if(response.success) {
+            let ga_params = {
+              currency: this.courseData.currency,
+              value: parseFloat(this.courseData.sellingPrice),
+              items: [
+                {
+                  item_id: this.courseData.cid,
+                  item_name: this.courseData.name,
+                  currency: this.courseData.currency,
+                  price: parseFloat(this.courseData.sellingPrice),
+                  quantity: 1,
+                },
+              ],
+            };
+            this.ga_service.gaEventTrgr("add_to_cart","User added an item to cart", "Click", ga_params)
             //is Free check
             if(this.abouCourseData?.is_free){
               this.freeOrderPlace(response?.data[0].cartId);

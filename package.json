@@ -26,6 +26,7 @@
     "@angular/router": "~10.2.0",
     "@compodoc/compodoc": "^1.1.11",
     "@swimlane/ngx-charts": "^18.0.1",
+    "angular-gtag": "^1.0.4",
     "autoprefixer": "^10.2.5",
     "bcryptjs": "^2.4.3",
     "bn-ng-idle": "^1.0.1",
