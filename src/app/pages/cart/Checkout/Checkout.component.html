@@ -8,7 +8,11 @@
         <span class="heading6">Price Details ({{cartList.length}} <span *ngIf="cartList.length <= 1">item</span><span *ngIf="cartList.length > 1">items</span>)</span>
         <div>
             <span>Price</span>
-            <span><em class="icon-Rupee"></em>{{totalPrice}}</span>
+            <span><em class="icon-Rupee"></em>{{totalCartPrice}}</span>
+        </div>
+        <div>
+            <span>GST (18%)</span>
+            <span><em class="icon-Rupee"></em>{{gstAmount}}</span>
         </div>
         <!-- <div>
             <span>Discount on MRP</span>
