@@ -216,7 +216,7 @@
                                     <div class="termsContent">Please accept the <a (click)="privacy()" class="termsColor">Privacy Policy</a></div>
                                 </div>
                                 <ng-container *ngIf="termsandConditions.invalid && termsandConditions.touched">
-                                    <mat-error *ngIf="termsandConditions.errors?.required" class="error">{{'Check privacy policy checkbox'}}</mat-error>
+                                    <mat-error *ngIf="termsandConditions.errors?.required" class="error">{{'Select the Privacy Policy checkbox'}}</mat-error>
                                 </ng-container>
                             </div>
                             <!-- <div nbRecaptcha formControlName="captcha"></div>
