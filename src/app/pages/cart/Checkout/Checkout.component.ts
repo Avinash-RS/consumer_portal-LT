@@ -75,6 +75,9 @@ export class CheckoutComponent implements OnInit {
         })
       } else {
         this.cartList = [];
+        this.totalCartPrice = 0;
+        this.totalPrice = 0;
+        this.gstAmount = 0;
       }
     })
   }

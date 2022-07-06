@@ -159,6 +159,7 @@ export class AssessmentsListComponent implements OnInit {
     this.catalogService.getCatalog(apiParms).subscribe((response: any) => {
       if (response.data.length > 0) {
         this.tabValues = response.data;
+        this.allArealength = 0;
         this.tabValues.forEach((element:any) => {
           this.allArealength = this.allArealength + (element?.children ? element.children.length : 0)
         });
@@ -193,6 +194,9 @@ export class AssessmentsListComponent implements OnInit {
       if (response.data?.length > 0) {
         this.areaCards = response.data;
         this.areaCards.sort((a, b) => a.sequenceOrder > b.sequenceOrder ? 1 : -1);
+        if(!this.isNavigated){
+          this.areaCards = this.areaCards.filter(e => e?.isFeatured)
+        }
         this.noDataFound = false;
         this.viewMore = (!this.isNavigated && this.areaCards?.length > 6) ? true : false;
         this.sliceDigits =  !this.viewMore ? this.areaCards?.length + 1 : 6;
@@ -211,6 +215,10 @@ export class AssessmentsListComponent implements OnInit {
   }
 
   aboutAssessment(cid,productType) {
+    if(cid == "GTC1018"){
+      this.toast.warning('Comming Soon');
+      return false;
+    }
       this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutCourse, { id: btoa(cid), selectedTab: btoa('All') ,productType : btoa('course')});
   }
   filterTab(e){
