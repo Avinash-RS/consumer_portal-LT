@@ -296,3 +296,7 @@
         }
     }
 }
+
+::ng-deep .drag-scroll-content::-webkit-scrollbar {
+    display: none !important;
+}
