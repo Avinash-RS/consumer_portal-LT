@@ -2,7 +2,7 @@
     <span class="obstacles"></span>
     <div class="container">
         <div class="heading2">Featured Courses</div>
-        <span class="subHeading">Build your proficiency in the hottest industry of the 21st century.</span>
+        <span class="subHeading">Build your proficiency across various Engineering and Technology sectors.</span>
         <div class="featuredCourses">
             <div class="bg" [ngClass]="rightNavDisabled ? 'disableShadow' : 'showShadow'"></div>
             <drag-scroll #featuredCourses snap-duration="500" (reachesLeftBound)="leftBoundStat($event)" (reachesRightBound)="rightBoundStat($event)" [scrollbar-hidden] = true [drag-scroll-y-disabled] = true>

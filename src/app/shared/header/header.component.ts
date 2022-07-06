@@ -13,6 +13,7 @@ import { LoadingService } from 'src/app/services/loading.service';
 import { trigger, state, style, transition,
   animate, group
 } from '@angular/animations';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: "app-header",
   templateUrl: "./header.component.html",
@@ -86,6 +87,7 @@ export class HeaderComponent implements OnInit {
     public router: Router,
     private location: Location,
     private _loading: LoadingService,
+    public toast: ToastrService
     ) {
       this.profImage = this.appConfig.getLocalStorage('profileImage');
   }
@@ -355,7 +357,7 @@ export class HeaderComponent implements OnInit {
   }
   gotoArea(data) {
     if(data.cid == "GTA1018"){
-      this.toast.warning('Coming Soon');
+      this.toast.warning('Comming Soon');
       return false;
     }
     this.showMenu = 'out';
