@@ -5,16 +5,16 @@
         <span class="subHeading">Build your proficiency across various Engineering and Technology sectors.</span>
         <div class="featuredCourses">
             <div class="bg" [ngClass]="rightNavDisabled ? 'disableShadow' : 'showShadow'"></div>
-            <drag-scroll #featuredCourses snap-duration="500" (reachesLeftBound)="leftBoundStat($event)" (reachesRightBound)="rightBoundStat($event)" [scrollbar-hidden] = true [drag-scroll-y-disabled] = true>
+            <drag-scroll #featuredCourses snap-duration="500" (reachesLeftBound)="leftBoundStat($event)" (reachesRightBound)="rightBoundStat($event)" [scrollbar-hidden] = false [drag-scroll-y-disabled] = true>
                 <div class="scrollItem" drag-scroll-item *ngFor="let item of catalogData" (click)="aboutCourse(item.cid)">
                     <div class="modules">
                         <div class="courseImg">
                             <figure>
                                 <img [src]="item?.image?.url" alt="" />
                             </figure>
-                            <div class="hours">
+                            <!-- <div class="hours">
                                 <p>{{item?.videoDuration}}</p>
-                            </div>
+                            </div> -->
                         </div>
                       <div class="wrapper">
                             <span class="domainName"><em class="icon-Right_Play"></em>{{item?.domainName}}</span>

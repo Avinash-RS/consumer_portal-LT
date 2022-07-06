@@ -61,41 +61,14 @@
                     <span class="searchKey"><em class="icon-Search"></em></span>
                 </div>
                 <div class="assessmentList">
-                    <ng-container *ngIf ="noDataSkeleton">
-                        <div class="skeletonWrapper">
-                            <div class="items">
-                                <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '50px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
-                                <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', 'margin-top': '10px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
-                                <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
-                                <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
-                            </div>
-                            <div class="items">
-                                <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '50px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
-                                <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', 'margin-top': '10px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
-                                <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
-                                <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
-                            </div>
-                            <div class="items">
-                                <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '50px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
-                                <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', 'margin-top': '10px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
-                                <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
-                                <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
-                            </div>
-                            <div class="items">
-                                <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '50px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
-                                <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', 'margin-top': '10px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
-                                <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
-                                <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
-                            </div>
-                        </div>
-                    </ng-container>
+                    <ng-container [ngTemplateOutlet]="skeleton" *ngIf ="noDataSkeleton"></ng-container>
                     <ng-container *ngIf ="!noDataSkeleton && catlogData?.length > 0">
                         <ng-container *ngFor="let cards of catlogData | slice : 0:sliceDigits">
                             <div class="list" (click)="aboutAssessment(cards.cid ,cards.productType)">
                                 <div class="figWrapper">
                                     <figure>
                                         <img [src] = "cards.image.url" alt="" />
-                                        <div class="estimateTime">{{cards?.videoDuration}}</div>
+                                        <!-- <div class="estimateTime">{{cards?.videoDuration}}</div> -->
                                         <!-- <button class="topRated">Top Rated</button> Dont Delete this line -->
                                     </figure>
                                     <!-- <div class="figEffect"></div> -->
@@ -133,7 +106,7 @@
                                             <span class="iconwithText"><em class="icon-Level2"></em> {{cards?.assessmentContents?.skilllevel}}</span>
                                         </div> -->
                                         <div>
-                                            <span class="commonStyle">Duration</span>
+                                            <span class="commonStyle">Course Duration</span>
                                             <span class="iconwithText"><em class="icon-Time"></em>{{cards?.contentDuration}}</span>
                                                 <!-- {{cards?.courseContents?.duration}}</span> -->
                                         </div>
@@ -164,8 +137,11 @@
     </section>
 </ng-container>
 <ng-container *ngIf="!isNavigated">
-    <app-featured-courses *ngIf="areaCards.length" [catalogData]="areaCards"></app-featured-courses>
-    <div *ngIf="noDataFound" class="noDataFound">
+    <div class="container">
+        <ng-container [ngTemplateOutlet]="skeleton" *ngIf ="noDataSkeleton"></ng-container>
+    </div>
+    <app-featured-courses *ngIf="!noDataSkeleton && areaCards.length" [catalogData]="areaCards"></app-featured-courses>
+    <div *ngIf="noDataFound" class="!noDataSkeleton && noDataFound">
         <figure>
             <img src="https://lmsassetspremium.lntedutech.com/portalicons/path.webp" alt="" />
         </figure>
@@ -175,3 +151,31 @@
         <button (click)="catalogHome()">View All Courses <em class="icon-RightArrow"></em></button>
     </div>
 </ng-container>
+<ng-template #skeleton>
+    <div class="skeletonWrapper">
+        <div class="items">
+            <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '50px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
+            <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', 'margin-top': '10px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
+            <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
+            <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
+        </div>
+        <div class="items">
+            <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '50px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
+            <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', 'margin-top': '10px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
+            <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
+            <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
+        </div>
+        <div class="items">
+            <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '50px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
+            <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', 'margin-top': '10px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
+            <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
+            <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
+        </div>
+        <div class="items">
+            <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '50px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
+            <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', 'margin-top': '10px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
+            <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
+            <ngx-skeleton-loader count="1" [theme]="{ 'border-radius': '5px', height: '20px', 'background-color': '#d8d9dd'}"></ngx-skeleton-loader>
+        </div>
+    </div>
+</ng-template>
