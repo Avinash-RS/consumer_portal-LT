@@ -10,13 +10,14 @@ export const environment = {
   blobKey : "?sv=2018-03-28&ss=b&srt=sco&sp=racwdl&st=2021-04-20T06%3A59%3A57Z&se=2171-04-20T07%3A04%3A58Z&spr=https%2Chttp&sig=3TBFQu369yom4bQ8%2FqEjxIqGiqjGwAO%2Bb2V5hfAevt8%3D",
   sso:'http://52.172.236.38:3015',
   // Dev base url
-  API_BASE_URL: 'https://edgeportaldev.lntedutech.com/', 
+  API_BASE_URL: 'https://edgeportaldev.lntedutech.com/',
   PAYMENT:'https://devpayment.lntedutech.com',
   uap:'https://uap-dev.lntiggnite.com',
   unifiedReport_URL :'https://unifiedreport-dev.lntedutech.com/',
   lxp_url:'https://lmsdev.lntedutech.com/redirection',
   captachaSiteKey: '6Lf-qfEcAAAAAH2zsrdDz1K6DmUOHjgHzGmH3PN7',
-  userOrigin:'learner'
+  userOrigin:'learner',
+  gaMeasureId:"G-WNMPYL5PVE"
 };
 
 /*

@@ -6,6 +6,7 @@ import { UtilityService } from "src/app/services/utility.service";
 import { AppConfigService } from "src/app/utils/app-config.service";
 import { environment } from '@env/environment';
 import { LoadingService } from "src/app/services/loading.service";
+import { GoogleAnalyticsService } from "src/app/services/google-analytics.service";
 
 @Component({
   selector: "app-Checkout",
@@ -37,6 +38,8 @@ export class CheckoutComponent implements OnInit {
     public toast: ToastrService,
     private appconfig: AppConfigService,
     private _loading: LoadingService,
+    private ga_service: GoogleAnalyticsService,
+
   ) {
     this.subsContent = this.util.addressSubject.subscribe((data: any) => {
       this.selectedAddress = data
@@ -125,10 +128,12 @@ export class CheckoutComponent implements OnInit {
             this.accessCode = data['accesscode'];
             setTimeout(() => {
               this.form.nativeElement.submit();
+              this.ga_service.gaEventTrgr("begin_checkout",  "a user has begun a checkout.", "checkout", data.orderId)
             }, 1000)
         }else{
           this._loading.setLoading(false, environment.API_BASE_URL+"createorder");
           this.appconfig.routeNavigationWithQueryParam("cart/success",{ orderId: btoa(data.orderId) });
+          this.ga_service.gaEventTrgr("begin_checkout",  "a user has begun a checkout.", "checkout", {transaction_id:data.orderId})
         }
       })
     } else {
