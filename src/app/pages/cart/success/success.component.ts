@@ -10,6 +10,7 @@ import * as moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
 import { BookSlotComponent } from '../../bookSlot/bookSlot.component';
 import { environment } from '@env/environment';
+import { GoogleAnalyticsService } from 'src/app/services/google-analytics.service';
 
 @Component({
   selector: 'app-success',
@@ -67,6 +68,7 @@ export class SuccessComponent implements OnInit {
     private catalog: CatalogService,
     public toast: ToastrService,
     private appconfig: AppConfigService,
+    private ga_service: GoogleAnalyticsService,
 
   ) {
     this.userDetails = JSON.parse(this.appConfig.getLocalStorage('userDetails'));
@@ -81,6 +83,32 @@ export class SuccessComponent implements OnInit {
           if(data?.success){
             this.orderlist = data.data;
             this.syncLxp();
+
+            // ###Google Analytics###
+            let ga_items = []
+            let grandTotal = 0
+            this.orderlist.forEach(item => {
+              ga_items.push(
+              {
+                item_id: item.cid,
+                item_name: item.assessmentName,
+                price: item.totalPrice,
+                quantity: 1,
+                currency: "INR",
+              }
+            )
+            grandTotal = item.totalPrice + grandTotal;
+            });
+
+            let ga_params = {
+              transaction_id:params.orderId,
+              value: grandTotal,
+              tax:0,
+              currency: "INR",
+              items:ga_items
+            }
+            this.ga_service.gaEventTrgr("purchase",  "a user has completed a purchase.", "checkout", ga_params)
+            // ###Google Analytics###
           }
           else{
             this.toast.warning(data?.message ? data?.message :'Something Went Wrong')
@@ -176,6 +204,6 @@ export class SuccessComponent implements OnInit {
   // reschedule(item){
 
   // }
- 
+
 
 }
