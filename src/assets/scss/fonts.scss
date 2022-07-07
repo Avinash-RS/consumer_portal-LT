@@ -158,7 +158,27 @@
   font-weight: 900;
   font-style: normal;
 }
-
+@font-face {
+  font-family: 'Montserrat';
+  src: url('#{$fontPath}/Montserrat-Bold.woff2') format('woff2'),
+      url('#{$fontPath}/Montserrat-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'LucidaBrightregular';
+  src: url('#{$fontPath}/lbrite-webfont.woff2') format('woff2'),
+       url('#{$fontPath}/lbrite-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'CenturyGothic';
+  src: url('#{$fontPath}/CenturyGothic.woff2') format('woff2'),
+      url('#{$fontPath}/CenturyGothic.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 
 // Icon Fonts - Icomoon
 @font-face {
