@@ -37,8 +37,7 @@ export class FeaturedCoursesComponent implements OnInit {
   rightBoundStat(reachesRightBound: boolean) {
     this.rightNavDisabled = reachesRightBound;
   }
-aboutCourse(cid,name){
-  this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutCourse, { id: btoa(cid), selectedTab: btoa('All') ,productType : btoa('course')});
-
+aboutCourse(value){
+  this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutCourse, { id: btoa(value?.cid), selectedTab: btoa('All') ,productType : btoa('course'),parentId:btoa(value?.parentId)});
 }
 }

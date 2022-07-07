@@ -3654,13 +3654,15 @@
           border-radius: 5px;
           opacity: 1;
           display: flex;
-          align-items: center;
+          align-items: flex-start;
+          justify-content: space-between;
           &:last-child {
             margin-bottom: 0;
           }
           figure {
             display: flex;
             margin-right: 10px;
+            width: 4%;
           }
           p {
             color: #FFFFFF;
@@ -3669,6 +3671,7 @@
             line-height: normal;
             font-weight: 500;
             margin: 0;
+            width: 96%;
           }
     
         }

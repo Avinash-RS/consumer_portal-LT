@@ -132,10 +132,10 @@
                             <div class="inputContainer">
                                 <mat-form-field appearance="outline">
                                     <mat-label>University Enrollment Number</mat-label>
-                                    <input autocomplete="off" matInput id="signup_uen" name="enrollNumber" formControlName="enrollNumber" placeholder="University enrollment Number">
+                                    <input autocomplete="off" matInput id="signup_uen" name="enrollNumber" formControlName="enrollNumber" placeholder="University Enrollment Number">
                                 </mat-form-field>
                                 <ng-container *ngIf="rollNumber.invalid && rollNumber.touched">
-                                    <mat-error *ngIf="rollNumber.errors?.required" class="error">{{'Enrollment number is required'}}</mat-error>
+                                    <mat-error *ngIf="rollNumber.errors?.required" class="error">{{'University enrollment number is required'}}</mat-error>
                                     <mat-error *ngIf="rollNumber.errors?.enrollno" class="error">{{'Please enter valid Enrollment number'}}</mat-error>
                                 </ng-container>
                             </div>
@@ -205,8 +205,8 @@
                                     </div>
                                 </mat-form-field>
                                 <ng-container *ngIf="password2.invalid && password2.touched || (registerForm.errors?.notMatch && (registerForm.touched || registerForm.dirty))">
-                                    <mat-error *ngIf="password2.invalid && password2.touched && password2.errors?.required" class="error">{{'Confirm Password is required'}}</mat-error>
-                                    <mat-error *ngIf="!password2.errors?.required && registerForm.errors?.notMatch" class="error">{{'Confirm Password should match the Password'}}</mat-error>
+                                    <mat-error *ngIf="password2.invalid && password2.touched && password2.errors?.required" class="error">{{'Confirm password is required'}}</mat-error>
+                                    <mat-error *ngIf="!password2.errors?.required && registerForm.errors?.notMatch" class="error">{{'Confirm password should match the Password'}}</mat-error>
                                 </ng-container>
                             </div>
                             <div class="termsContainer">

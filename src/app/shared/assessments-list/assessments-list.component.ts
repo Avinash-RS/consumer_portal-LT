@@ -217,12 +217,12 @@ export class AssessmentsListComponent implements OnInit {
     this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.home, { fromPage: btoa("viewAll"), selectedTab: btoa(this.selectedTab) });
   }
 
-  aboutAssessment(cid,productType) {
-    if(cid == "GTC1018"){
+  aboutAssessment(value) {
+    if(value.cid == "GTC1018"){
       this.toast.warning('Comming Soon');
       return false;
     }
-      this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutCourse, { id: btoa(cid), selectedTab: btoa('All') ,productType : btoa('course')});
+      this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutCourse, { id: btoa(value?.cid), selectedTab: btoa('All') ,productType : btoa('course'),parentId:btoa(value?.parentId)});
   }
   filterTab(e){
     this.fromTab='All';

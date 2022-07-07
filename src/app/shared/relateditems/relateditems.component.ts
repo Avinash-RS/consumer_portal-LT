@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-
+import { AppConfigService } from 'src/app/utils/app-config.service';
+import { APP_CONSTANTS } from 'src/app/utils/app-constants.service';
 @Component({
   selector: 'app-relateditems',
   templateUrl: './relateditems.component.html',
@@ -36,9 +37,11 @@ relatedList: OwlOptions = {
     }
   }
 }
-  constructor() { }
+  constructor(private appConfig: AppConfigService) { }
 
   ngOnInit(): void {
   }
-
+  aboutCourse(value){
+    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutCourse, { id: btoa(value?.cid), selectedTab: btoa('All') ,productType : btoa('course'),parentId:btoa(value?.parentId)});
+  }
 }

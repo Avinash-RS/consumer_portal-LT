@@ -18,7 +18,7 @@ import { KycEducationComponent } from './kycinfo/kyc-education/kyc-education.com
 import { KycQuestionComponent } from './kycinfo/kyc-question/kyc-question.component';
 import { KycPreviewComponent } from './kycinfo/kyc-preview/kyc-preview.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-
+import { MicroLearnCertificationComponent } from './micro-learn-certification/micro-learn-certification.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     KycPassportComponent,
     KycEducationComponent,
     KycQuestionComponent,
-    KycPreviewComponent
+    KycPreviewComponent,
+    MicroLearnCertificationComponent
   ],
   imports: [
     CommonModule,

@@ -64,7 +64,7 @@
                     <ng-container [ngTemplateOutlet]="skeleton" *ngIf ="noDataSkeleton"></ng-container>
                     <ng-container *ngIf ="!noDataSkeleton && catlogData?.length > 0">
                         <ng-container *ngFor="let cards of catlogData | slice : 0:sliceDigits">
-                            <div class="list" (click)="aboutAssessment(cards.cid ,cards.name)">
+                            <div class="list" (click)="aboutAssessment(cards)">
                                 <div class="figWrapper">
                                     <figure>
                                         <img [src] = "cards.image.url" alt="" />
