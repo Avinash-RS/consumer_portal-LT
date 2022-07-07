@@ -13,6 +13,7 @@ import { LoadingService } from 'src/app/services/loading.service';
 import { trigger, state, style, transition,
   animate, group
 } from '@angular/animations';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: "app-header",
   templateUrl: "./header.component.html",
@@ -86,6 +87,7 @@ export class HeaderComponent implements OnInit {
     public router: Router,
     private location: Location,
     private _loading: LoadingService,
+    public toast: ToastrService
     ) {
       this.profImage = this.appConfig.getLocalStorage('profileImage');
   }
@@ -335,12 +337,12 @@ export class HeaderComponent implements OnInit {
     }).then((result) => {
       if(result.isConfirmed){
         this.commonservice.logout();
-        this.util.showkycProgress.next(false);
-        this.util.cartSubject.next(false);
+        //this.util.showkycProgress.next(false);
+       //this.util.cartSubject.next(false);
         this.cartCount = 0;
         this.inActiveTabs();
         // this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: '0' });
-        this.appConfig.routeNavigation(APP_CONSTANTS.ENDPOINTS.home);
+        //this.appConfig.routeNavigation(APP_CONSTANTS.ENDPOINTS.home);
       }
     });
   }
@@ -354,6 +356,10 @@ export class HeaderComponent implements OnInit {
     this.inActiveTabs();
   }
   gotoArea(data) {
+    if(data.cid == "GTA1018"){
+      this.toast.warning('Comming Soon');
+      return false;
+    }
     this.showMenu = 'out';
     this.mobileshowMenu = 'out';
     this.assessmentsList= false;

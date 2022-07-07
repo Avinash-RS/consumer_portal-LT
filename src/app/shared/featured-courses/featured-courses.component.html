@@ -2,19 +2,19 @@
     <span class="obstacles"></span>
     <div class="container">
         <div class="heading2">Featured Courses</div>
-        <span class="subHeading">Build your proficiency in the hottest industry of the 21st century.</span>
+        <span class="subHeading">Build your proficiency across various Engineering and Technology sectors.</span>
         <div class="featuredCourses">
             <div class="bg" [ngClass]="rightNavDisabled ? 'disableShadow' : 'showShadow'"></div>
-            <drag-scroll #featuredCourses snap-duration="500" (reachesLeftBound)="leftBoundStat($event)" (reachesRightBound)="rightBoundStat($event)" [scrollbar-hidden] = true [drag-scroll-y-disabled] = true>
-                <div class="scrollItem" drag-scroll-item *ngFor="let item of catalogData" (click)="aboutCourse(item)">
+            <drag-scroll #featuredCourses snap-duration="500" (reachesLeftBound)="leftBoundStat($event)" (reachesRightBound)="rightBoundStat($event)" [scrollbar-hidden] = false [drag-scroll-y-disabled] = true>
+                <div class="scrollItem" drag-scroll-item *ngFor="let item of catalogData" (click)="aboutCourse(item.cid)">
                     <div class="modules">
                         <div class="courseImg">
                             <figure>
                                 <img [src]="item?.image?.url" alt="" />
                             </figure>
-                            <div class="hours">
-                                <p>{{item?.contentDuration}}</p>
-                            </div>
+                            <!-- <div class="hours">
+                                <p>{{item?.videoDuration}}</p>
+                            </div> -->
                         </div>
                       <div class="wrapper">
                             <span class="domainName"><em class="icon-Right_Play"></em>{{item?.domainName}}</span>
@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="commonStyle">
                                     <span>Course Duration</span>
-                                    <span><em class="icon-Time"></em>{{item?.videoDuration}}</span>
+                                    <span><em class="icon-Time"></em>{{item?.contentDuration}}</span>
                                 </div>
                             </div>
                         </div>

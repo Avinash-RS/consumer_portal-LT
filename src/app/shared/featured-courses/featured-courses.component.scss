@@ -294,5 +294,8 @@
             content: '';
             
         }
+        &::-webkit-scrollbar {
+            display: none !important;
+        }
     }
 }

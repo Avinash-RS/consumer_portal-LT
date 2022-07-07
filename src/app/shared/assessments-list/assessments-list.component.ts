@@ -159,6 +159,7 @@ export class AssessmentsListComponent implements OnInit {
     this.catalogService.getCatalog(apiParms).subscribe((response: any) => {
       if (response.data.length > 0) {
         this.tabValues = response.data;
+        this.allArealength = 0;
         this.tabValues.forEach((element:any) => {
           this.allArealength = this.allArealength + (element?.children ? element.children.length : 0)
         });
@@ -214,7 +215,10 @@ export class AssessmentsListComponent implements OnInit {
   }
 
   aboutAssessment(value) {
-    console.log(value,'about');
+    if(value.cid == "GTC1018"){
+      this.toast.warning('Comming Soon');
+      return false;
+    }
       this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutCourse, { id: btoa(value?.cid), selectedTab: btoa('All') ,productType : btoa('course'),parentId:btoa(value?.parentId)});
   }
   filterTab(e){
