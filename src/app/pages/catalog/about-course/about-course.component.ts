@@ -100,6 +100,7 @@ export class AboutCourseComponent implements OnInit {
   pageNumber = 0;
   aboutArea;
   domainId;
+  parentId:any;
   // isSticky: boolean = false;
   blobToken: string = environment.blobKey;
   bannerImage;
@@ -125,6 +126,10 @@ export class AboutCourseComponent implements OnInit {
   menuPosition: any = 472;
   activeSection:any;
   sections:any;
+  relatedItems:any = {
+    relatedCourses:[],
+    trendingCourses:[]
+  };
   @HostListener('window:scroll', ['$event'])
   scrollHandler(event) {
     this.sticky = window.pageYOffset >= this.menuPosition ? true : false;
@@ -154,7 +159,9 @@ export class AboutCourseComponent implements OnInit {
         this.domainId = atob(params.selectedTab);
         this.areaId = atob(params.id);
         this.productType = atob(params.productType);
+        this.parentId = atob(params?.parentId);
         this.getAbouCourse();
+        this.getRelatedItems();
       });
      }
 
@@ -397,6 +404,28 @@ export class AboutCourseComponent implements OnInit {
           this.contactForm.reset();
           this.queryForm.reset();
           this.dialog.closeAll();
+        }
+      });
+    }
+    getRelatedItems() {
+      const apiParms = {
+        "domainId": 'All',
+        "pagenumber": 0,
+        "productType" :'course',
+        "courseOrigin":environment.userOrigin
+      }
+      this.catalogService.getAreaByDomain(apiParms).subscribe((response: any) => { 
+        this.relatedItems.trendingCourses = [];
+        this.relatedItems.relatedCourses = [];
+        if (response.data?.length > 0) {
+          this.relatedItems = {
+            relatedTitle:this.gtuContent?.relatedItems?.subHeading1?.title,
+            trendTitle:this.gtuContent?.relatedItems?.subHeading2.title,
+            relatedDisplayStatus :this.gtuContent?.relatedItems?.subHeading1?.dispalystatus,
+            trendDisplayStatus :this.gtuContent?.relatedItems?.subHeading2?.dispalystatus,
+            trendingCourses:response.data.filter(e => e?.isFeatured),
+            relatedCourses:response.data.filter(e => e?.parentId == this.parentId && e?.cid != this.areaId)
+          }
         }
       });
     }
