@@ -12,6 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { GlobalValidatorsService } from 'src/app/validators/global-validators.service';
+import { GoogleAnalyticsService } from 'src/app/services/google-analytics.service';
 
 @Component({
   selector: 'app-about-course',
@@ -99,6 +100,7 @@ export class AboutCourseComponent implements OnInit {
   pageNumber = 0;
   aboutArea;
   domainId;
+  parentId:any;
   // isSticky: boolean = false;
   blobToken: string = environment.blobKey;
   bannerImage;
@@ -124,7 +126,11 @@ export class AboutCourseComponent implements OnInit {
   menuPosition: any = 472;
   activeSection:any;
   sections:any;
-  @HostListener('window:scroll', ['$event']) 
+  relatedItems:any = {
+    relatedCourses:[],
+    trendingCourses:[]
+  };
+  @HostListener('window:scroll', ['$event'])
   scrollHandler(event) {
     this.sticky = window.pageYOffset >= this.menuPosition ? true : false;
     let scrollY = window.pageYOffset;
@@ -142,7 +148,7 @@ export class AboutCourseComponent implements OnInit {
 
   constructor(private router: Router, private catalogService : CatalogService,private route:ActivatedRoute,private appconfig: AppConfigService,
     private commonService : CommonService,public toast: ToastrService ,private util: UtilityService,private dialog: MatDialog,
-    private fb: FormBuilder, 
+    private fb: FormBuilder,    private ga_service: GoogleAnalyticsService,
     private gv: GlobalValidatorsService) {
       this.router.routeReuseStrategy.shouldReuseRoute = () => {
         return false;
@@ -153,7 +159,9 @@ export class AboutCourseComponent implements OnInit {
         this.domainId = atob(params.selectedTab);
         this.areaId = atob(params.id);
         this.productType = atob(params.productType);
+        this.parentId = atob(params?.parentId);
         this.getAbouCourse();
+        this.getRelatedItems();
       });
      }
 
@@ -177,7 +185,7 @@ export class AboutCourseComponent implements OnInit {
       phone: ['', [Validators.required]],
       subject:['', [Validators.required]],
       message:['']
-      
+
     });
   }
   get name() {
@@ -188,7 +196,7 @@ export class AboutCourseComponent implements OnInit {
   }
   get phone() {
     return this.contactForm.get('phone');
-  } 
+  }
   get queryname() {
     return this.queryForm.get('name');
   }
@@ -207,7 +215,7 @@ export class AboutCourseComponent implements OnInit {
       "productType":"course"
   }
     this.catalogService.getAssesments(params).subscribe((response:any)=>{
-      if (response.success) { 
+      if (response.success) {
         if(response.data && response.data.length > 0 && response.data[0].assessmentData && response.data[0].assessmentData.length){
           this.abouCourseData = response.data[0];
           this.courseData = this.abouCourseData.assessmentData[0];
@@ -218,6 +226,22 @@ export class AboutCourseComponent implements OnInit {
           setTimeout(() => {
             this.sections = document.querySelectorAll("section[id]");
           }, 1000);
+          // ##Google Analytics##
+          let ga_params = {
+                currency: "INR",
+                value: this.courseData.sellingPrice,
+                items: [
+                  {
+                    item_id: this.courseData.cid,
+                    item_name:  this.courseData.name,
+                    currency: "INR",
+                    price: this.courseData.sellingPrice,
+                    quantity: 1
+                  }
+                ]
+          };
+          this.ga_service.gaSetPage("View Course Details",{})
+          this.ga_service.gaEventTrgr("view_item", "User viewing course details", "click", ga_params)
         }
         else{
           this.abouCourseData = [];
@@ -253,7 +277,7 @@ export class AboutCourseComponent implements OnInit {
     }
   }
   courseBuy(){
-    //signin check 
+    //signin check
     if (this.userDetails) {
       var cartParams = {
           "isLevel":false,
@@ -267,6 +291,20 @@ export class AboutCourseComponent implements OnInit {
         //Add to Cart
         this.catalogService.addToCart(cartParams).subscribe((response:any) =>{
           if(response.success) {
+            let ga_params = {
+              currency: this.courseData.currency,
+              value: parseFloat(this.courseData.sellingPrice),
+              items: [
+                {
+                  item_id: this.courseData.cid,
+                  item_name: this.courseData.name,
+                  currency: this.courseData.currency,
+                  price: parseFloat(this.courseData.sellingPrice),
+                  quantity: 1,
+                },
+              ],
+            };
+            this.ga_service.gaEventTrgr("add_to_cart","User added an item to cart", "Click", ga_params)
             //is Free check
             if(this.abouCourseData?.is_free){
               this.freeOrderPlace(response?.data[0].cartId);
@@ -366,6 +404,28 @@ export class AboutCourseComponent implements OnInit {
           this.contactForm.reset();
           this.queryForm.reset();
           this.dialog.closeAll();
+        }
+      });
+    }
+    getRelatedItems() {
+      const apiParms = {
+        "domainId": 'All',
+        "pagenumber": 0,
+        "productType" :'course',
+        "courseOrigin":environment.userOrigin
+      }
+      this.catalogService.getAreaByDomain(apiParms).subscribe((response: any) => { 
+        this.relatedItems.trendingCourses = [];
+        this.relatedItems.relatedCourses = [];
+        if (response.data?.length > 0) {
+          this.relatedItems = {
+            relatedTitle:this.gtuContent?.relatedItems?.subHeading1?.title,
+            trendTitle:this.gtuContent?.relatedItems?.subHeading2.title,
+            relatedDisplayStatus :this.gtuContent?.relatedItems?.subHeading1?.dispalystatus,
+            trendDisplayStatus :this.gtuContent?.relatedItems?.subHeading2?.dispalystatus,
+            trendingCourses:response.data.filter(e => e?.isFeatured),
+            relatedCourses:response.data.filter(e => e?.parentId == this.parentId && e?.cid != this.areaId)
+          }
         }
       });
     }

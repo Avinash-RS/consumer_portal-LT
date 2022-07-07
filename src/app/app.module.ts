@@ -18,6 +18,9 @@ import { AnimateOnScrollModule } from 'ng2-animate-on-scroll';
 import { BnNgIdleService } from 'bn-ng-idle';
 import { BookSlotComponent } from './pages/bookSlot/bookSlot.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { environment } from '@env/environment';
+import {GtagModule} from 'angular-gtag';
+import { GoogleAnalyticsService } from './services/google-analytics.service';
 // import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module } from 'ng-recaptcha';
 
 @NgModule({
@@ -50,9 +53,10 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     HttpClientModule,
     RecaptchaModule,
     AnimateOnScrollModule.forRoot(),
-    NgxSkeletonLoaderModule
+    NgxSkeletonLoaderModule,
+    GtagModule.forRoot({ trackingId: environment.gaMeasureId, trackPageviews: false }),
   ],
-  providers: [BnNgIdleService,
+  providers: [BnNgIdleService,GoogleAnalyticsService,
     {
     provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true
     },

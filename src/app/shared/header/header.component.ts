@@ -13,6 +13,8 @@ import { LoadingService } from 'src/app/services/loading.service';
 import { trigger, state, style, transition,
   animate, group
 } from '@angular/animations';
+// import { GoogleAnalyticsService } from "src/app/services/google-analytics.service";
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: "app-header",
   templateUrl: "./header.component.html",
@@ -20,10 +22,10 @@ import { trigger, state, style, transition,
   animations: [SlideInOutAnimation,
     trigger('mobileslideInOut', [
       state('in', style({
-          'height': 'calc(100vh - 74px)' 
+          'height': 'calc(100vh - 74px)'
       })),
       state('out', style({
-          'height': '0px' 
+          'height': '0px'
       })),
       transition('in => out', [group([
           animate('600ms ease-in-out', style({
@@ -31,7 +33,7 @@ import { trigger, state, style, transition,
           })),
       ]
       )]),
-      transition('out => in', [group([          
+      transition('out => in', [group([
           animate('600ms ease-in-out', style({
               'height': 'calc(100vh - 74px)'
           }))
@@ -86,6 +88,8 @@ export class HeaderComponent implements OnInit {
     public router: Router,
     private location: Location,
     private _loading: LoadingService,
+    // private ga_service: GoogleAnalyticsService,
+    public toast: ToastrService
     ) {
       this.profImage = this.appConfig.getLocalStorage('profileImage');
   }
@@ -141,7 +145,7 @@ export class HeaderComponent implements OnInit {
       } else if (url == '/myAssessment'){
         this.isAssement = true;
       }
-    
+
   }
 
   mobileclick() {
@@ -167,7 +171,7 @@ export class HeaderComponent implements OnInit {
     // this.isCourse = false;
     return false;
   }
-  setDefaultMenu(){    
+  setDefaultMenu(){
     this.megaMenuL1Data = [];
     this.megaMenuL2Data = [];
     this.catalogMenu.forEach((element,index)=>{
@@ -271,7 +275,7 @@ export class HeaderComponent implements OnInit {
     this.assessmentsList= false;
     this.coursesList = false;
   }
-  
+
   editProfile(){
     this.appConfig.routeNavigation(APP_CONSTANTS.ENDPOINTS.userprofile);
     this.inActiveTabs();
@@ -302,7 +306,7 @@ export class HeaderComponent implements OnInit {
       this.isCourse = false;
       this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: '0' });
     }
-    
+
   }
 
   showCredenitals() {
@@ -317,7 +321,7 @@ export class HeaderComponent implements OnInit {
     } else {
       this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: '0' });
     }
-    
+
     this.inActiveTabs();
   }
 
@@ -354,6 +358,10 @@ export class HeaderComponent implements OnInit {
     this.inActiveTabs();
   }
   gotoArea(data) {
+    if(data.cid == "GTA1018"){
+      this.toast.warning('Comming Soon');
+      return false;
+    }
     this.showMenu = 'out';
     this.mobileshowMenu = 'out';
     this.assessmentsList= false;
@@ -376,7 +384,7 @@ export class HeaderComponent implements OnInit {
     this.assessmentsList= false;
     this.coursesList = false;
   }
-  closeMegaMenu_() { 
+  closeMegaMenu_() {
     this.showMenu = 'out';
     this.mobileshowMenu = 'out';
     this.registerMenu = 'out';

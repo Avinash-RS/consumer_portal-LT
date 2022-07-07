@@ -9,7 +9,7 @@
             </div>
         </div>
     </div>
-    <mat-horizontal-stepper #stepper>
+    <mat-horizontal-stepper #stepper (selectionChange)="ga_pageview($event)">
         <mat-step [stepControl]="firstFormGroup">
             <ng-template matStepLabel>Cart</ng-template>
             <div *ngIf="cartList.length > 0" class="cartSection">
@@ -40,7 +40,7 @@
                                             </span>
                                             <div class="headingPrice">
                                                 <div class="heading5">
-                                                    {{cart.assessmentDetails.name}} 
+                                                    {{cart.assessmentDetails.name}}
                                                     <!-- <span *ngIf="cart.productType !='course'">{{cart?.competencyDetails?.levelName}}</span> -->
                                                 </div>
                                                 <div class="value"><em class="icon-Rupee"></em>{{cart.assessmentDetails.is_free?"Free":cart.assessmentDetails.sellingPrice}}</div>
@@ -95,10 +95,10 @@
                                                         </span>
                                                     </div> -->
 
-                                                   <div>
+                                                   <!-- <div>
                                                         <span class="commonStyle">Duration</span>
                                                         <span class="iconwithText"><em class="icon-Booked"></em> {{'4.5 months'}}</span>
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                             </ng-container>
                                             <div class="test" *ngIf="cart.productType !='course'">
@@ -114,7 +114,7 @@
                                                 </ng-container>
                                             </div>
                                             <div class="deleteWishList">
-                                                <button (click)="removeAssessment(cart.cartId)"><em class="icon-Delete"></em> Remove</button>
+                                                <button (click)="removeAssessment(cart)"><em class="icon-Delete"></em> Remove</button>
                                             </div>
                                         </div>
                                     </div>

@@ -18,6 +18,7 @@ import { DragScrollComponent } from 'ngx-drag-scroll';
 import { ToastrService } from 'ngx-toastr';
 import * as CryptoJS from 'crypto-js';
 import { UtilityService } from 'src/app/services/utility.service';
+import { GoogleAnalyticsService } from 'src/app/services/google-analytics.service';
 @Component({
   selector: 'app-assessments-list',
   templateUrl: './assessments-list.component.html',
@@ -92,11 +93,13 @@ export class AssessmentsListComponent implements OnInit {
               public breakpointObserver: BreakpointObserver,
               public toast: ToastrService,
               private util: UtilityService,
+              private ga_service: GoogleAnalyticsService,
   ) { }
 
   ngOnInit() {
     this.userDetails = JSON.parse(this.appConfig.getLocalStorage('userDetails'));
     this.setSliceValue();
+    this.ga_service.gaSetPage("View all courses")
     if (this.route.snapshot.queryParams.selectedTab) {
       this.fromTab = atob(this.route.snapshot.queryParams.selectedTab);
       // this.productType = this.route.snapshot.queryParams.productType ? atob(this.route.snapshot.queryParams.productType) : 'all';
@@ -148,7 +151,7 @@ export class AssessmentsListComponent implements OnInit {
             this.sliceDigits = 6;
           }
         }
-       
+
       });
   }
   getDomain(type) {
@@ -159,6 +162,7 @@ export class AssessmentsListComponent implements OnInit {
     this.catalogService.getCatalog(apiParms).subscribe((response: any) => {
       if (response.data.length > 0) {
         this.tabValues = response.data;
+        this.allArealength = 0;
         this.tabValues.forEach((element:any) => {
           this.allArealength = this.allArealength + (element?.children ? element.children.length : 0)
         });
@@ -193,6 +197,9 @@ export class AssessmentsListComponent implements OnInit {
       if (response.data?.length > 0) {
         this.areaCards = response.data;
         this.areaCards.sort((a, b) => a.sequenceOrder > b.sequenceOrder ? 1 : -1);
+        if(!this.isNavigated){
+          this.areaCards = this.areaCards.filter(e => e?.isFeatured)
+        }
         this.noDataFound = false;
         this.viewMore = (!this.isNavigated && this.areaCards?.length > 6) ? true : false;
         this.sliceDigits =  !this.viewMore ? this.areaCards?.length + 1 : 6;
@@ -210,8 +217,12 @@ export class AssessmentsListComponent implements OnInit {
     this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.home, { fromPage: btoa("viewAll"), selectedTab: btoa(this.selectedTab) });
   }
 
-  aboutAssessment(cid,productType) {
-      this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutCourse, { id: btoa(cid), selectedTab: btoa('All') ,productType : btoa('course')});
+  aboutAssessment(value) {
+    if(value.cid == "GTC1018"){
+      this.toast.warning('Comming Soon');
+      return false;
+    }
+      this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutCourse, { id: btoa(value?.cid), selectedTab: btoa('All') ,productType : btoa('course'),parentId:btoa(value?.parentId)});
   }
   filterTab(e){
     this.fromTab='All';
@@ -230,8 +241,8 @@ export class AssessmentsListComponent implements OnInit {
     this.noDataFound = this.catlogData.length == 0 ? true : false;
   }
   enroll(e) {
-    if (this.userDetails) { 
-      const apiParam = 
+    if (this.userDetails) {
+      const apiParam =
         {
           "enrolledCourse": e?.enrolledCourse,
           "is_free": e?.is_free,

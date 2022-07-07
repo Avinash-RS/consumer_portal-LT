@@ -8,6 +8,7 @@ import { APP_CONSTANTS } from "src/app/utils/app-constants.service";
 import { UtilityService } from 'src/app/services/utility.service';
 import { MatStepper } from '@angular/material/stepper';
 import Swal from 'sweetalert2';
+import { GoogleAnalyticsService } from 'src/app/services/google-analytics.service';
 @Component({
   selector: 'app-purchase',
   templateUrl: './purchase.component.html',
@@ -41,7 +42,8 @@ export class PurchaseComponent implements OnInit {
     private dialog: MatDialog,
     private catalogService: CatalogService, public toast: ToastrService,
     private appconfig: AppConfigService, private appConfig: AppConfigService,
-    private util: UtilityService
+    private util: UtilityService,
+    private ga_service: GoogleAnalyticsService,
   ) { }
 
   ngOnInit(): void {
@@ -53,6 +55,7 @@ export class PurchaseComponent implements OnInit {
       secondCtrl: ['', Validators.required]
     });
     this.getCart()
+    this.ga_service.gaSetPage("Cart",{})//Google Analytics
   }
   getCart() {
     var params = {
@@ -66,6 +69,26 @@ export class PurchaseComponent implements OnInit {
       } else {
         this.cartList = [];
       }
+
+      let ga_items = []
+      this.cartList.forEach(item => {
+        ga_items.push({
+            item_id: item.assessmentDetails.cid,
+            item_name: item.assessmentDetails.name,
+            currency: "INR",
+            price: item.assessmentDetails.sellingPrice,
+            quantity: 1
+          })
+      });
+
+    let ga_params = {
+      currency: "INR",
+      value: this.totalAmount,
+      items: ga_items
+    }
+
+      // ### Google Analytics for View_Cart ###
+      this.ga_service.gaEventTrgr("view_cart", "Get user's cart items", "View", ga_params)
     })
   }
 
@@ -80,7 +103,7 @@ export class PurchaseComponent implements OnInit {
     this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.home, { fromPage: btoa("viewAll"), selectedTab: btoa('All') });
   }
 
-  removeAssessment(id) {
+  removeAssessment(item) {
 
     Swal.fire({
       customClass: {
@@ -96,13 +119,29 @@ export class PurchaseComponent implements OnInit {
       if(result.isConfirmed){
         var params = {
           "userId": this.userDetails.userId,
-          "cartId": id
+          "cartId": item.cartId
         }
         this.catalogService.removeFromCart(params).subscribe((response: any) => {
           if (response.success) {
             this.toast.success(response.message);
             this.util.cartSubject.next(true);
             this.getCart();
+            //analytics event START
+          let ga_params:any = {
+            currency: "INR",
+            value: item.assessmentDetails.sellingPrice,
+            items: [
+              {
+                item_id: item.assessmentDetails.cid,
+                item_name: item.assessmentDetails.name,
+                price: item.assessmentDetails.sellingPrice,
+                quantity: 1,
+                currency: "INR",
+              }
+            ]
+          }
+          this.ga_service.gaEventTrgr("remove_from_cart", "remove_from_cart", "Click", ga_params);
+          //analytics event END
           } else {
             this.toast.warning('Something went wrong')
           }
@@ -110,5 +149,13 @@ export class PurchaseComponent implements OnInit {
       }
     });
   }
-
+//page view for address selection
+ga_pageview(event){
+  if(event.selectedIndex==0)
+  {
+    this.ga_service.gaSetPage("Cart",{})//Google Analytics
+  }else{
+    this.ga_service.gaSetPage("Address Selection",{})//Google Analytics
+  }
+}
 }
