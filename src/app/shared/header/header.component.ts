@@ -366,7 +366,7 @@ export class HeaderComponent implements OnInit {
     this.mobileshowMenu = 'out';
     this.assessmentsList= false;
     this.coursesList = false;
-    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutCourse,{id : btoa(data?.levelIds[0]?.LevelId ? data.levelIds[0].LevelId : ''), selectedTab : btoa(data.parentId) ,productType : btoa('course')});
+    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutCourse,{id : btoa(data?.levelIds[0]?.LevelId ? data.levelIds[0].LevelId : ''), selectedTab : btoa(data.parentId) ,productType : btoa('course'),parentId:btoa(data?.parentId)});
     this.inActiveTabs();
   }
 
