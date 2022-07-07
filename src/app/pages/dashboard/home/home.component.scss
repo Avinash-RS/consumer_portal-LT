@@ -726,6 +726,7 @@
               font-weight: 400;
               line-height: 1.5;
               margin: 0;
+              min-height: 96px;
             }
             .imagearea {
               margin-top: 20px;
@@ -759,6 +760,12 @@
                     width: 4.5em;
                     position: relative;
                     right: 0.65em;
+                    img {
+                      width: 75px;
+                      height: 75px;
+                      object-fit: cover;
+                      object-position: center;
+                    }
                   }
             }
        

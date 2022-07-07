@@ -1650,7 +1650,7 @@
           width: 100%;
           @include md {
             width: 45%;
-            position: absolute;
+            position: relative;
             right: 0;
             bottom: 0;
           }
