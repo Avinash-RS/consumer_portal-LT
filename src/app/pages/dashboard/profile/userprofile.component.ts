@@ -12,6 +12,7 @@ import * as bcrypt from 'bcryptjs';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { trigger, style, animate, transition } from '@angular/animations';
 import Swal from 'sweetalert2';
+import { GoogleAnalyticsService } from "src/app/services/google-analytics.service";
 
 @Component({
   selector: "app-userprofile",
@@ -91,7 +92,7 @@ export class UserprofileComponent implements OnInit {
     //   "tabname": 'close',
     //   'Active': false
     // },
-    
+
   ]
   userDetails: any;
   purchaseList = [];
@@ -106,8 +107,8 @@ export class UserprofileComponent implements OnInit {
   @ViewChild('imageInput') imageInput;
   closeAccount: FormGroup;
   @ViewChild('fileUpload')
-  fileUpload: ElementRef 
-  inputFileName: string 
+  fileUpload: ElementRef
+  inputFileName: string
   @Input()
   files: File[] = []
   @Input()
@@ -128,11 +129,12 @@ export class UserprofileComponent implements OnInit {
     public route: ActivatedRoute,
     private router:Router,
     public toast: ToastrService,
-    private dialog: MatDialog, 
+    private dialog: MatDialog,
     private fb: FormBuilder,
     private appconfig: AppConfigService,
     private gv: GlobalValidatorsService,
     private sanitizer: DomSanitizer,
+    private ga_service: GoogleAnalyticsService,
     private util: UtilityService) {
       this.route.queryParams.subscribe( params => {
         if(params.tab){
@@ -200,6 +202,8 @@ export class UserprofileComponent implements OnInit {
     if(value.tabname != "account"){
       this.accountSettingsForm.reset();
     }
+    // ###Google analytics###
+    this.ga_service.gaSetPage(value.title)
   }
   getSkillChartData(){
     // this.userDetails.email
@@ -313,7 +317,7 @@ export class UserprofileComponent implements OnInit {
     else {
       this.toast.warning("No changes to save");
     }
-    
+
   }
   triggerProfilepercentage(){
     this.util.percentageSubject.subscribe((result:any)=>{
@@ -465,20 +469,20 @@ getProfilePercentage(){
     if (this.fileUpload)
       this.fileUpload.nativeElement.click()
   }
- 
+
 
   onFileSelected(event) {
-    let files = event.dataTransfer ? event.dataTransfer.files : event.target.files; 
+    let files = event.dataTransfer ? event.dataTransfer.files : event.target.files;
     for (let i = 0; i < files.length; i++) {
       let file = files[i];
- 
-      if (this.validate(file)) { 
-        file.objectURL = this.sanitizer.bypassSecurityTrustUrl((window.URL.createObjectURL(files[i]))); 
+
+      if (this.validate(file)) {
+        file.objectURL = this.sanitizer.bypassSecurityTrustUrl((window.URL.createObjectURL(files[i])));
         if (!this.isMultiple()) {
           this.files = []
         }
-        this.files.push(files[i]); 
-      } 
+        this.files.push(files[i]);
+      }
     }
   }
 
@@ -505,7 +509,7 @@ getProfilePercentage(){
 
   clearInputElement() {
     this.fileUpload.nativeElement.value = ''
-  } 
+  }
 
   isMultiple(): boolean {
     return this.multiple
