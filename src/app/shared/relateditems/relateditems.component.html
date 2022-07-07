@@ -1,20 +1,20 @@
-<section class="relatedProgramsAssessments programList" *ngIf="item?.subHeading1?.dispalystatus">
+<section class="relatedProgramsAssessments programList" *ngIf="item?.relatedDisplayStatus">
     <div class="container">
-        <div class="commonHeadingStyle">{{item?.subHeading1?.title}}</div>
+        <div class="commonHeadingStyle">{{item?.relatedTitle}}</div>
     </div>
     <div class="programBg commonCSS">
         <div class="container">
             <div class="wrapper">
                 <owl-carousel-o [options]="relatedList">
                     <ng-container>
-                        <ng-template carouselSlide *ngFor="let relatedchild of item?.subHeading1?.innerArray">
-                            <div class="relatedList">
-                                <span class="heading">{{relatedchild?.title}}</span>
+                        <ng-template carouselSlide *ngFor="let relatedchild of item?.relatedCourses">
+                            <div class="relatedList" (click)="aboutCourse(relatedchild)">
+                                <span class="heading">{{relatedchild?.name}}</span>
                                 <figure>
-                                    <img [src]="relatedchild?.imageurl" alt="" />
+                                    <img [src]="relatedchild?.image?.url" alt="" />
                                 </figure>
                                 <div class="title">
-                                    <span class="domainName"><em class="icon-Right_Play"></em>{{relatedchild?.domain}}</span>
+                                    <span class="domainName"><em class="icon-Right_Play"></em>{{relatedchild?.domainName}}</span>
                                     <div class="licenseDuration">
                                         <div class="commonStyle">
                                             <span>License Period</span>
@@ -22,7 +22,7 @@
                                         </div>
                                         <div class="commonStyle">
                                             <span>Course Duration</span>
-                                            <span><em class="icon-Time"></em>{{relatedchild?.duration}}</span>
+                                            <span><em class="icon-Time"></em>{{relatedchild?.contentDuration}}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -44,23 +44,23 @@
     </div>
 </section>
 
-<section class="relatedProgramsAssessments assessmentList" *ngIf="item?.subHeading2?.dispalystatus">
+<section class="relatedProgramsAssessments assessmentList" *ngIf="item?.trendDisplayStatus">
     <div class="container">
-        <div class="commonHeadingStyle">{{item?.subHeading2?.title}}</div>
+        <div class="commonHeadingStyle">{{item?.trendTitle}}</div>
     </div>
     <div class="assessmentBg commonCSS">
         <div class="container">
             <div class="wrapper">
                 <owl-carousel-o [options]="relatedList">
                     <ng-container>
-                        <ng-template carouselSlide *ngFor="let relatedcourse of item?.subHeading2?.innerArray">
-                            <div class="relatedList">
-                                <span class="heading">{{relatedcourse?.title}}</span>
+                        <ng-template carouselSlide *ngFor="let relatedcourse of item?.trendingCourses">
+                            <div class="relatedList" (click)="aboutCourse(relatedcourse)">
+                                <span class="heading">{{relatedcourse?.name}}</span>
                                 <figure>
-                                    <img [src]="relatedcourse?.imageurl" alt="" />
+                                    <img [src]="relatedcourse?.image?.url" alt="" />
                                 </figure>
                                 <div class="title">
-                                    <span class="domainName"><em class="icon-Right_Play"></em>{{relatedcourse?.domain}}</span>
+                                    <span class="domainName"><em class="icon-Right_Play"></em>{{relatedcourse?.domainName}}</span>
                                     <div class="licenseDuration">
                                         <div class="commonStyle">
                                             <span>License Period</span>
@@ -68,7 +68,7 @@
                                         </div>
                                         <div class="commonStyle">
                                             <span>Course Duration</span>
-                                            <span><em class="icon-Time"></em>{{relatedcourse?.duration}}</span>
+                                            <span><em class="icon-Time"></em>{{relatedcourse?.contentDuration}}</span>
                                         </div>
                                     </div>
                                 </div>                   
