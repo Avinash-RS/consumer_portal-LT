@@ -293,6 +293,7 @@ export class UserprofileComponent implements OnInit {
          this.addressEntryForm.value.email = this.userDetails.email;
          this.commonService.profileUpdate(this.addressEntryForm.value).subscribe((data: any) => {
            if (data.success) {
+            this.hasChange = false;
              this.userDetails.firstname = this.addressEntryForm.value.firstname;
              this.userDetails.lastname = this.addressEntryForm.value.lastname;
              this.appconfig.setLocalStorage('userDetails', JSON.stringify(this.userDetails));
