@@ -154,15 +154,7 @@ export class LoginComponent implements OnInit {
   }
 
   submitRegister() {
-    if (this.registerForm.valid) {
-      if (!this.collegeflag){
-        this.toast.warning('Please select valid college name');
-        return false;
-      }
-      if (!this.departmentflag) {
-        this.toast.warning('Please select valid department name');
-        return false;
-      }
+    if (this.registerForm.valid && this.collegeflag && this.departmentflag) {
       var encryptedname = CryptoJS.AES.encrypt(this.registerForm.value.email.toLowerCase().trim(), this.secretKey.trim()).toString();
       var encryptedpassword = CryptoJS.AES.encrypt(this.registerForm.value.password.trim(), this.secretKey.trim()).toString();
 
@@ -197,7 +189,11 @@ export class LoginComponent implements OnInit {
         }
       });
     } else {
+      this.toast.warning('Please fill all the fields');
       this.gv.validateAllFields(this.registerForm);
+      // this.registerForm.markAllAsTouched();
+      this.registerForm.controls.college.markAsTouched();
+      this.registerForm.controls.department.markAsTouched();
     }
   }
 
