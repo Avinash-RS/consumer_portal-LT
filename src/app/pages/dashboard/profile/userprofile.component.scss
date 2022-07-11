@@ -883,6 +883,9 @@
         }
     }
     .certificatenocard {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         figure {
             width: 30%;
             img {
@@ -937,6 +940,22 @@
     span{
         cursor: pointer;
         font-size: 1.2em;
+    }
+}
+.purchasingnocard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    figure {
+        width: 30%;
+        img {
+            width: 100%;
+        }
+    }
+    p {
+        font-size: 20px;
+        font-weight: 400;
+        margin-top: 1em;
     }
 }
 //Close Account
