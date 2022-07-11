@@ -259,7 +259,16 @@ resolvedSignIn(captchaSignInResponse: string){
             if (response) {
               this.userDetails = JSON.parse(this.appconfig.getLocalStorage('userDetails'));
               if (this.userDetails) {
-
+                response.userId = this.userDetails.userId;
+                this.catalogService.addToCart(response).subscribe((cart: any) => {
+                  if (cart.success) {
+                    this.util.cartSubject.next(true);
+                    this.appconfig.routeNavigation('cart/purchase');
+                  } else {
+                    this.appconfig.routeNavigation(APP_CONSTANTS.ENDPOINTS.home)
+                    this.toast.warning(cart.message)
+                  }
+                });
               // const data = {
               //   "noofFields": "44",
               //   "email": this.userDetails.email ? this.userDetails.email : null
