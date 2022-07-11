@@ -183,20 +183,24 @@
 // }
 .filterSection {
     position: relative;
-    width: 96%;
+    width: 86%;
     margin: 0 auto;
+    @include md {
+        width: 96%;
+    }
     .parentContainer {
         vertical-align: top;
         white-space: initial;
         &:last-child {
-            margin-right: 0 !important;
+            // margin-right: 0 !important;
             .fieldItems {
                 margin-right: 0;
             }
         }
     }
     .fieldItems {
-        margin: 0 15px;
+        // margin: 0 15px;
+        margin: 0;
         width: 130px;
         @include sm {
             width: 154px;
@@ -272,7 +276,7 @@
             line-height: 1.2;
             text-align: center;
             flex-grow: 1;
-            min-height: 45px;
+            min-height: 50px;
         }
         .coursesCount {
             font-size: 0.75em;
@@ -377,11 +381,6 @@
     }
 }
 
-::ng-deep.filterSection {
-    .owl-carousel .owl-stage-outer {
-        overflow: visible !important;
-    }
-}
 .assessmentList {
     display: flex;
     flex-wrap: wrap;
@@ -788,7 +787,11 @@
 
 ::ng-deep.filterSection {
     .owl-carousel .owl-nav.disabled {
-        display: block !important;
+        // display: block !important;
+    }
+    .owl-carousel .owl-stage-outer {
+        // overflow: visible !important;
+        padding: 15px 0;
     }
     .owl-theme .owl-nav {
         padding: 6px 10px !important;
@@ -803,7 +806,7 @@
       box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16) !important;
       padding: 6px 10px !important;
       font-size: 15px !important;
-      @include md {
+      @include xl {
         left: -75px;
       }
       .prev {
@@ -820,7 +823,7 @@
       box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16) !important;
       padding: 6px 10px !important;
       font-size: 15px !important;
-      @include md {
+      @include xl {
         right: -75px;
       }
       .next {
