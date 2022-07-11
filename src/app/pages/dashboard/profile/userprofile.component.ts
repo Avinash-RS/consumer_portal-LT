@@ -140,6 +140,9 @@ export class UserprofileComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private ga_service: GoogleAnalyticsService,
     private util: UtilityService) {
+      this.router.routeReuseStrategy.shouldReuseRoute = () => {
+        return false;
+      };
       this.route.queryParams.subscribe( params => {
         if(params.tab){
           this.paramvalue['title'] = params.tab
