@@ -939,6 +939,19 @@
         font-size: 1.2em;
     }
 }
+.purchasingnocard {
+    figure {
+        width: 30%;
+        img {
+            width: 100%;
+        }
+    }
+    p {
+        font-size: 20px;
+        font-weight: 400;
+        margin-top: 1em;
+    }
+}
 //Close Account
 .warning {
     display: flex;

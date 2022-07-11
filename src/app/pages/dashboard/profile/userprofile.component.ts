@@ -42,6 +42,7 @@ export class UserprofileComponent implements OnInit {
   DataofCertificate;
   isCertificate = true;
   certificateValue;
+  ispurchase = true;
   selection;
   skillList:any;
   skillNames=[]
@@ -410,9 +411,17 @@ getProfilePercentage(){
     this.commonService.getmyAssesments(param).subscribe((rdata: any) => {
       if (rdata.success) {
         this.purchaseList = rdata.data;
+        this.ispurchase = true;
+        if (this.purchaseList?.length == 0) {
+          this.ispurchase = false;
+        }
       } else {
-        this.toast.warning('Something went Wrong');
+        this.ispurchase = false;
+        // this.toast.warning('Something went Wrong');
       }
+    },
+    err => {
+      this.ispurchase = false;
     });
   }
   deactivateaccount() {

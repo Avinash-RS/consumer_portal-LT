@@ -283,6 +283,7 @@
                 <div *ngSwitchCase="'history'">
                     <div class="heading3">Purchase History</div>
                     <p class="desc">Showing all your purchase history here.</p>
+                    <div  *ngIf = "ispurchase">
                     <div class="purchasingHistory" *ngFor="let item of purchaseList">
                         <div class="purchaseCourseImage">
                             <figure>
@@ -322,6 +323,13 @@
                                 <button>Receipt</button>
                             </div> -->
                         </div>
+                    </div>
+                    </div>
+                    <div class="purchasingnocard" *ngIf = "!ispurchase">
+                        <figure>
+                            <img src="https://lmsassetspremium.lntedutech.com/portalicons/certificatenocard.webp" alt="">
+                        </figure>
+                        <p>There is no purchaseHistory found.</p>
                     </div>
                 </div>
                 <div *ngSwitchCase="'payment'">
