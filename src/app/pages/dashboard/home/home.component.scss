@@ -719,6 +719,7 @@
               font-size: 1.125em;
               font-weight: 700;
               margin-bottom: 1.25em;
+              min-height: 40px;
             }
             .desc {
               color:$mediumGrey;
@@ -758,11 +759,12 @@
                     box-shadow: 15px 15px 10px 0 rgb(0 0 0 / 10%);
                     transition: all 0.4s ease;
                     width: 4.5em;
+                    height: 4.5em;
                     position: relative;
                     right: 0.65em;
                     img {
-                      width: 75px;
-                      height: 75px;
+                      width: 4.5em;
+                      height: 4.5em;
                       object-fit: cover;
                       object-position: center;
                     }
