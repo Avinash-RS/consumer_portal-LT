@@ -62,7 +62,8 @@
                 <span class="addressTitle">State <span class="mandatory">*</span></span>
                 <mat-form-field appearance="fill">
                     <mat-select formControlName="state" [compareWith]="stateCompare">
-                      <mat-option *ngFor="let stateitem of stateList" [value]="stateitem" (onSelectionChange)="stateIdFetcher(stateitem)" (click)="stateIdFetcher(stateitem)">
+                      <mat-option *ngFor="let stateitem of stateList" [value]="stateitem" (click)="stateIdFetcher(stateitem)">
+                      <!-- (onSelectionChange)="stateIdFetcher(stateitem)"  -->
                         {{stateitem.statename}}
                       </mat-option>
                     </mat-select>
