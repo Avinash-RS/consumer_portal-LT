@@ -358,7 +358,7 @@
                             <p>There is no certificate found.</p>
                         </div>
                         <div class="certificateContent">
-                            <app-micro-learn-certification [courseItems]="certificateValue"></app-micro-learn-certification>
+                            <app-micro-learn-certification *ngIf="certificateValue" [courseItems]="certificateValue"></app-micro-learn-certification>
                         </div>
                     </div>
                 </div>
