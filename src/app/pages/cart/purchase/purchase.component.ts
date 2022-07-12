@@ -50,7 +50,9 @@ export class PurchaseComponent implements OnInit {
   addressItemData: any = {};
   addressEntryForm: FormGroup;
   tagList: any = [];
+  tagName: any = [];
   stateList: any = [];
+  originAddessTag: string = '';
 
   //Checkout
   //accessCode = 'AVFQ92HF95BT32QFTB'; Sufin accessCode
@@ -209,7 +211,9 @@ export class PurchaseComponent implements OnInit {
   }
 
   addressFormInitialize() {
+    this.originAddessTag = '';
     if (this.isEdit) {
+      this.originAddessTag = this.addressItemData?.addressTag?.addressTagName;
       this.addressEntryForm = this._formBuilder.group({
         name: [this.addressItemData?.name, [Validators.required , this.glovbal_validators.noWhitespaceValidator]],
         mobile: [this.addressItemData?.mobile, [Validators.required, this.glovbal_validators.mobileRegex()]],
@@ -219,7 +223,6 @@ export class PurchaseComponent implements OnInit {
         pincode: [this.addressItemData?.pincode, [Validators.required,this.glovbal_validators.zipOnly()]],
         addressTag: [this.addressItemData?.addressTag, [Validators.required]],
       });
-      console.log(this.addressEntryForm)
     } else {
       this.addressEntryForm = this._formBuilder.group({
         name: ['', [Validators.required , this.glovbal_validators.noWhitespaceValidator]],
@@ -237,6 +240,10 @@ export class PurchaseComponent implements OnInit {
     let getparams = { userId: this.userDetails.userId }
     this.cartService.getAddressByUserid(getparams).subscribe((data: any) => {
       this.addressList = data.data;
+      this.tagName = [];
+      this.addressList.forEach((value) => {
+        this.tagName.push(value.addressTag.addressTagName);
+      });
       if(this.addressList){
         this.SelectedIndex = this.addressList[0];
       } else {
@@ -252,7 +259,6 @@ export class PurchaseComponent implements OnInit {
   }
   getDistrict(param) {
     this.cartService.getDistrictDetails(param).subscribe((data: any) => {
-      console.log(data)
       this.districtList = data.data
     })
   }
@@ -297,7 +303,16 @@ export class PurchaseComponent implements OnInit {
     postParam.mobile = this.addressEntryForm.value.mobile;
     postParam.addressLine1 = this.addressEntryForm.value.addresslines;
     postParam.pincode = this.addressEntryForm.value.pincode;
-
+    let tagFlag = [];
+    tagFlag =   this.tagName.filter(e => e == tagname && (tagname == 'Home' || tagname == 'Office'));
+    if(!Updateflag && tagFlag.length > 0 ){
+      this.toast.warning(tagname + ' address already exists.');
+      return;
+    }
+    if (Updateflag && this.originAddessTag != tagname && tagFlag.length > 0) {
+      this.toast.warning(tagname + ' address already exists.');
+      return;
+    }
     this.cartService.addOrEditAddress(postParam).subscribe((data: any) => {
       if (data.success) {
         this.toast.success(data.message);
@@ -311,6 +326,10 @@ export class PurchaseComponent implements OnInit {
 
   addAddress(templateRef: TemplateRef<any>, isUpdate, indexObj?: any) {
     this.isEdit = isUpdate;
+    if (!this.isEdit && this.tagName.length >= 5) {
+      this.toast.warning("You can add only up to 5 billing addresses.");
+      return;
+    }
     this.SelectedIndex = indexObj;
     this.addressEntryForm.reset();
     if (isUpdate) {
@@ -324,7 +343,6 @@ export class PurchaseComponent implements OnInit {
       })
     }
     isUpdate ? this.addressItemData = JSON.parse(JSON.stringify(indexObj)) : this.addressItemData = {};
-    // console.log(this.SelectedIndex)
     this.dialog.open(templateRef, {
       width: '65%',
       height: '65%',
@@ -365,7 +383,6 @@ export class PurchaseComponent implements OnInit {
   }
 
   getCurrentAddress(selection, index) {
-    console.log(selection,"-->DATA SENT TO CHECKOUT COMPONENT")
     this.SelectedIndex = selection;
     this.radioChecked = index;
     this.util.addressSubject.next(this.SelectedIndex);
