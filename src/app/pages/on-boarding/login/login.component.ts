@@ -154,15 +154,7 @@ export class LoginComponent implements OnInit {
   }
 
   submitRegister() {
-    if (this.registerForm.valid) {
-      if (!this.collegeflag){
-        this.toast.warning('Please select valid college name');
-        return false;
-      }
-      if (!this.departmentflag) {
-        this.toast.warning('Please select valid department name');
-        return false;
-      }
+    if (this.registerForm.valid && this.collegeflag && this.departmentflag) {
       var encryptedname = CryptoJS.AES.encrypt(this.registerForm.value.email.toLowerCase().trim(), this.secretKey.trim()).toString();
       var encryptedpassword = CryptoJS.AES.encrypt(this.registerForm.value.password.trim(), this.secretKey.trim()).toString();
 
@@ -197,7 +189,11 @@ export class LoginComponent implements OnInit {
         }
       });
     } else {
+      this.toast.warning('Please fill all the fields');
       this.gv.validateAllFields(this.registerForm);
+      // this.registerForm.markAllAsTouched();
+      this.registerForm.controls.college.markAsTouched();
+      this.registerForm.controls.department.markAsTouched();
     }
   }
 
@@ -263,7 +259,16 @@ resolvedSignIn(captchaSignInResponse: string){
             if (response) {
               this.userDetails = JSON.parse(this.appconfig.getLocalStorage('userDetails'));
               if (this.userDetails) {
-
+                response.userId = this.userDetails.userId;
+                this.catalogService.addToCart(response).subscribe((cart: any) => {
+                  if (cart.success) {
+                    this.util.cartSubject.next(true);
+                    this.appconfig.routeNavigation('cart/purchase');
+                  } else {
+                    this.appconfig.routeNavigation(APP_CONSTANTS.ENDPOINTS.home)
+                    this.toast.warning(cart.message)
+                  }
+                });
               // const data = {
               //   "noofFields": "44",
               //   "email": this.userDetails.email ? this.userDetails.email : null

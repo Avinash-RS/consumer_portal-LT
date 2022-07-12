@@ -42,6 +42,7 @@ export class UserprofileComponent implements OnInit {
   DataofCertificate;
   isCertificate = true;
   certificateValue;
+  ispurchase = true;
   selection;
   skillList:any;
   skillNames=[]
@@ -140,6 +141,9 @@ export class UserprofileComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private ga_service: GoogleAnalyticsService,
     private util: UtilityService) {
+      this.router.routeReuseStrategy.shouldReuseRoute = () => {
+        return false;
+      };
       this.route.queryParams.subscribe( params => {
         if(params.tab){
           this.paramvalue['title'] = params.tab
@@ -301,6 +305,7 @@ export class UserprofileComponent implements OnInit {
          this.addressEntryForm.value.email = this.userDetails.email;
          this.commonService.profileUpdate(this.addressEntryForm.value).subscribe((data: any) => {
            if (data.success) {
+            this.hasChange = false;
              this.userDetails.firstname = this.addressEntryForm.value.firstname;
              this.userDetails.lastname = this.addressEntryForm.value.lastname;
              this.appconfig.setLocalStorage('userDetails', JSON.stringify(this.userDetails));
@@ -409,9 +414,17 @@ getProfilePercentage(){
     this.commonService.getmyAssesments(param).subscribe((rdata: any) => {
       if (rdata.success) {
         this.purchaseList = rdata.data;
+        this.ispurchase = true;
+        if (this.purchaseList?.length == 0) {
+          this.ispurchase = false;
+        }
       } else {
-        this.toast.warning('Something went Wrong');
+        this.ispurchase = false;
+        // this.toast.warning('Something went Wrong');
       }
+    },
+    err => {
+      this.ispurchase = false;
     });
   }
   deactivateaccount() {

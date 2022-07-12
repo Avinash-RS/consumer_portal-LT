@@ -60,22 +60,30 @@ export class AssessmentsListComponent implements OnInit {
     touchDrag: false,
     pullDrag: false,
     autoplay: false,
+    autoWidth: true,
     margin: 20,
     dots: false,
     navSpeed: 700,
     navText: ['<em class="icon-LeftArrow prev"></em>', '<em class="icon-RightArrow next"></em>'],
+    nav: true,
+    startPosition: 0,
     responsive: {
       0: {
         items: 2
       },
-      480: {
+      520: {
+        items: 3
+      },
+      690: {
         items: 4
       },
-      768: {
+      920: {
+        items: 5
+      },
+      1100: {
         items: 6
       }
     },
-    nav: true
   };
   activeSlides: SlidesOutputData;
   slidesStore: any[];
@@ -85,6 +93,7 @@ export class AssessmentsListComponent implements OnInit {
   userDetails;
   enroledCourse:any = [];
   secretKey = "(!@#Passcode!@#)";
+  selectedCarousel: number = 0;
   constructor(private _loading: LoadingService,
               private router: Router,
               private catalogService: CatalogService,
@@ -166,7 +175,13 @@ export class AssessmentsListComponent implements OnInit {
         this.tabValues.forEach((element:any) => {
           this.allArealength = this.allArealength + (element?.children ? element.children.length : 0)
         });
-        this.tabValues.splice(0, 0, this.firstTabValue)
+        this.tabValues.splice(0, 0, this.firstTabValue);
+        this.tabValues.filter((ele, i)=> {
+          if(ele.cid == this.fromTab) {
+            this.selectedCarousel = i;
+          }
+        })
+        this.CategoriesOptions.startPosition = this.selectedCarousel;
         this.getArea(this.fromTab);
       } else {
         this.tabValues = []
