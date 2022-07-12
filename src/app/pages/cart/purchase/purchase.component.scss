@@ -447,7 +447,7 @@
     .tag, .priceDetails > div, .totalAmount > div {
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-start;
     }
     .tag {
         border-bottom: 1px solid $lightGrey;
@@ -503,11 +503,12 @@
             color: $blackColor;
             font-weight: 700;
             &:last-child {
+                font-family: "OpenSans", sans-serif;
                 font-size: 1.625em;
+                font-weight: 600;
+                color: $greenColor;
                 em {
                     font-size: 0.75em;
-                    font-weight: 700;
-                    color: $mediumGrey;
                 }
             }
         }

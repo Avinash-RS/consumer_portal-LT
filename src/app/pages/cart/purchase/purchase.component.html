@@ -129,14 +129,14 @@
     <div class="checkoutBox">
         <div class="priceDetails">
             <span class="heading6">Price Details ({{cartList.length}} <span *ngIf="cartList.length <= 1">item</span><span *ngIf="cartList.length > 1">items</span>)</span>
-            <div>
+            <!-- <div>
                 <span>Price</span>
                 <span><em class="icon-Rupee"></em>{{totalCartPrice}}</span>
             </div>
             <div>
                 <span>GST (18%)</span>
                 <span><em class="icon-Rupee"></em>{{gstAmount}}</span>
-            </div>
+            </div> -->
         </div>
         <div class="totalAmount">
             <div>
@@ -145,9 +145,9 @@
                     <p>(Incl. of all taxes)</p>
                 </div>
               
-                <span><em class="icon-Rupee"></em>{{totalAmount}}</span>
+                <span><em class="icon-Rupee"></em>{{totalCartPrice}}</span>
             </div>
-            <button (click)="currentTab==0?totalAmount==0?checkout():continueClick(stepper):checkout()" class="checkout">{{currentTab===0?'Continue':'Checkout'}}</button>
+            <button (click)="currentTab==0?totalCartPrice==0?checkout():continueClick(stepper):checkout()" class="checkout">{{currentTab===0?'Continue':'Checkout'}}</button>
         </div>
         <form #form ngNoForm id="nonseamless" method="post" name="redirect"
             action="https://test.ccavenue.com/transaction/transaction.do?command=initiateTransaction">

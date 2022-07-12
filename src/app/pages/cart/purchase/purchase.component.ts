@@ -39,7 +39,6 @@ export class PurchaseComponent implements OnInit {
   userDetails;
   cartList = [];
   batchInfo = false;
-  totalAmount = 0;
   gstAmount = 0;
 
   //Address
@@ -105,7 +104,6 @@ export class PurchaseComponent implements OnInit {
     this.catalogService.getCart(params).subscribe((response: any) => {
       if (response.data.length > 0 && response.success) {
         this.cartList = response.data;
-        this.totalAmount = response.totalPrice;
         this.gstAmount = response.gstPrice;
         this.totalCartPrice = 0;
         this.cartList.forEach((list) => {
@@ -117,7 +115,6 @@ export class PurchaseComponent implements OnInit {
       } else {
         this.cartList = [];
         this.totalCartPrice = 0;
-        this.totalAmount = 0;
         this.gstAmount = 0;
       }
       let ga_items = []
@@ -132,7 +129,7 @@ export class PurchaseComponent implements OnInit {
       });
       let ga_params = {
         currency: "INR",
-        value: this.totalAmount,
+        value: this.totalCartPrice,
         items: ga_items
       }
       // ### Google Analytics for View_Cart ###
@@ -431,7 +428,7 @@ export class PurchaseComponent implements OnInit {
       param.addressId = this.selectedAddress.addressId
       this.catalogService.createOrder(param).subscribe((data: any) => {
         this._loading.setLoading(true, environment.API_BASE_URL+"createorder");
-        if(this.totalAmount!==0){
+        if(this.totalCartPrice!==0){
             this.encRequestRes = data['message'];
             this.accessCode = data['accesscode'];
             setTimeout(() => {
