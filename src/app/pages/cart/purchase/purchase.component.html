@@ -16,16 +16,6 @@
                 <span class="itemsHeading">{{cartList.length}} <span *ngIf="cartList.length <= 1">item</span><span *ngIf="cartList.length > 1">items</span> in cart</span>
                 <div class="wrapper">
                     <div class="leftContent">
-                        <!-- <div class="offer">
-                            <span class="availableOffers"><em class="icon-Offer"></em> Available Offers</span>
-                            <ul [ngClass]="{'limitTextHeight': isReadMore}">
-                                <li>10% Unlimited Cashback on Axis Bank Credit Card. TCA</li>
-                                <li>20% Unlimited Cashback on Axis Bank Credit Card. TCA</li>
-                                <li>30% Unlimited Cashback on Axis Bank Credit Card. TCA</li>
-                                <li>40% Unlimited Cashback on Axis Bank Credit Card. TCA</li>
-                            </ul>
-                            <span class="showText" (click)="showText()"> {{ isReadMore ? 'Show More': 'Show Less' }} </span>
-                        </div> -->
                         <div class="itemsinCart">
                             <ng-container *ngFor="let cart of cartList">
                                 <div>
@@ -34,14 +24,12 @@
                                     </figure>
                                     <div class="cartContent">
                                         <div class="wrapper">
-                                            <!-- <span [ngStyle]="{'color':cart.productType !='course' ? '#27BBEE': '#20B19A'}" class="competencyName"> -->
                                             <span class="competencyName">
                                                 <em class="icon-Right_Play"></em> {{cart?.competencyDetails?.name}}
                                             </span>
                                             <div class="headingPrice">
                                                 <div class="heading5">
                                                     {{cart.assessmentDetails.name}}
-                                                    <!-- <span *ngIf="cart.productType !='course'">{{cart?.competencyDetails?.levelName}}</span> -->
                                                 </div>
                                                 <div class="value"><em class="icon-Rupee"></em>{{cart.assessmentDetails.is_free?"Free":cart.assessmentDetails.sellingPrice}}</div>
                                             </div>
@@ -51,54 +39,11 @@
                                         </div>
                                         <div class="levelAssessment">
                                             <ng-container *ngIf="cart.productType =='course'">
-                                                <!-- <popover-content #finalPopover placement="right" [animation]="true" popoverSize="large">
-                                                    <div class="popoverContainer">
-                                                        <div class="popTitle">JFSD-Batch 01</div>
-                                                        <div class="subpopTitle">Weekday batch / morning</div>
-                                                        <div class="popheading">Batch duration</div>
-                                                        <span class="desc">15 Feb, 2022</span>
-                                                        <div class="popheading">Instructor session timings</div>
-                                                        <span class="desc">11:00 am</span>
-                                                        <div class="popheading">Total duration</div>
-                                                        <span class="desc">4.5 Months</span>
-                                                    </div>
-                                                </popover-content> -->
                                                 <div class="ratingSkills">
                                                     <div>
                                                         <span class="commonStyle">License Period</span>
                                                         <span class="iconwithText"><em class="icon-Document"></em> {{'8 weeks'}}</span>
                                                     </div>
-                                                    <!-- <div *ngIf="batchInfo">
-                                                        <span class="commonStyle">Batch details</span>
-                                                        <span class="iconwithText">{{batchInfo?.batchName}}
-                                                             <div class="popoverInfoFinal">
-                                                                <span class="info">i</span>
-                                                                <div class="popoverContainer">
-                                                                    <div>
-                                                                        <div class="popTitle">{{batchInfo?.batchName}}</div>
-                                                                        <div class="subpopTitle">{{batchInfo?.batchDesc}}</div>
-                                                                    </div>
-                                                                    <div class="common">
-                                                                        <div class="popheading">Batch duration</div>
-                                                                        <div class="desc">{{batchInfo?.batchStartDate | date:'dd MMM, y'}} - {{batchInfo?.batchStartDate | date:'dd MMM, y'}}</div>
-                                                                    </div>
-                                                                    <div class="common">
-                                                                        <div class="popheading">Instructor session timings</div>
-                                                                        <div class="desc">{{batchInfo?.instructorSessionTiming}}</div>
-                                                                    </div>
-                                                                    <div class="common">
-                                                                        <div class="popheading">Total duration</div>
-                                                                        <div class="desc">{{batchInfo?.duration}}</div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </span>
-                                                    </div> -->
-
-                                                   <!-- <div>
-                                                        <span class="commonStyle">Duration</span>
-                                                        <span class="iconwithText"><em class="icon-Booked"></em> {{'4.5 months'}}</span>
-                                                    </div> -->
                                                 </div>
                                             </ng-container>
                                             <div class="test" *ngIf="cart.productType !='course'">
@@ -107,7 +52,6 @@
                                                         <span class="heading">{{test.testName}}</span>
                                                         <span class="assessmentHour">
                                                             <span><em class="icon-Time"></em> {{test.sumtotalhour}} hr</span>
-                                                            <!-- <span>|</span> -->
                                                             <span><em class="icon-Layers"></em> {{test.totalQuestion}} qn</span>
                                                         </span>
                                                     </div>
@@ -124,7 +68,8 @@
                     </div>
                     <div class="rightContent">
                         <div class="rightContentWrapper">
-                            <app-Checkout [tab]='stepper' [checkoutData]='cartList' [cartTotal]="totalAmount" [amountGst]="gstAmount"></app-Checkout>
+                            <!-- <app-Checkout [tab]='stepper' [checkoutData]='cartList' [cartTotal]="totalAmount" [amountGst]="gstAmount"></app-Checkout> -->
+                            <ng-container [ngTemplateOutlet]="checkOutPrice"></ng-container>
                         </div>
                     </div>
                 </div>
@@ -141,22 +86,186 @@
                 </div>
             </section>
         </mat-step>
-        <!-- #docregion label -->
+
         <mat-step [stepControl]="secondFormGroup">
             <ng-template matStepLabel>Address</ng-template>
-            <!-- #enddocregion label -->
             <div class="cartSection">
                 <div class="itemsHeading">Billing Address</div>
                 <div class="wrapper">
                     <div class="leftContent">
-                        <app-Address></app-Address>
+                        <!-- <app-Address></app-Address> -->
+                        <div class="billingAddress">
+                            <mat-radio-group aria-label="Select an option">
+                                <div class="address" *ngFor="let addressItem of addressList; let i = index;" [class.active]="i == radioChecked">
+                                    <mat-radio-button [value]="addressItem" [checked]="i == radioChecked" (click)="getCurrentAddress(addressItem, i)">
+                                        <span class="name">{{addressItem.name}} <span class="badge">{{addressItem.addressTag.addressTagName}}</span></span>
+                                        <p>{{addressItem.addressLine1}}{{addressItem.addressLine2}}<br />
+                                        {{addressItem.city.cityName}}, {{addressItem.state.stateName}}
+                                        </p>
+                                        <span class="mobile">Mobile: <strong>{{addressItem.mobile}}</strong></span>
+                                    </mat-radio-button>
+                                    <div class="removeEdit">
+                                        <button class="remove" (click)="removeAddress(deleteAddress, addressItem)"><em class="icon-Delete"></em> Remove</button>
+                                        <button class="Edit" (click)="addAddress(addNewAddress, true, addressItem)"><em class="icon-Edit"></em> Edit</button>
+                                    </div>
+                                </div>
+                            </mat-radio-group>
+                            <div class="addAddress" (click)="addAddress(addNewAddress,false)">
+                                <span><strong>+</strong> Add New Address</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="rightContent">
-                        <app-Checkout [tab]='1' [checkoutData]='cartList' [cartTotal]="totalAmount"></app-Checkout>
+                        <!-- <app-Checkout [tab]='1' [checkoutData]='cartList' [cartTotal]="totalAmount"></app-Checkout> -->
+                        <ng-container [ngTemplateOutlet]="checkOutPrice"></ng-container>
                     </div>
                 </div>
             </div>
         </mat-step>
-
     </mat-horizontal-stepper>
 </section>
+
+<ng-template #checkOutPrice>
+    <div class="checkoutBox">
+        <div class="priceDetails">
+            <span class="heading6">Price Details ({{cartList.length}} <span *ngIf="cartList.length <= 1">item</span><span *ngIf="cartList.length > 1">items</span>)</span>
+            <!-- <div>
+                <span>Price</span>
+                <span><em class="icon-Rupee"></em>{{totalCartPrice}}</span>
+            </div>
+            <div>
+                <span>GST (18%)</span>
+                <span><em class="icon-Rupee"></em>{{gstAmount}}</span>
+            </div> -->
+        </div>
+        <div class="totalAmount">
+            <div>
+                <div>
+                    <span class="heading6">Total Amount</span>
+                    <p>(Incl. of all taxes)</p>
+                </div>
+              
+                <span><em class="icon-Rupee"></em>{{totalCartPrice}}</span>
+            </div>
+            <button (click)="currentTab==0?totalCartPrice==0?checkout():continueClick(stepper):checkout()" class="checkout">{{currentTab===0?'Continue':'Checkout'}}</button>
+        </div>
+        <form #form ngNoForm id="nonseamless" method="post" name="redirect"
+            action="https://test.ccavenue.com/transaction/transaction.do?command=initiateTransaction">
+            <input type="hidden" id="encRequest" name="encRequest" value="{{encRequestRes}}">
+            <input type="hidden" name="access_code" id="access_code" value="{{accessCode}}">
+        </form>
+    </div>    
+</ng-template>
+
+<!-- Add New Address -->
+<ng-template #addNewAddress>
+    <div class="newAddress">
+        <div class="heading6" mat-dialog-title>{{isEdit?'Update Address':'Add New Address'}}</div>
+        <span class="closeBtn" mat-dialog-close><em class="icon-Close"></em></span>
+        <form [formGroup]="addressEntryForm" autocomplete="off" (submit)="addOrUpdateAddress(isEdit)">
+        <div class="addressContent">
+            <div>
+                <span class="addressTitle">Name <span class="mandatory">*</span></span>
+                <mat-form-field appearance="fill">
+                    <input matInput placeholder="Enter Name" formControlName="name">
+                </mat-form-field>
+                <ng-container *ngIf="name.invalid && name.touched">
+                    <mat-error *ngIf="name.errors?.required" class="error">{{'Name is required'}}</mat-error>
+                    <mat-error *ngIf="name.errors?.whitespace && !name.errors?.required" class="error">{{'Name is required'}}</mat-error>
+                    <mat-error *ngIf="name.errors?.alphaNum30" class="error">{{'Alpha numeric with maximum of 30 characters only allowed'}}</mat-error>
+                </ng-container>
+            </div>
+            <div>
+                <span class="addressTitle">Mobile No <span class="mandatory">*</span></span>
+                <mat-form-field appearance="fill">
+                    <input type="number" matInput placeholder="Enter Mobile No" formControlName="mobile">
+                </mat-form-field>
+                <ng-container *ngIf="mobile.invalid && mobile.touched">
+                    <mat-error *ngIf="mobile.errors?.required" class="error">{{'Mobile number is required'}}</mat-error>
+                    <mat-error *ngIf="mobile?.errors?.mobileRegex" class="error">Please enter a valid 10 digit mobile number</mat-error>
+                </ng-container>
+            </div>
+            <div class="addressSection">
+                <span class="addressTitle">Address <span class="mandatory">*</span></span>
+                <mat-form-field appearance="fill">
+                    <input matInput placeholder="Enter House No, Building, Street, Area" formControlName="addresslines">
+                </mat-form-field>
+                <ng-container *ngIf="addresslines.invalid && addresslines.touched">
+                    <mat-error *ngIf="addresslines.errors?.required" class="error">{{' Address is required'}}</mat-error>
+                    <mat-error *ngIf="addresslines.errors?.address255" class="error">{{'Minimum of 10 and Maximum of 255 Characters only allowed.'}}</mat-error>
+                </ng-container>
+            </div>
+            <div class="addressDropSection">
+                <span class="addressTitle">State <span class="mandatory">*</span></span>
+                <mat-form-field appearance="fill">
+                    <mat-select formControlName="state" [compareWith]="stateCompare">
+                        <mat-option *ngFor="let stateitem of stateList" [value]="stateitem" (click)="stateIdFetcher(stateitem)">
+                        {{stateitem.statename}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <ng-container *ngIf="state.invalid && state.touched">
+                    <mat-error *ngIf="state.errors?.required" class="error">{{' State is required'}}</mat-error>
+                </ng-container>
+            </div>
+
+            <div class="addressDropSection">
+                <span class="addressTitle">District / City <span class="mandatory">*</span></span>
+                <mat-form-field appearance="fill">
+                    <mat-select formControlName="city" [compareWith]="cityCompare">
+                        <mat-option *ngFor="let districtitem of districtList" [value]="districtitem">
+                        {{districtitem.districtname}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <ng-container *ngIf="city.touched && (state.untouched && state.invalid)">
+                    <mat-error *ngIf="city.errors?.required" class="error">{{'Select a state first'}}</mat-error>
+                </ng-container>
+                <ng-container *ngIf="city.invalid && city.touched">
+                    <mat-error *ngIf="city.errors?.required" class="error">{{'City is required'}}</mat-error>
+                </ng-container>
+            </div>
+            <div>
+                <span class="addressTitle">Pincode <span class="mandatory">*</span></span>
+                <mat-form-field appearance="fill">
+                    <input type="number" maxlength="6" matInput placeholder="Enter Pincode" formControlName="pincode">
+                </mat-form-field>
+                <ng-container *ngIf="pincode.invalid && pincode.touched">
+                    <mat-error *ngIf="pincode.errors?.required" class="error">{{' Pincode is required'}}</mat-error>
+                    <mat-error *ngIf="pincode.errors?.zipOnly" class="error">{{'Pincode should be numeric only and should be exact 6 digits'}}</mat-error>
+                </ng-container>
+            </div>
+            <div class="addressDropSection">
+                <span class="addressTitle">Save Address as <span class="mandatory">*</span></span>
+                <mat-form-field appearance="fill">
+                    <mat-select formControlName="addressTag" [compareWith]="tagCompare">
+                        <mat-option *ngFor="let tagitem of tagList" [value]="tagitem">
+                        {{tagitem.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <ng-container *ngIf="addressTag.invalid && addressTag.touched">
+                    <mat-error *ngIf="addressTag.errors?.required" class="error">{{' Address tag is required'}}</mat-error>
+                </ng-container>
+            </div>
+            <div class="addAddressBtn">
+                <button type="submit" ngClass="{{addressEntryForm.valid?'':'disable'}}" [disabled]="!addressEntryForm.valid">{{isEdit?'Update Address':'Add Address'}}</button>
+            </div>
+        </div>
+    </form>
+    </div>
+</ng-template>
+
+<!-- Remove Address -->
+<ng-template #deleteAddress>
+    <div class="removeAddress">
+        <div class="heading5" mat-dialog-title>Confirmation</div>
+        <span class="closeBtn" mat-dialog-close><em class="icon-Close"></em></span>
+        <div class="removeContent">
+            <div><em class="icon-Close"></em></div>
+            <div class="heading4">Are You Sure?</div>
+            <p>Do you want to remove Address? This process cannot be undone.</p>
+            <button (click)="removeAddressAction()">Remove</button>
+        </div>
+    </div>
+</ng-template>

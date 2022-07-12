@@ -122,21 +122,6 @@ export class AddressComponent implements OnInit {
 
 
   addOrUpdateAddress(Updateflag: boolean) {
-    // let addParams: any = {
-    //   isUpdate:Updateflag,
-    //   name:"Kelvin",
-    //   mobile:"9025993339",
-    //   userId:this.userDetails.userId,
-    //   addressLine1:"2, pallavaram",
-    //   addressLine2:"pallavaram",
-    //   stateId:"01",
-    //   stateName:"Tamilnadu",
-    //   cityId:"01",
-    //   cityName:"Chennai",
-    //   pincode:"600064",
-    //   addressTagId:"ak6yce",
-    //   addressTagName:"Others"
-    // }
     let postParam: any = {}
     postParam.isUpdate = Updateflag;
     if (Updateflag) { postParam.addressId = this.SelectedIndex.addressId; }
