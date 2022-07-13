@@ -202,10 +202,11 @@ export class HeaderComponent implements OnInit {
   }
     this.catalogService.getCatalog(apiParms).subscribe((response: any) => {
       if (response.success && response.data.length > 0) {
+        let sorteddata = response.data.sort((a,b) => a.sequenceOrder > b.sequenceOrder ? 1 : -1);
         var courseobj = {
           "label":'Courses',
           "type":'course',
-          "data" : response.data,
+          "data" : sorteddata,
           "icon" :"icon-coursePlatform",
           "desc" :"Scientifically designed courses for various levels",
           "active" : true
