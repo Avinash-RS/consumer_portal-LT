@@ -130,6 +130,8 @@ export class AboutCourseComponent implements OnInit {
     relatedCourses:[],
     trendingCourses:[]
   };
+  enrolledCid: any = [];
+  courseDetails: any;
   @HostListener('window:scroll', ['$event'])
   scrollHandler(event) {
     this.sticky = window.pageYOffset >= this.menuPosition ? true : false;
@@ -169,6 +171,36 @@ export class AboutCourseComponent implements OnInit {
     // this.contactFormInitilize();
     // this.queryFormInitilize();
   }
+
+  purchasedCourse() {
+    let param = {
+      'userId': this.userDetails.userId, 
+      'email': this.userDetails.email, 
+      'type': 'All',
+      'productType': 'course'
+    }
+    this.commonService.getmyAssesments(param).subscribe((res:any)=>{ 
+      this.courseDetails = res.data;
+      this.enrolledCid =  [];
+      this.courseDetails.forEach((value) => {
+        this.enrolledCid.push(value.assessmentDetails.cid);
+        // console.log('sbdhgvsgf');
+      });
+      var enrolFlag = this.enrolledCid.filter(e => e == this.courseData.cid);
+      if(enrolFlag.length > 0){
+        this.courseData.isPurchased = true;
+      }
+      else {
+        this.courseData.isPurchased = false;
+      }
+    });
+  }
+
+  goToCourse(){
+    var ValueData = JSON.parse(this.appconfig.getLocalStorage('valueData'));
+    window.open(environment.lxp_url+"?queValue="+encodeURIComponent(ValueData.queValue)+'&rpValue='+encodeURIComponent(ValueData.rpValue)+'&dpValue=microsetportal', '_self');
+  }
+
   contactFormInitilize(){
     this.contactForm = this.fb.group({
       name: ['', [Validators.required]],
@@ -223,6 +255,7 @@ export class AboutCourseComponent implements OnInit {
           this.courseType = this.courseData?.courseType ? this.courseData?.courseType :'';
           this.defaultDiv = false;
           this.nocard = false;
+          this.purchasedCourse();
           setTimeout(() => {
             this.sections = document.querySelectorAll("section[id]");
           }, 1000);
