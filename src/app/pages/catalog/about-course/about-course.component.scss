@@ -247,19 +247,25 @@
           // @include xl {
           //   margin-left: 6em;
           // }
-          .buyNow {
+          button {
             font-family: "OpenSans", sans-serif;
             font-size: 0.9375em;
             font-weight: 700;
             color: $whiteColor;
             line-height: normal;
-            background: #2ea3f2;
             border-radius: 5px;
             padding: 0.5em 2em;
-            border: none;
             transition: background 0.3s ease-in-out;
-            &:hover {
-              background: #08558c;
+            &.purchased {
+              background: $darkLimeGreen;
+              border: none;
+            }
+            &.buyNow {
+              background: #2ea3f2;
+              border: none;
+              &:hover {
+                background: #08558c;
+              }
             }
           }
           .courseRate {
@@ -456,8 +462,30 @@
       padding: 1.5em 0;
       opacity: 1;
       box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-      .buyNow {
-        opacity: 1;
+      button {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        font-family: "OpenSans", sans-serif;
+        font-size: 0.9375em;
+        font-weight: 700;
+        color: $whiteColor;
+        line-height: normal;
+        border-radius: 5px;
+        padding: 0.5em 2em;
+        transition: background 0.3s ease-in-out;
+        &.purchased {
+          background: $darkLimeGreen;
+          border: none;
+        }
+        &.buyNow {
+          background: #2ea3f2;
+          border: none;
+          &:hover {
+            background: #08558c;
+          }
+        }
       }
     }
     ul {
@@ -492,25 +520,25 @@
     .container {
       position: relative;
     }
-    .buyNow {
-      position: absolute;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 1.062em;
-      font-weight: 400;
-      color: $whiteColor;
-      line-height: normal;
-      background: #2ea3f2;
-      border-radius: 5px;
-      padding: 0.5em 2em;
-      border: none;
-      opacity: 0;
-      transition: all 0.3s ease-in-out;
-      &:hover {
-        background: #08558c;
-      }
-    }
+    // .buyNow {
+    //   position: absolute;
+    //   right: 0;
+    //   top: 50%;
+    //   transform: translateY(-50%);
+    //   font-size: 1.062em;
+    //   font-weight: 400;
+    //   color: $whiteColor;
+    //   line-height: normal;
+    //   background: #2ea3f2;
+    //   border-radius: 5px;
+    //   padding: 0.5em 2em;
+    //   border: none;
+    //   opacity: 0;
+    //   transition: all 0.3s ease-in-out;
+    //   &:hover {
+    //     background: #08558c;
+    //   }
+    // }
   }
 
 // assessmentOverview
