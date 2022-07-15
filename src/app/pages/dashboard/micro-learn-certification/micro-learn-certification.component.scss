@@ -35,12 +35,12 @@
     }
 
     .innerBorder {
-        border: 2px solid #ffffff;
+        border: 2px solid $whiteColor;
         position: relative;
     }
 
     .content {
-        background-color: #ffffff;
+        background-color: $whiteColor;
         margin: 2em;
         padding: 30px;
         display: flex;
@@ -75,7 +75,7 @@
                 .qrCode {
                     text-align: center;
                     img {
-                        max-width: 40%;
+                        max-width: 47%;
                     }
     
                 }
@@ -87,7 +87,7 @@
                 span {
                     font-family: "Montserrat";
                     font-weight: 700;
-                    color: #1C1C1C;
+                    color: $blackcolor2;
                     opacity: 1;
                     font-size: 14px;
                 }
@@ -103,7 +103,7 @@
 
             span {
                 font-family: 'Montserrat';
-                color: #808081;
+                color: $greycolor1;
                 font-weight: 700;
                 margin-right: 10px;
                 position: relative;
@@ -112,7 +112,7 @@
 
             p {
                 font-family: 'CenturyGothic';
-                color: #808081;
+                color: $greycolor1;
                 font-weight: 400;
                 text-transform: uppercase;
             }
@@ -129,7 +129,7 @@
 
                     .dot1 {
                         display: inline-block;
-                        color: #1C1C1C;
+                        color: $blackcolor2;
                         font-size: 25px;
                         font-weight: 700;
                         line-height: normal;
@@ -148,7 +148,7 @@
                 }
                 .word {
                     margin: -7px 0 15px 0;
-                    color: #1C1C1C;
+                    color: $blackcolor2;
                     font-family: 'OpenSans';
                     font-size: 18px;
                     font-weight: 400;
@@ -157,7 +157,7 @@
                 }
 
                 .dotline {
-                    color: #1C1C1C;
+                    color: $blackcolor2;
                     font-size: 20px;
                     font-weight: 700;
                     line-height: normal;
@@ -167,11 +167,11 @@
                 }
 
                 // .borderline {
-                //     border-bottom: 2px solid #1C1C1C;
+                //     border-bottom: 2px solid $blackcolor2;
                 // }
 
                 .desc {
-                    color: #1C1C1C;
+                    color: $blackcolor2;
                     font-family: 'OpenSans';
                     font-size: 18px;
                     font-weight: 400;
@@ -213,7 +213,7 @@
                 }
 
                 .heading {
-                    color: #222222;
+                    color: $shadeblackcolor;
                     font-size: 18px;
                     font-weight: 700;
                     line-height: normal;
@@ -222,7 +222,7 @@
                 }
 
                 .position {
-                    color: #333333;
+                    color: $shadecolor;
                     font-size: 13px;
                     font-weight: 500;
                     line-height: normal;
