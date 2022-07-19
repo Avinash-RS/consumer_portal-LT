@@ -19,7 +19,9 @@
                             <div class="buttons">
                                 <span class="courseRate" *ngIf="courseData?.is_free">{{'Free'}}</span>
                                 <span class="courseRate" *ngIf="!courseData?.is_free"><em class="icon-Rupee"></em>{{courseData?.sellingPrice}}</span>
-                                <button class="buyNow" (click)="courseBuy()">Buy Now</button>
+                                <button [ngClass]="courseData?.isPurchased ? 'purchased' : 'buyNow'" (click)="courseData?.isPurchased ? goToCourse() : courseBuy()">
+                                    {{courseData?.isPurchased ? 'Go to Course' : 'Buy Now'}}
+                                </button>
                                 <!-- <button class="buyNow" (click)="navigateBatch()">
                                     {{(this.courseType == 'Track' || this.courseType == 'course') ? 'Enroll Now' :'Add To Cart'}}
                                 </button> -->
@@ -64,8 +66,8 @@
                             <a (click)="scroll(item?.sectionId)" [ngClass]="item?.sectionId == activeSection ? 'active':''">{{item.title}}</a>
                         </li>
                     </ul>
-                    <button class="buyNow" (click)="courseBuy()">
-                        Buy Now
+                    <button [ngClass]="courseData?.isPurchased ? 'purchased' : 'buyNow'" (click)="courseData?.isPurchased ? goToCourse() : courseBuy()">
+                        {{courseData?.isPurchased ? 'Go to Course' : 'Buy Now'}}
                     </button>
                 </div>
             </div>
@@ -298,9 +300,9 @@
             </div>
         </section>
 
-        <ng-container *ngIf="gtuContent?.relatedItems?.dispalystatus">
+        <ng-container *ngIf="relatedItems?.relatedCourses.length > 0 && relatedItems?.trendingCourses.length > 0 && gtuContent?.relatedItems?.dispalystatus">
             <section [id]="'section10'">
-                <app-relateditems  [relateditem]="gtuContent?.relatedItems"></app-relateditems>
+                <app-relateditems  [relateditem]="relatedItems"></app-relateditems>
             </section>
         </ng-container>
 

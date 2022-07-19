@@ -202,10 +202,11 @@ export class HeaderComponent implements OnInit {
   }
     this.catalogService.getCatalog(apiParms).subscribe((response: any) => {
       if (response.success && response.data.length > 0) {
+        let sorteddata = response.data.sort((a,b) => a.sequenceOrder > b.sequenceOrder ? 1 : -1);
         var courseobj = {
           "label":'Courses',
           "type":'course',
-          "data" : response.data,
+          "data" : sorteddata,
           "icon" :"icon-coursePlatform",
           "desc" :"Scientifically designed courses for various levels",
           "active" : true
@@ -366,7 +367,7 @@ export class HeaderComponent implements OnInit {
     this.mobileshowMenu = 'out';
     this.assessmentsList= false;
     this.coursesList = false;
-    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutCourse,{id : btoa(data?.levelIds[0]?.LevelId ? data.levelIds[0].LevelId : ''), selectedTab : btoa(data.parentId) ,productType : btoa('course')});
+    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.aboutCourse,{id : btoa(data?.levelIds[0]?.LevelId ? data.levelIds[0].LevelId : ''), selectedTab : btoa(data.parentId) ,productType : btoa('course'),parentId:btoa(data?.parentId)});
     this.inActiveTabs();
   }
 

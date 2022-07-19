@@ -12,6 +12,7 @@ import * as bcrypt from 'bcryptjs';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { trigger, style, animate, transition } from '@angular/animations';
 import Swal from 'sweetalert2';
+import * as pdf from 'html2pdf.js';
 import { GoogleAnalyticsService } from "src/app/services/google-analytics.service";
 
 @Component({
@@ -35,9 +36,13 @@ import { GoogleAnalyticsService } from "src/app/services/google-analytics.servic
 })
 
 export class UserprofileComponent implements OnInit {
-
+  @ViewChild('certificateTemplate', { static: false }) certificateLayout: TemplateRef<any>;
   blobToken: string = environment.blobKey;
-  paramvalue={}
+  paramvalue={};
+  DataofCertificate;
+  isCertificate = true;
+  certificateValue;
+  ispurchase = true;
   selection;
   skillList:any;
   skillNames=[]
@@ -112,7 +117,7 @@ export class UserprofileComponent implements OnInit {
   @Input()
   files: File[] = []
   @Input()
-  multiple
+  multiple;
   openKYCPannel = false;
   selectedKycTab:string ="Personal";
   profilePercentage:any = 0;
@@ -136,6 +141,9 @@ export class UserprofileComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private ga_service: GoogleAnalyticsService,
     private util: UtilityService) {
+      this.router.routeReuseStrategy.shouldReuseRoute = () => {
+        return false;
+      };
       this.route.queryParams.subscribe( params => {
         if(params.tab){
           this.paramvalue['title'] = params.tab
@@ -155,6 +163,7 @@ export class UserprofileComponent implements OnInit {
           }
           else if(this.selection == 'certificate'){
             this.selectTypes({title:'Certificate'});
+            this.getCertificates();
           }
         }
       })
@@ -199,6 +208,9 @@ export class UserprofileComponent implements OnInit {
         data.Active = true;
       }
     })
+    if (value.tabname == "certificate") {
+      this.getCertificates();
+    }
     if(value.tabname != "account"){
       this.accountSettingsForm.reset();
     }
@@ -289,10 +301,11 @@ export class UserprofileComponent implements OnInit {
       this.addressEntryForm.controls.userId.patchValue(this.userDetails.userId);
       // console.log(this.addressEntryForm);
        // return;
-       if (this.addressEntryForm.valid) {
+      if (this.addressEntryForm.valid) {
          this.addressEntryForm.value.email = this.userDetails.email;
          this.commonService.profileUpdate(this.addressEntryForm.value).subscribe((data: any) => {
            if (data.success) {
+            this.hasChange = false;
              this.userDetails.firstname = this.addressEntryForm.value.firstname;
              this.userDetails.lastname = this.addressEntryForm.value.lastname;
              this.appconfig.setLocalStorage('userDetails', JSON.stringify(this.userDetails));
@@ -401,9 +414,17 @@ getProfilePercentage(){
     this.commonService.getmyAssesments(param).subscribe((rdata: any) => {
       if (rdata.success) {
         this.purchaseList = rdata.data;
+        this.ispurchase = true;
+        if (this.purchaseList?.length == 0) {
+          this.ispurchase = false;
+        }
       } else {
-        this.toast.warning('Something went Wrong');
+        this.ispurchase = false;
+        // this.toast.warning('Something went Wrong');
       }
+    },
+    err => {
+      this.ispurchase = false;
     });
   }
   deactivateaccount() {
@@ -507,13 +528,65 @@ getProfilePercentage(){
     return true;
   }
 
-  clearInputElement() {
-    this.fileUpload.nativeElement.value = ''
+  // tslint:disable-next-line:typedef
+  getCertificates() {
+    this.commonService.getProfileCertificate(this.userDetails.userId).subscribe((result: any) => {
+      if (result.success) {
+        this.isCertificate = true;
+        this.DataofCertificate = result.data;
+        if (this.DataofCertificate?.length == 0) {
+          this.isCertificate = false;
+        }
+      } else {
+        this.isCertificate = false;
+      }
+    },
+    err => {
+      this.isCertificate = false;
+    });
+  }
+  downloadCertificate(data){
+    if(data){
+      var content = data;
+    } else {
+      content = this.certificateValue;
+    }
+    var element = document.getElementById('content');
+    (document.getElementById('userID') as HTMLInputElement).innerHTML = content.firstName+'&nbsp'+content.lastName;
+    (document.getElementById('courseID') as HTMLInputElement).innerHTML = content.courseName;
+    var opt = {
+      filename:'myfile.pdf',
+      jsPDF:{unit: 'in', format: 'letter', orientation: 'landscape' }
+    };
+    pdf().from(element).set(opt).toPdf().get('pdf').then(function (pdf) {
+      }, (err) => {
+      }).save();
   }
 
-  isMultiple(): boolean {
-    return this.multiple
+  viewCertificate(value){
+    this.certificateValue = value;
+    const valdat = this.dialog.open(this.certificateLayout, {
+      width: '1150px',
+      height: '85%',
+      autoFocus: true,
+      closeOnNavigation: true,
+      panelClass: 'certificationContainer',
+      data: value,
+    });
+    return false;
   }
+
+//   // tslint:disable-next-line:typedef
+
+  clearInputElement() {
+      this.fileUpload.nativeElement.value = '';
+    }
+  isMultiple(): boolean {
+      return this.multiple;
+    }
+}
+
+
   // ChangeKycTabs(selectedTab){
   //   this.selectionTypes[1].child.forEach(element=>{
   //     if(element.tab == selectedTab){
@@ -531,4 +604,3 @@ getProfilePercentage(){
   //     this.ChangeKycTabs(data);
   //   })
   // }
-}

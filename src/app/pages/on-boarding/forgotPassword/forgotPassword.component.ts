@@ -59,7 +59,7 @@ export class ForgotPasswordComponent implements OnInit {
       }
       this.route.queryParams.subscribe(params => {
         if (params.setPwd && params.email) {
-          this.userEmail = params.email;
+          this.userEmail =  CryptoJS.AES.decrypt(params.email.trim(), this.secretKey.trim()).toString(CryptoJS.enc.Utf8);
           this.pwdSecretKey = params.setPwd;
           this.displayController('setPassword');
           this.resetPwdFormInitialize();

@@ -1,0 +1,80 @@
+<section class="microLearnWrapper" >
+    <div>
+        <div class="microLearnCertification" id="content" #content>
+            <figure class="leftTop">
+                <img src="../../../../assets/images/Assets.png" alt="" />
+            </figure>
+            <figure class="rightTop">
+                <img src="../../../../assets/images/Assets.png" alt="" />
+            </figure>
+            <figure class="rightBottom">
+                <img src="../../../../assets/images/Assets.png" alt="" />
+            </figure>
+            <div class="innerBorder">
+                <div class="content">
+                    <figure class="innerAsset">
+                        <img src="../../../../assets/images/Layer 2 copy 2@2x.png" alt="" />
+                    </figure>
+                    <header>
+                        <figure class="logo">
+                            <img src="../../../../assets/images/edutech_logo.png.png" alt="Logo" />
+                        </figure>
+                        <div class="code">
+                            <figure class="qrCode">
+                                <img [src]="certificateData?.uploadCertificate?.qrCode" alt="" />
+                                <!-- <img src="../../../../assets/images/Layer 5.png" alt="" /> -->
+                            </figure>
+                            <div class="date">
+                                <span class="">Date of issue :</span>
+                                <span class="">{{certificateData.uploadCertificate.uploadDate |date}}</span>
+                            </div>
+                        </div>
+                    </header>
+                    <div class="bodyContent">
+                        <div class="details">
+                            <div class="certificateHeading">
+                                <span>Certificate </span> <p class="headcolor">of Completion</p>
+                            </div>
+                            <div class="certificationDetails">
+                                <span class="desc">This is to certify that </span>
+                                <div class="dottedline">
+                                    <span class="dot1" id="userID">{{certificateData.firstName}} {{certificateData.lastName}}</span>
+                                    <span class="dotof">of </span>
+                                    <span class="dot1">gujarat Technological university</span>
+                                </div>
+                                <span class="desc">has successfully completed the course</span>
+                                <div class="dotline" id="courseID">{{certificateData.courseName}}</div>
+                                <span class="desc">offered by CollegeConnect Programme </span>
+                                <span class="word">of L&T EduTech. </span>
+                                <!-- <div class="borderline"></div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <footer>
+                        <div class="ccHead commonStyle">
+                            <span class="fooWrapper">
+                                <figure class="signature">
+                                    <img src="../../../../assets/images/sign.png" alt="Signature" />
+                                </figure>
+                                <span class="heading">Febin M F<span class="position">Head - College Connect</span></span>
+                            </span>
+                        </div>
+                        <div class="badgelogo">
+                            <figure>
+                                <img src="../../../../assets/images/Group 1.png" alt="">
+                            </figure>
+                        </div>
+                        <div class="CEO commonStyle">
+                            <span class="fooWrapper">
+                                <figure class="signature">
+                                    <img src="../../../../assets/images/sign1.png" alt="Signature" />
+                                </figure>
+                                <span class="heading">Sabyasachi Das<span class="position">Chief Executive Officer, L&T EduTech</span></span>
+                            </span>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

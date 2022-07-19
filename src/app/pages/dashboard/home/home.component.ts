@@ -60,6 +60,9 @@ testimonialOptions: OwlOptions = {
 }
   constructor(private util: UtilityService, private dialog: MatDialog, public commonService: CommonService, private cookieService: CookieService, private router: Router, 
     private appConfig: AppConfigService, private catalogService: CatalogService, public toast: ToastrService,) {
+      this.router.routeReuseStrategy.shouldReuseRoute = () => {
+        return false;
+      };
 
   }
 

@@ -12,7 +12,7 @@
             </nav> -->
             <div class="assessmentArea">
                 <div class="filterSection">
-                    <drag-scroll #allCourses snap-duration="500" (reachesLeftBound)="leftBoundStat($event)" (reachesRightBound)="rightBoundStat($event)" [scrollbar-hidden] = true [drag-scroll-y-disabled] = true (translated)="getPassedData($event)">
+                    <!-- <drag-scroll #allCourses snap-duration="500" (reachesLeftBound)="leftBoundStat($event)" (reachesRightBound)="rightBoundStat($event)" [scrollbar-hidden] = true [drag-scroll-y-disabled] = true (translated)="getPassedData($event)">
                         <div class="parentContainer" drag-scroll-item *ngFor="let tab of tabValues">
                             <div class="fieldItems">
                                 <div class="fieldTabs" [ngClass]="tab.isSelected ? 'active': '' " (click)="getArea(tab.cid)">
@@ -37,9 +37,29 @@
                         <div class="rightArrow">
                             <button [disabled]="rightNavDisabled" [ngClass]="rightNavDisabled ? 'disableArrow' : 'showArrow'" (click)="moveRight()" class="draggable-button float-right"> <em class="icon-RightArrow"></em> </button>
                         </div>
-                    </div>
-                    <!-- <owl-carousel-o [options]="CategoriesOptions" >
-                    </owl-carousel-o> -->
+                    </div> -->
+                    <owl-carousel-o [options]="CategoriesOptions">
+                        <ng-container>
+                            <ng-template carouselSlide *ngFor="let tab of tabValues">
+                                <div class="parentContainer">
+                                    <div class="fieldItems">
+                                        <div class="fieldTabs" [ngClass]="tab.isSelected ? 'active': '' " (click)="getArea(tab.cid)">
+                                            <em [ngClass]="tab.cid == 'All' ? 'icon-allCourses' : tab?.image?.filename " class=""></em>
+                                            <div class="fieldName">{{tab.cid == 'All' ? 'All Courses' : tab.name}}</div>
+                                            <div class="coursesCount">
+                                                <ng-container *ngIf="tab.cid == 'All'">
+                                                    {{this.allArealength}} {{this.allArealength > 1 ? 'Courses' : 'Course'}}
+                                                </ng-container>
+                                                <ng-container *ngIf="tab.cid != 'All'">
+                                                    {{tab?.children.length}} {{tab?.children.length > 1 ? 'Courses' : 'Course'}}
+                                                </ng-container>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </ng-container>
+                    </owl-carousel-o>
                 </div>
                     <!-- <div class="btn-group"> -->
                         <!-- <button class="product-btn" (click)="getDomain('all');fromTab='All'" [ngClass]="productType == 'all' ? 'active' :''">All</button>
@@ -64,7 +84,7 @@
                     <ng-container [ngTemplateOutlet]="skeleton" *ngIf ="noDataSkeleton"></ng-container>
                     <ng-container *ngIf ="!noDataSkeleton && catlogData?.length > 0">
                         <ng-container *ngFor="let cards of catlogData | slice : 0:sliceDigits">
-                            <div class="list" (click)="aboutAssessment(cards.cid ,cards.name)">
+                            <div class="list" (click)="aboutAssessment(cards)">
                                 <div class="figWrapper">
                                     <figure>
                                         <img [src] = "cards.image.url" alt="" />
