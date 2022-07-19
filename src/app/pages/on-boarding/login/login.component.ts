@@ -17,6 +17,7 @@ import { environment } from '@env/environment';
 import { RecaptchaErrorParameters } from "ng-recaptcha";
 import { CartService } from 'src/app/services/cart.service';
 import { GoogleAnalyticsService } from 'src/app/services/google-analytics.service';
+import { Gtag } from 'angular-gtag';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -70,6 +71,7 @@ export class LoginComponent implements OnInit {
     private router:Router,
     private cartsevice: CartService,
     private ga_service: GoogleAnalyticsService,
+    private gtag: Gtag,
   ) {
     this.appconfig.clearSessionStorage();
     this.route.queryParams.subscribe(params => {
@@ -242,6 +244,8 @@ resolvedSignIn(captchaSignInResponse: string){
             userID:data.data.userId
           }
           this.ga_service.gaEventTrgr("login", "Login_Success", "Click", ga_params);
+          this.ga_service.gaSetUserProps({userID:data.data.userId})
+          this.gtag.set({ userID : data.data.userId });
           //analytics event END
 
           data.data['emailId'] = data.data.email
