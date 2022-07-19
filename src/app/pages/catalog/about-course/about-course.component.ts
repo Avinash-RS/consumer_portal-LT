@@ -132,6 +132,7 @@ export class AboutCourseComponent implements OnInit {
   };
   enrolledCid: any = [];
   courseDetails: any;
+  secretKey = "(!@#Passcode!@#)";
   @HostListener('window:scroll', ['$event'])
   scrollHandler(event) {
     this.sticky = window.pageYOffset >= this.menuPosition ? true : false;
@@ -364,7 +365,7 @@ export class AboutCourseComponent implements OnInit {
           "batchId":this.abouCourseData.assessmentData[0].batchDetails[0].batchId
       }
       this.util.setValue(cartParams);
-      this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, {fromPage: '0'});
+      this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, {fromPage: this.commonService.encrypt('0',this.secretKey)});
     }
       }
       freeOrderPlace(cartid){

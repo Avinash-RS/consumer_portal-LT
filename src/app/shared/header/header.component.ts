@@ -80,6 +80,7 @@ export class HeaderComponent implements OnInit {
   noData: any;
   ispurchased:boolean = false;
   domainId: any;
+  secretKey = "(!@#Passcode!@#)";
   constructor(
     private appConfig: AppConfigService,
     private catalogService: CatalogService,
@@ -257,7 +258,7 @@ export class HeaderComponent implements OnInit {
   }
 
   openOnBoard(value) {
-    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: value });
+    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: this.commonservice.encrypt(value.toString(),this.secretKey)});
     this.inActiveTabs();
   }
 
@@ -305,7 +306,7 @@ export class HeaderComponent implements OnInit {
     } else {
       this.isAssement = false;
       this.isCourse = false;
-      this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: '0' });
+      this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: this.commonservice.encrypt('0',this.secretKey) });
     }
 
   }
@@ -320,7 +321,7 @@ export class HeaderComponent implements OnInit {
     if(this.userDetails) {
       this.appConfig.routeNavigation('cart/purchase');
     } else {
-      this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: '0' });
+      this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: this.commonservice.encrypt('0',this.secretKey) });
     }
 
     this.inActiveTabs();

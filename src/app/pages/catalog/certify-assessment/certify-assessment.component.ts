@@ -22,6 +22,7 @@ export class CertifyAssessmentComponent implements OnInit {
   @ViewChild('kycmandate', { static: false }) matDialogRef: TemplateRef<any>;
   showdialog: boolean = false;
   @Output ('navBack') navBack = new EventEmitter();
+  secretKey = "(!@#Passcode!@#)";
   constructor(private catalogService : CatalogService, public toast: ToastrService,
               private appconfig: AppConfigService, private appConfig: AppConfigService,
               private util: UtilityService,private dialog: MatDialog,public commonService: CommonService,
@@ -166,7 +167,7 @@ export class CertifyAssessmentComponent implements OnInit {
           "productType" :productType
       }
       this.util.setValue(params);
-      this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, {fromPage: '0'});
+      this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, {fromPage: this.commonService.encrypt('0',this.secretKey) });
     }
   }
 

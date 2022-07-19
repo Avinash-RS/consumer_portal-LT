@@ -6,6 +6,7 @@ import { CatalogService } from 'src/app/services/catalog.service';
 import { UtilityService } from 'src/app/services/utility.service';
 import { ToastrService } from 'ngx-toastr';
 import { element } from 'protractor';
+import { CommonService } from 'src/app/services/common.service';
 
 @Component({
   selector: 'app-batch-purchase',
@@ -25,12 +26,14 @@ export class BatchPurchaseComponent implements OnInit {
   nocard: boolean = true;
   defaultDiv:boolean = true;
   selectedBatchId: string = '';
+  secretKey = "(!@#Passcode!@#)";
   constructor(
     private appconfig: AppConfigService,
     private route: ActivatedRoute,
     private catalogService: CatalogService,
     private util: UtilityService,
-    public toast: ToastrService
+    public toast: ToastrService,
+    private commonService:CommonService
   ) {}
 
   ngOnInit() {
@@ -153,7 +156,7 @@ export class BatchPurchaseComponent implements OnInit {
       this.util.setValue(cartParams);
       this.appconfig.routeNavigationWithQueryParam(
         APP_CONSTANTS.ENDPOINTS.onBoard.login,
-        { fromPage: '0' }
+        { fromPage: this.commonService.encrypt('0',this.secretKey) }
       );
     }
   }

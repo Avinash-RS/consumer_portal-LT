@@ -73,11 +73,11 @@ export class LoginComponent implements OnInit {
   ) {
     this.appconfig.clearSessionStorage();
     this.route.queryParams.subscribe(params => {
-      if (params.fromPage == '0') {
+      if (params?.fromPage && CryptoJS.AES.decrypt(params.fromPage,this.secretKey.trim()).toString(CryptoJS.enc.Utf8) == '0') {
         this.entryIndex = 0;
         this.loginFormInitialize();
         this.ga_service.gaSetPage("Login",{userID:null})//Google Analytics
-        if(params.activation == '1'){
+        if(params?.activation && CryptoJS.AES.decrypt(params.activation,this.secretKey.trim()).toString(CryptoJS.enc.Utf8) == '1'){
           this.toast.success('Account activated successfully');
           this.ga_service.gaSetUserProps({acc_activation:true})
           // this.showKyc = true
@@ -88,7 +88,7 @@ export class LoginComponent implements OnInit {
         this.getCollegeMaster();
         this.getDepartmentMaster();
         this.ga_service.gaSetPage("Registration",{userID:null})
-        if(params.activation == '1'){
+        if(params?.activation && CryptoJS.AES.decrypt(params.activation,this.secretKey.trim()).toString(CryptoJS.enc.Utf8) == '1'){
           this.toast.error('Activation link expired, please register again');
           this.ga_service.gaSetUserProps({reg_link:"Expired"})
         }
@@ -137,13 +137,13 @@ export class LoginComponent implements OnInit {
     if (e.index == 1) {
       this.entryIndex = 1;
       this.showKyc=false
-      this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: e.index });
+      this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: this.commonService.encrypt(this.entryIndex.toString(),this.secretKey)});
       this.registerFormInitialize();
       this.ga_service.gaSetPage("Registration",{userID:null})
     } else {
       this.entryIndex = 0;
       this.showKyc=false
-      this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: e.index });
+      this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: this.commonService.encrypt(this.entryIndex.toString(),this.secretKey)});
       this.loginFormInitialize();
       this.ga_service.gaSetPage("Login",{userID:null})
     }
