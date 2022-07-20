@@ -55,7 +55,7 @@ export class ForgotPasswordComponent implements OnInit {
     ) { 
       var set = this.appconfig.getSessionStorage('onsucess')
       if(set){
-        this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: '0' });
+        this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: this.commonService.encrypt('0',this.secretKey) });
       }
       this.route.queryParams.subscribe(params => {
         if (params.setPwd && params.email) {
@@ -173,7 +173,7 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   redirectLogin() {
-    this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, {fromPage: 0});
+    this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, {fromPage: this.commonService.encrypt('0',this.secretKey)});
   }
 
   forgetPwdFormInitialize() {
