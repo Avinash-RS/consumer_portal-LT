@@ -116,8 +116,10 @@
                         </div>
                     </div>
                     <div class="rightContent">
-                        <!-- <app-Checkout [tab]='1' [checkoutData]='cartList' [cartTotal]="totalAmount"></app-Checkout> -->
-                        <ng-container [ngTemplateOutlet]="checkOutPrice"></ng-container>
+                        <div class="rightContentWrapper">
+                            <!-- <app-Checkout [tab]='1' [checkoutData]='cartList' [cartTotal]="totalAmount"></app-Checkout> -->
+                            <ng-container [ngTemplateOutlet]="checkOutPrice"></ng-container>
+                        </div>
                     </div>
                 </div>
             </div>

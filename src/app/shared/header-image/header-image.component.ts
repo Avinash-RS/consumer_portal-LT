@@ -39,6 +39,7 @@ export class HeaderImageComponent implements OnInit {
     }
   }
   profilePercentage:any = 0;
+  secretKey = "(!@#Passcode!@#)";
   constructor(private appConfig: AppConfigService, private util: UtilityService, private commonService : CommonService) { }
 
   ngOnInit() {
@@ -75,7 +76,7 @@ export class HeaderImageComponent implements OnInit {
     if(this.userDetails) {
       this.appConfig.routeNavigation('skillOmeter');
     } else {      
-      this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: '0' });
+      this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: this.commonService.encrypt('0',this.secretKey) });
     }
   }
   showKycProgress(){

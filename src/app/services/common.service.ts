@@ -16,7 +16,7 @@ import * as CryptoJS from 'crypto-js';
 })
 export class CommonService {
   baseurl = environment.API_BASE_URL;
-
+  secretKey = "(!@#Passcode!@#)";
   constructor(    private cookieService: CookieService ,private http: HttpClient, private appconfig: AppConfigService,
     public toast: ToastrService, private util: UtilityService) {}
 
@@ -48,7 +48,7 @@ export class CommonService {
     this.util.cartSubject.next(false);
     this.util.showkycProgress.next(false);
     this.util.isEnrolled.next(false);
-    this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: '0' });
+    this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: this.encrypt('0',this.secretKey) });
     //this.toast.success("You've successfully logged out");
   }
   // Validate captcha token
