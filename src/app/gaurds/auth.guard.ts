@@ -23,7 +23,7 @@ export class AuthGuard implements CanActivate {
         return true;
       } else {
         if (state.url.includes('login')) {
-          this.toast.warning('You have already logged in. Please log out to access Login/Register page');
+          // this.toast.warning('You have already logged in. Please log out to access Login/Register page');
           this.commonservice.logout();
           return false;
         }
