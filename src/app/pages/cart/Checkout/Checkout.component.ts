@@ -119,6 +119,7 @@ export class CheckoutComponent implements OnInit {
         }
       )
     });
+    return;
     if (this.selectedAddress) {
       param.addressId = this.selectedAddress.addressId
       this.catalogService.createOrder(param).subscribe((data: any) => {

@@ -25,14 +25,7 @@ export class PurchaseComponent implements OnInit {
   encRequestRes: any;
   order_no: any = 'qaz234567';
   testAmount: any = '10';
-  selectedAddress: any = {
-    name: 'testing',
-    address: 'test address',
-    city: 'test city',
-    pincode: '23456',
-    state: 'state test',
-    phone: '1234567890'
-  }
+  selectedAddress:any;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   isReadMore = true;
@@ -42,7 +35,7 @@ export class PurchaseComponent implements OnInit {
   gstAmount = 0;
 
   //Address
-  addressList: any;
+  addressList = [];
   radioChecked: number = 0;
   SelectedIndex: any;
   isEdit: any;
@@ -75,9 +68,6 @@ export class PurchaseComponent implements OnInit {
     private cartService: CartService,
     private _loading: LoadingService,
   ) { 
-    this.subsContent = this.util.addressSubject.subscribe((data: any) => {
-      this.selectedAddress = data
-    });
   }
 
   ngOnInit(): void {
@@ -239,6 +229,7 @@ export class PurchaseComponent implements OnInit {
   getAddress() {
     let getparams = { userId: this.userDetails.userId }
     this.cartService.getAddressByUserid(getparams).subscribe((data: any) => {
+      if(data.success){
       this.addressList = data.data;
       this.tagName = [];
       this.addressList.forEach((value) => {
@@ -246,10 +237,15 @@ export class PurchaseComponent implements OnInit {
       });
       if(this.addressList){
         this.SelectedIndex = this.addressList[0];
+        this.SelectedIndex = this.addressList[0];
       } else {
         this.SelectedIndex = null;
       }
-      this.util.addressSubject.next(this.SelectedIndex);
+    }
+    else {
+      this.addressList = [];
+      this.tagName = [];
+    }
     });
   }
   getaddressTags() {
@@ -429,6 +425,10 @@ export class PurchaseComponent implements OnInit {
       this.toast.warning('Add items in cart to checkout');
       return false;
     }
+    if (this.addressList.length == 0){
+      this.toast.warning('Add Address to checkout');
+      return false;
+    }
     let param: any = {}
     param.user_id = this.userDetails.userId;
     param.email = this.userDetails.email;
@@ -441,8 +441,8 @@ export class PurchaseComponent implements OnInit {
         }
       )
     });
-    if (this.selectedAddress) {
-      param.addressId = this.selectedAddress.addressId
+    if (this.SelectedIndex) {
+      param.addressId = this.SelectedIndex.addressId
       this.catalogService.createOrder(param).subscribe((data: any) => {
         this._loading.setLoading(true, environment.API_BASE_URL+"createorder");
         if(this.totalCartPrice!==0){
@@ -459,7 +459,7 @@ export class PurchaseComponent implements OnInit {
         }
       })
     } else {
-      this.toast.error('Add an address to continue');
+      this.toast.error('Select an address to continue');
     }
   }
 
