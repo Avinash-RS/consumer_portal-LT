@@ -174,14 +174,33 @@
     <div class="heading2">{{commonData?.landingPageContents?.industryExposure?.title}}</div>
     <p>{{commonData?.landingPageContents?.industryExposure?.description}}</p>
     <div class="industryContent">
-      <ul>
-        <li *ngFor="let item of commonData?.landingPageContents?.industryExposure?.innerArray">
+      <div class="bigImage">
+        <figure>
+          <img [src]="bigImage" alt="" />
+        </figure>
+        <div class="text">
+          <p>{{imageText}}</p>
+        </div>
+      </div>
+      <div class="carouselSection">
+        <owl-carousel-o [options]="industryExposure">
+          <ng-container *ngFor="let item of commonData?.landingPageContents?.industryExposure?.innerArray">
+            <ng-template carouselSlide>
+              <figure (click)="imageClick(item, commonData?.landingPageContents?.industryExposure?.innerArray)" [class.isActive]="item.isActive">
+                <img [src]="item?.imageurl" alt="" />
+              </figure>
+            </ng-template>
+          </ng-container>
+        </owl-carousel-o>
+      </div>
+      <!-- <ul>
+        <li *ngFor="let item of commonData?.landingPageContents?.industryExposure?.innerArray" (click)="bigImage = item?.imageurl; imageText = item?.title">
           <figure>
             <img [src]="item?.imageurl" alt="" />
           </figure>
           <span>{{item?.title}}</span>
         </li>
-      </ul>
+      </ul> -->
     </div>
   </div>
 </section>

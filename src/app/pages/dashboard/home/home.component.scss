@@ -1652,67 +1652,119 @@
     line-height: normal;
   }
   .industryContent {
-    ul {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      li {
-        width: 100%;
-        margin: 2em 0.75em;
+    .carouselSection {
+      figure {
+        display: flex;
+        overflow: hidden;
+        border-radius: 10px;
         position: relative;
-        @include sm {
-          width: 46.5%;
+        border: 3px solid $whiteColor;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+        &.isActive {
+          border: 3px solid $blueLabelColor;
         }
-        @include md {
-          width: 30.3%;
-        }
-        @include lg {
-          width: 30.9%;
-        }
-        @include xl {
-          width: 31.2%;
-        }
-        figure {
-          display: flex;
-          overflow: hidden;
-          border-radius: 10px;
-          position: relative;
-          img {
-            width: 100%;
-            height: 225px;
-            object-fit: cover;
-            @include md {
-              height: 175px;
-            }
-            @include lg {
-              height: 225px;
-            }
-          }
-        }
-        span {
-          position: absolute;
-          bottom: -1.5em;
-          left: 50%;
-          width: 90%;
-          transform: translateX(-50%);
-          background-color: $veryLightGray;
-          padding: 0.5em;
-          font-size: 1.25em;
-          font-weight: 700;
-          color: $secondaryColor;
-          line-height: normal;
-          text-align: center;
-          border-radius: 6px;
-          min-height: 46px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+        img {
+          width: 100%;
+          height: 100px;
+          object-fit: cover;
           @include md {
-            min-height: 66px;
+            height: 125px;
+          }
+          @include lg {
+            height: 100px;
           }
         }
       }
     }
+    .bigImage {
+      width: 100%;
+      position: relative;
+      margin-bottom: 1em;
+      figure {
+        display: flex;
+        border: 3px solid $whiteColor;
+        border-radius: 10px;
+        overflow: hidden;
+        img {
+          width: 100%;
+          height: 450px;
+          object-fit: cover;
+        }
+      }
+      .text {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        bottom: 15px;
+        max-width: 720px;
+        width: 90%;
+        background-color: rgba(55, 51, 49, 0.5);
+        padding: 1em;
+        border-radius: 10px;
+        p {
+          font-size: 2em;
+          font-weight: 400;
+          color: $whiteColor;
+          line-height: normal;
+          text-align: center;
+        }
+      }
+    }
+    // ul {
+    //   display: flex;
+    //   flex-wrap: wrap;
+    //   justify-content: center;
+    //   li {
+    //     width: 100%;
+    //     margin: 2em 0.75em;
+    //     position: relative;
+    //     @include sm {
+    //       width: 46.5%;
+    //     }
+    //     @include md {
+    //       width: 30.3%;
+    //     }
+    //     @include lg {
+    //       width: 30.9%;
+    //     }
+    //     @include xl {
+    //       width: 31.2%;
+    //     }
+        
+    //     span {
+    //       position: absolute;
+    //       bottom: -1.5em;
+    //       left: 50%;
+    //       width: 90%;
+    //       transform: translateX(-50%);
+    //       background-color: $veryLightGray;
+    //       padding: 0.5em;
+    //       font-size: 1.25em;
+    //       font-weight: 700;
+    //       color: $secondaryColor;
+    //       line-height: normal;
+    //       text-align: center;
+    //       border-radius: 6px;
+    //       min-height: 46px;
+    //       display: flex;
+    //       align-items: center;
+    //       justify-content: center;
+    //       @include md {
+    //         min-height: 66px;
+    //       }
+    //     }
+    //   }
+    // }
+  }
+}
+
+::ng-deep.industryContent {
+  .owl-carousel .owl-stage {
+    padding: 10px 0;
   }
 }
 
