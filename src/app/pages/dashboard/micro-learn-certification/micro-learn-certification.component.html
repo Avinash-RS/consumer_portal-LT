@@ -21,11 +21,12 @@
                         </figure>
                         <div class="code">
                             <figure class="qrCode">
-                                <img src="../../../../assets/images/Layer 5.png" alt="" />
+                                <img [src]="certificateData?.uploadCertificate?.qrCode" alt="" />
+                                <!-- <img src="../../../../assets/images/Layer 5.png" alt="" /> -->
                             </figure>
                             <div class="date">
                                 <span class="">Date of issue :</span>
-                                <span class="">{{certificateData.uploadCertificate.uploadDate}}</span>
+                                <span class="">{{certificateData.uploadCertificate.uploadDate |date}}</span>
                             </div>
                         </div>
                     </header>

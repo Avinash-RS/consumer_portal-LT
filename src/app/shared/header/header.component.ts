@@ -80,6 +80,7 @@ export class HeaderComponent implements OnInit {
   noData: any;
   ispurchased:boolean = false;
   domainId: any;
+  secretKey = "(!@#Passcode!@#)";
   constructor(
     private appConfig: AppConfigService,
     private catalogService: CatalogService,
@@ -202,10 +203,11 @@ export class HeaderComponent implements OnInit {
   }
     this.catalogService.getCatalog(apiParms).subscribe((response: any) => {
       if (response.success && response.data.length > 0) {
+        let sorteddata = response.data.sort((a,b) => a.sequenceOrder > b.sequenceOrder ? 1 : -1);
         var courseobj = {
           "label":'Courses',
           "type":'course',
-          "data" : response.data,
+          "data" : sorteddata,
           "icon" :"icon-coursePlatform",
           "desc" :"Scientifically designed courses for various levels",
           "active" : true
@@ -256,7 +258,7 @@ export class HeaderComponent implements OnInit {
   }
 
   openOnBoard(value) {
-    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: value });
+    this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: this.commonservice.encrypt(value.toString(),this.secretKey)});
     this.inActiveTabs();
   }
 
@@ -304,7 +306,7 @@ export class HeaderComponent implements OnInit {
     } else {
       this.isAssement = false;
       this.isCourse = false;
-      this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: '0' });
+      this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: this.commonservice.encrypt('0',this.secretKey) });
     }
 
   }
@@ -319,7 +321,7 @@ export class HeaderComponent implements OnInit {
     if(this.userDetails) {
       this.appConfig.routeNavigation('cart/purchase');
     } else {
-      this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: '0' });
+      this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: this.commonservice.encrypt('0',this.secretKey) });
     }
 
     this.inActiveTabs();

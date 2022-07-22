@@ -27,68 +27,68 @@ export class HomeComponent implements OnInit {
   HomeBannerImage = [
     1,2,3,4
   ];
-  activeButton = '';
-  secretKey = "(!@#Passcode!@#)";
-  bigImage;
-  imageText;
-  testimonialOptions: OwlOptions = {
-    loop: true,
-    mouseDrag: false,
-    touchDrag: false,
-    pullDrag: false,
-    dots: true,
-    navSpeed: 700,
-    margin: 30,
-    autoplay: false,
-    autoplayTimeout: 4000,
-    autoplayHoverPause: true,
-    center: true,
-    navText: ["<i class='icon-Back'></i>", "<i class='icon-right-next'></i>"],
-    nav: true,
-    responsive: {
-      0: {
-        items: 1
-      },
-      500: {
-        items: 1
-      },
-      650: {
-        items: 3
-      },
-      1024: {
-        items: 3
-      }
-    }
-  }
+activeButton = '';
+bigImage;
+imageText;
+secretKey = "(!@#Passcode!@#)";
 
-  industryExposure: OwlOptions = {
-    loop: false,
-    mouseDrag: false,
-    touchDrag: false,
-    pullDrag: false,
-    dots: false,
-    navSpeed: 700,
-    margin: 30,
-    autoplay: false,
-    autoplayTimeout: 4000,
-    center: true,
-    navText: ["<i class='icon-Back'></i>", "<i class='icon-right-next'></i>"],
-    nav: true,
-    responsive: {
-      0: {
-        items: 3
-      },
-      500: {
-        items: 4
-      },
-      650: {
-        items: 4
-      },
-      1170: {
-        items: 8
-      }
+industryExposure: OwlOptions = {
+  loop: false,
+  mouseDrag: false,
+  touchDrag: false,
+  pullDrag: false,
+  dots: false,
+  navSpeed: 700,
+  margin: 30,
+  autoplay: false,
+  autoplayTimeout: 4000,
+  center: true,
+  navText: ["<i class='icon-Back'></i>", "<i class='icon-right-next'></i>"],
+  nav: true,
+  responsive: {
+    0: {
+      items: 3
+    },
+    500: {
+      items: 4
+    },
+    650: {
+      items: 4
+    },
+    1170: {
+      items: 8
     }
   }
+}
+testimonialOptions: OwlOptions = {
+  loop: true,
+  mouseDrag: false,
+  touchDrag: false,
+  pullDrag: false,
+  dots: true,
+  navSpeed: 700,
+  margin: 30,
+  autoplay: true,
+  autoplayTimeout: 4000,
+  autoplayHoverPause: true,
+  center: true,
+  navText: ["<i class='icon-Back'></i>", "<i class='icon-right-next'></i>"],
+  nav: true,
+  responsive: {
+    0: {
+      items: 1
+    },
+    500: {
+      items: 1
+    },
+    650: {
+      items: 3
+    },
+    1024: {
+      items: 3
+    }
+  }
+}
   constructor(private util: UtilityService, private dialog: MatDialog, public commonService: CommonService, private cookieService: CookieService, private router: Router, 
     private appConfig: AppConfigService, private catalogService: CatalogService, public toast: ToastrService,) {
       this.router.routeReuseStrategy.shouldReuseRoute = () => {

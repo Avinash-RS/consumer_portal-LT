@@ -17,6 +17,7 @@ import { environment } from '@env/environment';
 import { RecaptchaErrorParameters } from "ng-recaptcha";
 import { CartService } from 'src/app/services/cart.service';
 import { GoogleAnalyticsService } from 'src/app/services/google-analytics.service';
+import { Gtag } from 'angular-gtag';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -70,14 +71,15 @@ export class LoginComponent implements OnInit {
     private router:Router,
     private cartsevice: CartService,
     private ga_service: GoogleAnalyticsService,
+    private gtag: Gtag,
   ) {
     this.appconfig.clearSessionStorage();
     this.route.queryParams.subscribe(params => {
-      if (params.fromPage == '0') {
+      if (params?.fromPage && CryptoJS.AES.decrypt(params.fromPage,this.secretKey.trim()).toString(CryptoJS.enc.Utf8) == '0') {
         this.entryIndex = 0;
         this.loginFormInitialize();
         this.ga_service.gaSetPage("Login",{userID:null})//Google Analytics
-        if(params.activation == '1'){
+        if(params?.activation && CryptoJS.AES.decrypt(params.activation,this.secretKey.trim()).toString(CryptoJS.enc.Utf8) == '1'){
           this.toast.success('Account activated successfully');
           this.ga_service.gaSetUserProps({acc_activation:true})
           // this.showKyc = true
@@ -88,7 +90,7 @@ export class LoginComponent implements OnInit {
         this.getCollegeMaster();
         this.getDepartmentMaster();
         this.ga_service.gaSetPage("Registration",{userID:null})
-        if(params.activation == '1'){
+        if(params?.activation && CryptoJS.AES.decrypt(params.activation,this.secretKey.trim()).toString(CryptoJS.enc.Utf8) == '1'){
           this.toast.error('Activation link expired, please register again');
           this.ga_service.gaSetUserProps({reg_link:"Expired"})
         }
@@ -137,13 +139,13 @@ export class LoginComponent implements OnInit {
     if (e.index == 1) {
       this.entryIndex = 1;
       this.showKyc=false
-      this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: e.index });
+      this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: this.commonService.encrypt(this.entryIndex.toString(),this.secretKey)});
       this.registerFormInitialize();
       this.ga_service.gaSetPage("Registration",{userID:null})
     } else {
       this.entryIndex = 0;
       this.showKyc=false
-      this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: e.index });
+      this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, { fromPage: this.commonService.encrypt(this.entryIndex.toString(),this.secretKey)});
       this.loginFormInitialize();
       this.ga_service.gaSetPage("Login",{userID:null})
     }
@@ -154,15 +156,7 @@ export class LoginComponent implements OnInit {
   }
 
   submitRegister() {
-    if (this.registerForm.valid) {
-      if (!this.collegeflag){
-        this.toast.warning('Please select valid college name');
-        return false;
-      }
-      if (!this.departmentflag) {
-        this.toast.warning('Please select valid department name');
-        return false;
-      }
+    if (this.registerForm.valid && this.collegeflag && this.departmentflag) {
       var encryptedname = CryptoJS.AES.encrypt(this.registerForm.value.email.toLowerCase().trim(), this.secretKey.trim()).toString();
       var encryptedpassword = CryptoJS.AES.encrypt(this.registerForm.value.password.trim(), this.secretKey.trim()).toString();
 
@@ -197,7 +191,11 @@ export class LoginComponent implements OnInit {
         }
       });
     } else {
+      this.toast.warning('Please fill all the fields');
       this.gv.validateAllFields(this.registerForm);
+      // this.registerForm.markAllAsTouched();
+      this.registerForm.controls.college.markAsTouched();
+      this.registerForm.controls.department.markAsTouched();
     }
   }
 
@@ -242,6 +240,8 @@ resolvedSignIn(captchaSignInResponse: string){
             userID:data.data.userId
           }
           this.ga_service.gaEventTrgr("login", "Login_Success", "Click", ga_params);
+          this.ga_service.gaSetUserProps({userID:data.data.userId})
+          this.gtag.set({ userID : data.data.userId });
           //analytics event END
 
           data.data['emailId'] = data.data.email
@@ -263,7 +263,16 @@ resolvedSignIn(captchaSignInResponse: string){
             if (response) {
               this.userDetails = JSON.parse(this.appconfig.getLocalStorage('userDetails'));
               if (this.userDetails) {
-
+                response.userId = this.userDetails.userId;
+                this.catalogService.addToCart(response).subscribe((cart: any) => {
+                  if (cart.success) {
+                    this.util.cartSubject.next(true);
+                    this.appconfig.routeNavigation('cart/purchase');
+                  } else {
+                    this.appconfig.routeNavigation(APP_CONSTANTS.ENDPOINTS.home)
+                    this.toast.warning(cart.message)
+                  }
+                });
               // const data = {
               //   "noofFields": "44",
               //   "email": this.userDetails.email ? this.userDetails.email : null

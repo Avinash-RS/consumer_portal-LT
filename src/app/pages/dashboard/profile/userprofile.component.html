@@ -283,6 +283,7 @@
                 <div *ngSwitchCase="'history'">
                     <div class="heading3">Purchase History</div>
                     <p class="desc">Showing all your purchase history here.</p>
+                    <div  *ngIf = "ispurchase">
                     <div class="purchasingHistory" *ngFor="let item of purchaseList">
                         <div class="purchaseCourseImage">
                             <figure>
@@ -323,6 +324,13 @@
                             </div> -->
                         </div>
                     </div>
+                    </div>
+                    <div class="purchasingnocard" *ngIf = "!ispurchase">
+                        <figure>
+                            <img src="https://lmsassetspremium.lntedutech.com/portalicons/noPurchase.webp" alt="">
+                        </figure>
+                        <p>There is no purchase History found.</p>
+                    </div>
                 </div>
                 <div *ngSwitchCase="'payment'">
                     <div class="heading3">Payment Method</div>
@@ -358,7 +366,7 @@
                             <p>There is no certificate found.</p>
                         </div>
                         <div class="certificateContent">
-                            <app-micro-learn-certification [courseItems]="certificateValue"></app-micro-learn-certification>
+                            <app-micro-learn-certification *ngIf="certificateValue" [courseItems]="certificateValue"></app-micro-learn-certification>
                         </div>
                     </div>
                 </div>

@@ -19,6 +19,7 @@ import { ToastrService } from 'ngx-toastr';
 import * as CryptoJS from 'crypto-js';
 import { UtilityService } from 'src/app/services/utility.service';
 import { GoogleAnalyticsService } from 'src/app/services/google-analytics.service';
+import { CommonService } from 'src/app/services/common.service';
 @Component({
   selector: 'app-assessments-list',
   templateUrl: './assessments-list.component.html',
@@ -103,6 +104,7 @@ export class AssessmentsListComponent implements OnInit {
               public toast: ToastrService,
               private util: UtilityService,
               private ga_service: GoogleAnalyticsService,
+              private commonService:CommonService
   ) { }
 
   ngOnInit() {
@@ -171,6 +173,7 @@ export class AssessmentsListComponent implements OnInit {
     this.catalogService.getCatalog(apiParms).subscribe((response: any) => {
       if (response.data.length > 0) {
         this.tabValues = response.data;
+        this.tabValues.sort((a,b) => a.sequenceOrder > b.sequenceOrder ? 1 :-1);
         this.allArealength = 0;
         this.tabValues.forEach((element:any) => {
           this.allArealength = this.allArealength + (element?.children ? element.children.length : 0)
@@ -284,7 +287,7 @@ export class AssessmentsListComponent implements OnInit {
       });
     }
     else {
-      this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, {fromPage: '0'});
+      this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.login, {fromPage: this.commonService.encrypt('0',this.secretKey)});
     }
   }
   setEnrolledFlag(){
