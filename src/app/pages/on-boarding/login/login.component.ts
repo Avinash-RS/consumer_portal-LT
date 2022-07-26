@@ -157,6 +157,16 @@ export class LoginComponent implements OnInit {
 
   submitRegister() {
     if (this.registerForm.valid && this.collegeflag && this.departmentflag) {
+      var typeCollege = '';
+      if(this.collegeFilter.collegename == 'Others'){
+        if(!this.registerForm.value.collegeType){
+          this.toast.warning('College name cannot be empty');
+          return false;
+        } else {
+          this.registerForm.value.college = this.registerForm.value.collegeType;
+          typeCollege = 'Others';
+        }
+      }
       var encryptedname = CryptoJS.AES.encrypt(this.registerForm.value.email.toLowerCase().trim(), this.secretKey.trim()).toString();
       var encryptedpassword = CryptoJS.AES.encrypt(this.registerForm.value.password.trim(), this.secretKey.trim()).toString();
 
@@ -175,6 +185,7 @@ export class LoginComponent implements OnInit {
         graduationYear: this.registerForm.value.graduation.trim(),
         departmentId: this.registerForm.value.department.trim(),
         mobile: this.registerForm.value.enrollNumber.trim(),
+        collegeType: typeCollege
       };
       this.commonService.signup(signupData).subscribe((data: any) => {
         if (data.success) {
@@ -328,6 +339,7 @@ resolvedSignIn(captchaSignInResponse: string){
   checkBatchRec() {
     this.collagename = [];
     this.collageId = '';
+    this.registerForm.get('collegeType').reset();
     setTimeout(() => {
       if (this.searchedcollageData) {
         this.isloadData = false;
@@ -379,6 +391,7 @@ resolvedSignIn(captchaSignInResponse: string){
       college: ['', [Validators.required]],
       department: ['', [Validators.required]],
       enrollNumber: ['', [Validators.required,this.gv.enrollno()]],
+      collegeType:[''],
       graduation: ['', [Validators.required]],
       password: ['', [Validators.required, this.gv.passwordRegex(), Validators.minLength(8), Validators.maxLength(32)]],
       password2: ['', [Validators.required]],

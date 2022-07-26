@@ -187,6 +187,13 @@
                                     <mat-error *ngIf="departmentFilter.departmentName && !departmentflag" class="error">{{'Please select your department'}}</mat-error>
                                 </ng-container>
                             </div>
+                            <div class="inputContainer" *ngIf="collegeFilter.collegename == 'Others'">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Please Enter Your College Name</mat-label>
+                                    <input autocomplete="off" matInput id="College_Type" name="collegeType" formControlName="collegeType" placeholder="Please Enter Your College Name">
+                                </mat-form-field>
+                                <br/>
+                            </div>
                             <div class="inputContainer">
                                 <mat-form-field appearance="outline">
                                     <mat-label>Password</mat-label>
