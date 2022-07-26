@@ -192,7 +192,10 @@
                                     <mat-label>Please Enter Your College Name</mat-label>
                                     <input autocomplete="off" matInput id="College_Type" name="collegeType" formControlName="collegeType" placeholder="Please Enter Your College Name">
                                 </mat-form-field>
-                                <br/>
+                                <ng-container *ngIf="collegeName.invalid && collegeName.touched">
+                                    <mat-error *ngIf="collegeName.errors?.minlength" class="error">{{'Minimum of 5 characters'}}</mat-error>
+                                    <mat-error *ngIf="collegeName.errors?.maxlength" class="error">{{'Maximum of 50 characters'}}</mat-error>                                
+                                </ng-container>
                             </div>
                             <div class="inputContainer">
                                 <mat-form-field appearance="outline">

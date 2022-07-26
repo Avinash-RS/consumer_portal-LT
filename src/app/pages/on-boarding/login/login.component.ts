@@ -391,7 +391,7 @@ resolvedSignIn(captchaSignInResponse: string){
       college: ['', [Validators.required]],
       department: ['', [Validators.required]],
       enrollNumber: ['', [Validators.required,this.gv.enrollno()]],
-      collegeType:[''],
+      collegeType:['',[Validators.minLength(5),Validators.maxLength(50)]],
       graduation: ['', [Validators.required]],
       password: ['', [Validators.required, this.gv.passwordRegex(), Validators.minLength(8), Validators.maxLength(32)]],
       password2: ['', [Validators.required]],
@@ -430,7 +430,9 @@ resolvedSignIn(captchaSignInResponse: string){
   get emailR() {
     return this.registerForm.get('email');
   }
-
+  get collegeName() {
+    return this.registerForm.get('collegeType');
+  }
   get collegeR() {
     return this.registerForm.get('college');
   }
