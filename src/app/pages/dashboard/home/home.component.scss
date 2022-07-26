@@ -790,8 +790,9 @@
         }
     }
 }
+
 ::ng-deep.owlCarouselWrapper {
-  .owl-carousel { 
+  .owl-carousel {
     .owl-item { 
       .card ,.footer {
         opacity: 0.6;
@@ -1653,6 +1654,12 @@
   }
   .industryContent {
     .carouselSection {
+      position: relative;
+      width: 86%;
+      margin: 0 auto;
+      @include sm {
+        width: 90%;
+      }
       figure {
         display: flex;
         overflow: hidden;
@@ -1660,6 +1667,7 @@
         position: relative;
         border: 3px solid $whiteColor;
         box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+        cursor: pointer;
         &.isActive {
           border: 3px solid $blueLabelColor;
         }
@@ -1762,9 +1770,55 @@
   }
 }
 
-::ng-deep.industryContent {
+::ng-deep.carouselSection {
   .owl-carousel .owl-stage {
     padding: 10px 0;
+  }
+  .owl-carousel .owl-item {
+    padding: 0 5px;
+  }
+  .owl-theme {
+    .owl-nav {
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      margin: 0;
+      .disabled {
+        cursor: not-allowed;
+      }
+      .owl-prev, .owl-next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .owl-prev {
+        left: -10%;
+        @include sm {
+          left: -6%;
+        }
+        @include md {
+          left: -4%;
+        }
+      }
+      .owl-next {
+        right: -10%;
+        @include sm {
+          right: -6%;
+        }
+        @include md {
+          right: -4%;
+        }
+      }
+    }
+  }
+  .owl-theme .owl-nav [class*=owl-] {
+    margin: 0;
+    border-radius: 50%;
+    background-color: $darkGrayColor;
+  }
+  .owl-theme .owl-nav [class*=owl-]:hover {
+    background: $darkGrayColor;
   }
 }
 
@@ -1846,23 +1900,16 @@
       }
     }
     .scanner {
-      width: 70%;
+      width: 80%;
       text-align: center;
       margin: 2em auto 0 auto;
       @include md {
         width: 25%;
         margin: 0;
       }
-      figure {
-        text-align: center;
-        width: 100%;
-        img {
-          width: 60%;
-        }
-      }
       span {
         display: block;
-        font-size: 0.875em;
+        font-size: 1em;
         font-weight: 400;
         color: $darkGrayColor;
         line-height: 1.3;;
@@ -1878,15 +1925,28 @@
       }
       .apps {
         display: flex;
-        .store{
-          width: 50%;
-        }
-        .appstore{
-          width: 50%;
+        justify-content: space-between;
+        margin-top: 1.5em;
+        .play, .gapp {
+          width: 48%;
         }
         figure {
+          display: flex;
+          justify-content: center;
+        }
+        figure.store {
+          text-align: center;
+          width: 100%;
           img {
-            width: 75%;
+            width: 70%;
+          }
+        }
+        figure.qrCode {
+          text-align: center;
+          width: 100%;
+          margin-top: 0.5em;
+          img {
+            width: 85%;
           }
         }
       }

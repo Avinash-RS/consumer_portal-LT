@@ -193,14 +193,6 @@
           </ng-container>
         </owl-carousel-o>
       </div>
-      <!-- <ul>
-        <li *ngFor="let item of commonData?.landingPageContents?.industryExposure?.innerArray" (click)="bigImage = item?.imageurl; imageText = item?.title">
-          <figure>
-            <img [src]="item?.imageurl" alt="" />
-          </figure>
-          <span>{{item?.title}}</span>
-        </li>
-      </ul> -->
     </div>
   </div>
 </section>
@@ -232,14 +224,27 @@
           </div>
           <div class="scanner">
             <span>{{commonData?.landingPageContents?.learnAnytime?.QRtext}}</span>
-            <figure>
+            <!-- <figure>
               <img [src]="commonData?.landingPageContents?.learnAnytime?.QR" alt="scanner">
             </figure>
-            <p>or</p>
+            <p>or</p> -->
             <div class="apps">
-              <figure class="store" *ngFor="let item of commonData?.landingPageContents?.learnAnytime?.playStore">
-                <img [src]="item" alt="">
-              </figure>
+              <div class="play">
+                <figure class="store">
+                  <img [src]="commonData?.landingPageContents?.learnAnytime?.playStore[0]" alt="" />
+                </figure>
+                <figure class="qrCode">
+                  <img [src]="commonData?.landingPageContents?.learnAnytime?.QR" alt="scanner">
+                </figure>
+              </div>
+              <div class="gapp">
+                <figure class="store">
+                  <img [src]="commonData?.landingPageContents?.learnAnytime?.playStore[1]" alt="" />
+                </figure>
+                <figure class="qrCode">
+                  <img [src]="commonData?.landingPageContents?.learnAnytime?.iosQR" alt="scanner">
+                </figure>
+              </div>
             </div>
           </div>
          </div>
@@ -315,8 +320,8 @@
         <div class="heading2">{{commonData?.landingPageContents?.studentAboutUs?.title}}</div>
         <div class="owlCarouselWrapper">
           <owl-carousel-o [options]="testimonialOptions">
-            <ng-container *ngFor="let item of commonData?.landingPageContents?.studentAboutUs?.innerArray">
-              <ng-template carouselSlide>
+            <ng-container>
+              <ng-template carouselSlide *ngFor="let item of commonData?.landingPageContents?.studentAboutUs?.innerArray">
                   <div class="card">
                       <p class="title">{{item?.title}}</p>
                       <p class="desc">{{item?.description}}</p>

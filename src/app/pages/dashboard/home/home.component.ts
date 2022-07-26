@@ -10,7 +10,7 @@ import { CatalogService } from "../../../services/catalog.service";
 import { APP_CONSTANTS } from 'src/app/utils/app-constants.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from "@angular/material/dialog";
-import { OwlOptions } from "ngx-owl-carousel-o";
+import { OwlOptions } from 'ngx-owl-carousel-o';
 import * as CryptoJS from 'crypto-js';
 import { environment } from '@env/environment';
 @Component({
@@ -27,10 +27,11 @@ export class HomeComponent implements OnInit {
   HomeBannerImage = [
     1,2,3,4
   ];
-activeButton = '';
-bigImage;
-imageText;
-secretKey = "(!@#Passcode!@#)";
+  
+  activeButton = '';
+  bigImage;
+  imageText;
+  secretKey = "(!@#Passcode!@#)";
 
 industryExposure: OwlOptions = {
   loop: false,
@@ -38,16 +39,16 @@ industryExposure: OwlOptions = {
   touchDrag: false,
   pullDrag: false,
   dots: false,
+  margin: 25,
   navSpeed: 700,
-  margin: 30,
   autoplay: false,
   autoplayTimeout: 4000,
-  center: true,
-  navText: ["<i class='icon-Back'></i>", "<i class='icon-right-next'></i>"],
+  center: false,
+  navText: ["<i class='icon-LeftArrow'></i>", "<i class='icon-RightArrow'></i>"],
   nav: true,
   responsive: {
     0: {
-      items: 3
+      items: 2
     },
     500: {
       items: 4
@@ -55,8 +56,11 @@ industryExposure: OwlOptions = {
     650: {
       items: 4
     },
-    1170: {
-      items: 8
+    860: {
+      items: 6
+    },
+    1050: {
+      items: 6
     }
   }
 }
