@@ -10,7 +10,7 @@ import { CatalogService } from "../../../services/catalog.service";
 import { APP_CONSTANTS } from 'src/app/utils/app-constants.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from "@angular/material/dialog";
-import { OwlOptions } from "ngx-owl-carousel-o";
+import { OwlOptions } from 'ngx-owl-carousel-o';
 import * as CryptoJS from 'crypto-js';
 import { environment } from '@env/environment';
 @Component({
@@ -27,8 +27,43 @@ export class HomeComponent implements OnInit {
   HomeBannerImage = [
     1,2,3,4
   ];
-activeButton = '';
-secretKey = "(!@#Passcode!@#)";
+  
+  activeButton = '';
+  bigImage;
+  imageText;
+  secretKey = "(!@#Passcode!@#)";
+
+industryExposure: OwlOptions = {
+  loop: false,
+  mouseDrag: false,
+  touchDrag: false,
+  pullDrag: false,
+  dots: false,
+  margin: 25,
+  navSpeed: 700,
+  autoplay: false,
+  autoplayTimeout: 4000,
+  center: false,
+  navText: ["<i class='icon-LeftArrow'></i>", "<i class='icon-RightArrow'></i>"],
+  nav: true,
+  responsive: {
+    0: {
+      items: 2
+    },
+    500: {
+      items: 4
+    },
+    650: {
+      items: 4
+    },
+    860: {
+      items: 6
+    },
+    1050: {
+      items: 6
+    }
+  }
+}
 testimonialOptions: OwlOptions = {
   loop: true,
   mouseDrag: false,
@@ -127,6 +162,28 @@ testimonialOptions: OwlOptions = {
     this.commonService.getStaticDataHome({userOrigin:CryptoJS.AES.encrypt(environment.userOrigin, this.secretKey.trim()).toString()}).subscribe((response: any) => {
       if (response.success) {
         this.commonData = response.data;
+        this.bigImage = this.commonData?.landingPageContents?.industryExposure?.innerArray[0]?.imageurl;
+        this.imageText = this.commonData?.landingPageContents?.industryExposure?.innerArray[0]?.title;
+        this.commonData?.landingPageContents?.industryExposure?.innerArray.forEach((e, i)=> {
+          if(i == 0) {
+            e.isActive = true;
+          }
+          else {
+            e.isActive = false;
+          }
+        })
+      }
+    })
+  }
+  imageClick(item, array) {
+    this.bigImage = item?.imageurl; 
+    this.imageText = item?.title
+    array.forEach((ele)=> {
+      if(ele.title === item.title) {
+        ele.isActive = true;
+      }
+      else {
+        ele.isActive = false;
       }
     })
   }
