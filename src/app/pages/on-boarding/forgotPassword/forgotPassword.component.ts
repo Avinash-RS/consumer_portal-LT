@@ -42,7 +42,7 @@ export class ForgotPasswordComponent implements OnInit {
   recaptchaStr = '';
   siteKey: any = environment.captachaSiteKey;
   browserRefresh;
-  @ViewChild('captchaRef',{ static: false }) captchaRef;
+  // @ViewChild('captchaRef',{ static: false }) captchaRef;
   constructor(
     public commonService: CommonService,
     public toast: ToastrService,
@@ -74,9 +74,9 @@ export class ForgotPasswordComponent implements OnInit {
 
   ngOnInit() {
     this.forgetPwdFormInitialize();
-    setTimeout(()=>{
-      this.captchaRef.reset();
-    },1000);
+    // setTimeout(()=>{
+    //   this.captchaRef.reset();
+    // },1000);
   }
   nextclicker(){
     this.appconfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.onBoard.forgetpwd, {setPwd: 'kld12sdf4l12sdf23', email: this.forgetPwdForm.value.email});
@@ -134,7 +134,8 @@ export class ForgotPasswordComponent implements OnInit {
       var encryptedname = CryptoJS.AES.encrypt(this.forgetPwdForm.value.email.toLowerCase().trim(), this.secretKey.trim()).toString();
       let data = {
         "email" : encryptedname,
-        "badgeRequest" : this.recaptchaStr
+        // "badgeRequest" : this.recaptchaStr,
+        "badgeRequest" : "microsetportal",
        }
       this.commonService.fogetPasswordEmail(data).subscribe((resp: any) => {
         if (resp.success){
@@ -158,7 +159,7 @@ export class ForgotPasswordComponent implements OnInit {
         // const pass = bcrypt.hashSync(this.resetPwdForm.value.password, salt);
         var encryptedname = CryptoJS.AES.encrypt(this.userEmail.toLowerCase().trim(), this.secretKey.trim()).toString();
         var encryptedpassword = CryptoJS.AES.encrypt(this.resetPwdForm.value.password.trim(), this.secretKey.trim()).toString();
-        let data = {"email" : encryptedname, "password" : encryptedpassword, "userSecretkey":this.pwdSecretKey , "badgeRequest" : this.recaptchaStr}
+        let data = {"email" : encryptedname, "password" : encryptedpassword, "userSecretkey":this.pwdSecretKey , "badgeRequest" : "microsetportal"}
         this.commonService.resetPassword(data).subscribe((resp: any) => {
           if (resp.success){
             this.toast.success(resp.message)
