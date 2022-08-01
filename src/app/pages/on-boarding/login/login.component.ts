@@ -186,7 +186,7 @@ export class LoginComponent implements OnInit {
         graduationYear: this.registerForm.value.graduation.trim(),
         departmentId: this.registerForm.value.department.trim(),
         mobile: this.registerForm.value.enrollNumber.trim(),
-        collegeType: typeCollege
+        collegeType: typeCollege.trim()
       };
       this.commonService.signup(signupData).subscribe((data: any) => {
         if (data.success) {
@@ -393,7 +393,7 @@ resolvedSignIn(captchaSignInResponse: string){
       college: ['', [Validators.required]],
       department: ['', [Validators.required]],
       enrollNumber: ['', [Validators.required,this.gv.enrollno()]],
-      collegeType:['',[Validators.minLength(5),Validators.maxLength(50)]],
+      collegeType:['',[this.gv.namewithSpecialCharacters()]],
       graduation: ['', [Validators.required]],
       password: ['', [Validators.required, this.gv.passwordRegex(), Validators.minLength(8), Validators.maxLength(32)]],
       password2: ['', [Validators.required]],

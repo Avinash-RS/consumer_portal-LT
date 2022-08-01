@@ -94,4 +94,9 @@ export class GlobalValidatorsService {
       const alpha: RegExp = /^([a-zA-Z]){0,30}$/;
       return this.regexValidator(alpha, {alpha30: true});
     }
+
+    namewithSpecialCharacters() {
+      const ans: RegExp = /^([A-Za-z0-9.,&()'"-]){5,120}$/;
+      return this.regexValidator(ans, {ans: true});
+    }
 }
