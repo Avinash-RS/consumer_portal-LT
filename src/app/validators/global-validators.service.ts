@@ -95,8 +95,9 @@ export class GlobalValidatorsService {
       return this.regexValidator(alpha, {alpha30: true});
     }
 
-    namewithSpecialCharacters() {
-      const ans: RegExp = /^([A-Za-z0-9.,&()'"-]){5,120}$/;
-      return this.regexValidator(ans, {ans: true});
-    }
+    noWhitespaceValidator(control: FormControl) {
+      const isWhitespace = (control.value || '').trim().length === 0;
+      const isValid = !isWhitespace;
+      return isValid ? null : { 'whitespace': true };
+  }
 }

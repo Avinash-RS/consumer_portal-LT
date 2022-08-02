@@ -393,7 +393,7 @@ resolvedSignIn(captchaSignInResponse: string){
       college: ['', [Validators.required]],
       department: ['', [Validators.required]],
       enrollNumber: ['', [Validators.required,this.gv.enrollno()]],
-      collegeType:['',[this.gv.namewithSpecialCharacters()]],
+      collegeType:['',[Validators.minLength(3),Validators.maxLength(100), this.gv.noWhitespaceValidator]],
       graduation: ['', [Validators.required]],
       password: ['', [Validators.required, this.gv.passwordRegex(), Validators.minLength(8), Validators.maxLength(32)]],
       password2: ['', [Validators.required]],
