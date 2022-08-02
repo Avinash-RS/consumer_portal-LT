@@ -169,6 +169,17 @@
                                     <mat-error *ngIf="collegeFilter.collegename && !collegeflag" class="error">{{'Please select your college'}}</mat-error>
                                 </ng-container>
                             </div>
+                            <div class="inputContainer" *ngIf="collegeFilter.collegename == 'Others'">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Please Enter Your College Name</mat-label>
+                                    <input autocomplete="off" matInput id="College_Type" name="collegeType" formControlName="collegeType" placeholder="Please Enter Your College Name">
+                                </mat-form-field>
+                                <ng-container *ngIf="collegeName.invalid && collegeName.touched">
+                                    <mat-error *ngIf="collegeName.errors?.minlength" class="error">{{'Minimum of 3 characters'}}</mat-error>
+                                    <mat-error *ngIf="collegeName.errors?.maxlength" class="error">{{'Maximum of 100 characters'}}</mat-error>
+                                    <mat-error *ngIf="collegeName.errors?.whitespace" class="error">{{'No Whitespace Allowed'}}</mat-error>
+                                </ng-container>
+                            </div>
                             <div class="inputContainer">
                                 <mat-form-field appearance="outline">
                                     <mat-label>Department</mat-label>
@@ -186,17 +197,6 @@
                                 </ng-container>
                                 <ng-container *ngIf="dept.touched">
                                     <mat-error *ngIf="departmentFilter.departmentName && !departmentflag" class="error">{{'Please select your department'}}</mat-error>
-                                </ng-container>
-                            </div>
-                            <div class="inputContainer" *ngIf="collegeFilter.collegename == 'Others'">
-                                <mat-form-field appearance="outline">
-                                    <mat-label>Please Enter Your College Name</mat-label>
-                                    <input autocomplete="off" matInput id="College_Type" name="collegeType" formControlName="collegeType" placeholder="Please Enter Your College Name">
-                                </mat-form-field>
-                                <ng-container *ngIf="collegeName.invalid && collegeName.touched">
-                                    <mat-error *ngIf="collegeName.errors?.minlength" class="error">{{'Minimum of 3 characters'}}</mat-error>
-                                    <mat-error *ngIf="collegeName.errors?.maxlength" class="error">{{'Maximum of 100 characters'}}</mat-error>
-                                    <mat-error *ngIf="collegeName.errors?.whitespace" class="error">{{'No Whitespace Allowed'}}</mat-error>
                                 </ng-container>
                             </div>
                             <div class="inputContainer">
