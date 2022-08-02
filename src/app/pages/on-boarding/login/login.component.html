@@ -175,9 +175,10 @@
                                     <input autocomplete="off" matInput id="College_Type" name="collegeType" formControlName="collegeType" placeholder="Please Enter Your College Name">
                                 </mat-form-field>
                                 <ng-container *ngIf="collegeName.invalid && collegeName.touched">
-                                    <mat-error *ngIf="collegeName.errors?.minlength" class="error">{{'Minimum of 3 characters'}}</mat-error>
-                                    <mat-error *ngIf="collegeName.errors?.maxlength" class="error">{{'Maximum of 100 characters'}}</mat-error>
-                                    <mat-error *ngIf="collegeName.errors?.whitespace" class="error">{{'No Whitespace Allowed'}}</mat-error>
+                                    <!-- <mat-error *ngIf="collegeName.errors?.minlength" class="error">{{'Minimum of 3 characters'}}</mat-error>
+                                    <mat-error *ngIf="collegeName.errors?.maxlength" class="error">{{'Maximum of 100 characters'}}</mat-error> -->
+                                    <mat-error *ngIf="collegeName.errors?.dummymsg" class="error">{{'Minimum of 3 & Maximum of 100 characters'}}</mat-error>
+                                    <mat-error *ngIf="collegeName.errors?.dummymsg" class="error">{{'Special characters  .,&()"-  allowed'}}</mat-error>
                                 </ng-container>
                             </div>
                             <div class="inputContainer">
