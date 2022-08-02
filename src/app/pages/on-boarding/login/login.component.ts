@@ -156,6 +156,10 @@ export class LoginComponent implements OnInit {
   }
 
   submitRegister() {
+    if (this.collegeFilter.collegename != 'Others') {
+      this.registerForm.get('collegeType').clearValidators();
+      this.registerForm.get('collegeType').updateValueAndValidity();
+    } 
     if (this.registerForm.valid && this.collegeflag && this.departmentflag) {
       var typeCollege = '';
       if(this.collegeFilter.collegename == 'Others'){
@@ -393,7 +397,7 @@ resolvedSignIn(captchaSignInResponse: string){
       college: ['', [Validators.required]],
       department: ['', [Validators.required]],
       enrollNumber: ['', [Validators.required,this.gv.enrollno()]],
-      collegeType:['',[Validators.minLength(3),Validators.maxLength(100), this.gv.noWhitespaceValidator]],
+      collegeType:['',[this.gv.namewithSpecialCharacters()]],
       graduation: ['', [Validators.required]],
       password: ['', [Validators.required, this.gv.passwordRegex(), Validators.minLength(8), Validators.maxLength(32)]],
       password2: ['', [Validators.required]],

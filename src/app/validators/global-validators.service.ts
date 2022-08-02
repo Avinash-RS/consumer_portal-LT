@@ -95,9 +95,8 @@ export class GlobalValidatorsService {
       return this.regexValidator(alpha, {alpha30: true});
     }
 
-    noWhitespaceValidator(control: FormControl) {
-      const isWhitespace = (control.value || '').trim().length === 0;
-      const isValid = !isWhitespace;
-      return isValid ? null : { 'whitespace': true };
+    namewithSpecialCharacters() {
+      const nospace: RegExp = /^([\sa-zA-Z0-9.,&()'"-]){3,100}$/;
+      return this.regexValidator(nospace, {dummymsg: true});
   }
 }
