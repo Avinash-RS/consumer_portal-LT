@@ -94,4 +94,10 @@ export class GlobalValidatorsService {
       const alpha: RegExp = /^([a-zA-Z]){0,30}$/;
       return this.regexValidator(alpha, {alpha30: true});
     }
+
+    noWhitespaceValidator(control: FormControl) {
+      const isWhitespace = (control.value || '').trim().length === 0;
+      const isValid = !isWhitespace;
+      return isValid ? null : { 'whitespace': true };
+  }
 }
