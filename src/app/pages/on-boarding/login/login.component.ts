@@ -159,8 +159,19 @@ export class LoginComponent implements OnInit {
     if (this.collegeFilter.collegename != 'Others') {
       this.registerForm.get('collegeType').clearValidators();
       this.registerForm.get('collegeType').updateValueAndValidity();
-    } 
-    if (this.registerForm.valid && this.collegeflag && this.departmentflag) {
+    } else {
+      this.registerForm.get('collegeType').setValidators([this.gv.namewithSpecialCharacters()]);
+      this.registerForm.get('collegeType').updateValueAndValidity();
+    }
+    if (this.registerForm.valid) {
+      if (!this.collegeflag){
+        this.toast.warning('Please select valid college name');
+        return false;
+      }
+      if (!this.departmentflag) {
+        this.toast.warning('Please select valid department name');
+        return false;
+      }
       var typeCollege = '';
       if(this.collegeFilter.collegename == 'Others'){
         if(!this.registerForm.value.collegeType){
