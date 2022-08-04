@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
     collegeshortcode: ""
   }
   @ViewChild('kycmandate', { static: false }) matDialogRef: TemplateRef<any>;
-  // @ViewChild('captchaRef',{ static: false }) captchaRef;
+  @ViewChild('captchaRef',{ static: false }) captchaRef;
   constructor(public route: ActivatedRoute,
     public commonService: CommonService,
     public toast: ToastrService,
@@ -120,9 +120,9 @@ export class LoginComponent implements OnInit {
           //this.router.navigate(['/Home'])
       }
     }*/
-    // setTimeout(()=>{
-    //   this.captchaRef.reset();
-    // },1000);
+    setTimeout(()=>{
+      this.captchaRef.reset();
+    },1000);
   }
   dialogSetup(){
       const valdat = this.dialog.open(this.matDialogRef, {
@@ -150,9 +150,9 @@ export class LoginComponent implements OnInit {
       this.ga_service.gaSetPage("Login",{userID:null})
     }
     this.recaptchaStr = '';
-    // setTimeout(()=>{
-    //   this.captchaRef.reset();
-    // },1000);
+    setTimeout(()=>{
+      this.captchaRef.reset();
+    },1000);
   }
 
   submitRegister() {
@@ -195,8 +195,8 @@ export class LoginComponent implements OnInit {
         email: encryptedname,
         termsandConditions: this.registerForm.value.termsandConditions,
         isAdmin: false,
-        // badgeRequest:this.recaptchaStr,
-        badgeRequest:"microsetportal",
+        badgeRequest:this.recaptchaStr,
+        // badgeRequest:"microsetportal",
         universityEnrollNo: this.registerForm.value.enrollNumber.trim(),
         graduationYear: this.registerForm.value.graduation.trim(),
         departmentId: this.registerForm.value.department.trim(),
@@ -255,8 +255,8 @@ resolvedSignIn(captchaSignInResponse: string){
         email: encryptedname,
         password: encryptedpassword,
         isAdmin: false,
-        // badgeRequest:this.recaptchaStr
-        badgeRequest:"microsetportal"
+        badgeRequest:this.recaptchaStr
+        // badgeRequest:"microsetportal"
       };
       this.commonService.login(loginData).subscribe((data: any) => {
         // console.log(data, 'karthik Data')
