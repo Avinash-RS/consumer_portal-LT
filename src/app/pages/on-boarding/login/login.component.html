@@ -54,8 +54,7 @@
                                 <mat-error *ngIf="loginCaptcha.errors?.invalid" class="error">{{'Invalid Captcha'}}</mat-error>
                             </ng-container> -->
 
-                            <!-- <button  id="signIn_btn" class="onEntry" mat-stroked-button (click)="checkCaptchaSignIn(captchaRef)">Sign In</button> -->
-                            <button  id="signIn_btn" class="onEntry" mat-stroked-button (click)="onSubmit()">Sign In</button>
+                            <button  id="signIn_btn" class="onEntry" mat-stroked-button (click)="checkCaptchaSignIn(captchaRef)">Sign In</button>
                             <!-- <button  id="signIn_btn" class="onEntry" mat-stroked-button (click)="onSubmit()">Sign In</button> -->
                         </div>
                         <!-- <div class="secondLayer">
@@ -243,8 +242,8 @@
                                 <mat-error *ngIf="captcha.errors?.required" class="error">{{'Please fill in Captcha'}}</mat-error>
                                 <mat-error *ngIf="captcha.errors?.invalid" class="error">{{'Invalid Captcha'}}</mat-error>
                             </ng-container> -->
-                            <!-- <button class="onEntry" (click)="checkCaptchaSignIn(captchaRef)" mat-stroked-button>Register</button> -->
-                            <button class="onEntry" (click)="submitRegister()" mat-stroked-button>Register</button>
+                            <button class="onEntry" (click)="checkCaptchaSignIn(captchaRef)" mat-stroked-button>Register</button>
+                            <!-- <button class="onEntry" (click)="submitRegister()" mat-stroked-button>Register</button> -->
                         </div>
                         <!-- <div class="secondLayer registerLine">
                             <em class="topLine"></em>
@@ -290,8 +289,8 @@
   <app-kyc-mandate></app-kyc-mandate>
 </ng-template>
 
-    <!-- <re-captcha #captchaRef="reCaptcha"  (resolved)="resolvedSignIn($event)" size='invisible' (error)="onError($event)"
+    <re-captcha #captchaRef="reCaptcha"  (resolved)="resolvedSignIn($event)" size='invisible' (error)="onError($event)"
       errorMode="handled" [siteKey]="siteKey">
-    </re-captcha> -->
+    </re-captcha>
 
 
