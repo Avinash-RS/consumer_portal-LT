@@ -175,24 +175,26 @@ export class AboutCourseComponent implements OnInit {
 
   purchasedCourse() {
     let param = {
-      'userId': this.userDetails.userId, 
-      'email': this.userDetails.email, 
+      'userId': this.userDetails.userId,
+      'email': this.userDetails.email,
       'type': 'All',
       'productType': 'course'
     }
-    this.commonService.getmyAssesments(param).subscribe((res:any)=>{ 
-      this.courseDetails = res.data;
-      this.enrolledCid =  [];
-      this.courseDetails.forEach((value) => {
-        this.enrolledCid.push(value.assessmentDetails.cid);
-        // console.log('sbdhgvsgf');
-      });
-      var enrolFlag = this.enrolledCid.filter(e => e == this.courseData.cid);
-      if(enrolFlag.length > 0){
-        this.courseData.isPurchased = true;
-      }
-      else {
-        this.courseData.isPurchased = false;
+    this.commonService.getmyAssesments(param).subscribe((res:any)=>{
+      if(res.success && res.data.length) {
+        this.courseDetails = res.data;
+        this.enrolledCid =  [];
+        this.courseDetails.forEach((value) => {
+          this.enrolledCid.push(value.assessmentDetails.cid);
+          // console.log('sbdhgvsgf');
+        });
+        var enrolFlag = this.enrolledCid.filter(e => e == this.courseData.cid);
+        if(enrolFlag.length > 0){
+          this.courseData.isPurchased = true;
+        }
+        else {
+          this.courseData.isPurchased = false;
+        }
       }
     });
   }
@@ -448,7 +450,7 @@ export class AboutCourseComponent implements OnInit {
         "productType" :'course',
         "courseOrigin":environment.userOrigin
       }
-      this.catalogService.getAreaByDomain(apiParms).subscribe((response: any) => { 
+      this.catalogService.getAreaByDomain(apiParms).subscribe((response: any) => {
         this.relatedItems.trendingCourses = [];
         this.relatedItems.relatedCourses = [];
         if (response.data?.length > 0) {
