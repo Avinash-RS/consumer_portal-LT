@@ -664,7 +664,7 @@
                 line-height: 1.3;
                 margin: 0.65em 0;
                 @include md {
-                    margin: 0;                           
+                    margin: 0;
                 }
                 em {
                     font-size: 0.75em;
@@ -734,6 +734,35 @@
                 font-weight: 600;
                 line-height: 1.4;
             }
+            .download {
+              width: 30%;
+              text-align: right;
+              margin-right: 2em;
+              @include md {
+                  width: 20%;
+              }
+              @include lg {
+                  width: 15%;
+              }
+              button {
+                  background-color: $shadeBlueColor;
+                  border: 1px solid $secondaryColor;
+                  border-radius: 5px;
+                  display: inline-flex;
+                  align-items: center;
+                  justify-content: center;
+                  padding: 0.5em;
+                  font-size: 0.875em;
+                  color: $whiteColor;
+                  width: 100%;
+                  margin-right: 2em;
+                  line-height: 1.2;
+                  em {
+                      font-size: 1em;
+                      margin-right: 10px;
+                  }
+              }
+          }
         }
         .reciept {
             padding-right: 1em;

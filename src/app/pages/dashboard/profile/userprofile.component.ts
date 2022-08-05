@@ -14,7 +14,7 @@ import { trigger, style, animate, transition } from '@angular/animations';
 import Swal from 'sweetalert2';
 import * as pdf from 'html2pdf.js';
 import { GoogleAnalyticsService } from "src/app/services/google-analytics.service";
-
+import * as CryptoJS from 'crypto-js';
 @Component({
   selector: "app-userprofile",
   templateUrl: "./userprofile.component.html",
@@ -412,7 +412,7 @@ getProfilePercentage(){
   getpurchasehistory() {
     let param = { "userId": this.userDetails.userId, "email": this.userDetails.email, 'type': 'All' }
     this.commonService.getmyAssesments(param).subscribe((rdata: any) => {
-      if (rdata.success) {
+      if (rdata.success && rdata.data.length) {
         this.purchaseList = rdata.data;
         this.ispurchase = true;
         if (this.purchaseList?.length == 0) {
@@ -583,6 +583,13 @@ getProfilePercentage(){
     }
   isMultiple(): boolean {
       return this.multiple;
+    }
+    downloadInvoice(SAPurl) {
+      const link = document.createElement('a');
+      link.target = '_blank';
+      link.style.display = 'none';
+      link.href = CryptoJS.AES.decrypt(SAPurl,this.secretKey.trim()).toString(CryptoJS.enc.Utf8);
+      link.click();
     }
 }
 

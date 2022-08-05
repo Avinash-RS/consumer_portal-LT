@@ -318,6 +318,9 @@
                                     <span class="orderHeading">Delivery Option</span>
                                     <span class="orderDesc">{{item?.deliveryOption}}</span>
                                 </div>
+                                <div class="download" *ngIf="item?.isSapInvoice">
+                                  <button class="load" (click)="downloadInvoice(item?.sapUrl)">View</button>
+                              </div>
                             </div>
                             <!-- <div class="reciept">
                                 <button>Receipt</button>
