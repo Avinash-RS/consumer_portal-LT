@@ -174,19 +174,27 @@
     <div class="heading2">{{commonData?.landingPageContents?.industryExposure?.title}}</div>
     <p>{{commonData?.landingPageContents?.industryExposure?.description}}</p>
     <div class="industryContent">
-      <div class="bigImage">
-        <figure>
-          <img [src]="bigImage" alt="" />
-        </figure>
-        <div class="text">
-          <p>{{imageText}}</p>
-        </div>
+      <div class="mainSection">
+        <owl-carousel-o [options]="industryMainSlider" #mainImageSlider>
+          <ng-container *ngFor="let item of commonData?.landingPageContents?.industryExposure?.innerArray;let i = index">
+            <ng-template carouselSlide [id]="'slide-'+ i">
+              <div class="bigImage">
+                <figure>
+                  <img [src]="item?.imageurl" alt="" />
+                </figure>
+                <div class="text">
+                  <p>{{item?.title}}</p>
+                </div>
+              </div>
+            </ng-template>
+          </ng-container>
+        </owl-carousel-o>
       </div>
       <div class="carouselSection">
         <owl-carousel-o [options]="industryExposure">
-          <ng-container *ngFor="let item of commonData?.landingPageContents?.industryExposure?.innerArray">
+          <ng-container *ngFor="let item of commonData?.landingPageContents?.industryExposure?.innerArray;let i = index">
             <ng-template carouselSlide>
-              <figure (click)="imageClick(item, commonData?.landingPageContents?.industryExposure?.innerArray)" [class.isActive]="item.isActive">
+              <figure (click)="imageClick(mainImageSlider, i, item, commonData?.landingPageContents?.industryExposure?.innerArray)" [class.isActive]="item.isActive">
                 <img [src]="item?.imageurl" alt="" />
               </figure>
             </ng-template>
