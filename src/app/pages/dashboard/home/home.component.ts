@@ -32,17 +32,44 @@ export class HomeComponent implements OnInit {
   bigImage;
   imageText;
   secretKey = "(!@#Passcode!@#)";
-
-industryExposure: OwlOptions = {
+  industryMainSlider: OwlOptions = {
+    loop: true,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    dots: false,
+    autoplay: true,
+    autoplayTimeout: 3000,
+    center: false,
+    nav: false,
+    responsive: {
+      0: {
+        items: 1
+      },
+      500: {
+        items: 1
+      },
+      650: {
+        items: 1
+      },
+      860: {
+        items: 1
+      },
+      1050: {
+        items: 1
+      }
+    }
+  }
+  industryExposure: OwlOptions = {
   loop: false,
   mouseDrag: false,
   touchDrag: false,
   pullDrag: false,
   dots: false,
-  margin: 25,
+  margin: 10,
   navSpeed: 700,
   autoplay: false,
-  autoplayTimeout: 4000,
+  autoplayTimeout: 3000,
   center: false,
   navText: ["<i class='icon-LeftArrow'></i>", "<i class='icon-RightArrow'></i>"],
   nav: true,
@@ -63,8 +90,8 @@ industryExposure: OwlOptions = {
       items: 6
     }
   }
-}
-testimonialOptions: OwlOptions = {
+  }
+  testimonialOptions: OwlOptions = {
   loop: true,
   mouseDrag: false,
   touchDrag: false,
@@ -92,7 +119,7 @@ testimonialOptions: OwlOptions = {
       items: 3
     }
   }
-}
+  }
   constructor(private util: UtilityService, private dialog: MatDialog, public commonService: CommonService, private cookieService: CookieService, private router: Router, 
     private appConfig: AppConfigService, private catalogService: CatalogService, public toast: ToastrService,) {
       this.router.routeReuseStrategy.shouldReuseRoute = () => {
@@ -175,12 +202,14 @@ testimonialOptions: OwlOptions = {
       }
     })
   }
-  imageClick(item, array) {
+  imageClick(slide, i, item, array) {  
+    console.log(slide,i);
+    slide.to('slide-'+i)  
     this.bigImage = item?.imageurl; 
-    this.imageText = item?.title
+    this.imageText = item?.title;
     array.forEach((ele)=> {
-      if(ele.title === item.title) {
-        ele.isActive = true;
+      if(ele.title === this.imageText) {
+        ele.isActive = true;   
       }
       else {
         ele.isActive = false;
