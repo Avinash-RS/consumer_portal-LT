@@ -81,7 +81,6 @@ export class SuccessComponent implements OnInit {
       if (params.orderId) {
         postData.order_id = CryptoJS.AES.encrypt(atob(params.orderId), this.secretKey.trim()).toString();
         postData.user_id = this.userDetails.userId;
-        console.log(postData);
         this.catalog.getOrder(postData).subscribe((data: any) => {
           if(data?.success){
             this.orderlist = data.data;
