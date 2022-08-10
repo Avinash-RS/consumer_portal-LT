@@ -1693,7 +1693,7 @@
           figure {
             display: flex;
             border: 3px solid $whiteColor;
-            box-shadow: 0px 3px 6px $secondaryBlackShadow;
+            // box-shadow: 0px 3px 6px $secondaryBlackShadow;
             border-radius: 10px;
             overflow: hidden;
             img {
@@ -1829,6 +1829,7 @@
         transform: translateY(-50%);
         .icon-LeftArrow, .icon-RightArrow {
           font-weight: 900;
+          line-height: normal !important;        
         }
       }
       .owl-prev {
@@ -1855,6 +1856,11 @@
     margin: 0;
     border-radius: 50%;
     background-color: $darkGrayColor;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .owl-theme .owl-nav [class*=owl-]:hover {
     background: $darkGrayColor;

@@ -112,7 +112,12 @@ export class AssessmentsListComponent implements OnInit {
     this.setSliceValue();
     this.ga_service.gaSetPage("View all courses")
     if (this.route.snapshot.queryParams.selectedTab) {
-      this.fromTab = atob(this.route.snapshot.queryParams.selectedTab);
+      var selectedTab = window.localStorage.getItem('selectedID');
+      if(!selectedTab){
+        this.fromTab = atob(this.route.snapshot.queryParams.selectedTab);
+      } else {
+        this.fromTab = selectedTab
+      }
       // this.productType = this.route.snapshot.queryParams.productType ? atob(this.route.snapshot.queryParams.productType) : 'all';
       this.isNavigated = true;
     }
@@ -196,14 +201,14 @@ export class AssessmentsListComponent implements OnInit {
     this.noDataSkeleton = true;
     this.noDataFound = false;
     this.searchKey = "";
-    this.selectedTab = id
+    this.selectedTab = id;
+    window.localStorage.setItem('selectedID',id)
     this.tabValues.forEach(element => {
       element.isSelected = false;
       if (element.cid == id) {
         element.isSelected = true;
       }
     });
-
     var params = {
       "domainId": id,
       "pagenumber": this.pageNumber,

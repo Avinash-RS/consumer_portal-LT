@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 import { BookSlotComponent } from '../../bookSlot/bookSlot.component';
 import { environment } from '@env/environment';
 import { GoogleAnalyticsService } from 'src/app/services/google-analytics.service';
-
+import * as CryptoJS from 'crypto-js';
 @Component({
   selector: 'app-success',
   templateUrl: './success.component.html',
@@ -57,6 +57,7 @@ export class SuccessComponent implements OnInit {
   stepCheck:boolean = false;
   stepCourseId  = [];
   course_details = [];
+  secretKey = "(!@#Passcode!@#)";
   // activate: boolean = false;
   // activeDate: string;
   // activeTime: any;
@@ -78,7 +79,8 @@ export class SuccessComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       const postData: any = {};
       if (params.orderId) {
-        postData.order_id = parseInt(atob(params.orderId));
+        postData.order_id = CryptoJS.AES.encrypt(atob(params.orderId), this.secretKey.trim()).toString();
+        postData.user_id = this.userDetails.userId;
         this.catalog.getOrder(postData).subscribe((data: any) => {
           if(data?.success){
             this.orderlist = data.data;
