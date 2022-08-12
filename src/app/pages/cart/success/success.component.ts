@@ -81,6 +81,7 @@ export class SuccessComponent implements OnInit {
       if (params.orderId) {
         postData.order_id = CryptoJS.AES.encrypt(atob(params.orderId), this.secretKey.trim()).toString();
         postData.user_id = this.userDetails.userId;
+        postData.key_id = this.userDetails.email;
         this.catalog.getOrder(postData).subscribe((data: any) => {
           if(data?.success){
             this.orderlist = data.data;
@@ -148,11 +149,11 @@ export class SuccessComponent implements OnInit {
         username: this.userDetails.email,
         course_details: this.course_details
         }
-      this.catalog.userSyncUpLxp(apiParam).subscribe((result:any)=>{
-        if(result?.success){
-          this.util.isEnrolled.next(true);
-        }
-      });
+      // this.catalog.userSyncUpLxp(apiParam).subscribe((result:any)=>{
+      //   if(result?.success){
+      //     this.util.isEnrolled.next(true);
+      //   }
+      // });
     }
     if(this.stepCheck){
       const stepapiParam ={
