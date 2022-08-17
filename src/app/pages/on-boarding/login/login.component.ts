@@ -200,7 +200,7 @@ export class LoginComponent implements OnInit {
         universityEnrollNo: this.registerForm.value.enrollNumber.trim(),
         graduationYear: this.registerForm.value.graduation.trim(),
         departmentId: this.registerForm.value.department.trim(),
-        mobile: this.registerForm.value.enrollNumber.trim(),
+        mobile: this.registerForm.value.mobile.trim(),
         collegeType: typeCollege.trim()
       };
       this.commonService.signup(signupData).subscribe((data: any) => {
