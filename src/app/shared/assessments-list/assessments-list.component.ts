@@ -45,7 +45,7 @@ export class AssessmentsListComponent implements OnInit {
   skletonFiller:any=[].fill(8)
   blobToken: string = environment.blobKey;
   public destroyed = new Subject<any>();
-  subscriberdata: any;
+  // subscriberdata: any;
   productType:string = 'course';
   filteredTab:string = 'all';
   filterTabs = [
@@ -112,23 +112,17 @@ export class AssessmentsListComponent implements OnInit {
     this.setSliceValue();
     this.ga_service.gaSetPage("View all courses")
     if (this.route.snapshot.queryParams.selectedTab) {
-      var selectedTab = window.localStorage.getItem('selectedID');
-      if(!selectedTab){
-        this.fromTab = atob(this.route.snapshot.queryParams.selectedTab);
-      } else {
-        this.fromTab = selectedTab
-      }
-      // this.productType = this.route.snapshot.queryParams.productType ? atob(this.route.snapshot.queryParams.productType) : 'all';
+      this.fromTab = window.localStorage.getItem('selectedID') ? window.localStorage.getItem('selectedID') : 'All';
       this.isNavigated = true;
     }
     this.getDomain(this.productType);
-    this.subscriberdata = this.router.events.pipe(
-      filter((event: RouterEvent) => event instanceof NavigationEnd),
-      takeUntil(this.destroyed)
-    ).subscribe(() => {
-      this.fromTab = atob(this.route.snapshot.queryParams.selectedTab);
-      this.getDomain(this.productType);
-    })
+    // this.subscriberdata = this.router.events.pipe(
+    //   filter((event: RouterEvent) => event instanceof NavigationEnd),
+    //   takeUntil(this.destroyed)
+    // ).subscribe(() => {
+    //   this.fromTab = atob(this.route.snapshot.queryParams.selectedTab);
+    //   this.getDomain(this.productType);
+    // })
 
   }
   getenrolledCourse(){
@@ -141,7 +135,7 @@ export class AssessmentsListComponent implements OnInit {
     });
   }
   ngOnDestroy(){
-    this.subscriberdata.unsubscribe();
+    // this.subscriberdata.unsubscribe();
   }
   moveLeft() {
     this.ds.moveLeft();
@@ -238,6 +232,7 @@ export class AssessmentsListComponent implements OnInit {
   }
   catalogHome() {
     this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.home, { fromPage: btoa("viewAll"), selectedTab: btoa(this.selectedTab) });
+    localStorage.setItem("selectedID",'All');
   }
 
   aboutAssessment(value) {
