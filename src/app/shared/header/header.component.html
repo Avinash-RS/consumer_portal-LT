@@ -262,7 +262,7 @@
                     <!-- <div class="headingStyle">{{l1name}}</div> -->
                     <div class="closeIcon"><em class="icon-Close" (click)="closeMegaMenu_()"></em></div>
                 </div>
-                <nav class="topMenuMobile" *ngIf="showAvatar">
+                <nav class="topMenuMobile" *ngIf="showAvatar && ispurchased">
                     <!-- <a [ngClass]="isCourse ? 'activeTab' : ''" (click)="onlineAssessment('course')">My Courses</a> -->
                     <a [ngClass]="isCourse ? 'activeTab' : ''" (click)="gotoCourse()">My Courses</a>
                 </nav>
