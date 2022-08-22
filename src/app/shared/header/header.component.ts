@@ -356,6 +356,8 @@ export class HeaderComponent implements OnInit {
     this.mobileshowMenu = 'out';
     this.assessmentsList= false;
     this.coursesList = false;
+    // console.log("cid", value);
+    window.localStorage.setItem("selectedID",value);
     this.appConfig.routeNavigationWithQueryParam(APP_CONSTANTS.ENDPOINTS.catalog.home, { fromPage: btoa("viewAll"), selectedTab: btoa(value) ,productType : btoa('course')});
     this.inActiveTabs();
   }
