@@ -85,6 +85,7 @@ export class SuccessComponent implements OnInit {
         this.catalog.getOrder(postData).subscribe((data: any) => {
           if(data?.success){
             this.orderlist = data.data;
+            this.util.isEnrolled.next(true);
             this.syncLxp();
 
             // ###Google Analytics###
